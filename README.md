@@ -2,6 +2,7 @@
 
 A personal finance app.
 
+https://travis-ci.org/bean-counter/bean-counter.svg?branch=master
 
 ## Running the server
 
