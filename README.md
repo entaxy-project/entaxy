@@ -15,3 +15,12 @@ npm start
 * ReactJS
 * Webpack
 * Blockstack
+
+
+## Tests
+
+We're using Jest and you can run the tests with
+
+```
+npm test
+```
