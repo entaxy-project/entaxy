@@ -1,10 +1,17 @@
-import React, { Component } from 'react'
+import React from 'react';
 import ReactDOM from 'react-dom';
+import Reboot from 'material-ui/Reboot';
+import App from './App';
+import registerServiceWorker from './registerServiceWorker';
+import createHistory from 'history/createBrowserHistory'
 
-import App from './components/App.jsx';
+const history = createHistory()
 
-// Require Sass file so webpack can build it
-import bootstrap from 'bootstrap/dist/css/bootstrap.css';
-import style from './styles/style.css';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+	<Reboot>
+		<App history={history} />
+	</Reboot>, 
+	document.getElementById('root')
+)
+registerServiceWorker();
