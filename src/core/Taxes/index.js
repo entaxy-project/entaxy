@@ -1,7 +1,15 @@
 import React from 'react'
-import Button from 'material-ui/Button'
+import { ParentSize } from "@vx/responsive";
+import TaxChart from './TaxChart'
 
-const Header = () => 
-  <h1 color="inherit">Taxes</h1>
-
-export default Header
+export default () => (
+	<ParentSize>
+    {parent => (
+      <TaxChart 
+      	year={2017}
+        width={parent.width}
+        height={500}
+			/>)
+		}
+	</ParentSize>
+)

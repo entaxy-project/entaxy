@@ -1,17 +1,10 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Reboot from 'material-ui/Reboot';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
-import createHistory from 'history/createBrowserHistory'
-
-const history = createHistory()
-
+import React from 'react'
+import ReactDOM from 'react-dom'
+import App from './core/App'
+import registerServiceWorker from './registerServiceWorker'
 
 ReactDOM.render(
-	<Reboot>
-		<App history={history} />
-	</Reboot>, 
+	<App />,
 	document.getElementById('root')
 )
-registerServiceWorker();
+registerServiceWorker()

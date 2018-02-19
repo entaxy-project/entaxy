@@ -1,0 +1,176 @@
+import React from 'react'
+import { extent, max, bisector } from 'd3-array';
+import { Group } from '@vx/group';
+import { scaleLinear } from '@vx/scale';
+import { LinePath, Bar } from '@vx/shape';
+import { AxisLeft, AxisBottom } from '@vx/axis';
+import { curveBasis } from '@vx/curve';
+import { Grid } from '@vx/grid';
+import { withTooltip } from '@vx/tooltip'
+import { localPoint } from '@vx/event';
+import { Line } from '@vx/shape';
+import { Point } from '@vx/point';
+
+import {TaxBracketData, TaxBracketLines} from './TaxBrackets'
+import TaxTooltips from './TaxTooltips'
+
+const colors = ['rgb(107, 157, 255)', 'rgb(252, 137, 159)']
+
+const x = d => d.income;
+const y = d => d.tax;
+
+// Bounds
+const margin = {
+  top: 60,
+  bottom: 60,
+  left: 80,
+  right: 80,
+};
+
+const TaxChart = ({
+  width, 
+  height, 
+  year, 
+  tooltipOpen,
+  tooltipLeft,
+  tooltipTop,
+  tooltipData,
+  showTooltip,
+  hideTooltip,
+}) => {
+  const data = TaxBracketData({year: year})
+  const xMax = width - margin.left - margin.right
+  const yMax = height - margin.top - margin.bottom
+  
+  const xScale = scaleLinear({
+    range: [0, xMax],
+    domain: extent(data, x)
+  })
+  
+  const yScale = scaleLinear({
+    range: [yMax, 0],
+    domain: [0, max(data, y)],
+  })
+  
+  const tickLabel = 
+    <text 
+      fill="grey" 
+      opacity="0.20" 
+      fontSize={10} 
+      dy="0.25em" 
+      textAnchor="middle" 
+      fontWeight="bold" 
+    />
+  
+  return (
+    <div>
+      <svg width={width} height={height} ref={s => (this.svg = s)}>
+        <Grid
+          xScale={xScale}
+          yScale={yScale}
+          top={margin.top}
+          left={margin.left}
+          width={xMax}
+          height={yMax}
+        />     
+        <Group top={margin.top} left={margin.left}>
+          <LinePath
+            data={data}
+            xScale={xScale}
+            yScale={yScale}
+            x={x}
+            y={y}
+            stroke='#7dc7f4'
+            strokeWidth={4}
+            curve={curveBasis}
+          />
+          {TaxBracketLines(year, xScale, yScale, margin, width, height)}
+          <AxisLeft
+            scale={yScale}
+            top={0}
+            left={0}
+            label={'Payable tax ($)'}
+            stroke={'#eaf0f6'}
+            tickTextFill={'#eaf0f6'}
+            tickLabelComponent={tickLabel}
+            tickFormat={this.yScaleFormat}
+          />
+          <AxisBottom
+            scale={xScale}
+            top={yMax}
+            label={'Income'}
+            stroke={'#eaf0f6'}
+            tickTextFill={'#eaf0f6'}
+            tickLabelComponent={tickLabel}
+          />
+          <Bar
+            data={data}
+            width={width}
+            height={height - margin.bottom}
+            fill="transparent"
+            onMouseLeave={data => event => hideTooltip()}
+            onMouseMove={data => event => {
+              // Figure out he data index from the mouse hover
+              const point = localPoint(this.svg, event)
+              const { x: xPoint } = localPoint(this.svg, event);
+              const x0 = xScale.invert(xPoint - margin.left) ;
+              const index = bisector(d => x(d)).left(data, x0);
+             showTooltip({
+                tooltipData: data[index],
+                tooltipLeft: xScale(x(data[index])) + margin.left,
+                tooltipTop: yScale(y(data[index])) + margin.top
+              });
+            }}
+          />          
+       </Group>
+      {tooltipData &&
+
+        <g key={"g-"}>
+          <Line
+            key={"vertical-"}
+            from={new Point({x: tooltipLeft, y: yMax + margin.bottom})}
+            to={new Point({x: tooltipLeft, y: margin.top})}
+            stroke={"rgb(220, 220, 220)"}
+          />
+          <Line
+            key={"horizontal-"}
+            from={new Point({x: margin.left, y: tooltipTop})}
+            to={new Point({x: xMax + margin.left, y: tooltipTop})}
+            stroke={"rgb(220, 220, 220)"}
+          />
+          <circle
+            cx={tooltipLeft}
+            cy={tooltipTop}
+            r={12}
+            fill={colors[0]}
+            stroke={colors[0]}
+            strokeWidth=".6"
+            fillOpacity={1 / 12}
+            strokeOpacity={1 / 2}          
+          />
+          {/* Inner circle */}
+          <circle
+            cx={tooltipLeft}
+            cy={tooltipTop}
+            r={4}
+            fill={colors[0]}
+            stroke={colors[0]}
+            strokeWidth="1.5"
+            fillOpacity={1}
+            strokeOpacity={1}   
+          />          
+        </g>  
+      }
+      </svg>
+      {tooltipData &&
+        <TaxTooltips
+          data={tooltipData}
+          top={tooltipTop}
+          left={tooltipLeft}
+          margin={margin}
+        />}
+    </div>
+  )
+}
+
+export default withTooltip(TaxChart)

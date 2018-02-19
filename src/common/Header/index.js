@@ -9,7 +9,7 @@ const styles = {
   flex: {
     flex: 1,
   },
-};
+}
 
 function Header(props) {
 	const { classes } = props
