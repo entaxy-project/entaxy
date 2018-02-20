@@ -4,7 +4,7 @@ import Taxes from './core/Taxes'
 
 const Routes = ({history}) => (
   <Router history={history}>
-    <Route exact path="/taxes" component={Taxes} />
+    <Route exact path="/" component={Taxes} />
   </Router>
 )
 
