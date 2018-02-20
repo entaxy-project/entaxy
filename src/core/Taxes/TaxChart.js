@@ -16,9 +16,6 @@ import TaxTooltips from './TaxTooltips'
 
 const colors = ['rgb(107, 157, 255)', 'rgb(252, 137, 159)']
 
-const x = d => d.income;
-const y = d => d.tax;
-
 // Bounds
 const margin = {
   top: 60,
@@ -41,6 +38,9 @@ const TaxChart = ({
   const data = TaxBracketData({year: year})
   const xMax = width - margin.left - margin.right
   const yMax = height - margin.top - margin.bottom
+
+  const x = d => d.income;
+  const y = d => d.tax;
   
   const xScale = scaleLinear({
     range: [0, xMax],
@@ -65,15 +65,8 @@ const TaxChart = ({
   return (
     <div>
       <svg width={width} height={height} ref={s => (this.svg = s)}>
-        <Grid
-          xScale={xScale}
-          yScale={yScale}
-          top={margin.top}
-          left={margin.left}
-          width={xMax}
-          height={yMax}
-        />     
-        <Group top={margin.top} left={margin.left}>
+       <Group top={margin.top} left={margin.left}>
+          {TaxBracketLines(year, xScale, yScale, margin, width, height)}
           <LinePath
             data={data}
             xScale={xScale}
@@ -84,7 +77,6 @@ const TaxChart = ({
             strokeWidth={4}
             curve={curveBasis}
           />
-          {TaxBracketLines(year, xScale, yScale, margin, width, height)}
           <AxisLeft
             scale={yScale}
             top={0}
@@ -111,11 +103,10 @@ const TaxChart = ({
             onMouseLeave={data => event => hideTooltip()}
             onMouseMove={data => event => {
               // Figure out he data index from the mouse hover
-              const point = localPoint(this.svg, event)
               const { x: xPoint } = localPoint(this.svg, event);
               const x0 = xScale.invert(xPoint - margin.left) ;
               const index = bisector(d => x(d)).left(data, x0);
-             showTooltip({
+              showTooltip({
                 tooltipData: data[index],
                 tooltipLeft: xScale(x(data[index])) + margin.left,
                 tooltipTop: yScale(y(data[index])) + margin.top
@@ -153,7 +144,7 @@ const TaxChart = ({
             cx={tooltipLeft}
             cy={tooltipTop}
             r={4}
-            fill={colors[0]}
+            fill="white"
             stroke={colors[0]}
             strokeWidth="1.5"
             fillOpacity={1}
@@ -164,6 +155,7 @@ const TaxChart = ({
       </svg>
       {tooltipData &&
         <TaxTooltips
+          tooltipOpen={tooltipOpen}
           data={tooltipData}
           top={tooltipTop}
           left={tooltipLeft}

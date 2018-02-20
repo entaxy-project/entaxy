@@ -2,6 +2,7 @@ import React from 'react'
 import { Line } from '@vx/shape';
 import { Point } from '@vx/point';
 
+
 export const TaxBracketData = ({year, min = 0, max = 250000, step = 1000}) => {
 	let data = []
 	for (var income = min; income < max; income += step) {
@@ -20,7 +21,7 @@ const TaxBrackets = {
 		{amountUpTo: 93208.00, tax: 20.50},
 		{amountUpTo: 144489.00, tax: 26.00},
 		{amountUpTo: 205842.00, tax: 29.00},
-		{amountUpTo: null, tax: 33.00}
+		{amountUpTo: 10000000, tax: 33.00}
 	]
 }
 
