@@ -24,3 +24,11 @@ yarn start
 ```
 yarn test
 ```
+
+## Contributing
+
+Everyone interacting in Bean Counter and its sub-projects' codebases, issue trackers, chat rooms, and mailing lists is expected to follow our [Code of Conduct](https://github.com/bean-counter/bean-counter/blob/master/CODE_OF_CONDUCT.md).
+
+## License
+
+Bean Counter is Ruby on Rails is released under the [MIT License](https://opensource.org/licenses/MIT).
