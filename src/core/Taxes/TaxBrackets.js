@@ -2,12 +2,21 @@ import React from 'react'
 import { Line } from '@vx/shape';
 import { Point } from '@vx/point';
 
-
 export const TaxBracketData = ({year, min = 0, max = 250000, step = 1000}) => {
 	let data = []
+	let bracketIndex = 0
 	for (var income = min; income < max; income += step) {
+		// Add the exact bracket ammount
+		if(income >= TaxBrackets[year][bracketIndex].amountUpTo) {
+			data.push({
+				income: TaxBrackets[year][bracketIndex].amountUpTo,
+				tax: calculateTax(year, TaxBrackets[year][bracketIndex].amountUpTo)
+			})
+			bracketIndex++;
+		}
+
 		data.push({
-			income: income, 
+			income: income,
 			tax: calculateTax(year, income)
 		})
 	}
@@ -25,7 +34,7 @@ const TaxBrackets = {
 	]
 }
 
-const calculateTax = (year, income) => {
+export const calculateTax = (year, income) => {
 	let tax = 0
 
 	for(var b = 0; b < TaxBrackets[year].length; b++) {
@@ -55,43 +64,51 @@ const calculateTax = (year, income) => {
 
 export const TaxBracketLines = (year, xScale, yScale, margin, width, height) => {
 	const rows = []
-  const xMax = width - margin.left - margin.right
   const yMax = height - margin.top - margin.bottom
 
-	for(var b = 1; b < TaxBrackets[year].length; b++) {
-		var bracket = TaxBrackets[year][b]
-		var key = "bracket-" + b
+	for(var b = 0; b < TaxBrackets[year].length; b++) {
+		var left = xScale(TaxBrackets[year][b].amountUpTo)
 
 		rows.push(
-	    <g key={"g-" + key}>
 	      <Line
-	        key={"vertical-" + key}
-	        from={new Point({
-	          x: xScale(bracket.amountUpTo), 
-	          y: yMax
-	        })}
-	        to={new Point({
-	          x: xScale(bracket.amountUpTo), 
-	          y: 0
-	        })}
+	        key={"vertical-" + b}
+	        from={new Point({x: left, y: yMax})}
+	        to={new Point({x: left, y: 0})}
 	        stroke='#ffdddd'
 	        strokeWidth={1}
 	      />
-	      <Line
-	        key={"horizontal-" + key}
-	        from={new Point({
-	          x: 0, 
-	          y: yScale(calculateTax(year, bracket.amountUpTo)) 
-	        })}
-	        to={new Point({
-	          x: xMax, 
-	          y: yScale(calculateTax(year, bracket.amountUpTo)) 
-	        })}
-	        stroke='#ffdddd'
-	        strokeWidth={1}
-	      />
-	    </g>
 		)
 	}
-	return rows
+	return  <g key={"TaxBracketLines"}>{rows}</g>
 }
+
+// export const TaxBracketBars = (year, xScale, yScale, margin, width, height) => {
+// 	const rows = []
+//   const yMax = height - margin.top - margin.bottom
+
+// 	for(var b = 0; b < TaxBrackets[year].length; b++) {
+// 		var bracket = TaxBrackets[year][b]
+// 		var key = "bracket-" + b
+
+// 		rows.push(
+// 	    <g key={"g-" + key}>
+
+// 	      <Line
+// 	        key={"vertical-" + key}
+// 	        from={new Point({
+// 	          x: xScale(bracket.amountUpTo),
+// 	          y: yMax
+// 	        })}
+// 	        to={new Point({
+// 	          x: xScale(bracket.amountUpTo),
+// 	          y: 0
+// 	        })}
+// 	        stroke='#ffdddd'
+// 	        strokeWidth={1}
+// 	      />
+
+// 	    </g>
+// 		)
+// 	}
+// 	return rows
+// }

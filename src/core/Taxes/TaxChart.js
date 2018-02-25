@@ -5,14 +5,17 @@ import { scaleLinear } from '@vx/scale';
 import { LinePath, Bar } from '@vx/shape';
 import { AxisLeft, AxisBottom } from '@vx/axis';
 import { curveBasis } from '@vx/curve';
-import { Grid } from '@vx/grid';
 import { withTooltip } from '@vx/tooltip'
 import { localPoint } from '@vx/event';
 import { Line } from '@vx/shape';
 import { Point } from '@vx/point';
 
-import {TaxBracketData, TaxBracketLines} from './TaxBrackets'
+import IncomeLines from './IncomeLines'
+import TaxCreditLines from './TaxCreditLines'
+import { TaxBracketData, TaxBracketLines } from './TaxBrackets'
 import TaxTooltips from './TaxTooltips'
+
+import blueGrey from 'material-ui/colors/blueGrey';
 
 const colors = ['rgb(107, 157, 255)', 'rgb(252, 137, 159)']
 
@@ -25,9 +28,11 @@ const margin = {
 };
 
 const TaxChart = ({
-  width, 
-  height, 
-  year, 
+  width,
+  height,
+  year,
+  income,
+  rrsp,
   tooltipOpen,
   tooltipLeft,
   tooltipTop,
@@ -39,29 +44,41 @@ const TaxChart = ({
   const xMax = width - margin.left - margin.right
   const yMax = height - margin.top - margin.bottom
 
-  const x = d => d.income;
-  const y = d => d.tax;
-  
+  const x = d => {
+    if (d === undefined) {
+      return 0
+    } else {
+      return d.income;
+    }
+  }
+  const y = d => {
+    if (d === undefined) {
+      return 0
+    } else {
+      return d.tax;
+    }
+  }
+
   const xScale = scaleLinear({
     range: [0, xMax],
     domain: extent(data, x)
   })
-  
+
   const yScale = scaleLinear({
     range: [yMax, 0],
     domain: [0, max(data, y)],
   })
-  
-  const tickLabel = 
-    <text 
-      fill="grey" 
-      opacity="0.20" 
-      fontSize={10} 
-      dy="0.25em" 
-      textAnchor="middle" 
-      fontWeight="bold" 
+
+  const tickLabel =
+    <text
+      fill="gray"
+      opacity="0.20"
+      fontSize={10}
+      dy="0.25em"
+      textAnchor="middle"
+      fontWeight="bold"
     />
-  
+
   return (
     <div>
       <svg width={width} height={height} ref={s => (this.svg = s)}>
@@ -73,7 +90,7 @@ const TaxChart = ({
             yScale={yScale}
             x={x}
             y={y}
-            stroke='#7dc7f4'
+            stroke={blueGrey[100]}
             strokeWidth={4}
             curve={curveBasis}
           />
@@ -81,20 +98,22 @@ const TaxChart = ({
             scale={yScale}
             top={0}
             left={0}
-            label={'Payable tax ($)'}
-            stroke={'#eaf0f6'}
-            tickTextFill={'#eaf0f6'}
+            label={'Tax ($)'}
+            stroke={'#dddddd'}
             tickLabelComponent={tickLabel}
             tickFormat={this.yScaleFormat}
+            tickStroke={'#dddddd'}
           />
           <AxisBottom
             scale={xScale}
             top={yMax}
             label={'Income'}
-            stroke={'#eaf0f6'}
-            tickTextFill={'#eaf0f6'}
+            stroke={'#dddddd'}
             tickLabelComponent={tickLabel}
+            tickStroke={'#dddddd'}
           />
+          {IncomeLines(income, year, xScale, yScale, margin, width, height)}
+          {TaxCreditLines(income, rrsp, year, xScale, yScale, margin, width, height)}
           <Bar
             data={data}
             width={width}
@@ -112,7 +131,7 @@ const TaxChart = ({
                 tooltipTop: yScale(y(data[index])) + margin.top
               });
             }}
-          />          
+          />
        </Group>
       {tooltipData &&
 
@@ -137,7 +156,7 @@ const TaxChart = ({
             stroke={colors[0]}
             strokeWidth=".6"
             fillOpacity={1 / 12}
-            strokeOpacity={1 / 2}          
+            strokeOpacity={1 / 2}
           />
           {/* Inner circle */}
           <circle
@@ -148,9 +167,9 @@ const TaxChart = ({
             stroke={colors[0]}
             strokeWidth="1.5"
             fillOpacity={1}
-            strokeOpacity={1}   
-          />          
-        </g>  
+            strokeOpacity={1}
+          />
+        </g>
       }
       </svg>
       {tooltipData &&
