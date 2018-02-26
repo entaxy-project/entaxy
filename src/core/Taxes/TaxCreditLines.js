@@ -1,7 +1,7 @@
 import React from 'react'
 import { Line, Bar } from '@vx/shape';
 import { Point } from '@vx/point';
-import { calculateTax } from './TaxBrackets'
+import { calculateTotalTax } from './TaxBrackets'
 import { Motion, spring } from 'react-motion'
 import { PatternLines } from '@vx/pattern'
 import teal from 'material-ui/colors/teal';
@@ -10,6 +10,7 @@ const TaxCreditLines = (
 	income,
 	credits,
 	year,
+	province,
 	xScale,
 	yScale,
 	margin,
@@ -22,8 +23,8 @@ const TaxCreditLines = (
   	credits: xScale(income - credits),
   }
   const top = {
-  	income: yScale(calculateTax(year, income)),
-  	credits: yScale(calculateTax(year, income - credits)),
+  	income: yScale(calculateTotalTax(year, province, income)),
+  	credits: yScale(calculateTotalTax(year, province, income - credits)),
   }
   var barWidth = Math.max((left.income - left.credits) || 0 , 0)
 	return(

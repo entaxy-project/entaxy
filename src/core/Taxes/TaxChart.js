@@ -12,13 +12,14 @@ import { Point } from '@vx/point';
 
 import IncomeLines from './IncomeLines'
 import TaxCreditLines from './TaxCreditLines'
-import { TaxBracketData, TaxBracketLines } from './TaxBrackets'
+import { IncomeTaxData, TaxBracketLines } from './TaxBrackets'
 import TaxTooltips from './TaxTooltips'
 
 import blueGrey from 'material-ui/colors/blueGrey';
 
 const colors = ['rgb(107, 157, 255)', 'rgb(252, 137, 159)']
 
+const province = 'federal'
 // Bounds
 const margin = {
   top: 60,
@@ -40,7 +41,7 @@ const TaxChart = ({
   showTooltip,
   hideTooltip,
 }) => {
-  const data = TaxBracketData({year: year})
+  const data = IncomeTaxData({year: year, province: province, income: income})
   const xMax = width - margin.left - margin.right
   const yMax = height - margin.top - margin.bottom
 
@@ -83,7 +84,7 @@ const TaxChart = ({
     <div>
       <svg width={width} height={height} ref={s => (this.svg = s)}>
        <Group top={margin.top} left={margin.left}>
-          {TaxBracketLines(year, xScale, yScale, margin, width, height)}
+          {TaxBracketLines(year, province, xScale, yScale, margin, width, height)}
           <LinePath
             data={data}
             xScale={xScale}
@@ -112,8 +113,8 @@ const TaxChart = ({
             tickLabelComponent={tickLabel}
             tickStroke={'#dddddd'}
           />
-          {IncomeLines(income, year, xScale, yScale, margin, width, height)}
-          {TaxCreditLines(income, rrsp, year, xScale, yScale, margin, width, height)}
+          {TaxCreditLines(income, rrsp, year, province, xScale, yScale, margin, width, height)}
+          {IncomeLines(income, year, province, xScale, yScale, margin, width, height)}
           <Bar
             data={data}
             width={width}

@@ -1,13 +1,14 @@
 import React from 'react'
 import { Line } from '@vx/shape';
 import { Point } from '@vx/point';
-import { calculateTax } from './TaxBrackets'
+import { calculateTotalTax } from './TaxBrackets'
 import { Motion, spring } from 'react-motion'
 import teal from 'material-ui/colors/teal';
 
 const IncomeLines = (
 	income,
 	year,
+	province,
 	xScale,
 	yScale,
 	margin,
@@ -16,7 +17,7 @@ const IncomeLines = (
 ) => {
   const yMax = height - margin.top - margin.bottom
   const left = xScale(income)
-  const top = yScale(calculateTax(year, income))
+  const top = yScale(calculateTotalTax(year, province, income))
 	return(
     <Motion
       defaultStyle={{ left: left || 0, top: top || 0 }}

@@ -7,6 +7,8 @@ import { FormControl } from 'material-ui/Form';
 import { ParentSize } from "@vx/responsive";
 import TaxChart from './TaxChart'
 import CurrencyFormat from '../../common/CurrencyFormat'
+import { calculateTotalTax } from './TaxBrackets'
+import Typography from 'material-ui/Typography';
 
 const styles = theme => ({
   root: {
@@ -21,15 +23,24 @@ const styles = theme => ({
 class Taxes extends React.Component {
 	state = {
     income: '90000',
-    rrsp: '10000'
+    rrsp: '10000',
+    tax: calculateTotalTax(2017, 'Ontario', 90000 - 10000),
   }
 
 	handleChange = name => event => {
-    this.setState({[name]: event.target.value})
+		var income = name == 'income' ? event.target.value : this.state.income
+		var rrsp = name == 'rrsp' ? event.target.value : this.state.rrsp
+    this.setState({
+    	[name]: event.target.value,
+    	tax: calculateTotalTax(2017, 'Ontario', income - rrsp),
+    })
   }
+
 
   render() {
   	const { classes } = this.props
+		var currencyFormatter = new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD' })
+		var percentFormatter = new Intl.NumberFormat('en-CA', {style: 'percent'})
 	  return (
 	    <div className={classes.root}>
 		    <Grid container spacing={0}>
@@ -62,7 +73,8 @@ class Taxes extends React.Component {
 				          }}
 				        />
 			        </FormControl>
-			        <br/>
+		        </Paper>
+		    		<Paper className={classes.paper}>
 							<FormControl fullWidth className={classes.formControl}>
 			          <InputLabel htmlFor="rrsp">RRSP contribution for 2017</InputLabel>
 				        <Input
@@ -75,6 +87,14 @@ class Taxes extends React.Component {
 				          }}
 				        />
 			        </FormControl>
+		    		</Paper>
+		    		<Paper className={classes.paper}>
+		    			<Typography component="p">
+			    			Tax amount: {currencyFormatter.format(this.state.tax)}
+          		</Typography>
+          		<Typography component="p">
+			    			Marginal Tax: {percentFormatter.format(this.state.tax / (this.state.income - this.state.rrsp))}
+          		</Typography>
 		    		</Paper>
 					</Grid>
 				</Grid>
