@@ -22,10 +22,10 @@ const colors = ['rgb(107, 157, 255)', 'rgb(252, 137, 159)']
 const province = 'federal'
 // Bounds
 const margin = {
-  top: 60,
-  bottom: 60,
-  left: 80,
-  right: 80,
+  top: 20,
+  bottom: 40,
+  left: 40,
+  right: 0,
 };
 
 const TaxChart = ({

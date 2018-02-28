@@ -16,7 +16,7 @@ const styles = theme => ({
   },
   paper: {
     margin: '10px 5px',
-    padding: '10px',
+    padding: '20px',
   },
 })
 
@@ -28,8 +28,8 @@ class Taxes extends React.Component {
   }
 
 	handleChange = name => event => {
-		var income = name == 'income' ? event.target.value : this.state.income
-		var rrsp = name == 'rrsp' ? event.target.value : this.state.rrsp
+		var income = name === 'income' ? event.target.value : this.state.income
+		var rrsp = name === 'rrsp' ? event.target.value : this.state.rrsp
     this.setState({
     	[name]: event.target.value,
     	tax: calculateTotalTax(2017, 'Ontario', income - rrsp),
@@ -46,6 +46,9 @@ class Taxes extends React.Component {
 		    <Grid container spacing={0}>
 		    	<Grid item xs={10}>
 					  <Paper className={classes.paper}>
+		    			<Typography variant="headline" gutterBottom align="center">
+			    			Taxes for 2017
+          		</Typography>
 							<ParentSize>
 						    {parent => (
 						      <TaxChart
@@ -62,7 +65,7 @@ class Taxes extends React.Component {
 		    	<Grid item xs={2}>
 		    		<Paper className={classes.paper}>
 							<FormControl fullWidth className={classes.formControl}>
-			          <InputLabel htmlFor="income">Your income for 2017</InputLabel>
+			          <InputLabel htmlFor="income">Your income</InputLabel>
 				        <Input
 				          value={this.state.income}
 				          onChange={this.handleChange('income')}
@@ -75,8 +78,11 @@ class Taxes extends React.Component {
 			        </FormControl>
 		        </Paper>
 		    		<Paper className={classes.paper}>
+		    			<Typography variant="subheading">
+		    				Tax credits
+		    			</Typography>
 							<FormControl fullWidth className={classes.formControl}>
-			          <InputLabel htmlFor="rrsp">RRSP contribution for 2017</InputLabel>
+			          <InputLabel htmlFor="rrsp">RRSP contribution</InputLabel>
 				        <Input
 				          value={this.state.rrsp}
 				          onChange={this.handleChange('rrsp')}
@@ -89,11 +95,11 @@ class Taxes extends React.Component {
 			        </FormControl>
 		    		</Paper>
 		    		<Paper className={classes.paper}>
-		    			<Typography component="p">
-			    			Tax amount: {currencyFormatter.format(this.state.tax)}
+		    			<Typography>
+			    			<strong>Tax amount:</strong> {currencyFormatter.format(this.state.tax)}
           		</Typography>
-          		<Typography component="p">
-			    			Marginal Tax: {percentFormatter.format(this.state.tax / (this.state.income - this.state.rrsp))}
+          		<Typography>
+			    			<strong>Marginal Tax:</strong> {percentFormatter.format(this.state.tax / (this.state.income - this.state.rrsp))}
           		</Typography>
 		    		</Paper>
 					</Grid>

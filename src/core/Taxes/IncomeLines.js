@@ -59,4 +59,3 @@ const IncomeLines = (
 }
 
 export default IncomeLines
-
