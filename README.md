@@ -27,13 +27,16 @@ yarn start
 yarn test
 ```
 
-## Contributing
-
 ### Roadmap
 * Taxes
 	* Tax brackets
 	* RRSP and TFSA limits and optimization
 * Mortgage/debt
+* Investments
+	* ETFs / Cryptocurrencies / Stocks / Mutual funds
+	* Keep track of buy prices
+	* Fees tracking + Keep track of deviations from plan
+	* Re-investment calculations
 * Budget management
 	* Income tracking and allocation
 	* Bank statements tracking (securely import your bank transactions)
@@ -41,11 +44,6 @@ yarn test
 	* Vacation tracking (variable expenses)
 	* Reporting
 	* Receipt management
-* Investments
-	* ETFs / Cryptocurrencies / Stocks / Mutual funds
-	* Keep track of buy prices
-	* Fees tracking + Keep track of deviations from plan
-	* Re-investment calculations
 * Net worth
 * Retirement projections
 * import/export
@@ -53,8 +51,10 @@ yarn test
 * Estate planning
 * Pensions
 
+## Contributing
+
 Everyone interacting in Bean Counter and its sub-projects' codebases, issue trackers, chat rooms, and mailing lists is expected to follow our [Code of Conduct](https://github.com/bean-counter/bean-counter/blob/master/CODE_OF_CONDUCT.md).
 
 ## License
 
-Bean Counter is Ruby on Rails is released under the [MIT License](https://opensource.org/licenses/MIT).
+Bean Counter is released under the [MIT License](https://opensource.org/licenses/MIT).
