@@ -96,6 +96,9 @@ class Taxes extends React.Component {
 		    		</Paper>
 		    		<Paper className={classes.paper}>
 		    			<Typography>
+			    			<strong>Taxable income:</strong> {currencyFormatter.format(this.state.income - this.state.rrsp)}
+          		</Typography>
+		    			<Typography>
 			    			<strong>Tax amount:</strong> {currencyFormatter.format(this.state.tax)}
           		</Typography>
           		<Typography>

@@ -24,7 +24,7 @@ const province = 'federal'
 const margin = {
   top: 20,
   bottom: 40,
-  left: 40,
+  left: 60,
   right: 0,
 };
 
