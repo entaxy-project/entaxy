@@ -82,6 +82,21 @@ export const calculateTax = (year, province, income) => {
 	return tax
 }
 
+export const marginalTax = (year, province, income) => {
+	for(var b = 0; b < TaxBrackets[year][province].length; b++) {
+		if(income < TaxBrackets[year][province][b].amountUpTo) {
+			return TaxBrackets[year][province][b].tax / 100
+		}
+	}
+}
+
+export const totalMarginalTax = (year, province, income) => {
+			console.log(marginalTax(year, 'federal', income) + marginalTax(year, province, income))
+
+	return marginalTax(year, 'federal', income) + marginalTax(year, province, income)
+}
+
+
 export const TaxBracketLines = (year, province, xScale, yScale, margin, width, height) => {
 	const rows = []
   const yMax = height - margin.top - margin.bottom
