@@ -61,7 +61,7 @@ class Taxes extends React.Component {
   render() {
     const { classes } = this.props
     var currencyFormatter = new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD' })
-    var percentFormatter = new Intl.NumberFormat('en-CA', {style: 'percent'})
+    var percentFormatter = new Intl.NumberFormat('en-CA', {style: 'percent', minimumFractionDigits: 2})
     return (
       <div className={classes.root}>
         <Grid container spacing={0}>
