@@ -12,14 +12,16 @@ import { Point } from '@vx/point';
 
 import IncomeLines from './IncomeLines'
 import TaxCreditLines from './TaxCreditLines'
-import { IncomeTaxData, TaxBracketLines } from './TaxBrackets'
+import TaxBracketLines from './TaxBracketLines'
+import { IncomeTaxData } from './TaxBrackets'
 import TaxTooltips from './TaxTooltips'
 
 import blueGrey from 'material-ui/colors/blueGrey';
 
 const colors = ['rgb(107, 157, 255)', 'rgb(252, 137, 159)']
 
-const province = 'federal'
+const province = 'Ontario'
+
 // Bounds
 const margin = {
   top: 20,
@@ -83,7 +85,7 @@ const TaxChart = ({
   return (
     <div>
       <svg width={width} height={height} ref={s => (this.svg = s)}>
-       <Group top={margin.top} left={margin.left}>
+        <Group top={margin.top} left={margin.left}>
           {TaxBracketLines(year, province, xScale, yScale, margin, width, height)}
           <LinePath
             data={data}
@@ -133,45 +135,44 @@ const TaxChart = ({
               });
             }}
           />
-       </Group>
-      {tooltipData &&
-
-        <g key={"g-"}>
-          <Line
-            key={"vertical-"}
-            from={new Point({x: tooltipLeft, y: yMax + margin.bottom})}
-            to={new Point({x: tooltipLeft, y: margin.top})}
-            stroke={"rgb(220, 220, 220)"}
-          />
-          <Line
-            key={"horizontal-"}
-            from={new Point({x: margin.left, y: tooltipTop})}
-            to={new Point({x: xMax + margin.left, y: tooltipTop})}
-            stroke={"rgb(220, 220, 220)"}
-          />
-          <circle
-            cx={tooltipLeft}
-            cy={tooltipTop}
-            r={12}
-            fill={colors[0]}
-            stroke={colors[0]}
-            strokeWidth=".6"
-            fillOpacity={1 / 12}
-            strokeOpacity={1 / 2}
-          />
-          {/* Inner circle */}
-          <circle
-            cx={tooltipLeft}
-            cy={tooltipTop}
-            r={4}
-            fill="white"
-            stroke={colors[0]}
-            strokeWidth="1.5"
-            fillOpacity={1}
-            strokeOpacity={1}
-          />
-        </g>
-      }
+        </Group>
+        {tooltipData &&
+          <g key={"g-"}>
+            <Line
+              key={"vertical-"}
+              from={new Point({x: tooltipLeft, y: yMax + margin.bottom})}
+              to={new Point({x: tooltipLeft, y: margin.top})}
+              stroke={"rgb(220, 220, 220)"}
+            />
+            <Line
+              key={"horizontal-"}
+              from={new Point({x: margin.left, y: tooltipTop})}
+              to={new Point({x: xMax + margin.left, y: tooltipTop})}
+              stroke={"rgb(220, 220, 220)"}
+            />
+            <circle
+              cx={tooltipLeft}
+              cy={tooltipTop}
+              r={12}
+              fill={colors[0]}
+              stroke={colors[0]}
+              strokeWidth=".6"
+              fillOpacity={1 / 12}
+              strokeOpacity={1 / 2}
+            />
+            {/* Inner circle */}
+            <circle
+              cx={tooltipLeft}
+              cy={tooltipTop}
+              r={4}
+              fill="white"
+              stroke={colors[0]}
+              strokeWidth="1.5"
+              fillOpacity={1}
+              strokeOpacity={1}
+            />
+          </g>
+        }
       </svg>
       {tooltipData &&
         <TaxTooltips

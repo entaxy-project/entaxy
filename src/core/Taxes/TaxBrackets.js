@@ -1,8 +1,4 @@
-import React from 'react'
-import { Line } from '@vx/shape';
-import { Point } from '@vx/point';
-
-const TaxBrackets = {
+export const TaxBrackets = {
 	2017: {
 		federal: [
 			{amountUpTo: 11635.00, tax: 0},
@@ -50,6 +46,42 @@ export const IncomeTaxData = ({year, province, income}) => {
 	return data
 }
 
+export const taxBracketData = (year, province) => {
+	const data = []
+
+	for(var b = 0; b < TaxBrackets[year][province].length-1; b++) {
+		data.push({
+			type: 'provincial',
+			income: TaxBrackets[year][province][b].amountUpTo,
+			tax: TaxBrackets[year][province][b+1].tax
+		})
+	}
+	for(var b = 0; b < TaxBrackets[year]['federal'].length-1; b++) {
+		data.push({
+			type: 'federal',
+			income: TaxBrackets[year]['federal'][b].amountUpTo,
+			tax: TaxBrackets[year]['federal'][b+1].tax
+		})
+	}
+
+	data.sort((a, b) => {return a.income - b.income})
+
+	var tax = {provincial: 0, federal: 0}
+	for(var i = 0; i < data.length; i++) {
+		switch(data[i].type) {
+			case 'provincial':
+				tax.provincial = data[i].tax
+				break
+			case 'federal':
+				tax.federal = data[i].tax
+				break
+		}
+		data[i].tax = tax.federal + tax.provincial
+	}
+
+	return data
+}
+
 export const calculateTotalTax = (year, province, income) => {
 	return calculateTax(year, 'federal', income) + calculateTax(year, province, income)
 }
@@ -82,6 +114,8 @@ export const calculateTax = (year, province, income) => {
 	return tax
 }
 
+// The marginal tax rate is the amount of tax paid
+// on any additional dollar made, up to the next tax bracket.
 export const marginalTax = (year, province, income) => {
 	for(var b = 0; b < TaxBrackets[year][province].length; b++) {
 		if(income < TaxBrackets[year][province][b].amountUpTo) {
@@ -94,25 +128,4 @@ export const totalMarginalTax = (year, province, income) => {
 			console.log(marginalTax(year, 'federal', income) + marginalTax(year, province, income))
 
 	return marginalTax(year, 'federal', income) + marginalTax(year, province, income)
-}
-
-
-export const TaxBracketLines = (year, province, xScale, yScale, margin, width, height) => {
-	const rows = []
-  const yMax = height - margin.top - margin.bottom
-
-	for(var b = 0; b < TaxBrackets[year][province].length; b++) {
-		var left = xScale(TaxBrackets[year][province][b].amountUpTo)
-
-		rows.push(
-	      <Line
-	        key={"vertical-" + b}
-	        from={new Point({x: left, y: yMax})}
-	        to={new Point({x: left, y: 0})}
-	        stroke='#ffdddd'
-	        strokeWidth={1}
-	      />
-		)
-	}
-	return  <g key={"TaxBracketLines"}>{rows}</g>
 }
