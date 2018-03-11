@@ -56,7 +56,7 @@ export const taxBracketData = (year, province) => {
 			tax: TaxBrackets[year][province][b+1].tax
 		})
 	}
-	for(var b = 0; b < TaxBrackets[year]['federal'].length-1; b++) {
+	for(b = 0; b < TaxBrackets[year]['federal'].length-1; b++) {
 		data.push({
 			type: 'federal',
 			income: TaxBrackets[year]['federal'][b].amountUpTo,
@@ -75,6 +75,7 @@ export const taxBracketData = (year, province) => {
 			case 'federal':
 				tax.federal = data[i].tax
 				break
+			default:
 		}
 		data[i].tax = tax.federal + tax.provincial
 	}
@@ -125,7 +126,5 @@ export const marginalTax = (year, province, income) => {
 }
 
 export const totalMarginalTax = (year, province, income) => {
-			console.log(marginalTax(year, 'federal', income) + marginalTax(year, province, income))
-
 	return marginalTax(year, 'federal', income) + marginalTax(year, province, income)
 }

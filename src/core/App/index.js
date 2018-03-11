@@ -5,12 +5,8 @@ import Routes from '../../routes'
 import 'typeface-roboto'
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles'
 import Reboot from 'material-ui/Reboot'
-import createHistory from 'history/createHashHistory'
 import blueGrey from 'material-ui/colors/blueGrey';
 import teal from 'material-ui/colors/teal';
-
-const history = createHistory()
-
 
 const theme = createMuiTheme({
   palette: {
@@ -25,7 +21,7 @@ const App = (props) => {
     <Reboot>
       <MuiThemeProvider theme={theme}>
         <Header/>
-		    <Routes history= {history}/>
+		    <Routes/>
       </MuiThemeProvider>
     </Reboot>
   )

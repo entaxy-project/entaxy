@@ -1,11 +1,11 @@
 import React from 'react'
-import { Route, Router } from 'react-router-dom'
+import { Route, BrowserRouter } from 'react-router-dom'
 import Taxes from './core/Taxes'
 
-const Routes = ({history}) => (
-  <Router history={history}>
+const Routes = () => (
+  <BrowserRouter basename={process.env.PUBLIC_URL}>
     <Route exact path="/" component={Taxes} />
-  </Router>
+  </BrowserRouter>
 )
 
 export default Routes

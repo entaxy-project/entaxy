@@ -3,9 +3,9 @@
 
 # Bean Counter
 
-A personal finance app.
+An personal finance app that is easy to use.
 
-A set of visual tools to explore financial concepts.
+Website: https://bean-counter.github.io/bean-counter
 
 ## Setup
 

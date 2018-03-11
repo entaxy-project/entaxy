@@ -25,7 +25,7 @@ const TaxBracketLines = (
 
     rows.push(
       <Line
-        key={"bracket-" + d}
+        key={"bracket-line" + d}
         from={new Point({x: left, y: yMax})}
         to={new Point({x: left, y: 10})}
         stroke={red[100]}
@@ -34,6 +34,7 @@ const TaxBracketLines = (
     )
     rows.push(
       <text
+        key={"bracket-text" + d}
         fill={blueGrey[800]}
         textAnchor="middle"
         x={left + (right - left)/2}
