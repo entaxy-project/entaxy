@@ -26,7 +26,7 @@ const province = 'Ontario'
 const margin = {
   top: 20,
   bottom: 40,
-  left: 60,
+  left: 70,
   right: 0,
 };
 
@@ -72,16 +72,6 @@ const TaxChart = ({
     domain: [0, max(data, y)],
   })
 
-  const tickLabel =
-    <text
-      fill="gray"
-      opacity="0.20"
-      fontSize={10}
-      dy="0.25em"
-      textAnchor="middle"
-      fontWeight="bold"
-    />
-
   return (
     <div>
       <svg width={width} height={height} ref={s => (this.svg = s)}>
@@ -101,18 +91,31 @@ const TaxChart = ({
             scale={yScale}
             top={0}
             left={0}
-            label={'Tax ($)'}
+            label={'Tax'}
+            labelOffset={50}
+            labelProps={{fontFamily: 'Roboto', fontSize: 12 }}
             stroke={'#dddddd'}
-            tickLabelComponent={tickLabel}
-            tickFormat={this.yScaleFormat}
+            tickLabelProps={(val, i) => ({
+              x: -15,
+              textAnchor: 'end',
+              fontFamily: 'Roboto',
+              fontSize: 10
+            })}
+            tickFormat={yScale.tickFormat(10, "$,f")}
             tickStroke={'#dddddd'}
           />
           <AxisBottom
             scale={xScale}
             top={yMax}
             label={'Income'}
+            labelProps={{fontFamily: 'Roboto', fontSize: 12 }}
             stroke={'#dddddd'}
-            tickLabelComponent={tickLabel}
+            tickLabelProps={(val, i) => ({
+              textAnchor: 'middle',
+              fontFamily: 'Roboto',
+              fontSize: 10
+            })}
+            tickFormat={xScale.tickFormat(10, "$,f")}
             tickStroke={'#dddddd'}
           />
           {TaxCreditLines(income, rrsp, year, province, xScale, yScale, margin, width, height)}
