@@ -2,16 +2,16 @@ export const TaxBrackets = {
 	2017: {
 		federal: [
 			{amountUpTo: 11635.00, tax: 0},
-			{amountUpTo: 46605.00, tax: 15.00},
-			{amountUpTo: 93208.00, tax: 20.50},
-			{amountUpTo: 144489.00, tax: 26.00},
-			{amountUpTo: 205842.00, tax: 29.00},
+			{amountUpTo: 45916.00, tax: 15.00},
+			{amountUpTo: 91831.00, tax: 20.50},
+			{amountUpTo: 142353.00, tax: 26.00},
+			{amountUpTo: 202800.00, tax: 29.00},
 			{amountUpTo: 10000000, tax: 33.00}
 		],
 		'Ontario': [
 			{amountUpTo: 10171.00, tax: 0},
-			{amountUpTo: 42960.00, tax: 5.05},
-			{amountUpTo: 83923.00, tax: 9.15},
+			{amountUpTo: 42201.00, tax: 5.05},
+			{amountUpTo: 84404.00, tax: 9.15},
 			{amountUpTo: 150000.00, tax: 11.16},
 			{amountUpTo: 220000.00, tax: 12.16},
 			{amountUpTo: 10000000, tax: 13.16}
