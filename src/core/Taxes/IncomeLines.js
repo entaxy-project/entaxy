@@ -18,6 +18,7 @@ const IncomeLines = (
   const yMax = height - margin.top - margin.bottom
   const left = xScale(income)
   const top = yScale(calculateTotalTax(year, province, income))
+
 	return(
     <Motion
       defaultStyle={{ left: left || 0, top: top || 0 }}

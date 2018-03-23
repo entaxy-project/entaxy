@@ -40,9 +40,6 @@ class Taxes extends React.Component {
     }
   }
 
-
-
-
   handleChange = name => event => {
     let income = name === 'income' ? event.target.value : this.state.income
     let rrsp = name === 'rrsp' ? event.target.value : this.state.rrsp
@@ -78,6 +75,7 @@ class Taxes extends React.Component {
                     height={500}
                     income={this.state.income}
                     rrsp={this.state.rrsp}
+                    tax_amount={this.state.tax_amount}
                   />)
                 }
               </ParentSize>

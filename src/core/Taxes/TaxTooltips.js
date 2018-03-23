@@ -1,6 +1,7 @@
 import React from 'react'
 import { Tooltip } from '@vx/tooltip';
 import { Motion, spring } from 'react-motion'
+import Typography from 'material-ui/Typography';
 
 export default ({ tooltipOpen, data, top, left, margin }) => {
   var formater = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' })
@@ -14,7 +15,7 @@ export default ({ tooltipOpen, data, top, left, margin }) => {
         opacity: spring(tooltipOpen ? 1 : 0)
       }}
     >
-      {style => (    
+      {style => (
         <Tooltip
           style={{
             top: style.top,
@@ -32,10 +33,11 @@ export default ({ tooltipOpen, data, top, left, margin }) => {
             textAlign: 'left'
           }}
         >
-          <strong>Income:</strong> {formater.format(data.income)}
-          <br/>
-          <strong>Tax amount:</strong> {formater.format(data.tax)}
+          <Typography>
+            <strong>Your Income:</strong> {formater.format(data.income)}
+          </Typography>
         </Tooltip>
+
       )}
     </Motion>
   );
