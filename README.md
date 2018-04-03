@@ -3,9 +3,14 @@
 
 # Bean Counter
 
-An personal finance app that is easy to use.
+Entaxy is your personal finance toolbelt.
+It will help you understand and gain control of your financial life.
 
-Website: https://bean-counter.github.io/bean-counter
+We want to raise the bar on finance literacy by bringing to light concepts that should be easy to understand by everyone but currently take an unreasonable amount of time to learn.
+
+Using beautiful data visualizations we want to build an opinionated framework that will provide you with useful insights and help improve your day to day life by dramatically reducing the financial stress and confusion you may be experiencing
+
+Website: https://entaxy-project.github.io/bean-counter
 
 ## Setup
 
