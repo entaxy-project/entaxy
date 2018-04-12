@@ -3,28 +3,28 @@ import PropTypes from 'prop-types'
 import NumberFormat from 'react-number-format'
 
 function CurrencyFormat(props) {
-  const { inputRef, onChange, ...other } = props;
+  const { inputRef, onChange, ...other } = props
 
   return (
     <NumberFormat
       {...other}
       ref={inputRef}
-      onValueChange={values => {
+      onValueChange={(values) => {
         onChange({
           target: {
-            value: values.value,
-          },
-        });
+            value: values.value
+          }
+        })
       }}
       thousandSeparator
       prefix="$"
     />
-  );
+  )
 }
 
 CurrencyFormat.propTypes = {
   inputRef: PropTypes.func.isRequired,
-  onChange: PropTypes.func.isRequired,
-};
+  onChange: PropTypes.func.isRequired
+}
 
-export default CurrencyFormat;
+export default CurrencyFormat
