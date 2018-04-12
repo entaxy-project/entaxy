@@ -4,7 +4,7 @@ import App from './core/App/index'
 
 export default () => {
   ReactDOM.render(
-    <App/>,
+    <App />,
     document.getElementById('root')
   )
 }

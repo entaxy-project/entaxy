@@ -5,6 +5,7 @@
   "homepage": "https://bean-counter.github.io/bean-counter",
   "dependencies": {
     "@vx/axis": "^0.0.158",
+    "@vx/curve": "^0.0.153",
     "@vx/event": "^0.0.153",
     "@vx/glyph": "^0.0.153",
     "@vx/gradient": "^0.0.153",
@@ -35,6 +36,7 @@
     "gh-pages": "^1.1.0",
     "lodash": "^4.17.5",
     "material-ui": "^1.0.0-beta.33",
+    "prop-types": "^15.6.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-motion": "^0.5.2",
@@ -50,7 +52,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "lint": "eslint src --config .eslintrc",
+    "lint": "eslint src --ext '.js,.jsx' --config .eslintrc",
     "lint:fix": "yarn run lint --fix"
   }
 }

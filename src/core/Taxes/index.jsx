@@ -1,16 +1,16 @@
 import React from 'react'
+import { ParentSize } from '@vx/responsive'
 import { withStyles } from 'material-ui/styles'
 import Grid from 'material-ui/Grid'
 import Paper from 'material-ui/Paper'
 import Input, { InputLabel } from 'material-ui/Input'
 import { FormControl } from 'material-ui/Form'
-import { ParentSize } from '@vx/responsive'
+import Typography from 'material-ui/Typography'
 import TaxChart from './TaxChart'
 import CurrencyFormat from '../../common/CurrencyFormat/index'
 import { calculateTotalTax, totalMarginalTax } from './lib/TaxBrackets'
-import Typography from 'material-ui/Typography'
 
-const styles = theme => ({
+const styles = () => ({
   root: {
     flexGrow: 1
   },
@@ -113,7 +113,7 @@ class Taxes extends React.Component {
             </Paper>
             <Paper className={classes.paper}>
               <Typography>
-                <strong>Taxable income:</strong> {currencyFormatter.format(this.state.income - this.state.rrsp)}
+                <strong>Taxable income:</strong> {currencyFormatter.format(this.state.taxableIncome)}
               </Typography>
               <Typography>
                 <strong>Tax amount:</strong> {currencyFormatter.format(this.state.taxAmount)}

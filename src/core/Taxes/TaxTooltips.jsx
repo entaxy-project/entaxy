@@ -3,12 +3,14 @@ import { Motion, spring } from 'react-motion'
 import { Tooltip } from '@vx/tooltip'
 import Typography from 'material-ui/Typography'
 
-export default ({tooltipOpen, data, top, left, margin}) => {
-  const formater = new Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD'})
+export default ({
+  tooltipOpen, data, top, left, margin
+}) => {
+  const formater = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' })
 
   return (
     <Motion
-      defaultStyle={{left: left || 0, top: top || 0, opacity: 0}}
+      defaultStyle={{ left: left || 0, top: top || 0, opacity: 0 }}
       style={{
         left: spring(left || 0),
         top: spring(top || 0),

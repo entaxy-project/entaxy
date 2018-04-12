@@ -1,20 +1,22 @@
+const _ = require('lodash')
+
 export const TaxBrackets = {
   2017: {
     federal: [
-      {amountUpTo: 11635.00, tax: 0},
-      {amountUpTo: 45916.00, tax: 15.00},
-      {amountUpTo: 91831.00, tax: 20.50},
-      {amountUpTo: 142353.00, tax: 26.00},
-      {amountUpTo: 202800.00, tax: 29.00},
-      {amountUpTo: 10000000, tax: 33.00}
+      { amountUpTo: 11635.00, tax: 0 },
+      { amountUpTo: 45916.00, tax: 15.00 },
+      { amountUpTo: 91831.00, tax: 20.50 },
+      { amountUpTo: 142353.00, tax: 26.00 },
+      { amountUpTo: 202800.00, tax: 29.00 },
+      { amountUpTo: 10000000, tax: 33.00 }
     ],
     Ontario: [
-      {amountUpTo: 10171.00, tax: 0},
-      {amountUpTo: 42201.00, tax: 5.05},
-      {amountUpTo: 84404.00, tax: 9.15},
-      {amountUpTo: 150000.00, tax: 11.16},
-      {amountUpTo: 220000.00, tax: 12.16},
-      {amountUpTo: 10000000, tax: 13.16}
+      { amountUpTo: 10171.00, tax: 0 },
+      { amountUpTo: 42201.00, tax: 5.05 },
+      { amountUpTo: 84404.00, tax: 9.15 },
+      { amountUpTo: 150000.00, tax: 11.16 },
+      { amountUpTo: 220000.00, tax: 12.16 },
+      { amountUpTo: 10000000, tax: 13.16 }
     ]
   }
 }
@@ -22,14 +24,15 @@ export const TaxBrackets = {
 export const taxBracketData = (year, province) => {
   const data = []
 
-  for (var b = 0; b < TaxBrackets[year][province].length - 1; b++) {
+  for (let b = 0; b < TaxBrackets[year][province].length - 1; b += 1) {
     data.push({
       type: 'provincial',
       income: TaxBrackets[year][province][b].amountUpTo,
       tax: TaxBrackets[year][province][b + 1].tax
     })
   }
-  for (b = 0; b < TaxBrackets[year].federal.length - 1; b++) {
+
+  for (let b = 0; b < TaxBrackets[year].federal.length - 1; b += 1) {
     data.push({
       type: 'federal',
       income: TaxBrackets[year].federal[b].amountUpTo,
@@ -37,21 +40,22 @@ export const taxBracketData = (year, province) => {
     })
   }
 
-  data.sort((a, b) => { return a.income - b.income })
+  data.sort((a, b) => a.income - b.income)
 
-  const tax = {provincial: 0, federal: 0}
-  for (let i = 0; i < data.length; i++) {
-    switch (data[i].type) {
+  _.forEach(data, (item) => {
+    let provincial = 0
+    let federal = 0
+    switch (item.type) {
       case 'provincial':
-        tax.provincial = data[i].tax
+        provincial = item.tax
         break
       case 'federal':
-        tax.federal = data[i].tax
+        federal = item.tax
         break
       default:
     }
-    data[i].tax = tax.federal + tax.provincial
-  }
+    Object.assign(item, { tax: federal + provincial, federal, provincial })
+  })
 
   return data
 }
@@ -59,7 +63,7 @@ export const taxBracketData = (year, province) => {
 export const calculateTax = (year, province, income) => {
   let tax = 0
 
-  for (let b = 0; b < TaxBrackets[year][province].length; b++) {
+  for (let b = 0; b < TaxBrackets[year][province].length; b += 1) {
     const bracket = TaxBrackets[year][province][b]
 
     if (bracket.tax === 0) {
@@ -89,7 +93,7 @@ export const calculateTotalTax = (year, province, income) => {
 }
 
 // Return an array with income and corresponding tax
-export const IncomeTaxData = ({year, province, income}) => {
+export const IncomeTaxData = ({ year, province, income }) => {
   const numericalIncome = parseFloat(income)
   const min = 0
   const max = numericalIncome > 0 ? numericalIncome + 25000 : 250000
@@ -104,7 +108,7 @@ export const IncomeTaxData = ({year, province, income}) => {
         income: TaxBrackets[year][province][bracketIndex].amountUpTo,
         tax: calculateTotalTax(year, province, TaxBrackets[year][province][bracketIndex].amountUpTo)
       })
-      bracketIndex++
+      bracketIndex += 1
     }
 
     data.push({
@@ -118,7 +122,7 @@ export const IncomeTaxData = ({year, province, income}) => {
 // The marginal tax rate is the amount of tax paid
 // on any additional dollar made, up to the next tax bracket.
 export const marginalTax = (year, province, income) => {
-  for (let b = 0; b < TaxBrackets[year][province].length; b++) {
+  for (let b = 0; b < TaxBrackets[year][province].length; b += 1) {
     if (income < TaxBrackets[year][province][b].amountUpTo) {
       return TaxBrackets[year][province][b].tax / 100
     }

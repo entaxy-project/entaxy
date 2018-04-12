@@ -9,8 +9,8 @@ const styles = {
   }
 }
 
-function Logo (props) {
-  const {classes} = props
+function Logo(props) {
+  const { classes } = props
   return (
     <img
       src={logoImg}

@@ -19,7 +19,7 @@ function Header(props) {
       <Toolbar>
         <Logo width="30px" />
         <Typography variant="title" color="inherit" className={classes.flex}>
-	        Bean Counter
+          Bean Counter
         </Typography>
         <Button color="inherit">Login</Button>
       </Toolbar>

@@ -19,7 +19,7 @@ const TaxCreditLines = (income, credits, year, province, xScale, yScale, margin,
   const barWidth = Math.max((left.income - left.credits) || 0, 0)
   return (
     <Motion
-      defaultStyle={{left: left.credits || 0, top: top.credits || 0, width: barWidth}}
+      defaultStyle={{ left: left.credits || 0, top: top.credits || 0, width: barWidth }}
       style={{
         left: spring(left.credits || 0),
         top: spring(top.credits || 0),
@@ -30,15 +30,15 @@ const TaxCreditLines = (income, credits, year, province, xScale, yScale, margin,
         <g key="TaxCredits">
           <Line
             key="TaxCredit-vertical"
-            from={new Point({x: style.left, y: yMax})}
-            to={new Point({x: style.left, y: style.top})}
+            from={new Point({ x: style.left, y: yMax })}
+            to={new Point({ x: style.left, y: style.top })}
             stroke={teal[500]}
             strokeWidth={1}
           />
           <Line
             key="TaxCredit-horizontal"
-            from={new Point({x: 0, y: style.top})}
-            to={new Point({x: style.left, y: style.top})}
+            from={new Point({ x: 0, y: style.top })}
+            to={new Point({ x: style.left, y: style.top })}
             stroke={teal[500]}
             strokeWidth={1}
           />

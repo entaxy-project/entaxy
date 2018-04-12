@@ -12,6 +12,12 @@
     "browser": true
   },
   "rules": {
+    "max-len": [
+      "error",
+      {
+        "code": 120
+      }
+    ],
     "arrow-body-style": "off",
     "class-methods-use-this": "off",
     "comma-dangle": [

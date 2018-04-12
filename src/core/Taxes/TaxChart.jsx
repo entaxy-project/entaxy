@@ -3,7 +3,7 @@ import { extent, max } from 'd3-array'
 import { Group } from '@vx/group'
 import { scaleLinear } from '@vx/scale'
 import { LinePath } from '@vx/shape'
-import { AxisLeft, AxisBottom } from '@vx/axis'
+import { AxisBottom, AxisLeft } from '@vx/axis'
 import { curveBasis } from '@vx/curve'
 import blueGrey from 'material-ui/colors/blueGrey'
 
@@ -12,7 +12,6 @@ import TaxCreditLines from './TaxCreditLines'
 import TaxBracketLines from './TaxBracketLines'
 import { IncomeTaxData } from './lib/TaxBrackets'
 import TaxTooltips from './TaxTooltips'
-
 
 const province = 'Ontario'
 
@@ -25,12 +24,7 @@ const margin = {
 }
 
 const TaxChart = ({
-  width,
-  height,
-  year,
-  income,
-  rrsp,
-  taxAmount
+  width, height, year, income, rrsp, taxAmount
 }) => {
   const data = IncomeTaxData({ year, province, income })
   const xMax = width - margin.left - margin.right
@@ -82,7 +76,7 @@ const TaxChart = ({
             labelOffset={50}
             labelProps={{ fontFamily: 'Roboto', fontSize: 12 }}
             stroke="#dddddd"
-            tickLabelProps={(val, i) => ({
+            tickLabelProps={() => ({
               x: -15,
               textAnchor: 'end',
               fontFamily: 'Roboto',
@@ -97,7 +91,7 @@ const TaxChart = ({
             label="Income"
             labelProps={{ fontFamily: 'Roboto', fontSize: 12 }}
             stroke="#dddddd"
-            tickLabelProps={(val, i) => ({
+            tickLabelProps={() => ({
               textAnchor: 'middle',
               fontFamily: 'Roboto',
               fontSize: 10
@@ -108,7 +102,6 @@ const TaxChart = ({
           {TaxCreditLines(income, rrsp, year, province, xScale, yScale, margin, width, height)}
           {IncomeLines(income, year, province, xScale, yScale, margin, width, height)}
         </Group>
-        }
       </svg>
       <TaxTooltips
         tooltipOpen={true}
