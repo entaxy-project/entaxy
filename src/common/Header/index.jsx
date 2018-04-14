@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import AppBar from 'material-ui/AppBar'
 import Toolbar from 'material-ui/Toolbar'
 import Typography from 'material-ui/Typography'
@@ -12,19 +13,20 @@ const styles = {
   }
 }
 
-function Header(props) {
-  const { classes } = props
-  return (
-    <AppBar position="static">
-      <Toolbar>
-        <Logo width="30px" />
-        <Typography variant="title" color="inherit" className={classes.flex}>
-          Entaxy
-        </Typography>
-        <Button color="inherit">Login</Button>
-      </Toolbar>
-    </AppBar>
-  )
+const Header = ({ classes }) => (
+  <AppBar position="static">
+    <Toolbar>
+      <Logo width="30px" />
+      <Typography variant="title" color="inherit" className={classes.flex}>
+        Entaxy
+      </Typography>
+      <Button color="inherit">Login</Button>
+    </Toolbar>
+  </AppBar>
+)
+
+Header.propTypes = {
+  classes: PropTypes.string.isRequired
 }
 
 export default withStyles(styles)(Header)

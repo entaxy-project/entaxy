@@ -58,8 +58,8 @@ yarn test
 
 ## Contributing
 
-Everyone interacting in Bean Counter and its sub-projects' codebases, issue trackers, chat rooms, and mailing lists is expected to follow our [Code of Conduct](https://github.com/entaxy-project/entaxy/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in Entaxy and its sub-projects' codebases, issue trackers, chat rooms, and mailing lists is expected to follow our [Code of Conduct](https://github.com/entaxy-project/entaxy/blob/master/CODE_OF_CONDUCT.md).
 
 ## License
 
-Bean Counter is released under the [MIT License](https://opensource.org/licenses/MIT).
+Entaxy is released under the [MIT License](https://opensource.org/licenses/MIT).
