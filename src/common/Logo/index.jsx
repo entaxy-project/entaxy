@@ -1,6 +1,6 @@
 import React from 'react'
 import { withStyles } from 'material-ui/styles'
-import logoImg from './bean-counter-logo.png'
+import logoImg from './logo.png'
 
 const styles = {
   logo: {
@@ -15,7 +15,7 @@ function Logo(props) {
     <img
       src={logoImg}
       className={classes.logo}
-      alt="Bean Counter logo"
+      alt="Entaxy logo"
     />
   )
 }

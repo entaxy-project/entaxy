@@ -1,8 +1,9 @@
 {
-  "name": "bean-counter",
+  "name": "entaxy",
+  "description": "A Personal Finance App",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://bean-counter.github.io/bean-counter",
+  "homepage": "https://entaxy-project.github.io/entaxy",
   "dependencies": {
     "@vx/axis": "^0.0.158",
     "@vx/curve": "^0.0.153",
