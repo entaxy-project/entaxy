@@ -1,10 +1,12 @@
 import React from 'react'
-import { Tooltip } from '@vx/tooltip';
 import { Motion, spring } from 'react-motion'
-import Typography from 'material-ui/Typography';
+import { Tooltip } from '@vx/tooltip'
+import Typography from 'material-ui/Typography'
 
-export default ({ tooltipOpen, data, top, left, margin }) => {
-  var formater = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' })
+export default ({
+  tooltipOpen, data, top, left, margin
+}) => {
+  const formater = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' })
 
   return (
     <Motion
@@ -40,5 +42,5 @@ export default ({ tooltipOpen, data, top, left, margin }) => {
 
       )}
     </Motion>
-  );
-};
+  )
+}

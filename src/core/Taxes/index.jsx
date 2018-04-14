@@ -1,64 +1,62 @@
 import React from 'react'
-import { withStyles } from 'material-ui/styles';
+import { ParentSize } from '@vx/responsive'
+import { withStyles } from 'material-ui/styles'
 import Grid from 'material-ui/Grid'
 import Paper from 'material-ui/Paper'
-import Input, { InputLabel } from 'material-ui/Input';
-import { FormControl } from 'material-ui/Form';
-import { ParentSize } from "@vx/responsive";
+import Input, { InputLabel } from 'material-ui/Input'
+import { FormControl } from 'material-ui/Form'
+import Typography from 'material-ui/Typography'
 import TaxChart from './TaxChart'
-import CurrencyFormat from '../../common/CurrencyFormat'
-import { calculateTotalTax, totalMarginalTax } from './TaxBrackets'
-import Typography from 'material-ui/Typography';
+import CurrencyFormat from '../../common/CurrencyFormat/index'
+import { calculateTotalTax, totalMarginalTax } from './lib/TaxBrackets'
 
-const styles = theme => ({
+const styles = () => ({
   root: {
-    flexGrow: 1,
+    flexGrow: 1
   },
   paper: {
     margin: '10px 5px',
-    padding: '20px',
-  },
+    padding: '20px'
+  }
 })
 
 class Taxes extends React.Component {
-
-  constructor(props){
-    super(props);
-	  const income = 90000
-	  const rrsp = 10000
-	  const taxable_income = income - rrsp
-	  const tax_amount = calculateTotalTax(2017, 'Ontario', taxable_income)
+  constructor(props) {
+    super(props)
+    const income = 90000
+    const rrsp = 10000
+    const taxableIncome = income - rrsp
+    const taxAmount = calculateTotalTax(2017, 'Ontario', taxableIncome)
 
     this.state = {
       province: 'Ontario',
-      income: income,
-      rrsp: rrsp,
-      taxable_income:  taxable_income,
-      tax_amount: tax_amount,
-      marginal_tax_rate: totalMarginalTax(2017, 'Ontario', taxable_income),
-      average_tax_rate: tax_amount / (taxable_income)
+      income,
+      rrsp,
+      taxableIncome,
+      taxAmount,
+      marginalTaxRate: totalMarginalTax(2017, 'Ontario', taxableIncome),
+      averageTaxRate: taxAmount / (taxableIncome)
     }
   }
 
-  handleChange = name => event => {
-    let income = name === 'income' ? event.target.value : this.state.income
-    let rrsp = name === 'rrsp' ? event.target.value : this.state.rrsp
-    let taxable_income = income - rrsp
-    let tax_amount = calculateTotalTax(2017, this.state.province, taxable_income)
+  handleChange = name => (event) => {
+    const income = name === 'income' ? event.target.value : this.state.income
+    const rrsp = name === 'rrsp' ? event.target.value : this.state.rrsp
+    const taxableIncome = income - rrsp
+    const taxAmount = calculateTotalTax(2017, this.state.province, taxableIncome)
     this.setState({
       [name]: event.target.value,
-      taxable_income: taxable_income,
-      tax_amount: tax_amount,
-      marginal_tax_rate: totalMarginalTax(2017, this.state.province, taxable_income),
-      average_tax_rate: tax_amount / (income - rrsp)
+      taxableIncome,
+      taxAmount,
+      marginalTaxRate: totalMarginalTax(2017, this.state.province, taxableIncome),
+      averageTaxRate: taxAmount / (income - rrsp)
     })
   }
 
-
   render() {
     const { classes } = this.props
-    var currencyFormatter = new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD' })
-    var percentFormatter = new Intl.NumberFormat('en-CA', {style: 'percent', minimumFractionDigits: 2})
+    const currencyFormatter = new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD' })
+    const percentFormatter = new Intl.NumberFormat('en-CA', { style: 'percent', minimumFractionDigits: 2 })
     return (
       <div className={classes.root}>
         <Grid container spacing={0}>
@@ -75,7 +73,7 @@ class Taxes extends React.Component {
                     height={500}
                     income={this.state.income}
                     rrsp={this.state.rrsp}
-                    tax_amount={this.state.tax_amount}
+                    taxAmount={this.state.taxAmount}
                   />)
                 }
               </ParentSize>
@@ -91,7 +89,7 @@ class Taxes extends React.Component {
                   inputComponent={CurrencyFormat}
                   className={classes.input}
                   inputProps={{
-                    'aria-label': 'Income for 2017',
+                    'aria-label': 'Income for 2017'
                   }}
                 />
               </FormControl>
@@ -108,30 +106,30 @@ class Taxes extends React.Component {
                   inputComponent={CurrencyFormat}
                   className={classes.rrsp}
                   inputProps={{
-                    'aria-label': 'RRSP for 2017',
+                    'aria-label': 'RRSP for 2017'
                   }}
                 />
               </FormControl>
             </Paper>
             <Paper className={classes.paper}>
               <Typography>
-                <strong>Taxable income:</strong> {currencyFormatter.format(this.state.income - this.state.rrsp)}
+                <strong>Taxable income:</strong> {currencyFormatter.format(this.state.taxableIncome)}
               </Typography>
               <Typography>
-                <strong>Tax amount:</strong> {currencyFormatter.format(this.state.tax_amount)}
+                <strong>Tax amount:</strong> {currencyFormatter.format(this.state.taxAmount)}
               </Typography>
               <Typography>
-                <strong>Marginal Tax Rate:</strong> {percentFormatter.format(this.state.marginal_tax_rate)}
+                <strong>Marginal Tax Rate:</strong> {percentFormatter.format(this.state.marginalTaxRate)}
               </Typography>
               <Typography>
-                <strong>Average Tax Rate:</strong> {percentFormatter.format(this.state.average_tax_rate)}
+                <strong>Average Tax Rate:</strong> {percentFormatter.format(this.state.averageTaxRate)}
               </Typography>
             </Paper>
           </Grid>
         </Grid>
       </div>
-      )
-    }
+    )
+  }
 }
 
-export default withStyles(styles)(Taxes);
+export default withStyles(styles)(Taxes)

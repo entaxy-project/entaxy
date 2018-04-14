@@ -1,6 +1,6 @@
 import React from 'react'
-import logoImg from './bean-counter-logo.png'
 import { withStyles } from 'material-ui/styles'
+import logoImg from './bean-counter-logo.png'
 
 const styles = {
   logo: {
