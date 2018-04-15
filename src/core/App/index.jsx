@@ -1,6 +1,6 @@
 import React from 'react'
 import { createMuiTheme, MuiThemeProvider } from 'material-ui/styles'
-import Reboot from 'material-ui/Reboot'
+import CssBaseline from 'material-ui/CssBaseline'
 import blueGrey from 'material-ui/colors/blueGrey'
 import teal from 'material-ui/colors/teal'
 import 'typeface-roboto'
@@ -15,12 +15,12 @@ const theme = createMuiTheme({
 })
 
 const App = () => (
-  <Reboot>
+  <CssBaseline>
     <MuiThemeProvider theme={theme}>
       <Header />
       <Routes />
     </MuiThemeProvider>
-  </Reboot>
+  </CssBaseline>
 )
 
 export default App

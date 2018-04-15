@@ -56,9 +56,7 @@ yarn start
 yarn test
 ```
 
-
-
-## Contributing
+## Code of conduct
 
 Everyone interacting in Entaxy and its sub-projects' codebases, issue trackers, chat rooms, and mailing lists is expected to follow our [Code of Conduct](https://github.com/entaxy-project/entaxy/blob/master/CODE_OF_CONDUCT.md).
 
