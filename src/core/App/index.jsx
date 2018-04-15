@@ -7,7 +7,6 @@ import 'typeface-roboto'
 import Header from '../../common/Header/index'
 import Routes from '../../routes'
 
-// import PropTypes from 'prop-types';
 const theme = createMuiTheme({
   palette: {
     primary: { main: blueGrey[800] },

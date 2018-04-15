@@ -12,27 +12,7 @@ Using beautiful data visualizations we want to build an opinionated framework th
 
 Website: https://entaxy-project.github.io/entaxy
 
-## Setup
-
-Clone this repo and then install dependencies with:
-```
-yarn install
-```
-
-## Running the server
-
-A browser window will open up automatically
-```
-yarn start
-```
-
-## Running tests
-
-```
-yarn test
-```
-
-### Roadmap
+## Feature roadmap
 * Investments
 	* ETFs / Cryptocurrencies / Stocks / Mutual funds
 	* Keep track of buy prices
@@ -55,6 +35,28 @@ yarn test
 * Insurance
 * Estate planning
 * Pensions
+
+## Setup
+
+Clone this repo and then install dependencies with:
+```
+yarn install
+```
+
+## Running the server
+
+A browser window will open up automatically
+```
+yarn start
+```
+
+## Running tests
+
+```
+yarn test
+```
+
+
 
 ## Contributing
 

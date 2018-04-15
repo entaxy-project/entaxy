@@ -4,6 +4,16 @@
   "version": "0.1.0",
   "private": true,
   "homepage": "https://entaxy-project.github.io/entaxy",
+  "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "lint": "eslint src --ext '.js,.jsx' --config .eslintrc",
+    "lint:fix": "yarn run lint --fix"
+  },
   "dependencies": {
     "@vx/axis": "^0.0.158",
     "@vx/curve": "^0.0.153",
@@ -43,17 +53,7 @@
     "react-motion": "^0.5.2",
     "react-number-format": "^3.1.6",
     "react-router-dom": "^4.2.2",
-    "react-scripts": "1.1.1",
+    "react-scripts": "1.1.4",
     "typeface-roboto": "^0.0.54"
-  },
-  "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "lint": "eslint src --ext '.js,.jsx' --config .eslintrc",
-    "lint:fix": "yarn run lint --fix"
   }
 }
