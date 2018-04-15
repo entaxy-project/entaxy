@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { extent, max } from 'd3-array'
 import { Group } from '@vx/group'
 import { scaleLinear } from '@vx/scale'
@@ -24,7 +25,12 @@ const margin = {
 }
 
 const TaxChart = ({
-  width, height, year, income, rrsp, taxAmount
+  width,
+  height,
+  year,
+  income,
+  rrsp,
+  taxAmount
 }) => {
   const data = IncomeTaxData({ year, province, income })
   const xMax = width - margin.left - margin.right
@@ -55,7 +61,7 @@ const TaxChart = ({
 
   return (
     <div>
-      <svg width={width} height={height} ref={s => (this.svg = s)}>
+      <svg width={width} height={height}>
         <Group top={margin.top} left={margin.left}>
           {TaxBracketLines(year, province, xScale, yScale, margin, width, height)}
           <LinePath
@@ -108,10 +114,18 @@ const TaxChart = ({
         data={{ income, tax: taxAmount }}
         top={yScale(taxAmount) + margin.bottom}
         left={xScale(income) + margin.left}
-        margin={margin}
       />
     </div>
   )
+}
+
+TaxChart.propTypes = {
+  width: PropTypes.number.isRequired,
+  height: PropTypes.number.isRequired,
+  year: PropTypes.number.isRequired,
+  income: PropTypes.number.isRequired,
+  rrsp: PropTypes.number.isRequired,
+  taxAmount: PropTypes.number.isRequired
 }
 
 export default TaxChart

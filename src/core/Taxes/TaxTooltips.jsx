@@ -1,10 +1,14 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Motion, spring } from 'react-motion'
 import { Tooltip } from '@vx/tooltip'
 import Typography from 'material-ui/Typography'
 
-export default ({
-  tooltipOpen, data, top, left, margin
+const TaxTooltips = ({
+  tooltipOpen,
+  data,
+  top,
+  left
 }) => {
   const formater = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' })
 
@@ -27,7 +31,6 @@ export default ({
             color: 'rgba(25, 29, 34, 0.54)',
             padding: 12,
             fontSize: 14,
-            fontFamily: 'Roboto',
             boxShadow: '0 4px 8px 0 rgba(25, 29, 34, 0.1)',
             pointerEvents: 'none',
             borderRadius: 3,
@@ -44,3 +47,12 @@ export default ({
     </Motion>
   )
 }
+
+TaxTooltips.propTypes = {
+  tooltipOpen: PropTypes.bool.isRequired,
+  data: PropTypes.object.isRequired,
+  top: PropTypes.number.isRequired,
+  left: PropTypes.number.isRequired
+}
+
+export default TaxTooltips

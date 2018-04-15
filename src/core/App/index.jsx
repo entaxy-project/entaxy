@@ -3,7 +3,6 @@ import { createMuiTheme, MuiThemeProvider } from 'material-ui/styles'
 import CssBaseline from 'material-ui/CssBaseline'
 import blueGrey from 'material-ui/colors/blueGrey'
 import teal from 'material-ui/colors/teal'
-import 'typeface-roboto'
 import Header from '../../common/Header/index'
 import Routes from '../../routes'
 

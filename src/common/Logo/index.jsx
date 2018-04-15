@@ -19,7 +19,7 @@ const Logo = ({ classes }) => (
 )
 
 Logo.propTypes = {
-  classes: PropTypes.string.isRequired
+  classes: PropTypes.object.isRequired
 }
 
 export default withStyles(styles)(Logo)

@@ -15,24 +15,33 @@ const TaxBracketLines = (year, province, xScale, yScale, margin, width, height) 
     const left = xScale(data[d].income)
     const right = data[d + 1] ? xScale(data[d + 1].income) : xMax
 
-    rows.push(<Line
-      key={`bracket-line${d}`}
-      from={new Point({ x: left, y: yMax })}
-      to={new Point({ x: left, y: 10 })}
-      stroke={red[100]}
-      strokeWidth={1}
-    />)
-    rows.push(<text
-      key={`bracket-text${d}`}
-      fill={blueGrey[800]}
-      textAnchor="middle"
-      x={left + ((right - left) / 2)}
-      y={0}
-      dy=".33em"
-      fontSize={9}
-      fontFamily="Roboto"
-    >{data[d].tax}
-    </text>)
+    const line = (
+      <Line
+        key={`bracket-line${d}`}
+        from={new Point({ x: left, y: yMax })}
+        to={new Point({ x: left, y: 10 })}
+        stroke={red[100]}
+        strokeWidth={1}
+      />
+    )
+
+    const text = (
+      <text
+        key={`bracket-text${d}`}
+        fill={blueGrey[800]}
+        textAnchor="middle"
+        x={left + ((right - left) / 2)}
+        y={0}
+        dy=".33em"
+        fontSize={9}
+        fontFamily="Roboto"
+      >
+        {data[d].tax}
+      </text>
+    )
+
+    rows.push(line)
+    rows.push(text)
   }
   return <g key="TaxBracketLines">{rows}</g>
 }

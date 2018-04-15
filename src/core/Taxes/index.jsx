@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { ParentSize } from '@vx/responsive'
 import { withStyles } from 'material-ui/styles'
 import Grid from 'material-ui/Grid'
@@ -130,6 +131,10 @@ class Taxes extends React.Component {
       </div>
     )
   }
+}
+
+Taxes.propTypes = {
+  classes: PropTypes.object.isRequired
 }
 
 export default withStyles(styles)(Taxes)
