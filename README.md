@@ -36,29 +36,9 @@ Website: https://entaxy-project.github.io/entaxy
 * Estate planning
 * Pensions
 
-## Setup
+## Contributing
 
-Clone this repo and then install dependencies with:
-```
-yarn install
-```
-
-## Running the server
-
-A browser window will open up automatically
-```
-yarn start
-```
-
-## Running tests
-
-```
-yarn test
-```
-
-## Editor configuration
-
-See http://editorconfig.org
+Would you like to contribute to this project? Check out our [Wiki](https://github.com/entaxy-project/entaxy/wiki) for more information.
 
 ## Code of conduct
 
