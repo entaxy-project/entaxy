@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Logo matches snapshot 1`] = `
+<img
+  alt="Entaxy logo"
+  className="Logo-logo-1"
+  src="logo.png"
+/>
+`;

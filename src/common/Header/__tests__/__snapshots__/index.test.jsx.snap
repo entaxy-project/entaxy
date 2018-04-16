@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header matches snapshot 1`] = `
+<header
+  className="MuiPaper-root-10 MuiPaper-elevation4-16 MuiAppBar-root-2 MuiAppBar-positionStatic-6 MuiAppBar-colorPrimary-8"
+>
+  <div
+    className="MuiToolbar-root-37 MuiToolbar-gutters-38"
+  >
+    <img
+      alt="Entaxy logo"
+      className="Logo-logo-39"
+      src="logo.png"
+    />
+    <h2
+      className="MuiTypography-root-40 MuiTypography-title-46 MuiTypography-colorInherit-59 Header-flex-1"
+    >
+      Entaxy
+    </h2>
+    <button
+      className="MuiButtonBase-root-79 MuiButton-root-64 MuiButton-colorInherit-68"
+      disabled={false}
+      onBlur={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex="0"
+      type="button"
+    >
+      <span
+        className="MuiButton-label-65"
+      >
+        Login
+      </span>
+      <span
+        className="MuiTouchRipple-root-82"
+      />
+    </button>
+  </div>
+</header>
+`;
