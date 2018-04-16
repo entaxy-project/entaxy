@@ -1,10 +1,10 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
-import App from '../'
+import Logo from '../'
 
-describe('App', () => {
+describe('Logo', () => {
   it('matches snapshot', () => {
-    const component = renderer.create(<App />)
+    const component = renderer.create(<Logo />)
     expect(component.toJSON()).toMatchSnapshot()
   })
 })

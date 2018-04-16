@@ -1,10 +1,10 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
-import App from '../'
+import Header from '../'
 
-describe('App', () => {
+describe('Header', () => {
   it('matches snapshot', () => {
-    const component = renderer.create(<App />)
+    const component = renderer.create(<Header />)
     expect(component.toJSON()).toMatchSnapshot()
   })
 })

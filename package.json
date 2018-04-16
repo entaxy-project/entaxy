@@ -13,7 +13,8 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "lint": "eslint src --ext '.js,.jsx' --config .eslintrc",
-    "lint:fix": "yarn lint --fix"
+    "lint:fix": "yarn lint --fix",
+    "flux": "flux"
   },
   "dependencies": {
     "@vx/axis": "^0.0.160",
@@ -58,8 +59,10 @@
     "typeface-roboto": "^0.0.54"
   },
   "devDependencies": {
+    "flow-bin": "^0.69.0",
     "husky": "^0.14.3",
-    "lint-staged": "^7.0.4"
+    "lint-staged": "^7.0.4",
+    "react-test-renderer": "^16.3.1"
   },
   "lint-staged": {
     "*.{js,css}": [
