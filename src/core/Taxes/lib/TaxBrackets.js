@@ -42,9 +42,9 @@ export const taxBracketData = (year, province) => {
 
   data.sort((a, b) => a.income - b.income)
 
+  let provincial = 0
+  let federal = 0
   _.forEach(data, (item) => {
-    let provincial = 0
-    let federal = 0
     switch (item.type) {
       case 'provincial':
         provincial = item.tax
