@@ -123,7 +123,7 @@ Array [
                                         x={-16.399129677980852}
                                         y={0}
                                     >
-                                        15
+                                        20.05
                                     </text>
                                     <line
                                         className="vx-line"
@@ -145,7 +145,7 @@ Array [
                                         x={-26.84155787641427}
                                         y={0}
                                     >
-                                        9.15
+                                        24.15
                                     </text>
                                     <line
                                         className="vx-line"
@@ -167,7 +167,7 @@ Array [
                                         x={-39.697127937336816}
                                         y={0}
                                     >
-                                        20.5
+                                        29.65
                                     </text>
                                     <line
                                         className="vx-line"
@@ -189,7 +189,7 @@ Array [
                                         x={-53.68342036553524}
                                         y={0}
                                     >
-                                        11.16
+                                        31.66
                                     </text>
                                     <line
                                         className="vx-line"
@@ -211,7 +211,7 @@ Array [
                                         x={-71.3354221061793}
                                         y={0}
                                     >
-                                        26
+                                        37.16
                                     </text>
                                     <line
                                         className="vx-line"
@@ -233,7 +233,7 @@ Array [
                                         x={-89.05443864229767}
                                         y={0}
                                     >
-                                        29
+                                        40.16
                                     </text>
                                     <line
                                         className="vx-line"
@@ -255,7 +255,7 @@ Array [
                                         x={-107.46736292428199}
                                         y={0}
                                     >
-                                        12.16
+                                        41.16
                                     </text>
                                     <line
                                         className="vx-line"
@@ -277,7 +277,7 @@ Array [
                                         x={-128.79025239338557}
                                         y={0}
                                     >
-                                        33
+                                        45.16
                                     </text>
                                     <line
                                         className="vx-line"
@@ -299,7 +299,7 @@ Array [
                                         x={-102.01479547432551}
                                         y={0}
                                     >
-                                        13.16
+                                        46.16
                                     </text>
                                 </g>
                                 <g>
