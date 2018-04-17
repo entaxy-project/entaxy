@@ -41,6 +41,8 @@
     "d3-shape": "^1.2.0",
     "d3-svg-legend": "^2.25.6",
     "d3-transition": "^1.1.1",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.11.0",
@@ -69,6 +71,7 @@
   "lint-staged": {
     "*.{js,css}": [
       "yarn lint --fix",
+      "yarn test:coverage",
       "git add"
     ]
   }
