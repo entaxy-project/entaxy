@@ -3,9 +3,11 @@ import PropTypes from 'prop-types'
 import AppBar from 'material-ui/AppBar'
 import Toolbar from 'material-ui/Toolbar'
 import Typography from 'material-ui/Typography'
-import Button from 'material-ui/Button'
 import { withStyles } from 'material-ui/styles'
+
 import Logo from '../Logo/index'
+import AuthenticationButton from './../AuthenticationButton/index'
+import ProfilePicture from './../ProfilePicture/index'
 
 const styles = {
   flex: {
@@ -20,7 +22,8 @@ const Header = ({ classes }) => (
       <Typography variant="title" color="inherit" className={classes.flex}>
         Entaxy
       </Typography>
-      <Button color="inherit">Login</Button>
+      <ProfilePicture />
+      <AuthenticationButton />
     </Toolbar>
   </AppBar>
 )
