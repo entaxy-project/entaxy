@@ -52,8 +52,8 @@ const TaxChart = ({
   const xMax = width - margin.left - margin.right
   const yMax = height - margin.top - margin.bottom
   const data = IncomeTaxData(country, year, region, income)
-  const xScale = scaleLinear({range: [0, xMax], domain: extent(data, x)})
-  const yScale = scaleLinear({range: [yMax, 0], domain: [0, max(data, y)]})
+  const xScale = scaleLinear({ range: [0, xMax], domain: extent(data, x) })
+  const yScale = scaleLinear({ range: [yMax, 0], domain: [0, max(data, y)] })
 
   return (
     <div>
@@ -148,10 +148,16 @@ const TaxChart = ({
 TaxChart.propTypes = {
   parentWidth: PropTypes.number.isRequired,
   parentHeight: PropTypes.number.isRequired,
+  country: PropTypes.string.isRequired,
   year: PropTypes.number.isRequired,
+  region: PropTypes.string,
   income: PropTypes.number.isRequired,
   rrsp: PropTypes.number.isRequired,
   taxAmount: PropTypes.number.isRequired
+}
+
+TaxChart.defaultProps = {
+  region: null
 }
 
 export default withParentSize(TaxChart)

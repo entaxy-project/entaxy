@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Line } from '@vx/shape'
 import { Point } from '@vx/point'
 import red from 'material-ui/colors/red'
@@ -10,7 +11,6 @@ const TaxBracketLines = ({
   year,
   region,
   xScale,
-  yScale,
   margin,
   width,
   height
@@ -53,6 +53,20 @@ const TaxBracketLines = ({
     rows.push(text)
   }
   return <g key="TaxBracketLines">{rows}</g>
+}
+
+TaxBracketLines.propTypes = {
+  country: PropTypes.string.isRequired,
+  year: PropTypes.number.isRequired,
+  region: PropTypes.string,
+  xScale: PropTypes.func.isRequired,
+  margin: PropTypes.object.isRequired,
+  width: PropTypes.number.isRequired,
+  height: PropTypes.number.isRequired
+}
+
+TaxBracketLines.defaultProps = {
+  region: null
 }
 
 export default TaxBracketLines

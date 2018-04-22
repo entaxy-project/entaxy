@@ -5,7 +5,7 @@ import { Bar, Line } from '@vx/shape'
 import { Point } from '@vx/point'
 import { PatternLines } from '@vx/pattern'
 import teal from 'material-ui/colors/teal'
-import { calculateTotalTax } from './lib/TaxBrackets'
+import { TaxBrackets, calculateTotalTax } from './lib/TaxBrackets'
 
 const TaxCreditLines = ({
   income,
@@ -16,7 +16,6 @@ const TaxCreditLines = ({
   xScale,
   yScale,
   margin,
-  width,
   height
 }) => {
   const yMax = height - margin.top - margin.bottom
@@ -25,11 +24,10 @@ const TaxCreditLines = ({
     credits: xScale(income - credits)
   }
   const top = {
-    income: yScale(calculateTotalTax(country, year, region, income)),
-    credits: yScale(calculateTotalTax(country, year, region, income - credits))
+    income: yScale(calculateTotalTax(TaxBrackets[country][year], region, income)),
+    credits: yScale(calculateTotalTax(TaxBrackets[country][year], region, income - credits))
   }
   const barWidth = Math.max((left.income - left.credits) || 0, 0)
-  console.log('TaxCreditLines', yMax - top.income)
 
   return (
     <Motion
@@ -104,8 +102,11 @@ TaxCreditLines.propTypes = {
   xScale: PropTypes.func.isRequired,
   yScale: PropTypes.func.isRequired,
   margin: PropTypes.object.isRequired,
-  width: PropTypes.number.isRequired,
   height: PropTypes.number.isRequired
+}
+
+TaxCreditLines.defaultProps = {
+  region: null
 }
 
 export default TaxCreditLines

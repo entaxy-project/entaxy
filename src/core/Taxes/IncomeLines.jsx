@@ -1,9 +1,10 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Line } from '@vx/shape'
 import { Point } from '@vx/point'
 import { Motion, spring } from 'react-motion'
 import teal from 'material-ui/colors/teal'
-import { calculateTotalTax } from './lib/TaxBrackets'
+import { TaxBrackets, calculateTotalTax } from './lib/TaxBrackets'
 
 const IncomeLines = ({
   income,
@@ -13,12 +14,11 @@ const IncomeLines = ({
   xScale,
   yScale,
   margin,
-  width,
   height
 }) => {
   const yMax = height - margin.top - margin.bottom
   const left = xScale(income)
-  const top = yScale(calculateTotalTax(country, year, region, income))
+  const top = yScale(calculateTotalTax(TaxBrackets[country][year], region, income))
 
   return (
     <Motion
@@ -58,6 +58,21 @@ const IncomeLines = ({
       )}
     </Motion>
   )
+}
+
+IncomeLines.propTypes = {
+  income: PropTypes.number.isRequired,
+  country: PropTypes.string.isRequired,
+  year: PropTypes.number.isRequired,
+  region: PropTypes.string,
+  xScale: PropTypes.func.isRequired,
+  yScale: PropTypes.func.isRequired,
+  margin: PropTypes.object.isRequired,
+  height: PropTypes.number.isRequired
+}
+
+IncomeLines.defaultProps = {
+  region: null
 }
 
 export default IncomeLines

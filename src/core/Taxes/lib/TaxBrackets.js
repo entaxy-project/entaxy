@@ -29,8 +29,13 @@ export const TaxBrackets = {
   }
 }
 
-
-const hasRegion = (countryBrackets, region) => {
+/**
+ * Check if the country has tax brackets for a specific region
+ * @param {Object} countryBrackets - The tax brackets for a country in a year
+ *   (taxBracketData function for more details)
+ * @param {string} region (optional) - The region from where to calculate income tax
+* */
+export const hasRegion = (countryBrackets, region) => {
   return 'regional' in countryBrackets && region in countryBrackets.regional
 }
 
@@ -87,14 +92,10 @@ export const taxBracketData = (countryBrackets, region) => {
   let regional = 0
   let federal = 0
   _.forEach(data, (item) => {
-    switch (item.type) {
-      case 'regional':
-        regional = item.tax
-        break
-      case 'federal':
-        federal = item.tax
-        break
-      default:
+    if (item.type === 'regional') {
+      regional = item.tax
+    } else {
+      federal = item.tax
     }
     Object.assign(item, { tax: federal + regional, federal, regional })
   })
@@ -102,25 +103,31 @@ export const taxBracketData = (countryBrackets, region) => {
   return data
 }
 
-export const calculateTax = (regionBracket, income) => {
+/**
+ * Calculates the taxes for specified income for a list of bracket
+ * @param {Array} brackets - A list of tax brackets
+ *   [
+ *     { amountUpTo: 11635.00, tax: 0 },
+ *     { amountUpTo: 45916.00, tax: 15.00 },
+ *   ],
+ * @param {number} income
+ */
+export const calculateTax = (brackets, income) => {
   let tax = 0
 
-  for (let bracket = 0; bracket < regionBracket.length; bracket += 1) {
-    if (regionBracket[bracket].tax === 0) {
-      if (income < regionBracket[bracket].amountUpTo) {
+  for (let bracket = 0; bracket < brackets.length; bracket += 1) {
+    if (brackets[bracket].tax === 0) {
+      if (income <= brackets[bracket].amountUpTo) {
         break
       }
     } else {
-      const prevBracketAmount = regionBracket[bracket - 1].amountUpTo
-      if (regionBracket[bracket].amountUpTo === null) {
-        // Pay the higher tax for the rest of the incomde
-        tax += (income - prevBracketAmount) * (regionBracket[bracket].tax / 100)
-      } else if (income > regionBracket[bracket].amountUpTo) {
+      const prevBracketAmount = brackets[bracket - 1].amountUpTo
+      if (income > brackets[bracket].amountUpTo) {
         // Pay the full amount for this bracket
-        tax += (regionBracket[bracket].amountUpTo - prevBracketAmount) * (regionBracket[bracket].tax / 100)
+        tax += (brackets[bracket].amountUpTo - prevBracketAmount) * (brackets[bracket].tax / 100)
       } else {
         // Pay only the difference
-        tax += (income - prevBracketAmount) * (regionBracket[bracket].tax / 100)
+        tax += (income - prevBracketAmount) * (brackets[bracket].tax / 100)
         break
       }
     }
@@ -128,17 +135,25 @@ export const calculateTax = (regionBracket, income) => {
   return tax
 }
 
-export const calculateTotalTax = (country, year, region, income) => {
-  let total = calculateTax(TaxBrackets[country][year].federal, income)
+/**
+ * Calculates the total taxes for specified income for a the bracket in a country in a year
+ * @param {Object} countryBrackets - The tax brackets for a country in a year
+ *   (taxBracketData function for more details)
+ * @param {string} region (optional) - The region from where to calculate income tax
+ * @param {number} income
+ */
+export const calculateTotalTax = (countryBrackets, region, income) => {
+  let total = calculateTax(countryBrackets.federal, income)
 
-  if (hasRegion(TaxBrackets[country][year], region)) {
-    total += calculateTax(TaxBrackets[country][year].regional[region], income)
+  if (hasRegion(countryBrackets, region)) {
+    total += calculateTax(countryBrackets.regional[region], income)
   }
   return total
 }
 
 // Return an array with income and corresponding tax
 export const IncomeTaxData = (country, year, region, income) => {
+  const countryBrackets = TaxBrackets[country][year]
   const numericalIncome = parseFloat(income)
   const max = numericalIncome > 0 ? numericalIncome + 25000 : 250000
   const step = 100
@@ -147,19 +162,19 @@ export const IncomeTaxData = (country, year, region, income) => {
   let bracket = 0
   for (let currIncome = 0; currIncome < max; currIncome += step) {
     // Add the exact bracket ammount for federal tax
-    if (currIncome >= TaxBrackets[country][year].federal[bracket].amountUpTo) {
+    if (currIncome >= countryBrackets.federal[bracket].amountUpTo) {
       data.push({
-        income: TaxBrackets[country][year].federal[bracket].amountUpTo,
-        tax: calculateTotalTax(country, year, region, TaxBrackets[country][year].federal[bracket].amountUpTo)
+        income: countryBrackets.federal[bracket].amountUpTo,
+        tax: calculateTotalTax(countryBrackets, region, countryBrackets.federal[bracket].amountUpTo)
       })
       bracket += 1
     }
     // Add the exact bracket ammount for regional tax (if it exists)
-    if (hasRegion(TaxBrackets[country][year], region)) {
-      if (currIncome >= TaxBrackets[country][year].regional[region][bracket].amountUpTo) {
+    if (hasRegion(countryBrackets, region)) {
+      if (currIncome >= countryBrackets.regional[region][bracket].amountUpTo) {
         data.push({
-          income: TaxBrackets[country][year].regional[region][bracket].amountUpTo,
-          tax: calculateTotalTax(country, year, region, TaxBrackets[country][year].regional[region][bracket].amountUpTo)
+          income: countryBrackets.regional[region][bracket].amountUpTo,
+          tax: calculateTotalTax(countryBrackets, region, countryBrackets.regional[region][bracket].amountUpTo)
         })
         bracket += 1
       }
@@ -167,7 +182,7 @@ export const IncomeTaxData = (country, year, region, income) => {
 
     data.push({
       income: currIncome,
-      tax: calculateTotalTax(country, year, region, currIncome)
+      tax: calculateTotalTax(countryBrackets, region, currIncome)
     })
   }
   return data
@@ -175,20 +190,20 @@ export const IncomeTaxData = (country, year, region, income) => {
 
 // The marginal tax rate is the amount of tax paid
 // on any additional dollar made, up to the next tax bracket.
-export const marginalTax = (regionBracket, income) => {
-  for (let bracket = 0; bracket < regionBracket.length; bracket += 1) {
-    if (income < regionBracket[bracket].amountUpTo) {
-      return regionBracket[bracket].tax / 100
+export const marginalTax = (brackets, income) => {
+  for (let bracket = 0; bracket < brackets.length; bracket += 1) {
+    if (income < brackets[bracket].amountUpTo) {
+      return brackets[bracket].tax / 100
     }
   }
   return 0
 }
 
-export const totalMarginalTax = (country, year, region, income) => {
-  let total = marginalTax(TaxBrackets[country][year].federal, income)
+export const totalMarginalTax = (countryBrackets, region, income) => {
+  let total = marginalTax(countryBrackets.federal, income)
 
-  if (hasRegion(TaxBrackets[country][year], region)) {
-    total += marginalTax(TaxBrackets[country][year].regional[region], income)
+  if (hasRegion(countryBrackets, region)) {
+    total += marginalTax(countryBrackets.regional[region], income)
   }
   return total
 }

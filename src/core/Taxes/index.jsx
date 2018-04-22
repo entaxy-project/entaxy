@@ -8,7 +8,7 @@ import { FormControl } from 'material-ui/Form'
 import Typography from 'material-ui/Typography'
 import TaxChart from './TaxChart'
 import CurrencyFormat from '../../common/CurrencyFormat/index'
-import { calculateTotalTax, totalMarginalTax } from './lib/TaxBrackets'
+import { TaxBrackets, calculateTotalTax, totalMarginalTax } from './lib/TaxBrackets'
 
 const styles = () => ({
   root: {
@@ -32,7 +32,7 @@ class Taxes extends React.Component {
     const income = 90000
     const rrsp = 10000
     const taxableIncome = income - rrsp
-    const taxAmount = calculateTotalTax(country, year, region, taxableIncome)
+    const taxAmount = calculateTotalTax(TaxBrackets[country][year], region, taxableIncome)
 
     this.state = {
       country,
@@ -42,7 +42,7 @@ class Taxes extends React.Component {
       rrsp,
       taxableIncome,
       taxAmount,
-      marginalTaxRate: totalMarginalTax(country, year, region, taxableIncome),
+      marginalTaxRate: totalMarginalTax(TaxBrackets[country][year], region, taxableIncome),
       averageTaxRate: taxAmount / (taxableIncome)
     }
   }
@@ -52,12 +52,12 @@ class Taxes extends React.Component {
     const rrsp = name === 'rrsp' ? parseFloat(event.target.value) : this.state.rrsp
     const taxableIncome = income - rrsp
     const { country, year, region } = this.state
-    const taxAmount = calculateTotalTax(country, year, region, taxableIncome)
+    const taxAmount = calculateTotalTax(TaxBrackets[country][year], region, taxableIncome)
     this.setState({
       [name]: parseFloat(event.target.value),
       taxableIncome,
       taxAmount,
-      marginalTaxRate: totalMarginalTax(country, year, region, taxableIncome),
+      marginalTaxRate: totalMarginalTax(TaxBrackets[country][year], region, taxableIncome),
       averageTaxRate: taxAmount / (income - rrsp)
     })
   }
