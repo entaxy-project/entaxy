@@ -5,7 +5,17 @@ import { Motion, spring } from 'react-motion'
 import teal from 'material-ui/colors/teal'
 import { calculateTotalTax } from './lib/TaxBrackets'
 
-const IncomeLines = (income, country, year, region, xScale, yScale, margin, width, height) => {
+const IncomeLines = ({
+  income,
+  country,
+  year,
+  region,
+  xScale,
+  yScale,
+  margin,
+  width,
+  height
+}) => {
   const yMax = height - margin.top - margin.bottom
   const left = xScale(income)
   const top = yScale(calculateTotalTax(country, year, region, income))

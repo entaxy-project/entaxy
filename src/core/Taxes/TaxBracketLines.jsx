@@ -5,7 +5,16 @@ import red from 'material-ui/colors/red'
 import blueGrey from 'material-ui/colors/blueGrey'
 import { TaxBrackets, taxBracketData } from './lib/TaxBrackets'
 
-const TaxBracketLines = (country, year, region, xScale, yScale, margin, width, height) => {
+const TaxBracketLines = ({
+  country,
+  year,
+  region,
+  xScale,
+  yScale,
+  margin,
+  width,
+  height
+}) => {
   const rows = []
   const yMax = height - margin.top - margin.bottom
   const xMax = width - margin.left - margin.right
