@@ -1,10 +1,10 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 import { mount } from 'enzyme'
+import blockstack from 'blockstack'
 import ProfilePicture from '../'
-import BlockstackService from './../../../lib/BlockstackService'
 
-jest.mock('./../../../lib/BlockstackService', () => {
+jest.mock('blockstack', () => {
   return require('../../../../mocks/BlockstackServiceMock')
 })
 
@@ -21,9 +21,9 @@ describe('ProfilePicture', () => {
 
   describe('logged in state', () => {
     it('should render the logout button', () => {
-      const spy = jest.spyOn(BlockstackService, 'isUserSignedIn')
+      const spy = jest.spyOn(blockstack, 'isUserSignedIn')
       spy.mockReturnValue(true)
-      BlockstackService.Person = jest.fn(() => {
+      blockstack.Person = jest.fn(() => {
         return {
           name: () => {
             return 'Named Person'
@@ -41,10 +41,10 @@ describe('ProfilePicture', () => {
     })
 
     it('should render the name as nameless person if the name is not provided', () => {
-      const spy = jest.spyOn(BlockstackService, 'isUserSignedIn')
+      const spy = jest.spyOn(blockstack, 'isUserSignedIn')
       spy.mockReturnValue(true)
 
-      BlockstackService.Person = jest.fn(() => {
+      blockstack.Person = jest.fn(() => {
         return {
           name: () => {
             return null
@@ -64,7 +64,7 @@ describe('ProfilePicture', () => {
 
   describe('logged out state', () => {
     it('should render no profile picture', () => {
-      const spy = jest.spyOn(BlockstackService, 'isUserSignedIn')
+      const spy = jest.spyOn(blockstack, 'isUserSignedIn')
       spy.mockReturnValue(false)
       const wrapper = mount(<ProfilePicture />)
       expect(wrapper.find('img').length).toBe(0)

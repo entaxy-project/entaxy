@@ -1,32 +1,40 @@
 import React from 'react'
 import Button from 'material-ui/Button'
 import { withStyles } from 'material-ui/styles'
-import BlockstackService from './../../lib/BlockstackService'
+import {
+  handlePendingSignIn,
+  isSignInPending,
+  isUserSignedIn,
+  loadUserData,
+  Person,
+  redirectToSignIn,
+  signUserOut
+} from 'blockstack'
 import { getName } from '../../lib/IdentityService'
 
 const styles = {}
 
 function handleLogin() {
-  BlockstackService.redirectToSignIn()
+  redirectToSignIn()
 }
 
 function handleLogout() {
-  BlockstackService.signUserOut(window.location.href)
+  signUserOut(window.location.href)
 }
 
 const AuthenticationButton = () => {
-  if (BlockstackService.isUserSignedIn()) {
-    const userData = BlockstackService.loadUserData()
+  if (isUserSignedIn()) {
+    const userData = loadUserData()
     const { profile } = userData
-    const person = new BlockstackService.Person(profile)
+    const person = new Person(profile)
 
     return (
       <Button color="inherit" onClick={handleLogout}>
         {getName(person)} Logout
       </Button>
     )
-  } else if (BlockstackService.isSignInPending()) {
-    BlockstackService.handlePendingSignIn()
+  } else if (isSignInPending()) {
+    handlePendingSignIn()
       .then(() => {
         window.location = window.location.origin
       })

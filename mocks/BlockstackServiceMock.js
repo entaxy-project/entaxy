@@ -1,7 +1,4 @@
-const { getName } = require('./../src/lib/BlockstackService')
-
 module.exports = {
-  getName,
   isUserSignedIn: jest.fn(),
   isSignInPending: jest.fn(),
   signUserOut: jest.fn(),
@@ -22,5 +19,3 @@ module.exports = {
     }
   })
 }
-
-module.exports.getName = getName
