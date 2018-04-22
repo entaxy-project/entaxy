@@ -14,7 +14,8 @@ import TaxBracketLines from './TaxBracketLines'
 import { IncomeTaxData } from './lib/TaxBrackets'
 import TaxTooltips from './TaxTooltips'
 
-const province = 'Ontario'
+const country = 'Canada'
+const region = 'Ontario'
 
 // Bounds
 const margin = {
@@ -32,7 +33,7 @@ const TaxChart = ({
   rrsp,
   taxAmount
 }) => {
-  const data = IncomeTaxData({ year, province, income })
+  const data = IncomeTaxData(country, year, region, income)
   const xMax = width - margin.left - margin.right
   const yMax = height - margin.top - margin.bottom
 
@@ -63,7 +64,7 @@ const TaxChart = ({
     <div>
       <svg width={width} height={height}>
         <Group top={margin.top} left={margin.left}>
-          {TaxBracketLines(year, province, xScale, yScale, margin, width, height)}
+          {TaxBracketLines(country, year, region, xScale, yScale, margin, width, height)}
           <LinePath
             data={data}
             xScale={xScale}
@@ -105,8 +106,8 @@ const TaxChart = ({
             tickFormat={xScale.tickFormat(10, '$,f')}
             tickStroke="#dddddd"
           />
-          {TaxCreditLines(income, rrsp, year, province, xScale, yScale, margin, width, height)}
-          {IncomeLines(income, year, province, xScale, yScale, margin, width, height)}
+          {TaxCreditLines(income, rrsp, country, year, region, xScale, yScale, margin, width, height)}
+          {IncomeLines(income, country, year, region, xScale, yScale, margin, width, height)}
         </Group>
       </svg>
       <TaxTooltips

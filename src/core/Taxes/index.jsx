@@ -24,18 +24,20 @@ const styles = () => ({
 class Taxes extends React.Component {
   constructor(props) {
     super(props)
+    const country = 'Canada'
+    const year = 2017
     const income = 90000
     const rrsp = 10000
     const taxableIncome = income - rrsp
-    const taxAmount = calculateTotalTax(2017, 'Ontario', taxableIncome)
+    const taxAmount = calculateTotalTax(country, year, 'Ontario', taxableIncome)
 
     this.state = {
-      province: 'Ontario',
+      region: 'Ontario',
       income,
       rrsp,
       taxableIncome,
       taxAmount,
-      marginalTaxRate: totalMarginalTax(2017, 'Ontario', taxableIncome),
+      marginalTaxRate: totalMarginalTax(country, year, 'Ontario', taxableIncome),
       averageTaxRate: taxAmount / (taxableIncome)
     }
   }
@@ -44,12 +46,13 @@ class Taxes extends React.Component {
     const income = name === 'income' ? event.target.value : this.state.income
     const rrsp = name === 'rrsp' ? event.target.value : this.state.rrsp
     const taxableIncome = income - rrsp
-    const taxAmount = calculateTotalTax(2017, this.state.province, taxableIncome)
+    const { country, year, region } = this.state
+    const taxAmount = calculateTotalTax(country, year, region, taxableIncome)
     this.setState({
       [name]: event.target.value,
       taxableIncome,
       taxAmount,
-      marginalTaxRate: totalMarginalTax(2017, this.state.province, taxableIncome),
+      marginalTaxRate: totalMarginalTax(country, year, region, taxableIncome),
       averageTaxRate: taxAmount / (income - rrsp)
     })
   }

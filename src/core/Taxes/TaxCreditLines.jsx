@@ -6,15 +6,15 @@ import { PatternLines } from '@vx/pattern'
 import teal from 'material-ui/colors/teal'
 import { calculateTotalTax } from './lib/TaxBrackets'
 
-const TaxCreditLines = (income, credits, year, province, xScale, yScale, margin, width, height) => {
+const TaxCreditLines = (income, credits, country, year, region, xScale, yScale, margin, width, height) => {
   const yMax = height - margin.top - margin.bottom
   const left = {
     income: xScale(income),
     credits: xScale(income - credits)
   }
   const top = {
-    income: yScale(calculateTotalTax(year, province, income)),
-    credits: yScale(calculateTotalTax(year, province, income - credits))
+    income: yScale(calculateTotalTax(country, year, region, income)),
+    credits: yScale(calculateTotalTax(country, year, region, income - credits))
   }
   const barWidth = Math.max((left.income - left.credits) || 0, 0)
   return (
