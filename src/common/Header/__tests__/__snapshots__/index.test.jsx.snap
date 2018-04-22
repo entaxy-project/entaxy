@@ -18,9 +18,10 @@ exports[`Header matches snapshot 1`] = `
       Entaxy
     </h2>
     <button
-      className="MuiButtonBase-root-79 MuiButton-root-64 MuiButton-colorInherit-68"
+      className="MuiButtonBase-root-80 MuiButton-root-65 MuiButton-colorInherit-69 login"
       disabled={false}
       onBlur={[Function]}
+      onClick={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
@@ -34,12 +35,12 @@ exports[`Header matches snapshot 1`] = `
       type="button"
     >
       <span
-        className="MuiButton-label-65"
+        className="MuiButton-label-66"
       >
         Login
       </span>
       <span
-        className="MuiTouchRipple-root-82"
+        className="MuiTouchRipple-root-83"
       />
     </button>
   </div>
