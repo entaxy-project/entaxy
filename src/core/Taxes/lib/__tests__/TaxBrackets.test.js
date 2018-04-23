@@ -4,7 +4,9 @@ import {
   taxBracketData,
   calculateTax,
   calculateTotalTax,
-  incomeTaxData
+  incomeTaxData,
+  marginalTax,
+  totalMarginalTax
 } from '../TaxBrackets'
 
 describe('TaxBrackets', () => {
@@ -98,6 +100,10 @@ describe('TaxBrackets', () => {
         { amountUpTo: 2000, tax: 10 },
         { amountUpTo: 10000, tax: 50 }
       ]
+      expect(calculateTax(brackets, null)).toEqual(0)
+      expect(calculateTax(brackets, undefined)).toEqual(NaN)
+      expect(calculateTax(brackets, -1)).toEqual(0)
+
       expect(calculateTax(brackets, 1000)).toEqual(0)
       expect(calculateTax(brackets, 1001)).toEqual(1 * (brackets[1].tax / 100))
       expect(calculateTax(brackets, 2001)).toEqual((1000 * (brackets[1].tax / 100)) + (1 * (brackets[2].tax / 100)))
@@ -173,6 +179,72 @@ describe('TaxBrackets', () => {
         income: 20000 + 25000,
         tax: calculateTotalTax(countryBracket, null, 20000 + 25000)
       }])
+    })
+  })
+
+  describe('marginalTax', () => {
+    it('calculates marginal tax for bracket', () => {
+      const brackets = [
+        { amountUpTo: 1000, tax: 0 },
+        { amountUpTo: 2000, tax: 10 },
+        { amountUpTo: 10000, tax: 50 }
+      ]
+      expect(marginalTax(brackets, null)).toEqual(0)
+      expect(marginalTax(brackets, undefined)).toEqual(0)
+      expect(marginalTax(brackets, -1)).toEqual(0)
+
+      expect(marginalTax(brackets, 999)).toEqual(0)
+      expect(marginalTax(brackets, 1000)).toEqual(10 / 100)
+      expect(marginalTax(brackets, 1999)).toEqual(10 / 100)
+      expect(marginalTax(brackets, 2000)).toEqual(50 / 100)
+      expect(marginalTax(brackets, 10001)).toEqual(0)
+    })
+  })
+
+  describe('totalMarginalTax', () => {
+    it('calculates total marginal tax for brackets with region ', () => {
+      const region = 'Ontario'
+
+      const brackets = {
+        federal: [
+          { amountUpTo: 11635.00, tax: 0 },
+          { amountUpTo: 45916.00, tax: 15.00 },
+          { amountUpTo: 91831.00, tax: 20.50 }
+        ],
+        regional: {
+          Ontario: [
+            { amountUpTo: 10171.00, tax: 0 },
+            { amountUpTo: 42201.00, tax: 5.05 },
+            { amountUpTo: 84404.00, tax: 9.15 }
+          ]
+        }
+      }
+      expect(totalMarginalTax(brackets, region, null)).toEqual(0)
+      expect(totalMarginalTax(brackets, region, undefined)).toEqual(0)
+      expect(totalMarginalTax(brackets, region, -1)).toEqual(0)
+
+      expect(totalMarginalTax(brackets, region, 10170)).toEqual(0)
+      expect(totalMarginalTax(brackets, region, 10171)).toEqual(5.05 / 100)
+      expect(totalMarginalTax(brackets, region, 11634)).toEqual(5.05 / 100)
+      expect(totalMarginalTax(brackets, region, 11635).toPrecision(4)).toEqual((20.05 / 100).toPrecision(4))
+    })
+
+    it('calculates total marginal tax for brackets without a region ', () => {
+      const brackets = {
+        federal: [
+          { amountUpTo: 11635.00, tax: 0 },
+          { amountUpTo: 45916.00, tax: 15.00 },
+          { amountUpTo: 91831.00, tax: 20.50 }
+        ]
+      }
+      expect(totalMarginalTax(brackets, null, null)).toEqual(0)
+      expect(totalMarginalTax(brackets, null, undefined)).toEqual(0)
+      expect(totalMarginalTax(brackets, null, -1)).toEqual(0)
+
+      expect(totalMarginalTax(brackets, null, 11634)).toEqual(0)
+      expect(totalMarginalTax(brackets, null, 11635)).toEqual(15.00 / 100)
+      expect(totalMarginalTax(brackets, null, 45915)).toEqual(15.00 / 100)
+      expect(totalMarginalTax(brackets, null, 45916)).toEqual((20.50 / 100))
     })
   })
 })

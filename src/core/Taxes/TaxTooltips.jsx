@@ -10,8 +10,6 @@ const TaxTooltips = ({
   left
 }) => {
   const formater = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' })
-  /* eslint-disable no-console */
-  console.log(top)
   return (
     <Motion
       defaultStyle={{ left: left || 0, top: top || 0, opacity: 0 }}

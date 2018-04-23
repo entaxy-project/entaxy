@@ -1,5 +1,4 @@
-const _ = require('lodash')
-
+import _ from 'lodash'
 
 export const TaxBrackets = {
   Canada: {
@@ -105,7 +104,7 @@ export const taxBracketData = (countryBrackets, region) => {
 
 /**
  * Calculates the taxes for specified income for a list of bracket
- * @param {Array} brackets - A list of tax brackets
+ * @param {Array} brackets - A list of tax brackets, federal or regional
  *   [
  *     { amountUpTo: 11635.00, tax: 0 },
  *     { amountUpTo: 45916.00, tax: 15.00 },
@@ -193,8 +192,16 @@ export const incomeTaxData = (countryBrackets, region, income) => {
   return data
 }
 
-// The marginal tax rate is the amount of tax paid
-// on any additional dollar made, up to the next tax bracket.
+/**
+ * The marginal tax rate is the amount of tax paid
+ * on any additional dollar made, up to the next tax bracket
+ * @param {Array} brackets - A list of tax brackets, federal or regional
+ *   [
+ *     { amountUpTo: 11635.00, tax: 0 },
+ *     { amountUpTo: 45916.00, tax: 15.00 },
+ *   ],
+ * @param {number} income
+ */
 export const marginalTax = (brackets, income) => {
   for (let bracket = 0; bracket < brackets.length; bracket += 1) {
     if (income < brackets[bracket].amountUpTo) {
@@ -204,6 +211,13 @@ export const marginalTax = (brackets, income) => {
   return 0
 }
 
+/**
+ * Calculates the total marginal taxe for specified income for a the bracket in a country in a year
+ * @param {Object} countryBrackets - The tax brackets for a country in a year
+ *   (taxBracketData function for more details)
+ * @param {string} region (optional) - The region from where to calculate income tax
+ * @param {number} income
+ */
 export const totalMarginalTax = (countryBrackets, region, income) => {
   let total = marginalTax(countryBrackets.federal, income)
 
