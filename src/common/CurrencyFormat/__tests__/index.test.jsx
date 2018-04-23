@@ -19,5 +19,8 @@ describe('CurrencyFormat', () => {
 
     wrapper.setProps({ value: 1000.50 }).mount()
     expect(wrapper.find('input').prop('value')).toEqual('$1,000.5')
+
+    wrapper.setProps({ value: '' }).mount()
+    expect(wrapper.find('input').prop('value')).toEqual('')
   })
 })

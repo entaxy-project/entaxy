@@ -12,7 +12,7 @@ import blueGrey from 'material-ui/colors/blueGrey'
 import IncomeLines from './IncomeLines'
 import TaxCreditLines from './TaxCreditLines'
 import TaxBracketLines from './TaxBracketLines'
-import { IncomeTaxData } from './lib/TaxBrackets'
+import { TaxBrackets, incomeTaxData } from './lib/TaxBrackets'
 import TaxTooltips from './TaxTooltips'
 
 // Bounds
@@ -45,13 +45,13 @@ const TaxChart = ({
   region,
   income,
   rrsp,
-  taxAmount
+  taxBeforeCredits
 }) => {
   const width = parentWidth
   const height = parentHeight - margin.bottom
   const xMax = width - margin.left - margin.right
   const yMax = height - margin.top - margin.bottom
-  const data = IncomeTaxData(country, year, region, income)
+  const data = incomeTaxData(TaxBrackets[country][year], region, income)
   const xScale = scaleLinear({ range: [0, xMax], domain: extent(data, x) })
   const yScale = scaleLinear({ range: [yMax, 0], domain: [0, max(data, y)] })
 
@@ -137,9 +137,9 @@ const TaxChart = ({
       </svg>
       <TaxTooltips
         tooltipOpen={true}
-        data={{ income, tax: taxAmount }}
-        top={yScale(taxAmount) + margin.bottom}
-        left={xScale(income) + margin.left}
+        data={{ income, tax: taxBeforeCredits }}
+        top={yScale(taxBeforeCredits) + 100}
+        left={Math.min(xMax - 100, xScale(income) + margin.left)}
       />
     </div>
   )
@@ -153,7 +153,7 @@ TaxChart.propTypes = {
   region: PropTypes.string,
   income: PropTypes.number.isRequired,
   rrsp: PropTypes.number.isRequired,
-  taxAmount: PropTypes.number.isRequired
+  taxBeforeCredits: PropTypes.number.isRequired
 }
 
 TaxChart.defaultProps = {

@@ -33,6 +33,7 @@ class Taxes extends React.Component {
     const rrsp = 10000
     const taxableIncome = income - rrsp
     const taxAmount = calculateTotalTax(TaxBrackets[country][year], region, taxableIncome)
+    const taxBeforeCredits = calculateTotalTax(TaxBrackets[country][year], region, income)
 
     this.state = {
       country,
@@ -41,6 +42,7 @@ class Taxes extends React.Component {
       income,
       rrsp,
       taxableIncome,
+      taxBeforeCredits,
       taxAmount,
       marginalTaxRate: totalMarginalTax(TaxBrackets[country][year], region, taxableIncome),
       averageTaxRate: taxAmount / (taxableIncome)
@@ -48,17 +50,23 @@ class Taxes extends React.Component {
   }
 
   handleChange = name => (event) => {
-    const income = name === 'income' ? parseFloat(event.target.value) : this.state.income
-    const rrsp = name === 'rrsp' ? parseFloat(event.target.value) : this.state.rrsp
+    let income = name === 'income' ? parseFloat(event.target.value) : this.state.income
+    if (Number.isNaN(income)) { income = 0 }
+    let rrsp = name === 'rrsp' ? parseFloat(event.target.value) : this.state.rrsp
+    if (Number.isNaN(rrsp)) { rrsp = 0 }
+    if (rrsp > income) { rrsp = income }
     const taxableIncome = income - rrsp
     const { country, year, region } = this.state
     const taxAmount = calculateTotalTax(TaxBrackets[country][year], region, taxableIncome)
+    const taxBeforeCredits = calculateTotalTax(TaxBrackets[country][year], region, income)
     this.setState({
-      [name]: parseFloat(event.target.value),
+      income,
+      rrsp,
       taxableIncome,
       taxAmount,
+      taxBeforeCredits,
       marginalTaxRate: totalMarginalTax(TaxBrackets[country][year], region, taxableIncome),
-      averageTaxRate: taxAmount / (income - rrsp)
+      averageTaxRate: taxableIncome > 0 ? taxAmount / taxableIncome : 0
     })
   }
 
@@ -72,6 +80,7 @@ class Taxes extends React.Component {
       rrsp,
       taxAmount,
       taxableIncome,
+      taxBeforeCredits,
       marginalTaxRate,
       averageTaxRate
     } = this.state
@@ -91,7 +100,7 @@ class Taxes extends React.Component {
                 region={region}
                 income={income}
                 rrsp={rrsp}
-                taxAmount={taxAmount}
+                taxBeforeCredits={taxBeforeCredits}
               />
             </Paper>
           </Grid>
