@@ -1,0 +1,175 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Taxes matches snapshot 1`] = `
+<div
+  className="Taxes-root-1"
+>
+  <div
+    className="MuiGrid-typeContainer-4"
+  >
+    <div
+      className="MuiGrid-typeItem-5 MuiGrid-grid-xs-10-39"
+    >
+      <div
+        className="MuiPaper-root-94 MuiPaper-elevation2-98 MuiPaper-rounded-95 Taxes-paper-2 Taxes-chart-3"
+      >
+        <h1
+          className="MuiTypography-root-121 MuiTypography-headline-126 MuiTypography-gutterBottom-138 MuiTypography-alignCenter-134"
+        >
+          Taxes for 
+          Ontario
+           
+          2017
+        </h1>
+        <div
+          style={
+            Object {
+              "height": "100%",
+              "width": "100%",
+            }
+          }
+        />
+      </div>
+    </div>
+    <div
+      className="MuiGrid-typeItem-5 MuiGrid-grid-xs-2-31"
+    >
+      <div
+        className="MuiPaper-root-94 MuiPaper-elevation2-98 MuiPaper-rounded-95 Taxes-paper-2"
+      >
+        <div
+          className="MuiFormControl-root-145 MuiFormControl-fullWidth-148"
+          onBlur={[Function]}
+          onFocus={[Function]}
+        >
+          <label
+            className="MuiFormLabel-root-154 MuiInputLabel-root-149 MuiInputLabel-formControl-150 MuiInputLabel-animated-153 MuiInputLabel-shrink-152"
+            data-shrink={true}
+            htmlFor="income"
+          >
+            Your income
+          </label>
+          <div
+            className="MuiInput-root-160 MuiInput-formControl-161 MuiInput-underline-164"
+          >
+            <input
+              aria-invalid={false}
+              aria-label="Your income for 2017"
+              aria-required={false}
+              autoComplete={undefined}
+              autoFocus={undefined}
+              className="MuiInput-input-168"
+              defaultValue={undefined}
+              disabled={false}
+              id={undefined}
+              name={undefined}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={undefined}
+              onMouseUp={[Function]}
+              placeholder={undefined}
+              readOnly={undefined}
+              required={undefined}
+              rows={undefined}
+              type="text"
+              value="$90,000"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiPaper-root-94 MuiPaper-elevation2-98 MuiPaper-rounded-95 Taxes-paper-2"
+      >
+        <h3
+          className="MuiTypography-root-121 MuiTypography-subheading-128"
+        >
+          Tax credits
+        </h3>
+        <div
+          className="MuiFormControl-root-145 MuiFormControl-fullWidth-148"
+          onBlur={[Function]}
+          onFocus={[Function]}
+        >
+          <label
+            className="MuiFormLabel-root-154 MuiInputLabel-root-149 MuiInputLabel-formControl-150 MuiInputLabel-animated-153 MuiInputLabel-shrink-152"
+            data-shrink={true}
+            htmlFor="rrsp"
+          >
+            RRSP contribution
+          </label>
+          <div
+            className="MuiInput-root-160 MuiInput-formControl-161 MuiInput-underline-164"
+          >
+            <input
+              aria-invalid={false}
+              aria-label="RRSP for 2017"
+              aria-required={false}
+              autoComplete={undefined}
+              autoFocus={undefined}
+              className="MuiInput-input-168"
+              defaultValue={undefined}
+              disabled={false}
+              id={undefined}
+              name={undefined}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={undefined}
+              onMouseUp={[Function]}
+              placeholder={undefined}
+              readOnly={undefined}
+              required={undefined}
+              rows={undefined}
+              type="text"
+              value="$10,000"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiPaper-root-94 MuiPaper-elevation2-98 MuiPaper-rounded-95 Taxes-paper-2"
+      >
+        <p
+          className="MuiTypography-root-121 MuiTypography-body1-130"
+        >
+          <strong>
+            Taxable income:
+          </strong>
+           
+          CA$80,000.00
+        </p>
+        <p
+          className="MuiTypography-root-121 MuiTypography-body1-130"
+        >
+          <strong>
+            Tax amount:
+          </strong>
+           
+          CA$17,205.49
+        </p>
+        <p
+          className="MuiTypography-root-121 MuiTypography-body1-130"
+        >
+          <strong>
+            Marginal Tax Rate:
+          </strong>
+           
+          29.65%
+        </p>
+        <p
+          className="MuiTypography-root-121 MuiTypography-body1-130"
+        >
+          <strong>
+            Average Tax Rate:
+          </strong>
+           
+          21.51%
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;

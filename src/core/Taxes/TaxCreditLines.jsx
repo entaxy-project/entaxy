@@ -1,28 +1,46 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Motion, spring } from 'react-motion'
 import { Bar, Line } from '@vx/shape'
 import { Point } from '@vx/point'
 import { PatternLines } from '@vx/pattern'
 import teal from 'material-ui/colors/teal'
-import { calculateTotalTax } from './lib/TaxBrackets'
+import { TaxBrackets, calculateTotalTax } from './lib/TaxBrackets'
 
-const TaxCreditLines = (income, credits, year, province, xScale, yScale, margin, width, height) => {
+const TaxCreditLines = ({
+  income,
+  credits,
+  country,
+  year,
+  region,
+  xScale,
+  yScale,
+  margin,
+  height
+}) => {
   const yMax = height - margin.top - margin.bottom
   const left = {
     income: xScale(income),
     credits: xScale(income - credits)
   }
   const top = {
-    income: yScale(calculateTotalTax(year, province, income)),
-    credits: yScale(calculateTotalTax(year, province, income - credits))
+    income: yScale(calculateTotalTax(TaxBrackets[country][year], region, income)),
+    credits: yScale(calculateTotalTax(TaxBrackets[country][year], region, income - credits))
   }
-  const barWidth = Math.max((left.income - left.credits) || 0, 0)
+  const barWidth = Math.max(left.income - left.credits, 0)
+
   return (
     <Motion
-      defaultStyle={{ left: left.credits || 0, top: top.credits || 0, width: barWidth }}
+      defaultStyle={{
+        left: left.credits,
+        topIncome: top.income,
+        topCredits: top.credits,
+        width: barWidth
+      }}
       style={{
-        left: spring(left.credits || 0),
-        top: spring(top.credits || 0),
+        left: spring(left.credits),
+        topIncome: spring(top.income),
+        topCredits: spring(top.credits),
         width: spring(barWidth)
       }}
     >
@@ -31,14 +49,14 @@ const TaxCreditLines = (income, credits, year, province, xScale, yScale, margin,
           <Line
             key="TaxCredit-vertical"
             from={new Point({ x: style.left, y: yMax })}
-            to={new Point({ x: style.left, y: style.top })}
+            to={new Point({ x: style.left, y: style.topCredits })}
             stroke={teal[500]}
             strokeWidth={1}
           />
           <Line
             key="TaxCredit-horizontal"
-            from={new Point({ x: 0, y: style.top })}
-            to={new Point({ x: style.left, y: style.top })}
+            from={new Point({ x: 0, y: style.topCredits })}
+            to={new Point({ x: style.left, y: style.topCredits })}
             stroke={teal[500]}
             strokeWidth={1}
           />
@@ -52,18 +70,18 @@ const TaxCreditLines = (income, credits, year, province, xScale, yScale, margin,
           />
           <Bar
             width={style.width}
-            height={yMax - top.income}
+            height={yMax - style.topIncome}
             x={style.left}
-            y={top.income}
+            y={style.topIncome}
             fill="url(#dLines)"
             opacity={0.1}
             strokeWidth={1}
           />
           <Bar
             width={style.left}
-            height={style.top - top.income}
+            height={Math.max(0, style.topCredits - style.topIncome)}
             x={0}
-            y={top.income}
+            y={style.topIncome}
             fill="url(#dLines)"
             opacity={0.1}
             strokeWidth={1}
@@ -75,5 +93,20 @@ const TaxCreditLines = (income, credits, year, province, xScale, yScale, margin,
   )
 }
 
-export default TaxCreditLines
+TaxCreditLines.propTypes = {
+  income: PropTypes.number.isRequired,
+  credits: PropTypes.number.isRequired,
+  country: PropTypes.string.isRequired,
+  year: PropTypes.number.isRequired,
+  region: PropTypes.string,
+  xScale: PropTypes.func.isRequired,
+  yScale: PropTypes.func.isRequired,
+  margin: PropTypes.object.isRequired,
+  height: PropTypes.number.isRequired
+}
 
+TaxCreditLines.defaultProps = {
+  region: null
+}
+
+export default TaxCreditLines

@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { withParentSize } from '@vx/responsive'
 import { extent, max } from 'd3-array'
 import { Group } from '@vx/group'
 import { scaleLinear } from '@vx/scale'
@@ -11,10 +12,8 @@ import blueGrey from 'material-ui/colors/blueGrey'
 import IncomeLines from './IncomeLines'
 import TaxCreditLines from './TaxCreditLines'
 import TaxBracketLines from './TaxBracketLines'
-import { IncomeTaxData } from './lib/TaxBrackets'
+import { TaxBrackets, incomeTaxData } from './lib/TaxBrackets'
 import TaxTooltips from './TaxTooltips'
-
-const province = 'Ontario'
 
 // Bounds
 const margin = {
@@ -24,46 +23,41 @@ const margin = {
   right: 0
 }
 
+const x = d => d.income
+const y = d => d.tax
+
 const TaxChart = ({
-  width,
-  height,
+  parentWidth,
+  parentHeight,
+  country,
   year,
+  region,
   income,
   rrsp,
-  taxAmount
+  taxBeforeCredits
 }) => {
-  const data = IncomeTaxData({ year, province, income })
+  const width = parentWidth
+  const height = parentHeight - margin.bottom
   const xMax = width - margin.left - margin.right
   const yMax = height - margin.top - margin.bottom
-
-  const x = (d) => {
-    if (d === undefined) {
-      return 0
-    }
-    return d.income
-  }
-  const y = (d) => {
-    if (d === undefined) {
-      return 0
-    }
-    return d.tax
-  }
-
-  const xScale = scaleLinear({
-    range: [0, xMax],
-    domain: extent(data, x)
-  })
-
-  const yScale = scaleLinear({
-    range: [yMax, 0],
-    domain: [0, max(data, y)]
-  })
+  const data = incomeTaxData(TaxBrackets[country][year], region, income)
+  const xScale = scaleLinear({ range: [0, xMax], domain: extent(data, x) })
+  const yScale = scaleLinear({ range: [yMax, 0], domain: [0, max(data, y)] })
 
   return (
     <div>
       <svg width={width} height={height}>
         <Group top={margin.top} left={margin.left}>
-          {TaxBracketLines(year, province, xScale, yScale, margin, width, height)}
+          <TaxBracketLines
+            country={country}
+            year={year}
+            region={region}
+            xScale={xScale}
+            yScale={yScale}
+            margin={margin}
+            width={width}
+            height={height}
+          />
           <LinePath
             data={data}
             xScale={xScale}
@@ -105,27 +99,53 @@ const TaxChart = ({
             tickFormat={xScale.tickFormat(10, '$,f')}
             tickStroke="#dddddd"
           />
-          {TaxCreditLines(income, rrsp, year, province, xScale, yScale, margin, width, height)}
-          {IncomeLines(income, year, province, xScale, yScale, margin, width, height)}
+          <TaxCreditLines
+            income={income}
+            credits={rrsp}
+            country={country}
+            year={year}
+            region={region}
+            xScale={xScale}
+            yScale={yScale}
+            margin={margin}
+            width={width}
+            height={height}
+          />
+          <IncomeLines
+            income={income}
+            country={country}
+            year={year}
+            region={region}
+            xScale={xScale}
+            yScale={yScale}
+            margin={margin}
+            width={width}
+            height={height}
+          />
         </Group>
       </svg>
       <TaxTooltips
-        tooltipOpen={true}
-        data={{ income, tax: taxAmount }}
-        top={yScale(taxAmount) + margin.bottom}
-        left={xScale(income) + margin.left}
+        data={{ income, tax: taxBeforeCredits }}
+        top={yScale(taxBeforeCredits) + 100}
+        left={Math.min(xMax - 100, xScale(income) + margin.left)}
       />
     </div>
   )
 }
 
 TaxChart.propTypes = {
-  width: PropTypes.number.isRequired,
-  height: PropTypes.number.isRequired,
+  parentWidth: PropTypes.number.isRequired,
+  parentHeight: PropTypes.number.isRequired,
+  country: PropTypes.string.isRequired,
   year: PropTypes.number.isRequired,
+  region: PropTypes.string,
   income: PropTypes.number.isRequired,
   rrsp: PropTypes.number.isRequired,
-  taxAmount: PropTypes.number.isRequired
+  taxBeforeCredits: PropTypes.number.isRequired
 }
 
-export default TaxChart
+TaxChart.defaultProps = {
+  region: null
+}
+
+export default withParentSize(TaxChart)

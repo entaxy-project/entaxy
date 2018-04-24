@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { ParentSize } from '@vx/responsive'
 import { withStyles } from 'material-ui/styles'
 import Grid from 'material-ui/Grid'
 import Paper from 'material-ui/Paper'
@@ -9,7 +8,7 @@ import { FormControl } from 'material-ui/Form'
 import Typography from 'material-ui/Typography'
 import TaxChart from './TaxChart'
 import CurrencyFormat from '../../common/CurrencyFormat/index'
-import { calculateTotalTax, totalMarginalTax } from './lib/TaxBrackets'
+import { TaxBrackets, calculateTotalTax, totalMarginalTax } from './lib/TaxBrackets'
 
 const styles = () => ({
   root: {
@@ -18,66 +17,91 @@ const styles = () => ({
   paper: {
     margin: '10px 5px',
     padding: '20px'
+  },
+  chart: {
+    height: '500px'
   }
 })
 
 class Taxes extends React.Component {
   constructor(props) {
     super(props)
+    const country = 'Canada'
+    const year = 2017
+    const region = 'Ontario'
     const income = 90000
     const rrsp = 10000
     const taxableIncome = income - rrsp
-    const taxAmount = calculateTotalTax(2017, 'Ontario', taxableIncome)
+    const taxAmount = calculateTotalTax(TaxBrackets[country][year], region, taxableIncome)
+    const taxBeforeCredits = calculateTotalTax(TaxBrackets[country][year], region, income)
 
     this.state = {
-      province: 'Ontario',
+      country,
+      year,
+      region,
       income,
       rrsp,
       taxableIncome,
+      taxBeforeCredits,
       taxAmount,
-      marginalTaxRate: totalMarginalTax(2017, 'Ontario', taxableIncome),
+      marginalTaxRate: totalMarginalTax(TaxBrackets[country][year], region, taxableIncome),
       averageTaxRate: taxAmount / (taxableIncome)
     }
   }
 
   handleChange = name => (event) => {
-    const income = name === 'income' ? event.target.value : this.state.income
-    const rrsp = name === 'rrsp' ? event.target.value : this.state.rrsp
+    let income = name === 'income' ? parseFloat(event.target.value) : this.state.income
+    if (Number.isNaN(income)) { income = 0 }
+    let rrsp = name === 'rrsp' ? parseFloat(event.target.value) : this.state.rrsp
+    if (Number.isNaN(rrsp)) { rrsp = 0 }
+    if (rrsp > income) { rrsp = income }
     const taxableIncome = income - rrsp
-    const taxAmount = calculateTotalTax(2017, this.state.province, taxableIncome)
+    const { country, year, region } = this.state
+    const taxAmount = calculateTotalTax(TaxBrackets[country][year], region, taxableIncome)
+    const taxBeforeCredits = calculateTotalTax(TaxBrackets[country][year], region, income)
     this.setState({
-      [name]: event.target.value,
+      income,
+      rrsp,
       taxableIncome,
       taxAmount,
-      marginalTaxRate: totalMarginalTax(2017, this.state.province, taxableIncome),
-      averageTaxRate: taxAmount / (income - rrsp)
+      taxBeforeCredits,
+      marginalTaxRate: totalMarginalTax(TaxBrackets[country][year], region, taxableIncome),
+      averageTaxRate: taxableIncome > 0 ? taxAmount / taxableIncome : 0
     })
   }
 
   render() {
     const { classes } = this.props
+    const {
+      country,
+      year,
+      region,
+      income,
+      rrsp,
+      taxAmount,
+      taxableIncome,
+      taxBeforeCredits,
+      marginalTaxRate,
+      averageTaxRate
+    } = this.state
     const currencyFormatter = new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD' })
     const percentFormatter = new Intl.NumberFormat('en-CA', { style: 'percent', minimumFractionDigits: 2 })
     return (
       <div className={classes.root}>
         <Grid container spacing={0}>
           <Grid item xs={10}>
-            <Paper className={classes.paper}>
+            <Paper className={`${classes.paper} ${classes.chart}`}>
               <Typography variant="headline" gutterBottom align="center">
-                Taxes for 2017
+                Taxes for {region} {year}
               </Typography>
-              <ParentSize>
-                {parent => (
-                  <TaxChart
-                    year={2017}
-                    width={parent.width}
-                    height={500}
-                    income={this.state.income}
-                    rrsp={this.state.rrsp}
-                    taxAmount={this.state.taxAmount}
-                  />)
-                }
-              </ParentSize>
+              <TaxChart
+                country={country}
+                year={year}
+                region={region}
+                income={income}
+                rrsp={rrsp}
+                taxBeforeCredits={taxBeforeCredits}
+              />
             </Paper>
           </Grid>
           <Grid item xs={2}>
@@ -85,12 +109,12 @@ class Taxes extends React.Component {
               <FormControl fullWidth className={classes.formControl}>
                 <InputLabel htmlFor="income">Your income</InputLabel>
                 <Input
-                  value={this.state.income}
+                  value={income}
                   onChange={this.handleChange('income')}
                   inputComponent={CurrencyFormat}
                   className={classes.input}
                   inputProps={{
-                    'aria-label': 'Income for 2017'
+                    'aria-label': `Your income for ${year}`
                   }}
                 />
               </FormControl>
@@ -102,28 +126,28 @@ class Taxes extends React.Component {
               <FormControl fullWidth className={classes.formControl}>
                 <InputLabel htmlFor="rrsp">RRSP contribution</InputLabel>
                 <Input
-                  value={this.state.rrsp}
+                  value={rrsp}
                   onChange={this.handleChange('rrsp')}
                   inputComponent={CurrencyFormat}
                   className={classes.rrsp}
                   inputProps={{
-                    'aria-label': 'RRSP for 2017'
+                    'aria-label': `RRSP for ${year}`
                   }}
                 />
               </FormControl>
             </Paper>
             <Paper className={classes.paper}>
               <Typography>
-                <strong>Taxable income:</strong> {currencyFormatter.format(this.state.taxableIncome)}
+                <strong>Taxable income:</strong> {currencyFormatter.format(taxableIncome)}
               </Typography>
               <Typography>
-                <strong>Tax amount:</strong> {currencyFormatter.format(this.state.taxAmount)}
+                <strong>Tax amount:</strong> {currencyFormatter.format(taxAmount)}
               </Typography>
               <Typography>
-                <strong>Marginal Tax Rate:</strong> {percentFormatter.format(this.state.marginalTaxRate)}
+                <strong>Marginal Tax Rate:</strong> {percentFormatter.format(marginalTaxRate)}
               </Typography>
               <Typography>
-                <strong>Average Tax Rate:</strong> {percentFormatter.format(this.state.averageTaxRate)}
+                <strong>Average Tax Rate:</strong> {percentFormatter.format(averageTaxRate)}
               </Typography>
             </Paper>
           </Grid>

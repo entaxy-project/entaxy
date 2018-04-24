@@ -12,10 +12,11 @@
     "build:pre": "rm -rf node_modules/uri-js/dist/esnext",
     "build:src": "node scripts/build.js",
     "build": "yarn build:pre && yarn build:src",
-    "test": "yarn run lint && yarn run test:ui",
+    "test": "yarn lint && yarn test:ui",
     "test:ui": "node scripts/test.js --env=jsdom --verbose",
     "test:coverage": "node scripts/test.js --env=jsdom --coverage --verbose",
     "test:fix": "yarn lint --fix && yarn test:ui",
+    "test:watch": "node scripts/test.js --env=jsdom --watch --onlyChanged --no-coverage",
     "lint": "eslint src --ext '.js,.jsx' --config .eslintrc",
     "lint:fix": "yarn lint --fix",
     "flux": "flux"
