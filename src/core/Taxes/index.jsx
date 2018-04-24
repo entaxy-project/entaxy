@@ -6,9 +6,14 @@ import Paper from 'material-ui/Paper'
 import Input, { InputLabel } from 'material-ui/Input'
 import { FormControl } from 'material-ui/Form'
 import Typography from 'material-ui/Typography'
-import TaxChart from './TaxChart'
+import Header from '../../common/Header/index'
 import CurrencyFormat from '../../common/CurrencyFormat/index'
+<<<<<<< HEAD
 import { TaxBrackets, calculateTotalTax, totalMarginalTax } from './lib/TaxBrackets'
+=======
+import TaxChart from './TaxChart'
+import { calculateTotalTax, totalMarginalTax } from './lib/TaxBrackets'
+>>>>>>> Added landing page
 
 const styles = () => ({
   root: {
@@ -88,6 +93,7 @@ class Taxes extends React.Component {
     const percentFormatter = new Intl.NumberFormat('en-CA', { style: 'percent', minimumFractionDigits: 2 })
     return (
       <div className={classes.root}>
+        <Header />
         <Grid container spacing={0}>
           <Grid item xs={10}>
             <Paper className={`${classes.paper} ${classes.chart}`}>

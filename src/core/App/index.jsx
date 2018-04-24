@@ -4,16 +4,15 @@ import { connect } from 'react-redux'
 import { createMuiTheme, MuiThemeProvider } from 'material-ui/styles'
 import CssBaseline from 'material-ui/CssBaseline'
 import blueGrey from 'material-ui/colors/blueGrey'
-import teal from 'material-ui/colors/teal'
 import { isUserSignedIn, loadUserData, Person } from 'blockstack'
-import Header from '../../common/Header/index'
 import Routes from '../../routes'
 import { authenticationLogin } from './actions'
+import '../../styles/globals.css'
 
 const theme = createMuiTheme({
   palette: {
     primary: { main: blueGrey[800] },
-    secondary: { main: teal[500] }
+    secondary: { main: '#1B9CC4' }
   }
 })
 
@@ -33,7 +32,6 @@ class App extends React.Component {
     return (
       <CssBaseline>
         <MuiThemeProvider theme={theme}>
-          <Header />
           <Routes />
         </MuiThemeProvider>
       </CssBaseline>
