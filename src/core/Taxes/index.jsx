@@ -7,13 +7,9 @@ import Input, { InputLabel } from 'material-ui/Input'
 import { FormControl } from 'material-ui/Form'
 import Typography from 'material-ui/Typography'
 import Header from '../../common/Header/index'
-import CurrencyFormat from '../../common/CurrencyFormat/index'
-<<<<<<< HEAD
-import { TaxBrackets, calculateTotalTax, totalMarginalTax } from './lib/TaxBrackets'
-=======
 import TaxChart from './TaxChart'
-import { calculateTotalTax, totalMarginalTax } from './lib/TaxBrackets'
->>>>>>> Added landing page
+import CurrencyFormat from '../../common/CurrencyFormat/index'
+import { TaxBrackets, calculateTotalTax, totalMarginalTax } from './lib/TaxBrackets'
 
 const styles = () => ({
   root: {
