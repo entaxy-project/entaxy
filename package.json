@@ -22,6 +22,7 @@
     "flux": "flux"
   },
   "dependencies": {
+    "@material-ui/icons": "^1.0.0-beta.43",
     "@vx/axis": "^0.0.160",
     "@vx/curve": "^0.0.153",
     "@vx/event": "^0.0.153",
@@ -80,7 +81,7 @@
     "jest-enzyme": "^6.0.0",
     "jsdom": "^11.9.0",
     "lodash": "^4.17.5",
-    "material-ui": "^1.0.0-beta.41",
+    "material-ui": "^1.0.0-beta.43",
     "object-assign": "4.1.1",
     "postcss-flexbugs-fixes": "3.2.0",
     "postcss-loader": "2.0.8",
@@ -115,7 +116,7 @@
     "react-test-renderer": "^16.3.1"
   },
   "lint-staged": {
-    "*.{js,css}": [
+    "*.{js,jsx}": [
       "yarn lint --fix",
       "yarn test:coverage",
       "git add"

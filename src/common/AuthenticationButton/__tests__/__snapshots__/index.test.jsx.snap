@@ -24,7 +24,7 @@ exports[`AuthenticationButton matches snapshot 1`] = `
     Login
   </span>
   <span
-    className="MuiTouchRipple-root-19"
+    className="MuiTouchRipple-root-18"
   />
 </button>
 `;

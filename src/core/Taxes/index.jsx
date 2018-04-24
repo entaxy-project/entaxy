@@ -6,6 +6,7 @@ import Paper from 'material-ui/Paper'
 import Input, { InputLabel } from 'material-ui/Input'
 import { FormControl } from 'material-ui/Form'
 import Typography from 'material-ui/Typography'
+import Header from '../../common/Header/index'
 import TaxChart from './TaxChart'
 import CurrencyFormat from '../../common/CurrencyFormat/index'
 import { TaxBrackets, calculateTotalTax, totalMarginalTax } from './lib/TaxBrackets'
@@ -88,6 +89,7 @@ class Taxes extends React.Component {
     const percentFormatter = new Intl.NumberFormat('en-CA', { style: 'percent', minimumFractionDigits: 2 })
     return (
       <div className={classes.root}>
+        <Header />
         <Grid container spacing={0}>
           <Grid item xs={10}>
             <Paper className={`${classes.paper} ${classes.chart}`}>

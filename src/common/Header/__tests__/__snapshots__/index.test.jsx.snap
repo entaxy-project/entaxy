@@ -12,11 +12,13 @@ exports[`Header matches snapshot 1`] = `
       className="Logo-logo-39"
       src="logo.png"
     />
-    <h2
+    <a
       className="MuiTypography-root-40 MuiTypography-title-46 MuiTypography-colorInherit-59 Header-flex-1"
+      href="/"
+      onClick={[Function]}
     >
       Entaxy
-    </h2>
+    </a>
     <button
       className="MuiButtonBase-root-80 MuiButton-root-65 MuiButton-colorInherit-69 login"
       disabled={false}
@@ -40,7 +42,7 @@ exports[`Header matches snapshot 1`] = `
         Login
       </span>
       <span
-        className="MuiTouchRipple-root-83"
+        className="MuiTouchRipple-root-82"
       />
     </button>
   </div>
