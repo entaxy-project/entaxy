@@ -4,7 +4,6 @@ import { Motion, spring } from 'react-motion'
 import { Tooltip } from '@vx/tooltip'
 
 const TaxTooltips = ({
-  tooltipOpen,
   data,
   top,
   left
@@ -12,11 +11,10 @@ const TaxTooltips = ({
   const formater = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' })
   return (
     <Motion
-      defaultStyle={{ left: left || 0, top: top || 0, opacity: 0 }}
+      defaultStyle={{ left, top }}
       style={{
-        left: spring(left || 0),
-        top: spring(top || 0),
-        opacity: spring(tooltipOpen ? 1 : 0)
+        left: spring(left),
+        top: spring(top)
       }}
     >
       {style => (
@@ -24,7 +22,6 @@ const TaxTooltips = ({
           style={{
             top: style.top,
             left: style.left,
-            opacity: style.opacity,
             backgroundColor: 'white',
             color: 'black',
             padding: 12,
@@ -46,7 +43,6 @@ const TaxTooltips = ({
 }
 
 TaxTooltips.propTypes = {
-  tooltipOpen: PropTypes.bool.isRequired,
   data: PropTypes.object.isRequired,
   top: PropTypes.number.isRequired,
   left: PropTypes.number.isRequired

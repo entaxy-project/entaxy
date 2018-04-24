@@ -23,19 +23,8 @@ const margin = {
   right: 0
 }
 
-const x = (d) => {
-  if (d === undefined) {
-    return 0
-  }
-  return d.income
-}
-const y = (d) => {
-  if (d === undefined) {
-    return 0
-  }
-  return d.tax
-}
-
+const x = d => d.income
+const y = d => d.tax
 
 const TaxChart = ({
   parentWidth,
@@ -136,7 +125,6 @@ const TaxChart = ({
         </Group>
       </svg>
       <TaxTooltips
-        tooltipOpen={true}
         data={{ income, tax: taxBeforeCredits }}
         top={yScale(taxBeforeCredits) + 100}
         left={Math.min(xMax - 100, xScale(income) + margin.left)}

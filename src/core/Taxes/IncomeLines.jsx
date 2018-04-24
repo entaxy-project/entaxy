@@ -22,10 +22,10 @@ const IncomeLines = ({
 
   return (
     <Motion
-      defaultStyle={{ left: left || 0, top: top || 0 }}
+      defaultStyle={{ left, top }}
       style={{
-        left: spring(left || 0),
-        top: spring(top || 0)
+        left: spring(left),
+        top: spring(top)
       }}
     >
       {style => (

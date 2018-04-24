@@ -27,20 +27,20 @@ const TaxCreditLines = ({
     income: yScale(calculateTotalTax(TaxBrackets[country][year], region, income)),
     credits: yScale(calculateTotalTax(TaxBrackets[country][year], region, income - credits))
   }
-  const barWidth = Math.max((left.income - left.credits) || 0, 0)
+  const barWidth = Math.max(left.income - left.credits, 0)
 
   return (
     <Motion
       defaultStyle={{
-        left: left.credits || 0,
-        topIncome: top.income || 0,
-        topCredits: top.credits || 0,
+        left: left.credits,
+        topIncome: top.income,
+        topCredits: top.credits,
         width: barWidth
       }}
       style={{
-        left: spring(left.credits || 0),
-        topIncome: spring(top.income || 0),
-        topCredits: spring(top.credits || 0),
+        left: spring(left.credits),
+        topIncome: spring(top.income),
+        topCredits: spring(top.credits),
         width: spring(barWidth)
       }}
     >
