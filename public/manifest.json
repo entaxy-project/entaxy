@@ -1,6 +1,6 @@
 {
-  "short_name": "Entaxy",
-  "name": "A Personal Finance App",
+  "name": "Entaxy",
+  "description": "Your Personal Finance App",
   "icons": [
     {
       "src": "favicon.ico",
@@ -8,7 +8,7 @@
       "type": "image/x-icon"
     }
   ],
-  "start_url": "./index.html",
+  "start_url": "https://entaxy.io",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
