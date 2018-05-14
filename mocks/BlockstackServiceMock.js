@@ -2,9 +2,11 @@ module.exports = {
   isUserSignedIn: jest.fn(),
   isSignInPending: jest.fn(),
   signUserOut: jest.fn(),
+  handlePendingSignIn: jest.fn(),
   loadUserData: () => {
     return {
-      profile: {}
+      profile: {},
+      username: 'mocked username'
     }
   },
   redirectToSignIn: jest.fn(),
@@ -14,7 +16,7 @@ module.exports = {
         return 'mocked name'
       },
       avatarUrl: () => {
-        return 'url'
+        return 'mocked url'
       }
     }
   })

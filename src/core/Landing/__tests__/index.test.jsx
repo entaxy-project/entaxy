@@ -5,9 +5,12 @@ import Landing from '../'
 
 describe('LandingCard', () => {
   it('matches snapshot', () => {
+    const props = {
+      classes: {}
+    }
     const component = renderer.create((
       <BrowserRouter>
-        <Landing />
+        <Landing props={{ ...props }} />
       </BrowserRouter>
     ))
     expect(component.toJSON()).toMatchSnapshot()

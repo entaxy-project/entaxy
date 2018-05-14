@@ -1,15 +1,10 @@
 import React from 'react'
-import renderer from 'react-test-renderer'
-import { BrowserRouter } from 'react-router-dom'
-import Taxes from '../'
+import { shallow } from 'enzyme'
+import { TaxesComponent } from '../'
 
 describe('Taxes', () => {
   it('matches snapshot', () => {
-    const component = renderer.create((
-      <BrowserRouter>
-        <Taxes />
-      </BrowserRouter>
-    ))
-    expect(component.toJSON()).toMatchSnapshot()
+    const wrapper = shallow(<TaxesComponent classes={{ rrsp: {} }} />)
+    expect(wrapper.debug()).toMatchSnapshot()
   })
 })

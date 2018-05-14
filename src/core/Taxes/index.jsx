@@ -24,7 +24,7 @@ const styles = () => ({
   }
 })
 
-class Taxes extends React.Component {
+export class TaxesComponent extends React.Component {
   constructor(props) {
     super(props)
     const country = 'Canada'
@@ -128,13 +128,12 @@ class Taxes extends React.Component {
               <FormControl fullWidth className={classes.formControl}>
                 <InputLabel htmlFor="rrsp">RRSP contribution</InputLabel>
                 <Input
+                  name="rrsp"
                   value={rrsp}
                   onChange={this.handleChange('rrsp')}
                   inputComponent={CurrencyFormat}
                   className={classes.rrsp}
-                  inputProps={{
-                    'aria-label': `RRSP for ${year}`
-                  }}
+                  inputProps={{ 'aria-label': `RRSP for ${year}` }}
                 />
               </FormControl>
             </Paper>
@@ -159,8 +158,8 @@ class Taxes extends React.Component {
   }
 }
 
-Taxes.propTypes = {
+TaxesComponent.propTypes = {
   classes: PropTypes.object.isRequired
 }
 
-export default withStyles(styles)(Taxes)
+export default withStyles(styles)(TaxesComponent)

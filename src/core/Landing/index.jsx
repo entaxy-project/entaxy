@@ -42,7 +42,7 @@ const styles = () => ({
   },
   cards: {
     display: 'flex',
-    'justify-content': 'space-evenly'
+    'flex-direction': 'column'
   },
   right: {
     'background-repeat': 'no-repeat',

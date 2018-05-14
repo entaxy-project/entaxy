@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HandleLogin matches snapshot with logged in user profile 1`] = `
+<button
+  className="MuiButtonBase-root-16 MuiButton-root-1 MuiButton-colorInherit-5"
+  disabled={false}
+  onBlur={[Function]}
+  onClick={[MockFunction]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onKeyUp={[Function]}
+  onMouseDown={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
+  onTouchEnd={[Function]}
+  onTouchMove={[Function]}
+  onTouchStart={[Function]}
+  tabIndex="0"
+  type="button"
+>
+  <span
+    className="MuiButton-label-2"
+  >
+    Test name
+     Logout
+  </span>
+  <span
+    className="MuiTouchRipple-root-18"
+  />
+</button>
+`;
+
+exports[`HandleLogin matches snapshot with logged out user 1`] = `
+<button
+  className="MuiButtonBase-root-16 MuiButton-root-1 MuiButton-colorInherit-5"
+  disabled={false}
+  onBlur={[Function]}
+  onClick={[MockFunction]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onKeyUp={[Function]}
+  onMouseDown={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
+  onTouchEnd={[Function]}
+  onTouchMove={[Function]}
+  onTouchStart={[Function]}
+  tabIndex="0"
+  type="button"
+>
+  <span
+    className="MuiButton-label-2"
+  >
+    Login
+  </span>
+  <span
+    className="MuiTouchRipple-root-18"
+  />
+</button>
+`;

@@ -1,3 +1,0 @@
-export default {
-  AUTHENTICATION_LOGIN: 'AUTHENTICATION_LOGIN'
-}

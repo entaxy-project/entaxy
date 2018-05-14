@@ -1,12 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
-import { devToolsEnhancer } from 'redux-devtools-extension'
-import rootReducer from './reducers'
+import store from './store'
 import App from './core/App/index'
+import { fetchUserData } from './store/user/actions'
 
-const store = createStore(rootReducer, devToolsEnhancer())
+store.dispatch(fetchUserData())
 
 export default (target = document) => {
   ReactDOM.render(

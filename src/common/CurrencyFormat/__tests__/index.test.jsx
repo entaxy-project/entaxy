@@ -23,4 +23,11 @@ describe('CurrencyFormat', () => {
     wrapper.setProps({ value: '' }).mount()
     expect(wrapper.find('input').prop('value')).toEqual('')
   })
+
+  it('triggers value change', () => {
+    const mochOnChange = jest.fn()
+    const wrapper = mount(<CurrencyFormat onChange={mochOnChange} />)
+    wrapper.find('NumberFormat').instance().props.onValueChange('10')
+    expect(mochOnChange).toHaveBeenCalled()
+  })
 })
