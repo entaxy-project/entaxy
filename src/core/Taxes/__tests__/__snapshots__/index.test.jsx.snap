@@ -1,221 +1,71 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Taxes matches snapshot 1`] = `
-<div
-  className="Taxes-root-1"
->
-  <header
-    className="MuiPaper-root-13 MuiPaper-elevation4-19 MuiAppBar-root-5 MuiAppBar-positionStatic-9 MuiAppBar-colorPrimary-11"
-  >
-    <div
-      className="MuiToolbar-root-40 MuiToolbar-gutters-41"
-    >
-      <img
-        alt="Entaxy logo"
-        className="Logo-logo-42"
-        src="logo.png"
-      />
-      <a
-        className="MuiTypography-root-43 MuiTypography-title-49 MuiTypography-colorInherit-62 Header-flex-4"
-        href="/"
-        onClick={[Function]}
-      >
-        Entaxy
-      </a>
-      <button
-        className="MuiButtonBase-root-83 MuiButton-root-68 MuiButton-colorInherit-72 login"
-        disabled={false}
-        onBlur={[Function]}
-        onClick={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        tabIndex="0"
-        type="button"
-      >
-        <span
-          className="MuiButton-label-69"
-        >
-          Login
-        </span>
-        <span
-          className="MuiTouchRipple-root-85"
-        />
-      </button>
-    </div>
-  </header>
-  <div
-    className="MuiGrid-container-92"
-  >
-    <div
-      className="MuiGrid-item-93 MuiGrid-grid-xs-10-127"
-    >
-      <div
-        className="MuiPaper-root-13 MuiPaper-elevation2-17 MuiPaper-rounded-14 Taxes-paper-2 Taxes-chart-3"
-      >
-        <h1
-          className="MuiTypography-root-43 MuiTypography-headline-48 MuiTypography-gutterBottom-60 MuiTypography-alignCenter-56"
-        >
+"<div className={[undefined]}>
+  <WithStyles(Header) />
+  <WithStyles(GridWrapper) container={true} spacing={0}>
+    <WithStyles(GridWrapper) item={true} xs={10}>
+      <WithStyles(Paper) className=\\"undefined undefined\\">
+        <WithStyles(Typography) variant=\\"headline\\" gutterBottom={true} align=\\"center\\">
           Taxes for 
           Ontario
            
           2017
-        </h1>
-        <div
-          style={
-            Object {
-              "height": "100%",
-              "width": "100%",
-            }
-          }
-        />
-      </div>
-    </div>
-    <div
-      className="MuiGrid-item-93 MuiGrid-grid-xs-2-119"
-    >
-      <div
-        className="MuiPaper-root-13 MuiPaper-elevation2-17 MuiPaper-rounded-14 Taxes-paper-2"
-      >
-        <div
-          className="MuiFormControl-root-182 MuiFormControl-fullWidth-185"
-          onBlur={[Function]}
-          onFocus={[Function]}
-        >
-          <label
-            className="MuiFormLabel-root-191 MuiInputLabel-root-186 MuiInputLabel-formControl-187 MuiInputLabel-animated-190 MuiInputLabel-shrink-189"
-            data-shrink={true}
-            htmlFor="income"
-          >
+        </WithStyles(Typography)>
+        <WrappedComponent country=\\"Canada\\" year={2017} region=\\"Ontario\\" income={90000} rrsp={10000} taxBeforeCredits={20282.9731} windowResizeDebounceTime={300} />
+      </WithStyles(Paper)>
+    </WithStyles(GridWrapper)>
+    <WithStyles(GridWrapper) item={true} xs={2}>
+      <WithStyles(Paper) className={[undefined]}>
+        <WithStyles(FormControl) fullWidth={true} className={[undefined]}>
+          <WithStyles(InputLabel) htmlFor=\\"income\\">
             Your income
-          </label>
-          <div
-            className="MuiInput-root-196 MuiInput-formControl-197 MuiInput-underline-200"
-          >
-            <input
-              aria-invalid={false}
-              aria-label="Your income for 2017"
-              aria-required={false}
-              autoComplete={undefined}
-              autoFocus={undefined}
-              className="MuiInput-input-204"
-              defaultValue={undefined}
-              disabled={false}
-              id={undefined}
-              name={undefined}
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onKeyUp={undefined}
-              onMouseUp={[Function]}
-              placeholder={undefined}
-              readOnly={undefined}
-              required={undefined}
-              rows={undefined}
-              type="text"
-              value="$90,000"
-            />
-          </div>
-        </div>
-      </div>
-      <div
-        className="MuiPaper-root-13 MuiPaper-elevation2-17 MuiPaper-rounded-14 Taxes-paper-2"
-      >
-        <h3
-          className="MuiTypography-root-43 MuiTypography-subheading-50"
-        >
+          </WithStyles(InputLabel)>
+          <WithStyles(Input) value={90000} onChange={[Function]} inputComponent={[Function: CurrencyFormat]} className={[undefined]} inputProps={{...}} />
+        </WithStyles(FormControl)>
+      </WithStyles(Paper)>
+      <WithStyles(Paper) className={[undefined]}>
+        <WithStyles(Typography) variant=\\"subheading\\">
           Tax credits
-        </h3>
-        <div
-          className="MuiFormControl-root-182 MuiFormControl-fullWidth-185"
-          onBlur={[Function]}
-          onFocus={[Function]}
-        >
-          <label
-            className="MuiFormLabel-root-191 MuiInputLabel-root-186 MuiInputLabel-formControl-187 MuiInputLabel-animated-190 MuiInputLabel-shrink-189"
-            data-shrink={true}
-            htmlFor="rrsp"
-          >
+        </WithStyles(Typography)>
+        <WithStyles(FormControl) fullWidth={true} className={[undefined]}>
+          <WithStyles(InputLabel) htmlFor=\\"rrsp\\">
             RRSP contribution
-          </label>
-          <div
-            className="MuiInput-root-196 MuiInput-formControl-197 MuiInput-underline-200"
-          >
-            <input
-              aria-invalid={false}
-              aria-label="RRSP for 2017"
-              aria-required={false}
-              autoComplete={undefined}
-              autoFocus={undefined}
-              className="MuiInput-input-204"
-              defaultValue={undefined}
-              disabled={false}
-              id={undefined}
-              name={undefined}
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onKeyUp={undefined}
-              onMouseUp={[Function]}
-              placeholder={undefined}
-              readOnly={undefined}
-              required={undefined}
-              rows={undefined}
-              type="text"
-              value="$10,000"
-            />
-          </div>
-        </div>
-      </div>
-      <div
-        className="MuiPaper-root-13 MuiPaper-elevation2-17 MuiPaper-rounded-14 Taxes-paper-2"
-      >
-        <p
-          className="MuiTypography-root-43 MuiTypography-body1-52"
-        >
+          </WithStyles(InputLabel)>
+          <WithStyles(Input) name=\\"rrsp\\" value={10000} onChange={[Function]} inputComponent={[Function: CurrencyFormat]} className={{...}} inputProps={{...}} />
+        </WithStyles(FormControl)>
+      </WithStyles(Paper)>
+      <WithStyles(Paper) className={[undefined]}>
+        <WithStyles(Typography)>
           <strong>
             Taxable income:
           </strong>
            
           CA$80,000.00
-        </p>
-        <p
-          className="MuiTypography-root-43 MuiTypography-body1-52"
-        >
+        </WithStyles(Typography)>
+        <WithStyles(Typography)>
           <strong>
             Tax amount:
           </strong>
            
           CA$17,205.49
-        </p>
-        <p
-          className="MuiTypography-root-43 MuiTypography-body1-52"
-        >
+        </WithStyles(Typography)>
+        <WithStyles(Typography)>
           <strong>
             Marginal Tax Rate:
           </strong>
            
           29.65%
-        </p>
-        <p
-          className="MuiTypography-root-43 MuiTypography-body1-52"
-        >
+        </WithStyles(Typography)>
+        <WithStyles(Typography)>
           <strong>
             Average Tax Rate:
           </strong>
            
           21.51%
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
+        </WithStyles(Typography)>
+      </WithStyles(Paper)>
+    </WithStyles(GridWrapper)>
+  </WithStyles(GridWrapper)>
+</div>"
 `;

@@ -23,8 +23,12 @@ function CurrencyFormat(props) {
 }
 
 CurrencyFormat.propTypes = {
-  inputRef: PropTypes.func.isRequired,
+  inputRef: PropTypes.func,
   onChange: PropTypes.func.isRequired
+}
+
+CurrencyFormat.defaultProps = {
+  inputRef: null
 }
 
 export default CurrencyFormat

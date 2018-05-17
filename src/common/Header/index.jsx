@@ -5,10 +5,9 @@ import AppBar from 'material-ui/AppBar'
 import Toolbar from 'material-ui/Toolbar'
 import Typography from 'material-ui/Typography'
 import { withStyles } from 'material-ui/styles'
-
 import Logo from '../Logo/index'
-import AuthenticationButton from './../AuthenticationButton/index'
-import ProfilePicture from './../ProfilePicture/index'
+import LoginButton from './../LoginButton'
+import ProfilePicture from './../ProfilePicture'
 
 const styles = {
   flex: {
@@ -31,7 +30,7 @@ const Header = ({ classes }) => (
         Entaxy
       </Typography>
       <ProfilePicture />
-      <AuthenticationButton />
+      <LoginButton />
     </Toolbar>
   </AppBar>
 )

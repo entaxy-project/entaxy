@@ -1,7 +1,7 @@
+/* eslint-disable no-console */
 import React from 'react'
-import { withStyles } from 'material-ui/styles'
-import { isUserSignedIn, loadUserData, Person } from 'blockstack'
-import { getName } from '../../lib/IdentityService'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 
 const styles = {
   profilePicture: {
@@ -9,14 +9,18 @@ const styles = {
   }
 }
 
-const ProfilePicture = () => {
-  if (isUserSignedIn()) {
-    const userData = loadUserData()
-    const { profile } = userData
-    const person = new Person(profile)
+const mapStateToProps = ({ user }) => {
+  return { user }
+}
 
+const ProfilePicture = ({ user }) => {
+  if (user.isAuthenticated) {
     return (
-      <img src={person.avatarUrl()} alt={getName(person)} style={styles.profilePicture} />
+      <img
+        src={user.pictureUrl}
+        alt={user.name}
+        style={styles.profilePicture}
+      />
     )
   }
 
@@ -24,7 +28,7 @@ const ProfilePicture = () => {
 }
 
 ProfilePicture.propTypes = {
-  // classes: PropTypes.object.isRequired
+  user: PropTypes.object.isRequired
 }
 
-export default withStyles(styles)(ProfilePicture)
+export default connect(mapStateToProps)(ProfilePicture)

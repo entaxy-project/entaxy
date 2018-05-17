@@ -1,10 +1,16 @@
 import _ from 'lodash'
-import types from './../types'
+import types from '../types'
 
 describe('default exported types', () => {
   it('should have the default exported types', () => {
     const expectedTypes = [
-      'AUTHENTICATION_LOGIN'
+      'FETCH_USER_DATA',
+      'USER_LOGIN',
+      'USER_LOGIN_SUCCESS',
+      'USER_LOGOUT',
+      'USER_HANDLE_LOGIN',
+      'USER_LOGGED_IN',
+      'USER_LOGIN_ERROR'
     ]
 
     expect(_.difference(_.keys(types), expectedTypes)).toEqual([])
