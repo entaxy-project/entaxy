@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import Button from 'material-ui/Button'
+import Button from '@material-ui/core/Button'
 import { userLogin, userLogout } from '../../store/user/actions'
 
 const mapStateToProps = ({ user }) => {

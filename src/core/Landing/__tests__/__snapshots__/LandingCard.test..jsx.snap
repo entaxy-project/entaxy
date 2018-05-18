@@ -47,7 +47,7 @@ exports[`LandingCard matches snapshot 1`] = `
         >
           <svg
             aria-hidden="true"
-            className="MuiSvgIcon-root-69"
+            className="MuiSvgIcon-root-70"
             color={undefined}
             focusable="false"
             viewBox="0 0 24 24"
@@ -60,7 +60,7 @@ exports[`LandingCard matches snapshot 1`] = `
           </svg>
         </span>
         <span
-          className="MuiTouchRipple-root-75"
+          className="MuiTouchRipple-root-76"
         />
       </a>
     </div>

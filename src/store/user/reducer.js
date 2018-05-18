@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import types from './types'
 
 export const initialState = {
@@ -23,6 +24,8 @@ export default (state = initialState, action) => {
       return { ...state, isLoginPending: false }
     case types.USER_LOGIN_ERROR:
       return { ...state, error: action.payload }
+    case types.USER_UPDATE_COUNTRY:
+      return { ...state, country: action.country }
     default:
       return state
   }

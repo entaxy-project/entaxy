@@ -2,7 +2,7 @@
 
 exports[`HandleLogin matches snapshot with logged in user profile 1`] = `
 <button
-  className="MuiButtonBase-root-16 MuiButton-root-1 MuiButton-colorInherit-5"
+  className="MuiButtonBase-root-17 MuiButton-root-1 MuiButton-colorInherit-6"
   disabled={false}
   onBlur={[Function]}
   onClick={[MockFunction]}
@@ -25,14 +25,14 @@ exports[`HandleLogin matches snapshot with logged in user profile 1`] = `
      Logout
   </span>
   <span
-    className="MuiTouchRipple-root-18"
+    className="MuiTouchRipple-root-20"
   />
 </button>
 `;
 
 exports[`HandleLogin matches snapshot with logged out user 1`] = `
 <button
-  className="MuiButtonBase-root-16 MuiButton-root-1 MuiButton-colorInherit-5"
+  className="MuiButtonBase-root-17 MuiButton-root-1 MuiButton-colorInherit-6"
   disabled={false}
   onBlur={[Function]}
   onClick={[MockFunction]}
@@ -54,7 +54,7 @@ exports[`HandleLogin matches snapshot with logged out user 1`] = `
     Login
   </span>
   <span
-    className="MuiTouchRipple-root-18"
+    className="MuiTouchRipple-root-20"
   />
 </button>
 `;

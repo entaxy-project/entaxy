@@ -7,7 +7,7 @@ import { scaleLinear } from '@vx/scale'
 import { LinePath } from '@vx/shape'
 import { AxisBottom, AxisLeft } from '@vx/axis'
 import { curveBasis } from '@vx/curve'
-import blueGrey from 'material-ui/colors/blueGrey'
+import blueGrey from '@material-ui/core/colors/blueGrey'
 
 import IncomeLines from './IncomeLines'
 import TaxCreditLines from './TaxCreditLines'

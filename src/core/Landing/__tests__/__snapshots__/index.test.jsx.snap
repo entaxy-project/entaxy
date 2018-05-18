@@ -5,7 +5,7 @@ exports[`LandingCard matches snapshot 1`] = `
   className="MuiGrid-container-9 Landing-root-1"
 >
   <div
-    className="MuiGrid-item-10 MuiGrid-grid-xs-6-40 Landing-left-2"
+    className="MuiGrid-item-10 MuiGrid-grid-xs-6-41 Landing-left-2"
   >
     <div
       className="Landing-logo-3"
@@ -31,30 +31,30 @@ exports[`LandingCard matches snapshot 1`] = `
       className="MuiGrid-container-9 Landing-cards-7"
     >
       <div
-        className="MuiPaper-root-102 MuiPaper-elevation2-106 MuiPaper-rounded-103 MuiCard-root-101 LandingCard-card-99"
+        className="MuiPaper-root-103 MuiPaper-elevation2-107 MuiPaper-rounded-104 MuiCard-root-102 LandingCard-card-100"
       >
         <div
-          className="MuiCardHeader-root-129"
+          className="MuiCardHeader-root-130"
         >
           <div
-            className="MuiCardHeader-content-132"
+            className="MuiCardHeader-content-133"
           >
             <span
-              className="MuiTypography-root-135 MuiTypography-headline-140 MuiCardHeader-title-133"
+              className="MuiTypography-root-136 MuiTypography-headline-141 MuiCardHeader-title-134"
             >
               Income Taxes
             </span>
             <span
-              className="MuiTypography-root-135 MuiTypography-body1-144 MuiTypography-colorTextSecondary-157 MuiCardHeader-subheader-134"
+              className="MuiTypography-root-136 MuiTypography-body1-145 MuiTypography-colorTextSecondary-158 MuiCardHeader-subheader-135"
             >
               At some point you will wonder how they work
             </span>
           </div>
           <div
-            className="MuiCardHeader-action-131"
+            className="MuiCardHeader-action-132"
           >
             <a
-              className="MuiButtonBase-root-165 MuiIconButton-root-159 MuiIconButton-colorSecondary-162 LandingCard-cardButton-100"
+              className="MuiButtonBase-root-166 MuiIconButton-root-160 MuiIconButton-colorSecondary-163 LandingCard-cardButton-101"
               href="/taxes"
               onBlur={[Function]}
               onClick={[Function]}
@@ -72,11 +72,11 @@ exports[`LandingCard matches snapshot 1`] = `
               variant="fab"
             >
               <span
-                className="MuiIconButton-label-164"
+                className="MuiIconButton-label-165"
               >
                 <svg
                   aria-hidden="true"
-                  className="MuiSvgIcon-root-167"
+                  className="MuiSvgIcon-root-169"
                   color={undefined}
                   focusable="false"
                   viewBox="0 0 24 24"
@@ -89,37 +89,37 @@ exports[`LandingCard matches snapshot 1`] = `
                 </svg>
               </span>
               <span
-                className="MuiTouchRipple-root-173"
+                className="MuiTouchRipple-root-175"
               />
             </a>
           </div>
         </div>
       </div>
       <div
-        className="MuiPaper-root-102 MuiPaper-elevation2-106 MuiPaper-rounded-103 MuiCard-root-101 LandingCard-card-99"
+        className="MuiPaper-root-103 MuiPaper-elevation2-107 MuiPaper-rounded-104 MuiCard-root-102 LandingCard-card-100"
       >
         <div
-          className="MuiCardHeader-root-129"
+          className="MuiCardHeader-root-130"
         >
           <div
-            className="MuiCardHeader-content-132"
+            className="MuiCardHeader-content-133"
           >
             <span
-              className="MuiTypography-root-135 MuiTypography-headline-140 MuiCardHeader-title-133"
+              className="MuiTypography-root-136 MuiTypography-headline-141 MuiCardHeader-title-134"
             >
               Portfolio
             </span>
             <span
-              className="MuiTypography-root-135 MuiTypography-body1-144 MuiTypography-colorTextSecondary-157 MuiCardHeader-subheader-134"
+              className="MuiTypography-root-136 MuiTypography-body1-145 MuiTypography-colorTextSecondary-158 MuiCardHeader-subheader-135"
             >
               ETFs, Crypto, etc
             </span>
           </div>
           <div
-            className="MuiCardHeader-action-131"
+            className="MuiCardHeader-action-132"
           >
             <a
-              className="MuiButtonBase-root-165 MuiIconButton-root-159 MuiIconButton-colorSecondary-162 LandingCard-cardButton-100"
+              className="MuiButtonBase-root-166 MuiIconButton-root-160 MuiIconButton-colorSecondary-163 LandingCard-cardButton-101"
               href="/portfolio"
               onBlur={[Function]}
               onClick={[Function]}
@@ -137,11 +137,11 @@ exports[`LandingCard matches snapshot 1`] = `
               variant="fab"
             >
               <span
-                className="MuiIconButton-label-164"
+                className="MuiIconButton-label-165"
               >
                 <svg
                   aria-hidden="true"
-                  className="MuiSvgIcon-root-167"
+                  className="MuiSvgIcon-root-169"
                   color={undefined}
                   focusable="false"
                   viewBox="0 0 24 24"
@@ -154,7 +154,7 @@ exports[`LandingCard matches snapshot 1`] = `
                 </svg>
               </span>
               <span
-                className="MuiTouchRipple-root-173"
+                className="MuiTouchRipple-root-175"
               />
             </a>
           </div>
@@ -163,7 +163,7 @@ exports[`LandingCard matches snapshot 1`] = `
     </div>
   </div>
   <div
-    className="MuiGrid-item-10 MuiGrid-grid-xs-6-40 Landing-right-8"
+    className="MuiGrid-item-10 MuiGrid-grid-xs-6-41 Landing-right-8"
   />
 </div>
 `;

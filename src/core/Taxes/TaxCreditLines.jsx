@@ -4,7 +4,7 @@ import { Motion, spring } from 'react-motion'
 import { Bar, Line } from '@vx/shape'
 import { Point } from '@vx/point'
 import { PatternLines } from '@vx/pattern'
-import teal from 'material-ui/colors/teal'
+import teal from '@material-ui/core/colors/teal'
 import { TaxBrackets, calculateTotalTax } from './lib/TaxBrackets'
 
 const TaxCreditLines = ({
