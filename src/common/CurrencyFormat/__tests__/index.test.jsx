@@ -1,6 +1,6 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import Input from 'material-ui/Input'
+import Input from '@material-ui/core/Input'
 import CurrencyFormat from '../'
 
 describe('CurrencyFormat', () => {

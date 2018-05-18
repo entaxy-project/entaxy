@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { withStyles } from 'material-ui/styles'
-import Grid from 'material-ui/Grid'
-import grey from 'material-ui/colors/grey'
+import { withStyles } from '@material-ui/core/styles'
+import Grid from '@material-ui/core/Grid'
+import grey from '@material-ui/core/colors/grey'
 import LandingCard from './LandingCard'
 import landingImage from './landing.png'
 

@@ -1,7 +1,7 @@
 import React from 'react'
-import { createMuiTheme, MuiThemeProvider } from 'material-ui/styles'
-import CssBaseline from 'material-ui/CssBaseline'
-import blueGrey from 'material-ui/colors/blueGrey'
+import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles'
+import CssBaseline from '@material-ui/core/CssBaseline'
+import blueGrey from '@material-ui/core/colors/blueGrey'
 import Routes from '../../routes'
 import '../../styles/globals.css'
 

@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Line } from '@vx/shape'
 import { Point } from '@vx/point'
-import red from 'material-ui/colors/red'
-import blueGrey from 'material-ui/colors/blueGrey'
+import red from '@material-ui/core/colors/red'
+import blueGrey from '@material-ui/core/colors/blueGrey'
 import { TaxBrackets, taxBracketData } from './lib/TaxBrackets'
 
 const TaxBracketLines = ({

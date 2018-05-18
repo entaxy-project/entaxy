@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Line } from '@vx/shape'
 import { Point } from '@vx/point'
 import { Motion, spring } from 'react-motion'
-import teal from 'material-ui/colors/teal'
+import teal from '@material-ui/core/colors/teal'
 import { TaxBrackets, calculateTotalTax } from './lib/TaxBrackets'
 
 const IncomeLines = ({
