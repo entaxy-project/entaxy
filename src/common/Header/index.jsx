@@ -1,35 +1,22 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
-import Typography from '@material-ui/core/Typography'
 import { withStyles } from '@material-ui/core/styles'
 import Logo from '../Logo/index'
 import LoginButton from './../LoginButton'
-import ProfilePicture from './../ProfilePicture'
 
 const styles = {
-  flex: {
-    flex: 1,
-    textDecoration: 'none'
+  toolbar: {
+    display: 'flex',
+    'justify-content': 'space-between'
   }
 }
 
 const Header = ({ classes }) => (
   <AppBar position="static">
-    <Toolbar>
-      <Logo width="30px" />
-      <Typography
-        variant="title"
-        color="inherit"
-        className={classes.flex}
-        component={Link}
-        to="/"
-      >
-        Entaxy
-      </Typography>
-      <ProfilePicture />
+    <Toolbar className={classes.toolbar}>
+      <Logo />
       <LoginButton />
     </Toolbar>
   </AppBar>

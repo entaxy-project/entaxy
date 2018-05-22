@@ -19,5 +19,7 @@ module.exports = {
         return 'mocked url'
       }
     }
-  })
+  }),
+  putFile: jest.fn(),
+  getFile: jest.fn()
 }

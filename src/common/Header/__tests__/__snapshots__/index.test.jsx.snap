@@ -5,22 +5,26 @@ exports[`Header matches snapshot 1`] = `
   className="MuiPaper-root-10 MuiPaper-elevation4-16 MuiAppBar-root-2 MuiAppBar-positionStatic-6 MuiAppBar-colorPrimary-8"
 >
   <div
-    className="MuiToolbar-root-37 MuiToolbar-gutters-38"
+    className="MuiToolbar-root-37 MuiToolbar-gutters-38 Header-toolbar-1"
   >
-    <img
-      alt="Entaxy logo"
+    <div
       className="Logo-logo-39"
-      src="logo.png"
-    />
-    <a
-      className="MuiTypography-root-40 MuiTypography-title-46 MuiTypography-colorInherit-59 Header-flex-1"
-      href="/"
-      onClick={[Function]}
     >
-      Entaxy
-    </a>
+      <img
+        alt="Entaxy logo"
+        className="Logo-image-40"
+        src="logo.png"
+      />
+      <a
+        className="MuiTypography-root-42 MuiTypography-title-48 MuiTypography-colorInherit-61 Logo-title-41"
+        href="/"
+        onClick={[Function]}
+      >
+        Entaxy
+      </a>
+    </div>
     <button
-      className="MuiButtonBase-root-80 MuiButton-root-64 MuiButton-colorInherit-69"
+      className="MuiButtonBase-root-83 MuiButton-root-67 MuiButton-colorInherit-72"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -37,12 +41,12 @@ exports[`Header matches snapshot 1`] = `
       type="button"
     >
       <span
-        className="MuiButton-label-65"
+        className="MuiButton-label-68"
       >
         Login
       </span>
       <span
-        className="MuiTouchRipple-root-83"
+        className="MuiTouchRipple-root-86"
       />
     </button>
   </div>
