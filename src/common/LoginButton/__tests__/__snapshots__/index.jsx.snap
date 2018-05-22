@@ -1,33 +1,116 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`HandleLogin matches snapshot with logged in user profile 1`] = `
-<button
-  className="MuiButtonBase-root-17 MuiButton-root-1 MuiButton-colorInherit-6"
-  disabled={false}
-  onBlur={[Function]}
-  onClick={[MockFunction]}
-  onFocus={[Function]}
-  onKeyDown={[Function]}
-  onKeyUp={[Function]}
-  onMouseDown={[Function]}
-  onMouseLeave={[Function]}
-  onMouseUp={[Function]}
-  onTouchEnd={[Function]}
-  onTouchMove={[Function]}
-  onTouchStart={[Function]}
-  tabIndex="0"
-  type="button"
->
-  <span
-    className="MuiButton-label-2"
+Array [
+  <div
+    className={undefined}
   >
-    Test name
-     Logout
-  </span>
-  <span
-    className="MuiTouchRipple-root-20"
-  />
-</button>
+    <div
+      className="MuiAvatar-root-27"
+    />
+    <button
+      aria-owns={null}
+      className="MuiButtonBase-root-17 MuiButton-root-1 MuiButton-colorInherit-6"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex="0"
+      type="button"
+    >
+      <span
+        className="MuiButton-label-2"
+      >
+        Test name
+      </span>
+      <span
+        className="MuiTouchRipple-root-20"
+      />
+    </button>
+  </div>,
+  <div
+    data-placement={undefined}
+    style={
+      Object {
+        "left": 0,
+        "opacity": 0,
+        "pointerEvents": "none",
+        "position": "absolute",
+        "top": 0,
+        "zIndex": 1,
+      }
+    }
+  >
+    <div
+      className="MuiPaper-root-30 MuiPaper-elevation2-34 MuiPaper-rounded-31"
+      id="menu-list-grow"
+      style={
+        Object {
+          "opacity": 0,
+          "transform": "scale(0.75, 0.5625)",
+          "transformOrigin": "0 0 0",
+        }
+      }
+    >
+      <ul
+        className="MuiList-root-57 MuiList-padding-58"
+        onBlur={[Function]}
+        onKeyDown={[Function]}
+        role="menu"
+      >
+        <li
+          className="MuiButtonBase-root-17 MuiListItem-root-63 MuiListItem-default-66 MuiListItem-gutters-70 MuiListItem-button-71 MuiMenuItem-root-61"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          role="menuitem"
+          tabIndex={0}
+        >
+          Profile
+          <span
+            className="MuiTouchRipple-root-20"
+          />
+        </li>
+        <li
+          className="MuiButtonBase-root-17 MuiListItem-root-63 MuiListItem-default-66 MuiListItem-gutters-70 MuiListItem-button-71 MuiMenuItem-root-61"
+          onBlur={[Function]}
+          onClick={[MockFunction]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          role="menuitem"
+          tabIndex={-1}
+        >
+          Logout
+          <span
+            className="MuiTouchRipple-root-20"
+          />
+        </li>
+      </ul>
+    </div>
+  </div>,
+]
 `;
 
 exports[`HandleLogin matches snapshot with logged out user 1`] = `

@@ -1,10 +1,7 @@
-/* eslint-disable no-console */
 import * as blockstack from 'blockstack'
 import types from './types'
 
 export const fetchUserData = () => {
-  console.log(blockstack.isUserSignedIn())
-  console.log(blockstack.isSignInPending())
   if (blockstack.isUserSignedIn()) {
     const { username, profile } = blockstack.loadUserData()
     const person = new blockstack.Person(profile)

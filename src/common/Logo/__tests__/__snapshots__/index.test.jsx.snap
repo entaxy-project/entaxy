@@ -1,9 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Logo matches snapshot 1`] = `
-<img
-  alt="Entaxy logo"
+<div
   className="Logo-logo-1"
-  src="logo.png"
-/>
+>
+  <img
+    alt="Entaxy logo"
+    className="Logo-image-2"
+    src="logo.png"
+  />
+  <a
+    className="MuiTypography-root-4 MuiTypography-title-10 MuiTypography-colorInherit-23 Logo-title-3"
+    href="/"
+    onClick={[Function]}
+  >
+    Entaxy
+  </a>
+</div>
 `;
