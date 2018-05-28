@@ -21,7 +21,9 @@ Pull down the repository:
 `git clone https://github.com/twg/entaxy.git`
 
 Install and run:
+
 `npm install`
+
 `npm start`
 
 ## Feature roadmap
