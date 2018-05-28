@@ -34,11 +34,16 @@ Clone the repository on your local machine:
 
 ### To run the app
 
+1- Make sure npm is installed: https://www.npmjs.com/get-npm
+
+2- Make sure git is installed: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
+
 Go to the repository in your terminal and execute:
 
 `npm install`
 
 `npm start`
+
 
 ## Feature roadmap
 * Investments
