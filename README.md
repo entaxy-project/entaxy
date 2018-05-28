@@ -26,7 +26,7 @@ Install and run:
 
 `npm start`
 
-## To run build:
+## Running the build on your local machine
 
 Clone the repository on your local machine: 
 `git clone https://github.com/twg/entaxy.git`
