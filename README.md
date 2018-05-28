@@ -25,18 +25,19 @@ Clone the repository on your local machine:
 
 2- Make sure git is installed: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 
-Pull the code
+Pull the code: 
+
 `git clone git@github.com:twg/wikiwash.git`
 
-Fetch package dependencies
+Fetch package dependencies:
 
 `npm install`
 
-Launch the dev server
+Launch the dev server:
 
 `npm start`
 
-`open http://localhost:3000/`
+open `http://localhost:3000/`
 
 
 ## Feature roadmap
