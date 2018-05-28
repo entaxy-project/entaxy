@@ -26,6 +26,16 @@ Install and run:
 
 `npm start`
 
+## To build:
+
+Pull down the repository: 
+`git clone https://github.com/twg/entaxy.git`
+
+To run:
+`npm install`
+
+`npm start`
+
 ## Feature roadmap
 * Investments
 	* ETFs / Cryptocurrencies / Stocks / Mutual funds
