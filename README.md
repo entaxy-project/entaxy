@@ -27,7 +27,7 @@ Clone the repository on your local machine:
 
 Pull the code: 
 
-`git clone git@github.com:twg/wikiwash.git`
+`git clone git@github.com:twg/qa-entaxy.git`
 
 Fetch package dependencies:
 
