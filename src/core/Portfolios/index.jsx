@@ -1,18 +1,21 @@
+/* eslint-disable no-param-reassign */
 import React from 'react'
-import { withStyles } from 'material-ui/styles'
-import Grid from 'material-ui/Grid'
-import Paper from 'material-ui/Paper'
-import Typography from 'material-ui/Typography'
+import { withStyles } from '@material-ui/core/styles'
+import PropTypes from 'prop-types'
+import Grid from '@material-ui/core/Grid'
+import Paper from '@material-ui/core/Paper'
+import Typography from '@material-ui/core/Typography'
 import _ from 'lodash'
-import qtPortfolio from './portfolios/qt.json'
-import rbcdiPortfolio from './portfolios/rbcdi.json'
 
-import { FormControl, FormControlLabel, FormGroup, FormLabel } from 'material-ui/Form'
-import Checkbox from 'material-ui/Checkbox'
-
+import FormControl from '@material-ui/core/FormControl'
+import FormControlLabel from '@material-ui/core/FormControlLabel'
+import FormGroup from '@material-ui/core/FormGroup'
+import FormLabel from '@material-ui/core/FormLabel'
+import Checkbox from '@material-ui/core/Checkbox'
+import Header from '../../common/Header/index'
 import PortfolioTable from './PortfolioTable'
 import { preparePieChartDataFromPortfolioTable, prepareTableDataForSelectedPortfolios } from './lib/util'
-import Pie from './Pie'
+import AllocationPie from './AllocationPie'
 
 const styles = () => ({
   root: {
@@ -25,13 +28,10 @@ const styles = () => ({
 })
 
 class Portfolios extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
 
-    const portfolios = _.flatten([
-      qtPortfolio,
-      rbcdiPortfolio
-    ])
+    const portfolios = _.flatten([])
 
     const displayPortfolios = _.reduce(portfolios, (result, portfolio) => {
       result[portfolio.account.uuid] = true
@@ -64,15 +64,16 @@ class Portfolios extends React.Component {
     })
   }
 
-  render () {
-    const {classes} = this.props
+  render() {
+    const { classes } = this.props
 
     return (
       <div className={classes.root}>
+        <Header />
         <Grid container spacing={0}>
           <Grid item xs={4}>
             <Paper className={classes.paper}>
-              {Pie(this.state.pieData, 400, 400)}
+              {AllocationPie(this.state.pieData, 400, 400)}
             </Paper>
             <Paper className={classes.paper}>
               <FormControl component="fieldset">
@@ -107,6 +108,10 @@ class Portfolios extends React.Component {
       </div>
     )
   }
+}
+
+Portfolios.propTypes = {
+  classes: PropTypes.object.isRequired
 }
 
 export default withStyles(styles)(Portfolios)

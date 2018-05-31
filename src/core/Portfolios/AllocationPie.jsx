@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Pie } from '@vx/shape'
 import { Group } from '@vx/group'
 
@@ -6,7 +7,13 @@ function Label({ x, y, children }) {
   return (<text textAnchor="middle" x={x} y={y} dy=".33em">{children}</text>)
 }
 
-export default (data, width, height, events = false, margin = {
+Label.propTypes = {
+  x: PropTypes.number.isRequired,
+  y: PropTypes.number.isRequired,
+  children: PropTypes.object.isRequired
+}
+
+const AllocationPie = (data, width, height, margin = {
   top: 30, left: 20, right: 20, bottom: 110
 }) => {
   if (width < 10) return null
@@ -21,7 +28,7 @@ export default (data, width, height, events = false, margin = {
         height={height}
         fill="url('#gradients')"
       />
-      <Group top={height / 2 - margin.top} left={width / 2}>
+      <Group top={(height / 2) - margin.top} left={width / 2}>
         <Pie
           data={data}
           pieValue={d => d.percentage}
@@ -40,3 +47,5 @@ export default (data, width, height, events = false, margin = {
     </svg>
   )
 }
+
+export default AllocationPie

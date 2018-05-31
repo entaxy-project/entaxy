@@ -1,10 +1,15 @@
 import React from 'react'
 import _ from 'lodash'
-import Table, { TableBody, TableCell, TableFooter, TableHead, TableRow } from 'material-ui/Table'
+import Table from '@material-ui/core/Table'
+import TableBody from '@material-ui/core/TableBody'
+import TableFooter from '@material-ui/core/TableFooter'
+import TableCell from '@material-ui/core/TableCell'
+import TableHead from '@material-ui/core/TableHead'
+import TableRow from '@material-ui/core/TableRow'
 
 import { getBookValue, getMarketValue, getPL } from './lib/util'
 
-export default (classes, portfolioTable) => {
+const PortfolioTable = (classes, portfolioTable) => {
   const currencyFormatter = new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD' })
 
   return (
@@ -45,3 +50,5 @@ export default (classes, portfolioTable) => {
       </TableFooter>
     </Table>)
 }
+
+export default PortfolioTable

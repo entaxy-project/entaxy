@@ -1,34 +1,37 @@
+/* eslint-disable no-param-reassign */
 import _ from 'lodash'
 
-function shift (number, precision, reverseShift) {
+function shift(number, precision, reverseShift) {
+  let adjustedPrecision
+
   if (reverseShift) {
-    precision = -precision
+    adjustedPrecision = -precision
   }
   const numArray = (`${number}`).split('e')
-  return +(`${numArray[0]}e${numArray[1] ? (+numArray[1] + precision) : precision}`)
+  return +(`${numArray[0]}e${numArray[1] ? (+numArray[1] + adjustedPrecision) : adjustedPrecision}`)
 }
 
-function round (number, precision) {
+function round(number, precision) {
   return shift(Math.round(shift(number, precision, false)), precision, true)
 }
 
-function getMarketValue (portfolios) {
+function getMarketValue(portfolios) {
   return _.reduce(portfolios, (result, position) => result + position.marketValue, 0)
 }
 
-function getBookValue (portfolios) {
+function getBookValue(portfolios) {
   return _.reduce(portfolios, (result, position) => result + position.bookValue, 0)
 }
 
-function getPL (portfolios) {
+function getPL(portfolios) {
   return _.reduce(portfolios, (result, position) => result + position.pl, 0)
 }
 
-function prepareTableDataForSelectedPortfolios (selectedAccounts, portfolios) {
+function prepareTableDataForSelectedPortfolios(selectedAccounts, portfolios) {
   const holdings = _.reduce(portfolios, (result, portfolio) => {
     if (selectedAccounts[portfolio.account.uuid]) {
-      result = _.reduce(portfolio.normalizedPositions, (result, position) => {
-        const existingPosition = _.find(result, {symbol: position.symbol})
+      const normalizedResult = _.reduce(portfolio.normalizedPositions, (res, position) => {
+        const existingPosition = _.find(res, { symbol: position.symbol })
         if (existingPosition) {
           existingPosition.bookValue += position.bookValue
           existingPosition.marketValue += position.marketValue
@@ -36,10 +39,11 @@ function prepareTableDataForSelectedPortfolios (selectedAccounts, portfolios) {
           existingPosition.quantity += position.quantity
           existingPosition.averagePrice = existingPosition.bookValue / existingPosition.quantity
         } else {
-          result.push(_.cloneDeep(position))
+          res.push(_.cloneDeep(position))
         }
-        return result
+        return res
       }, result)
+      return normalizedResult
     }
     return result
   }, [])
@@ -53,7 +57,7 @@ function prepareTableDataForSelectedPortfolios (selectedAccounts, portfolios) {
   return _.sortBy(holdings, ['symbol'])
 }
 
-function preparePieChartDataFromPortfolioTable (portfolioTable) {
+function preparePieChartDataFromPortfolioTable(portfolioTable) {
   return _.map(portfolioTable, (holding) => {
     return {
       symbol: holding.symbol,

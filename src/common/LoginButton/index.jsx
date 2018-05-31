@@ -9,6 +9,7 @@ import MenuList from '@material-ui/core/MenuList'
 import Paper from '@material-ui/core/Paper'
 import Grow from '@material-ui/core/Grow'
 import ClickAwayListener from '@material-ui/core/ClickAwayListener'
+import Tooltip from '@material-ui/core/Tooltip'
 import { withStyles } from '@material-ui/core/styles'
 import { userLogin, userLogout } from '../../store/user/actions'
 
@@ -60,10 +61,12 @@ export class LoginButtonComponent extends React.Component {
           <Reference>
             {({ ref }) => (
               <div ref={ref} className={classes.root}>
-                <Avatar
-                  src={user.pictureUrl}
-                  alt={user.name}
-                />
+                <Tooltip id="tooltip-icon" title={user.username}>
+                  <Avatar
+                    src={user.pictureUrl}
+                    alt={user.name}
+                  />
+                </Tooltip>
                 <Button
                   color="inherit"
                   aria-owns={open ? 'menu-list-grow' : null}
