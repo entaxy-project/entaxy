@@ -4,6 +4,7 @@ import HandleLogin from './common/HandleLogin'
 import Landing from './core/Landing'
 import Taxes from './core/Taxes'
 import Portfolios from './core/Portfolios'
+import DataSources from './core/Portfolios/DataSources'
 
 const Routes = () => (
   <BrowserRouter basename={process.env.PUBLIC_URL}>
@@ -12,6 +13,7 @@ const Routes = () => (
       <Route exact path="/handle-login" component={HandleLogin} />
       <Route exact path="/taxes" component={Taxes} />
       <Route path="/portfolio" component={Portfolios} />
+      <Route path="/data-sources" component={DataSources} />
     </Switch>
   </BrowserRouter>
 )

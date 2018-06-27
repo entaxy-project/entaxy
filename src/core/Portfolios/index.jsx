@@ -1,12 +1,11 @@
 /* eslint-disable no-param-reassign */
+import _ from 'lodash'
 import React from 'react'
 import { withStyles } from '@material-ui/core/styles'
 import PropTypes from 'prop-types'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
-import _ from 'lodash'
-
 import FormControl from '@material-ui/core/FormControl'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import FormGroup from '@material-ui/core/FormGroup'
@@ -14,7 +13,10 @@ import FormLabel from '@material-ui/core/FormLabel'
 import Checkbox from '@material-ui/core/Checkbox'
 import Header from '../../common/Header/index'
 import PortfolioTable from './PortfolioTable'
-import { preparePieChartDataFromPortfolioTable, prepareTableDataForSelectedPortfolios } from './lib/util'
+import {
+  preparePieChartDataFromPortfolioTable,
+  prepareTableDataForSelectedPortfolios
+} from './lib/util'
 import AllocationPie from './AllocationPie'
 
 const styles = () => ({

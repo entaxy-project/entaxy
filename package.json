@@ -22,8 +22,8 @@
     "flux": "flux"
   },
   "dependencies": {
-    "@material-ui/core": "^1.0.0-rc.1",
-    "@material-ui/icons": "^1.0.0-rc.0",
+    "@material-ui/core": "^1.3.0",
+    "@material-ui/icons": "^1.1.0",
     "@vx/axis": "^0.0.160",
     "@vx/curve": "^0.0.153",
     "@vx/event": "^0.0.153",
@@ -106,11 +106,11 @@
     "sw-precache-webpack-plugin": "0.11.4",
     "typeface-roboto": "^0.0.54",
     "url-loader": "0.6.2",
+    "uuid": "^3.2.1",
     "webpack": "3.8.1",
     "webpack-dev-server": "2.9.4",
     "webpack-manifest-plugin": "1.3.2",
-    "whatwg-fetch": "2.0.3",
-    "uuid": "^3.2.1"
+    "whatwg-fetch": "2.0.3"
   },
   "devDependencies": {
     "coveralls": "^3.0.0",
