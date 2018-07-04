@@ -1,6 +1,7 @@
 [![Build Status](https://travis-ci.org/entaxy-project/entaxy.svg?branch=master)](https://travis-ci.org/entaxy-project/entaxy)
 [![Coverage Status](https://coveralls.io/repos/github/entaxy-project/entaxy/badge.svg?branch=master)](https://coveralls.io/github/entaxy-project/entaxy?branch=master)
 
+"Kamal Added THIS TO REMOVE"
 
 # Entaxy
 
