@@ -63,7 +63,7 @@ const Landing = ({ classes }) => (
         Your Personal Finance Simple & Private
         <div className={classes.description}>
           Insights into your finances,
-          without sacrificing your data.
+          without sacrificing your data
         </div>
       </div>
       <Grid container className={classes.cards}>

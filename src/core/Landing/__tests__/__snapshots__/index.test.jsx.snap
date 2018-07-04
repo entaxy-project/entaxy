@@ -24,7 +24,7 @@ exports[`LandingCard matches snapshot 1`] = `
       <div
         className="Landing-description-6"
       >
-        Insights into your finances, without sacrificing your data.
+        Insights into your finances, without sacrificing your data
       </div>
     </div>
     <div
