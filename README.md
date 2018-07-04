@@ -13,7 +13,7 @@ Using beautiful data visualizations we want to build an opinionated framework th
 
 Production site: https://entaxy.io
 
-Staging site: https://entaxy-staging.firebaseapp.com/
+Staging site: http://entaxy-staging.s3-website.ca-central-1.amazonaws.com/
 
 ## To build:
 
