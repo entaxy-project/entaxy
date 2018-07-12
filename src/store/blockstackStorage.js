@@ -4,9 +4,10 @@ const filename = 'entaxy.json'
 
 export const loadState = () => {
   if (isUserSignedIn()) {
-    return getFile(filename)
+    const stuff = getFile(filename)
       .then(data => JSON.parse(data))
       .catch(() => undefined)
+    return stuff
   }
   return undefined
 }

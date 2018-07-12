@@ -4,9 +4,8 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import throttle from 'lodash/throttle'
 import thunkMiddleware from 'redux-thunk'
 import rootReducer from './rootReducer'
-import { loadState, saveState } from './blockstackStorage'
+import { saveState } from './blockstackStorage'
 
-const persistedState = loadState()
 const middlewares = [thunkMiddleware]
 
 if (process.env.NODE_ENV === 'development') {
@@ -16,7 +15,6 @@ if (process.env.NODE_ENV === 'development') {
 
 const store = createStore(
   rootReducer,
-  persistedState,
   composeWithDevTools(applyMiddleware(...middlewares))
 )
 

@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import types from './types'
 
 export const initialState = {

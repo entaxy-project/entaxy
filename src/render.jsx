@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
@@ -5,6 +6,7 @@ import store from './store'
 import App from './core/App/index'
 import { fetchUserData } from './store/user/actions'
 
+console.log(store)
 store.dispatch(fetchUserData())
 
 export default (target = document) => {

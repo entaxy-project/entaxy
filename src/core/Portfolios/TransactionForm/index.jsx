@@ -1,17 +1,21 @@
 /* eslint-disable no-unused-vars */
 
 import React from 'react'
+import { compose } from 'recompose'
 import { withStyles } from '@material-ui/core/styles'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import Dialog from '@material-ui/core/Dialog'
 import DialogActions from '@material-ui/core/DialogActions'
 import DialogContent from '@material-ui/core/DialogContent'
-import DialogContentText from '@material-ui/core/DialogContentText'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import Button from '@material-ui/core/Button'
-import Input from '@material-ui/core/Input'
+import TextField from '@material-ui/core/TextField'
+import InputAdornment from '@material-ui/core/InputAdornment'
+import { withFormik } from 'formik'
+import { addTransaction } from '../../../store/transactions/actions'
 
-const styles = theme => ({
+const styles = () => ({
   root: {
     display: 'inline'
   },
@@ -20,7 +24,17 @@ const styles = theme => ({
   }
 })
 
-class TransactionForm extends React.Component {
+const mapStateToProps = ({ transactions }) => {
+  return { transactions }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    handleSave: (transaction) => { dispatch(addTransaction(transaction)) }
+  }
+}
+
+class TransactionDialog extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -37,7 +51,13 @@ class TransactionForm extends React.Component {
   }
 
   render() {
-    const { classes } = this.props
+    const {
+      classes,
+      handleSave,
+      handleSubmit,
+      values,
+      handleChange
+    } = this.props
     return (
       <div className={classes.root}>
         <Button size="small" color="inherit" onClick={this.handleClickOpen}>
@@ -49,49 +69,99 @@ class TransactionForm extends React.Component {
           onClose={this.handleClose}
         >
           <DialogTitle id="form-dialog-title">Add new transaction</DialogTitle>
-          <DialogContent>
-            <Input
-              placeholder="Source"
-              inputProps={{ 'aria-label': 'Source' }}
-              className={classes.input}
-            />
-            <Input
-              placeholder="Ticker"
-              inputProps={{ 'aria-label': 'Ticker' }}
-              className={classes.input}
-            />
-            <Input
-              placeholder="Shares"
-              inputProps={{ 'aria-label': 'Shares' }}
-              className={classes.input}
-            />
-            <Input
-              placeholder="Purchase Price"
-              inputProps={{ 'aria-label': 'Price' }}
-              className={classes.input}
-            />
-            <Input
-              placeholder="Purchase date"
-              inputProps={{ 'aria-label': 'Date' }}
-              className={classes.input}
-            />
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={this.handleClose} color="primary">
-              Cancel
-            </Button>
-            <Button onClick={this.handleClose} color="primary">
-              Save
-            </Button>
-          </DialogActions>
+          <form onSubmit={handleSubmit}>
+            <DialogContent>
+              <TextField
+                label="Source"
+                inputProps={{ 'aria-label': 'Source', required: true }}
+                className={classes.input}
+                value={values.source || ''}
+                name="source"
+                onChange={handleChange}
+                autoFocus
+              />
+              <TextField
+                label="Ticker"
+                inputProps={{ 'aria-label': 'Ticker', required: true }}
+                className={classes.input}
+                value={values.ticker}
+                name="ticker"
+                onChange={handleChange}
+              />
+              <TextField
+                label="Shares"
+                inputProps={{ 'aria-label': 'Shares', required: true }}
+                className={classes.input}
+                value={values.shares}
+                name="shares"
+                onChange={handleChange}
+              />
+              <TextField
+                type="number"
+                label="Purchase Price"
+                InputProps={{
+                  startAdornment: <InputAdornment position="start">$</InputAdornment>,
+                  inputProps: { 'aria-label': 'Purchase Price', required: true }
+                }}
+                className={classes.input}
+                value={values.price}
+                name="price"
+                onChange={handleChange}
+              />
+              <TextField
+                type="date"
+                label="Purchase date"
+                inputProps={{ 'aria-label': 'Purchase date', required: true }}
+                className={classes.input}
+                value={values.date}
+                name="date"
+                onChange={handleChange}
+                InputLabelProps={{ shrink: true }}
+              />
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={this.handleClose} color="primary">Close</Button>
+              <Button type="submit" color="primary">Save</Button>
+            </DialogActions>
+          </form>
         </Dialog>
       </div>
     )
   }
 }
 
-TransactionForm.propTypes = {
-  classes: PropTypes.object.isRequired
+TransactionDialog.propTypes = {
+  classes: PropTypes.object.isRequired,
+  handleSave: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  values: PropTypes.object.isRequired,
+  handleChange: PropTypes.func.isRequired
 }
 
-export default withStyles(styles)(TransactionForm)
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  withStyles(styles),
+  withFormik({
+    mapPropsToValues: (props) => {
+      return {
+        source: '',
+        ticker: '',
+        shares: '',
+        price: '',
+        date: ''
+      }
+    },
+    handleSubmit: (values, { props, setSubmitting, resetForm }) => {
+      setSubmitting(true)
+      props.handleSave({
+        source: values.source,
+        ticker: values.ticker,
+        shares: values.shares,
+        price: values.price,
+        date: values.date
+      })
+      resetForm()
+      setSubmitting(false)
+    }
+  })
+)(TransactionDialog)
