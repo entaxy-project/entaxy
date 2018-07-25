@@ -15,13 +15,13 @@ beforeEach(() => {
 })
 
 describe('user actions', () => {
-  describe('fetchUserData', () => {
+  describe('loadUserData', () => {
     it('signed in user should load the profile', () => {
       const isUserSignedInSpy = jest.spyOn(blockstack, 'isUserSignedIn')
       isUserSignedInSpy.mockReturnValue(true)
 
-      expect(actions.fetchUserData()).toEqual({
-        type: types.FETCH_USER_DATA,
+      expect(actions.loadUserData()).toEqual({
+        type: types.LOAD_USER_DATA,
         payload: {
           isAuthenticated: true,
           name: 'mocked name',
@@ -38,8 +38,8 @@ describe('user actions', () => {
       isUserSignedInSpy.mockReturnValue(false)
       isSignInPendingSpy.mockReturnValue(true)
 
-      expect(actions.fetchUserData()).toEqual({
-        type: types.FETCH_USER_DATA,
+      expect(actions.loadUserData()).toEqual({
+        type: types.LOAD_USER_DATA,
         payload: {
           isLoginPending: true
         }
@@ -54,7 +54,7 @@ describe('user actions', () => {
       isUserSignedInSpy.mockReturnValue(false)
       isSignInPendingSpy.mockReturnValue(false)
 
-      expect(actions.fetchUserData()).toEqual({ type: types.FETCH_USER_DATA })
+      expect(actions.loadUserData()).toEqual({ type: types.LOAD_USER_DATA })
       expect(isUserSignedInSpy).toHaveBeenCalled()
       expect(isSignInPendingSpy).toHaveBeenCalled()
     })
@@ -89,9 +89,8 @@ describe('user actions', () => {
       return store.dispatch(actions.handleBlockstackLogin())
         .then(() => {
           expect(store.getActions()).toEqual([
-            { type: 'USER_HANDLE_LOGIN' },
             { type: 'USER_LOGIN_SUCCESS' },
-            { type: 'FETCH_USER_DATA' }
+            { type: 'LOAD_USER_DATA' }
           ])
         })
     })
@@ -105,7 +104,6 @@ describe('user actions', () => {
       return store.dispatch(actions.handleBlockstackLogin())
         .then(() => {
           expect(store.getActions()).toEqual([
-            { type: 'USER_HANDLE_LOGIN' },
             {
               type: 'USER_LOGIN_ERROR',
               payload: new Error('Error message')

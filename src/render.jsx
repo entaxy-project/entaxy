@@ -4,10 +4,9 @@ import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import store from './store'
 import App from './core/App/index'
-import { fetchUserData } from './store/user/actions'
+import { loadUserData } from './store/user/actions'
 
-console.log(store)
-store.dispatch(fetchUserData())
+store.dispatch(loadUserData())
 
 export default (target = document) => {
   ReactDOM.render(

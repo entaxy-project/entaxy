@@ -55,4 +55,3 @@ DataSources.propTypes = {
 }
 
 export default withStyles(styles)(DataSources)
-

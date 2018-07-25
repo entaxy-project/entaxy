@@ -6,11 +6,28 @@ import TransactionForm from '../../core/Portfolios/TransactionForm'
 const TopNav = () => (
   <div>
     <Route
+      path="/transactions"
+      render={(() => (
+        <div>
+          <Button size="small" color="inherit" component={NavLink} to="/data-sources">
+            Manage Data Sources
+          </Button>
+          <Button size="small" color="inherit" component={NavLink} to="/portfolio">
+            Portfolio
+          </Button>
+          <TransactionForm />
+        </div>
+      ))}
+    />
+    <Route
       path="/portfolio"
       render={(() => (
         <div>
           <Button size="small" color="inherit" component={NavLink} to="/data-sources">
             Manage Data Sources
+          </Button>
+          <Button size="small" color="inherit" component={NavLink} to="/transactions">
+            Transactions
           </Button>
           <TransactionForm />
         </div>

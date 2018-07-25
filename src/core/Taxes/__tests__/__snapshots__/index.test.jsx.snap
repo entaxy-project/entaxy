@@ -3,8 +3,8 @@
 exports[`Taxes matches snapshot 1`] = `
 "<div className={[undefined]}>
   <WithStyles(Header) />
-  <WithStyles(GridWrapper) container={true} spacing={0}>
-    <WithStyles(GridWrapper) item={true} xs={10}>
+  <WithStyles(Grid) container={true} spacing={0}>
+    <WithStyles(Grid) item={true} xs={10}>
       <WithStyles(Paper) className=\\"undefined undefined\\">
         <WithStyles(Typography) variant=\\"headline\\" gutterBottom={true} align=\\"center\\">
           Taxes for 
@@ -14,8 +14,8 @@ exports[`Taxes matches snapshot 1`] = `
         </WithStyles(Typography)>
         <WrappedComponent country=\\"Canada\\" year={2017} region=\\"Ontario\\" income={90000} rrsp={10000} taxBeforeCredits={20282.9731} windowResizeDebounceTime={300} />
       </WithStyles(Paper)>
-    </WithStyles(GridWrapper)>
-    <WithStyles(GridWrapper) item={true} xs={2}>
+    </WithStyles(Grid)>
+    <WithStyles(Grid) item={true} xs={2}>
       <WithStyles(Paper) className={[undefined]}>
         <WithStyles(FormControl) fullWidth={true} className={[undefined]}>
           <WithStyles(InputLabel) htmlFor=\\"income\\">
@@ -65,7 +65,7 @@ exports[`Taxes matches snapshot 1`] = `
           21.51%
         </WithStyles(Typography)>
       </WithStyles(Paper)>
-    </WithStyles(GridWrapper)>
-  </WithStyles(GridWrapper)>
+    </WithStyles(Grid)>
+  </WithStyles(Grid)>
 </div>"
 `;

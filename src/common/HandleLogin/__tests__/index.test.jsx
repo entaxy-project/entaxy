@@ -8,7 +8,6 @@ describe('HandleLogin', () => {
   it('matches snapshot with logged out user', () => {
     const component = renderer.create((
       <HandleLoginComponent
-        user={{ isLoginPending: false }}
         handlePendingSignIn={jest.fn()}
       />
     ))
