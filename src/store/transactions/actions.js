@@ -1,8 +1,8 @@
-/* eslint-disable import/prefer-default-export */
+import uuid from 'uuid/v4'
 import types from './types'
 
 export const addTransaction = (transaction) => {
-  return { type: types.ADD_TRANSACTION, payload: transaction }
+  return { type: types.ADD_TRANSACTION, payload: { ...transaction, id: uuid() } }
 }
 
 export const loadTransactions = (transactions) => {

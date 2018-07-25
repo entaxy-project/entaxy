@@ -12,6 +12,7 @@ import DialogTitle from '@material-ui/core/DialogTitle'
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
 import InputAdornment from '@material-ui/core/InputAdornment'
+import AddIcon from '@material-ui/icons/Add'
 import { withFormik } from 'formik'
 import { addTransaction } from '../../../store/transactions/actions'
 
@@ -23,10 +24,6 @@ const styles = () => ({
     margin: '5px'
   }
 })
-
-const mapStateToProps = ({ transactions }) => {
-  return { transactions }
-}
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -53,15 +50,19 @@ class TransactionDialog extends React.Component {
   render() {
     const {
       classes,
-      handleSave,
       handleSubmit,
       values,
       handleChange
     } = this.props
     return (
       <div className={classes.root}>
-        <Button size="small" color="inherit" onClick={this.handleClickOpen}>
-          New Transaction
+        <Button
+          variant="fab"
+          color="primary"
+          aria-label="New Transaction"
+          onClick={this.handleClickOpen}
+        >
+          <AddIcon />
         </Button>
         <Dialog
           aria-labelledby="form-dialog-title"
@@ -77,6 +78,15 @@ class TransactionDialog extends React.Component {
                 className={classes.input}
                 value={values.source || ''}
                 name="source"
+                onChange={handleChange}
+                autoFocus
+              />
+              <TextField
+                label="Type"
+                inputProps={{ 'aria-label': 'Type', required: true }}
+                className={classes.input}
+                value={values.type || ''}
+                name="type"
                 onChange={handleChange}
                 autoFocus
               />
@@ -98,10 +108,10 @@ class TransactionDialog extends React.Component {
               />
               <TextField
                 type="number"
-                label="Purchase Price"
+                label="Price per unit"
                 InputProps={{
                   startAdornment: <InputAdornment position="start">$</InputAdornment>,
-                  inputProps: { 'aria-label': 'Purchase Price', required: true }
+                  inputProps: { 'aria-label': 'Price per unit', required: true }
                 }}
                 className={classes.input}
                 value={values.price}
@@ -110,11 +120,11 @@ class TransactionDialog extends React.Component {
               />
               <TextField
                 type="date"
-                label="Purchase date"
-                inputProps={{ 'aria-label': 'Purchase date', required: true }}
+                label="Date"
+                inputProps={{ 'aria-label': 'Date', required: true }}
                 className={classes.input}
-                value={values.date}
-                name="date"
+                value={values.created_at}
+                name="created_at"
                 onChange={handleChange}
                 InputLabelProps={{ shrink: true }}
               />
@@ -132,33 +142,34 @@ class TransactionDialog extends React.Component {
 
 TransactionDialog.propTypes = {
   classes: PropTypes.object.isRequired,
-  handleSave: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   values: PropTypes.object.isRequired,
   handleChange: PropTypes.func.isRequired
 }
 
 export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
+  connect(null, mapDispatchToProps),
   withStyles(styles),
   withFormik({
     mapPropsToValues: (props) => {
       return {
         source: '',
+        type: '',
         ticker: '',
         shares: '',
         price: '',
-        date: ''
+        created_at: ''
       }
     },
     handleSubmit: (values, { props, setSubmitting, resetForm }) => {
       setSubmitting(true)
       props.handleSave({
         source: values.source,
+        type: values.type,
         ticker: values.ticker,
         shares: values.shares,
         price: values.price,
-        date: values.date
+        created_at: values.created_at
       })
       resetForm()
       setSubmitting(false)
