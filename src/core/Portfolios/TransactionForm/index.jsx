@@ -14,7 +14,7 @@ import TextField from '@material-ui/core/TextField'
 import InputAdornment from '@material-ui/core/InputAdornment'
 import AddIcon from '@material-ui/icons/Add'
 import { withFormik } from 'formik'
-import { addTransaction } from '../../../store/transactions/actions'
+import { createTransaction } from '../../../store/transactions/actions'
 
 const styles = () => ({
   root: {
@@ -27,7 +27,7 @@ const styles = () => ({
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleSave: (transaction) => { dispatch(addTransaction(transaction)) }
+    handleSave: (transaction) => { dispatch(createTransaction(transaction)) }
   }
 }
 
@@ -82,6 +82,15 @@ class TransactionDialog extends React.Component {
                 autoFocus
               />
               <TextField
+                label="Account"
+                inputProps={{ 'aria-label': 'Account', required: true }}
+                className={classes.input}
+                value={values.account || ''}
+                name="account"
+                onChange={handleChange}
+                autoFocus
+              />
+              <TextField
                 label="Type"
                 inputProps={{ 'aria-label': 'Type', required: true }}
                 className={classes.input}
@@ -130,8 +139,8 @@ class TransactionDialog extends React.Component {
               />
             </DialogContent>
             <DialogActions>
-              <Button onClick={this.handleClose} color="primary">Close</Button>
               <Button type="submit" color="primary">Save</Button>
+              <Button onClick={this.handleClose} color="primary">Close</Button>
             </DialogActions>
           </form>
         </Dialog>
@@ -153,8 +162,9 @@ export default compose(
   withFormik({
     mapPropsToValues: (props) => {
       return {
-        source: '',
-        type: '',
+        source: 'Questrade',
+        account: 'RRSP',
+        type: 'Buy',
         ticker: '',
         shares: '',
         price: '',
@@ -165,6 +175,7 @@ export default compose(
       setSubmitting(true)
       props.handleSave({
         source: values.source,
+        account: values.account,
         type: values.type,
         ticker: values.ticker,
         shares: values.shares,

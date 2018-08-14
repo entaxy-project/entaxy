@@ -13,9 +13,15 @@ import TableCell from '@material-ui/core/TableCell'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import Button from '@material-ui/core/Button'
+import IconButton from '@material-ui/core/IconButton'
 import { NavLink } from 'react-router-dom'
+import EditIcon from '@material-ui/icons/Edit'
+import DeleteIcon from '@material-ui/icons/Delete'
 import Header from '../../../common/Header/index'
 import TransactionForm from '../TransactionForm'
+import confirm from '../../../util/confirm'
+import { subtotalSelector } from '../../../store/transactions/selectors'
+import { deleteTransaction } from '../../../store/transactions/actions'
 
 const styles = theme => ({
   root: {
@@ -34,11 +40,29 @@ const styles = theme => ({
   }
 })
 
-const mapStateToProps = ({ transactions }) => {
-  return { transactions }
+const mapStateToProps = (state) => {
+  return {
+    transactions: state.transactions,
+    total: subtotalSelector(state)
+  }
 }
 
-const Transactions = ({ classes, transactions }) => {
+const mapDispatchToProps = (dispatch) => {
+  return {
+    handleDelete: (transactionId) => {
+      confirm('Delete transaction?', 'Are you sure?').then(() => {
+        dispatch(deleteTransaction(transactionId))
+      })
+    }
+  }
+}
+
+const Transactions = ({
+  classes,
+  transactions,
+  total,
+  handleDelete
+}) => {
   const currencyFormatter = new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD' })
 
   return (
@@ -61,15 +85,18 @@ const Transactions = ({ classes, transactions }) => {
               </Button>
             </div>
             <Typography variant="headline" gutterBottom align="center">Transactions</Typography>
+            <p>{total}</p>
             <Table className={classes.table}>
               <TableHead>
                 <TableRow>
                   <TableCell>Source</TableCell>
+                  <TableCell>Account</TableCell>
                   <TableCell>Type</TableCell>
                   <TableCell>Ticker</TableCell>
                   <TableCell numeric>Shares</TableCell>
                   <TableCell numeric>Price</TableCell>
                   <TableCell numeric>Date</TableCell>
+                  <TableCell />
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -77,11 +104,30 @@ const Transactions = ({ classes, transactions }) => {
                   return (
                     <TableRow key={transaction.id}>
                       <TableCell>{transaction.source}</TableCell>
+                      <TableCell>{transaction.account}</TableCell>
                       <TableCell>{transaction.type}</TableCell>
                       <TableCell>{transaction.ticker}</TableCell>
                       <TableCell numeric>{transaction.shares}</TableCell>
                       <TableCell numeric>{currencyFormatter.format(transaction.price)}</TableCell>
                       <TableCell numeric>{transaction.created_at}</TableCell>
+                      <TableCell>
+                        <IconButton
+                          variant="fab"
+                          color="primary"
+                          aria-label="Edit Transaction"
+                          onClick={handleDelete}
+                        >
+                          <EditIcon />
+                        </IconButton>
+                        <IconButton
+                          variant="fab"
+                          color="primary"
+                          aria-label="Delete Transaction"
+                          onClick={() => handleDelete(transaction.id)}
+                        >
+                          <DeleteIcon />
+                        </IconButton>
+                      </TableCell>
                     </TableRow>
                   )
                 })}
@@ -96,10 +142,12 @@ const Transactions = ({ classes, transactions }) => {
 
 Transactions.propTypes = {
   classes: PropTypes.object.isRequired,
-  transactions: PropTypes.array.isRequired
+  transactions: PropTypes.array.isRequired,
+  total: PropTypes.number.isRequired,
+  handleDelete: PropTypes.func.isRequired
 }
 
 export default compose(
-  connect(mapStateToProps),
+  connect(mapStateToProps, mapDispatchToProps),
   withStyles(styles)
 )(Transactions)
