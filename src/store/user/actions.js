@@ -1,7 +1,9 @@
 import * as blockstack from 'blockstack'
 import types from './types'
-import { loadState } from '../blockstackStorage'
+import store from '../index'
+import * as storage from '../blockstackStorage'
 import { loadTransactions } from '../transactions/actions'
+import { loadMarketValues } from '../marketValues/actions'
 
 export const dataIsLoading = (bool) => {
   return {
@@ -32,8 +34,9 @@ export const loadUserData = () => {
         pictureUrl: person.avatarUrl()
       }))
 
-      loadState().then((state) => {
+      storage.loadState().then((state) => {
         dispatch(loadTransactions(state.transactions))
+        dispatch(loadMarketValues(state.marketValues))
         dispatch(dataIsLoading(false))
       })
     }
@@ -67,4 +70,8 @@ export const handleBlockstackLogin = () => {
 export const userLogout = () => {
   blockstack.signUserOut()
   return { type: types.USER_LOGOUT }
+}
+
+export const saveState = () => {
+  storage.saveState(store.getState())
 }

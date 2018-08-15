@@ -108,6 +108,7 @@ class TransactionDialog extends React.Component {
                 onChange={handleChange}
               />
               <TextField
+                type="number"
                 label="Shares"
                 inputProps={{ 'aria-label': 'Shares', required: true }}
                 className={classes.input}
@@ -117,14 +118,15 @@ class TransactionDialog extends React.Component {
               />
               <TextField
                 type="number"
-                label="Price per unit"
+                label="Book Value"
                 InputProps={{
                   startAdornment: <InputAdornment position="start">$</InputAdornment>,
-                  inputProps: { 'aria-label': 'Price per unit', required: true }
+                  inputProps: { 'aria-label': 'Book Value', required: true }
                 }}
                 className={classes.input}
-                value={values.price}
-                name="price"
+                value={values.bookValue}
+                name="bookValue"
+                helperText="The original purchase cost"
                 onChange={handleChange}
               />
               <TextField
@@ -165,10 +167,10 @@ export default compose(
         source: 'Questrade',
         account: 'RRSP',
         type: 'Buy',
-        ticker: '',
-        shares: '',
-        price: '',
-        created_at: ''
+        ticker: 'VCN.TO',
+        shares: 10,
+        bookValue: 100,
+        created_at: '2018-01-01'
       }
     },
     handleSubmit: (values, { props, setSubmitting, resetForm }) => {
@@ -179,7 +181,7 @@ export default compose(
         type: values.type,
         ticker: values.ticker,
         shares: values.shares,
-        price: values.price,
+        bookValue: values.bookValue,
         created_at: values.created_at
       })
       resetForm()

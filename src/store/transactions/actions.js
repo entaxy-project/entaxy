@@ -1,24 +1,20 @@
 import uuid from 'uuid/v4'
 import types from './types'
-import store from '../index'
-import { saveState } from '../blockstackStorage'
-
-
-export const storeTransactions = () => {
-  saveState(store.getState())
-  return null
-}
+import { saveState } from '../user/actions'
+import { updateMarketValues } from '../marketValues/actions'
 
 export const createTransaction = (transaction) => {
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch({ type: types.CREATE_TRANSACTION, payload: { ...transaction, id: uuid() } })
-    dispatch(storeTransactions)
+    await dispatch(updateMarketValues())
+    saveState()
   }
 }
 export const deleteTransaction = (index) => {
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch({ type: types.DELETE_TRANSACTION, payload: index })
-    dispatch(storeTransactions)
+    await dispatch(updateMarketValues())
+    saveState()
   }
 }
 

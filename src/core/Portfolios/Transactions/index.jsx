@@ -20,7 +20,6 @@ import DeleteIcon from '@material-ui/icons/Delete'
 import Header from '../../../common/Header/index'
 import TransactionForm from '../TransactionForm'
 import confirm from '../../../util/confirm'
-import { subtotalSelector } from '../../../store/transactions/selectors'
 import { deleteTransaction } from '../../../store/transactions/actions'
 
 const styles = theme => ({
@@ -42,8 +41,7 @@ const styles = theme => ({
 
 const mapStateToProps = (state) => {
   return {
-    transactions: state.transactions,
-    total: subtotalSelector(state)
+    transactions: state.transactions
   }
 }
 
@@ -60,7 +58,6 @@ const mapDispatchToProps = (dispatch) => {
 const Transactions = ({
   classes,
   transactions,
-  total,
   handleDelete
 }) => {
   const currencyFormatter = new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD' })
@@ -85,7 +82,6 @@ const Transactions = ({
               </Button>
             </div>
             <Typography variant="headline" gutterBottom align="center">Transactions</Typography>
-            <p>{total}</p>
             <Table className={classes.table}>
               <TableHead>
                 <TableRow>
@@ -94,7 +90,7 @@ const Transactions = ({
                   <TableCell>Type</TableCell>
                   <TableCell>Ticker</TableCell>
                   <TableCell numeric>Shares</TableCell>
-                  <TableCell numeric>Price</TableCell>
+                  <TableCell numeric>BookValue</TableCell>
                   <TableCell numeric>Date</TableCell>
                   <TableCell />
                 </TableRow>
@@ -108,7 +104,7 @@ const Transactions = ({
                       <TableCell>{transaction.type}</TableCell>
                       <TableCell>{transaction.ticker}</TableCell>
                       <TableCell numeric>{transaction.shares}</TableCell>
-                      <TableCell numeric>{currencyFormatter.format(transaction.price)}</TableCell>
+                      <TableCell numeric>{currencyFormatter.format(transaction.bookValue)}</TableCell>
                       <TableCell numeric>{transaction.created_at}</TableCell>
                       <TableCell>
                         <IconButton
@@ -143,7 +139,6 @@ const Transactions = ({
 Transactions.propTypes = {
   classes: PropTypes.object.isRequired,
   transactions: PropTypes.array.isRequired,
-  total: PropTypes.number.isRequired,
   handleDelete: PropTypes.func.isRequired
 }
 

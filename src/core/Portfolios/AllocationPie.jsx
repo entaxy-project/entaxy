@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable consistent-return */
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Pie } from '@vx/shape'
@@ -13,9 +15,17 @@ Label.propTypes = {
   children: PropTypes.object.isRequired
 }
 
-const AllocationPie = (data, width, height, margin = {
-  top: 30, left: 20, right: 20, bottom: 110
-}) => {
+const AllocationPie = (
+  data,
+  width,
+  height,
+  margin = {
+    top: 30,
+    left: 20,
+    right: 20,
+    bottom: 110
+  }
+) => {
   if (width < 10) return null
   const radius = Math.min(width, height) / 2
   return (
@@ -40,7 +50,7 @@ const AllocationPie = (data, width, height, margin = {
             const [x, y] = centroid
             const { startAngle, endAngle } = arc
             if (endAngle - startAngle < 0.1) return null
-            return <Label x={x} y={y}>{arc.data.symbol}</Label>
+            return <Label x={x} y={y}>{arc.data.ticker}</Label>
           }}
         />
       </Group>

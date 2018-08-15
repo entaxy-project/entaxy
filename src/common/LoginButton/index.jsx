@@ -13,11 +13,11 @@ import Tooltip from '@material-ui/core/Tooltip'
 import { withStyles } from '@material-ui/core/styles'
 import { userLogin, userLogout } from '../../store/user/actions'
 
-const styles = () => ({
+const styles = {
   root: {
     display: 'flex'
   }
-})
+}
 
 const mapStateToProps = ({ user }) => {
   return { user }

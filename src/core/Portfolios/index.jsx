@@ -1,6 +1,9 @@
 /* eslint-disable no-param-reassign */
+/* eslint-disable no-console */
 import _ from 'lodash'
 import React from 'react'
+import { compose } from 'recompose'
+import { connect } from 'react-redux'
 import { withStyles } from '@material-ui/core/styles'
 import PropTypes from 'prop-types'
 import Grid from '@material-ui/core/Grid'
@@ -13,11 +16,11 @@ import FormLabel from '@material-ui/core/FormLabel'
 import Checkbox from '@material-ui/core/Checkbox'
 import Header from '../../common/Header/index'
 import PortfolioTable from './PortfolioTable'
-import {
-  preparePieChartDataFromPortfolioTable,
-  prepareTableDataForSelectedPortfolios
-} from './lib/util'
 import AllocationPie from './AllocationPie'
+import {
+  portfolioTableSelector,
+  portfolioPieChartSelector
+} from '../../store/transactions/selectors'
 
 const styles = () => ({
   root: {
@@ -29,10 +32,17 @@ const styles = () => ({
   }
 })
 
+
+const mapStateToProps = (state) => {
+  return {
+    portfolioTableData: portfolioTableSelector(state),
+    portfolioPieChartData: portfolioPieChartSelector(state)
+  }
+}
+
 class Portfolios extends React.Component {
   constructor(props) {
     super(props)
-
     const portfolios = _.flatten([])
 
     const displayPortfolios = _.reduce(portfolios, (result, portfolio) => {
@@ -40,13 +50,9 @@ class Portfolios extends React.Component {
       return result
     }, {})
 
-    const portfolioTable = prepareTableDataForSelectedPortfolios(displayPortfolios, portfolios)
-    const pieData = preparePieChartDataFromPortfolioTable(portfolioTable)
     this.state = {
       portfolios,
-      displayPortfolios,
-      portfolioTable,
-      pieData
+      displayPortfolios
     }
   }
 
@@ -56,13 +62,8 @@ class Portfolios extends React.Component {
       [name]: event.target.checked
     }
 
-    const portfolioTable = prepareTableDataForSelectedPortfolios(displayPortfolios, this.state.portfolios)
-    const pieData = preparePieChartDataFromPortfolioTable(portfolioTable)
-
     this.setState({
-      displayPortfolios,
-      portfolioTable,
-      pieData
+      displayPortfolios
     })
   }
 
@@ -75,7 +76,7 @@ class Portfolios extends React.Component {
         <Grid container spacing={0}>
           <Grid item xs={4}>
             <Paper className={classes.paper}>
-              {AllocationPie(this.state.pieData, 400, 400)}
+              {AllocationPie(this.props.portfolioPieChartData, 400, 400)}
             </Paper>
             <Paper className={classes.paper}>
               <FormControl component="fieldset">
@@ -103,7 +104,7 @@ class Portfolios extends React.Component {
           <Grid item xs={8}>
             <Paper className={classes.paper}>
               <Typography variant="headline" gutterBottom align="center">Portfolio</Typography>
-              {PortfolioTable(classes, this.state.portfolioTable)}
+              <PortfolioTable portfolioTable={this.props.portfolioTableData} />
             </Paper>
           </Grid>
         </Grid>
@@ -113,7 +114,12 @@ class Portfolios extends React.Component {
 }
 
 Portfolios.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  portfolioTableData: PropTypes.array.isRequired,
+  portfolioPieChartData: PropTypes.array.isRequired
 }
 
-export default withStyles(styles)(Portfolios)
+export default compose(
+  connect(mapStateToProps),
+  withStyles(styles)
+)(Portfolios)

@@ -17,11 +17,11 @@ export default (state = initialState, action) => {
     case types.LOAD_USER_DATA_SUCCESS:
       return { ...state, ...action.payload }
     case types.USER_LOGIN:
-      return { ...state }
+      return state
     case types.USER_LOGIN_SUCCESS:
       return { ...state, isAuthenticated: true }
     case types.USER_LOGOUT:
-      return { ...initialState }
+      return initialState
     case types.USER_LOGIN_ERROR:
       return { ...state, error: action.payload }
     case types.USER_UPDATE_COUNTRY:
