@@ -1,11 +1,12 @@
+/* eslint-disable no-console */
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import store from './store'
 import App from './core/App/index'
-import { fetchUserData } from './store/user/actions'
+import { loadUserData } from './store/user/actions'
 
-store.dispatch(fetchUserData())
+store.dispatch(loadUserData())
 
 export default (target = document) => {
   ReactDOM.render(

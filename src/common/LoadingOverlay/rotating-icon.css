@@ -1,0 +1,25 @@
+/* --- Loader --- */
+.rotating-icon {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+}
+.rotating-icon:after {
+  content: " ";
+  display: block;
+  width: 25px;
+  height: 25px;
+  margin: 1px;
+  border-radius: 50%;
+  border: 3px solid var(--color-white);
+  border-color: var(--color-white) transparent var(--color-white) transparent;
+  animation: rotating-icon 1.2s linear infinite;
+}
+@keyframes rotating-icon {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

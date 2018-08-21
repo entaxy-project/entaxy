@@ -115,7 +115,7 @@ Array [
 
 exports[`HandleLogin matches snapshot with logged out user 1`] = `
 <button
-  className="MuiButtonBase-root-17 MuiButton-root-1 MuiButton-colorInherit-6"
+  className="MuiButtonBase-root-25 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 MuiButton-colorInherit-20"
   disabled={false}
   onBlur={[Function]}
   onClick={[MockFunction]}
@@ -137,7 +137,7 @@ exports[`HandleLogin matches snapshot with logged out user 1`] = `
     Login
   </span>
   <span
-    className="MuiTouchRipple-root-20"
+    className="MuiTouchRipple-root-28"
   />
 </button>
 `;

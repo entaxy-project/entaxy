@@ -4,11 +4,10 @@ import types from '../types'
 describe('default exported types', () => {
   it('should have the default exported types', () => {
     const expectedTypes = [
-      'FETCH_USER_DATA',
+      'LOAD_USER_DATA',
       'USER_LOGIN',
       'USER_LOGIN_SUCCESS',
       'USER_LOGOUT',
-      'USER_HANDLE_LOGIN',
       'USER_LOGGED_IN',
       'USER_LOGIN_ERROR'
     ]

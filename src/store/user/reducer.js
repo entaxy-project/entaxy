@@ -1,7 +1,7 @@
-/* eslint-disable no-console */
 import types from './types'
 
 export const initialState = {
+  isLoading: false,
   isAuthenticated: false,
   isLoginPending: false,
   username: null,
@@ -12,16 +12,16 @@ export const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case types.FETCH_USER_DATA:
+    case types.DATA_IS_LOADING:
+      return { ...state, isLoading: action.payload }
+    case types.LOAD_USER_DATA_SUCCESS:
       return { ...state, ...action.payload }
     case types.USER_LOGIN:
-      return { ...state, isLoginPending: true }
+      return state
     case types.USER_LOGIN_SUCCESS:
       return { ...state, isAuthenticated: true }
     case types.USER_LOGOUT:
-      return { ...initialState }
-    case types.USER_HANDLE_LOGIN:
-      return { ...state, isLoginPending: false }
+      return initialState
     case types.USER_LOGIN_ERROR:
       return { ...state, error: action.payload }
     case types.USER_UPDATE_COUNTRY:
