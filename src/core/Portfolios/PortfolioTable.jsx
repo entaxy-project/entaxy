@@ -1,5 +1,7 @@
 import React from 'react'
 import _ from 'lodash'
+import { compose } from 'recompose'
+import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import Table from '@material-ui/core/Table'
@@ -10,7 +12,10 @@ import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import Tooltip from '@material-ui/core/Tooltip'
 import InfoIcon from '@material-ui/icons/Info'
-import { getBookValue, getMarketValue, getPL } from './lib/util'
+import {
+  portfolioTableDataSelector,
+  portfolioTotalsSelector
+} from '../../store/transactions/selectors'
 
 const styles = {
   tooltip: {
@@ -18,7 +23,14 @@ const styles = {
   }
 }
 
-const PortfolioTable = ({ classes, portfolioTable }) => {
+const mapStateToProps = (state) => {
+  return {
+    portfolioTableData: portfolioTableDataSelector(state),
+    totals: portfolioTotalsSelector(state)
+  }
+}
+
+const PortfolioTable = ({ classes, portfolioTableData, totals }) => {
   const currencyFormatter = new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD' })
 
   return (
@@ -52,7 +64,7 @@ const PortfolioTable = ({ classes, portfolioTable }) => {
         </TableRow>
       </TableHead>
       <TableBody>
-        {_.map(portfolioTable, (position) => {
+        {_.map(portfolioTableData, (position) => {
           return (
             <TableRow key={position.ticker}>
               <TableCell>{position.ticker}</TableCell>
@@ -70,9 +82,9 @@ const PortfolioTable = ({ classes, portfolioTable }) => {
           <TableCell />
           <TableCell />
           <TableCell />
-          <TableCell numeric>{currencyFormatter.format(getBookValue(portfolioTable))}</TableCell>
-          <TableCell numeric>{currencyFormatter.format(getMarketValue(portfolioTable))}</TableCell>
-          <TableCell numeric>{currencyFormatter.format(getPL(portfolioTable))}</TableCell>
+          <TableCell numeric>{currencyFormatter.format(totals.bookValue)}</TableCell>
+          <TableCell numeric>{currencyFormatter.format(totals.marketValue)}</TableCell>
+          <TableCell numeric>{currencyFormatter.format(totals.pl)}</TableCell>
         </TableRow>
       </TableFooter>
     </Table>)
@@ -80,7 +92,11 @@ const PortfolioTable = ({ classes, portfolioTable }) => {
 
 PortfolioTable.propTypes = {
   classes: PropTypes.object.isRequired,
-  portfolioTable: PropTypes.array.isRequired
+  portfolioTableData: PropTypes.array.isRequired,
+  totals: PropTypes.object.isRequired
 }
 
-export default withStyles(styles)(PortfolioTable)
+export default compose(
+  connect(mapStateToProps),
+  withStyles(styles)
+)(PortfolioTable)

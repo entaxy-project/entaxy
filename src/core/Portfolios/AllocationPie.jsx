@@ -2,8 +2,11 @@
 /* eslint-disable consistent-return */
 import React from 'react'
 import PropTypes from 'prop-types'
+import { compose } from 'recompose'
+import { connect } from 'react-redux'
 import { Pie } from '@vx/shape'
 import { Group } from '@vx/group'
+import { portfolioPieChartSelector } from '../../store/transactions/selectors'
 
 function Label({ x, y, children }) {
   return (<text textAnchor="middle" x={x} y={y} dy=".33em">{children}</text>)
@@ -15,18 +18,21 @@ Label.propTypes = {
   children: PropTypes.object.isRequired
 }
 
-const AllocationPie = (
-  data,
-  width,
-  height,
-  margin = {
+const mapStateToProps = (state) => {
+  return {
+    data: portfolioPieChartSelector(state)
+  }
+}
+
+const AllocationPie = ({ data }) => {
+  const width = 400
+  const height = 400
+  const margin = {
     top: 30,
     left: 20,
     right: 20,
     bottom: 110
   }
-) => {
-  if (width < 10) return null
   const radius = Math.min(width, height) / 2
   return (
     <svg width={width} height={height}>
@@ -49,8 +55,19 @@ const AllocationPie = (
           centroid={(centroid, arc) => {
             const [x, y] = centroid
             const { startAngle, endAngle } = arc
-            if (endAngle - startAngle < 0.1) return null
-            return <Label x={x} y={y}>{arc.data.ticker}</Label>
+            if (endAngle - startAngle < 0.01) return null
+            return (
+              <text
+                textAnchor="middle"
+                x={x}
+                y={y}
+                dy=".33em"
+                fontSize={12}
+                fontFamily="Roboto"
+              >
+                {arc.data.ticker}
+              </text>
+            )
           }}
         />
       </Group>
@@ -58,4 +75,8 @@ const AllocationPie = (
   )
 }
 
-export default AllocationPie
+AllocationPie.propTypes = {
+  data: PropTypes.array.isRequired
+}
+
+export default compose(connect(mapStateToProps))(AllocationPie)

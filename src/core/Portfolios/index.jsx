@@ -1,5 +1,3 @@
-/* eslint-disable no-param-reassign */
-/* eslint-disable no-console */
 import _ from 'lodash'
 import React from 'react'
 import { compose } from 'recompose'
@@ -10,17 +8,14 @@ import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
 import FormControl from '@material-ui/core/FormControl'
-import FormControlLabel from '@material-ui/core/FormControlLabel'
-import FormGroup from '@material-ui/core/FormGroup'
 import FormLabel from '@material-ui/core/FormLabel'
+import FormGroup from '@material-ui/core/FormGroup'
+import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Checkbox from '@material-ui/core/Checkbox'
 import Header from '../../common/Header/index'
 import PortfolioTable from './PortfolioTable'
 import AllocationPie from './AllocationPie'
-import {
-  portfolioTableSelector,
-  portfolioPieChartSelector
-} from '../../store/transactions/selectors'
+import { updatePortfolioFilterValue } from '../../store/settings/actions'
 
 const styles = () => ({
   root: {
@@ -32,94 +27,82 @@ const styles = () => ({
   }
 })
 
-
 const mapStateToProps = (state) => {
   return {
-    portfolioTableData: portfolioTableSelector(state),
-    portfolioPieChartData: portfolioPieChartSelector(state)
+    portfolioFilters: state.settings.portfolioFilters
   }
 }
 
-class Portfolios extends React.Component {
-  constructor(props) {
-    super(props)
-    const portfolios = _.flatten([])
+const mapDispatchToProps = (dispatch) => {
+  return {
+    updateFilter: (filterName, option, value) => dispatch(updatePortfolioFilterValue(filterName, option, value))
+  }
+}
 
-    const displayPortfolios = _.reduce(portfolios, (result, portfolio) => {
-      result[portfolio.account.uuid] = true
-      return result
-    }, {})
-
-    this.state = {
-      portfolios,
-      displayPortfolios
-    }
+const Portfolios = ({
+  classes,
+  portfolioFilters,
+  updateFilter
+}) => {
+  const handleChange = (filterName, option) => (event) => {
+    updateFilter(filterName, option, event.target.checked)
   }
 
-  handleChange = name => (event) => {
-    const displayPortfolios = {
-      ...this.state.displayPortfolios,
-      [name]: event.target.checked
-    }
-
-    this.setState({
-      displayPortfolios
-    })
-  }
-
-  render() {
-    const { classes } = this.props
-
-    return (
-      <div className={classes.root}>
-        <Header />
-        <Grid container spacing={0}>
-          <Grid item xs={4}>
-            <Paper className={classes.paper}>
-              {AllocationPie(this.props.portfolioPieChartData, 400, 400)}
-            </Paper>
-            <Paper className={classes.paper}>
-              <FormControl component="fieldset">
-                <FormLabel component="legend">Select Accounts</FormLabel>
-                <FormGroup>
-                  {_.map(this.state.portfolios, ((portfolio) => {
-                    return (
-                      <FormControlLabel
-                        key={portfolio.uuid}
-                        control={
-                          <Checkbox
-                            checked={this.state.displayPortfolios[portfolio.account.uuid]}
-                            onChange={this.handleChange(portfolio.account.uuid)}
-                            value={portfolio.account.uuid}
+  return (
+    <div className={classes.root}>
+      <Header />
+      <Grid container spacing={0}>
+        <Grid item xs={4}>
+          <Paper className={classes.paper}>
+            <AllocationPie />
+          </Paper>
+          <Paper className={classes.paper}>
+            {_.map(portfolioFilters, (options, filterName) => {
+              return (
+                <div key={filterName}>
+                  <FormControl component="fieldset">
+                    <FormLabel component="legend">Select {filterName}</FormLabel>
+                    <FormGroup>
+                      {_.map(options, (value, option) => {
+                        return (
+                          <FormControlLabel
+                            key={option}
+                            control={
+                              <Checkbox
+                                value={option}
+                                checked={value}
+                                onChange={handleChange(filterName, option)}
+                              />
+                            }
+                            label={`${option} - ${value}`}
                           />
-                        }
-                        label={`${portfolio.account.institution} - ${portfolio.account.number}`}
-                      />
-                    )
-                  }))}
-                </FormGroup>
-              </FormControl>
-            </Paper>
-          </Grid>
-          <Grid item xs={8}>
-            <Paper className={classes.paper}>
-              <Typography variant="headline" gutterBottom align="center">Portfolio</Typography>
-              <PortfolioTable portfolioTable={this.props.portfolioTableData} />
-            </Paper>
-          </Grid>
+                        )
+                      })}
+                    </FormGroup>
+                  </FormControl>
+                </div>
+              )
+            })}
+          </Paper>
         </Grid>
-      </div>
-    )
-  }
+        <Grid item xs={8}>
+          <Paper className={classes.paper}>
+            <Typography variant="headline" gutterBottom align="center">Portfolio</Typography>
+            <PortfolioTable />
+          </Paper>
+        </Grid>
+      </Grid>
+    </div>
+  )
 }
 
 Portfolios.propTypes = {
   classes: PropTypes.object.isRequired,
-  portfolioTableData: PropTypes.array.isRequired,
-  portfolioPieChartData: PropTypes.array.isRequired
+  portfolioFilters: PropTypes.object.isRequired,
+  updateFilter: PropTypes.func.isRequired
 }
 
 export default compose(
-  connect(mapStateToProps),
+  connect(mapStateToProps, mapDispatchToProps),
   withStyles(styles)
 )(Portfolios)

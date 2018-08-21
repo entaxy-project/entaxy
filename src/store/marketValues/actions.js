@@ -25,18 +25,24 @@ const fetchMarketValues = (tickers) => {
 
   return (dispatch, getState) => {
     return Promise.all(_.each(tickers, (ticker) => {
-      console.log('fetch', `${baseUrl}?${params}&symbol=${ticker}`)
       return fetch(`${baseUrl}?${params}&symbol=${ticker}`, { method: 'GET' })
-        .then(response => response.json())
-        .then((data) => {
-          const dates = Object.keys(data['Time Series (Daily)']).sort()
-          const updatedOn = dates[dates.length - 1]
-          const marketValue = data['Time Series (Daily)'][updatedOn]['4. close']
+        .then((response) => {
+          if (response.ok) {
+            response.json().then((data) => {
+              if ('Time Series (Daily)' in data) {
+                const dates = Object.keys(data['Time Series (Daily)']).sort()
+                const updatedOn = dates[dates.length - 1]
+                const marketValue = data['Time Series (Daily)'][updatedOn]['4. close']
 
-          if (!getState()[ticker]) {
-            dispatch(createMarketValue(ticker, marketValue, updatedOn))
-          } else {
-            dispatch(updateMarketValue(ticker, marketValue, updatedOn))
+                if (!getState()[ticker]) {
+                  dispatch(createMarketValue(ticker, marketValue, updatedOn))
+                } else {
+                  dispatch(updateMarketValue(ticker, marketValue, updatedOn))
+                }
+              } else if ('Error Message' in data) {
+                console.log(`ERROR: Could not fetch Market value for ${ticker}: ${data['Error Message']}`)
+              }
+            })
           }
         })
     }))
@@ -51,6 +57,7 @@ export const updateMarketValues = () => {
     const tickersToRemove = _.difference(existingTickers, newTickers)
     const tickersToAdd = _.difference(newTickers, existingTickers)
 
+    console.log(tickersToRemove, tickersToAdd)
     if (!_.isEmpty(tickersToRemove)) {
       dispatch(deleteMarketValues(tickersToRemove))
     }

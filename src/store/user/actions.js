@@ -2,6 +2,7 @@ import * as blockstack from 'blockstack'
 import types from './types'
 import store from '../index'
 import * as storage from '../blockstackStorage'
+import { loadSettings } from '../settings/actions'
 import { loadTransactions } from '../transactions/actions'
 import { loadMarketValues } from '../marketValues/actions'
 
@@ -35,6 +36,7 @@ export const loadUserData = () => {
       }))
 
       storage.loadState().then((state) => {
+        dispatch(loadSettings(state.settings))
         dispatch(loadTransactions(state.transactions))
         dispatch(loadMarketValues(state.marketValues))
         dispatch(dataIsLoading(false))

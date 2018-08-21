@@ -1,13 +1,24 @@
-/* eslint-disable import/prefer-default-export */
-/* eslint-disable no-console */
 import _ from 'lodash'
 import { createSelector } from 'reselect'
 
 const getTransactions = state => state.transactions
 const getMarketValues = state => state.marketValues
+const getPortfolioFilters = state => state.settings.portfolioFilters
 
-export const portfolioTableSelector = createSelector(
+const filteredTransactions = createSelector(
   getTransactions,
+  getPortfolioFilters,
+  (transactions, filters) => {
+    return _.filter(transactions, (transaction) => {
+      return _.reduce(filters, (result, options, filter) => {
+        return result && options[transaction[filter]]
+      }, true)
+    })
+  }
+)
+
+export const portfolioTableDataSelector = createSelector(
+  filteredTransactions,
   getMarketValues,
   (transactions, marketValues) => {
     const portfolioTable = _(transactions)
@@ -44,10 +55,28 @@ export const portfolioTableSelector = createSelector(
   }
 )
 
+export const portfolioTotalsSelector = createSelector(
+  portfolioTableDataSelector,
+  (portfolioTableData) => {
+    const totals = {
+      bookValue: 0,
+      marketValue: 0,
+      pl: 0
+    }
+    _.each(portfolioTableData, (entry) => {
+      totals.bookValue += entry.bookValue
+      totals.marketValue += entry.marketValue
+      totals.pl += entry.pl
+    })
+
+    return totals
+  }
+)
+
 export const portfolioPieChartSelector = createSelector(
-  portfolioTableSelector,
-  (portfolioTable) => {
-    return _.map(portfolioTable, (entry) => {
+  portfolioTableDataSelector,
+  (portfolioTableData) => {
+    return _.map(portfolioTableData, (entry) => {
       return {
         ticker: entry.ticker,
         percentage: entry.percentage
@@ -55,3 +84,4 @@ export const portfolioPieChartSelector = createSelector(
     })
   }
 )
+
