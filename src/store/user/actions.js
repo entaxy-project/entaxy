@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import * as blockstack from 'blockstack'
 import types from './types'
 import store from '../index'
@@ -36,10 +37,12 @@ export const loadUserData = () => {
       }))
 
       storage.loadState().then((state) => {
-        dispatch(loadSettings(state.settings))
-        dispatch(loadTransactions(state.transactions))
-        dispatch(loadMarketValues(state.marketValues))
+        dispatch(loadSettings((state || {}).settings))
+        dispatch(loadTransactions((state || {}).transactions))
+        dispatch(loadMarketValues((state || {}).marketValues))
         dispatch(dataIsLoading(false))
+      }).catch((error) => {
+        console.log('ERROR:', error)
       })
     }
     return null

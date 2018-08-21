@@ -1,15 +1,18 @@
+/* eslint-disable no-console */
 import { getFile, putFile, isUserSignedIn } from 'blockstack'
 
 const filename = 'entaxy.json'
 
 export const loadState = () => {
   if (isUserSignedIn()) {
-    const state = getFile(filename)
+    return getFile(filename)
       .then(data => JSON.parse(data))
-      .catch(() => undefined)
-    return state
+      .catch((error) => {
+        console.log('ERROR:', error)
+        return {}
+      })
   }
-  return undefined
+  return Promise.resolve({})
 }
 
 export const saveState = (state) => {
