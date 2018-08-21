@@ -57,7 +57,6 @@ export const updateMarketValues = () => {
     const tickersToRemove = _.difference(existingTickers, newTickers)
     const tickersToAdd = _.difference(newTickers, existingTickers)
 
-    console.log(tickersToRemove, tickersToAdd)
     if (!_.isEmpty(tickersToRemove)) {
       dispatch(deleteMarketValues(tickersToRemove))
     }

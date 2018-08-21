@@ -1,22 +1,9 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable consistent-return */
 import React from 'react'
 import PropTypes from 'prop-types'
-import { compose } from 'recompose'
 import { connect } from 'react-redux'
 import { Pie } from '@vx/shape'
 import { Group } from '@vx/group'
 import { portfolioPieChartSelector } from '../../store/transactions/selectors'
-
-function Label({ x, y, children }) {
-  return (<text textAnchor="middle" x={x} y={y} dy=".33em">{children}</text>)
-}
-
-Label.propTypes = {
-  x: PropTypes.number.isRequired,
-  y: PropTypes.number.isRequired,
-  children: PropTypes.object.isRequired
-}
 
 const mapStateToProps = (state) => {
   return {
@@ -79,4 +66,4 @@ AllocationPie.propTypes = {
   data: PropTypes.array.isRequired
 }
 
-export default compose(connect(mapStateToProps))(AllocationPie)
+export default connect(mapStateToProps)(AllocationPie)

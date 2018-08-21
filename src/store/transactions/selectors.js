@@ -29,7 +29,7 @@ export const portfolioTableDataSelector = createSelector(
 
         // Add all the transactions for this ticker
         _.each(entries, (entry) => {
-          if (entry.type === 'Buy') {
+          if (entry.type === 'buy') {
             shares += entry.shares
             bookValue += entry.bookValue
           } else {

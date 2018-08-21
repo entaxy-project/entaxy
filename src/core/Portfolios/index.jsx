@@ -74,7 +74,7 @@ const Portfolios = ({
                                 onChange={handleChange(filterName, option)}
                               />
                             }
-                            label={`${option} - ${value}`}
+                            label={option}
                           />
                         )
                       })}

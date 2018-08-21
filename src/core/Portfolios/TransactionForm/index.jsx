@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-
 import React from 'react'
 import { compose } from 'recompose'
 import { withStyles } from '@material-ui/core/styles'
@@ -11,6 +9,7 @@ import DialogContent from '@material-ui/core/DialogContent'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
+import MenuItem from '@material-ui/core/MenuItem'
 import InputAdornment from '@material-ui/core/InputAdornment'
 import AddIcon from '@material-ui/icons/Add'
 import { withFormik } from 'formik'
@@ -21,7 +20,8 @@ const styles = () => ({
     display: 'inline'
   },
   input: {
-    margin: '5px'
+    margin: '5px',
+    width: 200
   }
 })
 
@@ -78,6 +78,7 @@ class TransactionDialog extends React.Component {
                 className={classes.input}
                 value={values.source || ''}
                 name="source"
+                helperText="This institution where this asset is being held"
                 onChange={handleChange}
                 autoFocus
               />
@@ -87,18 +88,22 @@ class TransactionDialog extends React.Component {
                 className={classes.input}
                 value={values.account || ''}
                 name="account"
+                helperText="The name of the account (e.g. RRSP, TFSA, etc"
                 onChange={handleChange}
-                autoFocus
+
               />
               <TextField
-                label="Type"
-                inputProps={{ 'aria-label': 'Type', required: true }}
+                select
+                label="Purchase Type"
+                inputProps={{ 'aria-label': 'Purchase Type', required: true }}
                 className={classes.input}
                 value={values.type || ''}
                 name="type"
                 onChange={handleChange}
-                autoFocus
-              />
+              >
+                <MenuItem key="buy" value="buy">Buy</MenuItem>
+                <MenuItem key="sell" value="sell">Sell</MenuItem>
+              </TextField>
               <TextField
                 label="Ticker"
                 inputProps={{ 'aria-label': 'Ticker', required: true }}
@@ -162,15 +167,15 @@ export default compose(
   connect(null, mapDispatchToProps),
   withStyles(styles),
   withFormik({
-    mapPropsToValues: (props) => {
+    mapPropsToValues: () => {
       return {
-        source: 'Questrade',
-        account: 'RRSP',
-        type: 'Buy',
-        ticker: 'VCN.TO',
-        shares: 10,
-        bookValue: 100,
-        created_at: '2018-01-01'
+        source: '',
+        account: '',
+        type: '',
+        ticker: '',
+        shares: '',
+        bookValue: '',
+        created_at: ''
       }
     },
     handleSubmit: (values, { props, setSubmitting, resetForm }) => {
