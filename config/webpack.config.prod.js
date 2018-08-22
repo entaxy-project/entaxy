@@ -268,7 +268,18 @@ module.exports = {
         comparisons: false
       },
       mangle: {
-        safari10: true
+        safari10: false,
+        except: [
+          'Buffer',
+          'BigInteger',
+          'Point',
+          'ECPubKey',
+          'ECKey',
+          'sha512_asm',
+          'asm',
+          'ECPair',
+          'HDNode'
+        ]
       },
       output: {
         comments: false,
