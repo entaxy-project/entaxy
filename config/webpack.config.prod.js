@@ -268,8 +268,8 @@ module.exports = {
         comparisons: false
       },
       mangle: {
-        safari10: true,
-        reserved: [
+        safari10: false,
+        except: [
           'Buffer',
           'BigInteger',
           'Point',

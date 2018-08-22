@@ -8,7 +8,7 @@ export const loadState = () => {
     return getFile(filename)
       .then(data => JSON.parse(data))
       .catch((error) => {
-        console.log('ERROR:', error)
+        console.log(`Error loading file ${filename}:`, error)
         return {}
       })
   }

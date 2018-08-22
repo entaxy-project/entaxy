@@ -42,7 +42,7 @@ export const loadUserData = () => {
         dispatch(loadMarketValues((state || {}).marketValues))
         dispatch(dataIsLoading(false))
       }).catch((error) => {
-        console.log('ERROR:', error)
+        console.log('Error: ', error)
       })
     }
     return null
