@@ -143,10 +143,15 @@ module.exports = {
           // Process JS with Babel.
           {
             test: /\.(js|jsx|mjs)$/,
-            include: paths.appSrc,
+            include: [
+              paths.appSrc,
+              path.resolve(paths.appNodeModules, 'bitcoinjs-lib'),
+              path.resolve(paths.appNodeModules, 'tiny-secp256k1'),
+              path.resolve(paths.appNodeModules, 'jsontokens'),
+              path.resolve(paths.appNodeModules, 'bip32')
+            ],
             loader: require.resolve('babel-loader'),
             options: {
-
               compact: true
             }
           },
@@ -268,18 +273,7 @@ module.exports = {
         comparisons: false
       },
       mangle: {
-        safari10: false,
-        except: [
-          'Buffer',
-          'BigInteger',
-          'Point',
-          'ECPubKey',
-          'ECKey',
-          'sha512_asm',
-          'asm',
-          'ECPair',
-          'HDNode'
-        ]
+        safari10: false
       },
       output: {
         comments: false,
