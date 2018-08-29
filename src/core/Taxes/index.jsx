@@ -32,6 +32,7 @@ export class TaxesComponent extends React.Component {
     const year = 2017
     const region = 'Ontario'
     const income = 90000
+    const maxIncome = 10000000
     const rrsp = 10000
     const taxableIncome = income - rrsp
     const taxAmount = calculateTotalTax(TaxBrackets[country][year], region, taxableIncome)
@@ -42,6 +43,7 @@ export class TaxesComponent extends React.Component {
       year,
       region,
       income,
+      maxIncome,
       rrsp,
       taxableIncome,
       taxBeforeCredits,
@@ -53,9 +55,10 @@ export class TaxesComponent extends React.Component {
 
   handleChange = name => (event) => {
     let income = name === 'income' ? parseFloat(event.target.value) : this.state.income
-    if (Number.isNaN(income)) { income = 0 }
+    if (Number.isNaN(income) || income < 0) { income = 0 }
+    if (income > this.state.maxIncome) { income = this.state.maxIncome }
     let rrsp = name === 'rrsp' ? parseFloat(event.target.value) : this.state.rrsp
-    if (Number.isNaN(rrsp)) { rrsp = 0 }
+    if (Number.isNaN(rrsp) || rrsp < 0) { rrsp = 0 }
     if (rrsp > income) { rrsp = income }
     const taxableIncome = income - rrsp
     const { country, year, region } = this.state

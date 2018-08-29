@@ -75,7 +75,6 @@ export class LoginButtonComponent extends React.Component {
             )}
           </Reference>
           <Popper
-            placement="bottom-start"
             eventsEnabled={open}
           >
             {({
