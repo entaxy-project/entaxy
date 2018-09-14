@@ -17,6 +17,7 @@ import IconButton from '@material-ui/core/IconButton'
 import { NavLink } from 'react-router-dom'
 import EditIcon from '@material-ui/icons/Edit'
 import DeleteIcon from '@material-ui/icons/Delete'
+import format from 'date-fns/format'
 import Header from '../../../common/Header/index'
 import TransactionForm from '../TransactionForm'
 import confirm from '../../../util/confirm'
@@ -105,7 +106,7 @@ const Transactions = ({
                       <TableCell>{transaction.ticker}</TableCell>
                       <TableCell numeric>{transaction.shares}</TableCell>
                       <TableCell numeric>{currencyFormatter.format(transaction.bookValue)}</TableCell>
-                      <TableCell numeric>{transaction.created_at}</TableCell>
+                      <TableCell numeric>{format(transaction.createdAt, 'MMM do, YYYY @ h:mm a')}</TableCell>
                       <TableCell>
                         <IconButton
                           variant="fab"

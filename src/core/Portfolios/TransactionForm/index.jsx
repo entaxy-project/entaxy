@@ -1,3 +1,4 @@
+/* eslint no-console: 0 */
 import React from 'react'
 import { compose } from 'recompose'
 import { withStyles } from '@material-ui/core/styles'
@@ -12,6 +13,11 @@ import TextField from '@material-ui/core/TextField'
 import MenuItem from '@material-ui/core/MenuItem'
 import InputAdornment from '@material-ui/core/InputAdornment'
 import AddIcon from '@material-ui/icons/Add'
+
+import DateFnsUtils from 'material-ui-pickers/utils/date-fns-utils'
+import MuiPickersUtilsProvider from 'material-ui-pickers/utils/MuiPickersUtilsProvider'
+import DateTimePicker from 'material-ui-pickers/DateTimePicker'
+
 import { withFormik } from 'formik'
 import { createTransaction } from '../../../store/transactions/actions'
 
@@ -29,6 +35,32 @@ const mapDispatchToProps = (dispatch) => {
   return {
     handleSave: (transaction) => { dispatch(createTransaction(transaction)) }
   }
+}
+
+class MyDateSelect extends React.Component {
+  handleChange = (value) => {
+    // this is going to call setFieldValue and manually update values.createdAt
+    this.props.onChange('createdAt', value)
+  }
+
+  render() {
+    return (
+      <MuiPickersUtilsProvider utils={DateFnsUtils}>
+        <DateTimePicker
+          label="Date"
+          inputProps={{ 'aria-label': 'Date', required: true }}
+          value={this.props.value}
+          name="createdAt"
+          onChange={this.handleChange}
+        />
+      </MuiPickersUtilsProvider>
+    )
+  }
+}
+
+MyDateSelect.propTypes = {
+  value: PropTypes.object.isRequired,
+  onChange: PropTypes.func.isRequired
 }
 
 class TransactionDialog extends React.Component {
@@ -52,7 +84,8 @@ class TransactionDialog extends React.Component {
       classes,
       handleSubmit,
       values,
-      handleChange
+      handleChange,
+      setFieldValue
     } = this.props
     return (
       <div className={classes.root}>
@@ -74,7 +107,11 @@ class TransactionDialog extends React.Component {
             <DialogContent>
               <TextField
                 label="Source"
-                inputProps={{ 'aria-label': 'Source', required: true }}
+                inputProps={{
+                  'aria-label': 'Source',
+                  required: true,
+                  maxLength: 100
+                }}
                 className={classes.input}
                 value={values.source || ''}
                 name="source"
@@ -84,13 +121,16 @@ class TransactionDialog extends React.Component {
               />
               <TextField
                 label="Account"
-                inputProps={{ 'aria-label': 'Account', required: true }}
+                inputProps={{
+                  'aria-label': 'Account',
+                  required: true,
+                  maxLength: 100
+                }}
                 className={classes.input}
                 value={values.account || ''}
                 name="account"
                 helperText="The name of the account (e.g. RRSP, TFSA, etc"
                 onChange={handleChange}
-
               />
               <TextField
                 select
@@ -106,7 +146,11 @@ class TransactionDialog extends React.Component {
               </TextField>
               <TextField
                 label="Ticker"
-                inputProps={{ 'aria-label': 'Ticker', required: true }}
+                inputProps={{
+                  'aria-label': 'Ticker',
+                  required: true,
+                  maxLength: 6
+                }}
                 className={classes.input}
                 value={values.ticker}
                 name="ticker"
@@ -115,7 +159,13 @@ class TransactionDialog extends React.Component {
               <TextField
                 type="number"
                 label="Shares"
-                inputProps={{ 'aria-label': 'Shares', required: true }}
+                inputProps={{
+                  'aria-label': 'Shares',
+                  required: true,
+                  maxLength: 10,
+                  min: 0,
+                  max: 9999999999
+                }}
                 className={classes.input}
                 value={values.shares}
                 name="shares"
@@ -126,7 +176,13 @@ class TransactionDialog extends React.Component {
                 label="Book Value"
                 InputProps={{
                   startAdornment: <InputAdornment position="start">$</InputAdornment>,
-                  inputProps: { 'aria-label': 'Book Value', required: true }
+                  inputProps: {
+                    'aria-label': 'Book Value',
+                    required: true,
+                    maxLength: 6,
+                    min: 0,
+                    max: 999999
+                  }
                 }}
                 className={classes.input}
                 value={values.bookValue}
@@ -134,15 +190,9 @@ class TransactionDialog extends React.Component {
                 helperText="The original purchase cost"
                 onChange={handleChange}
               />
-              <TextField
-                type="date"
-                label="Date"
-                inputProps={{ 'aria-label': 'Date', required: true }}
-                className={classes.input}
-                value={values.created_at}
-                name="created_at"
-                onChange={handleChange}
-                InputLabelProps={{ shrink: true }}
+              <MyDateSelect
+                value={values.createdAt}
+                onChange={setFieldValue}
               />
             </DialogContent>
             <DialogActions>
@@ -160,7 +210,8 @@ TransactionDialog.propTypes = {
   classes: PropTypes.object.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   values: PropTypes.object.isRequired,
-  handleChange: PropTypes.func.isRequired
+  handleChange: PropTypes.func.isRequired,
+  setFieldValue: PropTypes.func.isRequired
 }
 
 export default compose(
@@ -175,7 +226,7 @@ export default compose(
         ticker: '',
         shares: '',
         bookValue: '',
-        created_at: ''
+        createdAt: new Date()
       }
     },
     handleSubmit: (values, { props, setSubmitting, resetForm }) => {
@@ -187,7 +238,7 @@ export default compose(
         ticker: values.ticker,
         shares: values.shares,
         bookValue: values.bookValue,
-        created_at: values.created_at
+        createdAt: values.createdAt
       })
       resetForm()
       setSubmitting(false)
