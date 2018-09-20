@@ -12,14 +12,14 @@ export const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case types.DATA_IS_LOADING:
+    case types.LOAD_USER_DATA:
       return { ...state, isLoading: action.payload }
     case types.LOAD_USER_DATA_SUCCESS:
       return { ...state, ...action.payload }
     case types.USER_LOGIN:
-      return state
+      return { ...state, isLoginPending: true }
     case types.USER_LOGIN_SUCCESS:
-      return { ...state, isAuthenticated: true }
+      return { ...state, isLoginPending: false, isAuthenticated: true }
     case types.USER_LOGOUT:
       return initialState
     case types.USER_LOGIN_ERROR:

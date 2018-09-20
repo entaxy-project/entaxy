@@ -6,8 +6,8 @@ describe('user reducer', () => {
     expect(userReducer(undefined, {})).toEqual(initialState)
   })
 
-  it('should handle LOAD_USER_DATA with authenticated user', () => {
-    const type = types.LOAD_USER_DATA
+  it('should handle LOAD_USER_DATA_SUCCESS with authenticated user', () => {
+    const type = types.LOAD_USER_DATA_SUCCESS
     const payload = {
       isAuthenticated: true,
       username: 'test-username',
@@ -19,8 +19,8 @@ describe('user reducer', () => {
 
   it('should handle LOAD_USER_DATA with pending user', () => {
     const type = types.LOAD_USER_DATA
-    const payload = { isLoginPending: true }
-    expect(userReducer(undefined, { type, payload })).toEqual({ ...initialState, ...payload })
+    const payload = true
+    expect(userReducer(undefined, { type, payload })).toEqual({ ...initialState, isLoading: payload })
   })
 
   it('should handle USER_LOGIN', () => {

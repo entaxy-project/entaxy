@@ -1,5 +1,5 @@
 module.exports = {
-  isUserSignedIn: jest.fn(),
+  isUserSignedIn: jest.fn().mockImplementation(() => true),
   isSignInPending: jest.fn(),
   signUserOut: jest.fn(),
   handlePendingSignIn: jest.fn(),
