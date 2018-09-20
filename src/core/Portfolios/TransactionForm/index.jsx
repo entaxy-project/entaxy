@@ -13,12 +13,8 @@ import TextField from '@material-ui/core/TextField'
 import MenuItem from '@material-ui/core/MenuItem'
 import InputAdornment from '@material-ui/core/InputAdornment'
 import AddIcon from '@material-ui/icons/Add'
-
-import DateFnsUtils from 'material-ui-pickers/utils/date-fns-utils'
-import MuiPickersUtilsProvider from 'material-ui-pickers/utils/MuiPickersUtilsProvider'
-import DateTimePicker from 'material-ui-pickers/DateTimePicker'
-
 import { withFormik } from 'formik'
+import DateTimeSelect from '../../../common/DateTimeSelect'
 import { createTransaction } from '../../../store/transactions/actions'
 
 const styles = () => ({
@@ -37,31 +33,6 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-class MyDateSelect extends React.Component {
-  handleChange = (value) => {
-    // this is going to call setFieldValue and manually update values.createdAt
-    this.props.onChange('createdAt', value)
-  }
-
-  render() {
-    return (
-      <MuiPickersUtilsProvider utils={DateFnsUtils}>
-        <DateTimePicker
-          label="Date"
-          inputProps={{ 'aria-label': 'Date', required: true }}
-          value={this.props.value}
-          name="createdAt"
-          onChange={this.handleChange}
-        />
-      </MuiPickersUtilsProvider>
-    )
-  }
-}
-
-MyDateSelect.propTypes = {
-  value: PropTypes.object.isRequired,
-  onChange: PropTypes.func.isRequired
-}
 
 class TransactionDialog extends React.Component {
   constructor(props) {
@@ -190,7 +161,9 @@ class TransactionDialog extends React.Component {
                 helperText="The original purchase cost"
                 onChange={handleChange}
               />
-              <MyDateSelect
+              <DateTimeSelect
+                label="Date"
+                name="createdAt"
                 value={values.createdAt}
                 onChange={setFieldValue}
               />
