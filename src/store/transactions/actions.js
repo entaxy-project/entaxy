@@ -12,6 +12,16 @@ export const createTransaction = (transaction) => {
     saveState()
   }
 }
+
+export const updateTransaction = (transaction) => {
+  return async (dispatch) => {
+    dispatch({ type: types.UPDATE_TRANSACTION, payload: transaction })
+    await dispatch(updateMarketValues())
+    dispatch(updatePortfolioFilters())
+    saveState()
+  }
+}
+
 export const deleteTransaction = (index) => {
   return async (dispatch) => {
     dispatch({ type: types.DELETE_TRANSACTION, payload: index })
