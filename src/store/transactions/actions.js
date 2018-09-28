@@ -4,6 +4,10 @@ import { saveState } from '../user/actions'
 import { updatePortfolioFilters } from '../settings/actions'
 import { updateMarketValues } from '../marketValues/actions'
 
+export const loadTransactions = (transactions) => {
+  return { type: types.LOAD_TRANSACTIONS, payload: transactions }
+}
+
 export const createTransaction = (transaction) => {
   return async (dispatch) => {
     dispatch({ type: types.CREATE_TRANSACTION, payload: { ...transaction, id: uuid() } })
@@ -29,8 +33,4 @@ export const deleteTransaction = (index) => {
     dispatch(updatePortfolioFilters())
     saveState()
   }
-}
-
-export const loadTransactions = (transactions) => {
-  return { type: types.LOAD_TRANSACTIONS, payload: transactions }
 }
