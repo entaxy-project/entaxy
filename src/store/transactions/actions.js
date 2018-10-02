@@ -4,9 +4,10 @@ import { saveState } from '../user/actions'
 import { updatePortfolioFilters } from '../settings/actions'
 import { updateMarketValues } from '../marketValues/actions'
 
-export const loadTransactions = (transactions) => {
-  return { type: types.LOAD_TRANSACTIONS, payload: transactions }
-}
+export const loadTransactions = (transactions) => ({
+  type: types.LOAD_TRANSACTIONS,
+  payload: transactions
+})
 
 export const createTransaction = (transaction) => {
   return async (dispatch) => {
