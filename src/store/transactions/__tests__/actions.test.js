@@ -49,17 +49,17 @@ describe('transactions actions', () => {
             },
             {
               payload: {
-                filterName: "source",
-                options: {"Questrade": true}
+                filterName: 'source',
+                options: { Questrade: true }
               },
-              type: "CREATE_PORTFOLIO_FILTERS"
+              type: 'CREATE_PORTFOLIO_FILTERS'
             },
             {
               payload: {
-                filterName: "account",
-                options: {"RRSP": true}
+                filterName: 'account',
+                options: { RRSP: true }
               },
-              type: "CREATE_PORTFOLIO_FILTERS"
+              type: 'CREATE_PORTFOLIO_FILTERS'
             }
           ])
         })
@@ -82,17 +82,17 @@ describe('transactions actions', () => {
             },
             {
               payload: {
-                filterName: "source",
-                options: {"Questrade": true}
+                filterName: 'source',
+                options: { Questrade: true }
               },
-              type: "CREATE_PORTFOLIO_FILTERS"
+              type: 'CREATE_PORTFOLIO_FILTERS'
             },
             {
               payload: {
-                filterName: "account",
-                options: {"RRSP": true}
+                filterName: 'account',
+                options: { RRSP: true }
               },
-              type: "CREATE_PORTFOLIO_FILTERS"
+              type: 'CREATE_PORTFOLIO_FILTERS'
             }
           ])
         })
@@ -114,17 +114,17 @@ describe('transactions actions', () => {
             },
             {
               payload: {
-                filterName: "source",
-                options: {"Questrade": true}
+                filterName: 'source',
+                options: { Questrade: true }
               },
-              type: "CREATE_PORTFOLIO_FILTERS"
+              type: 'CREATE_PORTFOLIO_FILTERS'
             },
             {
               payload: {
-                filterName: "account",
-                options: {"RRSP": true}
+                filterName: 'account',
+                options: { RRSP: true }
               },
-              type: "CREATE_PORTFOLIO_FILTERS"
+              type: 'CREATE_PORTFOLIO_FILTERS'
             }
           ])
         })

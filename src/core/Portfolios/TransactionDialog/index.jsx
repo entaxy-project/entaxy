@@ -74,7 +74,7 @@ const TransactionDialog = ({
           className={classes.input}
           value={values.account}
           name="account"
-          helperText="The name of the account (e.g. RRSP, TFSA, etc"
+          helperText="The name of the account (e.g. RRSP, TFSA, etc)"
           onChange={handleChange}
         />
         <TextField
@@ -109,7 +109,7 @@ const TransactionDialog = ({
             required: true,
             maxLength: 10,
             min: 0,
-            max: 9999999999
+            max: Number.MAX_SAFE_INTEGER
           }}
           className={classes.input}
           value={values.shares}
@@ -126,7 +126,7 @@ const TransactionDialog = ({
               required: true,
               maxLength: 6,
               min: 0,
-              max: 999999
+              max: Number.MAX_SAFE_INTEGER
             }
           }}
           className={classes.input}

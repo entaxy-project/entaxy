@@ -35,7 +35,7 @@ const ModalDialog = ({
 ModalDialog.propTypes = {
   open: PropTypes.bool.isRequired,
   title: PropTypes.string.isRequired,
-  children: PropTypes.object.isRequired,
+  children: PropTypes.element.isRequired,
   onSubmit: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired
 }

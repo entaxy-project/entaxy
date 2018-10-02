@@ -37,7 +37,7 @@ describe('transaction reducer', () => {
       bookValue: '1',
       createdAt: new Date()
     }
-    expect(transactionReducer(undefined, { type, payload })).toEqual([ payload ])
+    expect(transactionReducer(undefined, { type, payload })).toEqual([payload])
   })
 
   it('should handle CREATE_TRANSACTION with existing transactions', () => {
@@ -60,7 +60,7 @@ describe('transaction reducer', () => {
       bookValue: '1',
       createdAt: new Date()
     }
-    expect(transactionReducer(state, { type, payload })).toEqual([ ...state, payload ])
+    expect(transactionReducer(state, { type, payload })).toEqual([...state, payload])
   })
 
   it('should handle UPDATE_TRANSACTION', () => {
@@ -85,7 +85,7 @@ describe('transaction reducer', () => {
       bookValue: '1',
       createdAt: new Date()
     }
-    expect(transactionReducer(state, { type, payload })).toEqual([ payload ])
+    expect(transactionReducer(state, { type, payload })).toEqual([payload])
   })
 
   it('should handle DELETE_TRANSACTION', () => {
@@ -101,6 +101,6 @@ describe('transaction reducer', () => {
       createdAt: new Date()
     }]
     const payload = state[0].id
-    expect(transactionReducer(state, { type, payload })).toEqual([ ])
+    expect(transactionReducer(state, { type, payload })).toEqual([])
   })
 })

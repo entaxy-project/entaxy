@@ -15,5 +15,4 @@ describe('DateTimeSelect', () => {
     ))
     expect(component.toJSON()).toMatchSnapshot()
   })
-
 })
