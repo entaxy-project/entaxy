@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography'
 import Card from '@material-ui/core/Card'
 import CardHeader from '@material-ui/core/CardHeader'
 import Header from '../../../common/Header/index'
+import CsvImport from './CsvImport'
 
 const styles = () => ({
   root: {
@@ -38,6 +39,7 @@ const DataSources = ({ classes }) => (
           </Grid>
           <Grid item xs={4}>
             <Card className={classes.dataSource}>
+              <CsvImport />
               <CardHeader
                 title="RBC"
                 subheader="Coming Soon"
