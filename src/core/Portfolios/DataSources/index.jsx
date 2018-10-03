@@ -7,6 +7,9 @@ import Card from '@material-ui/core/Card'
 import CardHeader from '@material-ui/core/CardHeader'
 import Header from '../../../common/Header/index'
 import CsvImport from './CsvImport'
+import RbcLogo from './RBC.png'
+import BmoLogo from './BMO.png'
+import TdLogo from './TD.png'
 
 const styles = () => ({
   root: {
@@ -19,6 +22,22 @@ const styles = () => ({
   dataSource: {
     height: '100px',
     margin: '10px 25px'
+  },
+  cardHeader: {
+    'padding-left': '60px',
+    'margin-left': '10px'
+  },
+  RBC: {
+    background: `url(${RbcLogo}) left no-repeat`,
+    'background-size': '50px'
+  },
+  BMO: {
+    background: `url(${BmoLogo}) left no-repeat`,
+    'background-size': '50px'
+  },
+  TD: {
+    background: `url(${TdLogo}) left no-repeat`,
+    'background-size': '50px'
   }
 })
 
@@ -35,6 +54,7 @@ const DataSources = ({ classes }) => (
             <Card className={classes.dataSource}>
               <CsvImport institution="RBC" />
               <CardHeader
+                className={[classes.cardHeader, classes.RBC]}
                 title="RBC"
                 subheader="Import .csv file"
               />
@@ -44,6 +64,7 @@ const DataSources = ({ classes }) => (
             <Card className={classes.dataSource}>
               <CsvImport institution="BMO" />
               <CardHeader
+                className={[classes.cardHeader, classes.BMO]}
                 title="BMO"
                 subheader="Import .csv file"
               />
@@ -53,6 +74,7 @@ const DataSources = ({ classes }) => (
             <Card className={classes.dataSource}>
               <CsvImport institution="TD" />
               <CardHeader
+                className={[classes.cardHeader, classes.TD]}
                 title="TD"
                 subheader="Import .csv file"
               />
