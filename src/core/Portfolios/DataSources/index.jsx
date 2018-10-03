@@ -39,10 +39,19 @@ const DataSources = ({ classes }) => (
           </Grid>
           <Grid item xs={4}>
             <Card className={classes.dataSource}>
-              <CsvImport />
+              <CsvImport institution="RBC" />
               <CardHeader
                 title="RBC"
-                subheader="Coming Soon"
+                subheader="Import .csv file"
+              />
+            </Card>
+          </Grid>
+          <Grid item xs={4}>
+            <Card className={classes.dataSource}>
+              <CsvImport institution="BMO" />
+              <CardHeader
+                title="BMO"
+                subheader="Import .csv file"
               />
             </Card>
           </Grid>

@@ -23,7 +23,7 @@ import format from 'date-fns/format'
 import Header from '../../../common/Header/index'
 import TransactionDialog from '../TransactionDialog'
 import confirm from '../../../util/confirm'
-import { deleteTransaction } from '../../../store/transactions/actions'
+import { deleteTransaction, deleteAllTransactions } from '../../../store/transactions/actions'
 
 const styles = theme => ({
   root: {
@@ -33,8 +33,12 @@ const styles = theme => ({
     margin: '10px 5px',
     padding: '20px'
   },
-  buttons: {
+  buttonsLeft: {
     float: 'left',
+    display: 'inline-block'
+  },
+  buttonsRight: {
+    float: 'right',
     display: 'inline-block'
   },
   button: {
@@ -53,6 +57,11 @@ const mapDispatchToProps = (dispatch) => {
     handleDelete: (transactionId) => {
       confirm('Delete transaction?', 'Are you sure?').then(() => {
         dispatch(deleteTransaction(transactionId))
+      })
+    },
+    handleDeleteAll: () => {
+      confirm('Delete ALL transaction?', 'Are you sure?').then(() => {
+        dispatch(deleteAllTransactions())
       })
     }
   }
@@ -84,7 +93,8 @@ class Transactions extends React.Component {
     const {
       classes,
       transactions,
-      handleDelete
+      handleDelete,
+      handleDeleteAll
     } = this.props
     return (
       <div className={classes.root}>
@@ -92,7 +102,7 @@ class Transactions extends React.Component {
         <Grid container spacing={0}>
           <Grid item xs={12}>
             <Paper className={classes.paper}>
-              <div className={classes.buttons}>
+              <div className={classes.buttonsLeft}>
                 <TransactionDialog
                   open={this.state.open}
                   onCancel={this.handleCancel}
@@ -117,11 +127,22 @@ class Transactions extends React.Component {
                   Import
                 </Button>
               </div>
+              <div className={classes.buttonsRight}>
+                <Button
+                  variant="extendedFab"
+                  color="primary"
+                  aria-label="Delete ALL Transactions"
+                  className={classes.button}
+                  onClick={handleDeleteAll}
+                >
+                  Delete ALL Transactions
+                </Button>
+              </div>
               <Typography variant="headline" gutterBottom align="center">Transactions</Typography>
               <Table className={classes.table}>
                 <TableHead>
                   <TableRow>
-                    <TableCell>Source</TableCell>
+                    <TableCell>Institution</TableCell>
                     <TableCell>Account</TableCell>
                     <TableCell>Type</TableCell>
                     <TableCell>Ticker</TableCell>
@@ -135,7 +156,7 @@ class Transactions extends React.Component {
                   {_.map(transactions, (transaction) => {
                     return (
                       <TableRow key={transaction.id}>
-                        <TableCell>{transaction.source}</TableCell>
+                        <TableCell>{transaction.institution}</TableCell>
                         <TableCell>{transaction.account}</TableCell>
                         <TableCell>{transaction.type}</TableCell>
                         <TableCell>{transaction.ticker}</TableCell>
@@ -176,7 +197,8 @@ class Transactions extends React.Component {
 Transactions.propTypes = {
   classes: PropTypes.object.isRequired,
   transactions: PropTypes.array.isRequired,
-  handleDelete: PropTypes.func.isRequired
+  handleDelete: PropTypes.func.isRequired,
+  handleDeleteAll: PropTypes.func.isRequired
 }
 
 export default compose(

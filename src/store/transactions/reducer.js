@@ -17,6 +17,8 @@ export default (state = initialState, action) => {
     case types.DELETE_TRANSACTION:
       index = _.findIndex(state, transaction => transaction.id === action.payload)
       return [...state.slice(0, index), ...state.slice(index + 1)]
+    case types.ADD_TRANSACTIONS:
+      return [...state, ...action.payload]
     default:
       return state
   }

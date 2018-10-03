@@ -3,7 +3,7 @@ import types from './types'
 
 export const initialState = {
   portfolioFilters: {
-    source: {},
+    institution: {},
     account: {}
   }
 }

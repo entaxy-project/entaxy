@@ -51,16 +51,16 @@ const TransactionDialog = ({
     >
       <div>
         <TextField
-          label="Source"
+          label="Institution"
           inputProps={{
-            'aria-label': 'Source',
+            'aria-label': 'Institution',
             required: true,
             maxLength: 100
           }}
           className={classes.input}
-          value={values.source}
-          name="source"
-          helperText="This institution where this asset is being held"
+          value={values.institution}
+          name="Institution"
+          helperText="The institution where this asset is being held"
           onChange={handleChange}
           autoFocus
         />
@@ -165,7 +165,7 @@ export default compose(
     mapPropsToValues: ({ transaction }) => {
       if (transaction === null) {
         return {
-          source: '',
+          institution: '',
           account: '',
           type: '',
           ticker: '',
