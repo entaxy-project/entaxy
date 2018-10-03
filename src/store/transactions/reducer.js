@@ -19,6 +19,8 @@ export default (state = initialState, action) => {
       return [...state.slice(0, index), ...state.slice(index + 1)]
     case types.ADD_TRANSACTIONS:
       return [...state, ...action.payload]
+    case types.DELETE_ALL_TRANSACTIONS:
+      return []
     default:
       return state
   }
