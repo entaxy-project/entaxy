@@ -10,6 +10,7 @@ import CsvImport from './CsvImport'
 import RbcLogo from './RBC.png'
 import BmoLogo from './BMO.png'
 import TdLogo from './TD.png'
+import QuestradeLogo from './Questrade.png'
 
 const styles = () => ({
   root: {
@@ -37,6 +38,10 @@ const styles = () => ({
   },
   TD: {
     background: `url(${TdLogo}) left no-repeat`,
+    'background-size': '50px'
+  },
+  Questrade: {
+    background: `url(${QuestradeLogo}) left no-repeat`,
     'background-size': '50px'
   }
 })
@@ -85,6 +90,7 @@ const DataSources = ({ classes }) => (
           <Grid item xs={4}>
             <Card className={classes.dataSource}>
               <CardHeader
+                className={[classes.cardHeader, classes.Questrade]}
                 title="Questrade"
                 subheader="Coming Soon"
               />
