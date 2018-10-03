@@ -3,7 +3,7 @@
   "description": "Your Personal Finance App",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "https://entaxy.io/favicon.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     }

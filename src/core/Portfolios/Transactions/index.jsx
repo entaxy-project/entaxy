@@ -1,3 +1,4 @@
+/* eslint no-console: 0 */
 import React from 'react'
 import _ from 'lodash'
 import { compose } from 'recompose'
@@ -15,11 +16,12 @@ import TableRow from '@material-ui/core/TableRow'
 import Button from '@material-ui/core/Button'
 import IconButton from '@material-ui/core/IconButton'
 import { NavLink } from 'react-router-dom'
+import AddIcon from '@material-ui/icons/Add'
 import EditIcon from '@material-ui/icons/Edit'
 import DeleteIcon from '@material-ui/icons/Delete'
 import format from 'date-fns/format'
 import Header from '../../../common/Header/index'
-import TransactionForm from '../TransactionForm'
+import TransactionDialog from '../TransactionDialog'
 import confirm from '../../../util/confirm'
 import { deleteTransaction } from '../../../store/transactions/actions'
 
@@ -56,85 +58,119 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-const Transactions = ({
-  classes,
-  transactions,
-  handleDelete
-}) => {
-  const currencyFormatter = new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD' })
+class Transactions extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      open: false,
+      transaction: null
+    }
+  }
 
-  return (
-    <div className={classes.root}>
-      <Header />
-      <Grid container spacing={0}>
-        <Grid item xs={12}>
-          <Paper className={classes.paper}>
-            <div className={classes.buttons}>
-              <TransactionForm />
-              <Button
-                variant="extendedFab"
-                color="primary"
-                aria-label="Import Transactions"
-                className={classes.button}
-                component={NavLink}
-                to="/data-sources"
-              >
-                Import
-              </Button>
-            </div>
-            <Typography variant="headline" gutterBottom align="center">Transactions</Typography>
-            <Table className={classes.table}>
-              <TableHead>
-                <TableRow>
-                  <TableCell>Source</TableCell>
-                  <TableCell>Account</TableCell>
-                  <TableCell>Type</TableCell>
-                  <TableCell>Ticker</TableCell>
-                  <TableCell numeric>Shares</TableCell>
-                  <TableCell numeric>BookValue</TableCell>
-                  <TableCell numeric>Date</TableCell>
-                  <TableCell />
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {_.map(transactions, (transaction) => {
-                  return (
-                    <TableRow key={transaction.id}>
-                      <TableCell>{transaction.source}</TableCell>
-                      <TableCell>{transaction.account}</TableCell>
-                      <TableCell>{transaction.type}</TableCell>
-                      <TableCell>{transaction.ticker}</TableCell>
-                      <TableCell numeric>{transaction.shares}</TableCell>
-                      <TableCell numeric>{currencyFormatter.format(transaction.bookValue)}</TableCell>
-                      <TableCell numeric>{format(transaction.createdAt, 'MMM do, YYYY @ h:mm a')}</TableCell>
-                      <TableCell>
-                        <IconButton
-                          variant="fab"
-                          color="primary"
-                          aria-label="Edit Transaction"
-                          onClick={handleDelete}
-                        >
-                          <EditIcon />
-                        </IconButton>
-                        <IconButton
-                          variant="fab"
-                          color="primary"
-                          aria-label="Delete Transaction"
-                          onClick={() => handleDelete(transaction.id)}
-                        >
-                          <DeleteIcon />
-                        </IconButton>
-                      </TableCell>
-                    </TableRow>
-                  )
-                })}
-              </TableBody>
-            </Table>
-          </Paper>
+  handleNew = () => {
+    this.setState({ open: true, transaction: null })
+  }
+
+  handleEdit = (transaction) => {
+    this.setState({ open: true, transaction })
+  }
+
+  handleCancel = () => {
+    this.setState({ open: false })
+  }
+
+  render() {
+    const currencyFormatter = new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD' })
+    const {
+      classes,
+      transactions,
+      handleDelete
+    } = this.props
+    return (
+      <div className={classes.root}>
+        <Header />
+        <Grid container spacing={0}>
+          <Grid item xs={12}>
+            <Paper className={classes.paper}>
+              <div className={classes.buttons}>
+                <TransactionDialog
+                  open={this.state.open}
+                  onCancel={this.handleCancel}
+                  transaction={this.state.transaction}
+                />
+                <Button
+                  variant="fab"
+                  color="primary"
+                  aria-label="New Transaction"
+                  onClick={this.handleNew}
+                >
+                  <AddIcon />
+                </Button>
+                <Button
+                  variant="extendedFab"
+                  color="primary"
+                  aria-label="Import Transactions"
+                  className={classes.button}
+                  component={NavLink}
+                  to="/data-sources"
+                >
+                  Import
+                </Button>
+              </div>
+              <Typography variant="headline" gutterBottom align="center">Transactions</Typography>
+              <Table className={classes.table}>
+                <TableHead>
+                  <TableRow>
+                    <TableCell>Source</TableCell>
+                    <TableCell>Account</TableCell>
+                    <TableCell>Type</TableCell>
+                    <TableCell>Ticker</TableCell>
+                    <TableCell numeric>Shares</TableCell>
+                    <TableCell numeric>BookValue</TableCell>
+                    <TableCell numeric>Date</TableCell>
+                    <TableCell />
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {_.map(transactions, (transaction) => {
+                    return (
+                      <TableRow key={transaction.id}>
+                        <TableCell>{transaction.source}</TableCell>
+                        <TableCell>{transaction.account}</TableCell>
+                        <TableCell>{transaction.type}</TableCell>
+                        <TableCell>{transaction.ticker}</TableCell>
+                        <TableCell numeric>{transaction.shares}</TableCell>
+                        <TableCell numeric>{currencyFormatter.format(transaction.bookValue)}</TableCell>
+                        <TableCell numeric>{format(transaction.createdAt, 'MMM do, YYYY @ h:mm a')}</TableCell>
+                        <TableCell>
+                          <IconButton
+                            variant="fab"
+                            color="primary"
+                            aria-label="Edit Transaction"
+                            onClick={() => this.handleEdit(transaction)}
+                          >
+                            <EditIcon />
+                          </IconButton>
+                          <IconButton
+                            variant="fab"
+                            color="primary"
+                            aria-label="Delete Transaction"
+                            onClick={() => handleDelete(transaction.id)}
+                          >
+                            <DeleteIcon />
+                          </IconButton>
+                        </TableCell>
+                      </TableRow>
+                    )
+                  })}
+                </TableBody>
+              </Table>
+            </Paper>
+          </Grid>
         </Grid>
-      </Grid>
-    </div>
-  )
+      </div>
+    )
+  }
 }
 
 Transactions.propTypes = {

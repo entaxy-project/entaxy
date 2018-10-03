@@ -135,7 +135,8 @@
   },
   "jest": {
     "collectCoverageFrom": [
-      "src/**/*.{js,jsx,mjs}"
+      "src/**/*.{js,jsx,mjs}",
+      "!src/store/**/types.js"
     ],
     "collectCoverage": true,
     "coverageThreshold": {
