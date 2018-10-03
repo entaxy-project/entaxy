@@ -1,4 +1,5 @@
 /* eslint-disable  no-unused-vars */
+/* eslint no-console: 0 */
 import { isEqual } from 'lodash'
 import Papa from 'papaparse'
 
@@ -16,9 +17,15 @@ export default class CsvParser {
   }
 
   validateHeader(row) {
-    this._headerIsValid = isEqual(row, this._header)
-    if (!this._headerIsValid) {
-      this._errors.push(`Invalid header. Expected [${this._header}] but found [${row}]`)
+    if (!this._config.header) {
+      // Skip if the file has no headers
+      this._headerIsValid = true
+    } else {
+      // Otherwise compare the header in the parser with the one from the file
+      this._headerIsValid = isEqual(row, this._header)
+      if (!this._headerIsValid) {
+        this._errors.push(`Invalid header. Expected [${this._header}] but found [${row}]`)
+      }
     }
   }
 
@@ -31,7 +38,6 @@ export default class CsvParser {
     const transactions = []
     return new Promise((resolve, reject) => {
       Papa.parse(this._file, {
-        ...this._config,
         header: true,
         trimHeaders: true,
         dynamicTyping: true,
@@ -47,7 +53,8 @@ export default class CsvParser {
           } else {
             reject(this._errors)
           }
-        }
+        },
+        ...this._config
       })
     })
   }

@@ -5,12 +5,7 @@ export default class BmoCsvParser extends CsvParser {
   constructor(file) {
     super(file)
     this._config = {
-      // beforeFirstChunk: (chunk) => {
-      //   console.log('chunk', chunk)
-      //   const rows = chunk.split(/\r\n|\r|\n/)
-      //   return rows.slice(3)
-      // }
-      comments: 'Following data is valid as of'
+      comments: 'Following data is valid as of' // Skipp these lines
     }
     this._header = [
       'First Bank Card',
@@ -22,6 +17,11 @@ export default class BmoCsvParser extends CsvParser {
   }
 
   map(row) {
+    const date = {
+      year: row['Date Posted'].toString().slice(0, 4),
+      month: row['Date Posted'].toString().slice(4, 6),
+      day: row['Date Posted'].toString().slice(6)
+    }
     return {
       id: uuid(),
       institution: 'BMO',
@@ -30,8 +30,8 @@ export default class BmoCsvParser extends CsvParser {
       ticker: 'CAD',
       shares: row['Transaction Amount'],
       bookValue: 1,
-      description: row.Description,
-      createdAt: Date.parse(row['Date Posted'])
+      description: row.Description.trim(),
+      createdAt: Date.parse(`${date.year}/${date.month}/${date.day}`)
     }
   }
 }

@@ -18,7 +18,7 @@ const styles = () => ({
   },
   dataSource: {
     height: '100px',
-    margin: '10px 5px'
+    margin: '10px 25px'
   }
 })
 
@@ -27,16 +27,10 @@ const DataSources = ({ classes }) => (
     <Header />
     <Grid container spacing={0}>
       <Grid item xs={12}>
-        <Typography className={classes.title} variant="headline" align="center">DataSources</Typography>
+        <Typography className={classes.title} variant="headline" align="center">
+          DataSources
+        </Typography>
         <Grid container spacing={0}>
-          <Grid item xs={4}>
-            <Card className={classes.dataSource}>
-              <CardHeader
-                title="Questrade"
-                subheader="Coming Soon"
-              />
-            </Card>
-          </Grid>
           <Grid item xs={4}>
             <Card className={classes.dataSource}>
               <CsvImport institution="RBC" />
@@ -52,6 +46,25 @@ const DataSources = ({ classes }) => (
               <CardHeader
                 title="BMO"
                 subheader="Import .csv file"
+              />
+            </Card>
+          </Grid>
+          <Grid item xs={4}>
+            <Card className={classes.dataSource}>
+              <CsvImport institution="TD" />
+              <CardHeader
+                title="TD"
+                subheader="Import .csv file"
+              />
+            </Card>
+          </Grid>
+        </Grid>
+        <Grid container spacing={0}>
+          <Grid item xs={4}>
+            <Card className={classes.dataSource}>
+              <CardHeader
+                title="Questrade"
+                subheader="Coming Soon"
               />
             </Card>
           </Grid>

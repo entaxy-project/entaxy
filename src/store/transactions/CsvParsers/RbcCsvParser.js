@@ -26,7 +26,7 @@ export default class RbcCsvParser extends CsvParser {
       ticker: (row.CAD$ === null ? 'USD' : 'CAD'),
       shares: amount,
       bookValue: 1,
-      description: `${row['Description 1']} - ${row['Description 1']}`,
+      description: `${row['Description 1']} - ${row['Description 1']}`.trim(),
       createdAt: Date.parse(row['Transaction Date'])
     }
   }
