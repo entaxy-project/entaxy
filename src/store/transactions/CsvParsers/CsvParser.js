@@ -1,8 +1,8 @@
-/* eslint-disable  no-unused-vars */
 /* eslint no-console: 0 */
 import { isEqual } from 'lodash'
 import Papa from 'papaparse'
 
+// The base class for all CSV parsers
 export default class CsvParser {
   constructor(file) {
     this._file = file
@@ -31,7 +31,7 @@ export default class CsvParser {
 
   // This should be overriten in a deriver class
   map(row) {
-    throw (new Error('map() method not defined'))
+    throw (new Error(`map() method not defined ${row}`))
   }
 
   parse() {

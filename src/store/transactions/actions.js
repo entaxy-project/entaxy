@@ -1,6 +1,4 @@
 /* eslint no-console: 0 */
-/* eslint-disable no-unused-vars */
-import _ from 'lodash'
 import uuid from 'uuid/v4'
 import types from './types'
 import { saveState, dataIsLoading } from '../user/actions'

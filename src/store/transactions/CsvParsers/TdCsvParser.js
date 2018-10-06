@@ -1,4 +1,3 @@
-/* eslint no-console: 0 */
 import uuid from 'uuid/v4'
 import CsvParser from './CsvParser'
 
@@ -6,7 +5,7 @@ export default class BmoCsvParser extends CsvParser {
   constructor(file) {
     super(file)
     this._config = {
-      header: false
+      header: false // This CSV file has no header
     }
   }
 
@@ -16,7 +15,7 @@ export default class BmoCsvParser extends CsvParser {
   // [3] Deposits
   // [4] Balance
   map(row) {
-    console.log(row)
+    const [month, day, year] = row[0].split('/') // Date
     return {
       id: uuid(),
       institution: 'TD',
@@ -26,7 +25,7 @@ export default class BmoCsvParser extends CsvParser {
       shares: (row[2] === null ? row[3] : row[2]),
       bookValue: 1,
       description: row[1].trim(), // Description
-      createdAt: Date.parse(row[0]) // Date
+      createdAt: Date.parse(`${year}/${month}/${day}`)
     }
   }
 }

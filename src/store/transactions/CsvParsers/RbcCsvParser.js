@@ -17,6 +17,7 @@ export default class RbcCsvParser extends CsvParser {
   }
 
   map(row) {
+    const [month, day, year] = row['Transaction Date'].split('/')
     const amount = (row.CAD$ === null ? parseFloat(row.USD$) : parseFloat(row.CAD$))
     return {
       id: uuid(),
@@ -27,7 +28,7 @@ export default class RbcCsvParser extends CsvParser {
       shares: amount,
       bookValue: 1,
       description: `${row['Description 1']} - ${row['Description 1']}`.trim(),
-      createdAt: Date.parse(row['Transaction Date'])
+      createdAt: Date.parse(`${year}/${month}/${day}`)
     }
   }
 }
