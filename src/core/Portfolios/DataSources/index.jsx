@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
@@ -7,10 +8,11 @@ import Card from '@material-ui/core/Card'
 import CardHeader from '@material-ui/core/CardHeader'
 import Header from '../../../common/Header/index'
 import CsvImport from './CsvImport'
-import RbcLogo from './RBC.png'
-import BmoLogo from './BMO.png'
-import TdLogo from './TD.png'
-import QuestradeLogo from './Questrade.png'
+import RbcLogo from './logos/RBC.png'
+import BmoLogo from './logos/BMO.png'
+import TdLogo from './logos/TD.png'
+import TangerineLogo from './logos/Tangerine.png'
+import QuestradeLogo from './logos/Questrade.png'
 
 const styles = () => ({
   root: {
@@ -40,6 +42,10 @@ const styles = () => ({
     background: `url(${TdLogo}) left no-repeat`,
     'background-size': '50px'
   },
+  Tangerine: {
+    background: `url(${TangerineLogo}) left no-repeat`,
+    'background-size': '50px'
+  },
   Questrade: {
     background: `url(${QuestradeLogo}) left no-repeat`,
     'background-size': '50px'
@@ -59,7 +65,7 @@ const DataSources = ({ classes }) => (
             <Card className={classes.dataSource}>
               <CsvImport institution="RBC" />
               <CardHeader
-                className={[classes.cardHeader, classes.RBC]}
+                className={`${classes.cardHeader} ${classes.RBC}`}
                 title="RBC"
                 subheader="Import .csv file"
               />
@@ -69,7 +75,7 @@ const DataSources = ({ classes }) => (
             <Card className={classes.dataSource}>
               <CsvImport institution="BMO" />
               <CardHeader
-                className={[classes.cardHeader, classes.BMO]}
+                className={`${classes.cardHeader} ${classes.BMO}`}
                 title="BMO"
                 subheader="Import .csv file"
               />
@@ -79,7 +85,7 @@ const DataSources = ({ classes }) => (
             <Card className={classes.dataSource}>
               <CsvImport institution="TD" />
               <CardHeader
-                className={[classes.cardHeader, classes.TD]}
+                className={`${classes.cardHeader} ${classes.TD}`}
                 title="TD"
                 subheader="Import .csv file"
               />
@@ -89,8 +95,18 @@ const DataSources = ({ classes }) => (
         <Grid container spacing={0}>
           <Grid item xs={4}>
             <Card className={classes.dataSource}>
+              <CsvImport institution="Tangerine" />
               <CardHeader
-                className={[classes.cardHeader, classes.Questrade]}
+                className={`${classes.cardHeader} ${classes.Tangerine}`}
+                title="Tangerine"
+                subheader="Import .csv file"
+              />
+            </Card>
+          </Grid>
+          <Grid item xs={4}>
+            <Card className={classes.dataSource}>
+              <CardHeader
+                className={`${classes.cardHeader} ${classes.Questrade}`}
                 title="Questrade"
                 subheader="Coming Soon"
               />
