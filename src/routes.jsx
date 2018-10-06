@@ -6,7 +6,7 @@ import LoadingOverlay from './common/LoadingOverlay'
 import Taxes from './core/Taxes'
 import Portfolios from './core/Portfolios'
 import Transactions from './core/Portfolios/Transactions'
-import DataSources from './core/Portfolios/DataSources'
+import DataSources from './core/DataSources'
 
 const Routes = () => (
   <div>
