@@ -27,7 +27,7 @@ const Logo = ({ classes }) => (
       alt="Entaxy logo"
     />
     <Typography
-      variant="title"
+      variant="h6"
       color="inherit"
       className={classes.title}
       component={Link}

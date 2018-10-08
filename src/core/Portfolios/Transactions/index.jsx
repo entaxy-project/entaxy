@@ -124,7 +124,7 @@ class Transactions extends React.Component {
                   component={NavLink}
                   to="/data-sources"
                 >
-                  Import
+                  Import Transactions
                 </Button>
               </div>
               <div className={classes.buttonsRight}>
@@ -138,7 +138,7 @@ class Transactions extends React.Component {
                   Delete ALL Transactions
                 </Button>
               </div>
-              <Typography variant="headline" gutterBottom align="center">Transactions</Typography>
+              <Typography variant="h5" gutterBottom align="center">Transactions</Typography>
               <Table className={classes.table}>
                 <TableHead>
                   <TableRow>

@@ -87,7 +87,7 @@ const Portfolios = ({
         </Grid>
         <Grid item xs={8}>
           <Paper className={classes.paper}>
-            <Typography variant="headline" gutterBottom align="center">Portfolio</Typography>
+            <Typography variant="h5" gutterBottom align="center">Portfolio</Typography>
             <PortfolioTable />
           </Paper>
         </Grid>

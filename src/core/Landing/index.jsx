@@ -42,7 +42,8 @@ const styles = () => ({
   },
   cards: {
     display: 'flex',
-    'flex-direction': 'column'
+    'flex-direction': 'row',
+    'flex-wrap': 'wrap'
   },
   right: {
     'background-repeat': 'no-repeat',
