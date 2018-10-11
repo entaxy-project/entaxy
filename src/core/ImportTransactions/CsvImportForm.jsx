@@ -6,6 +6,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withFormik } from 'formik'
 import Button from '@material-ui/core/Button'
+import Divider from '@material-ui/core/Divider'
 import CsvDropzone from './CsvDropzone'
 import CsvImportFields from './CsvImportFields'
 import { addTransactions } from '../../store/transactions/actions'
@@ -17,11 +18,17 @@ import TangerineCsvParser from '../../store/transactions/CsvParsers/TangerineCsv
 
 const styles = () => ({
   root: {
-    display: 'inline'
+    display: 'flex',
+    'justify-content': 'center'
   },
   input: {
     margin: '5px',
     width: 200
+  },
+  formActions: {
+    display: 'flex',
+    'justify-content': 'flex-end',
+    'padding-top': '10px'
   }
 })
 
@@ -72,16 +79,26 @@ class CsvImportForm extends React.Component {
     } = this.state
 
     return (
-      <form onSubmit={handleSubmit} className={classes.root}>
-        <CsvImportFields institution={institution} values={values} handleChange={handleChange} />
-        <CsvDropzone
-          handleFileUpload={this.handleFileUpload}
-          institution={institution}
-          file={file}
-          error={error}
-        />
-        <Button type="submit" color="primary">Save</Button>
-        <Button onClick={onCancel} color="primary">Cancel</Button>
+      <form onSubmit={handleSubmit}>
+        <div className={classes.root}>
+          <CsvImportFields
+            institution={institution}
+            values={values}
+            handleChange={handleChange}
+          />
+          <CsvDropzone
+            className={classes.dropzone}
+            handleFileUpload={this.handleFileUpload}
+            institution={institution}
+            file={file}
+            error={error}
+          />
+        </div>
+        <Divider />
+        <div className={classes.formActions}>
+          <Button type="submit" color="secondary" disabled={!file || error}>Import</Button>
+          <Button onClick={onCancel} color="secondary">Cancel</Button>
+        </div>
       </form>
     )
   }

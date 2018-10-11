@@ -14,6 +14,7 @@ import Paper from '@material-ui/core/Paper'
 import Fade from '@material-ui/core/Fade'
 import ClickAwayListener from '@material-ui/core/ClickAwayListener'
 import Icon from '@mdi/react'
+import Divider from '@material-ui/core/Divider'
 import { mdiFileUploadOutline, mdiUploadNetwork } from '@mdi/js'
 import Header from '../../common/Header'
 import CsvImportForm from './CsvImportForm'
@@ -44,39 +45,47 @@ const styles = theme => ({
     margin: '10px'
   },
   cardHeader: {
-    flex: '1 1 auto',
     'padding-left': '60px',
-    'margin-left': '10px'
+    'margin-left': '10px',
+    'background-size': '50px',
+    'background-position': 'left',
+    'background-repeat': 'no-repeat'
   },
-  button: {
-    'justify-content': 'flex-start',
-    'font-size': '0.8rem',
-    'min-width': '120px',
-    align: 'left',
-    'margin-bottom': '5px'
+  RBC: {
+    'background-image': `url(${RbcLogo})`
+  },
+  BMO: {
+    'background-image': `url(${BmoLogo})`
+  },
+  TD: {
+    'background-image': `url(${TdLogo})`
+  },
+  Tangerine: {
+    'background-image': `url(${TangerineLogo})`
+  },
+  Questrade: {
+    'background-image': `url(${QuestradeLogo})`
   },
   menuIcon: {
     marginRight: theme.spacing.unit
   },
-  RBC: {
-    background: `url(${RbcLogo}) left no-repeat`,
-    'background-size': '50px'
+  importArea: {
+    margin: '10px',
+    padding: '10px'
   },
-  BMO: {
-    background: `url(${BmoLogo}) left no-repeat`,
-    'background-size': '50px'
+  importAreaHeader: {
+    padding: '10px',
+    display: 'flex',
+    'flex-direction': 'row',
+    'justify-content': 'space-between'
   },
-  TD: {
-    background: `url(${TdLogo}) left no-repeat`,
-    'background-size': '50px'
-  },
-  Tangerine: {
-    background: `url(${TangerineLogo}) left no-repeat`,
-    'background-size': '50px'
-  },
-  Questrade: {
-    background: `url(${QuestradeLogo}) left no-repeat`,
-    'background-size': '50px'
+  selectedInstitution: {
+    padding: '5px 0 5px 30px',
+    'margin-left': '10px',
+    'background-size': '25px',
+    'background-position': 'left',
+    'background-repeat': 'no-repeat'
+
   }
 })
 
@@ -109,8 +118,8 @@ export class ImportTransactionsComponent extends React.Component {
     this.state = {
       anchorEl: null,
       openPopup: false,
-      selectedInstitution: null,
-      selectedImportType: null
+      selectedInstitution: 'TD',
+      selectedImportType: 'CSV'
     }
   }
 
@@ -205,15 +214,20 @@ export class ImportTransactionsComponent extends React.Component {
               </div>
             }
             {selectedInstitution && selectedImportType &&
-              <Paper className={classes.paper}>
-                <Typography variant="body1" align="center">
-                  Import {selectedImportType} from {selectedInstitution}
-                </Typography>
-                <CardHeader
-                  className={`${classes.cardHeader} ${classes[selectedInstitution]}`}
-                  title={selectedInstitution}
-                  subheader={institutions[selectedInstitution].description}
-                />
+              <Paper className={classes.importArea}>
+                <div className={classes.importAreaHeader}>
+                  <Typography variant="body1" align="center">
+                    Import {selectedImportType} from {selectedInstitution}
+                  </Typography>
+                  <Typography
+                    variant="body1"
+                    align="center"
+                    className={`${classes.selectedInstitution} ${classes[selectedInstitution]}`}
+                  >
+                    {selectedInstitution}
+                  </Typography>
+                </div>
+                <Divider />
                 {selectedImportType === 'CSV' &&
                   <CsvImportForm
                     institution={selectedInstitution}
