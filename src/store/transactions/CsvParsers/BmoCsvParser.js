@@ -1,8 +1,9 @@
+/* eslint no-console: 0 */
 import uuid from 'uuid/v4'
 import CsvParser from './CsvParser'
 
 export default class BmoCsvParser extends CsvParser {
-  constructor(file) {
+  constructor(file, values) {
     super(file)
     this._config = {
       comments: 'Following data is valid as of' // Skipp these lines
@@ -14,6 +15,7 @@ export default class BmoCsvParser extends CsvParser {
       'Transaction Amount',
       'Description'
     ]
+    this._values = values
   }
 
   map(row) {
@@ -27,7 +29,7 @@ export default class BmoCsvParser extends CsvParser {
       institution: 'BMO',
       account: row['First Bank Card'],
       type: (row['Transaction Amount'] >= 0 ? 'buy' : 'sell'),
-      ticker: 'CAD',
+      ticker: this._values.ticker,
       shares: row['Transaction Amount'],
       bookValue: 1,
       description: row.Description.trim(),

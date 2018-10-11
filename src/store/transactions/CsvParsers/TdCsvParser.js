@@ -2,11 +2,12 @@ import uuid from 'uuid/v4'
 import CsvParser from './CsvParser'
 
 export default class BmoCsvParser extends CsvParser {
-  constructor(file) {
+  constructor(file, values) {
     super(file)
     this._config = {
       header: false // This CSV file has no header
     }
+    this._values = values
   }
 
   // [0] Date
@@ -19,9 +20,9 @@ export default class BmoCsvParser extends CsvParser {
     return {
       id: uuid(),
       institution: 'TD',
-      account: 'Cheching', // This needs to be an option passed in
+      account: this._values.account,
       type: (row[2] === null ? 'buy' : 'sell'),
-      ticker: 'CAD', // This needs to be an option passed in
+      ticker: this._values.ticker,
       shares: (row[2] === null ? row[3] : row[2]),
       bookValue: 1,
       description: row[1].trim(), // Description

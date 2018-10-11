@@ -20,10 +20,10 @@ import AddIcon from '@material-ui/icons/Add'
 import EditIcon from '@material-ui/icons/Edit'
 import DeleteIcon from '@material-ui/icons/Delete'
 import format from 'date-fns/format'
-import Header from '../../../common/Header/index'
-import TransactionDialog from '../TransactionDialog'
-import confirm from '../../../util/confirm'
-import { deleteTransaction, deleteAllTransactions } from '../../../store/transactions/actions'
+import Header from '../../common/Header'
+import TransactionDialog from './TransactionDialog'
+import confirm from '../../util/confirm'
+import { deleteTransaction, deleteAllTransactions } from '../../store/transactions/actions'
 
 const styles = theme => ({
   root: {
@@ -122,7 +122,7 @@ class Transactions extends React.Component {
                   aria-label="Import Transactions"
                   className={classes.button}
                   component={NavLink}
-                  to="/data-sources"
+                  to="/import-transactions"
                 >
                   Import Transactions
                 </Button>

@@ -2,7 +2,7 @@ import uuid from 'uuid/v4'
 import CsvParser from './CsvParser'
 
 export default class TangerineCsvParser extends CsvParser {
-  constructor(file) {
+  constructor(file, values) {
     super(file)
     this._header = [
       'Date',
@@ -11,6 +11,7 @@ export default class TangerineCsvParser extends CsvParser {
       'Memo',
       'Amount'
     ]
+    this._values = values
   }
 
   map(row) {
@@ -18,9 +19,9 @@ export default class TangerineCsvParser extends CsvParser {
     return {
       id: uuid(),
       institution: 'Tangerine',
-      account: 'Checking', // This needs to be an option passed in
+      account: this._values.account,
       type: (row.Amount >= 0 ? 'buy' : 'sell'),
-      ticker: 'CAD', // This needs to be an option passed in
+      ticker: this._values.ticker,
       shares: row.Amount,
       bookValue: 1,
       description: (row.Memo === null ? '' : row.Memo.trim()),

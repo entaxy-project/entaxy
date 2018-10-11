@@ -49,7 +49,15 @@ export const loadTransactions = (transactions) => {
   return { type: types.LOAD_TRANSACTIONS, payload: transactions }
 }
 
-export const importTransactionsFromFiles = (file, institution) => {
+// Add new transactions to the existing ones
+export const addTransactions = (transactions) => {
+  return (dispatch) => {
+    dispatch({ type: types.ADD_TRANSACTIONS, payload: transactions })
+    afterTransactionsChanged(dispatch)
+  }
+}
+
+export const importTransactionsFromCsv = (file, institution) => {
   return (dispatch) => {
     const parsers = {
       RBC: RbcCsvParser,
