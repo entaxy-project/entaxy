@@ -26,7 +26,7 @@ const CsvImportFields = ({
     case 'BMO':
       return (
         <div className={classes.root}>
-          <Typography variant="body" gutterBottom={true}>
+          <Typography variant="body1" gutterBottom={true}>
             Fill out the following field
           </Typography>
           <TextField
@@ -47,8 +47,8 @@ const CsvImportFields = ({
     case 'Tangerine':
       return (
         <div className={classes.root}>
-          <Typography variant="body" gutterBottom={true}>
-            Fill out the following fields
+          <Typography variant="body1" gutterBottom={true}>
+            A few things are missing from the CSV file
           </Typography>
           <TextField
             label="Account"
@@ -59,7 +59,7 @@ const CsvImportFields = ({
             }}
             value={values.account}
             name="account"
-            helperText="The name of the account (e.g. RRSP, TFSA, etc)"
+            helperText="The name of the account (e.g. Checking, Savings, RRSP, etc)"
             onChange={handleChange}
             className={classes.textField}
           />

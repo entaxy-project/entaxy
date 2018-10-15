@@ -1,3 +1,4 @@
+/* eslint no-console: 0 */
 import _ from 'lodash'
 import React from 'react'
 import PropTypes from 'prop-types'
@@ -119,7 +120,10 @@ export class ImportTransactionsComponent extends React.Component {
       anchorEl: null,
       openPopup: false,
       selectedInstitution: 'TD',
-      selectedImportType: 'CSV'
+      selectedImportType: 'CSV',
+      showTransactions: false,
+      transactions: [],
+      errors: {}
     }
   }
 
@@ -150,13 +154,26 @@ export class ImportTransactionsComponent extends React.Component {
     })
   }
 
+  handleParsedData = (transactions, errors) => {
+    console.log('handleParsedData', transactions, errors)
+    this.setState({
+      showTransactions: true,
+      transactions,
+      errors
+    })
+  }
+
+
   render() {
     const { classes } = this.props
     const {
       anchorEl,
       openPopup,
       selectedInstitution,
-      selectedImportType
+      selectedImportType,
+      showTransactions,
+      transactions,
+      errors
     } = this.state
 
     return (
@@ -228,11 +245,20 @@ export class ImportTransactionsComponent extends React.Component {
                   </Typography>
                 </div>
                 <Divider />
-                {selectedImportType === 'CSV' &&
+                {!showTransactions && selectedImportType === 'CSV' &&
                   <CsvImportForm
                     institution={selectedInstitution}
+                    handleParsedData={this.handleParsedData}
                     onCancel={this.resetSelection}
                   />
+                }
+                {showTransactions &&
+                  <Typography variant="body1" align="center">
+                    Imported {transactions.length} transactions.
+                    {(errors.base.length || errors.transactions.length) &&
+                      <span>but some errors were found</span>
+                    }
+                  </Typography>
                 }
               </Paper>
             }

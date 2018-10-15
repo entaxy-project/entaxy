@@ -64,6 +64,7 @@ class CsvImportForm extends React.Component {
     this.props.setFieldValue('file', acceptedFiles[0])
   }
 
+
   render() {
     const {
       classes,
@@ -129,17 +130,13 @@ export default compose(
       file: null
     }),
     handleSubmit: (values, { props, setSubmitting }) => {
-      console.log('handleSubmit', props)
       setSubmitting(true)
       const parser = new parsers[values.institution](values.file, values)
       return parser.parse()
-        .then((transactions) => {
-          console.log(transactions)
-          return props.saveTransactions(transactions)
-        }).then(() => {
-          console.log('done')
+        .then(({ transactions, errors }) => {
+          props.handleParsedData(transactions, errors)
           setSubmitting(false)
-          props.onCancel()
+          return null
         })
     }
   })

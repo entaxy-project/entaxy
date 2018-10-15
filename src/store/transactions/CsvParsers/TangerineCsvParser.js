@@ -15,7 +15,6 @@ export default class TangerineCsvParser extends CsvParser {
   }
 
   map(row) {
-    const [month, day, year] = row.Date.split('/')
     return {
       id: uuid(),
       institution: 'Tangerine',
@@ -24,8 +23,8 @@ export default class TangerineCsvParser extends CsvParser {
       ticker: this._values.ticker,
       shares: row.Amount,
       bookValue: 1,
-      description: (row.Memo === null ? '' : row.Memo.trim()),
-      createdAt: Date.parse(`${year}/${month}/${day}`)
+      description: this.parseString(row.Memo),
+      createdAt: this.parseDate(row.Date, 'mm/dd/yyyy')
     }
   }
 }

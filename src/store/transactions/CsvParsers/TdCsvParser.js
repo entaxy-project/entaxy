@@ -16,7 +16,6 @@ export default class BmoCsvParser extends CsvParser {
   // [3] Deposits
   // [4] Balance
   map(row) {
-    const [month, day, year] = row[0].split('/') // Date
     return {
       id: uuid(),
       institution: 'TD',
@@ -25,8 +24,8 @@ export default class BmoCsvParser extends CsvParser {
       ticker: this._values.ticker,
       shares: (row[2] === null ? row[3] : row[2]),
       bookValue: 1,
-      description: row[1].trim(), // Description
-      createdAt: Date.parse(`${year}/${month}/${day}`)
+      description: this.parseString(row[1]), // Description
+      createdAt: this.parseDate(row[0], 'mm/dd/yyyy')
     }
   }
 }
