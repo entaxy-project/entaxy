@@ -1,4 +1,3 @@
-/* eslint no-console: 0 */
 import React from 'react'
 import _ from 'lodash'
 import { compose } from 'recompose'

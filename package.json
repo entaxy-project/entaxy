@@ -8,6 +8,7 @@
     "precommit": "lint-staged",
     "predeploy": "yarn build",
     "deploy:staging": "yarn build && aws s3 sync build/ s3://entaxy-staging",
+    "deploy:test": "yarn build && aws s3 sync build/ s3://entaxy-test",
     "start": "node scripts/start.js",
     "build:pre": "rm -rf node_modules/uri-js/dist/esnext",
     "build:src": "node scripts/build.js",

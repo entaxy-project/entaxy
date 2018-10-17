@@ -1,4 +1,3 @@
-/* eslint no-console: 0 */
 import _ from 'lodash'
 import React from 'react'
 import PropTypes from 'prop-types'
@@ -110,10 +109,6 @@ const institutions = {
   Tangerine: {
     importTypes: ['CSV'],
     description: 'Personal Banking'
-  },
-  Questrade: {
-    importTypes: ['CSV', 'API'],
-    description: 'Keep More of Your Money'
   }
 }
 
@@ -138,11 +133,7 @@ const initialState = {
 export class ImportTransactionsComponent extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-      ...initialState,
-      selectedInstitution: 'RBC',
-      selectedImportType: 'CSV'
-    }
+    this.state = initialState
   }
 
   onSave = () => {
@@ -175,7 +166,6 @@ export class ImportTransactionsComponent extends React.Component {
   }
 
   handleParsedData = (transactions, errors) => {
-    console.log('handleParsedData', transactions, errors)
     return this.setState({
       showTransactions: true,
       transactions,
@@ -209,7 +199,7 @@ export class ImportTransactionsComponent extends React.Component {
                         size={1}
                         className={classes.menuIcon}
                       />
-                      {selectedInstitution} - {importType}
+                      {importType}
                     </MenuItem>
                   ))}
                 </MenuList>

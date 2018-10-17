@@ -1,4 +1,3 @@
-/* eslint no-console: 0 */
 import { isEqual, isNil } from 'lodash'
 import Papa from 'papaparse'
 
