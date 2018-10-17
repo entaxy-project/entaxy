@@ -15,7 +15,6 @@ import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import Button from '@material-ui/core/Button'
 import IconButton from '@material-ui/core/IconButton'
-import { NavLink } from 'react-router-dom'
 import AddIcon from '@material-ui/icons/Add'
 import EditIcon from '@material-ui/icons/Edit'
 import DeleteIcon from '@material-ui/icons/Delete'
@@ -116,20 +115,10 @@ class Transactions extends React.Component {
                 >
                   <AddIcon />
                 </Button>
-                <Button
-                  variant="extendedFab"
-                  color="primary"
-                  aria-label="Import Transactions"
-                  className={classes.button}
-                  component={NavLink}
-                  to="/import-transactions"
-                >
-                  Import Transactions
-                </Button>
               </div>
               <div className={classes.buttonsRight}>
                 <Button
-                  variant="extendedFab"
+                  variant="contained"
                   color="primary"
                   aria-label="Delete ALL Transactions"
                   className={classes.button}
