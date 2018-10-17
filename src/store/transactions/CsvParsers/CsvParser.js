@@ -10,7 +10,7 @@ export default class CsvParser {
     this._currentRow = 0
     this._headerIsValid = false
     this._header = [] // This should be overriten in a deriver class
-    this._config = {} // Specific parser configuration - override in derived class
+    this._config = { header: true } // Specific parser configuration - override in derived class
   }
 
   hasErrors() {
@@ -30,7 +30,7 @@ export default class CsvParser {
     }
   }
 
-  // This should be overriten in a deriver class
+  // This should be overriten in a derived class
   map(row) {
     throw (new Error(`map() method not defined ${row}`))
   }
@@ -39,7 +39,6 @@ export default class CsvParser {
     const transactions = []
     return new Promise((resolve) => {
       Papa.parse(this._file, {
-        header: true,
         trimHeaders: true,
         dynamicTyping: true,
         skipEmptyLines: 'greedy',
@@ -47,14 +46,16 @@ export default class CsvParser {
           this._currentRow = 0
           // Record any errors from the parsing library
           results.errors.forEach((error) => {
-            this.addError(error, 'base')
+            this.addError(`${error.type}: (row ${error.row}) ${error.message}`, 'base')
           })
           this.validateHeader(results.meta.fields) // The first row is the header
-          // Create the transactions
-          results.data.forEach((row) => {
-            transactions.push(this.map(row))
-            this._currentRow += 1
-          })
+          if (!this.hasErrors()) {
+            // Create the transactions
+            results.data.forEach((row) => {
+              transactions.push(this.map(row))
+              this._currentRow += 1
+            })
+          }
           // Return the transactions and any errors found
           resolve({ transactions, errors: this._errors })
         },

@@ -5,6 +5,7 @@ export default class BmoCsvParser extends CsvParser {
   constructor(file, values) {
     super(file)
     this._config = {
+      ...this._config,
       header: false // This CSV file has no header
     }
     this._values = values

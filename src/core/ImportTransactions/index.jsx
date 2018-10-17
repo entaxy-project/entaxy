@@ -3,6 +3,8 @@ import _ from 'lodash'
 import React from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
+import { compose } from 'recompose'
+import { connect } from 'react-redux'
 import Typography from '@material-ui/core/Typography'
 import Card from '@material-ui/core/Card'
 import CardHeader from '@material-ui/core/CardHeader'
@@ -18,7 +20,9 @@ import Icon from '@mdi/react'
 import Divider from '@material-ui/core/Divider'
 import { mdiFileUploadOutline, mdiUploadNetwork } from '@mdi/js'
 import Header from '../../common/Header'
+import { addTransactions } from '../../store/transactions/actions'
 import CsvImportForm from './CsvImportForm'
+import ImportResults from './ImportResults'
 import RbcLogo from './logos/RBC.png'
 import BmoLogo from './logos/BMO.png'
 import TdLogo from './logos/TD.png'
@@ -113,18 +117,37 @@ const institutions = {
   }
 }
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    saveTransactions: (transactions) => {
+      return dispatch(addTransactions(transactions))
+    }
+  }
+}
+
+const initialState = {
+  anchorEl: null,
+  openPopup: false,
+  selectedInstitution: null,
+  selectedImportType: null,
+  showTransactions: false,
+  transactions: [],
+  errors: {}
+}
+
 export class ImportTransactionsComponent extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      anchorEl: null,
-      openPopup: false,
-      selectedInstitution: 'TD',
-      selectedImportType: 'CSV',
-      showTransactions: false,
-      transactions: [],
-      errors: {}
+      ...initialState,
+      selectedInstitution: 'RBC',
+      selectedImportType: 'CSV'
     }
+  }
+
+  onSave = () => {
+    this.props.saveTransactions(this.state.transactions)
+    this.resetSelection()
   }
 
   showPopup = institution => (event) => {
@@ -148,21 +171,17 @@ export class ImportTransactionsComponent extends React.Component {
   }
 
   resetSelection = () => {
-    this.setState({
-      selectedInstitution: null,
-      selectedImportType: null
-    })
+    this.setState(initialState)
   }
 
   handleParsedData = (transactions, errors) => {
     console.log('handleParsedData', transactions, errors)
-    this.setState({
+    return this.setState({
       showTransactions: true,
       transactions,
       errors
     })
   }
-
 
   render() {
     const { classes } = this.props
@@ -253,12 +272,12 @@ export class ImportTransactionsComponent extends React.Component {
                   />
                 }
                 {showTransactions &&
-                  <Typography variant="body1" align="center">
-                    Imported {transactions.length} transactions.
-                    {(errors.base.length || errors.transactions.length) &&
-                      <span>but some errors were found</span>
-                    }
-                  </Typography>
+                  <ImportResults
+                    transactions={transactions}
+                    errors={errors}
+                    onSave={this.onSave}
+                    onCancel={this.resetSelection}
+                  />
                 }
               </Paper>
             }
@@ -270,7 +289,11 @@ export class ImportTransactionsComponent extends React.Component {
 }
 
 ImportTransactionsComponent.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  saveTransactions: PropTypes.func.isRequired
 }
 
-export default withStyles(styles)(ImportTransactionsComponent)
+export default compose(
+  connect(null, mapDispatchToProps),
+  withStyles(styles)
+)(ImportTransactionsComponent)

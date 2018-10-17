@@ -36,21 +36,28 @@ const CsvDropzone = ({
     <div>
       {file &&
         <Typography variant="subtitle2" align="center">
+          <Icon
+            path={mdiFileUploadOutline}
+            size={1}
+            className={classes.menuIcon}
+            color="textSecondary"
+          />
           {file.name}
         </Typography>
       }
       {error &&
         <Typography variant="subtitle2" align="center" color="error">{error}</Typography>
       }
-      <Typography variant="caption" align="center" color="textSecondary">
-        <Icon
-          path={mdiFileUploadOutline}
-          size={1}
-          className={classes.menuIcon}
-          color="textSecondary"
-        />
-        Drop a CSV file here, or click to select a file to upload.
-      </Typography>
+      {!file &&
+        <div>
+          <Typography variant="h4" align="center" color="textSecondary">
+            Drag a CSV file here
+          </Typography>
+          <Typography variant="subtitle2" align="center" color="textSecondary">
+            or click to select a file to upload.
+          </Typography>
+        </div>
+      }
     </div>
   </Dropzone>
 )

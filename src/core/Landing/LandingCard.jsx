@@ -10,7 +10,7 @@ import ArrowForward from '@material-ui/icons/ArrowForward'
 const styles = {
   card: {
     'margin-top': '20px',
-    'flex-grow': 1
+    width: '100%'
   },
   cardButton: {
     'margin-top': '10px'

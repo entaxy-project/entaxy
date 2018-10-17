@@ -6,6 +6,7 @@ export default class BmoCsvParser extends CsvParser {
   constructor(file, values) {
     super(file)
     this._config = {
+      ...this._config,
       comments: 'Following data is valid as of' // Skipp these lines
     }
     this._header = [
