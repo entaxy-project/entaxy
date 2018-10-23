@@ -17,7 +17,7 @@
     "test:ui": "node scripts/test.js --env=jsdom --verbose",
     "test:coverage": "node scripts/test.js --env=jsdom --coverage --verbose",
     "test:fix": "yarn lint --fix && yarn test:ui",
-    "test:watch": "node scripts/test.js --env=jsdom --watch --onlyChanged --coverage",
+    "test:watch": "node scripts/test.js --env=jsdom --watch --onlyChanged",
     "lint": "eslint src --ext '.js,.jsx' --config .eslintrc",
     "lint:fix": "yarn lint --fix",
     "flux": "flux"

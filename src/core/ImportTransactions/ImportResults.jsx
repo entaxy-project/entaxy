@@ -43,8 +43,9 @@ const ImportResults = ({
   onSave,
   onCancel
 }) => {
+  const maxErrorsToODisplay = 10
   const transactionTotalErrorsCount = Object.keys(errors.transactions).length
-  const transactionErrorsToDisplay = Math.min(10, transactionTotalErrorsCount)
+  const transactionErrorsToDisplay = Math.min(maxErrorsToODisplay, transactionTotalErrorsCount)
   const transactionErrorKeys = Object.keys(errors.transactions).slice(0, transactionErrorsToDisplay)
   return (
     <div>
@@ -56,7 +57,7 @@ const ImportResults = ({
           </Typography>
         </div>
       }
-      {errors.base.length &&
+      {errors.base.length > 0 &&
         <div className={classes.root}>
           <Typography variant="h6" align="center">
             <ErrorIcon className={classes.iconError} />
@@ -72,8 +73,12 @@ const ImportResults = ({
           <Typography variant="h6" align="center">
             <ErrorIcon className={classes.iconError} />
             Found errors in {transactionTotalErrorsCount} transactions.
-            Displaying top {transactionErrorsToDisplay} errors
           </Typography>
+          {transactionTotalErrorsCount > transactionErrorsToDisplay &&
+            <Typography variant="body" align="center">
+              Displaying top {transactionErrorsToDisplay} errors
+            </Typography>
+          }
           <Table className={classes.table}>
             <TableHead>
               <TableRow>

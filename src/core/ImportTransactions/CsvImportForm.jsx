@@ -149,8 +149,7 @@ export default compose(
     }),
     handleSubmit: (values, { props, setSubmitting }) => {
       setSubmitting(true)
-      const parser = new parsers[values.institution](values.file, values)
-      parser.parse()
+      new parsers[values.institution]().parse(values.file, values)
         .then(({ transactions, errors }) => {
           setSubmitting(false)
           return props.handleParsedData(transactions, errors)

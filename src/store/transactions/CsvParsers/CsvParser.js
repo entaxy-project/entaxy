@@ -1,10 +1,10 @@
+/* eslint no-console: 0 */
 import { isEqual, isNil } from 'lodash'
 import Papa from 'papaparse'
 
 // The base class for all CSV parsers
 export default class CsvParser {
-  constructor(file) {
-    this._file = file
+  constructor() {
     this._errors = { base: [], transactions: {} }
     this._currentRow = 0
     this._headerIsValid = false
@@ -34,24 +34,24 @@ export default class CsvParser {
     throw (new Error(`map() method not defined ${row}`))
   }
 
-  parse() {
+  parse(file, values = null) {
     const transactions = []
     return new Promise((resolve) => {
-      Papa.parse(this._file, {
+      Papa.parse(file, {
         trimHeaders: true,
         dynamicTyping: true,
         skipEmptyLines: 'greedy',
         complete: (results) => {
           this._currentRow = 0
+          this.validateHeader(results.meta.fields) // The first row is the header
           // Record any errors from the parsing library
           results.errors.forEach((error) => {
             this.addError(`${error.type}: (row ${error.row}) ${error.message}`, 'base')
           })
-          this.validateHeader(results.meta.fields) // The first row is the header
           if (!this.hasErrors()) {
-            // Create the transactions
+            // Generate the transactions
             results.data.forEach((row) => {
-              transactions.push(this.map(row))
+              transactions.push(this.map(row, values))
               this._currentRow += 1
             })
           }

@@ -3,8 +3,8 @@ import uuid from 'uuid/v4'
 import CsvParser from './CsvParser'
 
 export default class BmoCsvParser extends CsvParser {
-  constructor(file, values) {
-    super(file)
+  constructor() {
+    super()
     this._config = {
       ...this._config,
       comments: 'Following data is valid as of' // Skipp these lines
@@ -16,16 +16,15 @@ export default class BmoCsvParser extends CsvParser {
       'Transaction Amount',
       'Description'
     ]
-    this._values = values
   }
 
-  map(row) {
+  map(row, values) {
     return {
       id: uuid(),
       institution: 'BMO',
       account: row['First Bank Card'],
       type: (row['Transaction Amount'] >= 0 ? 'buy' : 'sell'),
-      ticker: this._values.ticker,
+      ticker: values.ticker,
       shares: row['Transaction Amount'],
       bookValue: 1,
       description: this.parseString(row.Description),

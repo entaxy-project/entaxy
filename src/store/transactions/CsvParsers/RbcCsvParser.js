@@ -2,8 +2,8 @@ import uuid from 'uuid/v4'
 import CsvParser from './CsvParser'
 
 export default class RbcCsvParser extends CsvParser {
-  constructor(file) {
-    super(file)
+  constructor() {
+    super()
     this._header = [
       'Account Type',
       'Account Number',
