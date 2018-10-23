@@ -48,7 +48,7 @@ const expectedTransactions = [
   }
 ]
 
-describe('BMO CSV parser', () => {
+describe('RBC CSV parser', () => {
   describe('parse', () => {
     it('returns transactions', async () => {
       const file = new File([csvData.join("\n")], 'test.csv', { type: 'text/csv' });
