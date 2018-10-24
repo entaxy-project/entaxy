@@ -6,11 +6,19 @@ Array [
     className={undefined}
   >
     <div
-      className="MuiAvatar-root-27"
+      aria-describedby={null}
+      className="MuiAvatar-root-44"
+      onBlur={[Function]}
+      onFocus={[Function]}
+      onMouseLeave={[Function]}
+      onMouseOver={[Function]}
+      onTouchEnd={[Function]}
+      onTouchStart={[Function]}
+      title={null}
     />
     <button
       aria-owns={null}
-      className="MuiButtonBase-root-17 MuiButton-root-1 MuiButton-colorInherit-6"
+      className="MuiButtonBase-root-27 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 MuiButton-colorInherit-22"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -32,7 +40,7 @@ Array [
         Test name
       </span>
       <span
-        className="MuiTouchRipple-root-20"
+        className="MuiTouchRipple-root-30"
       />
     </button>
   </div>,
@@ -50,7 +58,7 @@ Array [
     }
   >
     <div
-      className="MuiPaper-root-30 MuiPaper-elevation2-34 MuiPaper-rounded-31"
+      className="MuiPaper-root-47 MuiPaper-elevation2-51 MuiPaper-rounded-48"
       id="menu-list-grow"
       style={
         Object {
@@ -61,13 +69,13 @@ Array [
       }
     >
       <ul
-        className="MuiList-root-57 MuiList-padding-58"
+        className="MuiList-root-74 MuiList-padding-75"
         onBlur={[Function]}
         onKeyDown={[Function]}
         role="menu"
       >
         <li
-          className="MuiButtonBase-root-17 MuiListItem-root-63 MuiListItem-default-66 MuiListItem-gutters-70 MuiListItem-button-71 MuiMenuItem-root-61"
+          className="MuiButtonBase-root-27 MuiListItem-root-80 MuiListItem-default-83 MuiListItem-gutters-87 MuiListItem-button-88 MuiMenuItem-root-78"
           onBlur={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
@@ -83,11 +91,11 @@ Array [
         >
           Profile
           <span
-            className="MuiTouchRipple-root-20"
+            className="MuiTouchRipple-root-30"
           />
         </li>
         <li
-          className="MuiButtonBase-root-17 MuiListItem-root-63 MuiListItem-default-66 MuiListItem-gutters-70 MuiListItem-button-71 MuiMenuItem-root-61"
+          className="MuiButtonBase-root-27 MuiListItem-root-80 MuiListItem-default-83 MuiListItem-gutters-87 MuiListItem-button-88 MuiMenuItem-root-78"
           onBlur={[Function]}
           onClick={[MockFunction]}
           onFocus={[Function]}
@@ -104,7 +112,7 @@ Array [
         >
           Logout
           <span
-            className="MuiTouchRipple-root-20"
+            className="MuiTouchRipple-root-30"
           />
         </li>
       </ul>
@@ -115,7 +123,7 @@ Array [
 
 exports[`HandleLogin matches snapshot with logged out user 1`] = `
 <button
-  className="MuiButtonBase-root-25 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 MuiButton-colorInherit-20"
+  className="MuiButtonBase-root-27 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 MuiButton-colorInherit-22"
   disabled={false}
   onBlur={[Function]}
   onClick={[MockFunction]}
@@ -137,7 +145,7 @@ exports[`HandleLogin matches snapshot with logged out user 1`] = `
     Login
   </span>
   <span
-    className="MuiTouchRipple-root-28"
+    className="MuiTouchRipple-root-30"
   />
 </button>
 `;

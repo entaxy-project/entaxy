@@ -9,7 +9,7 @@ import { loadMarketValues } from '../marketValues/actions'
 
 export const dataIsLoading = (bool) => {
   return {
-    type: types.DATA_IS_LOADING,
+    type: types.LOAD_USER_DATA,
     payload: bool
   }
 }
@@ -36,13 +36,14 @@ export const loadUserData = () => {
         pictureUrl: person.avatarUrl()
       }))
 
-      storage.loadState().then((state) => {
+      return storage.loadState().then((state) => {
         dispatch(loadSettings((state || {}).settings))
         dispatch(loadTransactions((state || {}).transactions))
         dispatch(loadMarketValues((state || {}).marketValues))
         dispatch(dataIsLoading(false))
       }).catch((error) => {
         console.log('Error: ', error)
+        throw error
       })
     }
     return null

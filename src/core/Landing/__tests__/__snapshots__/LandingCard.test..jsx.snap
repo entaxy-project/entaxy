@@ -2,7 +2,7 @@
 
 exports[`LandingCard matches snapshot 1`] = `
 <div
-  className="MuiPaper-root-4 MuiPaper-elevation2-8 MuiPaper-rounded-5 MuiCard-root-3 LandingCard-card-1"
+  className="MuiPaper-root-4 MuiPaper-elevation1-7 MuiPaper-rounded-5 MuiCard-root-3 LandingCard-card-1"
 >
   <div
     className="MuiCardHeader-root-31"
@@ -16,7 +16,7 @@ exports[`LandingCard matches snapshot 1`] = `
         title
       </span>
       <span
-        className="MuiTypography-root-37 MuiTypography-body1-46 MuiTypography-colorTextSecondary-59 MuiCardHeader-subheader-36"
+        className="MuiTypography-root-37 MuiTypography-body1-46 MuiTypography-colorTextSecondary-60 MuiCardHeader-subheader-36"
       >
         description
       </span>
@@ -25,7 +25,7 @@ exports[`LandingCard matches snapshot 1`] = `
       className="MuiCardHeader-action-33"
     >
       <a
-        className="MuiButtonBase-root-67 MuiIconButton-root-61 MuiIconButton-colorSecondary-64 LandingCard-cardButton-2"
+        className="MuiButtonBase-root-68 MuiIconButton-root-62 MuiIconButton-colorSecondary-65 LandingCard-cardButton-2"
         href="/taxes"
         onBlur={[Function]}
         onClick={[Function]}
@@ -43,24 +43,26 @@ exports[`LandingCard matches snapshot 1`] = `
         variant="fab"
       >
         <span
-          className="MuiIconButton-label-66"
+          className="MuiIconButton-label-67"
         >
           <svg
             aria-hidden="true"
-            className="MuiSvgIcon-root-70"
+            className="MuiSvgIcon-root-71"
             color={undefined}
             focusable="false"
             viewBox="0 0 24 24"
           >
-            <g>
-              <path
-                d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
-              />
-            </g>
+            <path
+              d="M0 0h24v24H0z"
+              fill="none"
+            />
+            <path
+              d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+            />
           </svg>
         </span>
         <span
-          className="MuiTouchRipple-root-76"
+          className="MuiTouchRipple-root-78"
         />
       </a>
     </div>

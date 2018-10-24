@@ -1,6 +1,7 @@
 import * as blockstack from 'blockstack'
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
+import * as storage from '../../blockstackStorage'
 import { initialState } from '../reducer'
 import * as actions from '../actions'
 import types from '../types'
@@ -15,13 +16,29 @@ beforeEach(() => {
 })
 
 describe('user actions', () => {
+  const dispatch = jest.fn()
+  let loadStorageSpy
+
+  beforeAll(() => {
+    loadStorageSpy = jest.spyOn(storage, 'loadState').mockImplementation(() => Promise.resolve({}))
+  })
+
+  afterAll(() => {
+    loadStorageSpy.mockRestore()
+  })
+
+  afterEach(() => {
+    dispatch.mockClear()
+  })
+
   describe('loadUserData', () => {
     it('signed in user should load the profile', () => {
       const isUserSignedInSpy = jest.spyOn(blockstack, 'isUserSignedIn')
-      isUserSignedInSpy.mockReturnValue(true)
 
-      expect(actions.loadUserData()).toEqual({
-        type: types.LOAD_USER_DATA,
+      actions.loadUserData()(dispatch)
+
+      expect(dispatch).toBeCalledWith({
+        type: types.LOAD_USER_DATA_SUCCESS,
         payload: {
           isAuthenticated: true,
           name: 'mocked name',
@@ -32,31 +49,14 @@ describe('user actions', () => {
       expect(isUserSignedInSpy).toHaveBeenCalled()
     })
 
-    it('pending user should set isLoginPending', () => {
-      const isUserSignedInSpy = jest.spyOn(blockstack, 'isUserSignedIn')
-      const isSignInPendingSpy = jest.spyOn(blockstack, 'isSignInPending')
-      isUserSignedInSpy.mockReturnValue(false)
-      isSignInPendingSpy.mockReturnValue(true)
-
-      expect(actions.loadUserData()).toEqual({
-        type: types.LOAD_USER_DATA,
-        payload: {
-          isLoginPending: true
-        }
-      })
-      expect(isUserSignedInSpy).toHaveBeenCalled()
-      expect(isSignInPendingSpy).toHaveBeenCalled()
-    })
-
     it('logged out user should not set anything', () => {
       const isUserSignedInSpy = jest.spyOn(blockstack, 'isUserSignedIn')
-      const isSignInPendingSpy = jest.spyOn(blockstack, 'isSignInPending')
-      isUserSignedInSpy.mockReturnValue(false)
-      isSignInPendingSpy.mockReturnValue(false)
+      isUserSignedInSpy.mockReturnValueOnce(false)
 
-      expect(actions.loadUserData()).toEqual({ type: types.LOAD_USER_DATA })
+      actions.loadUserData()(dispatch)
+
+      expect(dispatch).not.toHaveBeenCalledWith({ type: types.LOAD_USER_DATA, payload: true })
       expect(isUserSignedInSpy).toHaveBeenCalled()
-      expect(isSignInPendingSpy).toHaveBeenCalled()
     })
   })
 
@@ -79,6 +79,22 @@ describe('user actions', () => {
     })
   })
 
+  it('saves the current state', () => {
+    const saveStorageSpy = jest.spyOn(storage, 'saveState').mockImplementation(() => {})
+    actions.saveState()
+    expect(saveStorageSpy).toHaveBeenCalled()
+  })
+
+  it('throws and error on failure to load blockstack storage', (done) => {
+    const error = new Error('Failed')
+    jest.spyOn(storage, 'loadState').mockImplementationOnce(() => Promise.reject(error))
+
+    actions.loadUserData()(dispatch).catch((e) => {
+      expect(e).toEqual(error)
+      done()
+    })
+  })
+
   describe('handleBlockstackLogin', () => {
     it('signs the user in', () => {
       const handlePendingSignInSpy = jest.spyOn(blockstack, 'handlePendingSignIn')
@@ -89,8 +105,20 @@ describe('user actions', () => {
       return store.dispatch(actions.handleBlockstackLogin())
         .then(() => {
           expect(store.getActions()).toEqual([
-            { type: 'USER_LOGIN_SUCCESS' },
-            { type: 'LOAD_USER_DATA' }
+            { type: 'LOAD_USER_DATA', payload: true },
+            {
+              type: 'LOAD_USER_DATA_SUCCESS',
+              payload: {
+                isAuthenticated: true,
+                username: 'mocked username',
+                name: 'mocked name',
+                pictureUrl: 'mocked url'
+              }
+            },
+            { type: 'LOAD_SETTINGS', payload: undefined },
+            { type: 'LOAD_TRANSACTIONS', payload: undefined },
+            { type: 'LOAD_MARKET_VALUES', payload: undefined },
+            { type: 'LOAD_USER_DATA', payload: false }
           ])
         })
     })
