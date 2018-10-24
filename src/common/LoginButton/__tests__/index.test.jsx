@@ -28,7 +28,7 @@ describe('HandleLogin', () => {
   it('matches snapshot with logged in user profile', () => {
     const component = renderer.create((
       <LoginButtonComponent
-        user={{ isAuthenticated: true, name: 'Test name' }}
+        user={{ isAuthenticated: true, name: 'Test name', username: 'Test' }}
         handleLogin={mochHandleLogin}
         handleLogout={mochHandleLogout}
         classes={{ ...props }}
