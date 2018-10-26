@@ -6,10 +6,10 @@ exports[`Taxes matches snapshot 1`] = `
   <WithStyles(Grid) container={true} spacing={0}>
     <WithStyles(Grid) item={true} xs={10}>
       <WithStyles(Paper) className=\\"undefined undefined\\">
-        <WithStyles(Typography) variant=\\"headline\\" gutterBottom={true} align=\\"center\\">
-          Taxes for
+        <WithStyles(Typography) variant=\\"h5\\" gutterBottom={true} align=\\"center\\">
+          Taxes for 
           Ontario
-
+           
           2017
         </WithStyles(Typography)>
         <WrappedComponent country=\\"Canada\\" year={2017} region=\\"Ontario\\" income={90000} rrsp={10000} taxBeforeCredits={20282.9731} windowResizeDebounceTime={300} />
@@ -40,28 +40,28 @@ exports[`Taxes matches snapshot 1`] = `
           <strong>
             Taxable income:
           </strong>
-
+           
           CA$80,000.00
         </WithStyles(Typography)>
         <WithStyles(Typography)>
           <strong>
             Tax amount:
           </strong>
-
+           
           CA$17,205.49
         </WithStyles(Typography)>
         <WithStyles(Typography)>
           <strong>
             Marginal Tax Rate:
           </strong>
-
+           
           29.65%
         </WithStyles(Typography)>
         <WithStyles(Typography)>
           <strong>
             Average Tax Rate:
           </strong>
-
+           
           21.51%
         </WithStyles(Typography)>
       </WithStyles(Paper)>

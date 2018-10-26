@@ -4,8 +4,12 @@ import types from './types'
 import store from '../index'
 import * as storage from '../blockstackStorage'
 import { loadSettings } from '../settings/actions'
+import { initialState as settingsInitialState } from '../settings/reducer'
 import { loadTransactions } from '../transactions/actions'
+import { initialState as marketValuesInitialState } from '../marketValues/reducer'
 import { loadMarketValues } from '../marketValues/actions'
+import { initialState as transactionsInitialState } from '../transactions/reducer'
+
 
 export const dataIsLoading = (bool) => {
   return {
@@ -35,17 +39,16 @@ export const loadUserData = () => {
         name: person.name(),
         pictureUrl: person.avatarUrl()
       }))
-
       return storage.loadState().then((state) => {
         dispatch(loadSettings((state || {}).settings))
         dispatch(loadTransactions((state || {}).transactions))
         dispatch(loadMarketValues((state || {}).marketValues))
         dispatch(dataIsLoading(false))
       }).catch((error) => {
-        console.log('Error: ', error)
         throw error
       })
     }
+
     return null
   }
 }
@@ -64,18 +67,19 @@ export const handleBlockstackLogin = () => {
   return (dispatch) => {
     // Handle sign in from Blockstack after redirect from Blockstack browser
     return blockstack.handlePendingSignIn()
-      .then(
-        () => {
-          dispatch(loadUserData())
-        },
-        error => dispatch(userLoginError(error))
-      )
+      .then(() => dispatch(loadUserData()))
+      .catch(error => dispatch(userLoginError(error)))
   }
 }
 
 export const userLogout = () => {
   blockstack.signUserOut()
-  return { type: types.USER_LOGOUT }
+  return (dispatch) => {
+    dispatch(loadSettings(settingsInitialState))
+    dispatch(loadTransactions(transactionsInitialState))
+    dispatch(loadMarketValues(marketValuesInitialState))
+    dispatch({ type: types.USER_LOGOUT })
+  }
 }
 
 export const saveState = () => {

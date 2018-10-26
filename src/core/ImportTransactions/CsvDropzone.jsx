@@ -25,7 +25,6 @@ const styles = theme => ({
   }
 })
 
-
 const CsvDropzone = ({
   classes,
   handleFileUpload,

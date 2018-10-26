@@ -2,10 +2,10 @@ import CsvParser from '../CsvParser'
 import TdCsvParser from '../TdCsvParser'
 
 const csvData = [
-  "09/04/2018,GC 0575-CASH WITHDRA,100.00,,588.61",
-  "09/04/2018,NON-TD ATM W/D      ,63.95,,524.66",
-  "09/04/2018,SEND E-TFR CA***G4e ,195.00,,329.66",
-  "09/07/2018,,,250.00,425.03",
+  '09/04/2018,GC 0575-CASH WITHDRA,100.00,,588.61',
+  '09/04/2018,NON-TD ATM W/D      ,63.95,,524.66',
+  '09/04/2018,SEND E-TFR CA***G4e ,195.00,,329.66',
+  '09/07/2018,,,250.00,425.03'
 ]
 
 const expectedTransactions = [
@@ -56,7 +56,7 @@ describe('TD CSV parser', () => {
     it('returns transactions', async () => {
       await new CsvParser().parse
 
-      const file = new File([csvData.join("\n")], 'test.csv', { type: 'text/csv' });
+      const file = new File([csvData.join('\n')], 'test.csv', { type: 'text/csv' })
       const { transactions, errors } = await new TdCsvParser().parse(file, { account: 'Checking', ticker: 'CAD' })
 
       expect(errors.base.length).toBe(0)
@@ -65,14 +65,14 @@ describe('TD CSV parser', () => {
       expect(transactions[0].id).not.toBeNull()
     })
 
-    it("generates error for invalid date", async () => {
+    it('generates error for invalid date', async () => {
       // Remove spaces from header
-      csvData[0] = ",GC 0575-CASH WITHDRA,100.00,,588.61"
-      const file = new File([csvData.join("\n")], 'test.csv', { type: 'text/csv' });
+      csvData[0] = ',GC 0575-CASH WITHDRA,100.00,,588.61'
+      const file = new File([csvData.join('\n')], 'test.csv', { type: 'text/csv' })
       const { transactions, errors } = await new TdCsvParser().parse(file, { account: 'Checking', ticker: 'CAD' })
       expect(transactions.length).toBe(csvData.length)
       expect(errors.base.length).toBe(0)
-      expect(errors.transactions[0]).toMatchObject(["Invalid date. Expecting format 'mm/dd/yyyy'"])
+      expect(errors.transactions[0]).toMatchObject(['Invalid date. Expecting format \'mm/dd/yyyy\''])
     })
   })
 })

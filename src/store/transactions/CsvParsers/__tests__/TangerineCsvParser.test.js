@@ -1,10 +1,10 @@
 import TangerineCsvParser from '../TangerineCsvParser'
 
 const csvData = [
-  "Date,Transaction,Name,Memo,Amount",
-  "10/1/2014,OTHER,Tangerine Savings Interest Rate ,TANGERINE BONUS RATE SALE 0914,4.75",
-  "10/3/2014,CREDIT,Cheque-In Deposit,Transferred,2010",
-  "10/3/2014,DEBIT,Internet Withdrawal to TFSA Kick,Transferred,-5500"
+  'Date,Transaction,Name,Memo,Amount',
+  '10/1/2014,OTHER,Tangerine Savings Interest Rate ,TANGERINE BONUS RATE SALE 0914,4.75',
+  '10/3/2014,CREDIT,Cheque-In Deposit,Transferred,2010',
+  '10/3/2014,DEBIT,Internet Withdrawal to TFSA Kick,Transferred,-5500'
 ]
 
 const expectedTransactions = [
@@ -43,8 +43,11 @@ const expectedTransactions = [
 describe('TD CSV parser', () => {
   describe('parse', () => {
     it('returns transactions', async () => {
-      const file = new File([csvData.join("\n")], 'test.csv', { type: 'text/csv' });
-      const { transactions, errors } = await new TangerineCsvParser().parse(file, { account: 'Checking', ticker: 'CAD' })
+      const file = new File([csvData.join('\n')], 'test.csv', { type: 'text/csv' })
+      const {
+        transactions,
+        errors
+      } = await new TangerineCsvParser().parse(file, { account: 'Checking', ticker: 'CAD' })
 
       expect(errors.base.length).toBe(0)
       expect(Object.keys(errors.transactions).length).toBe(0)
@@ -52,11 +55,14 @@ describe('TD CSV parser', () => {
       expect(transactions[0].id).not.toBeNull()
     })
 
-    it("fails if the header doesn't match", async () => {
+    it('fails if the header doesn\'t match', async () => {
       const oldHeader = csvData[0]
       csvData[0] = 'something else'
-      const file = new File([csvData.join("\n")], 'test.csv', { type: 'text/csv' });
-      const { transactions, errors } = await new TangerineCsvParser().parse(file, { account: 'Checking', ticker: 'CAD' })
+      const file = new File([csvData.join('\n')], 'test.csv', { type: 'text/csv' })
+      const {
+        transactions,
+        errors
+      } = await new TangerineCsvParser().parse(file, { account: 'Checking', ticker: 'CAD' })
 
       expect(transactions.length).toBe(0)
       expect(errors.base.length).toBe(csvData.length)
@@ -65,13 +71,13 @@ describe('TD CSV parser', () => {
       csvData[0] = oldHeader
     })
 
-    it("generates error for invalid date", async () => {
+    it('generates error for invalid date', async () => {
       const oldHeader = csvData[0]
-      csvData[1] = "blah,OTHER,Tangerine Savings Interest Rate ,TANGERINE BONUS RATE SALE 0914,4.75"
-      const file = new File([csvData.join("\n")], 'test.csv', { type: 'text/csv' });
-      const { transactions, errors } = await new TangerineCsvParser().parse(file, { account: 'Checking', ticker: 'CAD' })
+      csvData[1] = 'blah,OTHER,Tangerine Savings Interest Rate ,TANGERINE BONUS RATE SALE 0914,4.75'
+      const file = new File([csvData.join('\n')], 'test.csv', { type: 'text/csv' })
+      const { errors } = await new TangerineCsvParser().parse(file, { account: 'Checking', ticker: 'CAD' })
       expect(errors.base.length).toBe(0)
-      expect(errors.transactions[0]).toMatchObject(["Invalid date. Expecting format 'mm/dd/yyyy'"])
+      expect(errors.transactions[0]).toMatchObject(['Invalid date. Expecting format \'mm/dd/yyyy\''])
       csvData[0] = oldHeader
     })
   })

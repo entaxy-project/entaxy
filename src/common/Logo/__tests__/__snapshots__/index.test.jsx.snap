@@ -10,7 +10,7 @@ exports[`Logo matches snapshot 1`] = `
     src="logo.png"
   />
   <a
-    className="MuiTypography-root-4 MuiTypography-title-10 MuiTypography-colorInherit-23 Logo-title-3"
+    className="MuiTypography-root-4 MuiTypography-h6-21 MuiTypography-colorInherit-33 Logo-title-3"
     href="/"
     onClick={[Function]}
   >

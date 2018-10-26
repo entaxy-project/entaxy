@@ -8,7 +8,7 @@ jest.mock('blockstack', () => {
 const isUserSignedInSpy = jest.spyOn(blockstack, 'isUserSignedIn')
 const getFileSpy = jest.spyOn(blockstack, 'getFile')
 const putFileSpy = jest.spyOn(blockstack, 'putFile')
-getFileSpy.mockReturnValue(Promise.resolve())
+getFileSpy.mockReturnValue(Promise.resolve('{}'))
 putFileSpy.mockReturnValue(Promise.resolve())
 
 beforeEach(() => {
@@ -20,7 +20,7 @@ describe('loadState', () => {
   it('returns undefined if user is not signed in', () => {
     isUserSignedInSpy.mockReturnValue(false)
 
-    expect(loadState()).toBe(undefined)
+    expect(loadState()).toMatchObject({})
     expect(isUserSignedInSpy).toHaveBeenCalled()
     expect(getFileSpy).not.toHaveBeenCalled()
   })
@@ -28,7 +28,7 @@ describe('loadState', () => {
   it('returns if user is signed in', () => {
     isUserSignedInSpy.mockReturnValue(true)
 
-    loadState()
+    expect(loadState()).toMatchObject({})
     expect(isUserSignedInSpy).toHaveBeenCalled()
     expect(getFileSpy).toHaveBeenCalledWith('entaxy.json')
   })

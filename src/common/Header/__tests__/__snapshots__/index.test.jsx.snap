@@ -2,30 +2,115 @@
 
 exports[`Header matches snapshot 1`] = `
 <header
-  className="MuiPaper-root-10 MuiPaper-elevation4-16 MuiAppBar-root-2 MuiAppBar-positionStatic-6 MuiAppBar-colorPrimary-8"
+  className="MuiPaper-root-11 MuiPaper-elevation4-17 MuiAppBar-root-2 MuiAppBar-positionStatic-6 MuiAppBar-colorPrimary-9"
 >
   <div
-    className="MuiToolbar-root-37 MuiToolbar-regular-39 MuiToolbar-gutters-38 Header-toolbar-1"
+    className="MuiToolbar-root-38 MuiToolbar-regular-40 MuiToolbar-gutters-39 Header-toolbar-1"
   >
     <div
-      className="Logo-logo-41"
+      className="Logo-logo-42"
     >
       <img
         alt="Entaxy logo"
-        className="Logo-image-42"
+        className="Logo-image-43"
         src="logo.png"
       />
       <a
-        className="MuiTypography-root-44 MuiTypography-title-50 MuiTypography-colorInherit-63 Logo-title-43"
+        className="MuiTypography-root-45 MuiTypography-h6-62 MuiTypography-colorInherit-74 Logo-title-44"
         href="/"
         onClick={[Function]}
       >
         Entaxy
       </a>
     </div>
-    <div />
+    <div>
+      <a
+        aria-current={false}
+        className="MuiButtonBase-root-106 MuiButton-root-80 MuiButton-text-82 MuiButton-flat-85 MuiButton-sizeSmall-103 MuiButton-colorInherit-101"
+        href="/portfolio"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        role="button"
+        style={undefined}
+        tabIndex="0"
+      >
+        <span
+          className="MuiButton-label-81"
+        >
+          Portfolio
+        </span>
+        <span
+          className="MuiTouchRipple-root-109"
+        />
+      </a>
+      <a
+        aria-current={false}
+        className="MuiButtonBase-root-106 MuiButton-root-80 MuiButton-text-82 MuiButton-flat-85 MuiButton-sizeSmall-103 MuiButton-colorInherit-101"
+        href="/transactions"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        role="button"
+        style={undefined}
+        tabIndex="0"
+      >
+        <span
+          className="MuiButton-label-81"
+        >
+          Transactions
+        </span>
+        <span
+          className="MuiTouchRipple-root-109"
+        />
+      </a>
+      <a
+        aria-current={false}
+        className="MuiButtonBase-root-106 MuiButton-root-80 MuiButton-text-82 MuiButton-flat-85 MuiButton-sizeSmall-103 MuiButton-colorInherit-101"
+        href="/import-transactions"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        role="button"
+        style={undefined}
+        tabIndex="0"
+      >
+        <span
+          className="MuiButton-label-81"
+        >
+          Import Transactions
+        </span>
+        <span
+          className="MuiTouchRipple-root-109"
+        />
+      </a>
+    </div>
     <button
-      className="MuiButtonBase-root-96 MuiButton-root-70 MuiButton-text-72 MuiButton-flat-75 MuiButton-colorInherit-91"
+      className="MuiButtonBase-root-106 MuiButton-root-80 MuiButton-text-82 MuiButton-flat-85 MuiButton-colorInherit-101"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -42,12 +127,12 @@ exports[`Header matches snapshot 1`] = `
       type="button"
     >
       <span
-        className="MuiButton-label-71"
+        className="MuiButton-label-81"
       >
         Login
       </span>
       <span
-        className="MuiTouchRipple-root-99"
+        className="MuiTouchRipple-root-109"
       />
     </button>
   </div>

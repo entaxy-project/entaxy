@@ -66,12 +66,9 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 class Transactions extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      open: false,
-      transaction: null
-    }
+  state = {
+    open: false,
+    transaction: null
   }
 
   handleNew = () => {

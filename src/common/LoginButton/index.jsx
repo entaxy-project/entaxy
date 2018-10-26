@@ -31,12 +31,9 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export class LoginButtonComponent extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      anchorEl: null,
-      open: false
-    }
+  state = {
+    anchorEl: null,
+    open: false
   }
 
   handleClick = (event) => {

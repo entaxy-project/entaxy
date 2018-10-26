@@ -99,7 +99,13 @@ const ImportResults = ({
       }
       <Divider />
       <div className={classes.formActions}>
-        <Button onClick={onSave} color="secondary">Save Transactions</Button>
+        <Button
+          onClick={onSave}
+          color="secondary"
+          disabled={errors.base.length === 0 && transactionErrorsToDisplay === 0}
+        >
+          Save Transactions
+        </Button>
         <Button onClick={onCancel} color="secondary">Discard</Button>
       </div>
     </div>

@@ -131,10 +131,7 @@ const initialState = {
 }
 
 export class ImportTransactionsComponent extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = initialState
-  }
+  state = initialState
 
   onSave = () => {
     this.props.saveTransactions(this.state.transactions)

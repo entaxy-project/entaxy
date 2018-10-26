@@ -10,7 +10,6 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export const HandleLoginComponent = ({ history, handlePendingSignIn }) => {
-  console.log('isSignInPending()', isSignInPending())
   if (isSignInPending()) {
     handlePendingSignIn().then(() => {
       history.push('/')

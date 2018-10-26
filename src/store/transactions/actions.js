@@ -18,28 +18,28 @@ const afterTransactionsChanged = async (dispatch) => {
 export const createTransaction = (transaction) => {
   return (dispatch) => {
     dispatch({ type: types.CREATE_TRANSACTION, payload: { ...transaction, id: uuid() } })
-    afterTransactionsChanged(dispatch)
+    return afterTransactionsChanged(dispatch)
   }
 }
 
 export const updateTransaction = (transaction) => {
   return async (dispatch) => {
     dispatch({ type: types.UPDATE_TRANSACTION, payload: transaction })
-    afterTransactionsChanged(dispatch)
+    return afterTransactionsChanged(dispatch)
   }
 }
 
 export const deleteTransaction = (index) => {
   return (dispatch) => {
     dispatch({ type: types.DELETE_TRANSACTION, payload: index })
-    afterTransactionsChanged(dispatch)
+    return afterTransactionsChanged(dispatch)
   }
 }
 
 export const deleteAllTransactions = () => {
   return (dispatch) => {
     dispatch({ type: types.DELETE_ALL_TRANSACTIONS })
-    afterTransactionsChanged(dispatch)
+    return afterTransactionsChanged(dispatch)
   }
 }
 
@@ -53,7 +53,7 @@ export const loadTransactions = (transactions) => {
 export const addTransactions = (transactions) => {
   return (dispatch) => {
     dispatch({ type: types.ADD_TRANSACTIONS, payload: transactions })
-    afterTransactionsChanged(dispatch)
+    return afterTransactionsChanged(dispatch)
   }
 }
 
@@ -71,7 +71,7 @@ export const importTransactionsFromCsv = (file, institution) => {
     return parser.parse()
       .then((transactions) => {
         dispatch({ type: types.ADD_TRANSACTIONS, payload: transactions })
-        afterTransactionsChanged(dispatch)
+        return afterTransactionsChanged(dispatch)
       }).catch((errors) => {
         console.log('ERROR:', errors)
       }).finally(() => dispatch(dataIsLoading(false)))

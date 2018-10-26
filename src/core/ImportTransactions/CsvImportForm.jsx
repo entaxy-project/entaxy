@@ -1,3 +1,4 @@
+/* eslint no-console: 0 */
 import React from 'react'
 import { compose } from 'recompose'
 import { withStyles } from '@material-ui/core/styles'
@@ -56,12 +57,9 @@ const parsers = {
 }
 
 class CsvImportForm extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      file: null,
-      error: null
-    }
+  state = {
+    file: null,
+    error: null
   }
 
   handleFileUpload = (acceptedFiles) => {
@@ -82,10 +80,12 @@ class CsvImportForm extends React.Component {
       institution,
       isSubmitting
     } = this.props
+
     const {
       file,
       error
     } = this.state
+
     return (
       <form onSubmit={handleSubmit}>
         <div className={classes.root}>
@@ -109,7 +109,7 @@ class CsvImportForm extends React.Component {
               type="submit"
               variant="contained"
               color="primary"
-              disabled={isSubmitting || !file || error !== null}
+              disabled={isSubmitting || file === null || error !== null}
               onClick={this.handleButtonClick}
             >
               Import
@@ -152,7 +152,7 @@ export default compose(
       new parsers[values.institution]().parse(values.file, values)
         .then(({ transactions, errors }) => {
           setSubmitting(false)
-          return props.handleParsedData(transactions, errors)
+          props.handleParsedData(transactions, errors)
         })
     }
   })
