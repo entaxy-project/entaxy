@@ -1,9 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`HandleLogin matches snapshot with logged in user profile 1`] = `
-<div
-  className={undefined}
->
+<div>
   <div
     aria-describedby={null}
     className="MuiAvatar-root-44"

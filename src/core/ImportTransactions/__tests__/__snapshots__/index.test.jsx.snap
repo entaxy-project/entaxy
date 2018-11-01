@@ -1,0 +1,427 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Import Transactions matches snapshot 1`] = `
+<div>
+  <div>
+    <header
+      className="MuiPaper-root-11 MuiPaper-elevation4-17 MuiAppBar-root-2 MuiAppBar-positionStatic-6 MuiAppBar-colorPrimary-9"
+    >
+      <div
+        className="MuiToolbar-root-38 MuiToolbar-regular-40 MuiToolbar-gutters-39 Header-toolbar-1"
+      >
+        <div
+          className="Logo-logo-42"
+        >
+          <img
+            alt="Entaxy logo"
+            className="Logo-image-43"
+            src="logo.png"
+          />
+          <a
+            className="MuiTypography-root-45 MuiTypography-h6-62 MuiTypography-colorInherit-74 Logo-title-44"
+            href="/"
+            onClick={[Function]}
+          >
+            Entaxy
+          </a>
+        </div>
+        <div>
+          <a
+            aria-current={null}
+            className="MuiButtonBase-root-106 MuiButton-root-80 MuiButton-text-82 MuiButton-flat-85 MuiButton-sizeSmall-103 MuiButton-colorInherit-101"
+            href="/portfolio"
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            role="button"
+            tabIndex="0"
+          >
+            <span
+              className="MuiButton-label-81"
+            >
+              Portfolio
+            </span>
+            <span
+              className="MuiTouchRipple-root-109"
+            />
+          </a>
+          <a
+            aria-current={null}
+            className="MuiButtonBase-root-106 MuiButton-root-80 MuiButton-text-82 MuiButton-flat-85 MuiButton-sizeSmall-103 MuiButton-colorInherit-101"
+            href="/transactions"
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            role="button"
+            tabIndex="0"
+          >
+            <span
+              className="MuiButton-label-81"
+            >
+              Transactions
+            </span>
+            <span
+              className="MuiTouchRipple-root-109"
+            />
+          </a>
+          <a
+            aria-current={null}
+            className="MuiButtonBase-root-106 MuiButton-root-80 MuiButton-text-82 MuiButton-flat-85 MuiButton-sizeSmall-103 MuiButton-colorInherit-101"
+            href="/import-transactions"
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            role="button"
+            tabIndex="0"
+          >
+            <span
+              className="MuiButton-label-81"
+            >
+              Import Transactions
+            </span>
+            <span
+              className="MuiTouchRipple-root-109"
+            />
+          </a>
+        </div>
+        <button
+          className="MuiButtonBase-root-106 MuiButton-root-80 MuiButton-text-82 MuiButton-flat-85 MuiButton-colorInherit-101"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex="0"
+          type="button"
+        >
+          <span
+            className="MuiButton-label-81"
+          >
+            Login
+          </span>
+          <span
+            className="MuiTouchRipple-root-109"
+          />
+        </button>
+      </div>
+    </header>
+    <h5
+      className="MuiTypography-root-45 MuiTypography-h5-61 MuiTypography-alignCenter-68"
+    >
+      Import transactions
+    </h5>
+    <div>
+      <p
+        className="MuiTypography-root-45 MuiTypography-body1-54 MuiTypography-alignCenter-68"
+      >
+        Select an institution
+      </p>
+      <div>
+        <div>
+          <div
+            className="MuiPaper-root-11 MuiPaper-elevation1-14 MuiPaper-rounded-12 MuiCard-root-117"
+          >
+            <div
+              className="MuiCardHeader-root-118 undefined undefined"
+            >
+              <div
+                className="MuiCardHeader-content-121"
+              >
+                <span
+                  className="MuiTypography-root-45 MuiTypography-headline-50 MuiCardHeader-title-122"
+                >
+                  RBC
+                </span>
+                <span
+                  className="MuiTypography-root-45 MuiTypography-body1-54 MuiTypography-colorTextSecondary-78 MuiCardHeader-subheader-123"
+                >
+                  Royal Bank
+                </span>
+              </div>
+              <div
+                className="MuiCardHeader-action-120"
+              >
+                <button
+                  className="MuiButtonBase-root-106 MuiIconButton-root-124"
+                  disabled={false}
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchMove={[Function]}
+                  onTouchStart={[Function]}
+                  tabIndex="0"
+                  type="button"
+                >
+                  <span
+                    className="MuiIconButton-label-129"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="MuiSvgIcon-root-130"
+                      focusable="false"
+                      role="presentation"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M0 0h24v24H0z"
+                        fill="none"
+                      />
+                      <path
+                        d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+                      />
+                    </svg>
+                  </span>
+                  <span
+                    className="MuiTouchRipple-root-109"
+                  />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div
+            className="MuiPaper-root-11 MuiPaper-elevation1-14 MuiPaper-rounded-12 MuiCard-root-117"
+          >
+            <div
+              className="MuiCardHeader-root-118 undefined undefined"
+            >
+              <div
+                className="MuiCardHeader-content-121"
+              >
+                <span
+                  className="MuiTypography-root-45 MuiTypography-headline-50 MuiCardHeader-title-122"
+                >
+                  BMO
+                </span>
+                <span
+                  className="MuiTypography-root-45 MuiTypography-body1-54 MuiTypography-colorTextSecondary-78 MuiCardHeader-subheader-123"
+                >
+                  Bank of Montreal
+                </span>
+              </div>
+              <div
+                className="MuiCardHeader-action-120"
+              >
+                <button
+                  className="MuiButtonBase-root-106 MuiIconButton-root-124"
+                  disabled={false}
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchMove={[Function]}
+                  onTouchStart={[Function]}
+                  tabIndex="0"
+                  type="button"
+                >
+                  <span
+                    className="MuiIconButton-label-129"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="MuiSvgIcon-root-130"
+                      focusable="false"
+                      role="presentation"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M0 0h24v24H0z"
+                        fill="none"
+                      />
+                      <path
+                        d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+                      />
+                    </svg>
+                  </span>
+                  <span
+                    className="MuiTouchRipple-root-109"
+                  />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div
+            className="MuiPaper-root-11 MuiPaper-elevation1-14 MuiPaper-rounded-12 MuiCard-root-117"
+          >
+            <div
+              className="MuiCardHeader-root-118 undefined undefined"
+            >
+              <div
+                className="MuiCardHeader-content-121"
+              >
+                <span
+                  className="MuiTypography-root-45 MuiTypography-headline-50 MuiCardHeader-title-122"
+                >
+                  TD
+                </span>
+                <span
+                  className="MuiTypography-root-45 MuiTypography-body1-54 MuiTypography-colorTextSecondary-78 MuiCardHeader-subheader-123"
+                >
+                  TD Canada Trust
+                </span>
+              </div>
+              <div
+                className="MuiCardHeader-action-120"
+              >
+                <button
+                  className="MuiButtonBase-root-106 MuiIconButton-root-124"
+                  disabled={false}
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchMove={[Function]}
+                  onTouchStart={[Function]}
+                  tabIndex="0"
+                  type="button"
+                >
+                  <span
+                    className="MuiIconButton-label-129"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="MuiSvgIcon-root-130"
+                      focusable="false"
+                      role="presentation"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M0 0h24v24H0z"
+                        fill="none"
+                      />
+                      <path
+                        d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+                      />
+                    </svg>
+                  </span>
+                  <span
+                    className="MuiTouchRipple-root-109"
+                  />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div
+            className="MuiPaper-root-11 MuiPaper-elevation1-14 MuiPaper-rounded-12 MuiCard-root-117"
+          >
+            <div
+              className="MuiCardHeader-root-118 undefined undefined"
+            >
+              <div
+                className="MuiCardHeader-content-121"
+              >
+                <span
+                  className="MuiTypography-root-45 MuiTypography-headline-50 MuiCardHeader-title-122"
+                >
+                  Tangerine
+                </span>
+                <span
+                  className="MuiTypography-root-45 MuiTypography-body1-54 MuiTypography-colorTextSecondary-78 MuiCardHeader-subheader-123"
+                >
+                  Personal Banking
+                </span>
+              </div>
+              <div
+                className="MuiCardHeader-action-120"
+              >
+                <button
+                  className="MuiButtonBase-root-106 MuiIconButton-root-124"
+                  disabled={false}
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchMove={[Function]}
+                  onTouchStart={[Function]}
+                  tabIndex="0"
+                  type="button"
+                >
+                  <span
+                    className="MuiIconButton-label-129"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="MuiSvgIcon-root-130"
+                      focusable="false"
+                      role="presentation"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M0 0h24v24H0z"
+                        fill="none"
+                      />
+                      <path
+                        d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+                      />
+                    </svg>
+                  </span>
+                  <span
+                    className="MuiTouchRipple-root-109"
+                  />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

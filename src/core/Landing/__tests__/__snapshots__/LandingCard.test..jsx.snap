@@ -48,7 +48,6 @@ exports[`LandingCard matches snapshot 1`] = `
           <svg
             aria-hidden="true"
             className="MuiSvgIcon-root-81"
-            color={undefined}
             focusable="false"
             role="presentation"
             viewBox="0 0 24 24"

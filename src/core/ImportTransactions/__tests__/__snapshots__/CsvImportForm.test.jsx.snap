@@ -1,0 +1,157 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CsvImportForm matches snapshot for BMO 1`] = `
+<form
+  onSubmit={[Function]}
+>
+  <div
+    className="WithFormik-CsvImportForm--root-1"
+  >
+    <div
+      className="CsvImportFields-root-7"
+    >
+      <p
+        className="MuiTypography-root-9 MuiTypography-body1-18 MuiTypography-gutterBottom-36"
+      >
+        Fill out the following field
+      </p>
+      <div
+        className="MuiFormControl-root-44 CsvImportFields-textField-8"
+      >
+        <label
+          className="MuiFormLabel-root-55 MuiInputLabel-root-48 MuiInputLabel-formControl-49 MuiInputLabel-animated-52"
+          data-shrink={false}
+        >
+          Currency
+        </label>
+        <div
+          className="MuiInputBase-root-75 MuiInput-root-62 MuiInput-underline-66 MuiInputBase-formControl-76 MuiInput-formControl-63"
+          onClick={[Function]}
+        >
+          <input
+            aria-invalid={false}
+            aria-label="Currency"
+            className="MuiInputBase-input-85 MuiInput-input-70"
+            disabled={false}
+            maxLength={6}
+            name="ticker"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            required={true}
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      aria-disabled={false}
+      className="CsvDropzone-root-92"
+      onClick={[Function]}
+      onDragEnter={[Function]}
+      onDragLeave={[Function]}
+      onDragOver={[Function]}
+      onDragStart={[Function]}
+      onDrop={[Function]}
+      style={
+        Object {
+          "position": "relative",
+        }
+      }
+    >
+      <div>
+        <div>
+          <h4
+            className="MuiTypography-root-9 MuiTypography-h4-24 MuiTypography-colorTextSecondary-42 MuiTypography-alignCenter-32"
+          >
+            Drag a CSV file here
+          </h4>
+          <h6
+            className="MuiTypography-root-9 MuiTypography-subtitle2-28 MuiTypography-colorTextSecondary-42 MuiTypography-alignCenter-32"
+          >
+            or click to select a file to upload.
+          </h6>
+        </div>
+      </div>
+      <input
+        autoComplete="off"
+        disabled={false}
+        multiple={false}
+        onChange={[Function]}
+        style={
+          Object {
+            "bottom": 0,
+            "left": 0,
+            "opacity": 0.00001,
+            "pointerEvents": "none",
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          }
+        }
+        type="file"
+      />
+    </div>
+  </div>
+  <hr
+    className="MuiDivider-root-94"
+  />
+  <div
+    className="WithFormik-CsvImportForm--formActions-3"
+  >
+    <div
+      className="WithFormik-CsvImportForm--wrapper-4"
+    >
+      <button
+        className="MuiButtonBase-root-124 MuiButtonBase-disabled-125 MuiButton-root-98 MuiButton-contained-109 MuiButton-containedPrimary-110 MuiButton-raised-112 MuiButton-raisedPrimary-113 MuiButton-disabled-118"
+        disabled={true}
+        onBlur={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="-1"
+        type="submit"
+      >
+        <span
+          className="MuiButton-label-99"
+        >
+          Import
+        </span>
+      </button>
+    </div>
+    <button
+      className="MuiButtonBase-root-124 MuiButton-root-98 MuiButton-text-100 MuiButton-textSecondary-102 MuiButton-flat-103 MuiButton-flatSecondary-105"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[MockFunction]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex="0"
+      type="button"
+    >
+      <span
+        className="MuiButton-label-99"
+      >
+        Cancel
+      </span>
+      <span
+        className="MuiTouchRipple-root-127"
+      />
+    </button>
+  </div>
+</form>
+`;

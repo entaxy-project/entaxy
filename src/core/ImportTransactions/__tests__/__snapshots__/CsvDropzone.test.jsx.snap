@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CsvDropzone matches snapshot 1`] = `
+<div
+  aria-disabled={false}
+  className="CsvDropzone-root-1"
+  onClick={[Function]}
+  onDragEnter={[Function]}
+  onDragLeave={[Function]}
+  onDragOver={[Function]}
+  onDragStart={[Function]}
+  onDrop={[Function]}
+  style={
+    Object {
+      "position": "relative",
+    }
+  }
+>
+  <div>
+    <div>
+      <h4
+        className="MuiTypography-root-3 MuiTypography-h4-18 MuiTypography-colorTextSecondary-36 MuiTypography-alignCenter-26"
+      >
+        Drag a CSV file here
+      </h4>
+      <h6
+        className="MuiTypography-root-3 MuiTypography-subtitle2-22 MuiTypography-colorTextSecondary-36 MuiTypography-alignCenter-26"
+      >
+        or click to select a file to upload.
+      </h6>
+    </div>
+  </div>
+  <input
+    autoComplete="off"
+    disabled={false}
+    multiple={false}
+    onChange={[Function]}
+    style={
+      Object {
+        "bottom": 0,
+        "left": 0,
+        "opacity": 0.00001,
+        "pointerEvents": "none",
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
+    }
+    type="file"
+  />
+</div>
+`;

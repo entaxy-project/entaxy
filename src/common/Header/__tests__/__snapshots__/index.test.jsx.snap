@@ -25,7 +25,7 @@ exports[`Header matches snapshot 1`] = `
     </div>
     <div>
       <a
-        aria-current={false}
+        aria-current={null}
         className="MuiButtonBase-root-106 MuiButton-root-80 MuiButton-text-82 MuiButton-flat-85 MuiButton-sizeSmall-103 MuiButton-colorInherit-101"
         href="/portfolio"
         onBlur={[Function]}
@@ -40,7 +40,6 @@ exports[`Header matches snapshot 1`] = `
         onTouchMove={[Function]}
         onTouchStart={[Function]}
         role="button"
-        style={undefined}
         tabIndex="0"
       >
         <span
@@ -53,7 +52,7 @@ exports[`Header matches snapshot 1`] = `
         />
       </a>
       <a
-        aria-current={false}
+        aria-current={null}
         className="MuiButtonBase-root-106 MuiButton-root-80 MuiButton-text-82 MuiButton-flat-85 MuiButton-sizeSmall-103 MuiButton-colorInherit-101"
         href="/transactions"
         onBlur={[Function]}
@@ -68,7 +67,6 @@ exports[`Header matches snapshot 1`] = `
         onTouchMove={[Function]}
         onTouchStart={[Function]}
         role="button"
-        style={undefined}
         tabIndex="0"
       >
         <span
@@ -81,7 +79,7 @@ exports[`Header matches snapshot 1`] = `
         />
       </a>
       <a
-        aria-current={false}
+        aria-current={null}
         className="MuiButtonBase-root-106 MuiButton-root-80 MuiButton-text-82 MuiButton-flat-85 MuiButton-sizeSmall-103 MuiButton-colorInherit-101"
         href="/import-transactions"
         onBlur={[Function]}
@@ -96,7 +94,6 @@ exports[`Header matches snapshot 1`] = `
         onTouchMove={[Function]}
         onTouchStart={[Function]}
         role="button"
-        style={undefined}
         tabIndex="0"
       >
         <span

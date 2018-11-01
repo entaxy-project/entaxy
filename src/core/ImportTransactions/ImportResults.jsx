@@ -47,6 +47,7 @@ const ImportResults = ({
   const transactionTotalErrorsCount = Object.keys(errors.transactions).length
   const transactionErrorsToDisplay = Math.min(maxErrorsToODisplay, transactionTotalErrorsCount)
   const transactionErrorKeys = Object.keys(errors.transactions).slice(0, transactionErrorsToDisplay)
+
   return (
     <div>
       {errors.base.length === 0 && transactionErrorsToDisplay === 0 &&
@@ -102,7 +103,7 @@ const ImportResults = ({
         <Button
           onClick={onSave}
           color="secondary"
-          disabled={errors.base.length === 0 && transactionErrorsToDisplay === 0}
+          disabled={errors.base.length > 0 || transactionErrorsToDisplay > 0}
         >
           Save Transactions
         </Button>

@@ -1,0 +1,313 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ImportResults matches snapshot for BMO with 1 error on a transaction 1`] = `
+<div>
+  <div
+    className="ImportResults-root-1"
+  >
+    <h6
+      className="MuiTypography-root-5 MuiTypography-h6-22 MuiTypography-alignCenter-28"
+    >
+      <svg
+        aria-hidden="true"
+        className="MuiSvgIcon-root-40 ImportResults-iconError-4"
+        focusable="false"
+        role="presentation"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+        />
+      </svg>
+      Found errors in 
+      1
+       transactions.
+    </h6>
+    <table
+      className="MuiTable-root-89"
+    >
+      <thead
+        className="MuiTableHead-root-90"
+      >
+        <tr
+          className="MuiTableRow-root-91 MuiTableRow-head-94"
+        >
+          <th
+            aria-sort={null}
+            className="MuiTableCell-root-96 MuiTableCell-head-97"
+            scope="col"
+          >
+            Line
+          </th>
+          <th
+            aria-sort={null}
+            className="MuiTableCell-root-96 MuiTableCell-head-97"
+            scope="col"
+          >
+            Error
+          </th>
+        </tr>
+      </thead>
+      <tbody
+        className="MuiTableBody-root-104"
+      >
+        <tr
+          className="MuiTableRow-root-91"
+        >
+          <td
+            aria-sort={null}
+            className="MuiTableCell-root-96 MuiTableCell-body-98"
+          >
+            0
+          </td>
+          <td
+            aria-sort={null}
+            className="MuiTableCell-root-96 MuiTableCell-body-98"
+          >
+            0
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <hr
+    className="MuiDivider-root-49"
+  />
+  <div
+    className="ImportResults-formActions-2"
+  >
+    <button
+      className="MuiButtonBase-root-79 MuiButtonBase-disabled-80 MuiButton-root-53 MuiButton-text-55 MuiButton-textSecondary-57 MuiButton-flat-58 MuiButton-flatSecondary-60 MuiButton-disabled-73"
+      disabled={true}
+      onBlur={[Function]}
+      onClick={[MockFunction]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex="-1"
+      type="button"
+    >
+      <span
+        className="MuiButton-label-54"
+      >
+        Save Transactions
+      </span>
+    </button>
+    <button
+      className="MuiButtonBase-root-79 MuiButton-root-53 MuiButton-text-55 MuiButton-textSecondary-57 MuiButton-flat-58 MuiButton-flatSecondary-60"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[MockFunction]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex="0"
+      type="button"
+    >
+      <span
+        className="MuiButton-label-54"
+      >
+        Discard
+      </span>
+      <span
+        className="MuiTouchRipple-root-82"
+      />
+    </button>
+  </div>
+</div>
+`;
+
+exports[`ImportResults matches snapshot for BMO with errors on the header 1`] = `
+<div>
+  <div
+    className="ImportResults-root-1"
+  >
+    <h6
+      className="MuiTypography-root-5 MuiTypography-h6-22 MuiTypography-alignCenter-28"
+    >
+      <svg
+        aria-hidden="true"
+        className="MuiSvgIcon-root-40 ImportResults-iconError-4"
+        focusable="false"
+        role="presentation"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+        />
+      </svg>
+      Some problems were found with the file
+    </h6>
+    <p
+      className="MuiTypography-root-5 MuiTypography-body2-13 MuiTypography-alignCenter-28"
+    >
+      some error
+    </p>
+  </div>
+  <hr
+    className="MuiDivider-root-49"
+  />
+  <div
+    className="ImportResults-formActions-2"
+  >
+    <button
+      className="MuiButtonBase-root-79 MuiButtonBase-disabled-80 MuiButton-root-53 MuiButton-text-55 MuiButton-textSecondary-57 MuiButton-flat-58 MuiButton-flatSecondary-60 MuiButton-disabled-73"
+      disabled={true}
+      onBlur={[Function]}
+      onClick={[MockFunction]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex="-1"
+      type="button"
+    >
+      <span
+        className="MuiButton-label-54"
+      >
+        Save Transactions
+      </span>
+    </button>
+    <button
+      className="MuiButtonBase-root-79 MuiButton-root-53 MuiButton-text-55 MuiButton-textSecondary-57 MuiButton-flat-58 MuiButton-flatSecondary-60"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[MockFunction]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex="0"
+      type="button"
+    >
+      <span
+        className="MuiButton-label-54"
+      >
+        Discard
+      </span>
+      <span
+        className="MuiTouchRipple-root-82"
+      />
+    </button>
+  </div>
+</div>
+`;
+
+exports[`ImportResults matches snapshot for BMO without errors 1`] = `
+<div>
+  <div
+    className="ImportResults-root-1"
+  >
+    <h6
+      className="MuiTypography-root-5 MuiTypography-h6-22 MuiTypography-alignCenter-28"
+    >
+      <svg
+        aria-hidden="true"
+        className="MuiSvgIcon-root-40 ImportResults-iconCheck-3"
+        focusable="false"
+        role="presentation"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+        />
+      </svg>
+      Found 
+       transactions
+    </h6>
+  </div>
+  <hr
+    className="MuiDivider-root-49"
+  />
+  <div
+    className="ImportResults-formActions-2"
+  >
+    <button
+      className="MuiButtonBase-root-79 MuiButton-root-53 MuiButton-text-55 MuiButton-textSecondary-57 MuiButton-flat-58 MuiButton-flatSecondary-60"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[MockFunction]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex="0"
+      type="button"
+    >
+      <span
+        className="MuiButton-label-54"
+      >
+        Save Transactions
+      </span>
+      <span
+        className="MuiTouchRipple-root-82"
+      />
+    </button>
+    <button
+      className="MuiButtonBase-root-79 MuiButton-root-53 MuiButton-text-55 MuiButton-textSecondary-57 MuiButton-flat-58 MuiButton-flatSecondary-60"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[MockFunction]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex="0"
+      type="button"
+    >
+      <span
+        className="MuiButton-label-54"
+      >
+        Discard
+      </span>
+      <span
+        className="MuiTouchRipple-root-82"
+      />
+    </button>
+  </div>
+</div>
+`;

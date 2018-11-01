@@ -77,7 +77,6 @@ exports[`LandingCard matches snapshot 1`] = `
                 <svg
                   aria-hidden="true"
                   className="MuiSvgIcon-root-186"
-                  color={undefined}
                   focusable="false"
                   role="presentation"
                   viewBox="0 0 24 24"
@@ -145,7 +144,6 @@ exports[`LandingCard matches snapshot 1`] = `
                 <svg
                   aria-hidden="true"
                   className="MuiSvgIcon-root-186"
-                  color={undefined}
                   focusable="false"
                   role="presentation"
                   viewBox="0 0 24 24"

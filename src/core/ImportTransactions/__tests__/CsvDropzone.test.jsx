@@ -1,9 +1,12 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
-import DateTimeSelect from '../'
+import CsvDropzone from '../CsvDropzone'
 
-describe('DateTimeSelect', () => {
-  const mochOnChange = jest.fn()
+describe('CsvDropzone', () => {
+  const mockHandleFileUpload = jest.fn()
+  const props = {
+    classes: { }
+  }
 
   beforeEach(() => {
     jest.clearAllMocks()
@@ -11,11 +14,9 @@ describe('DateTimeSelect', () => {
 
   it('matches snapshot', () => {
     const component = renderer.create((
-      <DateTimeSelect
-        label="Date"
-        name="createdAt"
-        value={new Date('1/1/2018')}
-        onChange={mochOnChange}
+      <CsvDropzone
+        handleFileUpload={mockHandleFileUpload}
+        classes={{ ...props }}
       />
     ))
     expect(component.toJSON()).toMatchSnapshot()

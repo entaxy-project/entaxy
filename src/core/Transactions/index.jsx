@@ -65,7 +65,7 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-class Transactions extends React.Component {
+export class TransactionsComponent extends React.Component {
   state = {
     open: false,
     transaction: null
@@ -179,7 +179,7 @@ class Transactions extends React.Component {
   }
 }
 
-Transactions.propTypes = {
+TransactionsComponent.propTypes = {
   classes: PropTypes.object.isRequired,
   transactions: PropTypes.array.isRequired,
   handleDelete: PropTypes.func.isRequired,
@@ -189,4 +189,4 @@ Transactions.propTypes = {
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
   withStyles(styles)
-)(Transactions)
+)(TransactionsComponent)
