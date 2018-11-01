@@ -9,7 +9,7 @@ describe('transaction reducer', () => {
   it('should handle LOAD_TRANSACTIONS', () => {
     const type = types.LOAD_TRANSACTIONS
     const payload = [{
-      source: 'Questrade',
+      institution: 'Questrade',
       account: 'RRSP',
       type: 'buy',
       ticker: 'VCE.TO',
@@ -29,7 +29,7 @@ describe('transaction reducer', () => {
   it('should handle CREATE_TRANSACTION with no existing transactions', () => {
     const type = types.CREATE_TRANSACTION
     const payload = {
-      source: 'Questrade',
+      institution: 'Questrade',
       account: 'RRSP',
       type: 'buy',
       ticker: 'VCE.TO',
@@ -43,7 +43,7 @@ describe('transaction reducer', () => {
   it('should handle CREATE_TRANSACTION with existing transactions', () => {
     const type = types.CREATE_TRANSACTION
     const state = [{
-      source: 'TD',
+      institution: 'TD',
       account: 'RRSP',
       type: 'buy',
       ticker: 'VCE.TO',
@@ -52,7 +52,7 @@ describe('transaction reducer', () => {
       createdAt: new Date()
     }]
     const payload = {
-      source: 'Questrade',
+      institution: 'Questrade',
       account: 'RRSP',
       type: 'buy',
       ticker: 'VCE.TO',
@@ -67,7 +67,7 @@ describe('transaction reducer', () => {
     const type = types.UPDATE_TRANSACTION
     const state = [{
       id: 1,
-      source: 'TD',
+      institution: 'TD',
       account: 'RRSP',
       type: 'buy',
       ticker: 'VCE.TO',
@@ -77,7 +77,7 @@ describe('transaction reducer', () => {
     }]
     const payload = {
       id: 1,
-      source: 'Questrade',
+      institution: 'Questrade',
       account: 'RRSP',
       type: 'buy',
       ticker: 'VCE.TO',
@@ -92,7 +92,7 @@ describe('transaction reducer', () => {
     const type = types.DELETE_TRANSACTION
     const state = [{
       id: 1,
-      source: 'TD',
+      institution: 'TD',
       account: 'RRSP',
       type: 'buy',
       ticker: 'VCE.TO',

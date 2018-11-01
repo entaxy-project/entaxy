@@ -59,7 +59,7 @@ const TransactionDialog = ({
           }}
           className={classes.input}
           value={values.institution}
-          name="Institution"
+          name="institution"
           helperText="The institution where this asset is being held"
           onChange={handleChange}
           autoFocus

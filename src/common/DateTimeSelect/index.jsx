@@ -4,26 +4,22 @@ import DateFnsUtils from 'material-ui-pickers/utils/date-fns-utils'
 import MuiPickersUtilsProvider from 'material-ui-pickers/utils/MuiPickersUtilsProvider'
 import DateTimePicker from 'material-ui-pickers/DateTimePicker'
 
-class DateTimeSelect extends React.Component {
-  handleChange = (value) => {
-    // this is going to call setFieldValue and manually update values.createdAt
-    this.props.onChange(this.props.name, value)
-  }
-
-  render() {
-    return (
-      <MuiPickersUtilsProvider utils={DateFnsUtils}>
-        <DateTimePicker
-          label={this.props.label}
-          inputProps={{ 'aria-label': 'Date', required: true }}
-          value={this.props.value}
-          name={this.props.name}
-          onChange={this.handleChange}
-        />
-      </MuiPickersUtilsProvider>
-    )
-  }
-}
+const DateTimeSelect = ({
+  label,
+  name,
+  value,
+  onChange
+}) => (
+  <MuiPickersUtilsProvider utils={DateFnsUtils}>
+    <DateTimePicker
+      label={label}
+      inputProps={{ 'aria-label': 'Date', required: true }}
+      value={value}
+      name={name}
+      onChange={newValue => onChange(name, newValue)}
+    />
+  </MuiPickersUtilsProvider>
+)
 
 DateTimeSelect.propTypes = {
   label: PropTypes.string.isRequired,
