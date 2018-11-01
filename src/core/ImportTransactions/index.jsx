@@ -1,4 +1,5 @@
-import _ from 'lodash'
+/* eslint-disable  no-array-index-key */
+import { map } from 'lodash'
 import React from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
@@ -189,7 +190,7 @@ export class ImportTransactionsComponent extends React.Component {
             <Fade {...TransitionProps} timeout={350}>
               <Paper>
                 <MenuList role="menu">
-                  {_.map(institutions[selectedInstitution].importTypes, importType => (
+                  {institutions[selectedInstitution].importTypes.map(importType => (
                     <MenuItem key={importType} onClick={() => this.handlePopupSelection(importType)}>
                       <Icon
                         path={(importType === 'CSV' ? mdiFileUploadOutline : mdiUploadNetwork)}
@@ -217,7 +218,7 @@ export class ImportTransactionsComponent extends React.Component {
                   Select an institution
                 </Typography>
                 <div className={classes.cards}>
-                  {_.map(institutions, (details, institution) => (
+                  {map(institutions, (details, institution) => (
                     <div key={institution}>
                       <Card className={classes.card}>
                         <CardHeader
