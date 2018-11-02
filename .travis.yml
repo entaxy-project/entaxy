@@ -8,6 +8,3 @@ script:
   - yarn build
   - yarn test:coverage
   - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
-branches:
-  only:
-  - master
