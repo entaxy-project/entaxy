@@ -6,7 +6,7 @@ exports[`Taxes matches snapshot 1`] = `
   <WithStyles(Grid) container={true} spacing={0}>
     <WithStyles(Grid) item={true} xs={10}>
       <WithStyles(Paper) className=\\"undefined undefined\\">
-        <WithStyles(Typography) variant=\\"headline\\" gutterBottom={true} align=\\"center\\">
+        <WithStyles(Typography) variant=\\"h5\\" gutterBottom={true} align=\\"center\\">
           Taxes for 
           Ontario
            
@@ -25,7 +25,7 @@ exports[`Taxes matches snapshot 1`] = `
         </WithStyles(FormControl)>
       </WithStyles(Paper)>
       <WithStyles(Paper) className={[undefined]}>
-        <WithStyles(Typography) variant=\\"subheading\\">
+        <WithStyles(Typography) variant=\\"subtitle1\\">
           Tax credits
         </WithStyles(Typography)>
         <WithStyles(FormControl) fullWidth={true} className={[undefined]}>

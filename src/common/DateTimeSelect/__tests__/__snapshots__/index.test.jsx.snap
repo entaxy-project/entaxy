@@ -2,50 +2,36 @@
 
 exports[`DateTimeSelect matches snapshot 1`] = `
 <div
-  aria-describedby={undefined}
-  className="MuiFormControl-root-3"
+  className="MuiFormControl-root-2"
   onClick={[Function]}
-  onError={undefined}
   onKeyPress={[Function]}
 >
   <label
-    className="MuiFormLabel-root-12 MuiFormLabel-error-15 MuiInputLabel-root-7 MuiInputLabel-formControl-8 MuiInputLabel-animated-11 MuiInputLabel-shrink-10"
+    className="MuiFormLabel-root-13 MuiFormLabel-filled-17 MuiInputLabel-root-6 MuiInputLabel-formControl-7 MuiInputLabel-animated-10 MuiInputLabel-shrink-9"
     data-shrink={true}
-    htmlFor={undefined}
   >
     Date
   </label>
   <div
-    className="MuiInput-root-17 MuiInput-error-22 MuiInput-formControl-18 MuiInput-underline-21 WithUtils-DateTextField--input-2"
+    className="MuiInputBase-root-33 MuiInput-root-20 MuiInput-underline-24 MuiInputBase-formControl-34 MuiInput-formControl-21"
+    onClick={[Function]}
   >
     <input
-      aria-invalid={true}
-      autoComplete={undefined}
-      autoFocus={undefined}
-      className="MuiInput-input-25"
-      defaultValue={undefined}
+      aria-invalid={false}
+      className="MuiInputBase-input-43 MuiInput-input-28"
       disabled={false}
-      id={undefined}
       mask={null}
       name="createdAt"
       onBlur={[Function]}
       onChange={[Function]}
       onFocus={[Function]}
-      onKeyDown={undefined}
-      onKeyUp={undefined}
-      placeholder={undefined}
+      pipe={null}
       readOnly={true}
-      required={undefined}
-      rows={undefined}
+      required={false}
       type="text"
-      value="Unknown"
+      value="January 1st 12:00 a.m."
     />
   </div>
-  <p
-    className="MuiFormHelperText-root-30 MuiFormHelperText-error-31"
-    id={undefined}
-  >
-    Invalid Date Format
-  </p>
+  
 </div>
 `;

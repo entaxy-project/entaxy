@@ -1,0 +1,300 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Transactions matches snapshot 1`] = `
+<div>
+  <header
+    className="MuiPaper-root-11 MuiPaper-elevation4-17 MuiAppBar-root-2 MuiAppBar-positionStatic-6 MuiAppBar-colorPrimary-9"
+  >
+    <div
+      className="MuiToolbar-root-38 MuiToolbar-regular-40 MuiToolbar-gutters-39 Header-toolbar-1"
+    >
+      <div
+        className="Logo-logo-42"
+      >
+        <img
+          alt="Entaxy logo"
+          className="Logo-image-43"
+          src="logo.png"
+        />
+        <a
+          className="MuiTypography-root-45 MuiTypography-h6-62 MuiTypography-colorInherit-74 Logo-title-44"
+          href="/"
+          onClick={[Function]}
+        >
+          Entaxy
+        </a>
+      </div>
+      <div>
+        <a
+          aria-current={null}
+          className="MuiButtonBase-root-106 MuiButton-root-80 MuiButton-text-82 MuiButton-flat-85 MuiButton-sizeSmall-103 MuiButton-colorInherit-101"
+          href="/portfolio"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          role="button"
+          tabIndex="0"
+        >
+          <span
+            className="MuiButton-label-81"
+          >
+            Portfolio
+          </span>
+          <span
+            className="MuiTouchRipple-root-109"
+          />
+        </a>
+        <a
+          aria-current={null}
+          className="MuiButtonBase-root-106 MuiButton-root-80 MuiButton-text-82 MuiButton-flat-85 MuiButton-sizeSmall-103 MuiButton-colorInherit-101"
+          href="/transactions"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          role="button"
+          tabIndex="0"
+        >
+          <span
+            className="MuiButton-label-81"
+          >
+            Transactions
+          </span>
+          <span
+            className="MuiTouchRipple-root-109"
+          />
+        </a>
+        <a
+          aria-current={null}
+          className="MuiButtonBase-root-106 MuiButton-root-80 MuiButton-text-82 MuiButton-flat-85 MuiButton-sizeSmall-103 MuiButton-colorInherit-101"
+          href="/import-transactions"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          role="button"
+          tabIndex="0"
+        >
+          <span
+            className="MuiButton-label-81"
+          >
+            Import Transactions
+          </span>
+          <span
+            className="MuiTouchRipple-root-109"
+          />
+        </a>
+      </div>
+      <button
+        className="MuiButtonBase-root-106 MuiButton-root-80 MuiButton-text-82 MuiButton-flat-85 MuiButton-colorInherit-101"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="0"
+        type="button"
+      >
+        <span
+          className="MuiButton-label-81"
+        >
+          Login
+        </span>
+        <span
+          className="MuiTouchRipple-root-109"
+        />
+      </button>
+    </div>
+  </header>
+  <div
+    className="MuiGrid-container-117"
+  >
+    <div
+      className="MuiGrid-item-118 MuiGrid-grid-xs-12-157"
+    >
+      <div
+        className="MuiPaper-root-11 MuiPaper-elevation2-15 MuiPaper-rounded-12"
+      >
+        <div>
+          <div
+            className="WithFormik-TransactionDialog--root-214"
+          />
+          <button
+            aria-label="New Transaction"
+            className="MuiButtonBase-root-106 MuiButton-root-80 MuiButton-fab-97 MuiButton-contained-91 MuiButton-containedPrimary-92 MuiButton-raised-94 MuiButton-raisedPrimary-95"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex="0"
+            type="button"
+          >
+            <span
+              className="MuiButton-label-81"
+            >
+              <svg
+                aria-hidden="true"
+                className="MuiSvgIcon-root-230"
+                focusable="false"
+                role="presentation"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+                />
+                <path
+                  d="M0 0h24v24H0z"
+                  fill="none"
+                />
+              </svg>
+            </span>
+            <span
+              className="MuiTouchRipple-root-109"
+            />
+          </button>
+        </div>
+        <div>
+          <button
+            aria-label="Delete ALL Transactions"
+            className="MuiButtonBase-root-106 MuiButton-root-80 MuiButton-contained-91 MuiButton-containedPrimary-92 MuiButton-raised-94 MuiButton-raisedPrimary-95"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[MockFunction]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex="0"
+            type="button"
+          >
+            <span
+              className="MuiButton-label-81"
+            >
+              Delete ALL Transactions
+            </span>
+            <span
+              className="MuiTouchRipple-root-109"
+            />
+          </button>
+        </div>
+        <h5
+          className="MuiTypography-root-45 MuiTypography-h5-61 MuiTypography-gutterBottom-72 MuiTypography-alignCenter-68"
+        >
+          Transactions
+        </h5>
+        <table
+          className="MuiTable-root-239"
+        >
+          <thead
+            className="MuiTableHead-root-240"
+          >
+            <tr
+              className="MuiTableRow-root-241 MuiTableRow-head-244"
+            >
+              <th
+                aria-sort={null}
+                className="MuiTableCell-root-246 MuiTableCell-head-247"
+                scope="col"
+              >
+                Institution
+              </th>
+              <th
+                aria-sort={null}
+                className="MuiTableCell-root-246 MuiTableCell-head-247"
+                scope="col"
+              >
+                Account
+              </th>
+              <th
+                aria-sort={null}
+                className="MuiTableCell-root-246 MuiTableCell-head-247"
+                scope="col"
+              >
+                Type
+              </th>
+              <th
+                aria-sort={null}
+                className="MuiTableCell-root-246 MuiTableCell-head-247"
+                scope="col"
+              >
+                Ticker
+              </th>
+              <th
+                aria-sort={null}
+                className="MuiTableCell-root-246 MuiTableCell-head-247 MuiTableCell-numeric-250"
+                scope="col"
+              >
+                Shares
+              </th>
+              <th
+                aria-sort={null}
+                className="MuiTableCell-root-246 MuiTableCell-head-247 MuiTableCell-numeric-250"
+                scope="col"
+              >
+                BookValue
+              </th>
+              <th
+                aria-sort={null}
+                className="MuiTableCell-root-246 MuiTableCell-head-247 MuiTableCell-numeric-250"
+                scope="col"
+              >
+                Date
+              </th>
+              <th
+                aria-sort={null}
+                className="MuiTableCell-root-246 MuiTableCell-head-247"
+                scope="col"
+              />
+            </tr>
+          </thead>
+          <tbody
+            className="MuiTableBody-root-254"
+          />
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+`;

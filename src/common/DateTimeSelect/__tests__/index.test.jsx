@@ -3,13 +3,18 @@ import renderer from 'react-test-renderer'
 import DateTimeSelect from '../'
 
 describe('DateTimeSelect', () => {
+  const mochOnChange = jest.fn()
+
+  beforeEach(() => {
+    jest.clearAllMocks()
+  })
+
   it('matches snapshot', () => {
-    const mochOnChange = jest.fn()
     const component = renderer.create((
       <DateTimeSelect
         label="Date"
         name="createdAt"
-        value={new Date('September 20th 11:36 a.m.')}
+        value={new Date('1/1/2018')}
         onChange={mochOnChange}
       />
     ))

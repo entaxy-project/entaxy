@@ -41,4 +41,5 @@ ConfirmDialog.propTypes = {
   title: PropTypes.string.isRequired, // the title of the dialog
   description: PropTypes.string.isRequired // the description of the dialog
 }
+
 export default confirmable(ConfirmDialog)

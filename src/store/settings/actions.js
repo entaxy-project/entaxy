@@ -6,8 +6,8 @@ export const loadSettings = (settings) => {
   return { type: types.LOAD_SETTINGS, payload: settings }
 }
 
-// filterName is source or account
-// options are Questrade, TD, etc for source and RRSP, TFSA, etc for account
+// filterName is institution or account
+// options are Questrade, TD, etc for institution and RRSP, TFSA, etc for account
 export const createPortfolioFilters = (filterName, options) => {
   // Default each new option to true (visible)
   const newOptions = options.reduce((acc, filter) => ({ ...acc, [filter]: true }), {})

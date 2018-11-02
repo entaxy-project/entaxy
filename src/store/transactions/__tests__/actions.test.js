@@ -1,6 +1,5 @@
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
-import { initialState } from '../reducer'
 import * as actions from '../actions'
 import types from '../types'
 import { initialState as settingsInitialState } from '../../settings/reducer'
@@ -13,7 +12,7 @@ beforeEach(() => {
 })
 
 const transaction = {
-  source: 'Questrade',
+  institution: 'Questrade',
   account: 'RRSP',
   type: 'buy',
   ticker: 'VCE.TO',
@@ -49,7 +48,7 @@ describe('transactions actions', () => {
             },
             {
               payload: {
-                filterName: 'source',
+                filterName: 'institution',
                 options: { Questrade: true }
               },
               type: 'CREATE_PORTFOLIO_FILTERS'
@@ -73,16 +72,16 @@ describe('transactions actions', () => {
         transactions: [{ ...transaction, id: 1 }],
         settings: settingsInitialState
       })
-      return store.dispatch(actions.updateTransaction({ ...transaction, id: 1, source: 'TD' }))
+      return store.dispatch(actions.updateTransaction({ ...transaction, id: 1, institution: 'TD' }))
         .then(() => {
           expect(store.getActions()).toEqual([
             {
               type: 'UPDATE_TRANSACTION',
-              payload: { ...transaction, id: 1, source: 'TD' }
+              payload: { ...transaction, id: 1, institution: 'TD' }
             },
             {
               payload: {
-                filterName: 'source',
+                filterName: 'institution',
                 options: { Questrade: true }
               },
               type: 'CREATE_PORTFOLIO_FILTERS'
@@ -114,7 +113,7 @@ describe('transactions actions', () => {
             },
             {
               payload: {
-                filterName: 'source',
+                filterName: 'institution',
                 options: { Questrade: true }
               },
               type: 'CREATE_PORTFOLIO_FILTERS'

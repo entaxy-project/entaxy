@@ -94,7 +94,7 @@ export class TaxesComponent extends React.Component {
         <Grid container spacing={0}>
           <Grid item xs={10}>
             <Paper className={`${classes.paper} ${classes.chart}`}>
-              <Typography variant="headline" gutterBottom align="center">
+              <Typography variant="h5" gutterBottom align="center">
                 Taxes for {region} {year}
               </Typography>
               <TaxChart
@@ -123,7 +123,7 @@ export class TaxesComponent extends React.Component {
               </FormControl>
             </Paper>
             <Paper className={classes.paper}>
-              <Typography variant="subheading">
+              <Typography variant="subtitle1">
                 Tax credits
               </Typography>
               <FormControl fullWidth className={classes.formControl}>

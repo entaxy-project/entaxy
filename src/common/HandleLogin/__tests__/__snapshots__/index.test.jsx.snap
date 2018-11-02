@@ -1,13 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`HandleLogin matches snapshot with logged in user profile 1`] = `
-<div
-  className="Login"
->
-  <h2>
-    Logging In...
-  </h2>
-</div>
-`;
+exports[`HandleLogin matches snapshot with logged in user profile 1`] = `null`;
 
 exports[`HandleLogin matches snapshot with logged out user 1`] = `null`;

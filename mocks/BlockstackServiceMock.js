@@ -21,5 +21,5 @@ module.exports = {
     }
   }),
   putFile: jest.fn(),
-  getFile: jest.fn()
+  getFile: jest.fn().mockImplementation(() => Promise.resolve('{}'))
 }

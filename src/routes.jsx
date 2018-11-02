@@ -5,8 +5,8 @@ import Landing from './core/Landing'
 import LoadingOverlay from './common/LoadingOverlay'
 import Taxes from './core/Taxes'
 import Portfolios from './core/Portfolios'
-import Transactions from './core/Portfolios/Transactions'
-import DataSources from './core/Portfolios/DataSources'
+import Transactions from './core/Transactions'
+import ImportTransactions from './core/ImportTransactions'
 
 const Routes = () => (
   <div>
@@ -17,7 +17,7 @@ const Routes = () => (
         <Route exact path="/taxes" component={Taxes} />
         <Route path="/portfolio" component={Portfolios} />
         <Route path="/transactions" component={Transactions} />
-        <Route path="/data-sources" component={DataSources} />
+        <Route path="/import-transactions" component={ImportTransactions} />
       </Switch>
     </BrowserRouter>
     <LoadingOverlay />
