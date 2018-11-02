@@ -148,7 +148,8 @@ module.exports = {
               path.resolve(paths.appNodeModules, 'bitcoinjs-lib'),
               path.resolve(paths.appNodeModules, 'tiny-secp256k1'),
               path.resolve(paths.appNodeModules, 'jsontokens'),
-              path.resolve(paths.appNodeModules, 'bip32')
+              path.resolve(paths.appNodeModules, 'bip32'),
+              path.resolve(paths.appNodeModules, 'base64url')
             ],
             loader: require.resolve('babel-loader'),
             options: {
