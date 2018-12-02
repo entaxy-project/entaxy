@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Transactions matches snapshot 1`] = `
+exports[`Transactions matches snapshot with no transactions 1`] = `
 <div>
   <header
     className="MuiPaper-root-11 MuiPaper-elevation4-17 MuiAppBar-root-2 MuiAppBar-positionStatic-6 MuiAppBar-colorPrimary-9"
@@ -136,21 +136,42 @@ exports[`Transactions matches snapshot 1`] = `
     </div>
   </header>
   <div
-    className="MuiGrid-container-117"
+    className="WithFormik-TransactionDialog--root-117"
+  />
+  <div
+    className="MuiPaper-root-11 MuiPaper-elevation2-15 MuiPaper-rounded-12"
+    style={
+      Object {
+        "height": "calc(100% - 100px)",
+      }
+    }
   >
     <div
-      className="MuiGrid-item-118 MuiGrid-grid-xs-12-157"
+      className="MuiToolbar-root-38 MuiToolbar-regular-40 MuiToolbar-gutters-39 TableToolbar-root-133"
     >
       <div
-        className="MuiPaper-root-11 MuiPaper-elevation2-15 MuiPaper-rounded-12"
+        className="TableToolbar-title-138"
       >
-        <div>
-          <div
-            className="WithFormik-TransactionDialog--root-214"
-          />
+        <h6
+          className="MuiTypography-root-45 MuiTypography-h6-62"
+          id="tableTitle"
+        >
+          Transactions
+        </h6>
+      </div>
+      <div
+        className="TableToolbar-spacer-135"
+      />
+      <div
+        className="TableToolbar-actions-136"
+      >
+        <div
+          className="TableToolbar-buttons-137"
+        >
           <button
-            aria-label="New Transaction"
-            className="MuiButtonBase-root-106 MuiButton-root-80 MuiButton-fab-97 MuiButton-contained-91 MuiButton-containedPrimary-92 MuiButton-raised-94 MuiButton-raisedPrimary-95"
+            aria-describedby={null}
+            aria-label="New transaction"
+            className="MuiButtonBase-root-106 MuiIconButton-root-146"
             disabled={false}
             onBlur={[Function]}
             onClick={[Function]}
@@ -159,19 +180,21 @@ exports[`Transactions matches snapshot 1`] = `
             onKeyUp={[Function]}
             onMouseDown={[Function]}
             onMouseLeave={[Function]}
+            onMouseOver={[Function]}
             onMouseUp={[Function]}
             onTouchEnd={[Function]}
             onTouchMove={[Function]}
             onTouchStart={[Function]}
             tabIndex="0"
+            title="New transaction"
             type="button"
           >
             <span
-              className="MuiButton-label-81"
+              className="MuiIconButton-label-151"
             >
               <svg
                 aria-hidden="true"
-                className="MuiSvgIcon-root-230"
+                className="MuiSvgIcon-root-152"
                 focusable="false"
                 role="presentation"
                 viewBox="0 0 24 24"
@@ -190,109 +213,741 @@ exports[`Transactions matches snapshot 1`] = `
             />
           </button>
         </div>
-        <div>
+      </div>
+    </div>
+    <div>
+      <div
+        style={
+          Object {
+            "height": 0,
+            "overflow": "visible",
+            "width": 0,
+          }
+        }
+      >
+        <div
+          aria-colcount={8}
+          aria-rowcount={0}
+          className="ReactVirtualized__Table"
+          role="grid"
+          style={Object {}}
+        >
+          <div
+            className="ReactVirtualized__Table__headerRow undefined"
+            role="row"
+            style={
+              Object {
+                "height": 25,
+                "overflow": "hidden",
+                "paddingRight": 0,
+                "width": 0,
+              }
+            }
+          >
+            <div
+              className="ReactVirtualized__Table__headerColumn"
+              role="columnheader"
+              style={
+                Object {
+                  "WebkitFlex": "0 1 40px",
+                  "flex": "0 1 40px",
+                  "msFlex": "0 1 40px",
+                }
+              }
+            >
+              <span
+                className="ReactVirtualized__Table__headerTruncatedText"
+              >
+                <span
+                  className="MuiButtonBase-root-106 MuiIconButton-root-146 MuiSwitchBase-root-167 MuiCheckbox-root-161 MuiCheckbox-colorSecondary-166"
+                  onBlur={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchMove={[Function]}
+                  onTouchStart={[Function]}
+                  tabIndex={null}
+                >
+                  <span
+                    className="MuiIconButton-label-151"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="MuiSvgIcon-root-152"
+                      focusable="false"
+                      role="presentation"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+                      />
+                    </svg>
+                    <input
+                      checked={false}
+                      className="MuiSwitchBase-input-170"
+                      data-indeterminate={false}
+                      onChange={[Function]}
+                      type="checkbox"
+                    />
+                  </span>
+                  <span
+                    className="MuiTouchRipple-root-109"
+                  />
+                </span>
+              </span>
+            </div>
+            <div
+              aria-label="Institution"
+              aria-sort="none"
+              className="ReactVirtualized__Table__headerColumn ReactVirtualized__Table__sortableHeaderColumn"
+              onClick={[Function]}
+              onKeyDown={[Function]}
+              role="columnheader"
+              style={
+                Object {
+                  "WebkitFlex": "0 1 120px",
+                  "flex": "0 1 120px",
+                  "msFlex": "0 1 120px",
+                }
+              }
+              tabIndex={0}
+            >
+              <span
+                className="ReactVirtualized__Table__headerTruncatedText"
+                title="Institution"
+              >
+                Institution
+              </span>
+            </div>
+            <div
+              aria-label="Account"
+              aria-sort="none"
+              className="ReactVirtualized__Table__headerColumn ReactVirtualized__Table__sortableHeaderColumn"
+              onClick={[Function]}
+              onKeyDown={[Function]}
+              role="columnheader"
+              style={
+                Object {
+                  "WebkitFlex": "0 1 100px",
+                  "flex": "0 1 100px",
+                  "msFlex": "0 1 100px",
+                }
+              }
+              tabIndex={0}
+            >
+              <span
+                className="ReactVirtualized__Table__headerTruncatedText"
+                title="Account"
+              >
+                Account
+              </span>
+            </div>
+            <div
+              aria-label="Date"
+              aria-sort="none"
+              className="ReactVirtualized__Table__headerColumn ReactVirtualized__Table__sortableHeaderColumn"
+              onClick={[Function]}
+              onKeyDown={[Function]}
+              role="columnheader"
+              style={
+                Object {
+                  "WebkitFlex": "0 1 120px",
+                  "flex": "0 1 120px",
+                  "msFlex": "0 1 120px",
+                }
+              }
+              tabIndex={0}
+            >
+              <span
+                className="ReactVirtualized__Table__headerTruncatedText"
+                title="Date"
+              >
+                Date
+              </span>
+            </div>
+            <div
+              className="ReactVirtualized__Table__headerColumn"
+              role="columnheader"
+              style={
+                Object {
+                  "WebkitFlex": "1 1 200px",
+                  "flex": "1 1 200px",
+                  "msFlex": "1 1 200px",
+                }
+              }
+            >
+              <span
+                className="ReactVirtualized__Table__headerTruncatedText"
+                title="Description"
+              >
+                Description
+              </span>
+            </div>
+            <div
+              aria-label="In"
+              aria-sort="none"
+              className="ReactVirtualized__Table__headerColumn ReactVirtualized__Table__sortableHeaderColumn"
+              onClick={[Function]}
+              onKeyDown={[Function]}
+              role="columnheader"
+              style={
+                Object {
+                  "WebkitFlex": "0 1 100px",
+                  "flex": "0 1 100px",
+                  "msFlex": "0 1 100px",
+                }
+              }
+              tabIndex={0}
+            >
+              <span
+                className="ReactVirtualized__Table__headerTruncatedText"
+                title="In"
+              >
+                In
+              </span>
+            </div>
+            <div
+              aria-label="Out"
+              aria-sort="none"
+              className="ReactVirtualized__Table__headerColumn ReactVirtualized__Table__sortableHeaderColumn"
+              onClick={[Function]}
+              onKeyDown={[Function]}
+              role="columnheader"
+              style={
+                Object {
+                  "WebkitFlex": "0 1 100px",
+                  "flex": "0 1 100px",
+                  "msFlex": "0 1 100px",
+                }
+              }
+              tabIndex={0}
+            >
+              <span
+                className="ReactVirtualized__Table__headerTruncatedText"
+                title="Out"
+              >
+                Out
+              </span>
+            </div>
+            <div
+              className="ReactVirtualized__Table__headerColumn"
+              role="columnheader"
+              style={
+                Object {
+                  "WebkitFlex": "0 1 40px",
+                  "flex": "0 1 40px",
+                  "msFlex": "0 1 40px",
+                }
+              }
+            >
+              <span
+                className="ReactVirtualized__Table__headerTruncatedText"
+              />
+            </div>
+          </div>
+          <div
+            aria-label="grid"
+            aria-readonly={true}
+            className="ReactVirtualized__Grid ReactVirtualized__Table__Grid"
+            onScroll={[Function]}
+            role="rowgroup"
+            style={
+              Object {
+                "WebkitOverflowScrolling": "touch",
+                "boxSizing": "border-box",
+                "direction": "ltr",
+                "height": -25,
+                "overflowX": "hidden",
+                "overflowY": "auto",
+                "position": "relative",
+                "width": 0,
+                "willChange": "transform",
+              }
+            }
+            tabIndex={0}
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Transactions matches snapshot with one transaction 1`] = `
+<div>
+  <header
+    className="MuiPaper-root-11 MuiPaper-elevation4-17 MuiAppBar-root-2 MuiAppBar-positionStatic-6 MuiAppBar-colorPrimary-9"
+  >
+    <div
+      className="MuiToolbar-root-38 MuiToolbar-regular-40 MuiToolbar-gutters-39 Header-toolbar-1"
+    >
+      <div
+        className="Logo-logo-42"
+      >
+        <img
+          alt="Entaxy logo"
+          className="Logo-image-43"
+          src="logo.png"
+        />
+        <a
+          className="MuiTypography-root-45 MuiTypography-h6-62 MuiTypography-colorInherit-74 Logo-title-44"
+          href="/"
+          onClick={[Function]}
+        >
+          Entaxy
+        </a>
+      </div>
+      <div>
+        <a
+          aria-current={null}
+          className="MuiButtonBase-root-106 MuiButton-root-80 MuiButton-text-82 MuiButton-flat-85 MuiButton-sizeSmall-103 MuiButton-colorInherit-101"
+          href="/portfolio"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          role="button"
+          tabIndex="0"
+        >
+          <span
+            className="MuiButton-label-81"
+          >
+            Portfolio
+          </span>
+          <span
+            className="MuiTouchRipple-root-109"
+          />
+        </a>
+        <a
+          aria-current={null}
+          className="MuiButtonBase-root-106 MuiButton-root-80 MuiButton-text-82 MuiButton-flat-85 MuiButton-sizeSmall-103 MuiButton-colorInherit-101"
+          href="/transactions"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          role="button"
+          tabIndex="0"
+        >
+          <span
+            className="MuiButton-label-81"
+          >
+            Transactions
+          </span>
+          <span
+            className="MuiTouchRipple-root-109"
+          />
+        </a>
+        <a
+          aria-current={null}
+          className="MuiButtonBase-root-106 MuiButton-root-80 MuiButton-text-82 MuiButton-flat-85 MuiButton-sizeSmall-103 MuiButton-colorInherit-101"
+          href="/import-transactions"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          role="button"
+          tabIndex="0"
+        >
+          <span
+            className="MuiButton-label-81"
+          >
+            Import Transactions
+          </span>
+          <span
+            className="MuiTouchRipple-root-109"
+          />
+        </a>
+      </div>
+      <button
+        className="MuiButtonBase-root-106 MuiButton-root-80 MuiButton-text-82 MuiButton-flat-85 MuiButton-colorInherit-101"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="0"
+        type="button"
+      >
+        <span
+          className="MuiButton-label-81"
+        >
+          Login
+        </span>
+        <span
+          className="MuiTouchRipple-root-109"
+        />
+      </button>
+    </div>
+  </header>
+  <div
+    className="WithFormik-TransactionDialog--root-117"
+  />
+  <div
+    className="MuiPaper-root-11 MuiPaper-elevation2-15 MuiPaper-rounded-12"
+    style={
+      Object {
+        "height": "calc(100% - 100px)",
+      }
+    }
+  >
+    <div
+      className="MuiToolbar-root-38 MuiToolbar-regular-40 MuiToolbar-gutters-39 TableToolbar-root-133"
+    >
+      <div
+        className="TableToolbar-title-138"
+      >
+        <h6
+          className="MuiTypography-root-45 MuiTypography-h6-62"
+          id="tableTitle"
+        >
+          Transactions
+        </h6>
+      </div>
+      <div
+        className="TableToolbar-spacer-135"
+      />
+      <div
+        className="TableToolbar-actions-136"
+      >
+        <div
+          className="TableToolbar-buttons-137"
+        >
           <button
-            aria-label="Delete ALL Transactions"
-            className="MuiButtonBase-root-106 MuiButton-root-80 MuiButton-contained-91 MuiButton-containedPrimary-92 MuiButton-raised-94 MuiButton-raisedPrimary-95"
+            aria-describedby={null}
+            aria-label="New transaction"
+            className="MuiButtonBase-root-106 MuiIconButton-root-146"
             disabled={false}
             onBlur={[Function]}
-            onClick={[MockFunction]}
+            onClick={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
             onKeyUp={[Function]}
             onMouseDown={[Function]}
             onMouseLeave={[Function]}
+            onMouseOver={[Function]}
             onMouseUp={[Function]}
             onTouchEnd={[Function]}
             onTouchMove={[Function]}
             onTouchStart={[Function]}
             tabIndex="0"
+            title="New transaction"
             type="button"
           >
             <span
-              className="MuiButton-label-81"
+              className="MuiIconButton-label-151"
             >
-              Delete ALL Transactions
+              <svg
+                aria-hidden="true"
+                className="MuiSvgIcon-root-152"
+                focusable="false"
+                role="presentation"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+                />
+                <path
+                  d="M0 0h24v24H0z"
+                  fill="none"
+                />
+              </svg>
             </span>
             <span
               className="MuiTouchRipple-root-109"
             />
           </button>
         </div>
-        <h5
-          className="MuiTypography-root-45 MuiTypography-h5-61 MuiTypography-gutterBottom-72 MuiTypography-alignCenter-68"
+      </div>
+    </div>
+    <div>
+      <div
+        style={
+          Object {
+            "height": 0,
+            "overflow": "visible",
+            "width": 0,
+          }
+        }
+      >
+        <div
+          aria-colcount={8}
+          aria-rowcount={1}
+          className="ReactVirtualized__Table"
+          role="grid"
+          style={Object {}}
         >
-          Transactions
-        </h5>
-        <table
-          className="MuiTable-root-239"
-        >
-          <thead
-            className="MuiTableHead-root-240"
+          <div
+            className="ReactVirtualized__Table__headerRow undefined"
+            role="row"
+            style={
+              Object {
+                "height": 25,
+                "overflow": "hidden",
+                "paddingRight": 0,
+                "width": 0,
+              }
+            }
           >
-            <tr
-              className="MuiTableRow-root-241 MuiTableRow-head-244"
+            <div
+              className="ReactVirtualized__Table__headerColumn"
+              role="columnheader"
+              style={
+                Object {
+                  "WebkitFlex": "0 1 40px",
+                  "flex": "0 1 40px",
+                  "msFlex": "0 1 40px",
+                }
+              }
             >
-              <th
-                aria-sort={null}
-                className="MuiTableCell-root-246 MuiTableCell-head-247"
-                scope="col"
+              <span
+                className="ReactVirtualized__Table__headerTruncatedText"
+              >
+                <span
+                  className="MuiButtonBase-root-106 MuiIconButton-root-146 MuiSwitchBase-root-167 MuiCheckbox-root-161 MuiCheckbox-colorSecondary-166"
+                  onBlur={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchMove={[Function]}
+                  onTouchStart={[Function]}
+                  tabIndex={null}
+                >
+                  <span
+                    className="MuiIconButton-label-151"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="MuiSvgIcon-root-152"
+                      focusable="false"
+                      role="presentation"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+                      />
+                    </svg>
+                    <input
+                      checked={false}
+                      className="MuiSwitchBase-input-170"
+                      data-indeterminate={false}
+                      onChange={[Function]}
+                      type="checkbox"
+                    />
+                  </span>
+                  <span
+                    className="MuiTouchRipple-root-109"
+                  />
+                </span>
+              </span>
+            </div>
+            <div
+              aria-label="Institution"
+              aria-sort="none"
+              className="ReactVirtualized__Table__headerColumn ReactVirtualized__Table__sortableHeaderColumn"
+              onClick={[Function]}
+              onKeyDown={[Function]}
+              role="columnheader"
+              style={
+                Object {
+                  "WebkitFlex": "0 1 120px",
+                  "flex": "0 1 120px",
+                  "msFlex": "0 1 120px",
+                }
+              }
+              tabIndex={0}
+            >
+              <span
+                className="ReactVirtualized__Table__headerTruncatedText"
+                title="Institution"
               >
                 Institution
-              </th>
-              <th
-                aria-sort={null}
-                className="MuiTableCell-root-246 MuiTableCell-head-247"
-                scope="col"
+              </span>
+            </div>
+            <div
+              aria-label="Account"
+              aria-sort="none"
+              className="ReactVirtualized__Table__headerColumn ReactVirtualized__Table__sortableHeaderColumn"
+              onClick={[Function]}
+              onKeyDown={[Function]}
+              role="columnheader"
+              style={
+                Object {
+                  "WebkitFlex": "0 1 100px",
+                  "flex": "0 1 100px",
+                  "msFlex": "0 1 100px",
+                }
+              }
+              tabIndex={0}
+            >
+              <span
+                className="ReactVirtualized__Table__headerTruncatedText"
+                title="Account"
               >
                 Account
-              </th>
-              <th
-                aria-sort={null}
-                className="MuiTableCell-root-246 MuiTableCell-head-247"
-                scope="col"
-              >
-                Type
-              </th>
-              <th
-                aria-sort={null}
-                className="MuiTableCell-root-246 MuiTableCell-head-247"
-                scope="col"
-              >
-                Ticker
-              </th>
-              <th
-                aria-sort={null}
-                className="MuiTableCell-root-246 MuiTableCell-head-247 MuiTableCell-numeric-250"
-                scope="col"
-              >
-                Shares
-              </th>
-              <th
-                aria-sort={null}
-                className="MuiTableCell-root-246 MuiTableCell-head-247 MuiTableCell-numeric-250"
-                scope="col"
-              >
-                BookValue
-              </th>
-              <th
-                aria-sort={null}
-                className="MuiTableCell-root-246 MuiTableCell-head-247 MuiTableCell-numeric-250"
-                scope="col"
+              </span>
+            </div>
+            <div
+              aria-label="Date"
+              aria-sort="none"
+              className="ReactVirtualized__Table__headerColumn ReactVirtualized__Table__sortableHeaderColumn"
+              onClick={[Function]}
+              onKeyDown={[Function]}
+              role="columnheader"
+              style={
+                Object {
+                  "WebkitFlex": "0 1 120px",
+                  "flex": "0 1 120px",
+                  "msFlex": "0 1 120px",
+                }
+              }
+              tabIndex={0}
+            >
+              <span
+                className="ReactVirtualized__Table__headerTruncatedText"
+                title="Date"
               >
                 Date
-              </th>
-              <th
-                aria-sort={null}
-                className="MuiTableCell-root-246 MuiTableCell-head-247"
-                scope="col"
+              </span>
+            </div>
+            <div
+              className="ReactVirtualized__Table__headerColumn"
+              role="columnheader"
+              style={
+                Object {
+                  "WebkitFlex": "1 1 200px",
+                  "flex": "1 1 200px",
+                  "msFlex": "1 1 200px",
+                }
+              }
+            >
+              <span
+                className="ReactVirtualized__Table__headerTruncatedText"
+                title="Description"
+              >
+                Description
+              </span>
+            </div>
+            <div
+              aria-label="In"
+              aria-sort="none"
+              className="ReactVirtualized__Table__headerColumn ReactVirtualized__Table__sortableHeaderColumn"
+              onClick={[Function]}
+              onKeyDown={[Function]}
+              role="columnheader"
+              style={
+                Object {
+                  "WebkitFlex": "0 1 100px",
+                  "flex": "0 1 100px",
+                  "msFlex": "0 1 100px",
+                }
+              }
+              tabIndex={0}
+            >
+              <span
+                className="ReactVirtualized__Table__headerTruncatedText"
+                title="In"
+              >
+                In
+              </span>
+            </div>
+            <div
+              aria-label="Out"
+              aria-sort="none"
+              className="ReactVirtualized__Table__headerColumn ReactVirtualized__Table__sortableHeaderColumn"
+              onClick={[Function]}
+              onKeyDown={[Function]}
+              role="columnheader"
+              style={
+                Object {
+                  "WebkitFlex": "0 1 100px",
+                  "flex": "0 1 100px",
+                  "msFlex": "0 1 100px",
+                }
+              }
+              tabIndex={0}
+            >
+              <span
+                className="ReactVirtualized__Table__headerTruncatedText"
+                title="Out"
+              >
+                Out
+              </span>
+            </div>
+            <div
+              className="ReactVirtualized__Table__headerColumn"
+              role="columnheader"
+              style={
+                Object {
+                  "WebkitFlex": "0 1 40px",
+                  "flex": "0 1 40px",
+                  "msFlex": "0 1 40px",
+                }
+              }
+            >
+              <span
+                className="ReactVirtualized__Table__headerTruncatedText"
               />
-            </tr>
-          </thead>
-          <tbody
-            className="MuiTableBody-root-254"
+            </div>
+          </div>
+          <div
+            aria-label="grid"
+            aria-readonly={true}
+            className="ReactVirtualized__Grid ReactVirtualized__Table__Grid"
+            onScroll={[Function]}
+            role="rowgroup"
+            style={
+              Object {
+                "WebkitOverflowScrolling": "touch",
+                "boxSizing": "border-box",
+                "direction": "ltr",
+                "height": -25,
+                "overflowX": "hidden",
+                "overflowY": "auto",
+                "position": "relative",
+                "width": 0,
+                "willChange": "transform",
+              }
+            }
+            tabIndex={0}
           />
-        </table>
+        </div>
       </div>
     </div>
   </div>

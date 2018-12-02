@@ -1,179 +1,283 @@
 import React from 'react'
-import _ from 'lodash'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
 import { withStyles } from '@material-ui/core/styles'
 import PropTypes from 'prop-types'
-import Grid from '@material-ui/core/Grid'
-import Paper from '@material-ui/core/Paper'
-import Typography from '@material-ui/core/Typography'
-import Table from '@material-ui/core/Table'
-import TableBody from '@material-ui/core/TableBody'
-import TableCell from '@material-ui/core/TableCell'
-import TableHead from '@material-ui/core/TableHead'
-import TableRow from '@material-ui/core/TableRow'
-import Button from '@material-ui/core/Button'
+import classNames from 'classnames'
 import IconButton from '@material-ui/core/IconButton'
-import AddIcon from '@material-ui/icons/Add'
 import EditIcon from '@material-ui/icons/Edit'
-import DeleteIcon from '@material-ui/icons/Delete'
 import format from 'date-fns/format'
+import Paper from '@material-ui/core/Paper'
+import Checkbox from '@material-ui/core/Checkbox'
+import Tooltip from '@material-ui/core/Tooltip'
+import AddIcon from '@material-ui/icons/Add'
+import { Column, Table, AutoSizer } from 'react-virtualized'
+import 'react-virtualized/styles.css'
 import Header from '../../common/Header'
 import TransactionDialog from './TransactionDialog'
+import TableToolbar from '../../common/TableToolbar'
 import confirm from '../../util/confirm'
-import { deleteTransaction, deleteAllTransactions } from '../../store/transactions/actions'
+import { deleteTransactions, updateSortBy } from '../../store/transactions/actions'
+import { sortedTransactions } from '../../store/transactions/selectors'
 
 const styles = theme => ({
   root: {
-    flexGrow: 1
+    height: '100vh'
   },
   paper: {
-    margin: '10px 5px',
-    padding: '20px'
+    display: 'flex',
+    flexDirection: 'column',
+    position: 'relative',
+    height: '100%',
+    margin: '10px',
+    padding: '0 10px'
   },
-  buttonsLeft: {
-    float: 'left',
-    display: 'inline-block'
+  tableWrapper: {
+    flex: '1 1 auto'
   },
-  buttonsRight: {
-    float: 'right',
-    display: 'inline-block'
+  headerRow: {
+    borderBottom: '1px solid #e0e0e0',
+    fontFamily: theme.typography.subtitle2.fontFamily,
+    fontWeight: theme.typography.subtitle2.fontWeight,
+    fontSize: theme.typography.subtitle2.fontSize,
+    color: theme.palette.text.disabled
   },
-  button: {
-    margin: theme.spacing.unit
+  row: {
+    borderBottom: '1px solid #e0e0e0',
+    fontFamily: theme.typography.subtitle2.fontFamily,
+    fontWeight: theme.typography.body2.fontWeight,
+    fontSize: theme.typography.subtitle2.fontSize
+  },
+  oddRow: {
+    backgroundColor: '#fafafa'
+  },
+  tableButton: {
+    padding: 4
   }
 })
 
 const mapStateToProps = (state) => {
   return {
-    transactions: state.transactions
+    transactions: sortedTransactions(state),
+    sortBy: state.transactions.sortBy,
+    sortDirection: state.transactions.sortDirection
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleDelete: (transactionId) => {
-      confirm('Delete transaction?', 'Are you sure?').then(() => {
-        dispatch(deleteTransaction(transactionId))
-      })
-    },
-    handleDeleteAll: () => {
-      confirm('Delete ALL transaction?', 'Are you sure?').then(() => {
-        dispatch(deleteAllTransactions())
-      })
-    }
+    deleteTransactions: transactionIds => dispatch(deleteTransactions(transactionIds)),
+    handleSort: ({ sortBy, sortDirection }) => dispatch(updateSortBy(sortBy, sortDirection))
   }
 }
 
 export class TransactionsComponent extends React.Component {
   state = {
-    open: false,
-    transaction: null
+    openTransactionDialog: false,
+    transaction: null,
+    selected: []
   }
 
   handleNew = () => {
-    this.setState({ open: true, transaction: null })
+    this.setState({ openTransactionDialog: true, transaction: null })
   }
 
   handleEdit = (transaction) => {
-    this.setState({ open: true, transaction })
+    this.setState({ openTransactionDialog: true, transaction })
   }
 
   handleCancel = () => {
-    this.setState({ open: false })
+    this.setState({ openTransactionDialog: false })
   }
+
+  rowClassName = ({ index }, classes) => (
+    classNames({
+      [classes.headerRow]: index < 0,
+      [classes.row]: index >= 0,
+      [classes.oddRow]: index % 2 !== 0
+    })
+  )
+
+  handleSelectAllClick = (event) => {
+    if (event.target.checked) {
+      this.setState({ selected: this.props.transactions.map(n => n.id) })
+      return
+    }
+    this.setState({ selected: [] })
+  }
+
+  handleCheckboxClick = (event, transactionId) => {
+    const { selected } = this.state
+    const selectedIndex = selected.indexOf(transactionId)
+    let newSelected = []
+
+    if (selectedIndex === -1) {
+      newSelected = newSelected.concat(selected, transactionId)
+    } else if (selectedIndex === 0) {
+      newSelected = newSelected.concat(selected.slice(1))
+    } else if (selectedIndex === selected.length - 1) {
+      newSelected = newSelected.concat(selected.slice(0, -1))
+    } else if (selectedIndex > 0) {
+      newSelected = newSelected.concat(
+        selected.slice(0, selectedIndex),
+        selected.slice(selectedIndex + 1)
+      )
+    }
+
+    this.setState({ selected: newSelected })
+  }
+
+  handleDelete = () => {
+    confirm('Delete selected transactions?', 'Are you sure?').then(() => {
+      this.props.deleteTransactions(this.state.selected)
+      this.setState({ selected: [] })
+    })
+  }
+
+  isSelected = id => this.state.selected.indexOf(id) !== -1
 
   render() {
     const currencyFormatter = new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD' })
     const {
       classes,
       transactions,
-      handleDelete,
-      handleDeleteAll
+      sortBy,
+      sortDirection,
+      handleSort
     } = this.props
+
+    const { selected } = this.state
     return (
       <div className={classes.root}>
-        <Header />
-        <Grid container spacing={0}>
-          <Grid item xs={12}>
-            <Paper className={classes.paper}>
-              <div className={classes.buttonsLeft}>
-                <TransactionDialog
-                  open={this.state.open}
-                  onCancel={this.handleCancel}
-                  transaction={this.state.transaction}
-                />
-                <Button
-                  variant="fab"
-                  color="primary"
-                  aria-label="New Transaction"
-                  onClick={this.handleNew}
+        <Header ref={this.headerRef} />
+        <TransactionDialog
+          open={this.state.openTransactionDialog}
+          onCancel={this.handleCancel}
+          transaction={this.state.transaction}
+        />
+        <Paper className={classes.paper} style={{ height: 'calc(100% - 100px)' }}>
+          <TableToolbar
+            title="Transactions"
+            selectedItems={selected}
+            onDelete={this.handleDelete}
+          >
+            <Tooltip title="New transaction">
+              <IconButton aria-label="New transaction" onClick={this.handleNew}>
+                <AddIcon />
+              </IconButton>
+            </Tooltip>
+          </TableToolbar>
+          <div className={classes.tableWrapper}>
+            <AutoSizer>
+              {({ width, height }) => (
+                <Table
+                  width={width}
+                  height={height}
+                  headerHeight={25}
+                  rowHeight={30}
+                  rowClassName={index => this.rowClassName(index, classes)}
+                  rowCount={transactions.length}
+                  rowGetter={({ index }) => transactions[index]}
+                  sort={handleSort}
+                  sortBy={sortBy}
+                  sortDirection={sortDirection}
                 >
-                  <AddIcon />
-                </Button>
-              </div>
-              <div className={classes.buttonsRight}>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  aria-label="Delete ALL Transactions"
-                  className={classes.button}
-                  onClick={handleDeleteAll}
-                >
-                  Delete ALL Transactions
-                </Button>
-              </div>
-              <Typography variant="h5" gutterBottom align="center">Transactions</Typography>
-              <Table className={classes.table}>
-                <TableHead>
-                  <TableRow>
-                    <TableCell>Institution</TableCell>
-                    <TableCell>Account</TableCell>
-                    <TableCell>Type</TableCell>
-                    <TableCell>Ticker</TableCell>
-                    <TableCell numeric>Shares</TableCell>
-                    <TableCell numeric>BookValue</TableCell>
-                    <TableCell numeric>Date</TableCell>
-                    <TableCell />
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {_.map(transactions, (transaction) => {
-                    return (
-                      <TableRow key={transaction.id}>
-                        <TableCell>{transaction.institution}</TableCell>
-                        <TableCell>{transaction.account}</TableCell>
-                        <TableCell>{transaction.type}</TableCell>
-                        <TableCell>{transaction.ticker}</TableCell>
-                        <TableCell numeric>{transaction.shares}</TableCell>
-                        <TableCell numeric>{currencyFormatter.format(transaction.bookValue)}</TableCell>
-                        <TableCell numeric>{format(transaction.createdAt, 'MMM do, YYYY @ h:mm a')}</TableCell>
-                        <TableCell>
+                  <Column
+                    dataKey="id"
+                    width={40}
+                    disableSort={true}
+                    headerRenderer={() => (
+                      <span
+                        className="ReactVirtualized__Table__headerTruncatedText"
+                        key="label"
+                      >
+                        <Checkbox
+                          indeterminate={selected.length > 0 && selected.length < transactions.length}
+                          checked={selected.length > 0 && selected.length === transactions.length}
+                          onChange={event => this.handleSelectAllClick(event)}
+                        />
+                      </span>
+                    )}
+                    cellRenderer={({ cellData }) => {
+                      const isSelected = this.isSelected(cellData)
+                      return (
+                        <span
+                          className="ReactVirtualized__Table__headerTruncatedText"
+                          key="label"
+                        >
+                          <Checkbox
+                            checked={isSelected}
+                            onChange={event => this.handleCheckboxClick(event, cellData)}
+                          />
+                        </span>
+                      )
+                    }}
+                  />
+                  <Column
+                    label="Institution"
+                    dataKey="institution"
+                    width={120}
+                  />
+                  <Column
+                    label="Account"
+                    dataKey="account"
+                    width={100}
+                  />
+                  <Column
+                    width={120}
+                    label="Date"
+                    dataKey="createdAt"
+                    cellDataGetter={({ rowData }) => format(rowData.createdAt, 'dd/MM/yyyy')}
+                  />
+                  <Column
+                    width={200}
+                    label="Description"
+                    dataKey="description"
+                    disableSort={true}
+                    flexGrow={1}
+                  />
+                  <Column
+                    width={100}
+                    label="In"
+                    dataKey="shares"
+                    cellDataGetter={({ rowData }) => {
+                      if (rowData.shares > 0) { return currencyFormatter.format(rowData.shares) }
+                      return null
+                    }}
+                  />
+                  <Column
+                    width={100}
+                    label="Out"
+                    dataKey="shares"
+                    cellDataGetter={({ rowData }) => {
+                      if (rowData.shares < 0) { return currencyFormatter.format(rowData.shares) }
+                      return null
+                    }}
+                  />
+                  <Column
+                    width={40}
+                    dataKey="index"
+                    disableSort={true}
+                    cellRenderer={
+                      ({ rowData }) => (
+                        <Tooltip title="Edit transaction">
                           <IconButton
-                            variant="fab"
-                            color="primary"
+                            disableRipple={true}
                             aria-label="Edit Transaction"
-                            onClick={() => this.handleEdit(transaction)}
+                            onClick={() => this.handleEdit(rowData)}
+                            className={classes.tableButton}
                           >
-                            <EditIcon />
+                            <EditIcon fontSize="small" />
                           </IconButton>
-                          <IconButton
-                            variant="fab"
-                            color="primary"
-                            aria-label="Delete Transaction"
-                            onClick={() => handleDelete(transaction.id)}
-                          >
-                            <DeleteIcon />
-                          </IconButton>
-                        </TableCell>
-                      </TableRow>
-                    )
-                  })}
-                </TableBody>
-              </Table>
-            </Paper>
-          </Grid>
-        </Grid>
+                        </Tooltip>
+                      )
+                    }
+                  />
+                </Table>
+              )}
+            </AutoSizer>
+          </div>
+        </Paper>
       </div>
     )
   }
@@ -182,8 +286,10 @@ export class TransactionsComponent extends React.Component {
 TransactionsComponent.propTypes = {
   classes: PropTypes.object.isRequired,
   transactions: PropTypes.array.isRequired,
-  handleDelete: PropTypes.func.isRequired,
-  handleDeleteAll: PropTypes.func.isRequired
+  handleSort: PropTypes.func.isRequired,
+  sortBy: PropTypes.string.isRequired,
+  sortDirection: PropTypes.string.isRequired,
+  deleteTransactions: PropTypes.func.isRequired
 }
 
 export default compose(

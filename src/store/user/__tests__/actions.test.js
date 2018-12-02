@@ -11,7 +11,7 @@ import { initialState as marketValuesInitialState } from '../../marketValues/red
 import { initialState as transactionsInitialState } from '../../transactions/reducer'
 
 jest.mock('blockstack', () => {
-  return require('../../../../mocks/BlockstackServiceMock')
+  return require('../../../../mocks/BlockstackMock')
 })
 
 beforeEach(() => {

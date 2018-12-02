@@ -1,0 +1,141 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TableToolbar matches snapshot with no transactions 1`] = `
+<div
+  className="MuiToolbar-root-7 MuiToolbar-regular-9 MuiToolbar-gutters-8 TableToolbar-root-1"
+>
+  <div
+    className="TableToolbar-title-6"
+  >
+    <h6
+      className="MuiTypography-root-11 MuiTypography-h6-28"
+      id="tableTitle"
+    >
+      Transactions
+    </h6>
+  </div>
+  <div
+    className="TableToolbar-spacer-3"
+  />
+  <div
+    className="TableToolbar-actions-4"
+  >
+    <div
+      className="TableToolbar-buttons-5"
+    >
+      <button
+        aria-describedby={null}
+        aria-label="New transaction"
+        className="MuiButtonBase-root-59 MuiIconButton-root-53"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[MockFunction]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseOver={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="0"
+        title="New transaction"
+        type="button"
+      >
+        <span
+          className="MuiIconButton-label-58"
+        >
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root-62"
+            focusable="false"
+            role="presentation"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+            />
+            <path
+              d="M0 0h24v24H0z"
+              fill="none"
+            />
+          </svg>
+        </span>
+        <span
+          className="MuiTouchRipple-root-71"
+        />
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`TableToolbar matches snapshot with some transactions 1`] = `
+<div
+  className="MuiToolbar-root-7 MuiToolbar-regular-9 MuiToolbar-gutters-8 TableToolbar-root-1 TableToolbar-highlight-2"
+>
+  <div
+    className="TableToolbar-title-6"
+  >
+    <h6
+      className="MuiTypography-root-11 MuiTypography-subtitle1-29 MuiTypography-colorInherit-40"
+    >
+      1
+       selected
+    </h6>
+  </div>
+  <div
+    className="TableToolbar-spacer-3"
+  />
+  <div
+    className="TableToolbar-actions-4"
+  >
+    <button
+      aria-describedby={null}
+      aria-label="Delete"
+      className="MuiButtonBase-root-59 MuiIconButton-root-53"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[MockFunction]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseOver={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex="0"
+      title="Delete"
+      type="button"
+    >
+      <span
+        className="MuiIconButton-label-58"
+      >
+        <svg
+          aria-hidden="true"
+          className="MuiSvgIcon-root-62"
+          focusable="false"
+          role="presentation"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+          />
+          <path
+            d="M0 0h24v24H0z"
+            fill="none"
+          />
+        </svg>
+      </span>
+      <span
+        className="MuiTouchRipple-root-71"
+      />
+    </button>
+  </div>
+</div>
+`;

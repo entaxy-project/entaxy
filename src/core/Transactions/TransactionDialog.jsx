@@ -108,8 +108,9 @@ const TransactionDialog = ({
             'aria-label': 'Shares',
             required: true,
             maxLength: 10,
-            min: 0,
-            max: Number.MAX_SAFE_INTEGER
+            min: Number.MIN_SAFE_INTEGER,
+            max: Number.MAX_SAFE_INTEGER,
+            step: 0.01
           }}
           className={classes.input}
           value={values.shares}
@@ -126,7 +127,8 @@ const TransactionDialog = ({
               required: true,
               maxLength: 6,
               min: 0,
-              max: Number.MAX_SAFE_INTEGER
+              max: Number.MAX_SAFE_INTEGER,
+              step: 0.01
             }
           }}
           className={classes.input}
@@ -174,13 +176,16 @@ export default compose(
           createdAt: new Date()
         }
       }
-      return { ...transaction, createdAt: new Date(transaction.createdAt) }
+      return {
+        ...transaction,
+        createdAt: new Date(transaction.createdAt)
+      }
     },
     handleSubmit: (values, { props, setSubmitting, resetForm }) => {
       setSubmitting(true)
       props.handleSave({
-        ...props.transaction,
-        ...values
+        ...values,
+        createdAt: values.createdAt.getTime()
       })
       resetForm()
       setSubmitting(false)

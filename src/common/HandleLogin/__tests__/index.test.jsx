@@ -4,7 +4,7 @@ import * as blockstack from 'blockstack'
 import { HandleLoginComponent } from '../'
 
 jest.mock('blockstack', () => {
-  return require('../../../../mocks/BlockstackServiceMock')
+  return require('../../../../mocks/BlockstackMock')
 })
 
 describe('HandleLogin', () => {
