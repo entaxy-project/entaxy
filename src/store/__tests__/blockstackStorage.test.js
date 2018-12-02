@@ -2,14 +2,12 @@ import * as blockstack from 'blockstack'
 import { loadState, saveState } from '../blockstackStorage'
 
 jest.mock('blockstack', () => {
-  return require('../../../mocks/BlockstackServiceMock')
+  return require('../../../mocks/BlockstackMock')
 })
 
 const isUserSignedInSpy = jest.spyOn(blockstack, 'isUserSignedIn')
-const getFileSpy = jest.spyOn(blockstack, 'getFile')
-const putFileSpy = jest.spyOn(blockstack, 'putFile')
-getFileSpy.mockReturnValue(Promise.resolve('{}'))
-putFileSpy.mockReturnValue(Promise.resolve())
+const getFileSpy = jest.spyOn(blockstack, 'getFile').mockReturnValue(Promise.resolve('{}'))
+const putFileSpy = jest.spyOn(blockstack, 'putFile').mockReturnValue(Promise.resolve())
 
 beforeEach(() => {
   jest.resetModules()

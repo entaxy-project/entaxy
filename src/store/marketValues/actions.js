@@ -2,6 +2,10 @@
 import _ from 'lodash'
 import types from './types'
 
+export const loadMarketValues = (marketValues) => {
+  return { type: types.LOAD_MARKET_VALUES, payload: marketValues }
+}
+
 export const createMarketValue = (ticker, marketValue, updatedOn) => {
   return { type: types.CREATE_MARKET_VALUE, payload: { ticker, marketValue, updatedOn } }
 }
@@ -12,10 +16,6 @@ export const updateMarketValue = (ticker, marketValue, updatedOn) => {
 
 export const deleteMarketValues = (tickers) => {
   return { type: types.DELETE_MARKET_VALUES, payload: tickers }
-}
-
-export const loadMarketValues = (marketValues) => {
-  return { type: types.LOAD_MARKET_VALUES, payload: marketValues }
 }
 
 const fetchMarketValues = (tickers) => {
@@ -52,7 +52,7 @@ const fetchMarketValues = (tickers) => {
 export const updateMarketValues = () => {
   return (dispatch, getState) => {
     const existingTickers = Object.keys(getState().marketValues || {})
-    const newTickers = _(getState().transactions).map('ticker').uniq().value()
+    const newTickers = _(getState().transactions.list).map('ticker').uniq().value()
 
     const tickersToRemove = _.difference(existingTickers, newTickers)
     const tickersToAdd = _.difference(newTickers, existingTickers)

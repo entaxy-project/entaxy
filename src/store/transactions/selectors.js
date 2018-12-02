@@ -1,9 +1,20 @@
+/* eslint no-console: 0 */
 import _ from 'lodash'
 import { createSelector } from 'reselect'
 
 const getTransactions = state => state.transactions
 const getMarketValues = state => state.marketValues
 const getPortfolioFilters = state => state.settings.portfolioFilters
+
+export const sortedTransactions = createSelector(
+  getTransactions,
+  ({ list, sortBy, sortDirection }) => {
+    if (sortDirection === 'ASC') {
+      return list.sort((a, b) => (a[sortBy] > b[sortBy]))
+    }
+    return list.sort((a, b) => (a[sortBy] < b[sortBy]))
+  }
+)
 
 const filteredTransactions = createSelector(
   getTransactions,

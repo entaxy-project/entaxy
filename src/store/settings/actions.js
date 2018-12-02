@@ -7,7 +7,7 @@ export const loadSettings = (settings) => {
 }
 
 // filterName is institution or account
-// options are Questrade, TD, etc for institution and RRSP, TFSA, etc for account
+// options is an array e.g. [Questrade, TD] for institution and [RRSP, TFSA] for account
 export const createPortfolioFilters = (filterName, options) => {
   // Default each new option to true (visible)
   const newOptions = options.reduce((acc, filter) => ({ ...acc, [filter]: true }), {})
@@ -20,17 +20,16 @@ export const deletePortfolioFilters = (filterName, options) => {
 
 export const updatePortfolioFilterValue = (filterName, option, value) => {
   return async (dispatch) => {
-    dispatch({ type: types.UPDATE_PORTFOLIO_FILTER_VALUE, payload: { filterName, option, value } })
-    saveState()
+    await dispatch({ type: types.UPDATE_PORTFOLIO_FILTER_VALUE, payload: { filterName, option, value } })
+    await saveState()
   }
 }
 
 export const updatePortfolioFilters = () => {
   return (dispatch, getState) => {
-    const filters = getState().settings.portfolioFilters
-    _.each(filters, (options, filterName) => {
-      const existingFilters = Object.keys(options || {})
-      const newFilters = _(getState().transactions).map(filterName).uniq().value()
+    _.each(getState().settings.portfolioFilters, (options, filterName) => {
+      const existingFilters = Object.keys(options)
+      const newFilters = _(getState().transactions.list).map(filterName).uniq().value()
 
       const filtersToRemove = _.difference(existingFilters, newFilters)
       const filtersToAdd = _.difference(newFilters, existingFilters)

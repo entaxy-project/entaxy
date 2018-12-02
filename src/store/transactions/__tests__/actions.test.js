@@ -2,6 +2,7 @@ import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
 import * as actions from '../actions'
 import types from '../types'
+import { initialState as transactionsInitialState } from '../reducer'
 import { initialState as settingsInitialState } from '../../settings/reducer'
 
 jest.mock('uuid/v4', () => jest.fn(() => 1))
@@ -35,7 +36,7 @@ describe('transactions actions', () => {
     it('should create a transaction', () => {
       const mockStore = configureMockStore([thunk])
       const store = mockStore({
-        transactions: [transaction],
+        transactions: transactionsInitialState,
         settings: settingsInitialState
       })
 
@@ -45,20 +46,6 @@ describe('transactions actions', () => {
             {
               type: 'CREATE_TRANSACTION',
               payload: { ...transaction, id: 1 }
-            },
-            {
-              payload: {
-                filterName: 'institution',
-                options: { Questrade: true }
-              },
-              type: 'CREATE_PORTFOLIO_FILTERS'
-            },
-            {
-              payload: {
-                filterName: 'account',
-                options: { RRSP: true }
-              },
-              type: 'CREATE_PORTFOLIO_FILTERS'
             }
           ])
         })
@@ -69,7 +56,7 @@ describe('transactions actions', () => {
     it('should update a transaction', () => {
       const mockStore = configureMockStore([thunk])
       const store = mockStore({
-        transactions: [{ ...transaction, id: 1 }],
+        transactions: { list: [{ ...transaction, id: 1 }], transactionsInitialState },
         settings: settingsInitialState
       })
       return store.dispatch(actions.updateTransaction({ ...transaction, id: 1, institution: 'TD' }))
@@ -97,19 +84,20 @@ describe('transactions actions', () => {
         })
     })
   })
-  describe('DeleteTransaction', () => {
+
+  describe('DeleteTransactions', () => {
     it('should delete a transaction', () => {
       const mockStore = configureMockStore([thunk])
       const store = mockStore({
-        transactions: [{ ...transaction, id: 1 }],
+        transactions: { list: [{ ...transaction, id: 1 }], transactionsInitialState },
         settings: settingsInitialState
       })
-      return store.dispatch(actions.deleteTransaction({ id: 1 }))
+      return store.dispatch(actions.deleteTransactions([1]))
         .then(() => {
           expect(store.getActions()).toEqual([
             {
-              type: 'DELETE_TRANSACTION',
-              payload: { id: 1 }
+              type: 'DELETE_TRANSACTIONS',
+              payload: [1]
             },
             {
               payload: {
@@ -127,6 +115,50 @@ describe('transactions actions', () => {
             }
           ])
         })
+    })
+  })
+
+  describe('addTransactions', () => {
+    it('should add transactions to the existing ones', () => {
+      const mockStore = configureMockStore([thunk])
+      const store = mockStore({
+        transactions: { ...transactionsInitialState, list: [{ ...transaction, id: 1 }] },
+        settings: {
+          portfolioFilters: {
+            institution: { Questrade: true },
+            account: { RRSP: true }
+          }
+        }
+      })
+      const payload = [{
+        id: 2,
+        institution: 'TD',
+        account: 'TFSA',
+        type: 'buy',
+        ticker: 'VCE.TO',
+        shares: '1',
+        bookValue: '1',
+        createdAt: new Date()
+      }]
+
+      return store.dispatch(actions.addTransactions(payload))
+        .then(() => {
+          expect(store.getActions()).toEqual([
+            {
+              type: 'ADD_TRANSACTIONS',
+              payload
+            }
+          ])
+        })
+    })
+  })
+
+  describe('updateSortBy', () => {
+    it('should update sorting options', () => {
+      expect(actions.updateSortBy('account', 'ASC')).toEqual({
+        type: types.UPDATE_SORT_BY,
+        payload: { sortBy: 'account', sortDirection: 'ASC' }
+      })
     })
   })
 })
