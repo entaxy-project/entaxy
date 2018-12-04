@@ -7,15 +7,18 @@ import Logo from '../Logo/index'
 import LoginButton from '../LoginButton'
 import TopNav from '../TopNav'
 
-const styles = {
+const styles = theme => ({
+  root: {
+    zIndex: theme.zIndex.drawer + 1
+  },
   toolbar: {
     display: 'flex',
     'justify-content': 'space-between'
   }
-}
+})
 
 const Header = ({ classes }) => (
-  <AppBar position="static">
+  <AppBar position="fixed" className={classes.root}>
     <Toolbar className={classes.toolbar}>
       <Logo />
       <TopNav />

@@ -9,7 +9,7 @@ describe('user reducer', () => {
   it('should handle LOAD_USER_DATA_SUCCESS with authenticated user', () => {
     const type = types.LOAD_USER_DATA_SUCCESS
     const payload = {
-      isAuthenticated: true,
+      isAuthenticatedWith: 'blockstack',
       username: 'test-username',
       name: 'Test Name',
       pictureUrl: 'Test URL'
@@ -31,13 +31,13 @@ describe('user reducer', () => {
 
   it('should handle USER_LOGIN_SUCCESS', () => {
     const type = types.USER_LOGIN_SUCCESS
-    const payload = { isAuthenticated: true }
+    const payload = { isAuthenticatedWith: 'blockstack' }
     expect(userReducer(undefined, { type, payload })).toEqual({ ...initialState, ...payload })
   })
 
   it('should handle USER_LOGOUT', () => {
     const type = types.USER_LOGOUT
-    const payload = { isAuthenticated: true }
+    const payload = { isAuthenticatedWith: 'blockstack' }
     expect(userReducer(undefined, { type, payload })).toEqual({ ...initialState })
   })
 

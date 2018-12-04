@@ -2,7 +2,7 @@ import types from './types'
 
 export const initialState = {
   isLoading: false,
-  isAuthenticated: false,
+  isAuthenticatedWith: null,
   isLoginPending: false,
   username: null,
   name: null,
@@ -17,9 +17,18 @@ export default (state = initialState, action) => {
     case types.LOAD_USER_DATA_SUCCESS:
       return { ...state, ...action.payload }
     case types.USER_LOGIN:
-      return { ...state, isLoginPending: true }
+      return {
+        guest: {
+          ...state,
+          isAuthenticatedWith: 'guest',
+          username: null,
+          name: 'Guest user',
+          pictureUrl: null
+        },
+        blockstack: { ...state, isLoginPending: true }
+      }[action.payload]
     case types.USER_LOGIN_SUCCESS:
-      return { ...state, isLoginPending: false, isAuthenticated: true }
+      return { ...state, isLoginPending: false, isAuthenticatedWith: 'blockstack' }
     case types.USER_LOGOUT:
       return initialState
     case types.USER_LOGIN_ERROR:

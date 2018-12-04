@@ -34,7 +34,7 @@ export const loadUserData = () => {
       const person = new blockstack.Person(profile)
 
       dispatch(loadUserDataSuccess({
-        isAuthenticated: true,
+        isAuthenticatedWith: 'blockstack',
         username,
         name: person.name(),
         pictureUrl: person.avatarUrl()
@@ -53,10 +53,12 @@ export const loadUserData = () => {
   }
 }
 
-export const userLogin = () => {
-  // Open the blockstack browser for sign in
-  blockstack.redirectToSignIn(`${window.location.origin}/handle-login`)
-  return { type: types.USER_LOGIN }
+export const userLogin = (loginType) => {
+  if (loginType === 'blockstack') {
+    // Open the blockstack browser for sign in
+    blockstack.redirectToSignIn(`${window.location.origin}/handle-login`)
+  }
+  return { type: types.USER_LOGIN, payload: loginType }
 }
 
 export const userLoginError = (error) => {
