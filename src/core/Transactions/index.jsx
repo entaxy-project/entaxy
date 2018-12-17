@@ -13,8 +13,6 @@ import Tooltip from '@material-ui/core/Tooltip'
 import AddIcon from '@material-ui/icons/Add'
 import { Column, Table, AutoSizer } from 'react-virtualized'
 import 'react-virtualized/styles.css'
-import Header from '../../common/Header'
-import LeftDrawer from '../../common/LeftDrawer'
 import TransactionDialog from './TransactionDialog'
 import TableToolbar from '../../common/TableToolbar'
 import confirm from '../../util/confirm'
@@ -22,16 +20,11 @@ import { deleteTransactions, updateSortBy } from '../../store/transactions/actio
 import { sortedTransactions } from '../../store/transactions/selectors'
 
 const styles = theme => ({
-  root: {
-    height: '100vh',
-    paddingTop: 70
-  },
   paper: {
     display: 'flex',
     flexDirection: 'column',
     position: 'relative',
-    height: '100%',
-    margin: '0px 0px 0px 200px'
+    height: 'calc(100vh - 70px)'
   },
   tableWrapper: {
     flex: '1 1 auto'
@@ -54,6 +47,9 @@ const styles = theme => ({
   },
   tableButton: {
     padding: 4
+  },
+  smallIcon: {
+    fontSize: 18
   }
 })
 
@@ -149,15 +145,13 @@ export class TransactionsComponent extends React.Component {
 
     const { selected } = this.state
     return (
-      <div className={classes.root}>
-        <Header ref={this.headerRef} />
-        <LeftDrawer />
+      <div>
         <TransactionDialog
           open={this.state.openTransactionDialog}
           onCancel={this.handleCancel}
           transaction={this.state.transaction}
         />
-        <Paper elevation={0} className={classes.paper} style={{ height: 'calc(100% - 10px)' }}>
+        <Paper elevation={0} className={classes.paper}>
           <TableToolbar
             title="Transactions"
             selectedItems={selected}
@@ -269,7 +263,7 @@ export class TransactionsComponent extends React.Component {
                             onClick={() => this.handleEdit(rowData)}
                             className={classes.tableButton}
                           >
-                            <EditIcon fontSize="small" />
+                            <EditIcon className={classes.smallIcon} />
                           </IconButton>
                         </Tooltip>
                       )

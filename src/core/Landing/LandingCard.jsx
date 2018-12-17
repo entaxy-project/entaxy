@@ -1,52 +1,114 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { compose } from 'recompose'
+import { connect } from 'react-redux'
 import { withStyles } from '@material-ui/core/styles'
-import { Link } from 'react-router-dom'
-import Card from '@material-ui/core/Card'
-import CardHeader from '@material-ui/core/CardHeader'
-import IconButton from '@material-ui/core/IconButton'
-import ArrowForward from '@material-ui/icons/ArrowForward'
+import Grid from '@material-ui/core/Grid'
+import Paper from '@material-ui/core/Paper'
+import Button from '@material-ui/core/Button'
+import Typography from '@material-ui/core/Typography'
+import LaptopIcon from '@material-ui/icons/Laptop'
+import grey from '@material-ui/core/colors/grey'
+import { userLogin } from '../../store/user/actions'
+import blockstackLogo from './blockstack-bug-rounded.svg'
 
 const styles = {
-  card: {
-    'margin-top': '20px',
+  paper: {
+    padding: '10px',
+    margin: '10px 10px 20px 0',
+    background: grey[200]
+  },
+  signingDescription: {
+    padding: '10px 0 20px 0'
+  },
+  signinButton: {
     width: '100%'
   },
-  cardButton: {
-    'margin-top': '10px'
+  blockstackTitle: {
+    'background-repeat': 'no-repeat',
+    'background-position': 'left',
+    'background-size': '15px',
+    'background-image': `url(${blockstackLogo})`,
+    paddingLeft: '20px'
+  },
+  browserIcon: {
+    fontSize: 19,
+    marginBottom: -4,
+    marginRight: 10
   }
 }
 
-const LandingCard = ({
-  classes,
-  title,
-  description,
-  path
-}) => (
-  <Card className={classes.card}>
-    <CardHeader
-      title={title}
-      subheader={description}
-      action={
-        <IconButton
-          variant="fab"
-          color="secondary"
-          className={classes.cardButton}
-          component={Link}
-          to={path}
-        >
-          <ArrowForward />
-        </IconButton>
-      }
-    />
-  </Card>
-)
-
-LandingCard.propTypes = {
-  classes: PropTypes.object.isRequired,
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  path: PropTypes.string.isRequired
+const mapDispatchToProps = (dispatch) => {
+  return {
+    handleLogin: (loginType) => { dispatch(userLogin(loginType)) }
+  }
 }
 
-export default withStyles(styles)(LandingCard)
+export class LandingCardComponent extends React.Component {
+  login = (loginType) => {
+    this.props.handleLogin(loginType)
+    this.props.history.push('/transactions')
+  }
+
+  render() {
+    const { classes } = this.props
+    return (
+      <Grid container className={classes.cards}>
+        <Typography color="secondary" variant="h5">
+          Where do you want to store your data?
+        </Typography>
+        <Grid item xs={6}>
+          <Paper elevation={1} className={classes.paper}>
+            <Typography variant="subtitle2" className={classes.blockstackTitle}>
+              Anywhere with blockstack
+            </Typography>
+            <Typography variant="caption" className={classes.signingDescription}>
+              Keep your data encrypted and decentralized. Learn more about &nbsp;
+              <a href="https://blockstack.org/what-is-blockstack" target="_blank" rel="noopener noreferrer">
+                Blockstack
+              </a>
+            </Typography>
+            <Button
+              variant="contained"
+              color="secondary"
+              className={classes.signinButton}
+              onClick={() => this.login('blockstack')}
+            >
+              Sign in with Blockstack
+            </Button>
+          </Paper>
+        </Grid>
+        <Grid item xs={6}>
+          <Paper elevation={1} className={classes.paper}>
+            <Typography variant="subtitle2">
+              <LaptopIcon className={classes.browserIcon} />
+              Locally in your browser
+            </Typography>
+            <Typography variant="caption" className={classes.signingDescription}>
+              Your data will be stored temporarily and it be removed once you close your browser
+            </Typography>
+            <Button
+              variant="contained"
+              color="secondary"
+              className={classes.signinButton}
+              onClick={() => this.login('guest')}
+            >
+              Take it for a test drive
+            </Button>
+          </Paper>
+        </Grid>
+      </Grid>
+    )
+  }
+}
+
+LandingCardComponent.propTypes = {
+  classes: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
+  handleLogin: PropTypes.func.isRequired
+}
+
+export default compose(
+  connect(null, mapDispatchToProps),
+  withStyles(styles)
+)(LandingCardComponent)

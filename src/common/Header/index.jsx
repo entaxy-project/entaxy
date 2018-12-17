@@ -6,9 +6,14 @@ import { withStyles } from '@material-ui/core/styles'
 import Logo from '../Logo/index'
 import LoginButton from '../LoginButton'
 import TopNav from '../TopNav'
+import LeftDrawer from '../../common/LeftDrawer'
 
 const styles = theme => ({
   root: {
+    paddingTop: 70,
+    marginLeft: 200
+  },
+  header: {
     zIndex: theme.zIndex.drawer + 1
   },
   toolbar: {
@@ -17,18 +22,23 @@ const styles = theme => ({
   }
 })
 
-const Header = ({ classes }) => (
-  <AppBar position="fixed" className={classes.root}>
-    <Toolbar className={classes.toolbar}>
-      <Logo />
-      <TopNav />
-      <LoginButton />
-    </Toolbar>
-  </AppBar>
+const Header = ({ classes, children }) => (
+  <div className={classes.root}>
+    <AppBar position="fixed" className={classes.header}>
+      <Toolbar className={classes.toolbar}>
+        <Logo />
+        <TopNav />
+        <LoginButton />
+      </Toolbar>
+    </AppBar>
+    <LeftDrawer />
+    {children}
+  </div>
 )
 
 Header.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  children: PropTypes.object.isRequired
 }
 
 export default withStyles(styles)(Header)

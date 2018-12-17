@@ -81,7 +81,4 @@ TableToolbar.propTypes = {
   children: PropTypes.object.isRequired
 }
 
-TableToolbar.defaultProps = {
-}
-
 export default withStyles(styles)(TableToolbar)

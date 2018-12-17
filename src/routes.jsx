@@ -1,4 +1,4 @@
-/* eslint-disable no-console */
+/* eslint no-console: 0 */
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
@@ -9,20 +9,24 @@ import LoadingOverlay from './common/LoadingOverlay'
 import Taxes from './core/Taxes'
 import Portfolios from './core/Portfolios'
 import Transactions from './core/Transactions'
+// import AccountForm from './core/AccountForm'
 import ImportTransactions from './core/ImportTransactions'
-
+import Header from './common/Header'
 
 const mapStateToProps = ({ user }) => {
   return { user }
 }
 
 export class RoutesComponent extends React.Component {
-  loginRequired = Screen => (props) => {
-    console.log(this.props.user, Screen)
+  loginRequired = Component => (props) => {
     if (this.props.user.isAuthenticatedWith === null) {
       return <Redirect to="/" />
     }
-    return <Screen {...props} />
+    return (
+      <Header>
+        <Component {...props} />
+      </Header>
+    )
   }
 
   render() {
@@ -35,6 +39,7 @@ export class RoutesComponent extends React.Component {
             <Route path="/taxes" component={Taxes} />
             <Route path="/portfolio" component={Portfolios} />
             <Route path="/transactions" render={this.loginRequired(Transactions)} />
+            {/* <Route path="/accounts" render={this.loginRequired(AccountForm)} /> */}
             <Route path="/import-transactions" component={ImportTransactions} />
           </Switch>
         </BrowserRouter>

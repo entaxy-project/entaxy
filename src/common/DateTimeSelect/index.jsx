@@ -13,7 +13,7 @@ const DateTimeSelect = ({
   <MuiPickersUtilsProvider utils={DateFnsUtils}>
     <DateTimePicker
       label={label}
-      inputProps={{ 'aria-label': 'Date', required: true }}
+      inputProps={{ 'aria-label': label, required: true }}
       value={value}
       name={name}
       onChange={newValue => onChange(name, newValue)}

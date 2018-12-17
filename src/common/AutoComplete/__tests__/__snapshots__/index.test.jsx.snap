@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DateTimeSelect matches snapshot 1`] = `
+<div
+  className="MuiFormControl-root-2"
+  onClick={[Function]}
+  onKeyPress={[Function]}
+>
+  <label
+    className="MuiFormLabel-root-13 MuiFormLabel-filled-17 MuiInputLabel-root-6 MuiInputLabel-formControl-7 MuiInputLabel-animated-10 MuiInputLabel-shrink-9"
+    data-shrink={true}
+  >
+    Date
+  </label>
+  <div
+    className="MuiInputBase-root-33 MuiInput-root-20 MuiInput-underline-24 MuiInputBase-formControl-34 MuiInput-formControl-21"
+    onClick={[Function]}
+  >
+    <input
+      aria-invalid={false}
+      className="MuiInputBase-input-43 MuiInput-input-28"
+      disabled={false}
+      mask={null}
+      name="createdAt"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      pipe={null}
+      readOnly={true}
+      required={false}
+      type="text"
+      value="January 1st 12:00 a.m."
+    />
+  </div>
+  
+</div>
+`;

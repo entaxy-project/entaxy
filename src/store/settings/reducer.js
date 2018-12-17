@@ -2,6 +2,7 @@ import _ from 'lodash'
 import types from './types'
 
 export const initialState = {
+  selectedAccountId: null,
   portfolioFilters: {
     institution: {},
     account: {}
@@ -41,6 +42,11 @@ export default (state = initialState, action) => {
             [action.payload.option]: action.payload.value
           }
         }
+      }
+    case types.SELECT_ACCOUNT:
+      return {
+        ...state,
+        selectedAccountId: action.payload
       }
     default:
       return state

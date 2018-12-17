@@ -7,9 +7,6 @@ const TopNav = () => (
     <Button size="small" color="inherit" component={NavLink} to="/portfolio">
       Portfolio
     </Button>
-    <Button size="small" color="inherit" component={NavLink} to="/transactions">
-      Transactions
-    </Button>
     <Button size="small" color="inherit" component={NavLink} to="/import-transactions">
       Import Transactions
     </Button>

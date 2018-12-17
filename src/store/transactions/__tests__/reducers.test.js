@@ -56,7 +56,9 @@ describe('transaction reducer', () => {
     const type = types.UPDATE_TRANSACTION
     const state = {
       ...initialState,
-      list: [{ ...transaction, id: 1, shares: '2', bookValue: '2'}]
+      list: [{
+        ...transaction, id: 1, shares: '2', bookValue: '2'
+      }]
     }
     const payload = { ...transaction, id: 1 }
     expect(transactionReducer(state, { type, payload })).toEqual({ ...state, list: [payload] })
