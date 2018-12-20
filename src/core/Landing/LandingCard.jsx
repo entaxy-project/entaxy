@@ -47,7 +47,7 @@ const mapDispatchToProps = (dispatch) => {
 export class LandingCardComponent extends React.Component {
   login = (loginType) => {
     this.props.handleLogin(loginType)
-    this.props.history.push('/transactions')
+    this.props.history.push('/dashboard')
   }
 
   render() {

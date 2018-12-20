@@ -14,10 +14,10 @@ import AddIcon from '@material-ui/icons/Add'
 import { Column, Table, AutoSizer } from 'react-virtualized'
 import 'react-virtualized/styles.css'
 import TransactionDialog from './TransactionDialog'
-import TableToolbar from '../../common/TableToolbar'
-import confirm from '../../util/confirm'
-import { deleteTransactions, updateSortBy } from '../../store/transactions/actions'
-import { sortedTransactions } from '../../store/transactions/selectors'
+import TableToolbar from '../../../common/TableToolbar'
+import confirm from '../../../util/confirm'
+import { deleteTransactions, updateSortBy } from '../../../store/transactions/actions'
+import { sortedTransactions } from '../../../store/transactions/selectors'
 
 const styles = theme => ({
   paper: {

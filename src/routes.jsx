@@ -1,4 +1,3 @@
-/* eslint no-console: 0 */
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
@@ -8,8 +7,10 @@ import Landing from './core/Landing'
 import LoadingOverlay from './common/LoadingOverlay'
 import Taxes from './core/Taxes'
 import Portfolios from './core/Portfolios'
-import Transactions from './core/Transactions'
-// import AccountForm from './core/AccountForm'
+import Dashboard from './core/Dashboard'
+import Transactions from './core/Accounts/Transactions'
+import NewAccount from './core/Accounts/new'
+import EditAccount from './core/Accounts/edit'
 import ImportTransactions from './core/ImportTransactions'
 import Header from './common/Header'
 
@@ -35,12 +36,14 @@ export class RoutesComponent extends React.Component {
         <BrowserRouter basename={process.env.PUBLIC_URL}>
           <Switch>
             <Route exact path="/" component={Landing} />
-            <Route path="/handle-login" component={HandleLogin} />
-            <Route path="/taxes" component={Taxes} />
-            <Route path="/portfolio" component={Portfolios} />
-            <Route path="/transactions" render={this.loginRequired(Transactions)} />
-            {/* <Route path="/accounts" render={this.loginRequired(AccountForm)} /> */}
-            <Route path="/import-transactions" component={ImportTransactions} />
+            <Route exact path="/handle-login" component={HandleLogin} />
+            <Route exact path="/taxes" component={Taxes} />
+            <Route exact path="/portfolio" component={Portfolios} />
+            <Route exact path="/dashboard" render={this.loginRequired(Dashboard)} />
+            <Route exact path="/accounts/new" render={this.loginRequired(NewAccount)} />
+            <Route exact path="/accounts/:accountId/edit" render={this.loginRequired(EditAccount)} />
+            <Route exact path="/accounts/:accountId/transactions" render={this.loginRequired(Transactions)} />
+            <Route exact path="/import-transactions" component={ImportTransactions} />
           </Switch>
         </BrowserRouter>
         <LoadingOverlay />

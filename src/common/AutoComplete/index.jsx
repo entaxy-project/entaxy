@@ -1,3 +1,4 @@
+/* eslint no-console: 0 */
 import React from 'react'
 import PropTypes from 'prop-types'
 import Select from 'react-select'
@@ -7,25 +8,34 @@ const AutoComplete = ({
   name,
   value,
   options,
-  onChange
+  onChange,
+  className
 }) => (
   <Select
     placeholder={label}
     name={name}
     value={value}
+    defaultValue={value}
     options={options}
     inputProps={{ 'aria-label': label, required: true }}
-    onChange={newValue => onChange(name, newValue.label)}
+    onChange={selection => onChange(name, selection)}
     isClearable={true}
+    className={className}
   />
 )
 
 AutoComplete.propTypes = {
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  value: PropTypes.object.isRequired,
+  value: PropTypes.object,
   options: PropTypes.array.isRequired,
-  onChange: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
+  className: PropTypes.object
+}
+
+AutoComplete.defaultProps = {
+  value: null,
+  className: null
 }
 
 export default AutoComplete

@@ -27,5 +27,5 @@ export const sortedInstitutions = createSelector(
 
 export const sortedInstitutionsForAutoselect = createSelector(
   sortedInstitutions,
-  institutions => institutions.map(institution => ({ label: institution }))
+  institutions => institutions.map(institution => ({ label: institution, value: institution }))
 )

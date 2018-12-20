@@ -6,10 +6,6 @@ export const loadSettings = (settings) => {
   return { type: types.LOAD_SETTINGS, payload: settings }
 }
 
-export const selectAccount = (accountId) => {
-  return { type: types.SELECT_ACCOUNT, payload: accountId }
-}
-
 // filterName is institution or account
 // options is an array e.g. [Questrade, TD] for institution and [RRSP, TFSA] for account
 export const createPortfolioFilters = (filterName, options) => {
