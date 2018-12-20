@@ -10,7 +10,7 @@ const styles = {
     left: 0,
     right: 0,
     bottom: 0,
-    'z-index': 1000,
+    zIndex: 10000,
     padding: '1.2rem',
     display: 'flex',
     position: 'fixed',

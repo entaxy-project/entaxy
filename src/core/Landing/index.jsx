@@ -1,7 +1,9 @@
+/* eslint-disable no-console */
 import React from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
+import Typography from '@material-ui/core/Typography'
 import grey from '@material-ui/core/colors/grey'
 import LandingCard from './LandingCard'
 import landingImage from './landing.png'
@@ -10,13 +12,14 @@ const styles = () => ({
   root: {
     display: 'flex',
     height: '100vh',
-    padding: '20px'
+    padding: '20px',
+    minHeight: 600
   },
   left: {
     'align-items': 'left',
     'justify-content': 'space-evenly',
     background: grey[100],
-    padding: '2% 5% 2% 10%',
+    padding: '2% 5% 2% 8%',
     display: 'flex',
     'flex-flow': 'column nowrap'
   },
@@ -36,14 +39,9 @@ const styles = () => ({
   },
   description: {
     font: '18px var(--font-garden-grove)',
-    'padding-top': '15px',
-    'line-height': '1.6'
-
-  },
-  cards: {
-    display: 'flex',
-    'flex-direction': 'row',
-    'flex-wrap': 'wrap'
+    paddingTop: '15px',
+    lineHeight: '1.6',
+    color: grey[600]
   },
   right: {
     'background-repeat': 'no-repeat',
@@ -53,7 +51,7 @@ const styles = () => ({
   }
 })
 
-const Landing = ({ classes }) => (
+export const LandingComponent = ({ classes, history }) => (
   <Grid container spacing={0} className={classes.root}>
     <Grid item xs={6} className={classes.left}>
       <div className={classes.logo}>
@@ -67,25 +65,24 @@ const Landing = ({ classes }) => (
           without sacrificing your data
         </div>
       </div>
-      <Grid container className={classes.cards}>
-        <LandingCard
-          title="Income Taxes"
-          description="At some point you will wonder how they work"
-          path="/taxes"
-        />
-        <LandingCard
-          title="Portfolio"
-          description="ETFs, Crypto, etc"
-          path="/portfolio"
-        />
-      </Grid>
+      <LandingCard history={history} />
+      <div>
+        <Typography variant="body2">
+          Entaxy is free and you get to keep your data.
+        </Typography>
+        <Typography variant="body2">
+          That&apos;s right, we
+          don&apos;t store your data in a big database so we
+          don&apos;t need to convince you to trust us.
+        </Typography>
+      </div>
     </Grid>
     <Grid item xs={6} className={classes.right} />
   </Grid>
 )
-
-Landing.propTypes = {
-  classes: PropTypes.object.isRequired
+LandingComponent.propTypes = {
+  classes: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired
 }
 
-export default withStyles(styles)(Landing)
+export default withStyles(styles)(LandingComponent)

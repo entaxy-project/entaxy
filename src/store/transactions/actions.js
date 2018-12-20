@@ -4,10 +4,6 @@ import types from './types'
 import { saveState } from '../user/actions'
 import { updatePortfolioFilters } from '../settings/actions'
 import { updateMarketValues } from '../marketValues/actions'
-// import RbcCsvParser from './CsvParsers/RbcCsvParser'
-// import BmoCsvParser from './CsvParsers/BmoCsvParser'
-// import TdCsvParser from './CsvParsers/TdCsvParser'
-// import TangerineCsvParser from './CsvParsers/TangerineCsvParser'
 
 export const afterTransactionsChanged = async (dispatch) => {
   await dispatch(updateMarketValues())

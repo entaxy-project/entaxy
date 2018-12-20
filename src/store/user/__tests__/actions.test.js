@@ -34,7 +34,7 @@ describe('user actions', () => {
         expect(dispatch).toHaveBeenCalledWith({
           type: types.LOAD_USER_DATA_SUCCESS,
           payload: {
-            isAuthenticated: true,
+            isAuthenticatedWith: 'blockstack',
             name: 'mocked name',
             pictureUrl: 'mocked url',
             username: 'mocked username'
@@ -113,7 +113,7 @@ describe('user actions', () => {
             {
               type: 'LOAD_USER_DATA_SUCCESS',
               payload: {
-                isAuthenticated: true,
+                isAuthenticatedWith: 'blockstack',
                 username: 'mocked username',
                 name: 'mocked name',
                 pictureUrl: 'mocked url'

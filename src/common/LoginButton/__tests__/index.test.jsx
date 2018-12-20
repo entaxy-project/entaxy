@@ -17,7 +17,7 @@ describe('HandleLogin', () => {
   it('matches snapshot with logged out user', () => {
     const component = renderer.create((
       <LoginButtonComponent
-        user={{ isAuthenticated: false }}
+        user={{ isAuthenticatedWith: null }}
         handleLogin={mochHandleLogin}
         handleLogout={mochHandleLogout}
       />
@@ -28,7 +28,7 @@ describe('HandleLogin', () => {
   it('matches snapshot with logged in user profile', () => {
     const component = renderer.create((
       <LoginButtonComponent
-        user={{ isAuthenticated: true, name: 'Test name', username: 'Test' }}
+        user={{ isAuthenticatedWith: 'blockstack', name: 'Test name', username: 'Test' }}
         handleLogin={mochHandleLogin}
         handleLogout={mochHandleLogout}
         classes={{ ...props }}
@@ -40,7 +40,7 @@ describe('HandleLogin', () => {
   it('handles login', () => {
     const wrapper = mount((
       <LoginButtonComponent
-        user={{ isAuthenticated: false }}
+        user={{ isAuthenticatedWith: null }}
         handleLogin={mochHandleLogin}
         handleLogout={mochHandleLogout}
       />

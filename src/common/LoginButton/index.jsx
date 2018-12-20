@@ -1,16 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { compose } from 'recompose'
 import { connect } from 'react-redux'
+import { withStyles } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
 import Avatar from '@material-ui/core/Avatar'
 import Popper from '@material-ui/core/Popper'
 import MenuItem from '@material-ui/core/MenuItem'
 import MenuList from '@material-ui/core/MenuList'
+import AccountBoxIcon from '@material-ui/icons/AccountBox'
 import Paper from '@material-ui/core/Paper'
 import Fade from '@material-ui/core/Fade'
 import ClickAwayListener from '@material-ui/core/ClickAwayListener'
 import Tooltip from '@material-ui/core/Tooltip'
-import { withStyles } from '@material-ui/core/styles'
 import { userLogin, userLogout } from '../../store/user/actions'
 
 const styles = {
@@ -57,7 +59,7 @@ export class LoginButtonComponent extends React.Component {
       handleLogout
     } = this.props
 
-    if (user.isAuthenticated) {
+    if (user.isAuthenticatedWith === 'blockstack') {
       return (
         <ClickAwayListener onClickAway={this.handleClose}>
           <div className={classes.root}>
@@ -66,6 +68,38 @@ export class LoginButtonComponent extends React.Component {
                 src={user.pictureUrl}
                 alt={user.name}
               />
+            </Tooltip>
+            <Button
+              color="inherit"
+              aria-owns={open ? 'menu-list-grow' : null}
+              onClick={this.handleClick}
+            >
+              {user.name}
+            </Button>
+            <Popper open={open} anchorEl={anchorEl} transition>
+              {({ TransitionProps }) => (
+                <Fade {...TransitionProps} timeout={350}>
+                  <Paper>
+                    <MenuList role="menu">
+                      <MenuItem>Profile</MenuItem>
+                      <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                    </MenuList>
+                  </Paper>
+                </Fade>
+              )}
+            </Popper>
+          </div>
+        </ClickAwayListener>
+      )
+    }
+    if (user.isAuthenticatedWith === 'guest') {
+      return (
+        <ClickAwayListener onClickAway={this.handleClose}>
+          <div className={classes.root}>
+            <Tooltip id="tooltip-icon" title={user.name}>
+              <Avatar alt={user.name}>
+                <AccountBoxIcon fontSize="small" />
+              </Avatar>
             </Tooltip>
             <Button
               color="inherit"
@@ -102,11 +136,16 @@ LoginButtonComponent.propTypes = {
   classes: PropTypes.object,
   user: PropTypes.object.isRequired,
   handleLogin: PropTypes.func.isRequired,
-  handleLogout: PropTypes.func.isRequired
+  handleLogout: PropTypes.func.isRequired,
+  history: PropTypes.object
 }
 
 LoginButtonComponent.defaultProps = {
-  classes: null
+  classes: null,
+  history: null
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(LoginButtonComponent))
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  withStyles(styles)
+)(LoginButtonComponent)
