@@ -1,4 +1,3 @@
-/* eslint no-console: 0 */
 import React from 'react'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
@@ -47,87 +46,80 @@ const mapStateToProps = (state) => {
   }
 }
 
-const AccountsComponent = ({
-  classes,
-  groupedAccounts,
-  match
-}) => {
-  console.log('AccountsComponent', match)
-  return (
-    <List
-      component="nav"
-      dense={true}
-      subheader={
-        <ListSubheader component="div">
-          Accounts
-          <ListItemSecondaryAction>
-            <Tooltip id="tooltip-icon" title="New account">
-              <IconButton
-                aria-label="New account"
-                className={classes.smallButton}
+const AccountsComponent = ({ classes, groupedAccounts, accountId }) => (
+  <List
+    component="nav"
+    dense={true}
+    subheader={
+      <ListSubheader component="div">
+        Accounts
+        <ListItemSecondaryAction>
+          <Tooltip id="tooltip-icon" title="New account">
+            <IconButton
+              aria-label="New account"
+              className={classes.smallButton}
+              component={NavLink}
+              to="/accounts/new"
+            >
+              <AddIcon />
+            </IconButton>
+          </Tooltip>
+        </ListItemSecondaryAction>
+      </ListSubheader>
+    }
+  >
+    {groupedAccounts.length === 0 &&
+      <Typography variant="caption" className={classes.noAccounts}>
+        You don&apos;t have any accounts yet
+      </Typography>
+    }
+    <List dense={true}>
+      {Object.keys(groupedAccounts).map(institution => (
+        <div key={institution}>
+          <ListItem className={classes.institution}>
+            <ListItemIcon><DashboardIcon /></ListItemIcon>
+            <ListItemText primary={institution} />
+          </ListItem>
+          <List dense={true}>
+            {groupedAccounts[institution].map(account => (
+              <ListItem
+                className={classes.account}
+                button
+                key={account.id}
+                selected={account.id === accountId}
                 component={NavLink}
-                to="/accounts/new"
+                to={`/accounts/${account.id}/transactions`}
               >
-                <AddIcon />
-              </IconButton>
-            </Tooltip>
-          </ListItemSecondaryAction>
-        </ListSubheader>
-      }
-    >
-      {groupedAccounts.length === 0 &&
-        <Typography variant="caption" className={classes.noAccounts}>
-          You don&apos;t have any accounts yet
-        </Typography>
-      }
-      <List dense={true}>
-        {Object.keys(groupedAccounts).map(institution => (
-          <div key={institution}>
-            <ListItem className={classes.institution}>
-              <ListItemIcon><DashboardIcon /></ListItemIcon>
-              <ListItemText primary={institution} />
-            </ListItem>
-            <List dense={true}>
-              {groupedAccounts[institution].map(account => (
-                <ListItem
-                  className={classes.account}
-                  button
-                  key={account.id}
-                  selected={account.id === match.params.accountId}
-                  component={NavLink}
-                  to={`/accounts/${account.id}/transactions`}
-                >
-                  <ListItemText primary={account.name} secondary="$100.00" />
-                  <ListItemSecondaryAction>
-                    <Tooltip id="tooltip-icon" title="Edit account">
-                      <IconButton
-                        aria-label="Edit account"
-                        className={classes.smallButton}
-                        component={NavLink}
-                        to={`/accounts/${account.id}/edit`}
-                      >
-                        <EditIcon className={classes.smallIcon} />
-                      </IconButton>
-                    </Tooltip>
-                  </ListItemSecondaryAction>
-                </ListItem>
-              ))}
-            </List>
-          </div>
-        ))}
-      </List>
+                <ListItemText primary={account.name} secondary="$100.00" />
+                <ListItemSecondaryAction>
+                  <Tooltip id="tooltip-icon" title="Edit account">
+                    <IconButton
+                      aria-label="Edit account"
+                      className={classes.smallButton}
+                      component={NavLink}
+                      to={`/accounts/${account.id}/edit`}
+                    >
+                      <EditIcon className={classes.smallIcon} />
+                    </IconButton>
+                  </Tooltip>
+                </ListItemSecondaryAction>
+              </ListItem>
+            ))}
+          </List>
+        </div>
+      ))}
     </List>
-  )
-}
+  </List>
+)
 
 AccountsComponent.propTypes = {
   classes: PropTypes.object.isRequired,
   groupedAccounts: PropTypes.object.isRequired,
-  match: PropTypes.object
+  accountId: PropTypes.string
 }
 
 AccountsComponent.defaultProps = {
-  match: { params: null }
+  accountId: { params: null }
 }
 
 export default compose(

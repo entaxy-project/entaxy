@@ -8,7 +8,6 @@ import PropTypes from 'prop-types'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
 import TextField from '@material-ui/core/TextField'
-// import Typography from '@material-ui/core/Typography'
 import Divider from '@material-ui/core/Divider'
 import Button from '@material-ui/core/Button'
 import AutoComplete from '../../common/AutoComplete'
@@ -39,6 +38,7 @@ const AccountForm = ({
   values,
   handleChange,
   setFieldValue,
+  handleDelete,
   handleCancel
 }) => (
   <Grid container direction="row" justify="center">
@@ -55,7 +55,7 @@ const AccountForm = ({
           value={values.name}
           name="name"
           onChange={handleChange}
-          autofocus
+          autoFocus
         />
         <AutoComplete
           label="Institution"
@@ -68,6 +68,9 @@ const AccountForm = ({
         <Divider />
         <Button type="submit" color="primary">Save</Button>
         <Button onClick={handleCancel} color="primary">Cancel</Button>
+        {handleDelete &&
+          <Button onClick={handleDelete} color="primary">Delete</Button>
+        }
       </form>
     </Paper>
   </Grid>
@@ -80,7 +83,12 @@ AccountForm.propTypes = {
   values: PropTypes.object.isRequired,
   handleChange: PropTypes.func.isRequired,
   setFieldValue: PropTypes.func.isRequired,
+  handleDelete: PropTypes.func,
   handleCancel: PropTypes.func.isRequired
+}
+
+AccountForm.defaultProps = {
+  handleDelete: null
 }
 
 export default compose(
@@ -92,7 +100,7 @@ export default compose(
       if (account === undefined) {
         return {
           institution: null,
-          name: null
+          name: ''
         }
       }
       return {
