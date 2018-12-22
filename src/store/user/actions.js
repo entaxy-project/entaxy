@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import * as blockstack from 'blockstack'
 import types from './types'
 import store from '../index'
@@ -14,33 +13,34 @@ import { initialState as marketValuesInitialState } from '../marketValues/reduce
 
 export const dataIsLoading = (bool) => {
   return {
-    type: types.LOAD_USER_DATA,
+    type: types.DATA_IS_LOADING,
     payload: bool
   }
 }
 
-export const loadUserDataSuccess = userData => (
+export const saveLoginData = loginData => (
   {
-    type: types.LOAD_USER_DATA_SUCCESS,
-    payload: userData
+    type: types.SAVE_LOGIN_DATA,
+    payload: loginData
   }
 )
 
 export const loadUserData = () => {
-  return (dispatch) => {
-    if (blockstack.isUserSignedIn()) {
+  return (dispatch, getState) => {
+    if (!getState().user.isLoading && blockstack.isUserSignedIn()) {
       dispatch(dataIsLoading(true))
 
       const { username, profile } = blockstack.loadUserData()
       const person = new blockstack.Person(profile)
 
-      dispatch(loadUserDataSuccess({
+      dispatch(saveLoginData({
+        isLoginPending: false,
         isAuthenticatedWith: 'blockstack',
         username,
         name: person.name(),
         pictureUrl: person.avatarUrl()
       }))
-      return storage.loadState().then((state) => {
+      storage.loadState().then((state) => {
         dispatch(loadSettings((state || {}).settings))
         dispatch(loadAccounts((state || {}).accounts))
         dispatch(loadTransactions((state || {}).transactions))
@@ -50,17 +50,24 @@ export const loadUserData = () => {
         throw error
       })
     }
-
-    return null
   }
 }
 
-export const userLogin = (loginType) => {
+export const loginAs = (loginType) => {
   if (loginType === 'blockstack') {
     // Open the blockstack browser for sign in
-    blockstack.redirectToSignIn(`${window.location.origin}/handle-login`)
+    return blockstack.redirectToSignIn(`${window.location.origin}/handle-login`)
   }
-  return { type: types.USER_LOGIN, payload: loginType }
+
+  return (dispatch) => {
+    dispatch(saveLoginData({
+      isLoginPending: false,
+      isAuthenticatedWith: 'guest',
+      username: 'guest',
+      name: 'Guest user',
+      pictureUrl: null
+    }))
+  }
 }
 
 export const userLoginError = (error) => {

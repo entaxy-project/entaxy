@@ -109,7 +109,7 @@ describe('user actions', () => {
       store.dispatch(actions.handleBlockstackLogin())
         .then(() => {
           expect(store.getActions()).toEqual([
-            { type: 'LOAD_USER_DATA', payload: true },
+            { type: 'DATA_IS_LOADING', payload: true },
             {
               type: 'LOAD_USER_DATA_SUCCESS',
               payload: {
@@ -122,7 +122,7 @@ describe('user actions', () => {
             { type: 'LOAD_SETTINGS', payload: undefined },
             { type: 'LOAD_TRANSACTIONS', payload: undefined },
             { type: 'LOAD_MARKET_VALUES', payload: undefined },
-            { type: 'LOAD_USER_DATA', payload: false }
+            { type: 'DATA_IS_LOADING', payload: false }
           ])
           done()
         })

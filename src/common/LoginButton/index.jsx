@@ -13,7 +13,7 @@ import Paper from '@material-ui/core/Paper'
 import Fade from '@material-ui/core/Fade'
 import ClickAwayListener from '@material-ui/core/ClickAwayListener'
 import Tooltip from '@material-ui/core/Tooltip'
-import { userLogin, userLogout } from '../../store/user/actions'
+import { userLogout } from '../../store/user/actions'
 
 const styles = {
   root: {
@@ -27,7 +27,6 @@ const mapStateToProps = ({ user }) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleLogin: () => { dispatch(userLogin()) },
     handleLogout: () => { dispatch(userLogout()) }
   }
 }
@@ -55,79 +54,46 @@ export class LoginButtonComponent extends React.Component {
     const {
       classes,
       user,
-      handleLogin,
       handleLogout
     } = this.props
 
-    if (user.isAuthenticatedWith === 'blockstack') {
-      return (
-        <ClickAwayListener onClickAway={this.handleClose}>
-          <div className={classes.root}>
+    return (
+      <ClickAwayListener onClickAway={this.handleClose}>
+        <div className={classes.root}>
+          { user.isAuthenticatedWith === 'blockstack' &&
             <Tooltip id="tooltip-icon" title={user.username}>
               <Avatar
                 src={user.pictureUrl}
                 alt={user.name}
               />
             </Tooltip>
-            <Button
-              color="inherit"
-              aria-owns={open ? 'menu-list-grow' : null}
-              onClick={this.handleClick}
-            >
-              {user.name}
-            </Button>
-            <Popper open={open} anchorEl={anchorEl} transition>
-              {({ TransitionProps }) => (
-                <Fade {...TransitionProps} timeout={350}>
-                  <Paper>
-                    <MenuList role="menu">
-                      <MenuItem>Profile</MenuItem>
-                      <MenuItem onClick={handleLogout}>Logout</MenuItem>
-                    </MenuList>
-                  </Paper>
-                </Fade>
-              )}
-            </Popper>
-          </div>
-        </ClickAwayListener>
-      )
-    }
-    if (user.isAuthenticatedWith === 'guest') {
-      return (
-        <ClickAwayListener onClickAway={this.handleClose}>
-          <div className={classes.root}>
-            <Tooltip id="tooltip-icon" title={user.name}>
-              <Avatar alt={user.name}>
-                <AccountBoxIcon fontSize="small" />
-              </Avatar>
-            </Tooltip>
-            <Button
-              color="inherit"
-              aria-owns={open ? 'menu-list-grow' : null}
-              onClick={this.handleClick}
-            >
-              {user.name}
-            </Button>
-            <Popper open={open} anchorEl={anchorEl} transition>
-              {({ TransitionProps }) => (
-                <Fade {...TransitionProps} timeout={350}>
-                  <Paper>
-                    <MenuList role="menu">
-                      <MenuItem>Profile</MenuItem>
-                      <MenuItem onClick={handleLogout}>Logout</MenuItem>
-                    </MenuList>
-                  </Paper>
-                </Fade>
-              )}
-            </Popper>
-          </div>
-        </ClickAwayListener>
-      )
-    }
-    return (
-      <Button color="inherit" onClick={handleLogin}>
-        Login
-      </Button>
+          }
+          { user.isAuthenticatedWith === 'guest' &&
+            <Avatar alt={user.name}>
+              <AccountBoxIcon fontSize="small" />
+            </Avatar>
+          }
+          <Button
+            color="inherit"
+            aria-owns={open ? 'menu-list-grow' : null}
+            onClick={this.handleClick}
+          >
+            {user.name}
+          </Button>
+          <Popper open={open} anchorEl={anchorEl} transition>
+            {({ TransitionProps }) => (
+              <Fade {...TransitionProps} timeout={350}>
+                <Paper>
+                  <MenuList role="menu">
+                    <MenuItem>Profile</MenuItem>
+                    <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                  </MenuList>
+                </Paper>
+              </Fade>
+            )}
+          </Popper>
+        </div>
+      </ClickAwayListener>
     )
   }
 }
@@ -135,7 +101,6 @@ export class LoginButtonComponent extends React.Component {
 LoginButtonComponent.propTypes = {
   classes: PropTypes.object,
   user: PropTypes.object.isRequired,
-  handleLogin: PropTypes.func.isRequired,
   handleLogout: PropTypes.func.isRequired,
   history: PropTypes.object
 }
