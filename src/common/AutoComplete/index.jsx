@@ -30,7 +30,7 @@ AutoComplete.propTypes = {
   value: PropTypes.object,
   options: PropTypes.array.isRequired,
   onChange: PropTypes.func.isRequired,
-  className: PropTypes.object
+  className: PropTypes.string
 }
 
 AutoComplete.defaultProps = {

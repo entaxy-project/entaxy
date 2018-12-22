@@ -8,7 +8,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import DashboardIcon from '@material-ui/icons/Dashboard'
 import Divider from '@material-ui/core/Divider'
-import { NavLink } from 'react-router-dom'
+import { NavLink, withRouter } from 'react-router-dom'
 import Accounts from '../../core/Accounts'
 
 const styles = theme => ({
@@ -18,36 +18,34 @@ const styles = theme => ({
   }
 })
 
-const LeftDrawer = ({ classes }) => {
-  return (
-    <Drawer
-      elevation={3}
-      variant="permanent"
-      classes={{
-        paper: classes.drawerPaper
-      }}
-    >
-      <div className={classes.toolbar} />
-      <List>
-        <ListItem
-          button
-          key="Dashboard"
-          component={NavLink}
-          to="/dashboard"
-        >
-          <ListItemIcon><DashboardIcon /></ListItemIcon>
-          <ListItemText primary="Dashboard" />
-        </ListItem>
-      </List>
-      <Divider />
-      <Accounts />
-    </Drawer>
-  )
-}
+const LeftDrawer = ({ classes, match }) => (
+  <Drawer
+    elevation={3}
+    variant="permanent"
+    classes={{
+      paper: classes.drawerPaper
+    }}
+  >
+    <div className={classes.toolbar} />
+    <List>
+      <ListItem
+        button
+        key="Dashboard"
+        component={NavLink}
+        to="/dashboard"
+      >
+        <ListItemIcon><DashboardIcon /></ListItemIcon>
+        <ListItemText primary="Dashboard" />
+      </ListItem>
+    </List>
+    <Divider />
+    <Accounts accountId={match.params.accountId} />
+  </Drawer>
+)
 
 LeftDrawer.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired
 }
 
-
-export default withStyles(styles)(LeftDrawer)
+export default withStyles(styles)(withRouter(LeftDrawer))
