@@ -7,18 +7,18 @@ exports[`DateTimeSelect matches snapshot 1`] = `
   onKeyPress={[Function]}
 >
   <label
-    className="MuiFormLabel-root-13 MuiFormLabel-filled-17 MuiInputLabel-root-6 MuiInputLabel-formControl-7 MuiInputLabel-animated-10 MuiInputLabel-shrink-9"
+    className="MuiFormLabel-root-17 MuiFormLabel-filled-21 MuiInputLabel-root-6 MuiInputLabel-formControl-11 MuiInputLabel-animated-14 MuiInputLabel-shrink-13"
     data-shrink={true}
   >
     Date
   </label>
   <div
-    className="MuiInputBase-root-33 MuiInput-root-20 MuiInput-underline-24 MuiInputBase-formControl-34 MuiInput-formControl-21"
+    className="MuiInputBase-root-37 MuiInput-root-24 MuiInput-underline-28 MuiInputBase-formControl-38 MuiInput-formControl-25"
     onClick={[Function]}
   >
     <input
       aria-invalid={false}
-      className="MuiInputBase-input-43 MuiInput-input-28"
+      className="MuiInputBase-input-47 MuiInput-input-32"
       disabled={false}
       mask={null}
       name="createdAt"

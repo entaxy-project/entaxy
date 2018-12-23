@@ -1,16 +1,15 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 import { BrowserRouter } from 'react-router-dom'
-import Landing from '../'
+import { LandingComponent } from '../'
+
+jest.mock('../LandingCard', () => 'LandingCard')
 
 describe('LandingCard', () => {
   it('matches snapshot', () => {
-    const props = {
-      classes: {}
-    }
     const component = renderer.create((
       <BrowserRouter>
-        <Landing props={{ ...props }} />
+        <LandingComponent classes={{}} />
       </BrowserRouter>
     ))
     expect(component.toJSON()).toMatchSnapshot()

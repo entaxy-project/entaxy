@@ -22,7 +22,7 @@ const expectedTransactions = [
     shares: -650,
     bookValue: 1,
     description: '[SO]2211#8503-567',
-    createdAt: 1530158400000
+    createdAt: Date.parse('2018/06/28')
   },
   {
     institution: 'BMO',
@@ -32,7 +32,7 @@ const expectedTransactions = [
     shares: 2595.11,
     bookValue: 1,
     description: '[DN]THE WORKING GRO PAY/PAY',
-    createdAt: 1530244800000
+    createdAt: Date.parse('2018/06/29')
   },
   {
     institution: 'BMO',
@@ -42,7 +42,7 @@ const expectedTransactions = [
     shares: 0.01,
     bookValue: 1,
     description: '[IN]',
-    createdAt: 1530244800000
+    createdAt: Date.parse('2018/06/29')
   },
   {
     institution: 'BMO',
@@ -52,7 +52,7 @@ const expectedTransactions = [
     shares: 325,
     bookValue: 1,
     description: '[CW]INTERAC E-TRANSFER       RECEIVED 20181801732942BE7',
-    createdAt: 1530244800000
+    createdAt: Date.parse('2018/06/29')
   }
 ]
 

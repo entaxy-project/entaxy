@@ -21,7 +21,7 @@ beforeEach(() => {
 
 describe('user actions', () => {
   const dispatch = jest.fn()
-
+  const getState = jest.fn()
   afterEach(() => {
     dispatch.mockClear()
   })
@@ -29,11 +29,13 @@ describe('user actions', () => {
   describe('loadUserData', () => {
     it('signed in user should load the profile', (done) => {
       const isUserSignedInSpy = jest.spyOn(blockstack, 'isUserSignedIn').mockImplementation(() => true)
+      getState.mockImplementation(() => { user: initialState })
 
-      actions.loadUserData()(dispatch).then(() => {
+      actions.loadUserData()(dispatch, getState).then(() => {
         expect(dispatch).toHaveBeenCalledWith({
           type: types.LOAD_USER_DATA_SUCCESS,
           payload: {
+            isLoading: false,
             isAuthenticatedWith: 'blockstack',
             name: 'mocked name',
             pictureUrl: 'mocked url',
@@ -47,19 +49,21 @@ describe('user actions', () => {
 
     it('logged out user should not set anything', () => {
       const isUserSignedInSpy = jest.spyOn(blockstack, 'isUserSignedIn').mockImplementation(() => false)
+      // const mockStore = configureMockStore([thunk])
+      // const store = mockStore({ initialState })
 
       actions.loadUserData()(dispatch)
 
-      expect(dispatch).not.toHaveBeenCalledWith({ type: types.LOAD_USER_DATA, payload: false })
+      expect(dispatch).not.toHaveBeenCalledWith({ type: types.DATA_IS_LOADING, payload: false })
       expect(isUserSignedInSpy).toHaveBeenCalled()
     })
   })
 
-  it('userLogin should sign the user out', () => {
-    const redirectToSignInSpy = jest.spyOn(blockstack, 'redirectToSignIn')
-    expect(actions.userLogin()).toEqual({ type: types.USER_LOGIN })
-    expect(redirectToSignInSpy).toHaveBeenCalled()
-  })
+  // it('userLogin should sign the user out', () => {
+  //   const redirectToSignInSpy = jest.spyOn(blockstack, 'redirectToSignIn')
+  //   expect(actions.userLogin()).toEqual({ type: types.USER_LOGIN })
+  //   expect(redirectToSignInSpy).toHaveBeenCalled()
+  // })
 
   it('userLogout should sign the user out', () => {
     const signUserOutSpy = jest.spyOn(blockstack, 'signUserOut')

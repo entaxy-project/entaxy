@@ -13,19 +13,19 @@ exports[`CsvImportFields matches snapshot for BMO 1`] = `
     className="MuiFormControl-root-38 CsvImportFields-textField-2"
   >
     <label
-      className="MuiFormLabel-root-49 MuiFormLabel-filled-53 MuiInputLabel-root-42 MuiInputLabel-formControl-43 MuiInputLabel-animated-46 MuiInputLabel-shrink-45"
+      className="MuiFormLabel-root-53 MuiFormLabel-filled-57 MuiInputLabel-root-42 MuiInputLabel-formControl-47 MuiInputLabel-animated-50 MuiInputLabel-shrink-49"
       data-shrink={true}
     >
       Currency
     </label>
     <div
-      className="MuiInputBase-root-69 MuiInput-root-56 MuiInput-underline-60 MuiInputBase-formControl-70 MuiInput-formControl-57"
+      className="MuiInputBase-root-73 MuiInput-root-60 MuiInput-underline-64 MuiInputBase-formControl-74 MuiInput-formControl-61"
       onClick={[Function]}
     >
       <input
         aria-invalid={false}
         aria-label="Currency"
-        className="MuiInputBase-input-79 MuiInput-input-64"
+        className="MuiInputBase-input-83 MuiInput-input-68"
         disabled={false}
         maxLength={6}
         name="ticker"
@@ -54,19 +54,19 @@ exports[`CsvImportFields matches snapshot for TD 1`] = `
     className="MuiFormControl-root-38 CsvImportFields-textField-2"
   >
     <label
-      className="MuiFormLabel-root-49 MuiInputLabel-root-42 MuiInputLabel-formControl-43 MuiInputLabel-animated-46"
+      className="MuiFormLabel-root-53 MuiInputLabel-root-42 MuiInputLabel-formControl-47 MuiInputLabel-animated-50"
       data-shrink={false}
     >
       Account
     </label>
     <div
-      className="MuiInputBase-root-69 MuiInput-root-56 MuiInput-underline-60 MuiInputBase-formControl-70 MuiInput-formControl-57"
+      className="MuiInputBase-root-73 MuiInput-root-60 MuiInput-underline-64 MuiInputBase-formControl-74 MuiInput-formControl-61"
       onClick={[Function]}
     >
       <input
         aria-invalid={false}
         aria-label="Account"
-        className="MuiInputBase-input-79 MuiInput-input-64"
+        className="MuiInputBase-input-83 MuiInput-input-68"
         disabled={false}
         maxLength={100}
         name="account"
@@ -78,7 +78,7 @@ exports[`CsvImportFields matches snapshot for TD 1`] = `
       />
     </div>
     <p
-      className="MuiFormHelperText-root-86"
+      className="MuiFormHelperText-root-90"
     >
       The name of the account (e.g. Checking, Savings, RRSP, etc)
     </p>
@@ -87,19 +87,19 @@ exports[`CsvImportFields matches snapshot for TD 1`] = `
     className="MuiFormControl-root-38 CsvImportFields-textField-2"
   >
     <label
-      className="MuiFormLabel-root-49 MuiFormLabel-filled-53 MuiInputLabel-root-42 MuiInputLabel-formControl-43 MuiInputLabel-animated-46 MuiInputLabel-shrink-45"
+      className="MuiFormLabel-root-53 MuiFormLabel-filled-57 MuiInputLabel-root-42 MuiInputLabel-formControl-47 MuiInputLabel-animated-50 MuiInputLabel-shrink-49"
       data-shrink={true}
     >
       Currency
     </label>
     <div
-      className="MuiInputBase-root-69 MuiInput-root-56 MuiInput-underline-60 MuiInputBase-formControl-70 MuiInput-formControl-57"
+      className="MuiInputBase-root-73 MuiInput-root-60 MuiInput-underline-64 MuiInputBase-formControl-74 MuiInput-formControl-61"
       onClick={[Function]}
     >
       <input
         aria-invalid={false}
         aria-label="Currency"
-        className="MuiInputBase-input-79 MuiInput-input-64"
+        className="MuiInputBase-input-83 MuiInput-input-68"
         disabled={false}
         maxLength={6}
         name="ticker"
@@ -128,19 +128,19 @@ exports[`CsvImportFields matches snapshot for Tangerine 1`] = `
     className="MuiFormControl-root-38 CsvImportFields-textField-2"
   >
     <label
-      className="MuiFormLabel-root-49 MuiInputLabel-root-42 MuiInputLabel-formControl-43 MuiInputLabel-animated-46"
+      className="MuiFormLabel-root-53 MuiInputLabel-root-42 MuiInputLabel-formControl-47 MuiInputLabel-animated-50"
       data-shrink={false}
     >
       Account
     </label>
     <div
-      className="MuiInputBase-root-69 MuiInput-root-56 MuiInput-underline-60 MuiInputBase-formControl-70 MuiInput-formControl-57"
+      className="MuiInputBase-root-73 MuiInput-root-60 MuiInput-underline-64 MuiInputBase-formControl-74 MuiInput-formControl-61"
       onClick={[Function]}
     >
       <input
         aria-invalid={false}
         aria-label="Account"
-        className="MuiInputBase-input-79 MuiInput-input-64"
+        className="MuiInputBase-input-83 MuiInput-input-68"
         disabled={false}
         maxLength={100}
         name="account"
@@ -152,7 +152,7 @@ exports[`CsvImportFields matches snapshot for Tangerine 1`] = `
       />
     </div>
     <p
-      className="MuiFormHelperText-root-86"
+      className="MuiFormHelperText-root-90"
     >
       The name of the account (e.g. Checking, Savings, RRSP, etc)
     </p>
@@ -161,19 +161,19 @@ exports[`CsvImportFields matches snapshot for Tangerine 1`] = `
     className="MuiFormControl-root-38 CsvImportFields-textField-2"
   >
     <label
-      className="MuiFormLabel-root-49 MuiFormLabel-filled-53 MuiInputLabel-root-42 MuiInputLabel-formControl-43 MuiInputLabel-animated-46 MuiInputLabel-shrink-45"
+      className="MuiFormLabel-root-53 MuiFormLabel-filled-57 MuiInputLabel-root-42 MuiInputLabel-formControl-47 MuiInputLabel-animated-50 MuiInputLabel-shrink-49"
       data-shrink={true}
     >
       Currency
     </label>
     <div
-      className="MuiInputBase-root-69 MuiInput-root-56 MuiInput-underline-60 MuiInputBase-formControl-70 MuiInput-formControl-57"
+      className="MuiInputBase-root-73 MuiInput-root-60 MuiInput-underline-64 MuiInputBase-formControl-74 MuiInput-formControl-61"
       onClick={[Function]}
     >
       <input
         aria-invalid={false}
         aria-label="Currency"
-        className="MuiInputBase-input-79 MuiInput-input-64"
+        className="MuiInputBase-input-83 MuiInput-input-68"
         disabled={false}
         maxLength={6}
         name="ticker"

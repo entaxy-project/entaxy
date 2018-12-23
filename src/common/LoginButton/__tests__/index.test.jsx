@@ -1,9 +1,8 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
-import { mount } from 'enzyme'
 import { LoginButtonComponent } from '../'
 
-describe('HandleLogin', () => {
+describe('LoginButton', () => {
   const mochHandleLogin = jest.fn()
   const mochHandleLogout = jest.fn()
   const props = {
@@ -20,6 +19,7 @@ describe('HandleLogin', () => {
         user={{ isAuthenticatedWith: null }}
         handleLogin={mochHandleLogin}
         handleLogout={mochHandleLogout}
+        classes={{ ...props }}
       />
     ))
     expect(component.toJSON()).toMatchSnapshot()
@@ -35,19 +35,5 @@ describe('HandleLogin', () => {
       />
     ))
     expect(component.toJSON()).toMatchSnapshot()
-  })
-
-  it('handles login', () => {
-    const wrapper = mount((
-      <LoginButtonComponent
-        user={{ isAuthenticatedWith: null }}
-        handleLogin={mochHandleLogin}
-        handleLogout={mochHandleLogout}
-      />
-    ))
-    expect(wrapper.find('button > span').text()).toBe('Login')
-    wrapper.find('button').simulate('click')
-    expect(mochHandleLogin).toHaveBeenCalled()
-    expect(mochHandleLogout).not.toHaveBeenCalled()
   })
 })

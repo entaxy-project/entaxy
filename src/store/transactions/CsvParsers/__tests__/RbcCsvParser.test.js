@@ -12,7 +12,7 @@ const expectedTransactions = [
   {
     account: 'Chequing',
     bookValue: 1,
-    createdAt: 1529899200000,
+    createdAt: Date.parse('2018/06/25'),
     description: 'Email Trfs - Email Trfs',
     institution: 'RBC',
     shares: 20,
@@ -22,7 +22,7 @@ const expectedTransactions = [
   {
     account: 'Chequing',
     bookValue: 1,
-    createdAt: 1530244800000,
+    createdAt: Date.parse('2018/06/29'),
     description: 'PAYROLL DEPOSIT - PAYROLL DEPOSIT',
     institution: 'RBC',
     shares: 2742.03,
@@ -32,7 +32,7 @@ const expectedTransactions = [
   {
     account: 'Savings',
     bookValue: 1,
-    createdAt: 1534910400000,
+    createdAt: Date.parse('2018/08/22'),
     description: 'DEPOSIT - DEPOSIT',
     institution: 'RBC',
     shares: 5300,
@@ -42,7 +42,7 @@ const expectedTransactions = [
   {
     account: 'Visa',
     bookValue: 1,
-    createdAt: 1534132800000,
+    createdAt: Date.parse('2018/08/13'),
     description: 'LYFT *RIDE MON 11AM VANCOUVER BC - LYFT *RIDE MON 11AM VANCOUVER BC',
     institution: 'RBC',
     shares: -16.61,

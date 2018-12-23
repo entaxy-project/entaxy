@@ -2,8 +2,8 @@
 
 exports[`App matches snapshot 1`] = `
 "<WithStyles(CssBaseline)>
-  <MuiThemeProvider theme={{...}}>
-    <Routes />
-  </MuiThemeProvider>
+  <MuiThemeProviderOld theme={{...}}>
+    <Connect(RoutesComponent) />
+  </MuiThemeProviderOld>
 </WithStyles(CssBaseline)>"
 `;

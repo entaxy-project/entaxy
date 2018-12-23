@@ -17,7 +17,7 @@ const expectedTransactions = [
     shares: 100,
     bookValue: 1,
     description: 'GC 0575-CASH WITHDRA',
-    createdAt: 1536033600000
+    createdAt: Date.parse('09/04/2018')
   },
   {
     institution: 'TD',
@@ -27,7 +27,7 @@ const expectedTransactions = [
     shares: 63.95,
     bookValue: 1,
     description: 'NON-TD ATM W/D',
-    createdAt: 1536033600000
+    createdAt: Date.parse('09/04/2018')
   },
   {
     institution: 'TD',
@@ -37,7 +37,7 @@ const expectedTransactions = [
     shares: 195,
     bookValue: 1,
     description: 'SEND E-TFR CA***G4e',
-    createdAt: 1536033600000
+    createdAt: Date.parse('09/04/2018')
   },
   {
     institution: 'TD',
@@ -47,7 +47,7 @@ const expectedTransactions = [
     shares: 250,
     bookValue: 1,
     description: '',
-    createdAt: 1536292800000
+    createdAt: Date.parse('09/07/2018')
   }
 ]
 

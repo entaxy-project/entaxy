@@ -28,24 +28,24 @@ exports[`ImportResults matches snapshot for BMO with 1 error on a transaction 1`
        transactions.
     </h6>
     <table
-      className="MuiTable-root-89"
+      className="MuiTable-root-90"
     >
       <thead
-        className="MuiTableHead-root-90"
+        className="MuiTableHead-root-91"
       >
         <tr
-          className="MuiTableRow-root-91 MuiTableRow-head-94"
+          className="MuiTableRow-root-92 MuiTableRow-head-95"
         >
           <th
             aria-sort={null}
-            className="MuiTableCell-root-96 MuiTableCell-head-97"
+            className="MuiTableCell-root-97 MuiTableCell-head-98"
             scope="col"
           >
             Line
           </th>
           <th
             aria-sort={null}
-            className="MuiTableCell-root-96 MuiTableCell-head-97"
+            className="MuiTableCell-root-97 MuiTableCell-head-98"
             scope="col"
           >
             Error
@@ -53,20 +53,20 @@ exports[`ImportResults matches snapshot for BMO with 1 error on a transaction 1`
         </tr>
       </thead>
       <tbody
-        className="MuiTableBody-root-104"
+        className="MuiTableBody-root-109"
       >
         <tr
-          className="MuiTableRow-root-91"
+          className="MuiTableRow-root-92"
         >
           <td
             aria-sort={null}
-            className="MuiTableCell-root-96 MuiTableCell-body-98"
+            className="MuiTableCell-root-97 MuiTableCell-body-99"
           >
             0
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root-96 MuiTableCell-body-98"
+            className="MuiTableCell-root-97 MuiTableCell-body-99"
           >
             0
           </td>
@@ -81,10 +81,11 @@ exports[`ImportResults matches snapshot for BMO with 1 error on a transaction 1`
     className="ImportResults-formActions-2"
   >
     <button
-      className="MuiButtonBase-root-79 MuiButtonBase-disabled-80 MuiButton-root-53 MuiButton-text-55 MuiButton-textSecondary-57 MuiButton-flat-58 MuiButton-flatSecondary-60 MuiButton-disabled-73"
+      className="MuiButtonBase-root-80 MuiButtonBase-disabled-81 MuiButton-root-54 MuiButton-text-56 MuiButton-textSecondary-58 MuiButton-flat-59 MuiButton-flatSecondary-61 MuiButton-disabled-74"
       disabled={true}
       onBlur={[Function]}
       onClick={[MockFunction]}
+      onContextMenu={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
@@ -98,16 +99,17 @@ exports[`ImportResults matches snapshot for BMO with 1 error on a transaction 1`
       type="button"
     >
       <span
-        className="MuiButton-label-54"
+        className="MuiButton-label-55"
       >
         Save Transactions
       </span>
     </button>
     <button
-      className="MuiButtonBase-root-79 MuiButton-root-53 MuiButton-text-55 MuiButton-textSecondary-57 MuiButton-flat-58 MuiButton-flatSecondary-60"
+      className="MuiButtonBase-root-80 MuiButton-root-54 MuiButton-text-56 MuiButton-textSecondary-58 MuiButton-flat-59 MuiButton-flatSecondary-61"
       disabled={false}
       onBlur={[Function]}
       onClick={[MockFunction]}
+      onContextMenu={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
@@ -121,12 +123,12 @@ exports[`ImportResults matches snapshot for BMO with 1 error on a transaction 1`
       type="button"
     >
       <span
-        className="MuiButton-label-54"
+        className="MuiButton-label-55"
       >
         Discard
       </span>
       <span
-        className="MuiTouchRipple-root-82"
+        className="MuiTouchRipple-root-83"
       />
     </button>
   </div>
@@ -171,10 +173,11 @@ exports[`ImportResults matches snapshot for BMO with errors on the header 1`] = 
     className="ImportResults-formActions-2"
   >
     <button
-      className="MuiButtonBase-root-79 MuiButtonBase-disabled-80 MuiButton-root-53 MuiButton-text-55 MuiButton-textSecondary-57 MuiButton-flat-58 MuiButton-flatSecondary-60 MuiButton-disabled-73"
+      className="MuiButtonBase-root-80 MuiButtonBase-disabled-81 MuiButton-root-54 MuiButton-text-56 MuiButton-textSecondary-58 MuiButton-flat-59 MuiButton-flatSecondary-61 MuiButton-disabled-74"
       disabled={true}
       onBlur={[Function]}
       onClick={[MockFunction]}
+      onContextMenu={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
@@ -188,16 +191,17 @@ exports[`ImportResults matches snapshot for BMO with errors on the header 1`] = 
       type="button"
     >
       <span
-        className="MuiButton-label-54"
+        className="MuiButton-label-55"
       >
         Save Transactions
       </span>
     </button>
     <button
-      className="MuiButtonBase-root-79 MuiButton-root-53 MuiButton-text-55 MuiButton-textSecondary-57 MuiButton-flat-58 MuiButton-flatSecondary-60"
+      className="MuiButtonBase-root-80 MuiButton-root-54 MuiButton-text-56 MuiButton-textSecondary-58 MuiButton-flat-59 MuiButton-flatSecondary-61"
       disabled={false}
       onBlur={[Function]}
       onClick={[MockFunction]}
+      onContextMenu={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
@@ -211,12 +215,12 @@ exports[`ImportResults matches snapshot for BMO with errors on the header 1`] = 
       type="button"
     >
       <span
-        className="MuiButton-label-54"
+        className="MuiButton-label-55"
       >
         Discard
       </span>
       <span
-        className="MuiTouchRipple-root-82"
+        className="MuiTouchRipple-root-83"
       />
     </button>
   </div>
@@ -257,10 +261,11 @@ exports[`ImportResults matches snapshot for BMO without errors 1`] = `
     className="ImportResults-formActions-2"
   >
     <button
-      className="MuiButtonBase-root-79 MuiButton-root-53 MuiButton-text-55 MuiButton-textSecondary-57 MuiButton-flat-58 MuiButton-flatSecondary-60"
+      className="MuiButtonBase-root-80 MuiButton-root-54 MuiButton-text-56 MuiButton-textSecondary-58 MuiButton-flat-59 MuiButton-flatSecondary-61"
       disabled={false}
       onBlur={[Function]}
       onClick={[MockFunction]}
+      onContextMenu={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
@@ -274,19 +279,20 @@ exports[`ImportResults matches snapshot for BMO without errors 1`] = `
       type="button"
     >
       <span
-        className="MuiButton-label-54"
+        className="MuiButton-label-55"
       >
         Save Transactions
       </span>
       <span
-        className="MuiTouchRipple-root-82"
+        className="MuiTouchRipple-root-83"
       />
     </button>
     <button
-      className="MuiButtonBase-root-79 MuiButton-root-53 MuiButton-text-55 MuiButton-textSecondary-57 MuiButton-flat-58 MuiButton-flatSecondary-60"
+      className="MuiButtonBase-root-80 MuiButton-root-54 MuiButton-text-56 MuiButton-textSecondary-58 MuiButton-flat-59 MuiButton-flatSecondary-61"
       disabled={false}
       onBlur={[Function]}
       onClick={[MockFunction]}
+      onContextMenu={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
@@ -300,12 +306,12 @@ exports[`ImportResults matches snapshot for BMO without errors 1`] = `
       type="button"
     >
       <span
-        className="MuiButton-label-54"
+        className="MuiButton-label-55"
       >
         Discard
       </span>
       <span
-        className="MuiTouchRipple-root-82"
+        className="MuiTouchRipple-root-83"
       />
     </button>
   </div>

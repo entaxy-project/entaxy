@@ -20,8 +20,6 @@ export default (state = initialState, action) => {
       return initialState
     case types.USER_LOGIN_ERROR:
       return { ...state, error: action.payload }
-    case types.USER_UPDATE_COUNTRY:
-      return { ...state, country: action.country }
     default:
       return state
   }

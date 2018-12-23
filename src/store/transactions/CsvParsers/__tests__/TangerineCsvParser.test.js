@@ -16,7 +16,7 @@ const expectedTransactions = [
     shares: 4.75,
     bookValue: 1,
     description: 'TANGERINE BONUS RATE SALE 0914',
-    createdAt: 1412136000000
+    createdAt: Date.parse('10/1/2014')
   },
   {
     institution: 'Tangerine',
@@ -26,7 +26,7 @@ const expectedTransactions = [
     shares: 2010,
     bookValue: 1,
     description: 'Transferred',
-    createdAt: 1412308800000
+    createdAt: Date.parse('10/3/2014')
   },
   {
     institution: 'Tangerine',
@@ -36,11 +36,11 @@ const expectedTransactions = [
     shares: -5500,
     bookValue: 1,
     description: 'Transferred',
-    createdAt: 1412308800000
+    createdAt: Date.parse('10/3/2014')
   }
 ]
 
-describe('TD CSV parser', () => {
+describe('Tangerine CSV parser', () => {
   describe('parse', () => {
     it('returns transactions', async () => {
       const file = new File([csvData.join('\n')], 'test.csv', { type: 'text/csv' })
