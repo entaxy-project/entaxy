@@ -5,6 +5,7 @@ import { LandingCardComponent } from '../LandingCard'
 
 describe('LandingCard', () => {
   it('matches snapshot', () => {
+    const mochHandleLogin = jest.fn()
     const component = renderer.create((
       <BrowserRouter>
         <LandingCardComponent
@@ -14,6 +15,7 @@ describe('LandingCard', () => {
           user={{}}
           classes={{}}
           history={{}}
+          handleLogin={mochHandleLogin}
         />
       </BrowserRouter>
     ))

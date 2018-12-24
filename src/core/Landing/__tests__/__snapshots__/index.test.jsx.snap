@@ -19,7 +19,9 @@ exports[`LandingCard matches snapshot 1`] = `
         Insights into your finances, without sacrificing your data
       </div>
     </div>
-    <LandingCard />
+    <LandingCard
+      history={Object {}}
+    />
     <div>
       <p
         className="MuiTypography-root-98 MuiTypography-body2-106"

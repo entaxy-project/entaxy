@@ -3,291 +3,45 @@
 exports[`Import Transactions matches snapshot 1`] = `
 <div>
   <div>
-    <div
-      className="Header-root-1"
-    >
-      <header
-        className="MuiPaper-root-13 MuiPaper-elevation4-19 MuiAppBar-root-4 MuiAppBar-positionFixed-5 MuiAppBar-colorPrimary-11 mui-fixed Header-header-2"
-      >
-        <div
-          className="MuiToolbar-root-40 MuiToolbar-regular-42 MuiToolbar-gutters-41 Header-toolbar-3"
-        >
-          <div
-            className="Logo-logo-44"
-          >
-            <img
-              alt="Entaxy logo"
-              className="Logo-image-45"
-              src="logo.png"
-            />
-            <a
-              className="MuiTypography-root-47 MuiTypography-h6-64 MuiTypography-colorInherit-76 Logo-title-46"
-              href="/"
-              onClick={[Function]}
-            >
-              Entaxy
-            </a>
-          </div>
-          <div>
-            <a
-              aria-current={null}
-              className="MuiButtonBase-root-108 MuiButton-root-82 MuiButton-text-84 MuiButton-flat-87 MuiButton-sizeSmall-105 MuiButton-colorInherit-103"
-              href="/portfolio"
-              onBlur={[Function]}
-              onClick={[Function]}
-              onContextMenu={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onKeyUp={[Function]}
-              onMouseDown={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              onTouchEnd={[Function]}
-              onTouchMove={[Function]}
-              onTouchStart={[Function]}
-              role="button"
-              tabIndex="0"
-            >
-              <span
-                className="MuiButton-label-83"
-              >
-                Portfolio
-              </span>
-              <span
-                className="MuiTouchRipple-root-196"
-              />
-            </a>
-            <a
-              aria-current={null}
-              className="MuiButtonBase-root-108 MuiButton-root-82 MuiButton-text-84 MuiButton-flat-87 MuiButton-sizeSmall-105 MuiButton-colorInherit-103"
-              href="/import-transactions"
-              onBlur={[Function]}
-              onClick={[Function]}
-              onContextMenu={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onKeyUp={[Function]}
-              onMouseDown={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              onTouchEnd={[Function]}
-              onTouchMove={[Function]}
-              onTouchStart={[Function]}
-              role="button"
-              tabIndex="0"
-            >
-              <span
-                className="MuiButton-label-83"
-              >
-                Import Transactions
-              </span>
-              <span
-                className="MuiTouchRipple-root-196"
-              />
-            </a>
-          </div>
-          <div
-            className="LoginButtonComponent-root-111"
-          >
-            <button
-              aria-owns={null}
-              className="MuiButtonBase-root-108 MuiButton-root-82 MuiButton-text-84 MuiButton-flat-87 MuiButton-colorInherit-103"
-              disabled={false}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onContextMenu={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onKeyUp={[Function]}
-              onMouseDown={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              onTouchEnd={[Function]}
-              onTouchMove={[Function]}
-              onTouchStart={[Function]}
-              tabIndex="0"
-              type="button"
-            >
-              <span
-                className="MuiButton-label-83"
-              />
-              <span
-                className="MuiTouchRipple-root-196"
-              />
-            </button>
-          </div>
-        </div>
-      </header>
-      <div
-        className="MuiDrawer-root-114 MuiDrawer-docked-115"
-      >
-        <div
-          className="MuiPaper-root-13 MuiPaper-elevation0-15 MuiDrawer-paper-116 withRouter-LeftDrawer--drawerPaper-113 MuiDrawer-paperAnchorLeft-117 MuiDrawer-paperAnchorDockedLeft-121"
-        >
-          <div
-            className="withRouter-LeftDrawer--toolbar-112"
-          />
-          <ul
-            className="MuiList-root-126 MuiList-padding-127"
-          >
-            <a
-              aria-current={null}
-              className="MuiButtonBase-root-108 MuiListItem-root-130 MuiListItem-default-133 MuiListItem-gutters-138 MuiListItem-button-139"
-              href="/dashboard"
-              onBlur={[Function]}
-              onClick={[Function]}
-              onContextMenu={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onKeyUp={[Function]}
-              onMouseDown={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              onTouchEnd={[Function]}
-              onTouchMove={[Function]}
-              onTouchStart={[Function]}
-              role="button"
-              tabIndex="0"
-            >
-              <div
-                className="MuiListItemIcon-root-142"
-              >
-                <svg
-                  aria-hidden="true"
-                  className="MuiSvgIcon-root-143"
-                  focusable="false"
-                  role="presentation"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M0 0h24v24H0z"
-                    fill="none"
-                  />
-                  <path
-                    d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"
-                  />
-                </svg>
-              </div>
-              <div
-                className="MuiListItemText-root-152"
-              >
-                <span
-                  className="MuiTypography-root-47 MuiTypography-subheading-54 MuiListItemText-primary-155"
-                >
-                  Dashboard
-                </span>
-              </div>
-              <span
-                className="MuiTouchRipple-root-196"
-              />
-            </a>
-          </ul>
-          <hr
-            className="MuiDivider-root-158"
-          />
-          <nav
-            className="MuiList-root-126 MuiList-dense-128 MuiList-padding-127 MuiList-subheader-129"
-          >
-            <div
-              className="MuiListSubheader-root-168 MuiListSubheader-sticky-173 MuiListSubheader-gutters-171"
-            >
-              Accounts
-              <div
-                className="MuiListItemSecondaryAction-root-174"
-              >
-                <a
-                  aria-current={null}
-                  aria-describedby={null}
-                  aria-label="New account"
-                  className="MuiButtonBase-root-108 MuiIconButton-root-183 withRouter-AccountsComponent--smallButton-166"
-                  href="/accounts/new"
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onContextMenu={[Function]}
-                  onFocus={[Function]}
-                  onKeyDown={[Function]}
-                  onKeyUp={[Function]}
-                  onMouseDown={[Function]}
-                  onMouseLeave={[Function]}
-                  onMouseOver={[Function]}
-                  onMouseUp={[Function]}
-                  onTouchEnd={[Function]}
-                  onTouchMove={[Function]}
-                  onTouchStart={[Function]}
-                  role="button"
-                  tabIndex="0"
-                  title="New account"
-                >
-                  <span
-                    className="MuiIconButton-label-188"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      className="MuiSvgIcon-root-143"
-                      focusable="false"
-                      role="presentation"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
-                      />
-                      <path
-                        d="M0 0h24v24H0z"
-                        fill="none"
-                      />
-                    </svg>
-                  </span>
-                  <span
-                    className="MuiTouchRipple-root-196"
-                  />
-                </a>
-              </div>
-            </div>
-            <ul
-              className="MuiList-root-126 MuiList-dense-128 MuiList-padding-127"
-            />
-          </nav>
-        </div>
-      </div>
-    </div>
+    <Header />
     <h5
-      className="MuiTypography-root-47 MuiTypography-h5-63 MuiTypography-alignCenter-70"
+      className="MuiTypography-root-1 MuiTypography-h5-17 MuiTypography-alignCenter-24"
     >
       Import transactions
     </h5>
     <div>
       <p
-        className="MuiTypography-root-47 MuiTypography-body1-56 MuiTypography-alignCenter-70"
+        className="MuiTypography-root-1 MuiTypography-body1-10 MuiTypography-alignCenter-24"
       >
         Select an institution
       </p>
       <div>
         <div>
           <div
-            className="MuiPaper-root-13 MuiPaper-elevation1-16 MuiPaper-rounded-14 MuiCard-root-189"
+            className="MuiPaper-root-37 MuiPaper-elevation1-40 MuiPaper-rounded-38 MuiCard-root-36"
           >
             <div
-              className="MuiCardHeader-root-190 undefined undefined"
+              className="MuiCardHeader-root-64 undefined undefined"
             >
               <div
-                className="MuiCardHeader-content-193"
+                className="MuiCardHeader-content-67"
               >
                 <span
-                  className="MuiTypography-root-47 MuiTypography-headline-52 MuiCardHeader-title-194"
+                  className="MuiTypography-root-1 MuiTypography-headline-6 MuiCardHeader-title-68"
                 >
                   RBC
                 </span>
                 <span
-                  className="MuiTypography-root-47 MuiTypography-body1-56 MuiTypography-colorTextSecondary-80 MuiCardHeader-subheader-195"
+                  className="MuiTypography-root-1 MuiTypography-body1-10 MuiTypography-colorTextSecondary-34 MuiCardHeader-subheader-69"
                 >
                   Royal Bank
                 </span>
               </div>
               <div
-                className="MuiCardHeader-action-192"
+                className="MuiCardHeader-action-66"
               >
                 <button
-                  className="MuiButtonBase-root-108 MuiIconButton-root-183"
+                  className="MuiButtonBase-root-76 MuiIconButton-root-70"
                   disabled={false}
                   onBlur={[Function]}
                   onClick={[Function]}
@@ -305,11 +59,11 @@ exports[`Import Transactions matches snapshot 1`] = `
                   type="button"
                 >
                   <span
-                    className="MuiIconButton-label-188"
+                    className="MuiIconButton-label-75"
                   >
                     <svg
                       aria-hidden="true"
-                      className="MuiSvgIcon-root-143"
+                      className="MuiSvgIcon-root-79"
                       focusable="false"
                       role="presentation"
                       viewBox="0 0 24 24"
@@ -324,7 +78,7 @@ exports[`Import Transactions matches snapshot 1`] = `
                     </svg>
                   </span>
                   <span
-                    className="MuiTouchRipple-root-196"
+                    className="MuiTouchRipple-root-88"
                   />
                 </button>
               </div>
@@ -333,30 +87,30 @@ exports[`Import Transactions matches snapshot 1`] = `
         </div>
         <div>
           <div
-            className="MuiPaper-root-13 MuiPaper-elevation1-16 MuiPaper-rounded-14 MuiCard-root-189"
+            className="MuiPaper-root-37 MuiPaper-elevation1-40 MuiPaper-rounded-38 MuiCard-root-36"
           >
             <div
-              className="MuiCardHeader-root-190 undefined undefined"
+              className="MuiCardHeader-root-64 undefined undefined"
             >
               <div
-                className="MuiCardHeader-content-193"
+                className="MuiCardHeader-content-67"
               >
                 <span
-                  className="MuiTypography-root-47 MuiTypography-headline-52 MuiCardHeader-title-194"
+                  className="MuiTypography-root-1 MuiTypography-headline-6 MuiCardHeader-title-68"
                 >
                   BMO
                 </span>
                 <span
-                  className="MuiTypography-root-47 MuiTypography-body1-56 MuiTypography-colorTextSecondary-80 MuiCardHeader-subheader-195"
+                  className="MuiTypography-root-1 MuiTypography-body1-10 MuiTypography-colorTextSecondary-34 MuiCardHeader-subheader-69"
                 >
                   Bank of Montreal
                 </span>
               </div>
               <div
-                className="MuiCardHeader-action-192"
+                className="MuiCardHeader-action-66"
               >
                 <button
-                  className="MuiButtonBase-root-108 MuiIconButton-root-183"
+                  className="MuiButtonBase-root-76 MuiIconButton-root-70"
                   disabled={false}
                   onBlur={[Function]}
                   onClick={[Function]}
@@ -374,11 +128,11 @@ exports[`Import Transactions matches snapshot 1`] = `
                   type="button"
                 >
                   <span
-                    className="MuiIconButton-label-188"
+                    className="MuiIconButton-label-75"
                   >
                     <svg
                       aria-hidden="true"
-                      className="MuiSvgIcon-root-143"
+                      className="MuiSvgIcon-root-79"
                       focusable="false"
                       role="presentation"
                       viewBox="0 0 24 24"
@@ -393,7 +147,7 @@ exports[`Import Transactions matches snapshot 1`] = `
                     </svg>
                   </span>
                   <span
-                    className="MuiTouchRipple-root-196"
+                    className="MuiTouchRipple-root-88"
                   />
                 </button>
               </div>
@@ -402,30 +156,30 @@ exports[`Import Transactions matches snapshot 1`] = `
         </div>
         <div>
           <div
-            className="MuiPaper-root-13 MuiPaper-elevation1-16 MuiPaper-rounded-14 MuiCard-root-189"
+            className="MuiPaper-root-37 MuiPaper-elevation1-40 MuiPaper-rounded-38 MuiCard-root-36"
           >
             <div
-              className="MuiCardHeader-root-190 undefined undefined"
+              className="MuiCardHeader-root-64 undefined undefined"
             >
               <div
-                className="MuiCardHeader-content-193"
+                className="MuiCardHeader-content-67"
               >
                 <span
-                  className="MuiTypography-root-47 MuiTypography-headline-52 MuiCardHeader-title-194"
+                  className="MuiTypography-root-1 MuiTypography-headline-6 MuiCardHeader-title-68"
                 >
                   TD
                 </span>
                 <span
-                  className="MuiTypography-root-47 MuiTypography-body1-56 MuiTypography-colorTextSecondary-80 MuiCardHeader-subheader-195"
+                  className="MuiTypography-root-1 MuiTypography-body1-10 MuiTypography-colorTextSecondary-34 MuiCardHeader-subheader-69"
                 >
                   TD Canada Trust
                 </span>
               </div>
               <div
-                className="MuiCardHeader-action-192"
+                className="MuiCardHeader-action-66"
               >
                 <button
-                  className="MuiButtonBase-root-108 MuiIconButton-root-183"
+                  className="MuiButtonBase-root-76 MuiIconButton-root-70"
                   disabled={false}
                   onBlur={[Function]}
                   onClick={[Function]}
@@ -443,11 +197,11 @@ exports[`Import Transactions matches snapshot 1`] = `
                   type="button"
                 >
                   <span
-                    className="MuiIconButton-label-188"
+                    className="MuiIconButton-label-75"
                   >
                     <svg
                       aria-hidden="true"
-                      className="MuiSvgIcon-root-143"
+                      className="MuiSvgIcon-root-79"
                       focusable="false"
                       role="presentation"
                       viewBox="0 0 24 24"
@@ -462,7 +216,7 @@ exports[`Import Transactions matches snapshot 1`] = `
                     </svg>
                   </span>
                   <span
-                    className="MuiTouchRipple-root-196"
+                    className="MuiTouchRipple-root-88"
                   />
                 </button>
               </div>
@@ -471,30 +225,30 @@ exports[`Import Transactions matches snapshot 1`] = `
         </div>
         <div>
           <div
-            className="MuiPaper-root-13 MuiPaper-elevation1-16 MuiPaper-rounded-14 MuiCard-root-189"
+            className="MuiPaper-root-37 MuiPaper-elevation1-40 MuiPaper-rounded-38 MuiCard-root-36"
           >
             <div
-              className="MuiCardHeader-root-190 undefined undefined"
+              className="MuiCardHeader-root-64 undefined undefined"
             >
               <div
-                className="MuiCardHeader-content-193"
+                className="MuiCardHeader-content-67"
               >
                 <span
-                  className="MuiTypography-root-47 MuiTypography-headline-52 MuiCardHeader-title-194"
+                  className="MuiTypography-root-1 MuiTypography-headline-6 MuiCardHeader-title-68"
                 >
                   Tangerine
                 </span>
                 <span
-                  className="MuiTypography-root-47 MuiTypography-body1-56 MuiTypography-colorTextSecondary-80 MuiCardHeader-subheader-195"
+                  className="MuiTypography-root-1 MuiTypography-body1-10 MuiTypography-colorTextSecondary-34 MuiCardHeader-subheader-69"
                 >
                   Personal Banking
                 </span>
               </div>
               <div
-                className="MuiCardHeader-action-192"
+                className="MuiCardHeader-action-66"
               >
                 <button
-                  className="MuiButtonBase-root-108 MuiIconButton-root-183"
+                  className="MuiButtonBase-root-76 MuiIconButton-root-70"
                   disabled={false}
                   onBlur={[Function]}
                   onClick={[Function]}
@@ -512,11 +266,11 @@ exports[`Import Transactions matches snapshot 1`] = `
                   type="button"
                 >
                   <span
-                    className="MuiIconButton-label-188"
+                    className="MuiIconButton-label-75"
                   >
                     <svg
                       aria-hidden="true"
-                      className="MuiSvgIcon-root-143"
+                      className="MuiSvgIcon-root-79"
                       focusable="false"
                       role="presentation"
                       viewBox="0 0 24 24"
@@ -531,7 +285,7 @@ exports[`Import Transactions matches snapshot 1`] = `
                     </svg>
                   </span>
                   <span
-                    className="MuiTouchRipple-root-196"
+                    className="MuiTouchRipple-root-88"
                   />
                 </button>
               </div>

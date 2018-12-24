@@ -9,7 +9,7 @@ describe('LandingCard', () => {
   it('matches snapshot', () => {
     const component = renderer.create((
       <BrowserRouter>
-        <LandingComponent classes={{}} />
+        <LandingComponent classes={{}} history={{}} />
       </BrowserRouter>
     ))
     expect(component.toJSON()).toMatchSnapshot()

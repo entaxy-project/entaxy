@@ -7,10 +7,6 @@ describe('CsvImportForm', () => {
   const mockHandleChange = jest.fn()
   const mockOnCancel = jest.fn()
 
-  const props = {
-    classes: { }
-  }
-
   beforeEach(() => {
     jest.clearAllMocks()
   })
@@ -24,7 +20,7 @@ describe('CsvImportForm', () => {
         isSubmitting={false}
         institution="BMO"
         values={{ ticker: 'CAD' }}
-        classes={{ ...props }}
+        classes={{ }}
       />
     ))
     expect(component.toJSON()).toMatchSnapshot()

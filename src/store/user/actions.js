@@ -11,12 +11,12 @@ import { initialState as transactionsInitialState } from '../transactions/reduce
 import { loadMarketValues } from '../marketValues/actions'
 import { initialState as marketValuesInitialState } from '../marketValues/reducer'
 
-export const dataIsLoading = (bool) => {
-  return {
+export const dataIsLoading = bool => (
+  {
     type: types.DATA_IS_LOADING,
     payload: bool
   }
-}
+)
 
 export const saveLoginData = loginData => (
   {
@@ -50,6 +50,7 @@ export const loadUserData = () => {
         throw error
       })
     }
+    return Promise.resolve()
   }
 }
 
@@ -60,7 +61,7 @@ export const loginAs = (loginType) => {
   }
 
   return (dispatch) => {
-    dispatch(saveLoginData({
+    return dispatch(saveLoginData({
       isLoginPending: false,
       isAuthenticatedWith: 'guest',
       username: 'guest',

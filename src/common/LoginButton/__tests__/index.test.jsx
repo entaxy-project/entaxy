@@ -5,24 +5,9 @@ import { LoginButtonComponent } from '../'
 describe('LoginButton', () => {
   const mochHandleLogin = jest.fn()
   const mochHandleLogout = jest.fn()
-  const props = {
-    classes: { }
-  }
 
   beforeEach(() => {
     jest.clearAllMocks()
-  })
-
-  it('matches snapshot with logged out user', () => {
-    const component = renderer.create((
-      <LoginButtonComponent
-        user={{ isAuthenticatedWith: null }}
-        handleLogin={mochHandleLogin}
-        handleLogout={mochHandleLogout}
-        classes={{ ...props }}
-      />
-    ))
-    expect(component.toJSON()).toMatchSnapshot()
   })
 
   it('matches snapshot with logged in user profile', () => {
@@ -31,7 +16,7 @@ describe('LoginButton', () => {
         user={{ isAuthenticatedWith: 'blockstack', name: 'Test name', username: 'Test' }}
         handleLogin={mochHandleLogin}
         handleLogout={mochHandleLogout}
-        classes={{ ...props }}
+        classes={{ }}
       />
     ))
     expect(component.toJSON()).toMatchSnapshot()

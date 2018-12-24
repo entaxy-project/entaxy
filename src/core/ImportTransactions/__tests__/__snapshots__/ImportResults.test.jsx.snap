@@ -68,7 +68,7 @@ exports[`ImportResults matches snapshot for BMO with 1 error on a transaction 1`
             aria-sort={null}
             className="MuiTableCell-root-97 MuiTableCell-body-99"
           >
-            0
+            some error
           </td>
         </tr>
       </tbody>
@@ -251,6 +251,7 @@ exports[`ImportResults matches snapshot for BMO without errors 1`] = `
         />
       </svg>
       Found 
+      1
        transactions
     </h6>
   </div>

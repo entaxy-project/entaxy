@@ -46,7 +46,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-const AccountsComponent = ({ classes, groupedAccounts, accountId }) => (
+export const AccountsComponent = ({ classes, groupedAccounts, accountId }) => (
   <List
     component="nav"
     dense={true}
@@ -68,7 +68,7 @@ const AccountsComponent = ({ classes, groupedAccounts, accountId }) => (
       </ListSubheader>
     }
   >
-    {groupedAccounts.length === 0 &&
+    {Object.keys(groupedAccounts).length === 0 &&
       <Typography variant="caption" className={classes.noAccounts}>
         You don&apos;t have any accounts yet
       </Typography>

@@ -52,7 +52,7 @@ exports[`Header matches snapshot 1`] = `
             Portfolio
           </span>
           <span
-            className="MuiTouchRipple-root-189"
+            className="MuiTouchRipple-root-162"
           />
         </a>
         <a
@@ -80,57 +80,28 @@ exports[`Header matches snapshot 1`] = `
             Import Transactions
           </span>
           <span
-            className="MuiTouchRipple-root-189"
+            className="MuiTouchRipple-root-162"
           />
         </a>
       </div>
-      <div
-        className="LoginButtonComponent-root-111"
-      >
-        <button
-          aria-owns={null}
-          className="MuiButtonBase-root-108 MuiButton-root-82 MuiButton-text-84 MuiButton-flat-87 MuiButton-colorInherit-103"
-          disabled={false}
-          onBlur={[Function]}
-          onClick={[Function]}
-          onContextMenu={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          tabIndex="0"
-          type="button"
-        >
-          <span
-            className="MuiButton-label-83"
-          />
-          <span
-            className="MuiTouchRipple-root-189"
-          />
-        </button>
-      </div>
+      <LoginButton />
     </div>
   </header>
   <div
-    className="MuiDrawer-root-114 MuiDrawer-docked-115"
+    className="MuiDrawer-root-113 MuiDrawer-docked-114"
   >
     <div
-      className="MuiPaper-root-13 MuiPaper-elevation0-15 MuiDrawer-paper-116 withRouter-LeftDrawer--drawerPaper-113 MuiDrawer-paperAnchorLeft-117 MuiDrawer-paperAnchorDockedLeft-121"
+      className="MuiPaper-root-13 MuiPaper-elevation0-15 MuiDrawer-paper-115 withRouter-LeftDrawer--drawerPaper-112 MuiDrawer-paperAnchorLeft-116 MuiDrawer-paperAnchorDockedLeft-120"
     >
       <div
-        className="withRouter-LeftDrawer--toolbar-112"
+        className="withRouter-LeftDrawer--toolbar-111"
       />
       <ul
-        className="MuiList-root-126 MuiList-padding-127"
+        className="MuiList-root-125 MuiList-padding-126"
       >
         <a
           aria-current={null}
-          className="MuiButtonBase-root-108 MuiListItem-root-130 MuiListItem-default-133 MuiListItem-gutters-138 MuiListItem-button-139"
+          className="MuiButtonBase-root-108 MuiListItem-root-129 MuiListItem-default-132 MuiListItem-gutters-137 MuiListItem-button-138"
           href="/dashboard"
           onBlur={[Function]}
           onClick={[Function]}
@@ -148,11 +119,11 @@ exports[`Header matches snapshot 1`] = `
           tabIndex="0"
         >
           <div
-            className="MuiListItemIcon-root-142"
+            className="MuiListItemIcon-root-141"
           >
             <svg
               aria-hidden="true"
-              className="MuiSvgIcon-root-143"
+              className="MuiSvgIcon-root-142"
               focusable="false"
               role="presentation"
               viewBox="0 0 24 24"
@@ -167,85 +138,27 @@ exports[`Header matches snapshot 1`] = `
             </svg>
           </div>
           <div
-            className="MuiListItemText-root-152"
+            className="MuiListItemText-root-151"
           >
             <span
-              className="MuiTypography-root-47 MuiTypography-subheading-54 MuiListItemText-primary-155"
+              className="MuiTypography-root-47 MuiTypography-subheading-54 MuiListItemText-primary-154"
             >
               Dashboard
             </span>
           </div>
           <span
-            className="MuiTouchRipple-root-189"
+            className="MuiTouchRipple-root-162"
           />
         </a>
       </ul>
       <hr
-        className="MuiDivider-root-158"
+        className="MuiDivider-root-157"
       />
-      <nav
-        className="MuiList-root-126 MuiList-dense-128 MuiList-padding-127 MuiList-subheader-129"
-      >
-        <div
-          className="MuiListSubheader-root-168 MuiListSubheader-sticky-173 MuiListSubheader-gutters-171"
-        >
-          Accounts
-          <div
-            className="MuiListItemSecondaryAction-root-174"
-          >
-            <a
-              aria-current={null}
-              aria-describedby={null}
-              aria-label="New account"
-              className="MuiButtonBase-root-108 MuiIconButton-root-183 withRouter-AccountsComponent--smallButton-166"
-              href="/accounts/new"
-              onBlur={[Function]}
-              onClick={[Function]}
-              onContextMenu={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onKeyUp={[Function]}
-              onMouseDown={[Function]}
-              onMouseLeave={[Function]}
-              onMouseOver={[Function]}
-              onMouseUp={[Function]}
-              onTouchEnd={[Function]}
-              onTouchMove={[Function]}
-              onTouchStart={[Function]}
-              role="button"
-              tabIndex="0"
-              title="New account"
-            >
-              <span
-                className="MuiIconButton-label-188"
-              >
-                <svg
-                  aria-hidden="true"
-                  className="MuiSvgIcon-root-143"
-                  focusable="false"
-                  role="presentation"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
-                  />
-                  <path
-                    d="M0 0h24v24H0z"
-                    fill="none"
-                  />
-                </svg>
-              </span>
-              <span
-                className="MuiTouchRipple-root-189"
-              />
-            </a>
-          </div>
-        </div>
-        <ul
-          className="MuiList-root-126 MuiList-dense-128 MuiList-padding-127"
-        />
-      </nav>
+      <Accounts />
     </div>
+  </div>
+  <div>
+    content
   </div>
 </div>
 `;

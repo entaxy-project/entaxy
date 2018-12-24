@@ -4,22 +4,9 @@ import CsvImportFields from '../CsvImportFields'
 
 describe('CsvImportFields', () => {
   const mockHandleChange = jest.fn()
-  const props = {
-    classes: { }
-  }
 
   beforeEach(() => {
     jest.clearAllMocks()
-  })
-
-  it('matches snapshot when institution is not specified', () => {
-    const component = renderer.create((
-      <CsvImportFields
-        handleChange={mockHandleChange}
-        classes={{ ...props }}
-      />
-    ))
-    expect(component.toJSON()).toBeNull()
   })
 
   it('matches snapshot for BMO', () => {
@@ -28,7 +15,7 @@ describe('CsvImportFields', () => {
         handleChange={mockHandleChange}
         institution="BMO"
         values={{ ticker: 'CAD' }}
-        classes={{ ...props }}
+        classes={{ }}
       />
     ))
     expect(component.toJSON()).toMatchSnapshot()
@@ -40,7 +27,7 @@ describe('CsvImportFields', () => {
         handleChange={mockHandleChange}
         institution="TD"
         values={{ ticker: 'CAD' }}
-        classes={{ ...props }}
+        classes={{ }}
       />
     ))
     expect(component.toJSON()).toMatchSnapshot()
@@ -52,7 +39,7 @@ describe('CsvImportFields', () => {
         handleChange={mockHandleChange}
         institution="Tangerine"
         values={{ ticker: 'CAD' }}
-        classes={{ ...props }}
+        classes={{ }}
       />
     ))
     expect(component.toJSON()).toMatchSnapshot()
