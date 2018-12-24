@@ -154,7 +154,9 @@ exports[`Header matches snapshot 1`] = `
       <hr
         className="MuiDivider-root-157"
       />
-      <Accounts />
+      <Accounts
+        accountId={null}
+      />
     </div>
   </div>
   <div>

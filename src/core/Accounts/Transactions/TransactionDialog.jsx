@@ -51,30 +51,15 @@ const TransactionDialog = ({
     >
       <div>
         <TextField
-          label="Institution"
+          label="Description"
           inputProps={{
-            'aria-label': 'Institution',
+            'aria-label': 'Description',
             required: true,
-            maxLength: 100
+            maxLength: 256
           }}
           className={classes.input}
-          value={values.institution}
-          name="institution"
-          helperText="The institution where this asset is being held"
-          onChange={handleChange}
-          autoFocus
-        />
-        <TextField
-          label="Account"
-          inputProps={{
-            'aria-label': 'Account',
-            required: true,
-            maxLength: 100
-          }}
-          className={classes.input}
-          value={values.account}
-          name="account"
-          helperText="The name of the account (e.g. RRSP, TFSA, etc)"
+          value={values.description}
+          name="description"
           onChange={handleChange}
         />
         <TextField
@@ -167,8 +152,6 @@ export default compose(
     mapPropsToValues: ({ transaction }) => {
       if (transaction === null) {
         return {
-          institution: '',
-          account: '',
           type: '',
           ticker: '',
           shares: '',
@@ -185,6 +168,7 @@ export default compose(
       setSubmitting(true)
       props.handleSave({
         ...values,
+        accountId: props.account.id,
         createdAt: values.createdAt.getTime()
       })
       resetForm()

@@ -6,6 +6,15 @@ const getInstitutions = () => ([
   'RBC', 'BMO', 'TD', 'Tangerine'
 ])
 
+const findAccountById = (state, { match }) => (
+  state.accounts.find(account => account.id === match.params.accountId)
+)
+
+export const makeFindAccountById = () => createSelector(
+  findAccountById,
+  account => ({ account })
+)
+
 export const sortedAccountsGroupedByInstitution = createSelector(
   getAccounts,
   (accounts) => {
@@ -14,11 +23,12 @@ export const sortedAccountsGroupedByInstitution = createSelector(
       if (!Object.keys(groupedAccounts).includes(account.institution)) {
         groupedAccounts[account.institution] = []
       }
-      groupedAccounts[account.institution].push(account)
+      return groupedAccounts[account.institution].push(account)
     })
     return groupedAccounts
   }
 )
+
 
 export const sortedInstitutions = createSelector(
   getInstitutions,

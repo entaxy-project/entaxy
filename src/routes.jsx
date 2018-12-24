@@ -34,17 +34,19 @@ export class RoutesComponent extends React.Component {
     return (
       <div>
         <BrowserRouter basename={process.env.PUBLIC_URL}>
-          <Switch>
-            <Route exact path="/" component={Landing} />
-            <Route exact path="/handle-login" component={HandleLogin} />
-            <Route exact path="/taxes" component={Taxes} />
-            <Route exact path="/portfolio" component={Portfolios} />
-            <Route exact path="/dashboard" render={this.loginRequired(Dashboard)} />
-            <Route exact path="/accounts/new" render={this.loginRequired(NewAccount)} />
-            <Route exact path="/accounts/:accountId/edit" render={this.loginRequired(EditAccount)} />
-            <Route exact path="/accounts/:accountId/transactions" render={this.loginRequired(Transactions)} />
-            <Route exact path="/import-transactions" component={ImportTransactions} />
-          </Switch>
+          {!this.props.user.isLoading &&
+            <Switch>
+              <Route exact path="/" component={Landing} />
+              <Route exact path="/handle-login" component={HandleLogin} />
+              <Route exact path="/taxes" component={Taxes} />
+              <Route exact path="/portfolio" component={Portfolios} />
+              <Route exact path="/dashboard" render={this.loginRequired(Dashboard)} />
+              <Route exact path="/accounts/new" render={this.loginRequired(NewAccount)} />
+              <Route exact path="/accounts/:accountId/edit" render={this.loginRequired(EditAccount)} />
+              <Route exact path="/accounts/:accountId/transactions" render={this.loginRequired(Transactions)} />
+              <Route exact path="/import-transactions" component={ImportTransactions} />
+            </Switch>
+          }
         </BrowserRouter>
         <LoadingOverlay />
       </div>

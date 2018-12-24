@@ -8,9 +8,6 @@ import { TransactionsComponent } from '../'
 describe('Transactions', () => {
   const mochDeleteTransactions = jest.fn()
   const mochHandleSort = jest.fn()
-  const props = {
-    classes: { }
-  }
 
   beforeEach(() => {
     jest.clearAllMocks()
@@ -26,7 +23,7 @@ describe('Transactions', () => {
             transactions={[]}
             sortBy="createAt"
             sortDirection="DESC"
-            classes={{ ...props }}
+            classes={{ }}
           />
         </BrowserRouter>
       </Provider>
@@ -53,7 +50,7 @@ describe('Transactions', () => {
             }]}
             sortBy="createAt"
             sortDirection="DESC"
-            classes={{ ...props }}
+            classes={{ }}
           />
         </BrowserRouter>
       </Provider>

@@ -1,13 +1,9 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
-import IconButton from '@material-ui/core/IconButton'
-import Tooltip from '@material-ui/core/Tooltip'
-import AddIcon from '@material-ui/icons/Add'
 import TableToolbar from '../'
 
 describe('TableToolbar', () => {
   const mochOnDelete = jest.fn()
-  const mochHandleNew = jest.fn()
 
   it('matches snapshot with some transactions', () => {
     const component = renderer.create((
@@ -16,11 +12,8 @@ describe('TableToolbar', () => {
         selectedItems={['a']}
         onDelete={mochOnDelete}
       >
-        <Tooltip title="New transaction">
-          <IconButton aria-label="New transaction" onClick={mochHandleNew}>
-            <AddIcon />
-          </IconButton>
-        </Tooltip>
+        <div>Content 1</div>
+        <div>Content 2</div>
       </TableToolbar>
     ))
     expect(component.toJSON()).toMatchSnapshot()
@@ -34,11 +27,8 @@ describe('TableToolbar', () => {
         selectedItems={[]}
         onDelete={mochOnDelete}
       >
-        <Tooltip title="New transaction">
-          <IconButton aria-label="New transaction" onClick={mochHandleNew}>
-            <AddIcon />
-          </IconButton>
-        </Tooltip>
+        <div>Content 1</div>
+        <div>Content 2</div>
       </TableToolbar>
     ))
     expect(component.toJSON()).toMatchSnapshot()

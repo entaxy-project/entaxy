@@ -14,7 +14,7 @@ import Accounts from '../../core/Accounts'
 const styles = theme => ({
   toolbar: theme.mixins.toolbar,
   drawerPaper: {
-    maxWidth: 200
+    width: 200
   }
 })
 
@@ -39,7 +39,7 @@ const LeftDrawer = ({ classes, match }) => (
       </ListItem>
     </List>
     <Divider />
-    <Accounts accountId={match.params.accountId} />
+    <Accounts accountId={('accountId' in match.params) ? match.params.accountId : null} />
   </Drawer>
 )
 

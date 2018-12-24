@@ -1,3 +1,4 @@
+/* eslint no-console: 0 */
 import React from 'react'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
@@ -11,13 +12,16 @@ import Paper from '@material-ui/core/Paper'
 import Checkbox from '@material-ui/core/Checkbox'
 import Tooltip from '@material-ui/core/Tooltip'
 import AddIcon from '@material-ui/icons/Add'
+import Icon from '@mdi/react'
+import { mdiImport } from '@mdi/js'
 import { Column, Table, AutoSizer } from 'react-virtualized'
 import 'react-virtualized/styles.css'
 import TransactionDialog from './TransactionDialog'
 import TableToolbar from '../../../common/TableToolbar'
 import confirm from '../../../util/confirm'
 import { deleteTransactions, updateSortBy } from '../../../store/transactions/actions'
-import { sortedTransactions } from '../../../store/transactions/selectors'
+import { makeFindAccountById } from '../../../store/accounts/selectors'
+import { makeAccountTransactions } from '../../../store/transactions/selectors'
 
 const styles = theme => ({
   paper: {
@@ -50,15 +54,25 @@ const styles = theme => ({
   },
   smallIcon: {
     fontSize: 18
+  },
+  importButton: {
+    fill: theme.palette.text.secondary
   }
 })
 
-const mapStateToProps = (state) => {
-  return {
-    transactions: sortedTransactions(state),
-    sortBy: state.transactions.sortBy,
-    sortDirection: state.transactions.sortDirection
+// https://medium.com/@parkerdan/react-reselect-and-redux-b34017f8194c
+const makeMapStateToProps = () => {
+  const findAccountById = makeFindAccountById()
+  const accountTransactions = makeAccountTransactions()
+  const mapStateToProps = (state, props) => {
+    return {
+      sortBy: state.transactions.sortBy,
+      sortDirection: state.transactions.sortDirection,
+      account: findAccountById(state, props).account,
+      transactions: accountTransactions(state, props).transactions
+    }
   }
+  return mapStateToProps
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -133,6 +147,13 @@ export class TransactionsComponent extends React.Component {
 
   isSelected = id => this.state.selected.indexOf(id) !== -1
 
+  pageTitle = (account) => {
+    if (account) {
+      return `${account.institution} - ${account.name}`
+    }
+    return null
+  }
+
   render() {
     const currencyFormatter = new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD' })
     const {
@@ -140,23 +161,33 @@ export class TransactionsComponent extends React.Component {
       transactions,
       sortBy,
       sortDirection,
-      handleSort
+      handleSort,
+      account
     } = this.props
-
     const { selected } = this.state
     return (
       <div>
         <TransactionDialog
           open={this.state.openTransactionDialog}
           onCancel={this.handleCancel}
+          account={account}
           transaction={this.state.transaction}
         />
         <Paper elevation={0} className={classes.paper}>
           <TableToolbar
-            title="Transactions"
+            title={this.pageTitle(account)}
             selectedItems={selected}
             onDelete={this.handleDelete}
           >
+            <Tooltip title="Import transaction">
+              <IconButton aria-label="Import transaction" onClick={this.handleNew}>
+                <Icon
+                  path={mdiImport}
+                  size={1}
+                  className={classes.importButton}
+                />
+              </IconButton>
+            </Tooltip>
             <Tooltip title="New transaction">
               <IconButton aria-label="New transaction" onClick={this.handleNew}>
                 <AddIcon />
@@ -208,16 +239,6 @@ export class TransactionsComponent extends React.Component {
                         </span>
                       )
                     }}
-                  />
-                  <Column
-                    label="Institution"
-                    dataKey="institution"
-                    width={120}
-                  />
-                  <Column
-                    label="Account"
-                    dataKey="account"
-                    width={100}
                   />
                   <Column
                     width={120}
@@ -285,10 +306,15 @@ TransactionsComponent.propTypes = {
   handleSort: PropTypes.func.isRequired,
   sortBy: PropTypes.string.isRequired,
   sortDirection: PropTypes.string.isRequired,
-  deleteTransactions: PropTypes.func.isRequired
+  deleteTransactions: PropTypes.func.isRequired,
+  account: PropTypes.object
+}
+
+TransactionsComponent.defaultProps = {
+  account: null
 }
 
 export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
+  connect(makeMapStateToProps, mapDispatchToProps),
   withStyles(styles)
 )(TransactionsComponent)

@@ -8,10 +8,11 @@ const mapDispatchToProps = {
   handleSave: account => createAccount(account)
 }
 
-const NewAccount = ({ history, handleSave }) => {
+export const NewAccountComponent = ({ history, handleSave }) => {
   const onSave = (account) => {
-    handleSave(account)
-    history.push(`/accounts/${account.id}/transactions`)
+    handleSave(account).then((accountId) => {
+      history.push(`/accounts/${accountId}/transactions`)
+    })
   }
 
   const onCancel = () => {
@@ -23,9 +24,9 @@ const NewAccount = ({ history, handleSave }) => {
   )
 }
 
-NewAccount.propTypes = {
+NewAccountComponent.propTypes = {
   history: PropTypes.object.isRequired,
   handleSave: PropTypes.func.isRequired
 }
 
-export default connect(null, mapDispatchToProps)(NewAccount)
+export default connect(null, mapDispatchToProps)(NewAccountComponent)

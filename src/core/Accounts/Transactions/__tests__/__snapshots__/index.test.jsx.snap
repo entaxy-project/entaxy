@@ -17,9 +17,7 @@ exports[`Transactions matches snapshot with no transactions 1`] = `
         <h6
           className="MuiTypography-root-56 MuiTypography-h6-73"
           id="tableTitle"
-        >
-          Transactions
-        </h6>
+        />
       </div>
       <div
         className="TableToolbar-spacer-48"
@@ -30,6 +28,49 @@ exports[`Transactions matches snapshot with no transactions 1`] = `
         <div
           className="TableToolbar-buttons-50"
         >
+          <button
+            aria-describedby={null}
+            aria-label="Import transaction"
+            className="MuiButtonBase-root-105 MuiIconButton-root-99"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onContextMenu={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex="0"
+            title="Import transaction"
+            type="button"
+          >
+            <span
+              className="MuiIconButton-label-104"
+            >
+              <svg
+                style={
+                  Object {
+                    "width": "1.5rem",
+                  }
+                }
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M14,12L10,8V11H2V13H10V16M20,18V6C20,4.89 19.1,4 18,4H6C4.9,4 4,4.9 4,6V9H6V6H18V18H6V15H4V18C4,19.1 4.9,20 6,20H18C19.1,20 20,19.1 20,18Z"
+                  style={Object {}}
+                />
+              </svg>
+            </span>
+            <span
+              className="MuiTouchRipple-root-127"
+            />
+          </button>
           <button
             aria-describedby={null}
             aria-label="New transaction"
@@ -89,7 +130,7 @@ exports[`Transactions matches snapshot with no transactions 1`] = `
         }
       >
         <div
-          aria-colcount={8}
+          aria-colcount={6}
           aria-rowcount={0}
           className="ReactVirtualized__Table"
           role="grid"
@@ -162,52 +203,6 @@ exports[`Transactions matches snapshot with no transactions 1`] = `
                     className="MuiTouchRipple-root-127"
                   />
                 </span>
-              </span>
-            </div>
-            <div
-              aria-label="Institution"
-              aria-sort="none"
-              className="ReactVirtualized__Table__headerColumn ReactVirtualized__Table__sortableHeaderColumn"
-              onClick={[Function]}
-              onKeyDown={[Function]}
-              role="columnheader"
-              style={
-                Object {
-                  "WebkitFlex": "0 1 120px",
-                  "flex": "0 1 120px",
-                  "msFlex": "0 1 120px",
-                }
-              }
-              tabIndex={0}
-            >
-              <span
-                className="ReactVirtualized__Table__headerTruncatedText"
-                title="Institution"
-              >
-                Institution
-              </span>
-            </div>
-            <div
-              aria-label="Account"
-              aria-sort="none"
-              className="ReactVirtualized__Table__headerColumn ReactVirtualized__Table__sortableHeaderColumn"
-              onClick={[Function]}
-              onKeyDown={[Function]}
-              role="columnheader"
-              style={
-                Object {
-                  "WebkitFlex": "0 1 100px",
-                  "flex": "0 1 100px",
-                  "msFlex": "0 1 100px",
-                }
-              }
-              tabIndex={0}
-            >
-              <span
-                className="ReactVirtualized__Table__headerTruncatedText"
-                title="Account"
-              >
-                Account
               </span>
             </div>
             <div
@@ -358,9 +353,7 @@ exports[`Transactions matches snapshot with one transaction 1`] = `
         <h6
           className="MuiTypography-root-56 MuiTypography-h6-73"
           id="tableTitle"
-        >
-          Transactions
-        </h6>
+        />
       </div>
       <div
         className="TableToolbar-spacer-48"
@@ -371,6 +364,49 @@ exports[`Transactions matches snapshot with one transaction 1`] = `
         <div
           className="TableToolbar-buttons-50"
         >
+          <button
+            aria-describedby={null}
+            aria-label="Import transaction"
+            className="MuiButtonBase-root-105 MuiIconButton-root-99"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onContextMenu={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex="0"
+            title="Import transaction"
+            type="button"
+          >
+            <span
+              className="MuiIconButton-label-104"
+            >
+              <svg
+                style={
+                  Object {
+                    "width": "1.5rem",
+                  }
+                }
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M14,12L10,8V11H2V13H10V16M20,18V6C20,4.89 19.1,4 18,4H6C4.9,4 4,4.9 4,6V9H6V6H18V18H6V15H4V18C4,19.1 4.9,20 6,20H18C19.1,20 20,19.1 20,18Z"
+                  style={Object {}}
+                />
+              </svg>
+            </span>
+            <span
+              className="MuiTouchRipple-root-127"
+            />
+          </button>
           <button
             aria-describedby={null}
             aria-label="New transaction"
@@ -430,7 +466,7 @@ exports[`Transactions matches snapshot with one transaction 1`] = `
         }
       >
         <div
-          aria-colcount={8}
+          aria-colcount={6}
           aria-rowcount={1}
           className="ReactVirtualized__Table"
           role="grid"
@@ -503,52 +539,6 @@ exports[`Transactions matches snapshot with one transaction 1`] = `
                     className="MuiTouchRipple-root-127"
                   />
                 </span>
-              </span>
-            </div>
-            <div
-              aria-label="Institution"
-              aria-sort="none"
-              className="ReactVirtualized__Table__headerColumn ReactVirtualized__Table__sortableHeaderColumn"
-              onClick={[Function]}
-              onKeyDown={[Function]}
-              role="columnheader"
-              style={
-                Object {
-                  "WebkitFlex": "0 1 120px",
-                  "flex": "0 1 120px",
-                  "msFlex": "0 1 120px",
-                }
-              }
-              tabIndex={0}
-            >
-              <span
-                className="ReactVirtualized__Table__headerTruncatedText"
-                title="Institution"
-              >
-                Institution
-              </span>
-            </div>
-            <div
-              aria-label="Account"
-              aria-sort="none"
-              className="ReactVirtualized__Table__headerColumn ReactVirtualized__Table__sortableHeaderColumn"
-              onClick={[Function]}
-              onKeyDown={[Function]}
-              role="columnheader"
-              style={
-                Object {
-                  "WebkitFlex": "0 1 100px",
-                  "flex": "0 1 100px",
-                  "msFlex": "0 1 100px",
-                }
-              }
-              tabIndex={0}
-            >
-              <span
-                className="ReactVirtualized__Table__headerTruncatedText"
-                title="Account"
-              >
-                Account
               </span>
             </div>
             <div
