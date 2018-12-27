@@ -5,6 +5,8 @@ import { Provider } from 'react-redux'
 import store from '../../../store'
 import { AccountsComponent } from '../'
 
+jest.mock('../../../common/InstitutionIcon', () => 'InstitutionIcon')
+
 describe('Accounts index (Left Nav)', () => {
   it('matches snapshot with no accounts and no selected accountId', () => {
     const component = renderer.create((

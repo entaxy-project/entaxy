@@ -1,4 +1,5 @@
 /* eslint no-console: 0 */
+import uuid from 'uuid/v4'
 import { isEqual, isNil } from 'lodash'
 import Papa from 'papaparse'
 
@@ -34,7 +35,7 @@ export default class CsvParser {
     throw (new Error(`map() method not defined ${row}`))
   }
 
-  parse(file, values = null) {
+  parse(file, account) {
     const transactions = []
     return new Promise((resolve) => {
       Papa.parse(file, {
@@ -51,7 +52,11 @@ export default class CsvParser {
           if (!this.hasErrors()) {
             // Generate the transactions
             results.data.forEach((row) => {
-              transactions.push(this.map(row, values))
+              transactions.push(this.map(row, {
+                id: uuid(),
+                accountId: account.id,
+                ticker: account.currency
+              }))
               this._currentRow += 1
             })
           }

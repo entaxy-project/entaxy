@@ -5,8 +5,6 @@ import ImportResults from '../ImportResults'
 describe('ImportResults', () => {
   const mockOnSave = jest.fn()
   const mockOnCancel = jest.fn()
-  jest.mock('../ImportResults', () => 'ImportResults')
-  jest.mock('../CsvImportFields', () => 'CsvImportFields')
 
   beforeEach(() => {
     jest.clearAllMocks()

@@ -10,8 +10,7 @@ const csvData = [
 
 const expectedTransactions = [
   {
-    institution: 'TD',
-    account: 'Checking',
+    accountId: 1,
     type: 'sell',
     ticker: 'CAD',
     shares: 100,
@@ -20,8 +19,7 @@ const expectedTransactions = [
     createdAt: Date.parse('09/04/2018')
   },
   {
-    institution: 'TD',
-    account: 'Checking',
+    accountId: 1,
     type: 'sell',
     ticker: 'CAD',
     shares: 63.95,
@@ -30,8 +28,7 @@ const expectedTransactions = [
     createdAt: Date.parse('09/04/2018')
   },
   {
-    institution: 'TD',
-    account: 'Checking',
+    accountId: 1,
     type: 'sell',
     ticker: 'CAD',
     shares: 195,
@@ -40,8 +37,7 @@ const expectedTransactions = [
     createdAt: Date.parse('09/04/2018')
   },
   {
-    institution: 'TD',
-    account: 'Checking',
+    accountId: 1,
     type: 'buy',
     ticker: 'CAD',
     shares: 250,
@@ -52,12 +48,16 @@ const expectedTransactions = [
 ]
 
 describe('TD CSV parser', () => {
+  const account = {
+    id: 1,
+    currency: 'CAD'
+  }
   describe('parse', () => {
     it('returns transactions', async () => {
       await new CsvParser().parse
 
       const file = new File([csvData.join('\n')], 'test.csv', { type: 'text/csv' })
-      const { transactions, errors } = await new TdCsvParser().parse(file, { account: 'Checking', ticker: 'CAD' })
+      const { transactions, errors } = await new TdCsvParser().parse(file, account)
 
       expect(errors.base.length).toBe(0)
       expect(Object.keys(errors.transactions).length).toBe(0)
@@ -69,7 +69,7 @@ describe('TD CSV parser', () => {
       // Remove spaces from header
       csvData[0] = ',GC 0575-CASH WITHDRA,100.00,,588.61'
       const file = new File([csvData.join('\n')], 'test.csv', { type: 'text/csv' })
-      const { transactions, errors } = await new TdCsvParser().parse(file, { account: 'Checking', ticker: 'CAD' })
+      const { transactions, errors } = await new TdCsvParser().parse(file, account)
       expect(transactions.length).toBe(csvData.length)
       expect(errors.base.length).toBe(0)
       expect(errors.transactions[0]).toMatchObject(['Invalid date. Expecting format \'mm/dd/yyyy\''])

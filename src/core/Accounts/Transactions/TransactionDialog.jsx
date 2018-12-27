@@ -40,12 +40,13 @@ const TransactionDialog = ({
   handleChange,
   setFieldValue,
   onCancel,
-  open
+  open,
+  transaction
 }) => (
   <div className={classes.root}>
     <ModalDialog
       open={open}
-      title="Add new transaction"
+      title={transaction ? 'Edit transaction' : 'Add new transaction'}
       onSubmit={handleSubmit}
       onCancel={onCancel}
     >
@@ -141,7 +142,12 @@ TransactionDialog.propTypes = {
   handleChange: PropTypes.func.isRequired,
   setFieldValue: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
-  onCancel: PropTypes.func.isRequired
+  onCancel: PropTypes.func.isRequired,
+  transaction: PropTypes.object
+}
+
+TransactionDialog.defaultProps = {
+  transaction: null
 }
 
 export default compose(

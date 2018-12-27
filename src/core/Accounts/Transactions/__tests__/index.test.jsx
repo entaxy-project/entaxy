@@ -24,6 +24,7 @@ describe('Transactions', () => {
             sortBy="createAt"
             sortDirection="DESC"
             classes={{ }}
+            account={{ id: 1, nstitution: 'TD' }}
           />
         </BrowserRouter>
       </Provider>
@@ -38,10 +39,10 @@ describe('Transactions', () => {
           <TransactionsComponent
             deleteTransactions={mochDeleteTransactions}
             handleSort={mochHandleSort}
+            account={{ id: 1, description: 'TD EasyWeb', institution: 'TD' }}
             transactions={[{
               id: 3,
-              institution: 'Questrade',
-              account: 'RRSP',
+              accountId: 1,
               type: 'buy',
               ticker: 'VCE.TO',
               shares: '3',

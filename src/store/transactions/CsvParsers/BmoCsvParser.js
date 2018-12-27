@@ -1,5 +1,4 @@
 /* eslint no-console: 0 */
-import uuid from 'uuid/v4'
 import CsvParser from './CsvParser'
 
 export default class BmoCsvParser extends CsvParser {
@@ -18,13 +17,10 @@ export default class BmoCsvParser extends CsvParser {
     ]
   }
 
-  map(row, values) {
+  map(row, accountData) {
     return {
-      id: uuid(),
-      institution: 'BMO',
-      account: row['First Bank Card'],
+      ...accountData,
       type: (row['Transaction Amount'] >= 0 ? 'buy' : 'sell'),
-      ticker: values.ticker,
       shares: row['Transaction Amount'],
       bookValue: 1,
       description: this.parseString(row.Description),

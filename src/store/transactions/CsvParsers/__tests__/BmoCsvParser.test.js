@@ -15,8 +15,7 @@ const csvData = [
 
 const expectedTransactions = [
   {
-    institution: 'BMO',
-    account: '\'500766**********\'',
+    accountId: 1,
     type: 'sell',
     ticker: 'CAD',
     shares: -650,
@@ -25,8 +24,7 @@ const expectedTransactions = [
     createdAt: Date.parse('2018/06/28')
   },
   {
-    institution: 'BMO',
-    account: '\'500766**********\'',
+    accountId: 1,
     type: 'buy',
     ticker: 'CAD',
     shares: 2595.11,
@@ -35,8 +33,7 @@ const expectedTransactions = [
     createdAt: Date.parse('2018/06/29')
   },
   {
-    institution: 'BMO',
-    account: '\'500766**********\'',
+    accountId: 1,
     type: 'buy',
     ticker: 'CAD',
     shares: 0.01,
@@ -45,8 +42,7 @@ const expectedTransactions = [
     createdAt: Date.parse('2018/06/29')
   },
   {
-    institution: 'BMO',
-    account: '\'500766**********\'',
+    accountId: 1,
     type: 'buy',
     ticker: 'CAD',
     shares: 325,
@@ -57,10 +53,14 @@ const expectedTransactions = [
 ]
 
 describe('BMO CSV parser', () => {
+  const account = {
+    id: 1,
+    currency: 'CAD'
+  }
   describe('parse', () => {
     it('returns transactions', async () => {
       const file = new File([csvData.join('\n')], 'test.csv', { type: 'text/csv' })
-      const { transactions, errors } = await new BmoCsvParser().parse(file, { ticker: 'CAD' })
+      const { transactions, errors } = await new BmoCsvParser().parse(file, account)
 
       expect(errors.base.length).toBe(0)
       expect(Object.keys(errors.transactions).length).toBe(0)
@@ -73,7 +73,7 @@ describe('BMO CSV parser', () => {
       const oldHeader = csvData[3].split(',').map(string => string.trim()).join(',')
       csvData[3] = 'something else'
       const file = new File([csvData.join('\n')], 'test.csv', { type: 'text/csv' })
-      const { transactions, errors } = await new BmoCsvParser().parse(file)
+      const { transactions, errors } = await new BmoCsvParser().parse(file, account)
 
       expect(transactions.length).toBe(0)
       expect(errors.base.length).toBe(5)

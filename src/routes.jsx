@@ -11,7 +11,7 @@ import Dashboard from './core/Dashboard'
 import Transactions from './core/Accounts/Transactions'
 import NewAccount from './core/Accounts/new'
 import EditAccount from './core/Accounts/edit'
-import ImportTransactions from './core/ImportTransactions'
+import ImportTransactions from './core/Accounts/ImportTransactions'
 import Header from './common/Header'
 
 const mapStateToProps = ({ user }) => {
@@ -44,7 +44,11 @@ export class RoutesComponent extends React.Component {
               <Route exact path="/accounts/new" render={this.loginRequired(NewAccount)} />
               <Route exact path="/accounts/:accountId/edit" render={this.loginRequired(EditAccount)} />
               <Route exact path="/accounts/:accountId/transactions" render={this.loginRequired(Transactions)} />
-              <Route exact path="/import-transactions" component={ImportTransactions} />
+              <Route
+                exact
+                path="/accounts/:accountId/import/:importType"
+                render={this.loginRequired(ImportTransactions)}
+              />
             </Switch>
           }
         </BrowserRouter>

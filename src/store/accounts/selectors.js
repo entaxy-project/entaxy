@@ -1,10 +1,26 @@
-/* eslint no-console: 0 */
 import { createSelector } from 'reselect'
 
+export const institutionsData = {
+  RBC: {
+    importTypes: ['CSV'],
+    description: 'Royal Bank'
+  },
+  BMO: {
+    importTypes: ['CSV'],
+    description: 'Bank of Montreal'
+  },
+  TD: {
+    importTypes: ['CSV'],
+    description: 'TD EasyWeb'
+  },
+  Tangerine: {
+    importTypes: ['CSV'],
+    description: 'Personal Banking'
+  }
+}
+
+const getInstitutions = () => Object.keys(institutionsData)
 const getAccounts = state => state.accounts
-const getInstitutions = () => ([
-  'RBC', 'BMO', 'TD', 'Tangerine'
-])
 
 const findAccountById = (state, { match }) => (
   state.accounts.find(account => account.id === match.params.accountId)
@@ -28,7 +44,6 @@ export const sortedAccountsGroupedByInstitution = createSelector(
     return groupedAccounts
   }
 )
-
 
 export const sortedInstitutions = createSelector(
   getInstitutions,

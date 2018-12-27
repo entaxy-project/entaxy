@@ -9,8 +9,7 @@ const csvData = [
 
 const expectedTransactions = [
   {
-    institution: 'Tangerine',
-    account: 'Checking',
+    accountId: 1,
     type: 'buy',
     ticker: 'CAD',
     shares: 4.75,
@@ -19,8 +18,7 @@ const expectedTransactions = [
     createdAt: Date.parse('10/1/2014')
   },
   {
-    institution: 'Tangerine',
-    account: 'Checking',
+    accountId: 1,
     type: 'buy',
     ticker: 'CAD',
     shares: 2010,
@@ -29,8 +27,7 @@ const expectedTransactions = [
     createdAt: Date.parse('10/3/2014')
   },
   {
-    institution: 'Tangerine',
-    account: 'Checking',
+    accountId: 1,
     type: 'sell',
     ticker: 'CAD',
     shares: -5500,
@@ -41,13 +38,17 @@ const expectedTransactions = [
 ]
 
 describe('Tangerine CSV parser', () => {
+  const account = {
+    id: 1,
+    currency: 'CAD'
+  }
   describe('parse', () => {
     it('returns transactions', async () => {
       const file = new File([csvData.join('\n')], 'test.csv', { type: 'text/csv' })
       const {
         transactions,
         errors
-      } = await new TangerineCsvParser().parse(file, { account: 'Checking', ticker: 'CAD' })
+      } = await new TangerineCsvParser().parse(file, account)
 
       expect(errors.base.length).toBe(0)
       expect(Object.keys(errors.transactions).length).toBe(0)
@@ -62,7 +63,7 @@ describe('Tangerine CSV parser', () => {
       const {
         transactions,
         errors
-      } = await new TangerineCsvParser().parse(file, { account: 'Checking', ticker: 'CAD' })
+      } = await new TangerineCsvParser().parse(file, account)
 
       expect(transactions.length).toBe(0)
       expect(errors.base.length).toBe(csvData.length)

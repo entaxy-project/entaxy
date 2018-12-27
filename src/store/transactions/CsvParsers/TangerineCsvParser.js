@@ -1,4 +1,3 @@
-import uuid from 'uuid/v4'
 import CsvParser from './CsvParser'
 
 export default class TangerineCsvParser extends CsvParser {
@@ -13,13 +12,10 @@ export default class TangerineCsvParser extends CsvParser {
     ]
   }
 
-  map(row, values) {
+  map(row, accountData) {
     return {
-      id: uuid(),
-      institution: 'Tangerine',
-      account: values.account,
+      ...accountData,
       type: (row.Amount >= 0 ? 'buy' : 'sell'),
-      ticker: values.ticker,
       shares: row.Amount,
       bookValue: 1,
       description: this.parseString(row.Memo),

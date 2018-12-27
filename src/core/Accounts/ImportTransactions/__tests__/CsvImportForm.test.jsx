@@ -3,8 +3,7 @@ import renderer from 'react-test-renderer'
 import CsvImportForm from '../CsvImportForm'
 
 describe('CsvImportForm', () => {
-  const mockHandleSubmit = jest.fn()
-  const mockHandleChange = jest.fn()
+  const mockhandleParsedData = jest.fn()
   const mockOnCancel = jest.fn()
 
   beforeEach(() => {
@@ -14,12 +13,9 @@ describe('CsvImportForm', () => {
   it('matches snapshot for BMO', () => {
     const component = renderer.create((
       <CsvImportForm
-        handleSubmit={mockHandleSubmit}
-        handleChange={mockHandleChange}
+        handleParsedData={mockhandleParsedData}
         onCancel={mockOnCancel}
-        isSubmitting={false}
-        institution="BMO"
-        values={{ ticker: 'CAD' }}
+        account={{ id: 1, institution: 'BMO' }}
         classes={{ }}
       />
     ))

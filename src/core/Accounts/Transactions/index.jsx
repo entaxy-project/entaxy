@@ -1,4 +1,4 @@
-/* eslint no-console: 0 */
+/* eslint-disable no-console */
 import React from 'react'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
@@ -11,13 +11,10 @@ import format from 'date-fns/format'
 import Paper from '@material-ui/core/Paper'
 import Checkbox from '@material-ui/core/Checkbox'
 import Tooltip from '@material-ui/core/Tooltip'
-import AddIcon from '@material-ui/icons/Add'
-import Icon from '@mdi/react'
-import { mdiImport } from '@mdi/js'
 import { Column, Table, AutoSizer } from 'react-virtualized'
 import 'react-virtualized/styles.css'
 import TransactionDialog from './TransactionDialog'
-import TableToolbar from '../../../common/TableToolbar'
+import TransactionsToolbar from './TransactionsToolbar'
 import confirm from '../../../util/confirm'
 import { deleteTransactions, updateSortBy } from '../../../store/transactions/actions'
 import { makeFindAccountById } from '../../../store/accounts/selectors'
@@ -54,9 +51,6 @@ const styles = theme => ({
   },
   smallIcon: {
     fontSize: 18
-  },
-  importButton: {
-    fill: theme.palette.text.secondary
   }
 })
 
@@ -83,6 +77,19 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export class TransactionsComponent extends React.Component {
+  static getDerivedStateFromProps(props, state) {
+    // Reset the selected transactions when choosing a different account
+    if (props.account.id !== state.prevPropsAccountId) {
+      return {
+        prevPropsAccountId: props.account.id,
+        openTransactionDialog: false,
+        transaction: null,
+        selected: []
+      }
+    }
+    return null
+  }
+
   state = {
     openTransactionDialog: false,
     transaction: null,
@@ -90,11 +97,19 @@ export class TransactionsComponent extends React.Component {
   }
 
   handleNew = () => {
-    this.setState({ openTransactionDialog: true, transaction: null })
+    this.setState({
+      openTransactionDialog: true,
+      transaction: null,
+      selected: []
+    })
   }
 
   handleEdit = (transaction) => {
-    this.setState({ openTransactionDialog: true, transaction })
+    this.setState({
+      openTransactionDialog: true,
+      transaction,
+      selected: []
+    })
   }
 
   handleCancel = () => {
@@ -145,13 +160,9 @@ export class TransactionsComponent extends React.Component {
     })
   }
 
-  isSelected = id => this.state.selected.indexOf(id) !== -1
-
-  pageTitle = (account) => {
-    if (account) {
-      return `${account.institution} - ${account.name}`
-    }
-    return null
+  isSelected = (id) => {
+    console.log('isSelected', id)
+    return this.state.selected.indexOf(id) !== -1
   }
 
   render() {
@@ -174,26 +185,12 @@ export class TransactionsComponent extends React.Component {
           transaction={this.state.transaction}
         />
         <Paper elevation={0} className={classes.paper}>
-          <TableToolbar
-            title={this.pageTitle(account)}
-            selectedItems={selected}
-            onDelete={this.handleDelete}
-          >
-            <Tooltip title="Import transaction">
-              <IconButton aria-label="Import transaction" onClick={this.handleNew}>
-                <Icon
-                  path={mdiImport}
-                  size={1}
-                  className={classes.importButton}
-                />
-              </IconButton>
-            </Tooltip>
-            <Tooltip title="New transaction">
-              <IconButton aria-label="New transaction" onClick={this.handleNew}>
-                <AddIcon />
-              </IconButton>
-            </Tooltip>
-          </TableToolbar>
+          <TransactionsToolbar
+            account={account}
+            handleNew={this.handleNew}
+            handleDelete={this.handleDelete}
+            selectedTransactions={selected}
+          />
           <div className={classes.tableWrapper}>
             <AutoSizer>
               {({ width, height }) => (
@@ -307,11 +304,7 @@ TransactionsComponent.propTypes = {
   sortBy: PropTypes.string.isRequired,
   sortDirection: PropTypes.string.isRequired,
   deleteTransactions: PropTypes.func.isRequired,
-  account: PropTypes.object
-}
-
-TransactionsComponent.defaultProps = {
-  account: null
+  account: PropTypes.object.isRequired
 }
 
 export default compose(
