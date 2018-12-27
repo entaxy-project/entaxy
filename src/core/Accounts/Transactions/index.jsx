@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React from 'react'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
@@ -10,14 +11,14 @@ import format from 'date-fns/format'
 import Paper from '@material-ui/core/Paper'
 import Checkbox from '@material-ui/core/Checkbox'
 import Tooltip from '@material-ui/core/Tooltip'
-import AddIcon from '@material-ui/icons/Add'
 import { Column, Table, AutoSizer } from 'react-virtualized'
 import 'react-virtualized/styles.css'
 import TransactionDialog from './TransactionDialog'
-import TableToolbar from '../../../common/TableToolbar'
+import TransactionsToolbar from './TransactionsToolbar'
 import confirm from '../../../util/confirm'
 import { deleteTransactions, updateSortBy } from '../../../store/transactions/actions'
-import { sortedTransactions } from '../../../store/transactions/selectors'
+import { makeFindAccountById } from '../../../store/accounts/selectors'
+import { makeAccountTransactions } from '../../../store/transactions/selectors'
 
 const styles = theme => ({
   paper: {
@@ -53,12 +54,19 @@ const styles = theme => ({
   }
 })
 
-const mapStateToProps = (state) => {
-  return {
-    transactions: sortedTransactions(state),
-    sortBy: state.transactions.sortBy,
-    sortDirection: state.transactions.sortDirection
+// https://medium.com/@parkerdan/react-reselect-and-redux-b34017f8194c
+const makeMapStateToProps = () => {
+  const findAccountById = makeFindAccountById()
+  const accountTransactions = makeAccountTransactions()
+  const mapStateToProps = (state, props) => {
+    return {
+      sortBy: state.transactions.sortBy,
+      sortDirection: state.transactions.sortDirection,
+      account: findAccountById(state, props).account,
+      transactions: accountTransactions(state, props).transactions
+    }
   }
+  return mapStateToProps
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -69,6 +77,19 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export class TransactionsComponent extends React.Component {
+  static getDerivedStateFromProps(props, state) {
+    // Reset the selected transactions when choosing a different account
+    if (props.account.id !== state.prevPropsAccountId) {
+      return {
+        prevPropsAccountId: props.account.id,
+        openTransactionDialog: false,
+        transaction: null,
+        selected: []
+      }
+    }
+    return null
+  }
+
   state = {
     openTransactionDialog: false,
     transaction: null,
@@ -76,11 +97,19 @@ export class TransactionsComponent extends React.Component {
   }
 
   handleNew = () => {
-    this.setState({ openTransactionDialog: true, transaction: null })
+    this.setState({
+      openTransactionDialog: true,
+      transaction: null,
+      selected: []
+    })
   }
 
   handleEdit = (transaction) => {
-    this.setState({ openTransactionDialog: true, transaction })
+    this.setState({
+      openTransactionDialog: true,
+      transaction,
+      selected: []
+    })
   }
 
   handleCancel = () => {
@@ -131,7 +160,10 @@ export class TransactionsComponent extends React.Component {
     })
   }
 
-  isSelected = id => this.state.selected.indexOf(id) !== -1
+  isSelected = (id) => {
+    console.log('isSelected', id)
+    return this.state.selected.indexOf(id) !== -1
+  }
 
   render() {
     const currencyFormatter = new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD' })
@@ -140,29 +172,25 @@ export class TransactionsComponent extends React.Component {
       transactions,
       sortBy,
       sortDirection,
-      handleSort
+      handleSort,
+      account
     } = this.props
-
     const { selected } = this.state
     return (
       <div>
         <TransactionDialog
           open={this.state.openTransactionDialog}
           onCancel={this.handleCancel}
+          account={account}
           transaction={this.state.transaction}
         />
         <Paper elevation={0} className={classes.paper}>
-          <TableToolbar
-            title="Transactions"
-            selectedItems={selected}
-            onDelete={this.handleDelete}
-          >
-            <Tooltip title="New transaction">
-              <IconButton aria-label="New transaction" onClick={this.handleNew}>
-                <AddIcon />
-              </IconButton>
-            </Tooltip>
-          </TableToolbar>
+          <TransactionsToolbar
+            account={account}
+            handleNew={this.handleNew}
+            handleDelete={this.handleDelete}
+            selectedTransactions={selected}
+          />
           <div className={classes.tableWrapper}>
             <AutoSizer>
               {({ width, height }) => (
@@ -208,16 +236,6 @@ export class TransactionsComponent extends React.Component {
                         </span>
                       )
                     }}
-                  />
-                  <Column
-                    label="Institution"
-                    dataKey="institution"
-                    width={120}
-                  />
-                  <Column
-                    label="Account"
-                    dataKey="account"
-                    width={100}
                   />
                   <Column
                     width={120}
@@ -285,10 +303,11 @@ TransactionsComponent.propTypes = {
   handleSort: PropTypes.func.isRequired,
   sortBy: PropTypes.string.isRequired,
   sortDirection: PropTypes.string.isRequired,
-  deleteTransactions: PropTypes.func.isRequired
+  deleteTransactions: PropTypes.func.isRequired,
+  account: PropTypes.object.isRequired
 }
 
 export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
+  connect(makeMapStateToProps, mapDispatchToProps),
   withStyles(styles)
 )(TransactionsComponent)

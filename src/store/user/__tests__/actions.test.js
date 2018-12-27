@@ -8,6 +8,7 @@ import types from '../types'
 
 import { initialState as settingsInitialState } from '../../settings/reducer'
 import { initialState as marketValuesInitialState } from '../../marketValues/reducer'
+import { initialState as accountsInitialState } from '../../accounts/reducer'
 import { initialState as transactionsInitialState } from '../../transactions/reducer'
 
 jest.mock('blockstack', () => {
@@ -26,14 +27,16 @@ describe('user actions', () => {
     dispatch.mockClear()
   })
 
-  describe('loadUserData', () => {
+  describe('saveLoginData', () => {
     it('signed in user should load the profile', (done) => {
       const isUserSignedInSpy = jest.spyOn(blockstack, 'isUserSignedIn').mockImplementation(() => true)
+      const getState = () => ({ user: {} })
 
-      actions.loadUserData()(dispatch).then(() => {
+      actions.loadUserData()(dispatch, getState).then(() => {
         expect(dispatch).toHaveBeenCalledWith({
-          type: types.LOAD_USER_DATA_SUCCESS,
+          type: types.SAVE_LOGIN_DATA,
           payload: {
+            isLoginPending: false,
             isAuthenticatedWith: 'blockstack',
             name: 'mocked name',
             pictureUrl: 'mocked url',
@@ -45,20 +48,48 @@ describe('user actions', () => {
       })
     })
 
-    it('logged out user should not set anything', () => {
+    it('logged out user should not call anything', () => {
       const isUserSignedInSpy = jest.spyOn(blockstack, 'isUserSignedIn').mockImplementation(() => false)
+      const getState = () => ({ user: { isLoading: false } })
 
-      actions.loadUserData()(dispatch)
-
-      expect(dispatch).not.toHaveBeenCalledWith({ type: types.LOAD_USER_DATA, payload: false })
+      actions.loadUserData()(dispatch, getState)
+      expect(dispatch).not.toHaveBeenCalledWith({ type: types.DATA_IS_LOADING, payload: false })
       expect(isUserSignedInSpy).toHaveBeenCalled()
+    })
+
+    it('should not call anything if data is already loading', () => {
+      const isUserSignedInSpy = jest.spyOn(blockstack, 'isUserSignedIn').mockImplementation(() => true)
+      const getState = () => ({ user: { isLoading: true } })
+
+      actions.loadUserData()(dispatch, getState)
+      expect(dispatch).not.toHaveBeenCalledWith({ type: types.DATA_IS_LOADING, payload: false })
+      expect(isUserSignedInSpy).not.toHaveBeenCalled()
     })
   })
 
-  it('userLogin should sign the user out', () => {
-    const redirectToSignInSpy = jest.spyOn(blockstack, 'redirectToSignIn')
-    expect(actions.userLogin()).toEqual({ type: types.USER_LOGIN })
-    expect(redirectToSignInSpy).toHaveBeenCalled()
+  describe('loginAs', () => {
+    it('should login as blockstack', () => {
+      const redirectToSignInSpy = jest.spyOn(blockstack, 'redirectToSignIn')
+      actions.loginAs('blockstack')
+      expect(redirectToSignInSpy).toHaveBeenCalled()
+    })
+
+    it('should login as guest', () => {
+      const redirectToSignInSpy = jest.spyOn(blockstack, 'redirectToSignIn')
+
+      actions.loginAs('guest')(dispatch)
+      expect(dispatch).toHaveBeenCalledWith({
+        type: types.SAVE_LOGIN_DATA,
+        payload: {
+          isLoginPending: false,
+          isAuthenticatedWith: 'guest',
+          name: 'Guest user',
+          pictureUrl: null,
+          username: 'guest'
+        }
+      })
+      expect(redirectToSignInSpy).not.toHaveBeenCalled()
+    })
   })
 
   it('userLogout should sign the user out', () => {
@@ -69,6 +100,7 @@ describe('user actions', () => {
     expect(dispatch).toBeCalledWith({ type: types.USER_LOGOUT })
     expect(dispatch).toBeCalledWith({ type: 'LOAD_SETTINGS', payload: settingsInitialState })
     expect(dispatch).toBeCalledWith({ type: 'LOAD_MARKET_VALUES', payload: marketValuesInitialState })
+    expect(dispatch).toBeCalledWith({ type: 'LOAD_ACCOUNTS', payload: accountsInitialState })
     expect(dispatch).toBeCalledWith({ type: 'LOAD_TRANSACTIONS', payload: transactionsInitialState })
 
     expect(signUserOutSpy).toHaveBeenCalled()
@@ -87,32 +119,22 @@ describe('user actions', () => {
     expect(saveStorageSpy).toHaveBeenCalled()
   })
 
-  it('throws and error on failure to load blockstack storage', (done) => {
-    const error = new Error('message')
-    jest.spyOn(blockstack, 'isUserSignedIn').mockImplementation(() => true)
-    jest.spyOn(storage, 'loadState').mockImplementation(() => Promise.reject(error))
-
-    return actions.loadUserData()(dispatch).catch((e) => {
-      expect(e).toEqual(error)
-      done()
-    })
-  })
-
   describe('handleBlockstackLogin', () => {
     it('signs the user in', (done) => {
       jest.spyOn(storage, 'loadState').mockImplementation(() => Promise.resolve({}))
       jest.spyOn(blockstack, 'handlePendingSignIn').mockImplementation(() => Promise.resolve())
       jest.spyOn(blockstack, 'isUserSignedIn').mockImplementation(() => true)
       const mockStore = configureMockStore([thunk])
-      const store = mockStore({ initialState })
+      const store = mockStore({ user: { ...initialState, isLoading: false } })
 
       store.dispatch(actions.handleBlockstackLogin())
         .then(() => {
           expect(store.getActions()).toEqual([
-            { type: 'LOAD_USER_DATA', payload: true },
+            { type: 'DATA_IS_LOADING', payload: true },
             {
-              type: 'LOAD_USER_DATA_SUCCESS',
+              type: 'SAVE_LOGIN_DATA',
               payload: {
+                isLoginPending: false,
                 isAuthenticatedWith: 'blockstack',
                 username: 'mocked username',
                 name: 'mocked name',
@@ -120,9 +142,10 @@ describe('user actions', () => {
               }
             },
             { type: 'LOAD_SETTINGS', payload: undefined },
+            { type: 'LOAD_ACCOUNTS', payload: undefined },
             { type: 'LOAD_TRANSACTIONS', payload: undefined },
             { type: 'LOAD_MARKET_VALUES', payload: undefined },
-            { type: 'LOAD_USER_DATA', payload: false }
+            { type: 'DATA_IS_LOADING', payload: false }
           ])
           done()
         })

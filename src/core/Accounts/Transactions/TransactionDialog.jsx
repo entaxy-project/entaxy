@@ -40,41 +40,27 @@ const TransactionDialog = ({
   handleChange,
   setFieldValue,
   onCancel,
-  open
+  open,
+  transaction
 }) => (
   <div className={classes.root}>
     <ModalDialog
       open={open}
-      title="Add new transaction"
+      title={transaction ? 'Edit transaction' : 'Add new transaction'}
       onSubmit={handleSubmit}
       onCancel={onCancel}
     >
       <div>
         <TextField
-          label="Institution"
+          label="Description"
           inputProps={{
-            'aria-label': 'Institution',
+            'aria-label': 'Description',
             required: true,
-            maxLength: 100
+            maxLength: 256
           }}
           className={classes.input}
-          value={values.institution}
-          name="institution"
-          helperText="The institution where this asset is being held"
-          onChange={handleChange}
-          autoFocus
-        />
-        <TextField
-          label="Account"
-          inputProps={{
-            'aria-label': 'Account',
-            required: true,
-            maxLength: 100
-          }}
-          className={classes.input}
-          value={values.account}
-          name="account"
-          helperText="The name of the account (e.g. RRSP, TFSA, etc)"
+          value={values.description}
+          name="description"
           onChange={handleChange}
         />
         <TextField
@@ -156,7 +142,12 @@ TransactionDialog.propTypes = {
   handleChange: PropTypes.func.isRequired,
   setFieldValue: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
-  onCancel: PropTypes.func.isRequired
+  onCancel: PropTypes.func.isRequired,
+  transaction: PropTypes.object
+}
+
+TransactionDialog.defaultProps = {
+  transaction: null
 }
 
 export default compose(
@@ -167,8 +158,6 @@ export default compose(
     mapPropsToValues: ({ transaction }) => {
       if (transaction === null) {
         return {
-          institution: '',
-          account: '',
           type: '',
           ticker: '',
           shares: '',
@@ -185,6 +174,7 @@ export default compose(
       setSubmitting(true)
       props.handleSave({
         ...values,
+        accountId: props.account.id,
         createdAt: values.createdAt.getTime()
       })
       resetForm()

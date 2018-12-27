@@ -2,31 +2,24 @@
 import _ from 'lodash'
 import { createSelector } from 'reselect'
 
-const getSelectedAccountId = ({ settings }) => settings.selectedAccountId
 const getTransactions = ({ transactions }) => transactions
 const getMarketValues = state => state.marketValues
 const getPortfolioFilters = state => state.settings.portfolioFilters
 
-export const accountTransactions = createSelector(
-  getSelectedAccountId,
-  getTransactions,
-  (selectedAccountId, { list, sortBy, sortDirection }) => {
-    return ({
-      sortBy,
-      sortDirection,
-      list: _.filter(list, transaction => (transaction.accountId === selectedAccountId))
-    })
-  }
-)
+const accountTransactions = ({ transactions }, { match }) => {
+  const { list, sortBy, sortDirection } = transactions
+  return list
+    .filter(transaction => (
+      transaction.accountId === match.params.accountId
+    ))
+    .sort((a, b) => (
+      sortDirection === 'ASC' ? a[sortBy] > b[sortBy] : a[sortBy] < b[sortBy]
+    ))
+}
 
-export const sortedTransactions = createSelector(
+export const makeAccountTransactions = () => createSelector(
   accountTransactions,
-  ({ list, sortBy, sortDirection }) => {
-    if (sortDirection === 'ASC') {
-      return list.sort((a, b) => (a[sortBy] > b[sortBy]))
-    }
-    return list.sort((a, b) => (a[sortBy] < b[sortBy]))
-  }
+  transactions => ({ transactions })
 )
 
 const filteredTransactions = createSelector(

@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Import Transactions matches snapshot 1`] = `
+<div
+  className="MuiGrid-container-1 MuiGrid-justify-xs-center-18"
+>
+  <div
+    className="MuiPaper-root-98 MuiPaper-elevation2-102 MuiPaper-rounded-99"
+  >
+    <div>
+      <h6
+        className="MuiTypography-root-125 MuiTypography-h6-142 MuiTypography-alignCenter-148"
+      >
+        Import transactions from 
+      </h6>
+      <p
+        className="MuiTypography-root-125 MuiTypography-body1-134"
+      >
+        <InstitutionIcon
+          institution="TD"
+          size="small"
+        />
+      </p>
+    </div>
+    <hr
+      className="MuiDivider-root-160"
+    />
+  </div>
+</div>
+`;

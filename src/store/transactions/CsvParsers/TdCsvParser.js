@@ -1,4 +1,3 @@
-import uuid from 'uuid/v4'
 import CsvParser from './CsvParser'
 
 export default class BmoCsvParser extends CsvParser {
@@ -15,13 +14,10 @@ export default class BmoCsvParser extends CsvParser {
   // [2] Withdrawals
   // [3] Deposits
   // [4] Balance
-  map(row, values) {
+  map(row, accountData) {
     return {
-      id: uuid(),
-      institution: 'TD',
-      account: values.account,
+      ...accountData,
       type: (row[2] === null ? 'buy' : 'sell'),
-      ticker: values.ticker,
       shares: (row[2] === null ? row[3] : row[2]),
       bookValue: 1,
       description: this.parseString(row[1]), // Description

@@ -6,9 +6,10 @@ describe('user reducer', () => {
     expect(userReducer(undefined, {})).toEqual(initialState)
   })
 
-  it('should handle LOAD_USER_DATA_SUCCESS with authenticated user', () => {
-    const type = types.LOAD_USER_DATA_SUCCESS
+  it('should handle SAVE_LOGIN_DATA with authenticated user', () => {
+    const type = types.SAVE_LOGIN_DATA
     const payload = {
+      isLoginPending: false,
       isAuthenticatedWith: 'blockstack',
       username: 'test-username',
       name: 'Test Name',
@@ -17,23 +18,17 @@ describe('user reducer', () => {
     expect(userReducer(undefined, { type, payload })).toEqual({ ...initialState, ...payload })
   })
 
-  it('should handle LOAD_USER_DATA with pending user', () => {
-    const type = types.LOAD_USER_DATA
+  it('should handle DATA_IS_LOADING with pending user', () => {
+    const type = types.DATA_IS_LOADING
     const payload = true
     expect(userReducer(undefined, { type, payload })).toEqual({ ...initialState, isLoading: payload })
   })
 
-  it('should handle USER_LOGIN', () => {
-    const type = types.USER_LOGIN
-    const payload = { isLoginPending: true }
-    expect(userReducer(undefined, { type, payload })).toEqual({ ...initialState, ...payload })
-  })
-
-  it('should handle USER_LOGIN_SUCCESS', () => {
-    const type = types.USER_LOGIN_SUCCESS
-    const payload = { isAuthenticatedWith: 'blockstack' }
-    expect(userReducer(undefined, { type, payload })).toEqual({ ...initialState, ...payload })
-  })
+  // it('should handle USER_LOGIN', () => {
+  //   const type = types.USER_LOGIN
+  //   const payload = { isLoginPending: true }
+  //   expect(userReducer(undefined, { type, payload })).toEqual({ ...initialState, ...payload })
+  // })
 
   it('should handle USER_LOGOUT', () => {
     const type = types.USER_LOGOUT

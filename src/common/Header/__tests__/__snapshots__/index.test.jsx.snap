@@ -1,137 +1,166 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Header matches snapshot 1`] = `
-<header
-  className="MuiPaper-root-11 MuiPaper-elevation4-17 MuiAppBar-root-2 MuiAppBar-positionStatic-6 MuiAppBar-colorPrimary-9"
+<div
+  className="Header-root-1"
 >
-  <div
-    className="MuiToolbar-root-38 MuiToolbar-regular-40 MuiToolbar-gutters-39 Header-toolbar-1"
+  <header
+    className="MuiPaper-root-13 MuiPaper-elevation4-19 MuiAppBar-root-4 MuiAppBar-positionFixed-5 MuiAppBar-colorPrimary-11 mui-fixed Header-header-2"
   >
     <div
-      className="Logo-logo-42"
+      className="MuiToolbar-root-40 MuiToolbar-regular-42 MuiToolbar-gutters-41 Header-toolbar-3"
     >
-      <img
-        alt="Entaxy logo"
-        className="Logo-image-43"
-        src="logo.png"
-      />
-      <a
-        className="MuiTypography-root-45 MuiTypography-h6-62 MuiTypography-colorInherit-74 Logo-title-44"
-        href="/"
-        onClick={[Function]}
+      <div
+        className="Logo-logo-44"
       >
-        Entaxy
-      </a>
+        <img
+          alt="Entaxy logo"
+          className="Logo-image-45"
+          src="logo.png"
+        />
+        <a
+          className="MuiTypography-root-47 MuiTypography-h6-64 MuiTypography-colorInherit-76 Logo-title-46"
+          href="/"
+          onClick={[Function]}
+        >
+          Entaxy
+        </a>
+      </div>
+      <div>
+        <a
+          aria-current={null}
+          className="MuiButtonBase-root-108 MuiButton-root-82 MuiButton-text-84 MuiButton-flat-87 MuiButton-sizeSmall-105 MuiButton-colorInherit-103"
+          href="/portfolio"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          role="button"
+          tabIndex="0"
+        >
+          <span
+            className="MuiButton-label-83"
+          >
+            Portfolio
+          </span>
+          <span
+            className="MuiTouchRipple-root-162"
+          />
+        </a>
+        <a
+          aria-current={null}
+          className="MuiButtonBase-root-108 MuiButton-root-82 MuiButton-text-84 MuiButton-flat-87 MuiButton-sizeSmall-105 MuiButton-colorInherit-103"
+          href="/import-transactions"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          role="button"
+          tabIndex="0"
+        >
+          <span
+            className="MuiButton-label-83"
+          >
+            Import Transactions
+          </span>
+          <span
+            className="MuiTouchRipple-root-162"
+          />
+        </a>
+      </div>
+      <LoginButton />
     </div>
-    <div>
-      <a
-        aria-current={null}
-        className="MuiButtonBase-root-106 MuiButton-root-80 MuiButton-text-82 MuiButton-flat-85 MuiButton-sizeSmall-103 MuiButton-colorInherit-101"
-        href="/portfolio"
-        onBlur={[Function]}
-        onClick={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        role="button"
-        tabIndex="0"
-      >
-        <span
-          className="MuiButton-label-81"
-        >
-          Portfolio
-        </span>
-        <span
-          className="MuiTouchRipple-root-109"
-        />
-      </a>
-      <a
-        aria-current={null}
-        className="MuiButtonBase-root-106 MuiButton-root-80 MuiButton-text-82 MuiButton-flat-85 MuiButton-sizeSmall-103 MuiButton-colorInherit-101"
-        href="/transactions"
-        onBlur={[Function]}
-        onClick={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        role="button"
-        tabIndex="0"
-      >
-        <span
-          className="MuiButton-label-81"
-        >
-          Transactions
-        </span>
-        <span
-          className="MuiTouchRipple-root-109"
-        />
-      </a>
-      <a
-        aria-current={null}
-        className="MuiButtonBase-root-106 MuiButton-root-80 MuiButton-text-82 MuiButton-flat-85 MuiButton-sizeSmall-103 MuiButton-colorInherit-101"
-        href="/import-transactions"
-        onBlur={[Function]}
-        onClick={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        role="button"
-        tabIndex="0"
-      >
-        <span
-          className="MuiButton-label-81"
-        >
-          Import Transactions
-        </span>
-        <span
-          className="MuiTouchRipple-root-109"
-        />
-      </a>
-    </div>
-    <button
-      className="MuiButtonBase-root-106 MuiButton-root-80 MuiButton-text-82 MuiButton-flat-85 MuiButton-colorInherit-101"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex="0"
-      type="button"
+  </header>
+  <div
+    className="MuiDrawer-root-113 MuiDrawer-docked-114"
+  >
+    <div
+      className="MuiPaper-root-13 MuiPaper-elevation0-15 MuiDrawer-paper-115 withRouter-LeftDrawer--drawerPaper-112 MuiDrawer-paperAnchorLeft-116 MuiDrawer-paperAnchorDockedLeft-120"
     >
-      <span
-        className="MuiButton-label-81"
-      >
-        Login
-      </span>
-      <span
-        className="MuiTouchRipple-root-109"
+      <div
+        className="withRouter-LeftDrawer--toolbar-111"
       />
-    </button>
+      <ul
+        className="MuiList-root-125 MuiList-padding-126"
+      >
+        <a
+          aria-current={null}
+          className="MuiButtonBase-root-108 MuiListItem-root-129 MuiListItem-default-132 MuiListItem-gutters-137 MuiListItem-button-138"
+          href="/dashboard"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          role="button"
+          tabIndex="0"
+        >
+          <div
+            className="MuiListItemIcon-root-141"
+          >
+            <svg
+              aria-hidden="true"
+              className="MuiSvgIcon-root-142"
+              focusable="false"
+              role="presentation"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M0 0h24v24H0z"
+                fill="none"
+              />
+              <path
+                d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"
+              />
+            </svg>
+          </div>
+          <div
+            className="MuiListItemText-root-151"
+          >
+            <span
+              className="MuiTypography-root-47 MuiTypography-subheading-54 MuiListItemText-primary-154"
+            >
+              Dashboard
+            </span>
+          </div>
+          <span
+            className="MuiTouchRipple-root-162"
+          />
+        </a>
+      </ul>
+      <hr
+        className="MuiDivider-root-157"
+      />
+      <Accounts
+        accountId={null}
+      />
+    </div>
   </div>
-</header>
+  <div>
+    content
+  </div>
+</div>
 `;

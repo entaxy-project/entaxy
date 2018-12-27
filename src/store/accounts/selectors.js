@@ -1,10 +1,35 @@
-/* eslint no-console: 0 */
 import { createSelector } from 'reselect'
 
+export const institutionsData = {
+  RBC: {
+    importTypes: ['CSV'],
+    description: 'Royal Bank'
+  },
+  BMO: {
+    importTypes: ['CSV'],
+    description: 'Bank of Montreal'
+  },
+  TD: {
+    importTypes: ['CSV'],
+    description: 'TD EasyWeb'
+  },
+  Tangerine: {
+    importTypes: ['CSV'],
+    description: 'Personal Banking'
+  }
+}
+
+const getInstitutions = () => Object.keys(institutionsData)
 const getAccounts = state => state.accounts
-const getInstitutions = () => ([
-  'RBC', 'BMO', 'TD', 'Tangerine'
-])
+
+const findAccountById = (state, { match }) => (
+  state.accounts.find(account => account.id === match.params.accountId)
+)
+
+export const makeFindAccountById = () => createSelector(
+  findAccountById,
+  account => ({ account })
+)
 
 export const sortedAccountsGroupedByInstitution = createSelector(
   getAccounts,
@@ -14,7 +39,7 @@ export const sortedAccountsGroupedByInstitution = createSelector(
       if (!Object.keys(groupedAccounts).includes(account.institution)) {
         groupedAccounts[account.institution] = []
       }
-      groupedAccounts[account.institution].push(account)
+      return groupedAccounts[account.institution].push(account)
     })
     return groupedAccounts
   }

@@ -11,10 +11,11 @@ export const afterAccountsChanged = async () => {
 }
 
 export const createAccount = (account) => {
-  return (dispatch) => {
+  return async (dispatch) => {
     const accountId = uuid()
     dispatch({ type: types.CREATE_ACCOUNT, payload: { ...account, id: accountId } })
-    return afterAccountsChanged(dispatch)
+    await afterAccountsChanged(dispatch)
+    return accountId
   }
 }
 

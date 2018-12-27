@@ -2,15 +2,12 @@ import React from 'react'
 import renderer from 'react-test-renderer'
 import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
-import store from '../../../store'
+import store from '../../../../store'
 import { TransactionsComponent } from '../'
 
 describe('Transactions', () => {
   const mochDeleteTransactions = jest.fn()
   const mochHandleSort = jest.fn()
-  const props = {
-    classes: { }
-  }
 
   beforeEach(() => {
     jest.clearAllMocks()
@@ -26,7 +23,8 @@ describe('Transactions', () => {
             transactions={[]}
             sortBy="createAt"
             sortDirection="DESC"
-            classes={{ ...props }}
+            classes={{ }}
+            account={{ id: 1, nstitution: 'TD' }}
           />
         </BrowserRouter>
       </Provider>
@@ -41,10 +39,10 @@ describe('Transactions', () => {
           <TransactionsComponent
             deleteTransactions={mochDeleteTransactions}
             handleSort={mochHandleSort}
+            account={{ id: 1, description: 'TD EasyWeb', institution: 'TD' }}
             transactions={[{
               id: 3,
-              institution: 'Questrade',
-              account: 'RRSP',
+              accountId: 1,
               type: 'buy',
               ticker: 'VCE.TO',
               shares: '3',
@@ -53,7 +51,7 @@ describe('Transactions', () => {
             }]}
             sortBy="createAt"
             sortDirection="DESC"
-            classes={{ ...props }}
+            classes={{ }}
           />
         </BrowserRouter>
       </Provider>

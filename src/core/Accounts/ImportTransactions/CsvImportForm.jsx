@@ -1,18 +1,15 @@
 import React from 'react'
-import { compose } from 'recompose'
 import { withStyles } from '@material-ui/core/styles'
 import PropTypes from 'prop-types'
-import { withFormik } from 'formik'
 import Button from '@material-ui/core/Button'
 import Divider from '@material-ui/core/Divider'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import green from '@material-ui/core/colors/green'
 import CsvDropzone from './CsvDropzone'
-import CsvImportFields from './CsvImportFields'
-import RbcCsvParser from '../../store/transactions/CsvParsers/RbcCsvParser'
-import BmoCsvParser from '../../store/transactions/CsvParsers/BmoCsvParser'
-import TdCsvParser from '../../store/transactions/CsvParsers/TdCsvParser'
-import TangerineCsvParser from '../../store/transactions/CsvParsers/TangerineCsvParser'
+import RbcCsvParser from '../../../store/transactions/CsvParsers/RbcCsvParser'
+import BmoCsvParser from '../../../store/transactions/CsvParsers/BmoCsvParser'
+import TdCsvParser from '../../../store/transactions/CsvParsers/TdCsvParser'
+import TangerineCsvParser from '../../../store/transactions/CsvParsers/TangerineCsvParser'
 
 const styles = theme => ({
   root: {
@@ -28,7 +25,7 @@ const styles = theme => ({
     'justify-content': 'flex-end',
     'padding-top': '10px'
   },
-  wrapper: {
+  buttonWrapper: {
     margin: theme.spacing.unit,
     position: 'relative'
   },
@@ -57,8 +54,13 @@ const parsers = {
 
 class CsvImportForm extends React.Component {
   state = {
+    isSubmitting: false,
     file: null,
     error: null
+  }
+
+  setSubmitting = (value) => {
+    this.setState({ isSubmitting: value })
   }
 
   handleFileUpload = (acceptedFiles) => {
@@ -66,44 +68,45 @@ class CsvImportForm extends React.Component {
       file: acceptedFiles[0],
       error: (acceptedFiles[0].type === 'text/csv' ? null : 'The file you uploaded is not a CSV file')
     })
-    this.props.setFieldValue('file', acceptedFiles[0])
+  }
+
+  handleSubmit = (event) => {
+    const { account, handleParsedData } = this.props
+    new parsers[account.institution]().parse(this.state.file, account)
+      .then(({ transactions, errors }) => {
+        this.setSubmitting(false)
+        handleParsedData(transactions, errors)
+      })
+    event.preventDefault()
   }
 
   render() {
     const {
       classes,
-      handleSubmit,
-      values,
-      handleChange,
       onCancel,
-      institution,
-      isSubmitting
+      account
     } = this.props
 
     const {
       file,
-      error
+      error,
+      isSubmitting
     } = this.state
 
     return (
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={this.handleSubmit}>
         <div className={classes.root}>
-          <CsvImportFields
-            institution={institution}
-            values={values}
-            handleChange={handleChange}
-          />
           <CsvDropzone
             className={classes.dropzone}
             handleFileUpload={this.handleFileUpload}
-            institution={institution}
+            account={account}
             file={file}
             error={error}
           />
         </div>
         <Divider />
         <div className={classes.formActions}>
-          <div className={classes.wrapper}>
+          <div className={classes.buttonWrapper}>
             <Button
               type="submit"
               variant="contained"
@@ -124,35 +127,9 @@ class CsvImportForm extends React.Component {
 
 CsvImportForm.propTypes = {
   classes: PropTypes.object.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
-  values: PropTypes.object.isRequired,
-  handleChange: PropTypes.func.isRequired,
+  handleParsedData: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired,
-  institution: PropTypes.string.isRequired,
-  setFieldValue: PropTypes.func.isRequired,
-  isSubmitting: PropTypes.bool.isRequired
+  account: PropTypes.object.isRequired
 }
 
-export default compose(
-  withStyles(styles),
-  withFormik({
-    mapPropsToValues: ({ institution }) => ({
-      institution,
-      account: '',
-      type: '',
-      ticker: '',
-      shares: '',
-      bookValue: '',
-      createdAt: new Date(),
-      file: null
-    }),
-    handleSubmit: (values, { props, setSubmitting }) => {
-      setSubmitting(true)
-      new parsers[values.institution]().parse(values.file, values)
-        .then(({ transactions, errors }) => {
-          setSubmitting(false)
-          props.handleParsedData(transactions, errors)
-        })
-    }
-  })
-)(CsvImportForm)
+export default withStyles(styles)(CsvImportForm)

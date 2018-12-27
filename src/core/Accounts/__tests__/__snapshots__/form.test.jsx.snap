@@ -1,0 +1,237 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Account form matches snapshot 1`] = `
+<div
+  className="MuiGrid-container-1 MuiGrid-justify-xs-center-18"
+>
+  <div
+    className="MuiPaper-root-98 MuiPaper-elevation2-102 MuiPaper-rounded-99"
+  >
+    <form
+      onSubmit={[MockFunction]}
+    >
+      <div
+        className="MuiFormControl-root-125"
+      >
+        <label
+          className="MuiFormLabel-root-140 MuiInputLabel-root-129 MuiInputLabel-formControl-134 MuiInputLabel-animated-137"
+          data-shrink={false}
+        >
+          Account name
+        </label>
+        <div
+          className="MuiInputBase-root-160 MuiInput-root-147 MuiInput-underline-151 MuiInputBase-formControl-161 MuiInput-formControl-148"
+          onClick={[Function]}
+        >
+          <input
+            aria-invalid={false}
+            aria-label="Account name"
+            autoFocus={true}
+            className="MuiInputBase-input-170 MuiInput-input-155"
+            disabled={false}
+            maxLength={100}
+            name="name"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            required={true}
+            type="text"
+          />
+        </div>
+      </div>
+      <div
+        className="css-10nd86i"
+        onKeyDown={[Function]}
+      >
+        <div
+          className="css-vj8t7z"
+          onMouseDown={[Function]}
+          onTouchEnd={[Function]}
+        >
+          <div
+            className="css-1hwfws3"
+          >
+            <div
+              className="css-1492t68"
+            >
+              Institution
+            </div>
+            <div
+              className="css-1g6gooi"
+            >
+              <div
+                className=""
+                style={
+                  Object {
+                    "display": "inline-block",
+                  }
+                }
+              >
+                <input
+                  aria-autocomplete="list"
+                  autoCapitalize="none"
+                  autoComplete="off"
+                  autoCorrect="off"
+                  disabled={false}
+                  id="react-select-2-input"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  spellCheck="false"
+                  style={
+                    Object {
+                      "background": 0,
+                      "border": 0,
+                      "boxSizing": "content-box",
+                      "color": "inherit",
+                      "fontSize": "inherit",
+                      "opacity": 1,
+                      "outline": 0,
+                      "padding": 0,
+                      "width": "1px",
+                    }
+                  }
+                  tabIndex="0"
+                  type="text"
+                  value=""
+                />
+                <div
+                  style={
+                    Object {
+                      "height": 0,
+                      "left": 0,
+                      "overflow": "scroll",
+                      "position": "absolute",
+                      "top": 0,
+                      "visibility": "hidden",
+                      "whiteSpace": "pre",
+                    }
+                  }
+                >
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="css-1wy0on6"
+          >
+            <span
+              className="css-d8oujb"
+            />
+            <div
+              aria-hidden="true"
+              className="css-1ep9fjw"
+              onMouseDown={[Function]}
+              onTouchEnd={[Function]}
+            >
+              <svg
+                aria-hidden="true"
+                className="css-19bqh2r"
+                focusable="false"
+                height={20}
+                viewBox="0 0 20 20"
+                width={20}
+              >
+                <path
+                  d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <input
+          name="institution"
+          type="hidden"
+          value=""
+        />
+      </div>
+      <button
+        className="MuiButtonBase-root-203 MuiButton-root-177 MuiButton-text-179 MuiButton-flat-182 MuiButton-sizeSmall-200"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[MockFunction]}
+        onContextMenu={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="0"
+        type="button"
+      >
+        <span
+          className="MuiButton-label-178"
+        >
+          Delete this account
+        </span>
+        <span
+          className="MuiTouchRipple-root-211"
+        />
+      </button>
+      <hr
+        className="MuiDivider-root-206"
+      />
+      <div>
+        <button
+          className="MuiButtonBase-root-203 MuiButton-root-177 MuiButton-text-179 MuiButton-textPrimary-180 MuiButton-flat-182 MuiButton-flatPrimary-183"
+          disabled={false}
+          onBlur={[Function]}
+          onContextMenu={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex="0"
+          type="submit"
+        >
+          <span
+            className="MuiButton-label-178"
+          >
+            Save
+          </span>
+          <span
+            className="MuiTouchRipple-root-211"
+          />
+        </button>
+        <button
+          className="MuiButtonBase-root-203 MuiButton-root-177 MuiButton-text-179 MuiButton-textSecondary-181 MuiButton-flat-182 MuiButton-flatSecondary-184"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[MockFunction]}
+          onContextMenu={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex="0"
+          type="button"
+        >
+          <span
+            className="MuiButton-label-178"
+          >
+            Cancel
+          </span>
+          <span
+            className="MuiTouchRipple-root-211"
+          />
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+`;

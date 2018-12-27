@@ -8,12 +8,20 @@ import Paper from '@material-ui/core/Paper'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import LaptopIcon from '@material-ui/icons/Laptop'
+import Avatar from '@material-ui/core/Avatar'
 import grey from '@material-ui/core/colors/grey'
-import { userLogin } from '../../store/user/actions'
+import Card from '@material-ui/core/Card'
+import CardHeader from '@material-ui/core/CardHeader'
+import CardActions from '@material-ui/core/CardActions'
+import { NavLink } from 'react-router-dom'
+import { loginAs } from '../../store/user/actions'
 import blockstackLogo from './blockstack-bug-rounded.svg'
 
 const styles = {
-  paper: {
+  loggedOutContainer: {
+    paddingTop: 20
+  },
+  loggedInContainer: {
     padding: '10px',
     margin: '10px 10px 20px 0',
     background: grey[200]
@@ -38,9 +46,13 @@ const styles = {
   }
 }
 
+const mapStateToProps = ({ user }) => {
+  return { user }
+}
+
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleLogin: (loginType) => { dispatch(userLogin(loginType)) }
+    handleLogin: (loginType) => { dispatch(loginAs(loginType)) }
   }
 }
 
@@ -51,14 +63,45 @@ export class LandingCardComponent extends React.Component {
   }
 
   render() {
-    const { classes } = this.props
+    const { classes, user } = this.props
+    if (user.isAuthenticatedWith) {
+      return (
+        <Grid item xs={12} className={classes.loggedOutContainer}>
+          <Typography variant="subtitle2">
+            You are logged in as
+          </Typography>
+          <Card className={classes.card}>
+            <CardHeader
+              avatar={
+                <Avatar
+                  src={user.pictureUrl}
+                  alt={user.name}
+                />
+              }
+              title={user.name}
+            />
+            <CardActions>
+              <Button
+                size="small"
+                color="secondary"
+                component={NavLink}
+                to="/dashboard"
+              >
+                Continue to your Dashboard
+              </Button>
+            </CardActions>
+          </Card>
+        </Grid>
+      )
+    }
+
     return (
       <Grid container className={classes.cards}>
         <Typography color="secondary" variant="h5">
           Where do you want to store your data?
         </Typography>
         <Grid item xs={6}>
-          <Paper elevation={1} className={classes.paper}>
+          <Paper elevation={1} className={classes.loggedInContainer}>
             <Typography variant="subtitle2" className={classes.blockstackTitle}>
               Anywhere with blockstack
             </Typography>
@@ -79,7 +122,7 @@ export class LandingCardComponent extends React.Component {
           </Paper>
         </Grid>
         <Grid item xs={6}>
-          <Paper elevation={1} className={classes.paper}>
+          <Paper elevation={1} className={classes.loggedInContainer}>
             <Typography variant="subtitle2">
               <LaptopIcon className={classes.browserIcon} />
               Locally in your browser
@@ -105,10 +148,11 @@ export class LandingCardComponent extends React.Component {
 LandingCardComponent.propTypes = {
   classes: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
-  handleLogin: PropTypes.func.isRequired
+  handleLogin: PropTypes.func.isRequired,
+  user: PropTypes.object.isRequired
 }
 
 export default compose(
-  connect(null, mapDispatchToProps),
+  connect(mapStateToProps, mapDispatchToProps),
   withStyles(styles)
 )(LandingCardComponent)

@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`HandleLogin matches snapshot with logged in user profile 1`] = `
+exports[`LoginButton matches snapshot with logged in user profile 1`] = `
 <div>
   <div
     aria-describedby={null}
-    className="MuiAvatar-root-44"
+    className="MuiAvatar-root-9 MuiAvatar-colorDefault-10"
     onBlur={[Function]}
     onFocus={[Function]}
     onMouseLeave={[Function]}
@@ -15,10 +15,11 @@ exports[`HandleLogin matches snapshot with logged in user profile 1`] = `
   />
   <button
     aria-owns={null}
-    className="MuiButtonBase-root-27 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 MuiButton-colorInherit-22"
+    className="MuiButtonBase-root-38 MuiButton-root-12 MuiButton-text-14 MuiButton-flat-17 MuiButton-colorInherit-33"
     disabled={false}
     onBlur={[Function]}
     onClick={[Function]}
+    onContextMenu={[Function]}
     onFocus={[Function]}
     onKeyDown={[Function]}
     onKeyUp={[Function]}
@@ -32,42 +33,13 @@ exports[`HandleLogin matches snapshot with logged in user profile 1`] = `
     type="button"
   >
     <span
-      className="MuiButton-label-2"
+      className="MuiButton-label-13"
     >
       Test name
     </span>
     <span
-      className="MuiTouchRipple-root-30"
+      className="MuiTouchRipple-root-41"
     />
   </button>
 </div>
-`;
-
-exports[`HandleLogin matches snapshot with logged out user 1`] = `
-<button
-  className="MuiButtonBase-root-27 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 MuiButton-colorInherit-22"
-  disabled={false}
-  onBlur={[Function]}
-  onClick={[MockFunction]}
-  onFocus={[Function]}
-  onKeyDown={[Function]}
-  onKeyUp={[Function]}
-  onMouseDown={[Function]}
-  onMouseLeave={[Function]}
-  onMouseUp={[Function]}
-  onTouchEnd={[Function]}
-  onTouchMove={[Function]}
-  onTouchStart={[Function]}
-  tabIndex="0"
-  type="button"
->
-  <span
-    className="MuiButton-label-2"
-  >
-    Login
-  </span>
-  <span
-    className="MuiTouchRipple-root-30"
-  />
-</button>
 `;

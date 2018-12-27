@@ -10,41 +10,37 @@ const csvData = [
 
 const expectedTransactions = [
   {
-    account: 'Chequing',
+    accountId: 1,
     bookValue: 1,
-    createdAt: 1529899200000,
+    createdAt: Date.parse('2018/06/25'),
     description: 'Email Trfs - Email Trfs',
-    institution: 'RBC',
     shares: 20,
     ticker: 'CAD',
     type: 'buy'
   },
   {
-    account: 'Chequing',
+    accountId: 1,
     bookValue: 1,
-    createdAt: 1530244800000,
+    createdAt: Date.parse('2018/06/29'),
     description: 'PAYROLL DEPOSIT - PAYROLL DEPOSIT',
-    institution: 'RBC',
     shares: 2742.03,
     ticker: 'CAD',
     type: 'buy'
   },
   {
-    account: 'Savings',
+    accountId: 1,
     bookValue: 1,
-    createdAt: 1534910400000,
+    createdAt: Date.parse('2018/08/22'),
     description: 'DEPOSIT - DEPOSIT',
-    institution: 'RBC',
     shares: 5300,
-    ticker: 'USD',
+    ticker: 'CAD',
     type: 'buy'
   },
   {
-    account: 'Visa',
+    accountId: 1,
     bookValue: 1,
-    createdAt: 1534132800000,
+    createdAt: Date.parse('2018/08/13'),
     description: 'LYFT *RIDE MON 11AM VANCOUVER BC - LYFT *RIDE MON 11AM VANCOUVER BC',
-    institution: 'RBC',
     shares: -16.61,
     ticker: 'CAD',
     type: 'sell'
@@ -52,10 +48,14 @@ const expectedTransactions = [
 ]
 
 describe('RBC CSV parser', () => {
+  const account = {
+    id: 1,
+    currency: 'CAD'
+  }
   describe('parse', () => {
     it('returns transactions', async () => {
       const file = new File([csvData.join('\n')], 'test.csv', { type: 'text/csv' })
-      const { transactions, errors } = await new RbcCsvParser().parse(file)
+      const { transactions, errors } = await new RbcCsvParser().parse(file, account)
 
       expect(transactions.length).toBe(csvData.length - 1)
       expect(errors.base.length).toBe(0)
@@ -68,7 +68,7 @@ describe('RBC CSV parser', () => {
       const oldHeader = csvData[0]
       csvData[0] = 'something else'
       const file = new File([csvData.join('\n')], 'test.csv', { type: 'text/csv' })
-      const { transactions, errors } = await new RbcCsvParser().parse(file)
+      const { transactions, errors } = await new RbcCsvParser().parse(file, account)
 
       expect(transactions.length).toBe(0)
       expect(errors.base.length).toBe(csvData.length)

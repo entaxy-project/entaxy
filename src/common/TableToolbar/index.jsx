@@ -74,11 +74,15 @@ const TableToolbar = ({
 )
 
 TableToolbar.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   selectedItems: PropTypes.array.isRequired,
   classes: PropTypes.object.isRequired,
   onDelete: PropTypes.func.isRequired,
-  children: PropTypes.object.isRequired
+  children: PropTypes.array.isRequired
+}
+
+TableToolbar.defaultProps = {
+  title: null
 }
 
 export default withStyles(styles)(TableToolbar)

@@ -10,14 +10,14 @@ import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import Typography from '@material-ui/core/Typography'
 import Tooltip from '@material-ui/core/Tooltip'
-import DashboardIcon from '@material-ui/icons/Dashboard'
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
 import IconButton from '@material-ui/core/IconButton'
 import AddIcon from '@material-ui/icons/Add'
 import EditIcon from '@material-ui/icons/Edit'
-import { NavLink, withRouter } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import grey from '@material-ui/core/colors/grey'
 import { sortedAccountsGroupedByInstitution } from '../../store/accounts/selectors'
+import InstitutionIcon from '../../common/InstitutionIcon'
 
 const styles = theme => ({
   noAccounts: {
@@ -25,8 +25,11 @@ const styles = theme => ({
     margin: '0 20px 20px 25px',
     padding: theme.spacing.unit
   },
-  institution: {
+  institutionListItem: {
     padding: '4px 24px'
+  },
+  institution: {
+    paddingLeft: 0
   },
   account: {
     padding: '4px 24px 4px 40px'
@@ -46,7 +49,11 @@ const mapStateToProps = (state) => {
   }
 }
 
-const AccountsComponent = ({ classes, groupedAccounts, accountId }) => (
+export const AccountsComponent = ({
+  classes,
+  groupedAccounts,
+  accountId
+}) => (
   <List
     component="nav"
     dense={true}
@@ -68,7 +75,7 @@ const AccountsComponent = ({ classes, groupedAccounts, accountId }) => (
       </ListSubheader>
     }
   >
-    {groupedAccounts.length === 0 &&
+    {Object.keys(groupedAccounts).length === 0 &&
       <Typography variant="caption" className={classes.noAccounts}>
         You don&apos;t have any accounts yet
       </Typography>
@@ -76,9 +83,11 @@ const AccountsComponent = ({ classes, groupedAccounts, accountId }) => (
     <List dense={true}>
       {Object.keys(groupedAccounts).map(institution => (
         <div key={institution}>
-          <ListItem className={classes.institution}>
-            <ListItemIcon><DashboardIcon /></ListItemIcon>
-            <ListItemText primary={institution} />
+          <ListItem className={classes.institutionListItem}>
+            <ListItemIcon>
+              <InstitutionIcon institution={institution} size="small" />
+            </ListItemIcon>
+            <ListItemText primary={institution} className={classes.institution} />
           </ListItem>
           <List dense={true}>
             {groupedAccounts[institution].map(account => (
@@ -119,10 +128,10 @@ AccountsComponent.propTypes = {
 }
 
 AccountsComponent.defaultProps = {
-  accountId: { params: null }
+  accountId: null
 }
 
 export default compose(
   connect(mapStateToProps),
   withStyles(styles)
-)(withRouter(AccountsComponent))
+)(AccountsComponent)

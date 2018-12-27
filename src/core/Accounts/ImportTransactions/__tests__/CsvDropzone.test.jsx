@@ -4,9 +4,6 @@ import CsvDropzone from '../CsvDropzone'
 
 describe('CsvDropzone', () => {
   const mockHandleFileUpload = jest.fn()
-  const props = {
-    classes: { }
-  }
 
   beforeEach(() => {
     jest.clearAllMocks()
@@ -16,7 +13,7 @@ describe('CsvDropzone', () => {
     const component = renderer.create((
       <CsvDropzone
         handleFileUpload={mockHandleFileUpload}
-        classes={{ ...props }}
+        classes={{ }}
       />
     ))
     expect(component.toJSON()).toMatchSnapshot()

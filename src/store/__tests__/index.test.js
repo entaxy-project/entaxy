@@ -1,7 +1,8 @@
 import { initialState as userInitialState } from '../user/reducer'
 import { initialState as settingsInitialState } from '../settings/reducer'
-import { initialState as marketValuesInitialState } from '../marketValues/reducer'
+import { initialState as accountsInitialState } from '../accounts/reducer'
 import { initialState as transactionsInitialState } from '../transactions/reducer'
+import { initialState as marketValuesInitialState } from '../marketValues/reducer'
 import store from '../'
 
 describe('store', () => {
@@ -9,8 +10,9 @@ describe('store', () => {
     expect(store.getState()).toEqual({
       user: userInitialState,
       settings: settingsInitialState,
-      marketValues: marketValuesInitialState,
-      transactions: transactionsInitialState
+      accounts: accountsInitialState,
+      transactions: transactionsInitialState,
+      marketValues: marketValuesInitialState
     })
   })
 })

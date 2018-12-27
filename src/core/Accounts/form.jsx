@@ -1,4 +1,3 @@
-/* eslint no-console: 0 */
 import React from 'react'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
@@ -10,6 +9,7 @@ import Paper from '@material-ui/core/Paper'
 import TextField from '@material-ui/core/TextField'
 import Divider from '@material-ui/core/Divider'
 import Button from '@material-ui/core/Button'
+import red from '@material-ui/core/colors/red'
 import AutoComplete from '../../common/AutoComplete'
 import { sortedInstitutionsForAutoselect } from '../../store/accounts/selectors'
 
@@ -21,6 +21,15 @@ const styles = theme => ({
   },
   input: {
     margin: theme.spacing.unit * 2
+  },
+  formActions: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+    paddingTop: 10
+  },
+  deleteButton: {
+    color: red[500],
+    margin: theme.spacing.unit * 2
   }
 })
 
@@ -31,7 +40,7 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-const AccountForm = ({
+export const AccountFormComponent = ({
   classes,
   institutions,
   handleSubmit,
@@ -65,18 +74,26 @@ const AccountForm = ({
           onChange={setFieldValue}
           className={classes.input}
         />
-        <Divider />
-        <Button type="submit" color="primary">Save</Button>
-        <Button onClick={handleCancel} color="primary">Cancel</Button>
         {handleDelete &&
-          <Button onClick={handleDelete} color="primary">Delete</Button>
+          <Button
+            size="small"
+            onClick={handleDelete}
+            className={classes.deleteButton}
+          >
+            Delete this account
+          </Button>
         }
+        <Divider />
+        <div className={classes.formActions}>
+          <Button type="submit" color="primary">Save</Button>
+          <Button onClick={handleCancel} color="secondary">Cancel</Button>
+        </div>
       </form>
     </Paper>
   </Grid>
 )
 
-AccountForm.propTypes = {
+AccountFormComponent.propTypes = {
   classes: PropTypes.object.isRequired,
   institutions: PropTypes.array.isRequired,
   handleSubmit: PropTypes.func.isRequired,
@@ -87,7 +104,7 @@ AccountForm.propTypes = {
   handleCancel: PropTypes.func.isRequired
 }
 
-AccountForm.defaultProps = {
+AccountFormComponent.defaultProps = {
   handleDelete: null
 }
 
@@ -115,4 +132,4 @@ export default compose(
       setSubmitting(false)
     }
   })
-)(AccountForm)
+)(AccountFormComponent)

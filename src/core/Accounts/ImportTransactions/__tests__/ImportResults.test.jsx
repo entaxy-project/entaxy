@@ -6,12 +6,6 @@ describe('ImportResults', () => {
   const mockOnSave = jest.fn()
   const mockOnCancel = jest.fn()
 
-  const props = {
-    classes: {
-      root: { padding: '20px' }
-    }
-  }
-
   beforeEach(() => {
     jest.clearAllMocks()
   })
@@ -22,8 +16,8 @@ describe('ImportResults', () => {
         onSave={mockOnSave}
         onCancel={mockOnCancel}
         errors={{ base: [], transactions: [] }}
-        transactions={{ 0: {} }}
-        classes={{ ...props }}
+        transactions={[{ 0: {} }]}
+        classes={{ }}
       />
     ))
     expect(component.toJSON()).toMatchSnapshot()
@@ -35,8 +29,8 @@ describe('ImportResults', () => {
         onSave={mockOnSave}
         onCancel={mockOnCancel}
         errors={{ base: ['some error'], transactions: [] }}
-        transactions={{ 0: {} }}
-        classes={{ ...props }}
+        transactions={[{ 0: {} }]}
+        classes={{ }}
       />
     ))
     expect(component.toJSON()).toMatchSnapshot()
@@ -47,9 +41,9 @@ describe('ImportResults', () => {
       <ImportResults
         onSave={mockOnSave}
         onCancel={mockOnCancel}
-        errors={{ base: [], transactions: ['0': ['some error']] }}
-        transactions={{ 0: {} }}
-        classes={{ ...props }}
+        errors={{ base: [], transactions: [{ 0: ['some error'] }] }}
+        transactions={[{ 0: {} }]}
+        classes={{ }}
       />
     ))
     expect(component.toJSON()).toMatchSnapshot()

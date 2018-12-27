@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { isSignInPending } from 'blockstack'

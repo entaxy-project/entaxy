@@ -1,8 +1,8 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
-import DateTimeSelect from '../'
+import AutoComplete from '../'
 
-describe('DateTimeSelect', () => {
+describe('AutoComplete', () => {
   const mochOnChange = jest.fn()
 
   beforeEach(() => {
@@ -11,10 +11,10 @@ describe('DateTimeSelect', () => {
 
   it('matches snapshot', () => {
     const component = renderer.create((
-      <DateTimeSelect
-        label="Date"
-        name="createdAt"
-        value={new Date('1/1/2018')}
+      <AutoComplete
+        label="Institution"
+        name="institution"
+        options={[{ label: 'TD', value: 'TD' }]}
         onChange={mochOnChange}
       />
     ))

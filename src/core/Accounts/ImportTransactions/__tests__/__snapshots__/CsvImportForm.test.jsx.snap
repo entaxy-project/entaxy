@@ -5,49 +5,11 @@ exports[`CsvImportForm matches snapshot for BMO 1`] = `
   onSubmit={[Function]}
 >
   <div
-    className="WithFormik-CsvImportForm--root-1"
+    className="CsvImportForm-root-1"
   >
     <div
-      className="CsvImportFields-root-7"
-    >
-      <p
-        className="MuiTypography-root-9 MuiTypography-body1-18 MuiTypography-gutterBottom-36"
-      >
-        Fill out the following field
-      </p>
-      <div
-        className="MuiFormControl-root-44 CsvImportFields-textField-8"
-      >
-        <label
-          className="MuiFormLabel-root-55 MuiInputLabel-root-48 MuiInputLabel-formControl-49 MuiInputLabel-animated-52"
-          data-shrink={false}
-        >
-          Currency
-        </label>
-        <div
-          className="MuiInputBase-root-75 MuiInput-root-62 MuiInput-underline-66 MuiInputBase-formControl-76 MuiInput-formControl-63"
-          onClick={[Function]}
-        >
-          <input
-            aria-invalid={false}
-            aria-label="Currency"
-            className="MuiInputBase-input-85 MuiInput-input-70"
-            disabled={false}
-            maxLength={6}
-            name="ticker"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            required={true}
-            type="text"
-            value=""
-          />
-        </div>
-      </div>
-    </div>
-    <div
       aria-disabled={false}
-      className="CsvDropzone-root-92"
+      className="CsvDropzone-root-7"
       onClick={[Function]}
       onDragEnter={[Function]}
       onDragLeave={[Function]}
@@ -95,18 +57,19 @@ exports[`CsvImportForm matches snapshot for BMO 1`] = `
     </div>
   </div>
   <hr
-    className="MuiDivider-root-94"
+    className="MuiDivider-root-44"
   />
   <div
-    className="WithFormik-CsvImportForm--formActions-3"
+    className="CsvImportForm-formActions-3"
   >
     <div
-      className="WithFormik-CsvImportForm--wrapper-4"
+      className="CsvImportForm-buttonWrapper-4"
     >
       <button
-        className="MuiButtonBase-root-124 MuiButtonBase-disabled-125 MuiButton-root-98 MuiButton-contained-109 MuiButton-containedPrimary-110 MuiButton-raised-112 MuiButton-raisedPrimary-113 MuiButton-disabled-118"
+        className="MuiButtonBase-root-75 MuiButtonBase-disabled-76 MuiButton-root-49 MuiButton-contained-60 MuiButton-containedPrimary-61 MuiButton-raised-63 MuiButton-raisedPrimary-64 MuiButton-disabled-69"
         disabled={true}
         onBlur={[Function]}
+        onContextMenu={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}
         onKeyUp={[Function]}
@@ -120,17 +83,18 @@ exports[`CsvImportForm matches snapshot for BMO 1`] = `
         type="submit"
       >
         <span
-          className="MuiButton-label-99"
+          className="MuiButton-label-50"
         >
           Import
         </span>
       </button>
     </div>
     <button
-      className="MuiButtonBase-root-124 MuiButton-root-98 MuiButton-text-100 MuiButton-textSecondary-102 MuiButton-flat-103 MuiButton-flatSecondary-105"
+      className="MuiButtonBase-root-75 MuiButton-root-49 MuiButton-text-51 MuiButton-textSecondary-53 MuiButton-flat-54 MuiButton-flatSecondary-56"
       disabled={false}
       onBlur={[Function]}
       onClick={[MockFunction]}
+      onContextMenu={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
@@ -144,12 +108,12 @@ exports[`CsvImportForm matches snapshot for BMO 1`] = `
       type="button"
     >
       <span
-        className="MuiButton-label-99"
+        className="MuiButton-label-50"
       >
         Cancel
       </span>
       <span
-        className="MuiTouchRipple-root-127"
+        className="MuiTouchRipple-root-78"
       />
     </button>
   </div>

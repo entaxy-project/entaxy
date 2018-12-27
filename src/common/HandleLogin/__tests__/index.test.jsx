@@ -9,12 +9,14 @@ jest.mock('blockstack', () => {
 
 describe('HandleLogin', () => {
   const mochHandlePendingSignIn = jest.fn()
+  const mochHistoryPush = jest.fn()
   mochHandlePendingSignIn.mockReturnValue(Promise.resolve())
 
   it('matches snapshot with logged out user', () => {
     const component = renderer.create((
       <HandleLoginComponent
         handlePendingSignIn={mochHandlePendingSignIn}
+        history={{}}
       />
     ))
     expect(mochHandlePendingSignIn).not.toHaveBeenCalled()
@@ -29,6 +31,7 @@ describe('HandleLogin', () => {
       <HandleLoginComponent
         user={{ isLoginPending: true }}
         handlePendingSignIn={mochHandlePendingSignIn}
+        history={{ push: mochHistoryPush }}
       />
     ))
     expect(mochHandlePendingSignIn).toHaveBeenCalled()

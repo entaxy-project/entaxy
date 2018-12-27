@@ -2,33 +2,42 @@
 
 exports[`LandingCard matches snapshot 1`] = `
 <div
-  className="MuiPaper-root-4 MuiPaper-elevation1-7 MuiPaper-rounded-5 MuiCard-root-3 LandingCard-card-1"
+  className="MuiGrid-container-1"
 >
+  <h5
+    className="MuiTypography-root-98 MuiTypography-h5-114 MuiTypography-colorSecondary-129"
+  >
+    Where do you want to store your data?
+  </h5>
   <div
-    className="MuiCardHeader-root-31"
+    className="MuiGrid-item-2 MuiGrid-grid-xs-6-35"
   >
     <div
-      className="MuiCardHeader-content-34"
+      className="MuiPaper-root-133 MuiPaper-elevation1-136 MuiPaper-rounded-134"
     >
-      <span
-        className="MuiTypography-root-37 MuiTypography-headline-42 MuiCardHeader-title-35"
+      <h6
+        className="MuiTypography-root-98 MuiTypography-subtitle2-117"
       >
-        title
-      </span>
+        Anywhere with blockstack
+      </h6>
       <span
-        className="MuiTypography-root-37 MuiTypography-body1-46 MuiTypography-colorTextSecondary-70 MuiCardHeader-subheader-36"
+        className="MuiTypography-root-98 MuiTypography-caption-108"
       >
-        description
+        Keep your data encrypted and decentralized. Learn more about  
+        <a
+          href="https://blockstack.org/what-is-blockstack"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Blockstack
+        </a>
       </span>
-    </div>
-    <div
-      className="MuiCardHeader-action-33"
-    >
-      <a
-        className="MuiButtonBase-root-78 MuiIconButton-root-72 MuiIconButton-colorSecondary-75 LandingCard-cardButton-2"
-        href="/taxes"
+      <button
+        className="MuiButtonBase-root-186 MuiButton-root-160 MuiButton-contained-171 MuiButton-containedSecondary-173 MuiButton-raised-174 MuiButton-raisedSecondary-176"
+        disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
+        onContextMenu={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}
         onKeyUp={[Function]}
@@ -38,33 +47,80 @@ exports[`LandingCard matches snapshot 1`] = `
         onTouchEnd={[Function]}
         onTouchMove={[Function]}
         onTouchStart={[Function]}
-        role="button"
         tabIndex="0"
-        variant="fab"
+        type="button"
       >
         <span
-          className="MuiIconButton-label-77"
+          className="MuiButton-label-161"
         >
-          <svg
-            aria-hidden="true"
-            className="MuiSvgIcon-root-81"
-            focusable="false"
-            role="presentation"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M0 0h24v24H0z"
-              fill="none"
-            />
-            <path
-              d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
-            />
-          </svg>
+          Sign in with Blockstack
         </span>
         <span
-          className="MuiTouchRipple-root-90"
+          className="MuiTouchRipple-root-198"
         />
-      </a>
+      </button>
+    </div>
+  </div>
+  <div
+    className="MuiGrid-item-2 MuiGrid-grid-xs-6-35"
+  >
+    <div
+      className="MuiPaper-root-133 MuiPaper-elevation1-136 MuiPaper-rounded-134"
+    >
+      <h6
+        className="MuiTypography-root-98 MuiTypography-subtitle2-117"
+      >
+        <svg
+          aria-hidden="true"
+          className="MuiSvgIcon-root-189"
+          focusable="false"
+          role="presentation"
+          viewBox="0 0 24 24"
+        >
+          <defs>
+            <path
+              d="M0 0h24v24H0V0z"
+              id="a"
+            />
+          </defs>
+          <path
+            d="M20 18c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"
+          />
+        </svg>
+        Locally in your browser
+      </h6>
+      <span
+        className="MuiTypography-root-98 MuiTypography-caption-108"
+      >
+        Your data will be stored temporarily and it be removed once you close your browser
+      </span>
+      <button
+        className="MuiButtonBase-root-186 MuiButton-root-160 MuiButton-contained-171 MuiButton-containedSecondary-173 MuiButton-raised-174 MuiButton-raisedSecondary-176"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="0"
+        type="button"
+      >
+        <span
+          className="MuiButton-label-161"
+        >
+          Take it for a test drive
+        </span>
+        <span
+          className="MuiTouchRipple-root-198"
+        />
+      </button>
     </div>
   </div>
 </div>
