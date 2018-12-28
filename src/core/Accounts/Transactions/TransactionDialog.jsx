@@ -1,4 +1,3 @@
-/* eslint no-console: 0 */
 import React from 'react'
 import { compose } from 'recompose'
 import { withStyles } from '@material-ui/core/styles'
@@ -8,8 +7,8 @@ import TextField from '@material-ui/core/TextField'
 import MenuItem from '@material-ui/core/MenuItem'
 import InputAdornment from '@material-ui/core/InputAdornment'
 import { withFormik } from 'formik'
+import format from 'date-fns/format'
 import ModalDialog from '../../../common/ModalDialog'
-import DateTimeSelect from '../../../common/DateTimeSelect'
 import { createTransaction, updateTransaction } from '../../../store/transactions/actions'
 
 const styles = () => ({
@@ -38,7 +37,6 @@ const TransactionDialog = ({
   handleSubmit,
   values,
   handleChange,
-  setFieldValue,
   onCancel,
   open,
   transaction
@@ -123,24 +121,30 @@ const TransactionDialog = ({
           helperText="The original purchase cost"
           onChange={handleChange}
         />
-        <DateTimeSelect
+        <TextField
+          type="date"
           label="Date"
+          InputLabelProps={{
+            shrink: true,
+            'aria-label': 'Shares',
+            required: true
+          }}
           name="createdAt"
+          className={classes.input}
           value={values.createdAt}
-          onChange={setFieldValue}
+          defaultValue={values.createdAt}
+          onChange={handleChange}
         />
       </div>
     </ModalDialog>
   </div>
 )
 
-
 TransactionDialog.propTypes = {
   classes: PropTypes.object.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   values: PropTypes.object.isRequired,
   handleChange: PropTypes.func.isRequired,
-  setFieldValue: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
   onCancel: PropTypes.func.isRequired,
   transaction: PropTypes.object
@@ -162,12 +166,12 @@ export default compose(
           ticker: '',
           shares: '',
           bookValue: '',
-          createdAt: new Date()
+          createdAt: format(new Date(), 'yyyy-MM-dd')
         }
       }
       return {
         ...transaction,
-        createdAt: new Date(transaction.createdAt)
+        createdAt: format(new Date(transaction.createdAt), 'yyyy-MM-dd')
       }
     },
     handleSubmit: (values, { props, setSubmitting, resetForm }) => {
@@ -175,7 +179,7 @@ export default compose(
       props.handleSave({
         ...values,
         accountId: props.account.id,
-        createdAt: values.createdAt.getTime()
+        createdAt: Date.parse(values.createdAt)
       })
       resetForm()
       setSubmitting(false)

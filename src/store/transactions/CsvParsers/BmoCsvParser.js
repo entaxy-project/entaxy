@@ -1,4 +1,3 @@
-/* eslint no-console: 0 */
 import CsvParser from './CsvParser'
 
 export default class BmoCsvParser extends CsvParser {

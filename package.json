@@ -87,7 +87,6 @@
         "jest-enzyme": "^7.0.0",
         "jsdom": "^13.0.0",
         "lodash": "^4.17.5",
-        "material-ui-pickers": "^1.0.0-rc.17",
         "mui-datatables": "^2.0.0-beta-37",
         "object-assign": "4.1.1",
         "papaparse": "^4.6.0",

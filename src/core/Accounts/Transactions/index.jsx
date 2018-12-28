@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React from 'react'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
@@ -160,10 +159,7 @@ export class TransactionsComponent extends React.Component {
     })
   }
 
-  isSelected = (id) => {
-    console.log('isSelected', id)
-    return this.state.selected.indexOf(id) !== -1
-  }
+  isSelected = id => this.state.selected.indexOf(id) !== -1
 
   render() {
     const currencyFormatter = new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD' })

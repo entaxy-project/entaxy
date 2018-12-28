@@ -1,4 +1,3 @@
-/* eslint no-console: 0 */
 import _ from 'lodash'
 import { createSelector } from 'reselect'
 
