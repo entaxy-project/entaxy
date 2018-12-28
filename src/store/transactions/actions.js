@@ -1,4 +1,3 @@
-/* eslint no-console: 0 */
 import uuid from 'uuid/v4'
 import types from './types'
 import { saveState } from '../user/actions'
