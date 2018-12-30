@@ -11,7 +11,6 @@ import { createTransaction, updateTransaction } from '../../../store/transaction
 
 const styles = () => ({
   root: {
-    display: 'inline'
   },
   input: {
     margin: 5,
@@ -39,57 +38,56 @@ const TransactionDialog = ({
   open,
   transaction
 }) => (
-  <div className={classes.root}>
-    <ModalDialog
-      open={open}
-      title={transaction ? 'Edit transaction' : 'New transaction'}
-      onSubmit={handleSubmit}
-      onCancel={onCancel}
-    >
-      <TextField
-        label="Description"
-        inputProps={{
-          'aria-label': 'Description',
-          required: true,
-          maxLength: 256
-        }}
-        className={classes.input}
-        value={values.description}
-        name="description"
-        onChange={handleChange}
-      />
-      <TextField
-        type="number"
-        label="Amount"
-        inputProps={{
-          'aria-label': 'Amount',
-          required: true,
-          maxLength: 10,
-          min: Number.MIN_SAFE_INTEGER,
-          max: Number.MAX_SAFE_INTEGER,
-          step: 0.01
-        }}
-        className={classes.input}
-        value={values.amount}
-        name="amount"
-        onChange={handleChange}
-      />
-      <TextField
-        type="date"
-        label="Date"
-        InputLabelProps={{
-          shrink: true,
-          'aria-label': 'Date',
-          required: true
-        }}
-        name="createdAt"
-        className={classes.input}
-        value={values.createdAt}
-        defaultValue={values.createdAt}
-        onChange={handleChange}
-      />
-    </ModalDialog>
-  </div>
+  <ModalDialog
+    open={open}
+    title={transaction ? 'Edit transaction' : 'New transaction'}
+    onSubmit={handleSubmit}
+    onCancel={onCancel}
+    className={classes.root}
+  >
+    <TextField
+      label="Description"
+      inputProps={{
+        'aria-label': 'Description',
+        required: true,
+        maxLength: 256
+      }}
+      className={classes.input}
+      value={values.description}
+      name="description"
+      onChange={handleChange}
+    />
+    <TextField
+      type="number"
+      label="Amount"
+      inputProps={{
+        'aria-label': 'Amount',
+        required: true,
+        maxLength: 10,
+        min: Number.MIN_SAFE_INTEGER,
+        max: Number.MAX_SAFE_INTEGER,
+        step: 0.01
+      }}
+      className={classes.input}
+      value={values.amount}
+      name="amount"
+      onChange={handleChange}
+    />
+    <TextField
+      type="date"
+      label="Date"
+      InputLabelProps={{
+        shrink: true,
+        'aria-label': 'Date',
+        required: true
+      }}
+      name="createdAt"
+      className={classes.input}
+      value={values.createdAt}
+      defaultValue={values.createdAt}
+      onChange={handleChange}
+    />
+  </ModalDialog>
 )
 
 TransactionDialog.propTypes = {

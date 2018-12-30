@@ -8,6 +8,8 @@ import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
 import TextField from '@material-ui/core/TextField'
+import IconButton from '@material-ui/core/IconButton'
+import CloseIcon from '@material-ui/icons/Close'
 import Divider from '@material-ui/core/Divider'
 import Button from '@material-ui/core/Button'
 import red from '@material-ui/core/colors/red'
@@ -20,11 +22,14 @@ const styles = theme => ({
     margin: theme.spacing.unit * 2,
     padding: theme.spacing.unit * 2
   },
-  importAreaHeader: {
+  formHeader: {
     padding: 10,
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between'
+  },
+  closeButton: {
+    marginTop: -10
   },
   form: {
     display: 'flex',
@@ -65,10 +70,13 @@ export const AccountFormComponent = ({
 }) => (
   <Grid container direction="row" justify="center">
     <Paper className={classes.root}>
-      <div className={classes.importAreaHeader}>
+      <div className={classes.formHeader}>
         <Typography variant="h6" align="center">
           {account ? 'Edit account' : 'New account'}
         </Typography>
+        <IconButton aria-label="Close" className={classes.closeButton} onClick={handleCancel}>
+          <CloseIcon />
+        </IconButton>
       </div>
       <Divider />
       <form onSubmit={handleSubmit} className={classes.form}>
@@ -136,7 +144,6 @@ export const AccountFormComponent = ({
         <Divider />
         <div className={classes.formActions}>
           <Button type="submit" color="secondary">Save</Button>
-          <Button onClick={handleCancel}>Cancel</Button>
         </div>
       </form>
     </Paper>
