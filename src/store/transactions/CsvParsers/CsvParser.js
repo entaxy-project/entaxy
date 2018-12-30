@@ -1,6 +1,7 @@
 import uuid from 'uuid/v4'
 import { isEqual, isNil } from 'lodash'
 import Papa from 'papaparse'
+import parse from 'date-fns/parse'
 
 // The base class for all CSV parsers
 export default class CsvParser {
@@ -99,14 +100,14 @@ export default class CsvParser {
     }[format](string)
 
     // Try to generate a Date object
-    const parsedDate = Date.parse(`${year}/${month}/${day}`)
-
-    // Record any errors
-    if (Number.isNaN(parsedDate)) {
+    const parsedDate = parse(`${year}-${month}-${day}`)
+    // // Record any errors
+    if (Number.isNaN(parsedDate.getTime())) {
       this.addError(`Invalid date. Expecting format '${format}'`)
       return null
     }
-    return parsedDate
+
+    return parsedDate.getTime()
   }
 
   // Adds an error either to the base which  relative to the file in general

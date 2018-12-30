@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React from 'react'
 import { compose } from 'recompose'
 import { withStyles } from '@material-ui/core/styles'
@@ -6,6 +7,7 @@ import { connect } from 'react-redux'
 import TextField from '@material-ui/core/TextField'
 import { withFormik } from 'formik'
 import format from 'date-fns/format'
+import parse from 'date-fns/parse'
 import ModalDialog from '../../../common/ModalDialog'
 import { createTransaction, updateTransaction } from '../../../store/transactions/actions'
 
@@ -84,7 +86,6 @@ const TransactionDialog = ({
       name="createdAt"
       className={classes.input}
       value={values.createdAt}
-      defaultValue={values.createdAt}
       onChange={handleChange}
     />
   </ModalDialog>
@@ -114,12 +115,12 @@ export default compose(
         return {
           amount: '',
           bookValue: '',
-          createdAt: format(new Date(), 'yyyy-MM-dd')
+          createdAt: format(Date.now(), 'YYYY-MM-DD')
         }
       }
       return {
         ...transaction,
-        createdAt: format(new Date(transaction.createdAt), 'yyyy-MM-dd')
+        createdAt: format(new Date(transaction.createdAt), 'YYYY-MM-DD')
       }
     },
     handleSubmit: (values, { props, setSubmitting, resetForm }) => {
@@ -127,7 +128,7 @@ export default compose(
       props.handleSave(props.account, {
         ...values,
         accountId: props.account.id,
-        createdAt: Date.parse(values.createdAt)
+        createdAt: parse(values.createdAt).getTime()
       })
       resetForm()
       setSubmitting(false)

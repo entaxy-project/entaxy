@@ -1,3 +1,4 @@
+import parse from 'date-fns/parse'
 import TangerineCsvParser from '../TangerineCsvParser'
 
 const csvData = [
@@ -12,19 +13,19 @@ const expectedTransactions = [
     accountId: 1,
     amount: 4.75,
     description: 'TANGERINE BONUS RATE SALE 0914',
-    createdAt: Date.parse('10/1/2014')
+    createdAt: parse('10/1/2014').getTime()
   },
   {
     accountId: 1,
     amount: 2010,
     description: 'Transferred',
-    createdAt: Date.parse('10/3/2014')
+    createdAt: parse('10/3/2014').getTime()
   },
   {
     accountId: 1,
     amount: -5500,
     description: 'Transferred',
-    createdAt: Date.parse('10/3/2014')
+    createdAt: parse('10/3/2014').getTime()
   }
 ]
 

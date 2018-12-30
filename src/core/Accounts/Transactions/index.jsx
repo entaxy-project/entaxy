@@ -237,7 +237,7 @@ export class TransactionsComponent extends React.Component {
                     width={120}
                     label="Date"
                     dataKey="createdAt"
-                    cellDataGetter={({ rowData }) => format(rowData.createdAt, 'MMM dd, yyyy')}
+                    cellDataGetter={({ rowData }) => format(new Date(rowData.createdAt), 'MMM DD, YYYY')}
                   />
                   <Column
                     width={200}

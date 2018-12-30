@@ -1,3 +1,4 @@
+import parse from 'date-fns/parse'
 import BmoCsvParser from '../BmoCsvParser'
 
 const csvData = [
@@ -18,25 +19,25 @@ const expectedTransactions = [
     accountId: 1,
     amount: -650,
     description: '[SO]2211#8503-567',
-    createdAt: Date.parse('2018/06/28')
+    createdAt: parse('2018/06/28').getTime()
   },
   {
     accountId: 1,
     amount: 2595.11,
     description: '[DN]THE WORKING GRO PAY/PAY',
-    createdAt: Date.parse('2018/06/29')
+    createdAt: parse('2018/06/29').getTime()
   },
   {
     accountId: 1,
     amount: 0.01,
     description: '[IN]',
-    createdAt: Date.parse('2018/06/29')
+    createdAt: parse('2018/06/29').getTime()
   },
   {
     accountId: 1,
     amount: 325,
     description: '[CW]INTERAC E-TRANSFER       RECEIVED 20181801732942BE7',
-    createdAt: Date.parse('2018/06/29')
+    createdAt: parse('2018/06/29').getTime()
   }
 ]
 

@@ -14,6 +14,7 @@ import Divider from '@material-ui/core/Divider'
 import Button from '@material-ui/core/Button'
 import red from '@material-ui/core/colors/red'
 import format from 'date-fns/format'
+import parse from 'date-fns/parse'
 import AutoComplete from '../../common/AutoComplete'
 import { sortedInstitutionsForAutoselect } from '../../store/accounts/selectors'
 
@@ -128,7 +129,6 @@ export const AccountFormComponent = ({
           name="openingBalanceDate"
           className={classes.input}
           value={values.openingBalanceDate}
-          defaultValue={values.openingBalanceDate}
           onChange={handleChange}
         />
 
@@ -178,12 +178,12 @@ export default compose(
           name: '',
           institution: null,
           openingBalance: 0,
-          openingBalanceDate: format(Date.now(), 'yyyy-MM-dd')
+          openingBalanceDate: format(Date.now(), 'YYYY-MM-DD')
         }
       }
       return {
         ...account,
-        openingBalanceDate: format(new Date(account.openingBalanceDate), 'yyyy-MM-dd'),
+        openingBalanceDate: format(new Date(account.openingBalanceDate), 'YYYY-MM-DD'),
         institution: {
           label: account.institution,
           value: account.institution
@@ -195,7 +195,7 @@ export default compose(
       props.handleSave({
         ...values,
         institution: values.institution.value,
-        openingBalanceDate: Date.parse(values.openingBalanceDate)
+        openingBalanceDate: parse(values.openingBalanceDate).getTime()
       })
     }
   })

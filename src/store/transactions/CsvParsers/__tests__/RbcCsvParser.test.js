@@ -1,3 +1,4 @@
+import parse from 'date-fns/parse'
 import RbcCsvParser from '../RbcCsvParser'
 
 const csvData = [
@@ -11,25 +12,25 @@ const csvData = [
 const expectedTransactions = [
   {
     accountId: 1,
-    createdAt: Date.parse('2018/06/25'),
+    createdAt: parse('2018/06/25').getTime(),
     description: 'Email Trfs - Email Trfs',
     amount: 20
   },
   {
     accountId: 1,
-    createdAt: Date.parse('2018/06/29'),
+    createdAt: parse('2018/06/29').getTime(),
     description: 'PAYROLL DEPOSIT - PAYROLL DEPOSIT',
     amount: 2742.03
   },
   {
     accountId: 1,
-    createdAt: Date.parse('2018/08/22'),
+    createdAt: parse('2018/08/22').getTime(),
     description: 'DEPOSIT - DEPOSIT',
     amount: 5300
   },
   {
     accountId: 1,
-    createdAt: Date.parse('2018/08/13'),
+    createdAt: parse('2018/08/13').getTime(),
     description: 'LYFT *RIDE MON 11AM VANCOUVER BC - LYFT *RIDE MON 11AM VANCOUVER BC',
     amount: -16.61
   }
