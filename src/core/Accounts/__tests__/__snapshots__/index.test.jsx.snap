@@ -191,7 +191,7 @@ exports[`Accounts index (Left Nav) matches snapshot with one account but no sele
               <p
                 className="MuiTypography-root-38 MuiTypography-body1-47 MuiTypography-colorTextSecondary-71 MuiListItemText-secondary-97 MuiListItemText-textDense-98"
               >
-                $100.00
+                NaN
               </p>
             </div>
             <span
@@ -376,7 +376,7 @@ exports[`Accounts index (Left Nav) matches snapshot with one account which is se
               <p
                 className="MuiTypography-root-38 MuiTypography-body1-47 MuiTypography-colorTextSecondary-71 MuiListItemText-secondary-97 MuiListItemText-textDense-98"
               >
-                $100.00
+                NaN
               </p>
             </div>
             <span

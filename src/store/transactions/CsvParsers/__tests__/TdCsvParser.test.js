@@ -11,37 +11,25 @@ const csvData = [
 const expectedTransactions = [
   {
     accountId: 1,
-    type: 'sell',
-    ticker: 'CAD',
-    shares: 100,
-    bookValue: 1,
+    amount: 100,
     description: 'GC 0575-CASH WITHDRA',
     createdAt: Date.parse('09/04/2018')
   },
   {
     accountId: 1,
-    type: 'sell',
-    ticker: 'CAD',
-    shares: 63.95,
-    bookValue: 1,
+    amount: 63.95,
     description: 'NON-TD ATM W/D',
     createdAt: Date.parse('09/04/2018')
   },
   {
     accountId: 1,
-    type: 'sell',
-    ticker: 'CAD',
-    shares: 195,
-    bookValue: 1,
+    amount: 195,
     description: 'SEND E-TFR CA***G4e',
     createdAt: Date.parse('09/04/2018')
   },
   {
     accountId: 1,
-    type: 'buy',
-    ticker: 'CAD',
-    shares: 250,
-    bookValue: 1,
+    amount: -250,
     description: '',
     createdAt: Date.parse('09/07/2018')
   }

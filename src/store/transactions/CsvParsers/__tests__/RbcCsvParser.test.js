@@ -11,39 +11,27 @@ const csvData = [
 const expectedTransactions = [
   {
     accountId: 1,
-    bookValue: 1,
     createdAt: Date.parse('2018/06/25'),
     description: 'Email Trfs - Email Trfs',
-    shares: 20,
-    ticker: 'CAD',
-    type: 'buy'
+    amount: 20
   },
   {
     accountId: 1,
-    bookValue: 1,
     createdAt: Date.parse('2018/06/29'),
     description: 'PAYROLL DEPOSIT - PAYROLL DEPOSIT',
-    shares: 2742.03,
-    ticker: 'CAD',
-    type: 'buy'
+    amount: 2742.03
   },
   {
     accountId: 1,
-    bookValue: 1,
     createdAt: Date.parse('2018/08/22'),
     description: 'DEPOSIT - DEPOSIT',
-    shares: 5300,
-    ticker: 'CAD',
-    type: 'buy'
+    amount: 5300
   },
   {
     accountId: 1,
-    bookValue: 1,
     createdAt: Date.parse('2018/08/13'),
     description: 'LYFT *RIDE MON 11AM VANCOUVER BC - LYFT *RIDE MON 11AM VANCOUVER BC',
-    shares: -16.61,
-    ticker: 'CAD',
-    type: 'sell'
+    amount: -16.61
   }
 ]
 

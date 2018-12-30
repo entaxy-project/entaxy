@@ -49,6 +49,8 @@ const mapStateToProps = (state) => {
   }
 }
 
+const currencyFormatter = new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD' })
+
 export const AccountsComponent = ({
   classes,
   groupedAccounts,
@@ -99,7 +101,7 @@ export const AccountsComponent = ({
                 component={NavLink}
                 to={`/accounts/${account.id}/transactions`}
               >
-                <ListItemText primary={account.name} secondary="$100.00" />
+                <ListItemText primary={account.name} secondary={currencyFormatter.format(account.currentBalance)} />
                 <ListItemSecondaryAction>
                   <Tooltip id="tooltip-icon" title="Edit account">
                     <IconButton

@@ -17,9 +17,7 @@ export default class BmoCsvParser extends CsvParser {
   map(row, accountData) {
     return {
       ...accountData,
-      type: (row[2] === null ? 'buy' : 'sell'),
-      shares: (row[2] === null ? row[3] : row[2]),
-      bookValue: 1,
+      amount: (row[2] === null ? (-1 * row[3]) : row[2]),
       description: this.parseString(row[1]), // Description
       createdAt: this.parseDate(row[0], 'mm/dd/yyyy')
     }

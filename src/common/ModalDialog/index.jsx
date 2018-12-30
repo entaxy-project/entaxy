@@ -5,7 +5,7 @@ import DialogActions from '@material-ui/core/DialogActions'
 import DialogContent from '@material-ui/core/DialogContent'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import Button from '@material-ui/core/Button'
-
+import Divider from '@material-ui/core/Divider'
 
 const ModalDialog = ({
   title,
@@ -20,6 +20,7 @@ const ModalDialog = ({
     onClose={onCancel}
   >
     <DialogTitle id="form-dialog-title">{title}</DialogTitle>
+    <Divider />
     <form onSubmit={onSubmit}>
       <DialogContent>
         {children}
@@ -35,7 +36,7 @@ const ModalDialog = ({
 ModalDialog.propTypes = {
   open: PropTypes.bool.isRequired,
   title: PropTypes.string.isRequired,
-  children: PropTypes.element.isRequired,
+  children: PropTypes.array.isRequired,
   onSubmit: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired
 }

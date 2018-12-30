@@ -12,16 +12,28 @@ export const afterAccountsChanged = async () => {
 
 export const createAccount = (account) => {
   return async (dispatch) => {
-    const accountId = uuid()
-    dispatch({ type: types.CREATE_ACCOUNT, payload: { ...account, id: accountId } })
+    const newAccount = {
+      ...account,
+      currentBalance: account.openingBalance,
+      id: uuid()
+    }
+    dispatch({ type: types.CREATE_ACCOUNT, payload: newAccount })
     await afterAccountsChanged(dispatch)
-    return accountId
+    return newAccount.id
   }
 }
 
 export const updateAccount = (account) => {
-  return async (dispatch) => {
-    dispatch({ type: types.UPDATE_ACCOUNT, payload: account })
+  return (dispatch, getState) => {
+    // Update current balance
+    const currentBalance = getState().transactions.list.reduce((balance, transaction) => {
+      if (transaction.accountId === account.id && transaction.createdAt > account.openingBalanceDate) {
+        return balance + transaction.amount
+      }
+      return balance
+    }, account.openingBalance)
+
+    dispatch({ type: types.UPDATE_ACCOUNT, payload: { ...account, currentBalance } })
     return afterAccountsChanged(dispatch)
   }
 }

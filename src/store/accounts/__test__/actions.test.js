@@ -3,6 +3,7 @@ import thunk from 'redux-thunk'
 import * as actions from '../actions'
 import types from '../types'
 import { initialState as accountsInitialState } from '../reducer'
+import { initialState as transactionsInitialState } from '../../transactions/reducer'
 import { initialState as settingsInitialState } from '../../settings/reducer'
 
 jest.mock('uuid/v4', () => jest.fn(() => 1))
@@ -15,7 +16,7 @@ beforeEach(() => {
 const account = {
   name: 'Checking',
   institution: 'TD',
-  initialBalance: 1000
+  openingBalance: 1000
 }
 
 describe('accounts actions', () => {
@@ -40,7 +41,7 @@ describe('accounts actions', () => {
           expect(store.getActions()).toEqual([
             {
               type: 'CREATE_ACCOUNT',
-              payload: { ...account, id: 1 }
+              payload: { ...account, id: 1, currentBalance: 1000 }
             }
           ])
         })
@@ -51,14 +52,20 @@ describe('accounts actions', () => {
     it('should update a account', () => {
       const mockStore = configureMockStore([thunk])
       const store = mockStore({
-        accounts: [{ ...account, id: 1 }]
+        accounts: [{ ...account, id: 1 }],
+        transactions: transactionsInitialState
       })
-      return store.dispatch(actions.updateAccount({ ...account, id: 1, institution: 'TD' }))
+      return store.dispatch(actions.updateAccount({ ...account, id: 1, openingBalance: 0 }))
         .then(() => {
           expect(store.getActions()).toEqual([
             {
               type: 'UPDATE_ACCOUNT',
-              payload: { ...account, id: 1, institution: 'TD' }
+              payload: {
+                ...account,
+                id: 1,
+                openingBalance: 0,
+                currentBalance: 0
+              }
             }
           ])
         })

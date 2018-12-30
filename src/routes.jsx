@@ -14,14 +14,22 @@ import EditAccount from './core/Accounts/edit'
 import ImportTransactions from './core/Accounts/ImportTransactions'
 import Header from './common/Header'
 
-const mapStateToProps = ({ user }) => {
-  return { user }
+const mapStateToProps = ({ user, accounts }) => {
+  return { user, accounts }
 }
 
 export class RoutesComponent extends React.Component {
-  loginRequired = Component => (props) => {
+  loginRequired = (Component, params) => (props) => {
+    // Check for authentication
     if (this.props.user.isAuthenticatedWith === null) {
       return <Redirect to="/" />
+    }
+    // Check for at least one account
+    if (params !== undefined) {
+      const { accountRequired } = params
+      if (accountRequired && Object.keys(this.props.accounts).length === 0) {
+        return <Redirect to="/" />
+      }
     }
     return (
       <Header>
@@ -29,6 +37,12 @@ export class RoutesComponent extends React.Component {
       </Header>
     )
   }
+
+  authenticatedDashBoard = this.loginRequired(Dashboard)
+  authenticatedNewAccount = this.loginRequired(NewAccount)
+  authenticatedEditAccount = this.loginRequired(EditAccount, { requiresAccount: true })
+  authenticatedTransactions = this.loginRequired(Transactions, { requiresAccount: true })
+  authenticatedImportTransactions = this.loginRequired(ImportTransactions, { requiresAccount: true })
 
   render() {
     return (
@@ -40,14 +54,14 @@ export class RoutesComponent extends React.Component {
               <Route exact path="/handle-login" component={HandleLogin} />
               <Route exact path="/taxes" component={Taxes} />
               <Route exact path="/portfolio" component={Portfolios} />
-              <Route exact path="/dashboard" render={this.loginRequired(Dashboard)} />
-              <Route exact path="/accounts/new" render={this.loginRequired(NewAccount)} />
-              <Route exact path="/accounts/:accountId/edit" render={this.loginRequired(EditAccount)} />
-              <Route exact path="/accounts/:accountId/transactions" render={this.loginRequired(Transactions)} />
+              <Route exact path="/dashboard" render={this.authenticatedDashBoard} />
+              <Route exact path="/accounts/new" render={this.authenticatedNewAccount} />
+              <Route exact path="/accounts/:accountId/edit" render={this.authenticatedEditAccount} />
+              <Route exact path="/accounts/:accountId/transactions" render={this.authenticatedTransactions} />
               <Route
                 exact
                 path="/accounts/:accountId/import/:importType"
-                render={this.loginRequired(ImportTransactions)}
+                render={this.authenticatedImportTransactions}
               />
             </Switch>
           }
@@ -59,7 +73,8 @@ export class RoutesComponent extends React.Component {
 }
 
 RoutesComponent.propTypes = {
-  user: PropTypes.object.isRequired
+  user: PropTypes.object.isRequired,
+  accounts: PropTypes.array.isRequired
 }
 
 export default connect(mapStateToProps)(RoutesComponent)

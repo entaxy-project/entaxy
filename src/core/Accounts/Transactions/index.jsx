@@ -70,7 +70,7 @@ const makeMapStateToProps = () => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    deleteTransactions: transactionIds => dispatch(deleteTransactions(transactionIds)),
+    deleteTransactions: (account, transactionIds) => dispatch(deleteTransactions(account, transactionIds)),
     handleSort: ({ sortBy, sortDirection }) => dispatch(updateSortBy(sortBy, sortDirection))
   }
 }
@@ -154,7 +154,7 @@ export class TransactionsComponent extends React.Component {
 
   handleDelete = () => {
     confirm('Delete selected transactions?', 'Are you sure?').then(() => {
-      this.props.deleteTransactions(this.state.selected)
+      this.props.deleteTransactions(this.props.account, this.state.selected)
       this.setState({ selected: [] })
     })
   }
@@ -249,18 +249,18 @@ export class TransactionsComponent extends React.Component {
                   <Column
                     width={100}
                     label="In"
-                    dataKey="shares"
+                    dataKey="amount"
                     cellDataGetter={({ rowData }) => {
-                      if (rowData.shares > 0) { return currencyFormatter.format(rowData.shares) }
+                      if (rowData.amount > 0) { return currencyFormatter.format(rowData.amount) }
                       return null
                     }}
                   />
                   <Column
                     width={100}
                     label="Out"
-                    dataKey="shares"
+                    dataKey="amount"
                     cellDataGetter={({ rowData }) => {
-                      if (rowData.shares < 0) { return currencyFormatter.format(rowData.shares) }
+                      if (rowData.amount < 0) { return currencyFormatter.format(rowData.amount) }
                       return null
                     }}
                   />

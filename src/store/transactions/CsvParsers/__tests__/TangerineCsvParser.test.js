@@ -10,28 +10,19 @@ const csvData = [
 const expectedTransactions = [
   {
     accountId: 1,
-    type: 'buy',
-    ticker: 'CAD',
-    shares: 4.75,
-    bookValue: 1,
+    amount: 4.75,
     description: 'TANGERINE BONUS RATE SALE 0914',
     createdAt: Date.parse('10/1/2014')
   },
   {
     accountId: 1,
-    type: 'buy',
-    ticker: 'CAD',
-    shares: 2010,
-    bookValue: 1,
+    amount: 2010,
     description: 'Transferred',
     createdAt: Date.parse('10/3/2014')
   },
   {
     accountId: 1,
-    type: 'sell',
-    ticker: 'CAD',
-    shares: -5500,
-    bookValue: 1,
+    amount: -5500,
     description: 'Transferred',
     createdAt: Date.parse('10/3/2014')
   }

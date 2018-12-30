@@ -71,7 +71,7 @@ export default class CsvParser {
     return (isNil(string) ? '' : string.trim())
   }
 
-  // Returns a Date object from a string
+  // Returns a timestamp in milliseconds from a date string
   // Possible formats
   //    mm/dd/yyyy
   //    yyyymmdd

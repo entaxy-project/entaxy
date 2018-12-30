@@ -40,7 +40,7 @@ const makeMapStateToProps = () => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  saveTransactions: transactions => dispatch(addTransactions(transactions))
+  saveTransactions: (account, transactions) => dispatch(addTransactions(account, transactions))
 })
 
 const initialState = {
@@ -53,7 +53,7 @@ export class ImportTransactionsComponent extends React.Component {
   state = initialState
 
   onSave = () => {
-    this.props.saveTransactions(this.state.transactions)
+    this.props.saveTransactions(this.props.account, this.state.transactions)
     this.props.history.push(`/accounts/${this.props.account.id}/transactions`)
   }
 

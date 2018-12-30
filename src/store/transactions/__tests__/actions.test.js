@@ -12,14 +12,19 @@ beforeEach(() => {
   jest.clearAllMocks()
 })
 
+const account = {
+  id: 1,
+  name: 'Checking',
+  institution: 'TD',
+  openingBalance: 1000,
+  openingBalanceDate: Date.now(),
+  currentBalance: 1000
+}
+
 const transaction = {
-  institution: 'Questrade',
-  account: 'RRSP',
-  type: 'buy',
-  ticker: 'VCE.TO',
-  shares: '1',
-  bookValue: '1',
-  createdAt: new Date()
+  accountId: 1,
+  amount: 1,
+  createdAt: Date.now()
 }
 
 describe('transactions actions', () => {
@@ -40,78 +45,67 @@ describe('transactions actions', () => {
         settings: settingsInitialState
       })
 
-      return store.dispatch(actions.createTransaction(transaction))
+      // NOTE: UPDATE_ACCOUNT is called but account balance is not changed
+      // because test library doesn't actually update the store
+      return store.dispatch(actions.createTransaction(account, transaction))
         .then(() => {
           expect(store.getActions()).toEqual([
             {
               type: 'CREATE_TRANSACTION',
               payload: { ...transaction, id: 1 }
+            }, {
+              payload: account,
+              type: 'UPDATE_ACCOUNT'
             }
           ])
         })
     })
   })
 
-  describe('UpdateTransaction', () => {
+  describe('updateTransaction', () => {
     it('should update a transaction', () => {
       const mockStore = configureMockStore([thunk])
       const store = mockStore({
         transactions: { list: [{ ...transaction, id: 1 }], transactionsInitialState },
         settings: settingsInitialState
       })
-      return store.dispatch(actions.updateTransaction({ ...transaction, id: 1, institution: 'TD' }))
+
+      // NOTE: UPDATE_ACCOUNT is called but account balance is not changed
+      // because test library doesn't actually update the store
+      return store.dispatch(actions.updateTransaction(account, { ...transaction, id: 1, amount: 100 }))
         .then(() => {
           expect(store.getActions()).toEqual([
             {
               type: 'UPDATE_TRANSACTION',
-              payload: { ...transaction, id: 1, institution: 'TD' }
-            },
-            {
-              payload: {
-                filterName: 'institution',
-                options: { Questrade: true }
-              },
-              type: 'CREATE_PORTFOLIO_FILTERS'
-            },
-            {
-              payload: {
-                filterName: 'account',
-                options: { RRSP: true }
-              },
-              type: 'CREATE_PORTFOLIO_FILTERS'
+              payload: { ...transaction, id: 1, amount: 100 }
+            }, {
+              payload: account,
+              type: 'UPDATE_ACCOUNT'
             }
           ])
         })
     })
   })
 
-  describe('DeleteTransactions', () => {
+  describe('deleteTransactions', () => {
     it('should delete a transaction', () => {
       const mockStore = configureMockStore([thunk])
       const store = mockStore({
         transactions: { list: [{ ...transaction, id: 1 }], transactionsInitialState },
         settings: settingsInitialState
       })
-      return store.dispatch(actions.deleteTransactions([1]))
+
+      // NOTE: UPDATE_ACCOUNT is called but account balance is not changed
+      // because test library doesn't actually update the store
+      return store.dispatch(actions.deleteTransactions(account, [1]))
         .then(() => {
           expect(store.getActions()).toEqual([
             {
               type: 'DELETE_TRANSACTIONS',
               payload: [1]
-            },
-            {
-              payload: {
-                filterName: 'institution',
-                options: { Questrade: true }
-              },
-              type: 'CREATE_PORTFOLIO_FILTERS'
-            },
-            {
-              payload: {
-                filterName: 'account',
-                options: { RRSP: true }
-              },
-              type: 'CREATE_PORTFOLIO_FILTERS'
+            }, {
+              payload: account,
+              type: 'UPDATE_ACCOUNT'
             }
           ])
         })
@@ -132,21 +126,22 @@ describe('transactions actions', () => {
       })
       const payload = [{
         id: 2,
-        institution: 'TD',
-        account: 'TFSA',
-        type: 'buy',
-        ticker: 'VCE.TO',
-        shares: '1',
-        bookValue: '1',
-        createdAt: new Date()
+        accountId: 1,
+        amount: 1,
+        createdAt: Date.now() + 100000
       }]
 
-      return store.dispatch(actions.addTransactions(payload))
+      // NOTE: UPDATE_ACCOUNT is called but account balance is not changed
+      // because test library doesn't actually update the store
+      return store.dispatch(actions.addTransactions(account, payload))
         .then(() => {
           expect(store.getActions()).toEqual([
             {
-              type: 'ADD_TRANSACTIONS',
-              payload
+              payload,
+              type: 'ADD_TRANSACTIONS'
+            }, {
+              payload: account,
+              type: 'UPDATE_ACCOUNT'
             }
           ])
         })
