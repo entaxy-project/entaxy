@@ -77,12 +77,16 @@ describe('accounts actions', () => {
       const mockStore = configureMockStore([thunk])
       const store = mockStore({
         accounts: [{ ...account, id: 1 }],
+        transactions: transactionsInitialState,
         settings: settingsInitialState
       })
-      return store.dispatch(actions.deleteAccount(1))
+      return store.dispatch(actions.deleteAccount({ ...account, id: 1 }))
         .then(() => {
           expect(store.getActions()).toEqual([
             {
+              type: 'DELETE_TRANSACTIONS',
+              payload: []
+            }, {
               type: 'DELETE_ACCOUNT',
               payload: 1
             }

@@ -127,7 +127,7 @@ export const AccountFormComponent = ({
         {handleDelete &&
           <Button
             size="small"
-            onClick={handleDelete}
+            onClick={() => handleDelete(account)}
             className={classes.deleteButton}
           >
             Delete this account

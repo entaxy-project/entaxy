@@ -38,9 +38,16 @@ export const updateAccount = (account) => {
   }
 }
 
-export const deleteAccount = (accountId) => {
-  return (dispatch) => {
-    dispatch({ type: types.DELETE_ACCOUNT, payload: accountId })
+export const deleteAccount = (account) => {
+  return (dispatch, getState) => {
+    const transactionIds = getState().transactions.list
+      .filter(transaction => (
+        transaction.accountId === account.id
+      ))
+      .map(transaction => transaction.id)
+
+    dispatch({ type: 'DELETE_TRANSACTIONS', payload: transactionIds })
+    dispatch({ type: types.DELETE_ACCOUNT, payload: account.id })
     return afterAccountsChanged(dispatch)
   }
 }

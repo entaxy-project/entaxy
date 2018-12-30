@@ -1,13 +1,11 @@
 import uuid from 'uuid/v4'
 import types from './types'
-import { saveState } from '../user/actions'
 import { updateAccount } from '../accounts/actions'
 import { updateMarketValues } from '../marketValues/actions'
 
 export const afterTransactionsChanged = async (dispatch, account) => {
-  await dispatch(updateAccount(account))
   await dispatch(updateMarketValues())
-  await saveState()
+  await dispatch(updateAccount(account))
 }
 
 export const createTransaction = (account, transaction) => {

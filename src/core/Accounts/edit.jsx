@@ -22,9 +22,9 @@ const EditAccount = ({
     history.push(`/accounts/${account.id}/transactions`)
   }
 
-  const onDelete = () => {
+  const onDelete = (account) => {
     confirm('Delete selected account?', 'Are you sure?').then(() => {
-      handleDelete(match.params.accountId)
+      handleDelete(account)
       history.push('/dashboard')
     })
   }
