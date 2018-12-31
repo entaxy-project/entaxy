@@ -6,21 +6,39 @@ import { withFormik } from 'formik'
 import PropTypes from 'prop-types'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
+import Typography from '@material-ui/core/Typography'
 import TextField from '@material-ui/core/TextField'
+import IconButton from '@material-ui/core/IconButton'
+import CloseIcon from '@material-ui/icons/Close'
 import Divider from '@material-ui/core/Divider'
 import Button from '@material-ui/core/Button'
 import red from '@material-ui/core/colors/red'
+import format from 'date-fns/format'
+import parse from 'date-fns/parse'
 import AutoComplete from '../../common/AutoComplete'
 import { sortedInstitutionsForAutoselect } from '../../store/accounts/selectors'
 
 const styles = theme => ({
   root: {
     margin: theme.spacing.unit * 2,
-    padding: theme.spacing.unit * 2,
-    width: '80%'
+    padding: theme.spacing.unit * 2
+  },
+  formHeader: {
+    padding: 10,
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  closeButton: {
+    marginTop: -10
+  },
+  form: {
+    display: 'flex',
+    flexDirection: 'column'
   },
   input: {
-    margin: theme.spacing.unit * 2
+    margin: theme.spacing.unit * 2,
+    width: 320
   },
   formActions: {
     display: 'flex',
@@ -48,11 +66,21 @@ export const AccountFormComponent = ({
   handleChange,
   setFieldValue,
   handleDelete,
-  handleCancel
+  handleCancel,
+  account
 }) => (
   <Grid container direction="row" justify="center">
     <Paper className={classes.root}>
-      <form onSubmit={handleSubmit}>
+      <div className={classes.formHeader}>
+        <Typography variant="h6" align="center">
+          {account ? 'Edit account' : 'New account'}
+        </Typography>
+        <IconButton aria-label="Close" className={classes.closeButton} onClick={handleCancel}>
+          <CloseIcon />
+        </IconButton>
+      </div>
+      <Divider />
+      <form onSubmit={handleSubmit} className={classes.form}>
         <TextField
           label="Account name"
           inputProps={{
@@ -74,10 +102,40 @@ export const AccountFormComponent = ({
           onChange={setFieldValue}
           className={classes.input}
         />
+        <TextField
+          type="number"
+          label="Opening balance"
+          inputProps={{
+            'aria-label': 'Opening balance',
+            required: true,
+            maxLength: 10,
+            min: Number.MIN_SAFE_INTEGER,
+            max: Number.MAX_SAFE_INTEGER,
+            step: 0.01
+          }}
+          className={classes.input}
+          value={values.openingBalance}
+          name="openingBalance"
+          onChange={handleChange}
+        />
+        <TextField
+          type="date"
+          label="Opening Balance Date"
+          InputLabelProps={{
+            shrink: true,
+            'aria-label': 'Date',
+            required: true
+          }}
+          name="openingBalanceDate"
+          className={classes.input}
+          value={values.openingBalanceDate}
+          onChange={handleChange}
+        />
+
         {handleDelete &&
           <Button
             size="small"
-            onClick={handleDelete}
+            onClick={() => handleDelete(account)}
             className={classes.deleteButton}
           >
             Delete this account
@@ -85,8 +143,7 @@ export const AccountFormComponent = ({
         }
         <Divider />
         <div className={classes.formActions}>
-          <Button type="submit" color="primary">Save</Button>
-          <Button onClick={handleCancel} color="secondary">Cancel</Button>
+          <Button type="submit" color="secondary">Save</Button>
         </div>
       </form>
     </Paper>
@@ -101,11 +158,13 @@ AccountFormComponent.propTypes = {
   handleChange: PropTypes.func.isRequired,
   setFieldValue: PropTypes.func.isRequired,
   handleDelete: PropTypes.func,
-  handleCancel: PropTypes.func.isRequired
+  handleCancel: PropTypes.func.isRequired,
+  account: PropTypes.object
 }
 
 AccountFormComponent.defaultProps = {
-  handleDelete: null
+  handleDelete: null,
+  account: null
 }
 
 export default compose(
@@ -116,20 +175,28 @@ export default compose(
     mapPropsToValues: ({ account }) => {
       if (account === undefined) {
         return {
+          name: '',
           institution: null,
-          name: ''
+          openingBalance: 0,
+          openingBalanceDate: format(Date.now(), 'YYYY-MM-DD')
         }
       }
       return {
         ...account,
-        institution: { label: account.institution, value: account.institution }
+        openingBalanceDate: format(new Date(account.openingBalanceDate), 'YYYY-MM-DD'),
+        institution: {
+          label: account.institution,
+          value: account.institution
+        }
       }
     },
-    handleSubmit: (values, { props, setSubmitting, resetForm }) => {
+    handleSubmit: (values, { props, setSubmitting }) => {
       setSubmitting(true)
-      props.handleSave({ ...values, institution: values.institution.value })
-      resetForm()
-      setSubmitting(false)
+      props.handleSave({
+        ...values,
+        institution: values.institution.value,
+        openingBalanceDate: parse(values.openingBalanceDate).getTime()
+      })
     }
   })
 )(AccountFormComponent)

@@ -2,13 +2,9 @@ import transactionReducer, { initialState } from '../reducer'
 import types from '../types'
 
 const transaction = {
-  institution: 'Questrade',
-  account: 'RRSP',
-  type: 'buy',
-  ticker: 'VCE.TO',
-  shares: '1',
-  bookValue: '1',
-  createdAt: new Date()
+  accountId: 1,
+  amount: 1,
+  createdAt: Date.now()
 }
 
 describe('transaction reducer', () => {
@@ -45,7 +41,7 @@ describe('transaction reducer', () => {
         ticker: 'VCE.TO',
         shares: '2',
         bookValue: '2',
-        createdAt: new Date()
+        createdAt: Date.now()
       }]
     }
     const payload = transaction
@@ -80,33 +76,21 @@ describe('transaction reducer', () => {
       ...initialState,
       list: [{
         id: 1,
-        institution: 'TD',
-        account: 'RRSP',
-        type: 'buy',
-        ticker: 'VCE.TO',
-        shares: '2',
-        bookValue: '2',
-        createdAt: new Date()
+        accountId: 1,
+        amount: 2,
+        createdAt: Date.now()
       }]
     }
     const payload = [{
       id: 2,
-      institution: 'Questrade',
-      account: 'RRSP',
-      type: 'buy',
-      ticker: 'VCE.TO',
-      shares: '2',
-      bookValue: '2',
-      createdAt: new Date()
+      accountId: 1,
+      amount: 2,
+      createdAt: Date.now()
     }, {
       id: 3,
-      institution: 'Questrade',
-      account: 'RRSP',
-      type: 'buy',
-      ticker: 'VCE.TO',
-      shares: '3',
-      bookValue: '3',
-      createdAt: new Date()
+      accountId: 1,
+      amount: 3,
+      createdAt: Date.now()
     }]
     expect(transactionReducer(state, { type, payload })).toEqual({
       ...state,

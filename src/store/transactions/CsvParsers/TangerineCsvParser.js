@@ -15,9 +15,7 @@ export default class TangerineCsvParser extends CsvParser {
   map(row, accountData) {
     return {
       ...accountData,
-      type: (row.Amount >= 0 ? 'buy' : 'sell'),
-      shares: row.Amount,
-      bookValue: 1,
+      amount: row.Amount,
       description: this.parseString(row.Memo),
       createdAt: this.parseDate(row.Date, 'mm/dd/yyyy')
     }

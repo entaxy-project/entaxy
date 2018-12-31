@@ -43,11 +43,8 @@ describe('Transactions', () => {
             transactions={[{
               id: 3,
               accountId: 1,
-              type: 'buy',
-              ticker: 'VCE.TO',
-              shares: '3',
-              bookValue: '3',
-              createdAt: new Date()
+              amount: 3,
+              createdAt: Date.now()
             }]}
             sortBy="createAt"
             sortDirection="DESC"

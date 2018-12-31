@@ -7,27 +7,79 @@ exports[`Account form matches snapshot 1`] = `
   <div
     className="MuiPaper-root-98 MuiPaper-elevation2-102 MuiPaper-rounded-99"
   >
+    <div>
+      <h6
+        className="MuiTypography-root-125 MuiTypography-h6-142 MuiTypography-alignCenter-148"
+      >
+        New account
+      </h6>
+      <button
+        aria-label="Close"
+        className="MuiButtonBase-root-166 MuiIconButton-root-160"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[MockFunction]}
+        onContextMenu={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="0"
+        type="button"
+      >
+        <span
+          className="MuiIconButton-label-165"
+        >
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root-169"
+            focusable="false"
+            role="presentation"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+            />
+            <path
+              d="M0 0h24v24H0z"
+              fill="none"
+            />
+          </svg>
+        </span>
+        <span
+          className="MuiTouchRipple-root-261"
+        />
+      </button>
+    </div>
+    <hr
+      className="MuiDivider-root-178"
+    />
     <form
       onSubmit={[MockFunction]}
     >
       <div
-        className="MuiFormControl-root-125"
+        className="MuiFormControl-root-183"
       >
         <label
-          className="MuiFormLabel-root-140 MuiInputLabel-root-129 MuiInputLabel-formControl-134 MuiInputLabel-animated-137"
+          className="MuiFormLabel-root-198 MuiInputLabel-root-187 MuiInputLabel-formControl-192 MuiInputLabel-animated-195"
           data-shrink={false}
         >
           Account name
         </label>
         <div
-          className="MuiInputBase-root-160 MuiInput-root-147 MuiInput-underline-151 MuiInputBase-formControl-161 MuiInput-formControl-148"
+          className="MuiInputBase-root-218 MuiInput-root-205 MuiInput-underline-209 MuiInputBase-formControl-219 MuiInput-formControl-206"
           onClick={[Function]}
         >
           <input
             aria-invalid={false}
             aria-label="Account name"
             autoFocus={true}
-            className="MuiInputBase-input-170 MuiInput-input-155"
+            className="MuiInputBase-input-228 MuiInput-input-213"
             disabled={false}
             maxLength={100}
             name="name"
@@ -146,11 +198,74 @@ exports[`Account form matches snapshot 1`] = `
           value=""
         />
       </div>
+      <div
+        className="MuiFormControl-root-183"
+      >
+        <label
+          className="MuiFormLabel-root-198 MuiInputLabel-root-187 MuiInputLabel-formControl-192 MuiInputLabel-animated-195"
+          data-shrink={false}
+        >
+          Opening balance
+        </label>
+        <div
+          className="MuiInputBase-root-218 MuiInput-root-205 MuiInput-underline-209 MuiInputBase-formControl-219 MuiInput-formControl-206"
+          onClick={[Function]}
+        >
+          <input
+            aria-invalid={false}
+            aria-label="Opening balance"
+            className="MuiInputBase-input-228 MuiInput-input-213 MuiInputBase-inputType-231 MuiInput-inputType-216"
+            disabled={false}
+            max={9007199254740991}
+            maxLength={10}
+            min={-9007199254740991}
+            name="openingBalance"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            required={true}
+            step={0.01}
+            type="number"
+          />
+        </div>
+      </div>
+      <div
+        className="MuiFormControl-root-183"
+      >
+        <label
+          aria-label="Date"
+          className="MuiFormLabel-root-198 MuiFormLabel-required-203 MuiInputLabel-required-191 MuiInputLabel-root-187 MuiInputLabel-formControl-192 MuiInputLabel-animated-195 MuiInputLabel-shrink-194"
+          data-shrink={true}
+        >
+          Opening Balance Date
+          <span
+            className="MuiFormLabel-asterisk-204"
+          >
+             *
+          </span>
+        </label>
+        <div
+          className="MuiInputBase-root-218 MuiInput-root-205 MuiInput-underline-209 MuiInputBase-formControl-219 MuiInput-formControl-206"
+          onClick={[Function]}
+        >
+          <input
+            aria-invalid={false}
+            className="MuiInputBase-input-228 MuiInput-input-213 MuiInputBase-inputType-231 MuiInput-inputType-216"
+            disabled={false}
+            name="openingBalanceDate"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            required={false}
+            type="date"
+          />
+        </div>
+      </div>
       <button
-        className="MuiButtonBase-root-203 MuiButton-root-177 MuiButton-text-179 MuiButton-flat-182 MuiButton-sizeSmall-200"
+        className="MuiButtonBase-root-166 MuiButton-root-235 MuiButton-text-237 MuiButton-flat-240 MuiButton-sizeSmall-258"
         disabled={false}
         onBlur={[Function]}
-        onClick={[MockFunction]}
+        onClick={[Function]}
         onContextMenu={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -165,20 +280,20 @@ exports[`Account form matches snapshot 1`] = `
         type="button"
       >
         <span
-          className="MuiButton-label-178"
+          className="MuiButton-label-236"
         >
           Delete this account
         </span>
         <span
-          className="MuiTouchRipple-root-211"
+          className="MuiTouchRipple-root-261"
         />
       </button>
       <hr
-        className="MuiDivider-root-206"
+        className="MuiDivider-root-178"
       />
       <div>
         <button
-          className="MuiButtonBase-root-203 MuiButton-root-177 MuiButton-text-179 MuiButton-textPrimary-180 MuiButton-flat-182 MuiButton-flatPrimary-183"
+          className="MuiButtonBase-root-166 MuiButton-root-235 MuiButton-text-237 MuiButton-textSecondary-239 MuiButton-flat-240 MuiButton-flatSecondary-242"
           disabled={false}
           onBlur={[Function]}
           onContextMenu={[Function]}
@@ -195,39 +310,12 @@ exports[`Account form matches snapshot 1`] = `
           type="submit"
         >
           <span
-            className="MuiButton-label-178"
+            className="MuiButton-label-236"
           >
             Save
           </span>
           <span
-            className="MuiTouchRipple-root-211"
-          />
-        </button>
-        <button
-          className="MuiButtonBase-root-203 MuiButton-root-177 MuiButton-text-179 MuiButton-textSecondary-181 MuiButton-flat-182 MuiButton-flatSecondary-184"
-          disabled={false}
-          onBlur={[Function]}
-          onClick={[MockFunction]}
-          onContextMenu={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          tabIndex="0"
-          type="button"
-        >
-          <span
-            className="MuiButton-label-178"
-          >
-            Cancel
-          </span>
-          <span
-            className="MuiTouchRipple-root-211"
+            className="MuiTouchRipple-root-261"
           />
         </button>
       </div>

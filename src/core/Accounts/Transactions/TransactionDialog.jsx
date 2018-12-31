@@ -1,33 +1,32 @@
+/* eslint-disable no-console */
 import React from 'react'
 import { compose } from 'recompose'
 import { withStyles } from '@material-ui/core/styles'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import TextField from '@material-ui/core/TextField'
-import MenuItem from '@material-ui/core/MenuItem'
-import InputAdornment from '@material-ui/core/InputAdornment'
 import { withFormik } from 'formik'
 import format from 'date-fns/format'
+import parse from 'date-fns/parse'
 import ModalDialog from '../../../common/ModalDialog'
 import { createTransaction, updateTransaction } from '../../../store/transactions/actions'
 
 const styles = () => ({
   root: {
-    display: 'inline'
   },
   input: {
-    margin: '5px',
-    width: 200
+    margin: 5,
+    width: '100%'
   }
 })
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleSave: (transaction) => {
+    handleSave: (account, transaction) => {
       if ('id' in transaction) {
-        return dispatch(updateTransaction(transaction))
+        return dispatch(updateTransaction(account, transaction))
       }
-      return dispatch(createTransaction(transaction))
+      return dispatch(createTransaction(account, transaction))
     }
   }
 }
@@ -41,103 +40,55 @@ const TransactionDialog = ({
   open,
   transaction
 }) => (
-  <div className={classes.root}>
-    <ModalDialog
-      open={open}
-      title={transaction ? 'Edit transaction' : 'Add new transaction'}
-      onSubmit={handleSubmit}
-      onCancel={onCancel}
-    >
-      <div>
-        <TextField
-          label="Description"
-          inputProps={{
-            'aria-label': 'Description',
-            required: true,
-            maxLength: 256
-          }}
-          className={classes.input}
-          value={values.description}
-          name="description"
-          onChange={handleChange}
-        />
-        <TextField
-          select
-          label="Purchase Type"
-          inputProps={{ 'aria-label': 'Purchase Type', required: true }}
-          className={classes.input}
-          value={values.type}
-          name="type"
-          onChange={handleChange}
-        >
-          <MenuItem key="buy" value="buy">Buy</MenuItem>
-          <MenuItem key="sell" value="sell">Sell</MenuItem>
-        </TextField>
-        <TextField
-          label="Ticker"
-          inputProps={{
-            'aria-label': 'Ticker',
-            required: true,
-            maxLength: 6
-          }}
-          className={classes.input}
-          value={values.ticker}
-          name="ticker"
-          onChange={handleChange}
-        />
-        <TextField
-          type="number"
-          label="Shares"
-          inputProps={{
-            'aria-label': 'Shares',
-            required: true,
-            maxLength: 10,
-            min: Number.MIN_SAFE_INTEGER,
-            max: Number.MAX_SAFE_INTEGER,
-            step: 0.01
-          }}
-          className={classes.input}
-          value={values.shares}
-          name="shares"
-          onChange={handleChange}
-        />
-        <TextField
-          type="number"
-          label="Book Value"
-          InputProps={{
-            startAdornment: <InputAdornment position="start">$</InputAdornment>,
-            inputProps: {
-              'aria-label': 'Book Value',
-              required: true,
-              maxLength: 6,
-              min: 0,
-              max: Number.MAX_SAFE_INTEGER,
-              step: 0.01
-            }
-          }}
-          className={classes.input}
-          value={values.bookValue}
-          name="bookValue"
-          helperText="The original purchase cost"
-          onChange={handleChange}
-        />
-        <TextField
-          type="date"
-          label="Date"
-          InputLabelProps={{
-            shrink: true,
-            'aria-label': 'Shares',
-            required: true
-          }}
-          name="createdAt"
-          className={classes.input}
-          value={values.createdAt}
-          defaultValue={values.createdAt}
-          onChange={handleChange}
-        />
-      </div>
-    </ModalDialog>
-  </div>
+  <ModalDialog
+    open={open}
+    title={transaction ? 'Edit transaction' : 'New transaction'}
+    onSubmit={handleSubmit}
+    onCancel={onCancel}
+    className={classes.root}
+  >
+    <TextField
+      label="Description"
+      inputProps={{
+        'aria-label': 'Description',
+        required: true,
+        maxLength: 256
+      }}
+      className={classes.input}
+      value={values.description}
+      name="description"
+      onChange={handleChange}
+    />
+    <TextField
+      type="number"
+      label="Amount"
+      inputProps={{
+        'aria-label': 'Amount',
+        required: true,
+        maxLength: 10,
+        min: Number.MIN_SAFE_INTEGER,
+        max: Number.MAX_SAFE_INTEGER,
+        step: 0.01
+      }}
+      className={classes.input}
+      value={values.amount}
+      name="amount"
+      onChange={handleChange}
+    />
+    <TextField
+      type="date"
+      label="Date"
+      InputLabelProps={{
+        shrink: true,
+        'aria-label': 'Date',
+        required: true
+      }}
+      name="createdAt"
+      className={classes.input}
+      value={values.createdAt}
+      onChange={handleChange}
+    />
+  </ModalDialog>
 )
 
 TransactionDialog.propTypes = {
@@ -162,24 +113,22 @@ export default compose(
     mapPropsToValues: ({ transaction }) => {
       if (transaction === null) {
         return {
-          type: '',
-          ticker: '',
-          shares: '',
+          amount: '',
           bookValue: '',
-          createdAt: format(new Date(), 'yyyy-MM-dd')
+          createdAt: format(Date.now(), 'YYYY-MM-DD')
         }
       }
       return {
         ...transaction,
-        createdAt: format(new Date(transaction.createdAt), 'yyyy-MM-dd')
+        createdAt: format(new Date(transaction.createdAt), 'YYYY-MM-DD')
       }
     },
     handleSubmit: (values, { props, setSubmitting, resetForm }) => {
       setSubmitting(true)
-      props.handleSave({
+      props.handleSave(props.account, {
         ...values,
         accountId: props.account.id,
-        createdAt: Date.parse(values.createdAt)
+        createdAt: parse(values.createdAt).getTime()
       })
       resetForm()
       setSubmitting(false)

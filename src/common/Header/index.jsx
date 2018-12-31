@@ -5,7 +5,6 @@ import Toolbar from '@material-ui/core/Toolbar'
 import { withStyles } from '@material-ui/core/styles'
 import Logo from '../Logo/index'
 import LoginButton from '../LoginButton'
-import TopNav from '../TopNav'
 import LeftDrawer from '../../common/LeftDrawer'
 
 const styles = theme => ({
@@ -27,7 +26,6 @@ const Header = ({ classes, children }) => (
     <AppBar position="fixed" className={classes.header}>
       <Toolbar className={classes.toolbar}>
         <Logo />
-        <TopNav />
         <LoginButton />
       </Toolbar>
     </AppBar>

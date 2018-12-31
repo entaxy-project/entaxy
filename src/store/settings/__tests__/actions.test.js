@@ -96,7 +96,7 @@ describe('settings actions', () => {
             ticker: 'VCE.TO',
             shares: '1',
             bookValue: '1',
-            createdAt: new Date()
+            createdAt: Date.now()
           }]
         }
       })

@@ -1,33 +1,31 @@
 import uuid from 'uuid/v4'
 import types from './types'
-import { saveState } from '../user/actions'
-import { updatePortfolioFilters } from '../settings/actions'
+import { updateAccount } from '../accounts/actions'
 import { updateMarketValues } from '../marketValues/actions'
 
-export const afterTransactionsChanged = async (dispatch) => {
+export const afterTransactionsChanged = async (dispatch, account) => {
   await dispatch(updateMarketValues())
-  await dispatch(updatePortfolioFilters())
-  await saveState()
+  await dispatch(updateAccount(account))
 }
 
-export const createTransaction = (transaction) => {
+export const createTransaction = (account, transaction) => {
   return (dispatch) => {
     dispatch({ type: types.CREATE_TRANSACTION, payload: { ...transaction, id: uuid() } })
-    return afterTransactionsChanged(dispatch)
+    return afterTransactionsChanged(dispatch, account)
   }
 }
 
-export const updateTransaction = (transaction) => {
+export const updateTransaction = (account, transaction) => {
   return async (dispatch) => {
     dispatch({ type: types.UPDATE_TRANSACTION, payload: transaction })
-    return afterTransactionsChanged(dispatch)
+    return afterTransactionsChanged(dispatch, account)
   }
 }
 
-export const deleteTransactions = (transactionIds) => {
+export const deleteTransactions = (account, transactionIds) => {
   return (dispatch) => {
     dispatch({ type: types.DELETE_TRANSACTIONS, payload: transactionIds })
-    return afterTransactionsChanged(dispatch)
+    return afterTransactionsChanged(dispatch, account)
   }
 }
 
@@ -38,10 +36,10 @@ export const loadTransactions = (transactions) => {
 }
 
 // Add new transactions to the existing ones
-export const addTransactions = (transactions) => {
-  return (dispatch) => {
-    dispatch({ type: types.ADD_TRANSACTIONS, payload: transactions })
-    return afterTransactionsChanged(dispatch)
+export const addTransactions = (account, transactions) => {
+  return async (dispatch) => {
+    await dispatch({ type: types.ADD_TRANSACTIONS, payload: transactions })
+    return afterTransactionsChanged(dispatch, account)
   }
 }
 
