@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import IconButton from '@material-ui/core/IconButton'
 import EditIcon from '@material-ui/icons/Edit'
-import format from 'date-fns/format'
+// import format from 'date-fns/format'
 import Paper from '@material-ui/core/Paper'
 import Checkbox from '@material-ui/core/Checkbox'
 import Tooltip from '@material-ui/core/Tooltip'
@@ -18,6 +18,7 @@ import confirm from '../../../util/confirm'
 import { deleteTransactions, updateSortBy } from '../../../store/transactions/actions'
 import { makeFindAccountById } from '../../../store/accounts/selectors'
 import { makeAccountTransactions } from '../../../store/transactions/selectors'
+import { currencyFormatter, dateFormatter } from '../../../common/StringFormatter'
 
 const styles = theme => ({
   paper: {
@@ -58,10 +59,15 @@ const makeMapStateToProps = () => {
   const findAccountById = makeFindAccountById()
   const accountTransactions = makeAccountTransactions()
   const mapStateToProps = (state, props) => {
+    const cf = currencyFormatter(state.settings)
+    const df = dateFormatter(state.settings)
     return {
+      settings: state.settings,
+      formatCurrency: number => cf.format(number),
+      formatDate: date => df.format(date),
       sortBy: state.transactions.sortBy,
       sortDirection: state.transactions.sortDirection,
-      account: findAccountById(state, props).account,
+      account: findAccountById(state.accounts, props.match.params.accountId),
       transactions: accountTransactions(state, props).transactions
     }
   }
@@ -162,8 +168,9 @@ export class TransactionsComponent extends React.Component {
   isSelected = id => this.state.selected.indexOf(id) !== -1
 
   render() {
-    const currencyFormatter = new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD' })
     const {
+      formatCurrency,
+      formatDate,
       classes,
       transactions,
       sortBy,
@@ -172,6 +179,7 @@ export class TransactionsComponent extends React.Component {
       account
     } = this.props
     const { selected } = this.state
+
     return (
       <div>
         <TransactionDialog
@@ -237,7 +245,7 @@ export class TransactionsComponent extends React.Component {
                     width={120}
                     label="Date"
                     dataKey="createdAt"
-                    cellDataGetter={({ rowData }) => format(new Date(rowData.createdAt), 'MMM DD, YYYY')}
+                    cellDataGetter={({ rowData }) => formatDate(new Date(rowData.createdAt))}
                   />
                   <Column
                     width={200}
@@ -251,7 +259,7 @@ export class TransactionsComponent extends React.Component {
                     label="In"
                     dataKey="amount"
                     cellDataGetter={({ rowData }) => {
-                      if (rowData.amount > 0) { return currencyFormatter.format(rowData.amount) }
+                      if (rowData.amount > 0) { return formatCurrency(rowData.amount) }
                       return null
                     }}
                   />
@@ -260,7 +268,7 @@ export class TransactionsComponent extends React.Component {
                     label="Out"
                     dataKey="amount"
                     cellDataGetter={({ rowData }) => {
-                      if (rowData.amount < 0) { return currencyFormatter.format(rowData.amount) }
+                      if (rowData.amount < 0) { return formatCurrency(rowData.amount) }
                       return null
                     }}
                   />
@@ -294,6 +302,8 @@ export class TransactionsComponent extends React.Component {
 }
 
 TransactionsComponent.propTypes = {
+  formatCurrency: PropTypes.func.isRequired,
+  formatDate: PropTypes.func.isRequired,
   classes: PropTypes.object.isRequired,
   transactions: PropTypes.array.isRequired,
   handleSort: PropTypes.func.isRequired,

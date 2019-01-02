@@ -6,11 +6,6 @@ import { initialState } from '../reducer'
 import * as actions from '../actions'
 import types from '../types'
 
-import { initialState as settingsInitialState } from '../../settings/reducer'
-import { initialState as marketValuesInitialState } from '../../marketValues/reducer'
-import { initialState as accountsInitialState } from '../../accounts/reducer'
-import { initialState as transactionsInitialState } from '../../transactions/reducer'
-
 jest.mock('blockstack', () => {
   return require('../../../../mocks/BlockstackMock')
 })
@@ -94,16 +89,13 @@ describe('user actions', () => {
 
   it('userLogout should sign the user out', () => {
     const signUserOutSpy = jest.spyOn(blockstack, 'signUserOut')
+    const resetStateSpy = jest.spyOn(actions, 'resetState')
 
-    actions.userLogout()(dispatch)
-
-    expect(dispatch).toBeCalledWith({ type: types.USER_LOGOUT })
-    expect(dispatch).toBeCalledWith({ type: 'LOAD_SETTINGS', payload: settingsInitialState })
-    expect(dispatch).toBeCalledWith({ type: 'LOAD_MARKET_VALUES', payload: marketValuesInitialState })
-    expect(dispatch).toBeCalledWith({ type: 'LOAD_ACCOUNTS', payload: accountsInitialState })
-    expect(dispatch).toBeCalledWith({ type: 'LOAD_TRANSACTIONS', payload: transactionsInitialState })
-
-    expect(signUserOutSpy).toHaveBeenCalled()
+    actions.userLogout()(dispatch).then(() => {
+      expect(dispatch).toBeCalledWith({ type: types.USER_LOGOUT })
+      expect(signUserOutSpy).toHaveBeenCalled()
+      expect(resetStateSpy).toHaveBeenCalled()
+    })
   })
 
   it('userLoginError should sign the user out', () => {

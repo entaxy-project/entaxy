@@ -8,6 +8,8 @@ import { TransactionsComponent } from '../'
 describe('Transactions', () => {
   const mochDeleteTransactions = jest.fn()
   const mochHandleSort = jest.fn()
+  const mochFormatCurrency = jest.fn().mockReturnValue(() => {})
+  const mochFormatDate = jest.fn().mockReturnValue(() => {})
 
   beforeEach(() => {
     jest.clearAllMocks()
@@ -25,6 +27,8 @@ describe('Transactions', () => {
             sortDirection="DESC"
             classes={{ }}
             account={{ id: 1, nstitution: 'TD' }}
+            formatCurrency={mochFormatCurrency}
+            formatDate={mochFormatDate}
           />
         </BrowserRouter>
       </Provider>
@@ -49,6 +53,8 @@ describe('Transactions', () => {
             sortBy="createAt"
             sortDirection="DESC"
             classes={{ }}
+            formatCurrency={mochFormatCurrency()}
+            formatDate={mochFormatDate}
           />
         </BrowserRouter>
       </Provider>

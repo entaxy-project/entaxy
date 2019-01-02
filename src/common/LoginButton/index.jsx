@@ -3,11 +3,17 @@ import PropTypes from 'prop-types'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
 import { withStyles } from '@material-ui/core/styles'
+import { NavLink } from 'react-router-dom'
 import Button from '@material-ui/core/Button'
 import Avatar from '@material-ui/core/Avatar'
 import Popper from '@material-ui/core/Popper'
 import MenuItem from '@material-ui/core/MenuItem'
 import MenuList from '@material-ui/core/MenuList'
+import ListItemIcon from '@material-ui/core/ListItemIcon'
+import ListItemText from '@material-ui/core/ListItemText'
+import Settings from '@material-ui/icons/Settings'
+import Icon from '@mdi/react'
+import { mdiLogout } from '@mdi/js'
 import AccountBoxIcon from '@material-ui/icons/AccountBox'
 import Paper from '@material-ui/core/Paper'
 import Fade from '@material-ui/core/Fade'
@@ -15,21 +21,25 @@ import ClickAwayListener from '@material-ui/core/ClickAwayListener'
 import Tooltip from '@material-ui/core/Tooltip'
 import { userLogout } from '../../store/user/actions'
 
-const styles = {
+const styles = theme => ({
   root: {
     display: 'flex'
+  },
+  popper: {
+    zIndex: theme.zIndex.drawer + 1
+  },
+  menuIcon: {
+    marginRight: '5px',
+    'vertical-align': 'bottom',
+    fill: theme.palette.text.secondary
   }
-}
+})
 
-const mapStateToProps = ({ user }) => {
-  return { user }
-}
+const mapStateToProps = ({ user }) => ({ user })
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    handleLogout: () => { dispatch(userLogout()) }
-  }
-}
+const mapDispatchToProps = dispatch => ({
+  handleLogout: () => { dispatch(userLogout()) }
+})
 
 export class LoginButtonComponent extends React.Component {
   state = {
@@ -80,13 +90,27 @@ export class LoginButtonComponent extends React.Component {
           >
             {user.name}
           </Button>
-          <Popper open={open} anchorEl={anchorEl} transition>
+          <Popper open={open} anchorEl={anchorEl} transition className={classes.popper}>
             {({ TransitionProps }) => (
               <Fade {...TransitionProps} timeout={350}>
                 <Paper>
                   <MenuList role="menu">
-                    <MenuItem>Profile</MenuItem>
-                    <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                    <MenuItem component={NavLink} to="/settings">
+                      <ListItemIcon>
+                        <Settings />
+                      </ListItemIcon>
+                      <ListItemText primary="Settings" />
+                    </MenuItem>
+                    <MenuItem onClick={handleLogout}>
+                      <ListItemIcon>
+                        <Icon
+                          path={mdiLogout}
+                          size={1}
+                          className={classes.menuIcon}
+                        />
+                      </ListItemIcon>
+                      <ListItemText primary="Logout" />
+                    </MenuItem>
                   </MenuList>
                 </Paper>
               </Fade>

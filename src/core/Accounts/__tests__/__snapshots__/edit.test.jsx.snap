@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`New Account matches snapshot 1`] = `
+<AccountForm
+  accountId={1}
+  handleCancel={[Function]}
+  handleDelete={[Function]}
+  handleSave={[Function]}
+/>
+`;

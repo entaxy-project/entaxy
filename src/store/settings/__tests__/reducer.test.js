@@ -31,6 +31,7 @@ describe('settings reducer', () => {
     }
 
     expect(settingsReducer(undefined, { type, payload })).toEqual({
+      ...initialState,
       portfolioFilters: {
         ...initialState.portfolioFilters,
         [payload.filterName]: payload.options

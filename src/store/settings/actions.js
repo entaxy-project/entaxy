@@ -1,9 +1,17 @@
+/* eslint-disable no-console */
 import _ from 'lodash'
 import types from './types'
 import { saveState } from '../user/actions'
 
 export const loadSettings = (settings) => {
   return { type: types.LOAD_SETTINGS, payload: settings }
+}
+
+export const updateSettings = (settings) => {
+  return async (dispatch) => {
+    await dispatch({ type: types.UPDATE_SETTINGS, payload: settings })
+    await saveState()
+  }
 }
 
 // filterName is institution or account

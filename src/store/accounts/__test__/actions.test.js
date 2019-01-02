@@ -48,7 +48,7 @@ describe('accounts actions', () => {
     })
   })
 
-  describe('UpdateAccount', () => {
+  describe('updateAccount', () => {
     it('should update a account', () => {
       const mockStore = configureMockStore([thunk])
       const store = mockStore({

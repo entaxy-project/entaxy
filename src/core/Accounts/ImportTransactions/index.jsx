@@ -33,7 +33,7 @@ const makeMapStateToProps = () => {
   const findAccountById = makeFindAccountById()
   const mapStateToProps = (state, props) => {
     return {
-      account: findAccountById(state, props).account
+      account: findAccountById(state.accounts, props.match.params.accountId)
     }
   }
   return mapStateToProps

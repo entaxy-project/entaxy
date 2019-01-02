@@ -22,13 +22,13 @@ export const institutionsData = {
 const getInstitutions = () => Object.keys(institutionsData)
 const getAccounts = state => state.accounts
 
-const findAccountById = (state, { match }) => (
-  state.accounts.find(account => account.id === match.params.accountId)
-)
+export const findAccountById = (accounts, accountId) => {
+  return accounts.find(account => account.id === accountId)
+}
 
 export const makeFindAccountById = () => createSelector(
   findAccountById,
-  account => ({ account })
+  account => account
 )
 
 export const sortedAccountsGroupedByInstitution = createSelector(
