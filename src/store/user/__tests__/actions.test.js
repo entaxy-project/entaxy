@@ -3,13 +3,12 @@ import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
 import * as storage from '../../blockstackStorage'
 import { initialState } from '../reducer'
-import * as actions from '../actions'
-import types from '../types'
-
 import { initialState as settingsInitialState } from '../../settings/reducer'
-import { initialState as marketValuesInitialState } from '../../marketValues/reducer'
 import { initialState as accountsInitialState } from '../../accounts/reducer'
 import { initialState as transactionsInitialState } from '../../transactions/reducer'
+import { initialState as marketValuesInitialState } from '../../marketValues/reducer'
+import * as actions from '../actions'
+import types from '../types'
 
 jest.mock('blockstack', () => {
   return require('../../../../mocks/BlockstackMock')
@@ -92,18 +91,38 @@ describe('user actions', () => {
     })
   })
 
-  it('userLogout should sign the user out', () => {
+  it('resetState should delete all data', async () => {
+    const mockStore = configureMockStore([thunk])
+    const store = mockStore({})
+
+    store.dispatch(actions.resetState())
+    expect(store.getActions()).toEqual([
+      {
+        type: 'LOAD_SETTINGS',
+        payload: settingsInitialState
+      },
+      {
+        type: 'LOAD_ACCOUNTS',
+        payload: accountsInitialState
+      },
+      {
+        type: 'LOAD_TRANSACTIONS',
+        payload: transactionsInitialState
+      },
+      {
+        type: 'LOAD_MARKET_VALUES',
+        payload: marketValuesInitialState
+      }
+    ])
+  })
+
+  it('userLogout should sign the user out', async () => {
     const signUserOutSpy = jest.spyOn(blockstack, 'signUserOut')
 
-    actions.userLogout()(dispatch)
-
-    expect(dispatch).toBeCalledWith({ type: types.USER_LOGOUT })
-    expect(dispatch).toBeCalledWith({ type: 'LOAD_SETTINGS', payload: settingsInitialState })
-    expect(dispatch).toBeCalledWith({ type: 'LOAD_MARKET_VALUES', payload: marketValuesInitialState })
-    expect(dispatch).toBeCalledWith({ type: 'LOAD_ACCOUNTS', payload: accountsInitialState })
-    expect(dispatch).toBeCalledWith({ type: 'LOAD_TRANSACTIONS', payload: transactionsInitialState })
-
+    await actions.userLogout()(dispatch)
     expect(signUserOutSpy).toHaveBeenCalled()
+    expect(dispatch).toBeCalledTimes(2)
+    expect(dispatch).toBeCalledWith({ type: types.USER_LOGOUT })
   })
 
   it('userLoginError should sign the user out', () => {

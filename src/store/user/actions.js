@@ -11,19 +11,15 @@ import { initialState as transactionsInitialState } from '../transactions/reduce
 import { loadMarketValues } from '../marketValues/actions'
 import { initialState as marketValuesInitialState } from '../marketValues/reducer'
 
-export const dataIsLoading = bool => (
-  {
-    type: types.DATA_IS_LOADING,
-    payload: bool
-  }
-)
+export const dataIsLoading = bool => ({
+  type: types.DATA_IS_LOADING,
+  payload: bool
+})
 
-export const saveLoginData = loginData => (
-  {
-    type: types.SAVE_LOGIN_DATA,
-    payload: loginData
-  }
-)
+export const saveLoginData = loginData => ({
+  type: types.SAVE_LOGIN_DATA,
+  payload: loginData
+})
 
 export const loadUserData = () => {
   return (dispatch, getState) => {
@@ -71,9 +67,10 @@ export const loginAs = (loginType) => {
   }
 }
 
-export const userLoginError = (error) => {
-  return { type: types.USER_LOGIN_ERROR, payload: error }
-}
+export const userLoginError = error => ({
+  type: types.USER_LOGIN_ERROR,
+  payload: error
+})
 
 export const handleBlockstackLogin = () => {
   return (dispatch) => {
@@ -84,17 +81,21 @@ export const handleBlockstackLogin = () => {
   }
 }
 
-export const userLogout = () => {
-  blockstack.signUserOut()
+export const resetState = () => {
   return (dispatch) => {
     dispatch(loadSettings(settingsInitialState))
     dispatch(loadAccounts(accountsInitialState))
     dispatch(loadTransactions(transactionsInitialState))
     dispatch(loadMarketValues(marketValuesInitialState))
-    dispatch({ type: types.USER_LOGOUT })
   }
 }
 
-export const saveState = () => {
-  storage.saveState(store.getState())
+export const userLogout = () => {
+  return async (dispatch) => {
+    await blockstack.signUserOut()
+    await dispatch(resetState())
+    await dispatch({ type: types.USER_LOGOUT })
+  }
 }
+
+export const saveState = () => storage.saveState(store.getState())

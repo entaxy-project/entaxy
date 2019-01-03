@@ -2,123 +2,31 @@
 
 exports[`Transactions matches snapshot with no transactions 1`] = `
 <div>
+  <TransactionDialog
+    account={
+      Object {
+        "id": 1,
+        "nstitution": "TD",
+      }
+    }
+    onCancel={[Function]}
+    open={false}
+    transaction={null}
+  />
   <div
-    className="MuiPaper-root-23 MuiPaper-elevation0-25 MuiPaper-rounded-24"
+    className="MuiPaper-root-1 MuiPaper-elevation0-3 MuiPaper-rounded-2"
   >
-    <div
-      className="MuiToolbar-root-57 MuiToolbar-regular-59 MuiToolbar-gutters-58 TableToolbar-root-51"
-    >
-      <div
-        className="TableToolbar-title-56"
-      >
-        <h6
-          className="MuiTypography-root-61 MuiTypography-h6-78"
-          id="tableTitle"
-        >
-          undefined - undefined
-        </h6>
-      </div>
-      <div
-        className="TableToolbar-spacer-53"
-      />
-      <div
-        className="TableToolbar-actions-54"
-      >
-        <div
-          className="TableToolbar-buttons-55"
-        >
-          <button
-            aria-describedby={null}
-            aria-label="Import transaction"
-            className="MuiButtonBase-root-110 MuiIconButton-root-104"
-            disabled={false}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onContextMenu={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseLeave={[Function]}
-            onMouseOver={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-            tabIndex="0"
-            title="Import transaction"
-            type="button"
-          >
-            <span
-              className="MuiIconButton-label-109"
-            >
-              <svg
-                className="withRouter-TransactionsToolbarComponent--importButton-50"
-                style={
-                  Object {
-                    "width": "1.5rem",
-                  }
-                }
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M14,12L10,8V11H2V13H10V16M20,18V6C20,4.89 19.1,4 18,4H6C4.9,4 4,4.9 4,6V9H6V6H18V18H6V15H4V18C4,19.1 4.9,20 6,20H18C19.1,20 20,19.1 20,18Z"
-                  style={Object {}}
-                />
-              </svg>
-            </span>
-            <span
-              className="MuiTouchRipple-root-132"
-            />
-          </button>
-          <button
-            aria-describedby={null}
-            aria-label="New transaction"
-            className="MuiButtonBase-root-110 MuiIconButton-root-104"
-            disabled={false}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onContextMenu={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseLeave={[Function]}
-            onMouseOver={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-            tabIndex="0"
-            title="New transaction"
-            type="button"
-          >
-            <span
-              className="MuiIconButton-label-109"
-            >
-              <svg
-                aria-hidden="true"
-                className="MuiSvgIcon-root-113"
-                focusable="false"
-                role="presentation"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
-                />
-                <path
-                  d="M0 0h24v24H0z"
-                  fill="none"
-                />
-              </svg>
-            </span>
-            <span
-              className="MuiTouchRipple-root-132"
-            />
-          </button>
-        </div>
-      </div>
-    </div>
+    <TransactionsToolbar
+      account={
+        Object {
+          "id": 1,
+          "nstitution": "TD",
+        }
+      }
+      handleDelete={[Function]}
+      handleNew={[Function]}
+      selectedTransactions={Array []}
+    />
     <div>
       <div
         style={
@@ -163,7 +71,7 @@ exports[`Transactions matches snapshot with no transactions 1`] = `
                 className="ReactVirtualized__Table__headerTruncatedText"
               >
                 <span
-                  className="MuiButtonBase-root-110 MuiIconButton-root-104 MuiPrivateSwitchBase-root-128 MuiCheckbox-root-122 MuiCheckbox-colorSecondary-127"
+                  className="MuiButtonBase-root-44 MuiIconButton-root-38 MuiPrivateSwitchBase-root-34 MuiCheckbox-root-28 MuiCheckbox-colorSecondary-33"
                   onBlur={[Function]}
                   onContextMenu={[Function]}
                   onFocus={[Function]}
@@ -178,11 +86,11 @@ exports[`Transactions matches snapshot with no transactions 1`] = `
                   tabIndex={null}
                 >
                   <span
-                    className="MuiIconButton-label-109"
+                    className="MuiIconButton-label-43"
                   >
                     <svg
                       aria-hidden="true"
-                      className="MuiSvgIcon-root-113"
+                      className="MuiSvgIcon-root-47"
                       focusable="false"
                       role="presentation"
                       viewBox="0 0 24 24"
@@ -193,14 +101,14 @@ exports[`Transactions matches snapshot with no transactions 1`] = `
                     </svg>
                     <input
                       checked={false}
-                      className="MuiPrivateSwitchBase-input-131"
+                      className="MuiPrivateSwitchBase-input-37"
                       data-indeterminate={false}
                       onChange={[Function]}
                       type="checkbox"
                     />
                   </span>
                   <span
-                    className="MuiTouchRipple-root-132"
+                    className="MuiTouchRipple-root-56"
                   />
                 </span>
               </span>
@@ -338,123 +246,33 @@ exports[`Transactions matches snapshot with no transactions 1`] = `
 
 exports[`Transactions matches snapshot with one transaction 1`] = `
 <div>
+  <TransactionDialog
+    account={
+      Object {
+        "description": "TD EasyWeb",
+        "id": 1,
+        "institution": "TD",
+      }
+    }
+    onCancel={[Function]}
+    open={false}
+    transaction={null}
+  />
   <div
-    className="MuiPaper-root-23 MuiPaper-elevation0-25 MuiPaper-rounded-24"
+    className="MuiPaper-root-1 MuiPaper-elevation0-3 MuiPaper-rounded-2"
   >
-    <div
-      className="MuiToolbar-root-57 MuiToolbar-regular-59 MuiToolbar-gutters-58 TableToolbar-root-51"
-    >
-      <div
-        className="TableToolbar-title-56"
-      >
-        <h6
-          className="MuiTypography-root-61 MuiTypography-h6-78"
-          id="tableTitle"
-        >
-          TD - undefined
-        </h6>
-      </div>
-      <div
-        className="TableToolbar-spacer-53"
-      />
-      <div
-        className="TableToolbar-actions-54"
-      >
-        <div
-          className="TableToolbar-buttons-55"
-        >
-          <button
-            aria-describedby={null}
-            aria-label="Import transaction"
-            className="MuiButtonBase-root-110 MuiIconButton-root-104"
-            disabled={false}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onContextMenu={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseLeave={[Function]}
-            onMouseOver={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-            tabIndex="0"
-            title="Import transaction"
-            type="button"
-          >
-            <span
-              className="MuiIconButton-label-109"
-            >
-              <svg
-                className="withRouter-TransactionsToolbarComponent--importButton-50"
-                style={
-                  Object {
-                    "width": "1.5rem",
-                  }
-                }
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M14,12L10,8V11H2V13H10V16M20,18V6C20,4.89 19.1,4 18,4H6C4.9,4 4,4.9 4,6V9H6V6H18V18H6V15H4V18C4,19.1 4.9,20 6,20H18C19.1,20 20,19.1 20,18Z"
-                  style={Object {}}
-                />
-              </svg>
-            </span>
-            <span
-              className="MuiTouchRipple-root-132"
-            />
-          </button>
-          <button
-            aria-describedby={null}
-            aria-label="New transaction"
-            className="MuiButtonBase-root-110 MuiIconButton-root-104"
-            disabled={false}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onContextMenu={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseLeave={[Function]}
-            onMouseOver={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-            tabIndex="0"
-            title="New transaction"
-            type="button"
-          >
-            <span
-              className="MuiIconButton-label-109"
-            >
-              <svg
-                aria-hidden="true"
-                className="MuiSvgIcon-root-113"
-                focusable="false"
-                role="presentation"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
-                />
-                <path
-                  d="M0 0h24v24H0z"
-                  fill="none"
-                />
-              </svg>
-            </span>
-            <span
-              className="MuiTouchRipple-root-132"
-            />
-          </button>
-        </div>
-      </div>
-    </div>
+    <TransactionsToolbar
+      account={
+        Object {
+          "description": "TD EasyWeb",
+          "id": 1,
+          "institution": "TD",
+        }
+      }
+      handleDelete={[Function]}
+      handleNew={[Function]}
+      selectedTransactions={Array []}
+    />
     <div>
       <div
         style={
@@ -499,7 +317,7 @@ exports[`Transactions matches snapshot with one transaction 1`] = `
                 className="ReactVirtualized__Table__headerTruncatedText"
               >
                 <span
-                  className="MuiButtonBase-root-110 MuiIconButton-root-104 MuiPrivateSwitchBase-root-128 MuiCheckbox-root-122 MuiCheckbox-colorSecondary-127"
+                  className="MuiButtonBase-root-44 MuiIconButton-root-38 MuiPrivateSwitchBase-root-34 MuiCheckbox-root-28 MuiCheckbox-colorSecondary-33"
                   onBlur={[Function]}
                   onContextMenu={[Function]}
                   onFocus={[Function]}
@@ -514,11 +332,11 @@ exports[`Transactions matches snapshot with one transaction 1`] = `
                   tabIndex={null}
                 >
                   <span
-                    className="MuiIconButton-label-109"
+                    className="MuiIconButton-label-43"
                   >
                     <svg
                       aria-hidden="true"
-                      className="MuiSvgIcon-root-113"
+                      className="MuiSvgIcon-root-47"
                       focusable="false"
                       role="presentation"
                       viewBox="0 0 24 24"
@@ -529,14 +347,14 @@ exports[`Transactions matches snapshot with one transaction 1`] = `
                     </svg>
                     <input
                       checked={false}
-                      className="MuiPrivateSwitchBase-input-131"
+                      className="MuiPrivateSwitchBase-input-37"
                       data-indeterminate={false}
                       onChange={[Function]}
                       type="checkbox"
                     />
                   </span>
                   <span
-                    className="MuiTouchRipple-root-132"
+                    className="MuiTouchRipple-root-56"
                   />
                 </span>
               </span>

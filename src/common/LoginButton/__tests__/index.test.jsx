@@ -1,5 +1,6 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
+import { shallow } from 'enzyme'
 import { LoginButtonComponent } from '../'
 
 describe('LoginButton', () => {
@@ -10,7 +11,7 @@ describe('LoginButton', () => {
     jest.clearAllMocks()
   })
 
-  it('matches snapshot with logged in user profile', () => {
+  it('matches snapshot with user logged in with blockstack', () => {
     const component = renderer.create((
       <LoginButtonComponent
         user={{ isAuthenticatedWith: 'blockstack', name: 'Test name', username: 'Test' }}
@@ -20,5 +21,42 @@ describe('LoginButton', () => {
       />
     ))
     expect(component.toJSON()).toMatchSnapshot()
+  })
+
+  it('matches snapshot with user logged in as guest', () => {
+    const component = renderer.create((
+      <LoginButtonComponent
+        user={{ isAuthenticatedWith: 'guest', name: 'Test name', username: 'Test' }}
+        handleLogin={mochHandleLogin}
+        handleLogout={mochHandleLogout}
+        classes={{ }}
+      />
+    ))
+    expect(component.toJSON()).toMatchSnapshot()
+  })
+
+  describe('Component methods', () => {
+    const wrapper = shallow((
+      <LoginButtonComponent
+        user={{ isAuthenticatedWith: 'blockstack', name: 'Test name', username: 'Test' }}
+        handleLogin={mochHandleLogin}
+        handleLogout={mochHandleLogout}
+        classes={{ }}
+      />
+    ))
+    const instance = wrapper.instance()
+
+    it('handles button click', async () => {
+      wrapper.setState({ anchorEl: undefined, open: true })
+      await instance.handleClick({ currentTarget: <div>something</div> })
+      expect(wrapper.state('anchorEl')).toEqual(<div>something</div>)
+      expect(wrapper.state('open')).toBe(false)
+    })
+
+    it('closes popup', async () => {
+      wrapper.setState({ open: true })
+      await instance.handleClose()
+      expect(wrapper.state('open')).toBe(false)
+    })
   })
 })

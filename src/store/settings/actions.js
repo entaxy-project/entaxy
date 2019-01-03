@@ -6,6 +6,13 @@ export const loadSettings = (settings) => {
   return { type: types.LOAD_SETTINGS, payload: settings }
 }
 
+export const updateSettings = (settings) => {
+  return async (dispatch) => {
+    await dispatch({ type: types.UPDATE_SETTINGS, payload: settings })
+    await saveState()
+  }
+}
+
 // filterName is institution or account
 // options is an array e.g. [Questrade, TD] for institution and [RRSP, TFSA] for account
 export const createPortfolioFilters = (filterName, options) => {

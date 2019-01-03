@@ -11,7 +11,7 @@ const mapDispatchToProps = {
   handleDelete: account => deleteAccount(account)
 }
 
-const EditAccount = ({
+export const EditAccountComponent = ({
   history,
   match,
   handleSave,
@@ -43,11 +43,11 @@ const EditAccount = ({
   )
 }
 
-EditAccount.propTypes = {
+EditAccountComponent.propTypes = {
   history: PropTypes.object.isRequired,
   match: PropTypes.object.isRequired,
   handleSave: PropTypes.func.isRequired,
   handleDelete: PropTypes.func.isRequired
 }
 
-export default connect(null, mapDispatchToProps)(withRouter(EditAccount))
+export default connect(null, mapDispatchToProps)(withRouter(EditAccountComponent))

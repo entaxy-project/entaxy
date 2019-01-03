@@ -10,6 +10,8 @@ beforeEach(() => {
 })
 
 const settings = {
+  locale: 'en-US',
+  currency: 'USD',
   portfolioFilters: {
     institution: { TD: true, BMO: true },
     account: { Checking: true, Savings: true }
@@ -22,6 +24,23 @@ describe('settings actions', () => {
       expect(actions.loadSettings(settings)).toEqual({
         type: types.LOAD_SETTINGS,
         payload: settings
+      })
+    })
+  })
+
+  describe('updateSettings', () => {
+    it('should update settings', () => {
+      const mockStore = configureMockStore([thunk])
+      const store = mockStore({
+        settings: settingsInitialState
+      })
+      return store.dispatch(actions.updateSettings({ locale: 'en-CA', currency: 'CAD' })).then(() => {
+        expect(store.getActions()).toEqual([
+          {
+            type: types.UPDATE_SETTINGS,
+            payload: { locale: 'en-CA', currency: 'CAD' }
+          }
+        ])
       })
     })
   })

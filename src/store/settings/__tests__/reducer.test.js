@@ -23,6 +23,12 @@ describe('settings reducer', () => {
     expect(settingsReducer(undefined, { type, payload })).toEqual(initialState)
   })
 
+  it('should handle UPDATE_SETTINGS', () => {
+    const type = types.UPDATE_SETTINGS
+    const payload = { locale: 'en-CA', currency: 'CAD' }
+    expect(settingsReducer(undefined, { type, payload })).toEqual({ ...payload })
+  })
+
   it('should handle CREATE_PORTFOLIO_FILTERS', () => {
     const type = types.CREATE_PORTFOLIO_FILTERS
     const payload = {
@@ -31,6 +37,7 @@ describe('settings reducer', () => {
     }
 
     expect(settingsReducer(undefined, { type, payload })).toEqual({
+      ...initialState,
       portfolioFilters: {
         ...initialState.portfolioFilters,
         [payload.filterName]: payload.options

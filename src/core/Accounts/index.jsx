@@ -18,6 +18,7 @@ import { NavLink } from 'react-router-dom'
 import grey from '@material-ui/core/colors/grey'
 import { sortedAccountsGroupedByInstitution } from '../../store/accounts/selectors'
 import InstitutionIcon from '../../common/InstitutionIcon'
+import { currencyFormatter } from '../../common/StringFormatter'
 
 const styles = theme => ({
   noAccounts: {
@@ -44,15 +45,16 @@ const styles = theme => ({
 })
 
 const mapStateToProps = (state) => {
+  const cf = currencyFormatter(state.settings)
   return {
+    formatCurrency: number => cf.format(number),
     groupedAccounts: sortedAccountsGroupedByInstitution(state)
   }
 }
 
-const currencyFormatter = new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD' })
-
 export const AccountsComponent = ({
   classes,
+  formatCurrency,
   groupedAccounts,
   accountId
 }) => (
@@ -101,7 +103,7 @@ export const AccountsComponent = ({
                 component={NavLink}
                 to={`/accounts/${account.id}/transactions`}
               >
-                <ListItemText primary={account.name} secondary={currencyFormatter.format(account.currentBalance)} />
+                <ListItemText primary={account.name} secondary={formatCurrency(account.currentBalance)} />
                 <ListItemSecondaryAction>
                   <Tooltip id="tooltip-icon" title="Edit account">
                     <IconButton
@@ -125,6 +127,7 @@ export const AccountsComponent = ({
 
 AccountsComponent.propTypes = {
   classes: PropTypes.object.isRequired,
+  formatCurrency: PropTypes.func.isRequired,
   groupedAccounts: PropTypes.object.isRequired,
   accountId: PropTypes.string
 }
