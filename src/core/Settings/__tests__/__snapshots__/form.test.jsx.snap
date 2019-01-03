@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SettingsForm snapshot matches snapshot before after submitting form 1`] = `
+exports[`SettingsForm matches snapshot before after submitting form 1`] = `
 <form
   onSubmit={[MockFunction]}
 >
@@ -327,7 +327,7 @@ exports[`SettingsForm snapshot matches snapshot before after submitting form 1`]
 </form>
 `;
 
-exports[`SettingsForm snapshot matches snapshot before submitting form 1`] = `
+exports[`SettingsForm matches snapshot before submitting form 1`] = `
 <form
   onSubmit={[MockFunction]}
 >

@@ -11,7 +11,7 @@ const mochHandleSubmit = jest.fn()
 const mochHandleChange = jest.fn()
 const mochSetFieldValue = jest.fn()
 
-describe('SettingsForm snapshot', () => {
+describe('SettingsForm', () => {
   it('matches snapshot before submitting form', () => {
     const component = renderer.create((
       <SettingsFormComponent
@@ -44,7 +44,7 @@ describe('SettingsForm snapshot', () => {
     expect(component.toJSON()).toMatchSnapshot()
   })
 
-  describe('SettingsForm component methods', () => {
+  describe('Component methods', () => {
     const wrapper = shallow((
       <SettingsFormComponent
         handleSave={mochHandleSave}

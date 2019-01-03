@@ -22,19 +22,11 @@ const styles = theme => ({
   }
 })
 
-
-const initialState = {
-  anchorEl: null,
-  openPopup: false,
-  selectedInstitution: null,
-  selectedImportType: null,
-  showTransactions: false,
-  transactions: [],
-  errors: {}
-}
-
 export class TransactionsToolbarComponent extends React.Component {
-  state = initialState
+  state = {
+    anchorEl: null,
+    openPopup: false
+  }
 
   pageTitle = (account) => {
     if (account) {
@@ -61,7 +53,10 @@ export class TransactionsToolbarComponent extends React.Component {
   }
 
   resetSelection = () => {
-    this.setState(initialState)
+    this.setState({
+      anchorEl: null,
+      openPopup: false
+    })
   }
 
   render() {

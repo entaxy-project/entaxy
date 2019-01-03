@@ -30,7 +30,7 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-const TransactionDialog = ({
+export const TransactionDialogComponent = ({
   classes,
   handleSubmit,
   values,
@@ -90,7 +90,7 @@ const TransactionDialog = ({
   </ModalDialog>
 )
 
-TransactionDialog.propTypes = {
+TransactionDialogComponent.propTypes = {
   classes: PropTypes.object.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   values: PropTypes.object.isRequired,
@@ -100,7 +100,7 @@ TransactionDialog.propTypes = {
   transaction: PropTypes.object
 }
 
-TransactionDialog.defaultProps = {
+TransactionDialogComponent.defaultProps = {
   transaction: null
 }
 
@@ -134,4 +134,4 @@ export default compose(
       props.onCancel()
     }
   })
-)(TransactionDialog)
+)(TransactionDialogComponent)

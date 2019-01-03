@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Settings snapshot matches snapshot with no accounts and no selected accountId 1`] = `
+exports[`Settings matches snapshot with no accounts and no selected accountId 1`] = `
 <div
   className="MuiGrid-container-1 MuiGrid-justify-xs-center-18"
 >
