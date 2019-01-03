@@ -82,17 +82,17 @@ export const handleBlockstackLogin = () => {
 }
 
 export const resetState = () => {
-  return async (dispatch) => {
-    await dispatch(loadSettings(settingsInitialState))
-    await dispatch(loadAccounts(accountsInitialState))
-    await dispatch(loadTransactions(transactionsInitialState))
-    await dispatch(loadMarketValues(marketValuesInitialState))
+  return (dispatch) => {
+    dispatch(loadSettings(settingsInitialState))
+    dispatch(loadAccounts(accountsInitialState))
+    dispatch(loadTransactions(transactionsInitialState))
+    dispatch(loadMarketValues(marketValuesInitialState))
   }
 }
 
 export const userLogout = () => {
-  blockstack.signUserOut()
   return async (dispatch) => {
+    await blockstack.signUserOut()
     await dispatch(resetState())
     await dispatch({ type: types.USER_LOGOUT })
   }

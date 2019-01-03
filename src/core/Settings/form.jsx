@@ -13,6 +13,7 @@ import green from '@material-ui/core/colors/green'
 import AsyncSelect from 'react-select/lib/Async'
 import currencies from '../../data/currencies'
 import locales from '../../data/locales'
+import confirm from '../../util/confirm'
 
 const styles = theme => ({
   form: {
@@ -78,15 +79,21 @@ export class SettingsFormComponent extends React.Component {
     })
   }
 
+  handleResetData = () => {
+    confirm('Delete all your data? This cannot be undone.', 'Are you sure?').then(() => {
+      this.props.handleDeleteAllData()
+    })
+  }
+
   render() {
     const {
       classes,
-      handleReset,
       handleSubmit,
       values,
       setFieldValue,
       isSubmitting
     } = this.props
+
     return (
       <form onSubmit={handleSubmit} className={classes.form}>
         <Typography variant="subtitle2" className={classes.inputTitle}>Language / Country</Typography>
@@ -116,7 +123,7 @@ export class SettingsFormComponent extends React.Component {
         />
         <Button
           size="small"
-          onClick={handleReset}
+          onClick={this.handleResetData}
           className={classes.deleteButton}
         >
           Reset (Delete all my data)
@@ -135,7 +142,7 @@ export class SettingsFormComponent extends React.Component {
 
 SettingsFormComponent.propTypes = {
   classes: PropTypes.object.isRequired,
-  handleReset: PropTypes.func.isRequired,
+  handleDeleteAllData: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   values: PropTypes.object.isRequired,
   setFieldValue: PropTypes.func.isRequired,

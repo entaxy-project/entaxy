@@ -3,6 +3,10 @@ import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
 import * as storage from '../../blockstackStorage'
 import { initialState } from '../reducer'
+import { initialState as settingsInitialState } from '../../settings/reducer'
+import { initialState as accountsInitialState } from '../../accounts/reducer'
+import { initialState as transactionsInitialState } from '../../transactions/reducer'
+import { initialState as marketValuesInitialState } from '../../marketValues/reducer'
 import * as actions from '../actions'
 import types from '../types'
 
@@ -87,15 +91,38 @@ describe('user actions', () => {
     })
   })
 
-  it('userLogout should sign the user out', () => {
-    const signUserOutSpy = jest.spyOn(blockstack, 'signUserOut')
-    const resetStateSpy = jest.spyOn(actions, 'resetState')
+  it('resetState should delete all data', async () => {
+    const mockStore = configureMockStore([thunk])
+    const store = mockStore({})
 
-    actions.userLogout()(dispatch).then(() => {
-      expect(dispatch).toBeCalledWith({ type: types.USER_LOGOUT })
-      expect(signUserOutSpy).toHaveBeenCalled()
-      expect(resetStateSpy).toHaveBeenCalled()
-    })
+    store.dispatch(actions.resetState())
+    expect(store.getActions()).toEqual([
+      {
+        type: 'LOAD_SETTINGS',
+        payload: settingsInitialState
+      },
+      {
+        type: 'LOAD_ACCOUNTS',
+        payload: accountsInitialState
+      },
+      {
+        type: 'LOAD_TRANSACTIONS',
+        payload: transactionsInitialState
+      },
+      {
+        type: 'LOAD_MARKET_VALUES',
+        payload: marketValuesInitialState
+      }
+    ])
+  })
+
+  it('userLogout should sign the user out', async () => {
+    const signUserOutSpy = jest.spyOn(blockstack, 'signUserOut')
+
+    await actions.userLogout()(dispatch)
+    expect(signUserOutSpy).toHaveBeenCalled()
+    expect(dispatch).toBeCalledTimes(2)
+    expect(dispatch).toBeCalledWith({ type: types.USER_LOGOUT })
   })
 
   it('userLoginError should sign the user out', () => {

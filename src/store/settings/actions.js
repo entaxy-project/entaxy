@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import _ from 'lodash'
 import types from './types'
 import { saveState } from '../user/actions'

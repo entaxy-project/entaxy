@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 /* eslint-disable quote-props */
 // https://raw.githubusercontent.com/umpirsky/locale-list/master/data/en-CA/locales.json
 export default {

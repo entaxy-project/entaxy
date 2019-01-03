@@ -12,7 +12,6 @@ import Divider from '@material-ui/core/Divider'
 import Snackbar from '@material-ui/core/Snackbar'
 import { updateSettings } from '../../store/settings/actions'
 import { resetState, saveState } from '../../store/user/actions'
-import confirm from '../../util/confirm'
 import SettingsForm from './form'
 
 const styles = theme => ({
@@ -32,7 +31,7 @@ const styles = theme => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  handleSave: settings => dispatch(updateSettings(settings)),
+  saveSettings: settings => dispatch(updateSettings(settings)),
   deleteAllData: async () => {
     await dispatch(resetState())
     await saveState()
@@ -42,31 +41,27 @@ const mapDispatchToProps = dispatch => ({
 export class SettingsComponent extends React.Component {
   state = { openSnackbar: false }
 
-  onSave = async (settings) => {
-    await this.props.handleSave(settings)
+  handleSave = async (settings) => {
+    await this.props.saveSettings(settings)
     this.setState({ openSnackbar: true })
   }
 
-  onReset = () => {
-    confirm('Delete all your data? This cannot be undone.', 'Are you sure?').then(() => {
-      this.props.deleteAllData().then(() => (
-        this.props.history.push('/dashboard')
-      ))
-    })
-  }
-
-  onCancel = () => {
+  handleResetData = async () => {
+    await this.props.deleteAllData()
     this.props.history.push('/dashboard')
   }
 
-  closeSnackbar = () => {
+  handleCancel = () => {
+    this.props.history.push('/dashboard')
+  }
+
+  handleCloseSnackbar = () => {
     this.setState({ openSnackbar: false })
   }
 
   render() {
     const {
-      classes,
-      deleteAllData
+      classes
     } = this.props
     return (
       <Grid container direction="row" justify="center">
@@ -75,21 +70,21 @@ export class SettingsComponent extends React.Component {
             <Typography variant="h6" align="center">
               Settings
             </Typography>
-            <IconButton aria-label="Close" className={classes.closeButton} onClick={this.onCancel}>
+            <IconButton aria-label="Close" className={classes.closeButton} onClick={this.handleCancel}>
               <CloseIcon />
             </IconButton>
           </div>
           <Divider />
           <SettingsForm
-            handleSave={this.onSave}
-            handleReset={deleteAllData}
+            handleSave={this.handleSave}
+            handleDeleteAllData={this.handleResetData}
           />
         </Paper>
         <Snackbar
           anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
           open={this.state.openSnackbar}
           autoHideDuration={4000}
-          onClose={this.closeSnackbar}
+          onClose={this.handleCloseSnackbar}
           ContentProps={{ 'aria-describedby': 'message-id' }}
           message={<span id="message-id">Your settings have been saved</span>}
         />
@@ -100,7 +95,7 @@ export class SettingsComponent extends React.Component {
 
 SettingsComponent.propTypes = {
   classes: PropTypes.object.isRequired,
-  handleSave: PropTypes.func.isRequired,
+  saveSettings: PropTypes.func.isRequired,
   deleteAllData: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired
 }
