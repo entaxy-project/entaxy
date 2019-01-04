@@ -117,6 +117,7 @@ export const AccountsComponent = ({
                       {account.currency !== settings.currency &&
                         <Chip
                           label={account.currency}
+                          component="span"
                           classes={{
                             root: classes.smallChipRoot,
                             label: classes.smallChipLabel

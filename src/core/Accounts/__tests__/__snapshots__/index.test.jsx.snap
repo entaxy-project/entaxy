@@ -322,7 +322,7 @@ exports[`Accounts index (Left Nav) snapshot matches snapshot with a few account 
               >
                 <span>
                   NaN
-                  <div
+                  <span
                     className="MuiChip-root-99"
                     onKeyDown={[Function]}
                     onKeyUp={[Function]}
@@ -334,7 +334,7 @@ exports[`Accounts index (Left Nav) snapshot matches snapshot with a few account 
                     >
                       USD
                     </span>
-                  </div>
+                  </span>
                 </span>
               </p>
             </div>
@@ -721,7 +721,7 @@ exports[`Accounts index (Left Nav) snapshot matches with a few accounts but none
               >
                 <span>
                   NaN
-                  <div
+                  <span
                     className="MuiChip-root-99"
                     onKeyDown={[Function]}
                     onKeyUp={[Function]}
@@ -733,7 +733,7 @@ exports[`Accounts index (Left Nav) snapshot matches with a few accounts but none
                     >
                       USD
                     </span>
-                  </div>
+                  </span>
                 </span>
               </p>
             </div>
