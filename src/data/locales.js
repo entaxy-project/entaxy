@@ -1,6 +1,6 @@
 /* eslint-disable quote-props */
 // https://raw.githubusercontent.com/umpirsky/locale-list/master/data/en-CA/locales.json
-export default {
+const locales = {
   'af': 'Afrikaans',
   'af-NA': 'Afrikaans (Namibia)',
   'af-ZA': 'Afrikaans (South Africa)',
@@ -565,3 +565,20 @@ export default {
   'zu': 'Zulu',
   'zu-ZA': 'Zulu (South Africa)'
 }
+
+export const formatedLocales = Object.keys(locales)
+  .map(key => ({
+    value: key,
+    label: locales[key]
+  }))
+
+export const filteredLocales = (inputValue) => {
+  return new Promise((resolve) => {
+    if (inputValue) {
+      resolve(formatedLocales.filter(locale => locale.label.toLowerCase().includes(inputValue.toLowerCase())))
+    }
+    resolve(formatedLocales)
+  })
+}
+
+export default locales

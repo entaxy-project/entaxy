@@ -11,36 +11,33 @@ const mapDispatchToProps = {
   handleDelete: account => deleteAccount(account)
 }
 
-export const EditAccountComponent = ({
-  history,
-  match,
-  handleSave,
-  handleDelete
-}) => {
-  const onSave = (account) => {
-    handleSave(account)
-    history.push(`/accounts/${account.id}/transactions`)
+export class EditAccountComponent extends React.Component {
+  onSave = async (account) => {
+    await this.props.handleSave(account)
+    this.props.history.push(`/accounts/${account.id}/transactions`)
   }
 
-  const onDelete = (account) => {
+  onDelete = (account) => {
     confirm('Delete selected account?', 'Are you sure?').then(() => {
-      handleDelete(account)
-      history.push('/dashboard')
+      this.props.handleDelete(account)
+      this.props.history.push('/dashboard')
     })
   }
 
-  const onCancel = () => {
-    history.push(`/accounts/${match.params.accountId}/transactions`)
+  onCancel = () => {
+    this.props.history.push(`/accounts/${this.props.match.params.accountId}/transactions`)
   }
 
-  return (
-    <AccountForm
-      accountId={match.params.accountId}
-      handleSave={onSave}
-      handleDelete={onDelete}
-      handleCancel={onCancel}
-    />
-  )
+  render() {
+    return (
+      <AccountForm
+        accountId={this.props.match.params.accountId}
+        handleSave={this.onSave}
+        handleDelete={this.onDelete}
+        handleCancel={this.onCancel}
+      />
+    )
+  }
 }
 
 EditAccountComponent.propTypes = {

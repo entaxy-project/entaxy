@@ -1,60 +1,73 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 import { BrowserRouter } from 'react-router-dom'
-import { Provider } from 'react-redux'
-import store from '../../../store'
 import { AccountsComponent } from '../'
 
 jest.mock('../../../common/InstitutionIcon', () => 'InstitutionIcon')
 
-describe('Accounts index (Left Nav)', () => {
-  const mochFormatCurrency = jest.fn().mockReturnValue(<div>value</div>)
+const settings = { locale: 'en-CA', currency: 'CAD' }
+const accounts = {
+  TD: [{
+    id: '1',
+    description: 'Checking',
+    institution: 'TD',
+    currency: 'CAD'
+  }, {
+    id: '2',
+    description: 'Savings',
+    institution: 'TD',
+    currency: 'CAD'
+  }],
+  BMO: [{
+    id: '2',
+    description: 'Checking',
+    institution: 'BMO',
+    currency: 'USD' // Different currency
+  }]
+}
 
-  it('matches snapshot with no accounts and no selected accountId', () => {
-    const component = renderer.create((
-      <Provider store={store}>
+describe('Accounts index (Left Nav)', () => {
+  describe('snapshot', () => {
+    it('matches with no accounts and no selected accountId', () => {
+      const component = renderer.create((
         <BrowserRouter>
           <AccountsComponent
+            settings={settings}
             accountId={null}
-            formatCurrency={mochFormatCurrency}
             groupedAccounts={{}}
             classes={{ }}
           />
         </BrowserRouter>
-      </Provider>
-    ))
-    expect(component.toJSON()).toMatchSnapshot()
-  })
+      ))
+      expect(component.toJSON()).toMatchSnapshot()
+    })
 
-  it('matches snapshot with one account but no selected accountId', () => {
-    const component = renderer.create((
-      <Provider store={store}>
+    it('matches with a few accounts but none selected', () => {
+      const component = renderer.create((
         <BrowserRouter>
           <AccountsComponent
+            settings={settings}
             accountId={null}
-            formatCurrency={mochFormatCurrency}
-            groupedAccounts={{ TD: [{ name: 'Checking', id: '1' }] }}
+            groupedAccounts={accounts}
             classes={{ }}
           />
         </BrowserRouter>
-      </Provider>
-    ))
-    expect(component.toJSON()).toMatchSnapshot()
-  })
+      ))
+      expect(component.toJSON()).toMatchSnapshot()
+    })
 
-  // it('matches snapshot with one account which is selected', () => {
-  //   const component = renderer.create((
-  //     <Provider store={store}>
-  //       <BrowserRouter>
-  //         <AccountsComponent
-  //           accountId="1"
-  //           formatCurrency={mochFormatCurrency}
-  //           groupedAccounts={{ TD: [{ name: 'Checking', id: '1' }] }}
-  //           classes={{ }}
-  //         />
-  //       </BrowserRouter>
-  //     </Provider>
-  //   ))
-  //   expect(component.toJSON()).toMatchSnapshot()
-  // })
+    it('matches snapshot with a few account with one selected', () => {
+      const component = renderer.create((
+        <BrowserRouter>
+          <AccountsComponent
+            settings={settings}
+            accountId={accounts.TD[0].id}
+            groupedAccounts={accounts}
+            classes={{ }}
+          />
+        </BrowserRouter>
+      ))
+      expect(component.toJSON()).toMatchSnapshot()
+    })
+  })
 })

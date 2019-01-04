@@ -3,16 +3,15 @@ import { compose } from 'recompose'
 import { connect } from 'react-redux'
 import { withStyles } from '@material-ui/core/styles'
 import { withFormik } from 'formik'
+import * as Yup from 'yup'
 import PropTypes from 'prop-types'
-import Typography from '@material-ui/core/Typography'
 import Divider from '@material-ui/core/Divider'
 import Button from '@material-ui/core/Button'
-import CircularProgress from '@material-ui/core/CircularProgress'
 import red from '@material-ui/core/colors/red'
-import green from '@material-ui/core/colors/green'
-import AsyncSelect from 'react-select/lib/Async'
-import currencies from '../../data/currencies'
-import locales from '../../data/locales'
+import AutoComplete from '../../common/AutoComplete'
+import SubmitButtonWithProgress from '../../common/SubmitButtonWithProgress'
+import currencies, { filteredCurrencies } from '../../data/currencies'
+import locales, { filteredLocales } from '../../data/locales'
 import confirm from '../../util/confirm'
 
 const styles = theme => ({
@@ -38,18 +37,6 @@ const styles = theme => ({
     color: red[500],
     margin: theme.spacing.unit * 2
   },
-  buttonWrapper: {
-    margin: theme.spacing.unit,
-    position: 'relative'
-  },
-  buttonProgress: {
-    color: green[500],
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    marginTop: -12,
-    marginLeft: -12
-  },
   close: {
     padding: theme.spacing.unit / 2
   }
@@ -57,28 +44,7 @@ const styles = theme => ({
 
 const mapStateToProps = ({ settings }) => ({ settings })
 
-const formatedLocales = Object.keys(locales).map(key => ({ value: key, label: locales[key] }))
-const formatedCurrencies = Object.keys(currencies).map(key => ({ value: key, label: `(${key}) ${currencies[key]}` }))
-
 export class SettingsFormComponent extends React.Component {
-  filteredCurrencies = (inputValue) => {
-    return new Promise((resolve) => {
-      if (inputValue) {
-        resolve(formatedCurrencies.filter(currency => currency.label.toLowerCase().includes(inputValue.toLowerCase())))
-      }
-      resolve(formatedCurrencies)
-    })
-  }
-
-  filteredLocales = (inputValue) => {
-    return new Promise((resolve) => {
-      if (inputValue) {
-        resolve(formatedLocales.filter(locale => locale.label.toLowerCase().includes(inputValue.toLowerCase())))
-      }
-      resolve(formatedLocales)
-    })
-  }
-
   handleResetData = () => {
     confirm('Delete all your data? This cannot be undone.', 'Are you sure?').then(() => {
       this.props.handleDeleteAllData()
@@ -90,50 +56,47 @@ export class SettingsFormComponent extends React.Component {
       classes,
       handleSubmit,
       values,
+      errors,
+      touched,
       setFieldValue,
       isSubmitting
     } = this.props
 
     return (
       <form onSubmit={handleSubmit} className={classes.form}>
-        <Typography variant="subtitle2" className={classes.inputTitle}>Language / Country</Typography>
-        <AsyncSelect
+        <AutoComplete
+          async
+          className={classes.input}
           label="Language / Country"
           name="locale"
           value={values.locale}
-          cacheOptions
-          defaultOptions
-          loadOptions={this.filteredLocales}
-          onChange={selection => setFieldValue('locale', selection)}
-          className={classes.input}
-          isClearable={true}
-          inputProps={{ 'aria-label': 'Language / Country', required: true }}
+          loadOptions={filteredLocales}
+          onChange={setFieldValue}
+          error={errors.locale && touched.locale}
+          helperText={errors.locale}
         />
-        <Typography variant="subtitle2" className={classes.inputTitle}>Display Currency</Typography>
-        <AsyncSelect
+        <AutoComplete
+          async
+          className={classes.input}
           label="Display Currency"
           name="currency"
           value={values.currency}
-          cacheOptions
-          loadOptions={this.filteredCurrencies}
-          onChange={selection => setFieldValue('currency', selection)}
-          className={classes.input}
-          isClearable={true}
-          inputProps={{ 'aria-label': 'Display Currency', required: true }}
+          loadOptions={filteredCurrencies}
+          onChange={setFieldValue}
+          error={errors.currency && touched.currency}
+          helperText={errors.currency}
         />
         <Button
           size="small"
           onClick={this.handleResetData}
           className={classes.deleteButton}
+          disabled={isSubmitting}
         >
-          Reset (Delete all my data)
+          Reset - delete all my data
         </Button>
         <Divider />
         <div className={classes.formActions}>
-          <div className={classes.buttonWrapper}>
-            <Button type="submit" color="secondary" disabled={isSubmitting}>Save</Button>
-            {isSubmitting && <CircularProgress size={24} className={classes.buttonProgress} />}
-          </div>
+          <SubmitButtonWithProgress label="Save" isSubmitting={isSubmitting} />
         </div>
       </form>
     )
@@ -145,6 +108,8 @@ SettingsFormComponent.propTypes = {
   handleDeleteAllData: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   values: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired,
+  touched: PropTypes.object.isRequired,
   setFieldValue: PropTypes.func.isRequired,
   isSubmitting: PropTypes.bool.isRequired
 }
@@ -166,6 +131,14 @@ export default compose(
         }
       })
     },
+    validationSchema: Yup.object().shape({
+      locale: Yup.object()
+        .required('Please select a language / country')
+        .nullable(),
+      currency: Yup.object()
+        .required('Please select a currency')
+        .nullable()
+    }),
     handleSubmit: (values, { props, setSubmitting }) => {
       setSubmitting(true)
       props.handleSave({

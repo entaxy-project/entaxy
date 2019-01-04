@@ -8,20 +8,21 @@ const mapDispatchToProps = {
   handleSave: account => createAccount(account)
 }
 
-export const NewAccountComponent = ({ history, handleSave }) => {
-  const onSave = (account) => {
-    handleSave(account).then((accountId) => {
-      history.push(`/accounts/${accountId}/transactions`)
-    })
+export class NewAccountComponent extends React.Component {
+  onSave = async (account) => {
+    const accountId = await this.props.handleSave(account)
+    this.props.history.push(`/accounts/${accountId}/transactions`)
   }
 
-  const onCancel = () => {
-    history.push('/dashboard')
+  onCancel = () => {
+    this.props.history.push('/dashboard')
   }
 
-  return (
-    <AccountForm handleSave={onSave} handleCancel={onCancel} />
-  )
+  render() {
+    return (
+      <AccountForm handleSave={this.onSave} handleCancel={this.onCancel} />
+    )
+  }
 }
 
 NewAccountComponent.propTypes = {

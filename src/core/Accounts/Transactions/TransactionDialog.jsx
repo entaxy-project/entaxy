@@ -1,10 +1,11 @@
 import React from 'react'
 import { compose } from 'recompose'
-import { withStyles } from '@material-ui/core/styles'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import TextField from '@material-ui/core/TextField'
+import { withStyles } from '@material-ui/core/styles'
 import { withFormik } from 'formik'
+import * as Yup from 'yup'
+import PropTypes from 'prop-types'
+import TextField from '@material-ui/core/TextField'
 import format from 'date-fns/format'
 import parse from 'date-fns/parse'
 import ModalDialog from '../../../common/ModalDialog'
@@ -34,6 +35,8 @@ export const TransactionDialogComponent = ({
   classes,
   handleSubmit,
   values,
+  errors,
+  touched,
   handleChange,
   onCancel,
   open,
@@ -50,20 +53,20 @@ export const TransactionDialogComponent = ({
       label="Description"
       inputProps={{
         'aria-label': 'Description',
-        required: true,
         maxLength: 256
       }}
       className={classes.input}
       value={values.description}
       name="description"
       onChange={handleChange}
+      error={errors.description && touched.description}
+      helperText={errors.description}
     />
     <TextField
       type="number"
       label="Amount"
       inputProps={{
         'aria-label': 'Amount',
-        required: true,
         maxLength: 10,
         min: Number.MIN_SAFE_INTEGER,
         max: Number.MAX_SAFE_INTEGER,
@@ -73,19 +76,22 @@ export const TransactionDialogComponent = ({
       value={values.amount}
       name="amount"
       onChange={handleChange}
+      error={errors.amount && touched.amount}
+      helperText={errors.amount}
     />
     <TextField
       type="date"
       label="Date"
       InputLabelProps={{
         shrink: true,
-        'aria-label': 'Date',
-        required: true
+        'aria-label': 'Date'
       }}
       name="createdAt"
       className={classes.input}
       value={values.createdAt}
       onChange={handleChange}
+      error={errors.createdAt && touched.createdAt}
+      helperText={errors.createdAt}
     />
   </ModalDialog>
 )
@@ -94,6 +100,8 @@ TransactionDialogComponent.propTypes = {
   classes: PropTypes.object.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   values: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired,
+  touched: PropTypes.object.isRequired,
   handleChange: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
   onCancel: PropTypes.func.isRequired,
@@ -112,8 +120,6 @@ export default compose(
     mapPropsToValues: ({ transaction }) => {
       if (transaction === null) {
         return {
-          amount: '',
-          bookValue: '',
           createdAt: format(Date.now(), 'YYYY-MM-DD')
         }
       }
@@ -122,6 +128,14 @@ export default compose(
         createdAt: format(new Date(transaction.createdAt), 'YYYY-MM-DD')
       }
     },
+    validationSchema: Yup.object().shape({
+      description: Yup.string()
+        .max(256, 'Too Long!'),
+      amount: Yup.number()
+        .required('Please enter an amount'),
+      createdAt: Yup.number()
+        .required('Please select the date of this transaction')
+    }),
     handleSubmit: (values, { props, setSubmitting, resetForm }) => {
       setSubmitting(true)
       props.handleSave(props.account, {

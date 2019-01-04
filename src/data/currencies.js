@@ -1,5 +1,5 @@
 // https://raw.githubusercontent.com/umpirsky/currency-list/master/data/en_CA/currency.json
-export default {
+const currencies = {
   AFN: 'Afghan Afghani',
   AFA: 'Afghan Afghani (1927\u20132002)',
   ALL: 'Albanian Lek',
@@ -286,3 +286,20 @@ export default {
   ZWR: 'Zimbabwean Dollar (2008)',
   ZWL: 'Zimbabwean Dollar (2009)'
 }
+
+export const formatedCurrencies = Object.keys(currencies)
+  .map(key => ({
+    value: key,
+    label: `(${key}) ${currencies[key]}`
+  }))
+
+export const filteredCurrencies = (inputValue) => {
+  return new Promise((resolve) => {
+    if (inputValue) {
+      resolve(formatedCurrencies.filter(currency => currency.label.toLowerCase().includes(inputValue.toLowerCase())))
+    }
+    resolve(formatedCurrencies)
+  })
+}
+
+export default currencies
