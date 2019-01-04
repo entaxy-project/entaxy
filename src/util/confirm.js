@@ -3,6 +3,4 @@ import ConfirmDialog from '../common/ConfirmDialog'
 
 const confirm = createConfirmation(ConfirmDialog)
 
-export default function (title, description) {
-  return confirm({ title, description })
-}
+export default (title, description) => confirm({ title, description })

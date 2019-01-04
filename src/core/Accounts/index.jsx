@@ -14,11 +14,12 @@ import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
 import IconButton from '@material-ui/core/IconButton'
 import AddIcon from '@material-ui/icons/Add'
 import EditIcon from '@material-ui/icons/Edit'
+import Chip from '@material-ui/core/Chip'
 import { NavLink } from 'react-router-dom'
 import grey from '@material-ui/core/colors/grey'
 import { sortedAccountsGroupedByInstitution } from '../../store/accounts/selectors'
 import InstitutionIcon from '../../common/InstitutionIcon'
-import { currencyFormatter } from '../../common/StringFormatter'
+import { currencyFormatter } from '../../util/stringFormatter'
 
 const styles = theme => ({
   noAccounts: {
@@ -41,22 +42,27 @@ const styles = theme => ({
   },
   smallIcon: {
     fontSize: 18
+  },
+  smallChipRoot: {
+    fontSize: 9,
+    height: 'auto',
+    marginLeft: 10
+  },
+  smallChipLabel: {
+    padding: '1px 7px'
   }
 })
 
-const mapStateToProps = (state) => {
-  const cf = currencyFormatter(state.settings)
-  return {
-    formatCurrency: number => cf.format(number),
-    groupedAccounts: sortedAccountsGroupedByInstitution(state)
-  }
-}
+const mapStateToProps = state => ({
+  groupedAccounts: sortedAccountsGroupedByInstitution(state),
+  settings: state.settings
+})
 
 export const AccountsComponent = ({
   classes,
-  formatCurrency,
   groupedAccounts,
-  accountId
+  accountId,
+  settings
 }) => (
   <List
     component="nav"
@@ -103,7 +109,24 @@ export const AccountsComponent = ({
                 component={NavLink}
                 to={`/accounts/${account.id}/transactions`}
               >
-                <ListItemText primary={account.name} secondary={formatCurrency(account.currentBalance)} />
+                <ListItemText
+                  primary={account.name}
+                  secondary={
+                    <span>
+                      {currencyFormatter(settings.locale, account.currency)(account.currentBalance)}
+                      {account.currency !== settings.currency &&
+                        <Chip
+                          label={account.currency}
+                          component="span"
+                          classes={{
+                            root: classes.smallChipRoot,
+                            label: classes.smallChipLabel
+                          }}
+                        />
+                      }
+                    </span>
+                  }
+                />
                 <ListItemSecondaryAction>
                   <Tooltip id="tooltip-icon" title="Edit account">
                     <IconButton
@@ -127,9 +150,9 @@ export const AccountsComponent = ({
 
 AccountsComponent.propTypes = {
   classes: PropTypes.object.isRequired,
-  formatCurrency: PropTypes.func.isRequired,
   groupedAccounts: PropTypes.object.isRequired,
-  accountId: PropTypes.string
+  accountId: PropTypes.string,
+  settings: PropTypes.object.isRequired
 }
 
 AccountsComponent.defaultProps = {

@@ -17,7 +17,7 @@ import confirm from '../../../util/confirm'
 import { deleteTransactions, updateSortBy } from '../../../store/transactions/actions'
 import { makeFindAccountById } from '../../../store/accounts/selectors'
 import { makeAccountTransactions } from '../../../store/transactions/selectors'
-import { currencyFormatter, dateFormatter } from '../../../common/StringFormatter'
+import { currencyFormatter, dateFormatter } from '../../../util/stringFormatter'
 
 const styles = theme => ({
   paper: {
@@ -58,15 +58,13 @@ const makeMapStateToProps = () => {
   const findAccountById = makeFindAccountById()
   const accountTransactions = makeAccountTransactions()
   const mapStateToProps = (state, props) => {
-    const cf = currencyFormatter(state.settings)
-    const df = dateFormatter(state.settings)
+    const account = findAccountById(state.accounts, props.match.params.accountId)
     return {
-      settings: state.settings,
-      formatCurrency: number => cf.format(number),
-      formatDate: date => df.format(date),
+      formatCurrency: currencyFormatter(state.settings.locale, account.currency),
+      formatDate: dateFormatter(state),
       sortBy: state.transactions.sortBy,
       sortDirection: state.transactions.sortDirection,
-      account: findAccountById(state.accounts, props.match.params.accountId),
+      account,
       transactions: accountTransactions(state, props).transactions
     }
   }
