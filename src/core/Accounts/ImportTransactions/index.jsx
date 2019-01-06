@@ -12,7 +12,6 @@ import InstitutionIcon from '../../../common/InstitutionIcon'
 import { addTransactions } from '../../../store/transactions/actions'
 import CsvImportForm from './CsvImportForm'
 import ImportResults from './ImportResults'
-import { makeFindAccountById } from '../../../store/accounts/selectors'
 
 const styles = theme => ({
   root: {
@@ -28,15 +27,10 @@ const styles = theme => ({
   }
 })
 
-// https://medium.com/@parkerdan/react-reselect-and-redux-b34017f8194c
-const makeMapStateToProps = () => {
-  const findAccountById = makeFindAccountById()
-  const mapStateToProps = (state, props) => {
-    return {
-      account: findAccountById(state.accounts, props.match.params.accountId)
-    }
+const mapStateToProps = (state, props) => {
+  return {
+    account: state.accounts[props.match.params.accountId]
   }
-  return mapStateToProps
 }
 
 const mapDispatchToProps = dispatch => ({
@@ -125,6 +119,6 @@ ImportTransactionsComponent.propTypes = {
 }
 
 export default withRouter(compose(
-  connect(makeMapStateToProps, mapDispatchToProps),
+  connect(mapStateToProps, mapDispatchToProps),
   withStyles(styles),
 )(ImportTransactionsComponent))

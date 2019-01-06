@@ -22,20 +22,11 @@ export const institutionsData = {
 const getInstitutions = () => Object.keys(institutionsData)
 const getAccounts = state => state.accounts
 
-export const findAccountById = (accounts, accountId) => {
-  return accounts.find(account => account.id === accountId)
-}
-
-export const makeFindAccountById = () => createSelector(
-  findAccountById,
-  account => account
-)
-
 export const sortedAccountsGroupedByInstitution = createSelector(
   getAccounts,
   (accounts) => {
     const groupedAccounts = {}
-    accounts.sort((a, b) => (a.name > b.name)).forEach((account) => {
+    Object.values(accounts).sort((a, b) => (a.name > b.name)).forEach((account) => {
       if (!Object.keys(groupedAccounts).includes(account.institution)) {
         groupedAccounts[account.institution] = []
       }

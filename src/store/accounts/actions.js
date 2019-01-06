@@ -51,3 +51,7 @@ export const deleteAccount = (account) => {
     return afterAccountsChanged(dispatch)
   }
 }
+
+export const updateInstitution = (institution, data) => {
+  return { type: types.UPDATE_INSTITUTION_DATA, payload: { institution, data } }
+}

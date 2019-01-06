@@ -2,28 +2,39 @@ import React from 'react'
 import renderer from 'react-test-renderer'
 import { BrowserRouter } from 'react-router-dom'
 import { AccountsComponent } from '../'
+import { initialState } from '../../../store/accounts/reducer'
+import { initialState as settingsInitialState } from '../../../store/settings/reducer'
 
 jest.mock('../../../common/InstitutionIcon', () => 'InstitutionIcon')
 
-const settings = { locale: 'en-CA', currency: 'CAD' }
 const accounts = {
-  TD: [{
-    id: '1',
-    description: 'Checking',
-    institution: 'TD',
-    currency: 'CAD'
-  }, {
-    id: '2',
-    description: 'Savings',
-    institution: 'TD',
-    currency: 'CAD'
-  }],
-  BMO: [{
-    id: '2',
-    description: 'Checking',
-    institution: 'BMO',
-    currency: 'USD' // Different currency
-  }]
+  byId: {
+    1: {
+      id: '1',
+      description: 'Checking',
+      institution: 'TD',
+      currency: 'CAD',
+      currenctBalance: 10
+    },
+    2: {
+      id: '2',
+      description: 'Savings',
+      institution: 'TD',
+      currency: 'CAD',
+      currenctBalance: 10
+    },
+    3: {
+      id: '2',
+      description: 'Checking',
+      institution: 'BMO',
+      currency: 'USD', // Different currency
+      currenctBalance: 10
+    }
+  },
+  byInstitution: {
+    TD: { accountIds: ['1', '2'], balance: 20 },
+    BMO: { accountIds: ['1', '2'], balance: 10 }
+  }
 }
 
 describe('Accounts index (Left Nav)', () => {
@@ -32,9 +43,9 @@ describe('Accounts index (Left Nav)', () => {
       const component = renderer.create((
         <BrowserRouter>
           <AccountsComponent
-            settings={settings}
+            settings={settingsInitialState}
             accountId={null}
-            groupedAccounts={{}}
+            accounts={initialState}
             classes={{ }}
           />
         </BrowserRouter>
@@ -46,9 +57,9 @@ describe('Accounts index (Left Nav)', () => {
       const component = renderer.create((
         <BrowserRouter>
           <AccountsComponent
-            settings={settings}
+            settings={settingsInitialState}
             accountId={null}
-            groupedAccounts={accounts}
+            accounts={accounts}
             classes={{ }}
           />
         </BrowserRouter>
@@ -60,9 +71,9 @@ describe('Accounts index (Left Nav)', () => {
       const component = renderer.create((
         <BrowserRouter>
           <AccountsComponent
-            settings={settings}
-            accountId={accounts.TD[0].id}
-            groupedAccounts={accounts}
+            settings={settingsInitialState}
+            accountId="1"
+            accounts={accounts}
             classes={{ }}
           />
         </BrowserRouter>

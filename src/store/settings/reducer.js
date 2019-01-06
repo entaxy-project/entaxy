@@ -3,7 +3,7 @@ import types from './types'
 
 export const initialState = {
   currency: 'USD',
-  locale: window.navigator.language,
+  locale: window.navigator.language || 'en-US',
   portfolioFilters: {
     institution: {},
     account: {}

@@ -15,7 +15,6 @@ import TransactionDialog from './TransactionDialog'
 import TransactionsToolbar from './TransactionsToolbar'
 import confirm from '../../../util/confirm'
 import { deleteTransactions, updateSortBy } from '../../../store/transactions/actions'
-import { makeFindAccountById } from '../../../store/accounts/selectors'
 import { makeAccountTransactions } from '../../../store/transactions/selectors'
 import { currencyFormatter, dateFormatter } from '../../../util/stringFormatter'
 
@@ -55,10 +54,9 @@ const styles = theme => ({
 
 // https://medium.com/@parkerdan/react-reselect-and-redux-b34017f8194c
 const makeMapStateToProps = () => {
-  const findAccountById = makeFindAccountById()
   const accountTransactions = makeAccountTransactions()
   const mapStateToProps = (state, props) => {
-    const account = findAccountById(state.accounts, props.match.params.accountId)
+    const account = state.accounts.byId[props.match.params.accountId]
     return {
       formatCurrency: currencyFormatter(state.settings.locale, account.currency),
       formatDate: dateFormatter(state),

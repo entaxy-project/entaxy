@@ -33,6 +33,7 @@ const LeftDrawer = ({ classes, match }) => (
         key="Dashboard"
         component={NavLink}
         to="/dashboard"
+        selected={match.path === '/dashboard'}
       >
         <ListItemIcon><DashboardIcon /></ListItemIcon>
         <ListItemText primary="Dashboard" />

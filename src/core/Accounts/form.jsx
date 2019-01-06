@@ -66,7 +66,7 @@ const styles = theme => ({
 const mapStateToProps = (state, ownProps) => {
   return {
     settings: state.settings,
-    account: state.accounts.find(acc => acc.id === ownProps.accountId),
+    account: state.accounts.byId[ownProps.accountId],
     institutions: sortedInstitutionsForAutoselect()
   }
 }
