@@ -1,40 +1,46 @@
 import React from 'react'
-import renderer from 'react-test-renderer'
-import { DashboardComponent } from '../'
+import { mount } from 'enzyme'
+import { Provider } from 'react-redux'
+import store from '../../../store'
+import Dashboard from '../'
+import { createAccount } from '../../../store/accounts/actions'
 
-jest.mock('../../../common/InstitutionIcon', () => 'InstitutionIcon')
-
-const groupedAccounts = {
-  TD: { accountIds: ['1', '2'], balance: 20 },
-  BMO: { accountIds: ['3'], balance: 10 }
+const account = {
+  description: 'Checking',
+  institution: 'TD',
+  currency: 'CAD',
+  openingBalance: 10
 }
-
-const mochFormatCurrency = jest.fn().mockReturnValue(0)
 
 describe('Dashboard', () => {
   describe('snapshot', () => {
     it('matches with no accounts', () => {
-      const component = renderer.create((
-        <DashboardComponent
-          formatCurrency={mochFormatCurrency}
-          groupedAccounts={{}}
-          totalBalance={0}
-          classes={{ }}
-        />
+      const wrapper = mount((
+        <Provider store={store}>
+          <Dashboard />
+        </Provider>
       ))
-      expect(component.toJSON()).toMatchSnapshot()
+      expect(wrapper.debug()).toMatchSnapshot()
+
+      const component = wrapper.findWhere(node => node.name() === '')
+      expect(component.props().totalBalance).toEqual(0)
+      expect(component.props().groupedAccounts).toEqual({})
+      expect(component.props().formatCurrency(10000)).toEqual('$10,000.00')
     })
 
-    it('matches with a few accounts', () => {
-      const component = renderer.create((
-        <DashboardComponent
-          formatCurrency={mochFormatCurrency}
-          groupedAccounts={groupedAccounts}
-          totalBalance={30}
-          classes={{ }}
-        />
+    it('matches with one account', async () => {
+      account.id = await store.dispatch(createAccount(account))
+      const wrapper = mount((
+        <Provider store={store}>
+          <Dashboard />
+        </Provider>
       ))
-      expect(component.toJSON()).toMatchSnapshot()
+      expect(wrapper.debug()).toMatchSnapshot()
+
+      const component = wrapper.findWhere(node => node.name() === '')
+      expect(component.props().totalBalance).toEqual(10)
+      expect(component.props().groupedAccounts).toEqual(store.getState().accounts.byInstitution)
+      expect(component.props().formatCurrency(10000)).toEqual('$10,000.00')
     })
   })
 })

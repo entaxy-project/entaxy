@@ -27,11 +27,9 @@ const styles = theme => ({
   }
 })
 
-const mapStateToProps = (state, props) => {
-  return {
-    account: state.accounts[props.match.params.accountId]
-  }
-}
+const mapStateToProps = ({ accounts }, props) => ({
+  account: accounts.byId[props.match.params.accountId]
+})
 
 const mapDispatchToProps = dispatch => ({
   saveTransactions: (account, transactions) => dispatch(addTransactions(account, transactions))
@@ -46,12 +44,13 @@ const initialState = {
 export class ImportTransactionsComponent extends React.Component {
   state = initialState
 
-  onSave = () => {
-    this.props.saveTransactions(this.props.account, this.state.transactions)
-    this.props.history.push(`/accounts/${this.props.account.id}/transactions`)
+  handleSave = () => {
+    const { saveTransactions, account, history } = this.props
+    saveTransactions(account, this.state.transactions)
+    history.push(`/accounts/${account.id}/transactions`)
   }
 
-  onCancel = () => {
+  handleCancel = () => {
     this.props.history.push(`/accounts/${this.props.account.id}/transactions`)
   }
 
@@ -92,15 +91,15 @@ export class ImportTransactionsComponent extends React.Component {
             <CsvImportForm
               account={account}
               handleParsedData={this.handleParsedData}
-              onCancel={this.onCancel}
+              onCancel={this.handleCancel}
             />
           }
           {showTransactions &&
             <ImportResults
               transactions={transactions}
               errors={errors}
-              onSave={this.onSave}
-              onCancel={this.onCancel}
+              onSave={this.handleSave}
+              onCancel={this.handleCancel}
             />
           }
         </Paper>
@@ -108,7 +107,6 @@ export class ImportTransactionsComponent extends React.Component {
     )
   }
 }
-
 
 ImportTransactionsComponent.propTypes = {
   classes: PropTypes.object.isRequired,

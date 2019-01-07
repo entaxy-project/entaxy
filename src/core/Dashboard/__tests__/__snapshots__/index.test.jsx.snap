@@ -1,151 +1,185 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Dashboard snapshot matches with a few accounts 1`] = `
-<div
-  className="MuiGrid-container-1"
->
-  <div
-    className="MuiGrid-container-1 MuiGrid-justify-xs-flex-end-19"
-  >
-    <div
-      className="MuiPaper-root-98 MuiPaper-elevation2-102 MuiPaper-rounded-99"
-    >
-      <p
-        className="MuiTypography-root-125 MuiTypography-body1-134 MuiTypography-colorTextSecondary-158 MuiTypography-alignRight-149"
-      >
-        Balance
-      </p>
-      <h5
-        className="MuiTypography-root-125 MuiTypography-h5-141 MuiTypography-alignRight-149"
-      >
-        0
-      </h5>
-      <div
-        className="MuiPaper-root-98 MuiPaper-elevation2-102 MuiPaper-rounded-99"
-      >
-        <svg
-          aria-hidden="true"
-          className="MuiSvgIcon-root-160"
-          focusable="false"
-          role="presentation"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M0 0h24v24H0z"
-            fill="none"
-          />
-          <path
-            d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"
-          />
-        </svg>
-      </div>
-    </div>
-  </div>
-  <div
-    className="MuiPaper-root-98 MuiPaper-elevation2-102 MuiPaper-rounded-99"
-  >
-    <table
-      className="MuiTable-root-169"
-    >
-      <tbody
-        className="MuiTableBody-root-170"
-      >
-        <tr
-          className="MuiTableRow-root-171"
-        >
-          <th
-            aria-sort={null}
-            className="MuiTableCell-root-176 MuiTableCell-body-178"
-            scope="row"
-          >
-            TD
-          </th>
-          <td
-            aria-sort={null}
-            className="MuiTableCell-root-176 MuiTableCell-body-178 MuiTableCell-alignRight-186"
-          >
-            0
-          </td>
-        </tr>
-        <tr
-          className="MuiTableRow-root-171"
-        >
-          <th
-            aria-sort={null}
-            className="MuiTableCell-root-176 MuiTableCell-body-178"
-            scope="row"
-          >
-            BMO
-          </th>
-          <td
-            aria-sort={null}
-            className="MuiTableCell-root-176 MuiTableCell-body-178 MuiTableCell-alignRight-186"
-          >
-            0
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+exports[`Dashboard snapshot matches with no accounts 1`] = `
+"<Provider store={{...}}>
+  <Connect(WithStyles(Component))>
+    <WithStyles(Component) formatCurrency={[Function]} groupedAccounts={{...}} totalBalance={0} dispatch={[Function]}>
+      <Component formatCurrency={[Function]} groupedAccounts={{...}} totalBalance={0} dispatch={[Function]} classes={{...}}>
+        <WithStyles(Grid) container={true}>
+          <Grid container={true} classes={{...}} alignContent=\\"stretch\\" alignItems=\\"stretch\\" component=\\"div\\" direction=\\"row\\" item={false} justify=\\"flex-start\\" lg={false} md={false} sm={false} spacing={0} wrap=\\"wrap\\" xl={false} xs={false} zeroMinWidth={false}>
+            <div className=\\"MuiGrid-container-6\\">
+              <WithStyles(Grid) container={true} justify=\\"flex-end\\" className={[undefined]}>
+                <Grid container={true} justify=\\"flex-end\\" className={[undefined]} classes={{...}} alignContent=\\"stretch\\" alignItems=\\"stretch\\" component=\\"div\\" direction=\\"row\\" item={false} lg={false} md={false} sm={false} spacing={0} wrap=\\"wrap\\" xl={false} xs={false} zeroMinWidth={false}>
+                  <div className=\\"MuiGrid-container-6 MuiGrid-justify-xs-flex-end-24\\">
+                    <WithStyles(Paper) className=\\"Component-balancePaper-1\\">
+                      <Paper className=\\"Component-balancePaper-1\\" classes={{...}} component=\\"div\\" elevation={2} square={false}>
+                        <div className=\\"MuiPaper-root-103 MuiPaper-elevation2-107 MuiPaper-rounded-104 Component-balancePaper-1\\">
+                          <WithStyles(Typography) variant=\\"body1\\" color=\\"textSecondary\\" align=\\"right\\">
+                            <Typography variant=\\"body1\\" color=\\"textSecondary\\" align=\\"right\\" theme={{...}} classes={{...}} gutterBottom={false} headlineMapping={{...}} noWrap={false} paragraph={false}>
+                              <p className=\\"MuiTypography-root-130 MuiTypography-body1-139 MuiTypography-colorTextSecondary-163 MuiTypography-alignRight-154\\">
+                                Balance
+                              </p>
+                            </Typography>
+                          </WithStyles(Typography)>
+                          <WithStyles(Typography) variant=\\"h5\\" align=\\"right\\" className=\\"Component-balanceAmount-2\\">
+                            <Typography variant=\\"h5\\" align=\\"right\\" className=\\"Component-balanceAmount-2\\" theme={{...}} classes={{...}} color=\\"default\\" gutterBottom={false} headlineMapping={{...}} noWrap={false} paragraph={false}>
+                              <h5 className=\\"MuiTypography-root-130 MuiTypography-h5-146 MuiTypography-alignRight-154 Component-balanceAmount-2\\">
+                                $0.00
+                              </h5>
+                            </Typography>
+                          </WithStyles(Typography)>
+                          <WithStyles(Paper) className=\\"Component-balancePaperIcon-3\\">
+                            <Paper className=\\"Component-balancePaperIcon-3\\" classes={{...}} component=\\"div\\" elevation={2} square={false}>
+                              <div className=\\"MuiPaper-root-103 MuiPaper-elevation2-107 MuiPaper-rounded-104 Component-balancePaperIcon-3\\">
+                                <pure(DashboardIcon) className=\\"Component-balanceIcon-4\\">
+                                  <DashboardIcon className=\\"Component-balanceIcon-4\\">
+                                    <WithStyles(SvgIcon) className=\\"Component-balanceIcon-4\\">
+                                      <SvgIcon className=\\"Component-balanceIcon-4\\" classes={{...}} color=\\"inherit\\" component=\\"svg\\" fontSize=\\"default\\" viewBox=\\"0 0 24 24\\">
+                                        <svg className=\\"MuiSvgIcon-root-165 Component-balanceIcon-4\\" focusable=\\"false\\" viewBox=\\"0 0 24 24\\" color={[undefined]} aria-hidden=\\"true\\" role=\\"presentation\\">
+                                          <path fill=\\"none\\" d=\\"M0 0h24v24H0z\\" />
+                                          <path d=\\"M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z\\" />
+                                        </svg>
+                                      </SvgIcon>
+                                    </WithStyles(SvgIcon)>
+                                  </DashboardIcon>
+                                </pure(DashboardIcon)>
+                              </div>
+                            </Paper>
+                          </WithStyles(Paper)>
+                        </div>
+                      </Paper>
+                    </WithStyles(Paper)>
+                  </div>
+                </Grid>
+              </WithStyles(Grid)>
+              <WithStyles(Paper) className=\\"Component-summaryPaper-5\\">
+                <Paper className=\\"Component-summaryPaper-5\\" classes={{...}} component=\\"div\\" elevation={2} square={false}>
+                  <div className=\\"MuiPaper-root-103 MuiPaper-elevation2-107 MuiPaper-rounded-104 Component-summaryPaper-5\\">
+                    <WithStyles(Typography) variant=\\"caption\\" className={[undefined]}>
+                      <Typography variant=\\"caption\\" className={[undefined]} theme={{...}} classes={{...}} align=\\"inherit\\" color=\\"default\\" gutterBottom={false} headlineMapping={{...}} noWrap={false} paragraph={false}>
+                        <span className=\\"MuiTypography-root-130 MuiTypography-caption-140\\">
+                          You don&#39;t have any accounts yet
+                        </span>
+                      </Typography>
+                    </WithStyles(Typography)>
+                    <WithStyles(Table) className={[undefined]}>
+                      <Table className={[undefined]} classes={{...}} component=\\"table\\" padding=\\"default\\">
+                        <table className=\\"MuiTable-root-174\\">
+                          <WithStyles(TableBody)>
+                            <TableBody classes={{...}} component=\\"tbody\\">
+                              <tbody className=\\"MuiTableBody-root-175\\" />
+                            </TableBody>
+                          </WithStyles(TableBody)>
+                        </table>
+                      </Table>
+                    </WithStyles(Table)>
+                  </div>
+                </Paper>
+              </WithStyles(Paper)>
+            </div>
+          </Grid>
+        </WithStyles(Grid)>
+      </Component>
+    </WithStyles(Component)>
+  </Connect(WithStyles(Component))>
+</Provider>"
 `;
 
-exports[`Dashboard snapshot matches with no accounts 1`] = `
-<div
-  className="MuiGrid-container-1"
->
-  <div
-    className="MuiGrid-container-1 MuiGrid-justify-xs-flex-end-19"
-  >
-    <div
-      className="MuiPaper-root-98 MuiPaper-elevation2-102 MuiPaper-rounded-99"
-    >
-      <p
-        className="MuiTypography-root-125 MuiTypography-body1-134 MuiTypography-colorTextSecondary-158 MuiTypography-alignRight-149"
-      >
-        Balance
-      </p>
-      <h5
-        className="MuiTypography-root-125 MuiTypography-h5-141 MuiTypography-alignRight-149"
-      >
-        0
-      </h5>
-      <div
-        className="MuiPaper-root-98 MuiPaper-elevation2-102 MuiPaper-rounded-99"
-      >
-        <svg
-          aria-hidden="true"
-          className="MuiSvgIcon-root-160"
-          focusable="false"
-          role="presentation"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M0 0h24v24H0z"
-            fill="none"
-          />
-          <path
-            d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"
-          />
-        </svg>
-      </div>
-    </div>
-  </div>
-  <div
-    className="MuiPaper-root-98 MuiPaper-elevation2-102 MuiPaper-rounded-99"
-  >
-    <span
-      className="MuiTypography-root-125 MuiTypography-caption-135"
-    >
-      You don't have any accounts yet
-    </span>
-    <table
-      className="MuiTable-root-169"
-    >
-      <tbody
-        className="MuiTableBody-root-170"
-      />
-    </table>
-  </div>
-</div>
+exports[`Dashboard snapshot matches with one account 1`] = `
+"<Provider store={{...}}>
+  <Connect(WithStyles(Component))>
+    <WithStyles(Component) formatCurrency={[Function]} groupedAccounts={{...}} totalBalance={10} dispatch={[Function]}>
+      <Component formatCurrency={[Function]} groupedAccounts={{...}} totalBalance={10} dispatch={[Function]} classes={{...}}>
+        <WithStyles(Grid) container={true}>
+          <Grid container={true} classes={{...}} alignContent=\\"stretch\\" alignItems=\\"stretch\\" component=\\"div\\" direction=\\"row\\" item={false} justify=\\"flex-start\\" lg={false} md={false} sm={false} spacing={0} wrap=\\"wrap\\" xl={false} xs={false} zeroMinWidth={false}>
+            <div className=\\"MuiGrid-container-6\\">
+              <WithStyles(Grid) container={true} justify=\\"flex-end\\" className={[undefined]}>
+                <Grid container={true} justify=\\"flex-end\\" className={[undefined]} classes={{...}} alignContent=\\"stretch\\" alignItems=\\"stretch\\" component=\\"div\\" direction=\\"row\\" item={false} lg={false} md={false} sm={false} spacing={0} wrap=\\"wrap\\" xl={false} xs={false} zeroMinWidth={false}>
+                  <div className=\\"MuiGrid-container-6 MuiGrid-justify-xs-flex-end-24\\">
+                    <WithStyles(Paper) className=\\"Component-balancePaper-1\\">
+                      <Paper className=\\"Component-balancePaper-1\\" classes={{...}} component=\\"div\\" elevation={2} square={false}>
+                        <div className=\\"MuiPaper-root-103 MuiPaper-elevation2-107 MuiPaper-rounded-104 Component-balancePaper-1\\">
+                          <WithStyles(Typography) variant=\\"body1\\" color=\\"textSecondary\\" align=\\"right\\">
+                            <Typography variant=\\"body1\\" color=\\"textSecondary\\" align=\\"right\\" theme={{...}} classes={{...}} gutterBottom={false} headlineMapping={{...}} noWrap={false} paragraph={false}>
+                              <p className=\\"MuiTypography-root-130 MuiTypography-body1-139 MuiTypography-colorTextSecondary-163 MuiTypography-alignRight-154\\">
+                                Balance
+                              </p>
+                            </Typography>
+                          </WithStyles(Typography)>
+                          <WithStyles(Typography) variant=\\"h5\\" align=\\"right\\" className=\\"Component-balanceAmount-2\\">
+                            <Typography variant=\\"h5\\" align=\\"right\\" className=\\"Component-balanceAmount-2\\" theme={{...}} classes={{...}} color=\\"default\\" gutterBottom={false} headlineMapping={{...}} noWrap={false} paragraph={false}>
+                              <h5 className=\\"MuiTypography-root-130 MuiTypography-h5-146 MuiTypography-alignRight-154 Component-balanceAmount-2\\">
+                                $10.00
+                              </h5>
+                            </Typography>
+                          </WithStyles(Typography)>
+                          <WithStyles(Paper) className=\\"Component-balancePaperIcon-3\\">
+                            <Paper className=\\"Component-balancePaperIcon-3\\" classes={{...}} component=\\"div\\" elevation={2} square={false}>
+                              <div className=\\"MuiPaper-root-103 MuiPaper-elevation2-107 MuiPaper-rounded-104 Component-balancePaperIcon-3\\">
+                                <pure(DashboardIcon) className=\\"Component-balanceIcon-4\\">
+                                  <DashboardIcon className=\\"Component-balanceIcon-4\\">
+                                    <WithStyles(SvgIcon) className=\\"Component-balanceIcon-4\\">
+                                      <SvgIcon className=\\"Component-balanceIcon-4\\" classes={{...}} color=\\"inherit\\" component=\\"svg\\" fontSize=\\"default\\" viewBox=\\"0 0 24 24\\">
+                                        <svg className=\\"MuiSvgIcon-root-165 Component-balanceIcon-4\\" focusable=\\"false\\" viewBox=\\"0 0 24 24\\" color={[undefined]} aria-hidden=\\"true\\" role=\\"presentation\\">
+                                          <path fill=\\"none\\" d=\\"M0 0h24v24H0z\\" />
+                                          <path d=\\"M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z\\" />
+                                        </svg>
+                                      </SvgIcon>
+                                    </WithStyles(SvgIcon)>
+                                  </DashboardIcon>
+                                </pure(DashboardIcon)>
+                              </div>
+                            </Paper>
+                          </WithStyles(Paper)>
+                        </div>
+                      </Paper>
+                    </WithStyles(Paper)>
+                  </div>
+                </Grid>
+              </WithStyles(Grid)>
+              <WithStyles(Paper) className=\\"Component-summaryPaper-5\\">
+                <Paper className=\\"Component-summaryPaper-5\\" classes={{...}} component=\\"div\\" elevation={2} square={false}>
+                  <div className=\\"MuiPaper-root-103 MuiPaper-elevation2-107 MuiPaper-rounded-104 Component-summaryPaper-5\\">
+                    <WithStyles(Table) className={[undefined]}>
+                      <Table className={[undefined]} classes={{...}} component=\\"table\\" padding=\\"default\\">
+                        <table className=\\"MuiTable-root-174\\">
+                          <WithStyles(TableBody)>
+                            <TableBody classes={{...}} component=\\"tbody\\">
+                              <tbody className=\\"MuiTableBody-root-175\\">
+                                <WithStyles(TableRow)>
+                                  <TableRow classes={{...}} component=\\"tr\\" hover={false} selected={false}>
+                                    <tr className=\\"MuiTableRow-root-176\\">
+                                      <WithStyles(TableCell) component=\\"th\\" scope=\\"row\\">
+                                        <TableCell component=\\"th\\" scope=\\"row\\" classes={{...}} align=\\"inherit\\">
+                                          <th className=\\"MuiTableCell-root-181 MuiTableCell-body-183\\" aria-sort={{...}} scope=\\"row\\">
+                                            TD
+                                          </th>
+                                        </TableCell>
+                                      </WithStyles(TableCell)>
+                                      <WithStyles(TableCell) align=\\"right\\">
+                                        <TableCell align=\\"right\\" classes={{...}}>
+                                          <td className=\\"MuiTableCell-root-181 MuiTableCell-body-183 MuiTableCell-alignRight-191\\" aria-sort={{...}} scope={[undefined]}>
+                                            $10.00
+                                          </td>
+                                        </TableCell>
+                                      </WithStyles(TableCell)>
+                                    </tr>
+                                  </TableRow>
+                                </WithStyles(TableRow)>
+                              </tbody>
+                            </TableBody>
+                          </WithStyles(TableBody)>
+                        </table>
+                      </Table>
+                    </WithStyles(Table)>
+                  </div>
+                </Paper>
+              </WithStyles(Paper)>
+            </div>
+          </Grid>
+        </WithStyles(Grid)>
+      </Component>
+    </WithStyles(Component)>
+  </Connect(WithStyles(Component))>
+</Provider>"
 `;
