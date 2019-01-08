@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
+import importLogos from './importLogos'
 
 const styles = () => ({
   small: {
@@ -13,24 +14,28 @@ const styles = () => ({
   }
 })
 
-const importAll = (r) => {
-  const images = {}
-  r.keys().forEach((key) => {
-    images[/\.\/(.*)\.\w{3}$/.exec(key)[1]] = r(key)
-  })
-  return images
-}
-
-const images = importAll(require.context('./logos', false, /\.(png|jpe?g|svg)$/))
-
-const InstitutionIcon = ({ classes, institution, size }) => (
-  <img src={`${images[institution]}`} alt={institution} className={classes[size]} />
+const InstitutionIcon = ({
+  classes,
+  className,
+  institution,
+  size
+}) => (
+  <img
+    src={`${importLogos[institution]}`}
+    alt={institution}
+    className={`${[classes[size], className].join(' ')}`}
+  />
 )
 
 InstitutionIcon.propTypes = {
   classes: PropTypes.object.isRequired,
+  className: PropTypes.string,
   institution: PropTypes.string.isRequired,
   size: PropTypes.string.isRequired
+}
+
+InstitutionIcon.defaultProps = {
+  className: undefined
 }
 
 export default withStyles(styles)(InstitutionIcon)

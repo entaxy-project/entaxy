@@ -28,7 +28,7 @@ export class RoutesComponent extends React.Component {
     // Check for at least one account
     if (params !== undefined) {
       const { accountRequired } = params
-      if (accountRequired && Object.keys(this.props.accounts).length === 0) {
+      if (accountRequired && Object.keys(this.props.accounts.byId).length === 0) {
         return <Redirect to="/" />
       }
     }
@@ -77,7 +77,7 @@ export class RoutesComponent extends React.Component {
 
 RoutesComponent.propTypes = {
   user: PropTypes.object.isRequired,
-  accounts: PropTypes.array.isRequired
+  accounts: PropTypes.object.isRequired
 }
 
 export default connect(mapStateToProps)(RoutesComponent)

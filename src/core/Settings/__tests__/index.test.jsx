@@ -20,66 +20,38 @@ describe('Settings', () => {
     expect(component.toJSON()).toMatchSnapshot()
   })
 
-  it('saves settings and shows the snackbar', async () => {
+  describe('Component methods', () => {
+    const mochHistoryPush = jest.fn()
     const wrapper = shallow((
       <SettingsComponent
-        history={{}}
+        history={{ push: mochHistoryPush }}
         classes={{}}
         deleteAllData={mochDeleteAllData}
         saveSettings={mochSaveSettings}
       />
     ))
     const instance = wrapper.instance()
-    expect(wrapper.state('openSnackbar')).toBe(false)
-    await instance.handleSave()
-    expect(mochSaveSettings).toHaveBeenCalled()
-    expect(wrapper.state('openSnackbar')).toBe(true)
-  })
 
-  describe('Component methods', () => {
+    it('saves settings and shows the snackbar', async () => {
+      expect(wrapper.state('openSnackbar')).toBe(false)
+      await instance.handleSave()
+      expect(mochSaveSettings).toHaveBeenCalled()
+      expect(wrapper.state('openSnackbar')).toBe(true)
+    })
+
     it('deletes all data', async () => {
-      const mochHistoryPush = jest.fn()
-      const wrapper = shallow((
-        <SettingsComponent
-          history={{ push: mochHistoryPush }}
-          classes={{}}
-          deleteAllData={mochDeleteAllData}
-          saveSettings={mochSaveSettings}
-        />
-      ))
-      const instance = wrapper.instance()
       await instance.handleResetData()
       expect(mochDeleteAllData).toHaveBeenCalled()
       expect(mochHistoryPush).toHaveBeenCalledWith('/dashboard')
     })
 
     it('cancels and returns to dashboard', async () => {
-      const mochHistoryPush = jest.fn()
-      const wrapper = shallow((
-        <SettingsComponent
-          history={{ push: mochHistoryPush }}
-          classes={{}}
-          deleteAllData={mochDeleteAllData}
-          saveSettings={mochSaveSettings}
-        />
-      ))
-      const instance = wrapper.instance()
       instance.handleCancel()
       expect(mochHistoryPush).toHaveBeenCalledWith('/dashboard')
     })
 
     it('closes the snackbar', async () => {
-      const wrapper = shallow((
-        <SettingsComponent
-          history={{}}
-          classes={{}}
-          deleteAllData={mochDeleteAllData}
-          saveSettings={mochSaveSettings}
-        />
-      ))
-      const instance = wrapper.instance()
       wrapper.setState({ openSnackbar: true })
-      expect(wrapper.state('openSnackbar')).toBe(true)
       instance.handleCloseSnackbar()
       expect(wrapper.state('openSnackbar')).toBe(false)
     })

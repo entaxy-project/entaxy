@@ -12,7 +12,6 @@ import InstitutionIcon from '../../../common/InstitutionIcon'
 import { addTransactions } from '../../../store/transactions/actions'
 import CsvImportForm from './CsvImportForm'
 import ImportResults from './ImportResults'
-import { makeFindAccountById } from '../../../store/accounts/selectors'
 
 const styles = theme => ({
   root: {
@@ -28,16 +27,9 @@ const styles = theme => ({
   }
 })
 
-// https://medium.com/@parkerdan/react-reselect-and-redux-b34017f8194c
-const makeMapStateToProps = () => {
-  const findAccountById = makeFindAccountById()
-  const mapStateToProps = (state, props) => {
-    return {
-      account: findAccountById(state.accounts, props.match.params.accountId)
-    }
-  }
-  return mapStateToProps
-}
+const mapStateToProps = ({ accounts }, props) => ({
+  account: accounts.byId[props.match.params.accountId]
+})
 
 const mapDispatchToProps = dispatch => ({
   saveTransactions: (account, transactions) => dispatch(addTransactions(account, transactions))
@@ -52,12 +44,13 @@ const initialState = {
 export class ImportTransactionsComponent extends React.Component {
   state = initialState
 
-  onSave = () => {
-    this.props.saveTransactions(this.props.account, this.state.transactions)
-    this.props.history.push(`/accounts/${this.props.account.id}/transactions`)
+  handleSave = () => {
+    const { saveTransactions, account, history } = this.props
+    saveTransactions(account, this.state.transactions)
+    history.push(`/accounts/${account.id}/transactions`)
   }
 
-  onCancel = () => {
+  handleCancel = () => {
     this.props.history.push(`/accounts/${this.props.account.id}/transactions`)
   }
 
@@ -98,15 +91,15 @@ export class ImportTransactionsComponent extends React.Component {
             <CsvImportForm
               account={account}
               handleParsedData={this.handleParsedData}
-              onCancel={this.onCancel}
+              onCancel={this.handleCancel}
             />
           }
           {showTransactions &&
             <ImportResults
               transactions={transactions}
               errors={errors}
-              onSave={this.onSave}
-              onCancel={this.onCancel}
+              onSave={this.handleSave}
+              onCancel={this.handleCancel}
             />
           }
         </Paper>
@@ -114,7 +107,6 @@ export class ImportTransactionsComponent extends React.Component {
     )
   }
 }
-
 
 ImportTransactionsComponent.propTypes = {
   classes: PropTypes.object.isRequired,
@@ -125,6 +117,6 @@ ImportTransactionsComponent.propTypes = {
 }
 
 export default withRouter(compose(
-  connect(makeMapStateToProps, mapDispatchToProps),
+  connect(mapStateToProps, mapDispatchToProps),
   withStyles(styles),
 )(ImportTransactionsComponent))

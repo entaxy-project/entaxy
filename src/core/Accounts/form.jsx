@@ -66,7 +66,7 @@ const styles = theme => ({
 const mapStateToProps = (state, ownProps) => {
   return {
     settings: state.settings,
-    account: state.accounts.find(acc => acc.id === ownProps.accountId),
+    account: state.accounts.byId[ownProps.accountId],
     institutions: sortedInstitutionsForAutoselect()
   }
 }
@@ -168,6 +168,7 @@ export const AccountFormComponent = ({
             size="small"
             onClick={() => handleDelete(account)}
             className={classes.deleteButton}
+            disabled={isSubmitting}
           >
             Delete this account
           </Button>
