@@ -8,10 +8,13 @@ import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
 import DashboardIcon from '@material-ui/icons/Dashboard'
 import Table from '@material-ui/core/Table'
+import TableHead from '@material-ui/core/TableHead'
 import TableBody from '@material-ui/core/TableBody'
-import TableCell from '@material-ui/core/TableCell'
 import TableRow from '@material-ui/core/TableRow'
-import { currencyFormatter } from '../../util/stringFormatter'
+import TableCell from '@material-ui/core/TableCell'
+import grey from '@material-ui/core/colors/grey'
+import { currencyFormatter, dateFormatter } from '../../util/stringFormatter'
+import InstitutionIcon from '../../common/InstitutionIcon'
 
 const styles = theme => ({
   balancePaper: {
@@ -40,12 +43,28 @@ const styles = theme => ({
   summaryPaper: {
     margin: theme.spacing.unit * 2,
     padding: theme.spacing.unit * 2
+  },
+  noAccounts: {
+    background: grey[100],
+    margin: '0 20px 20px 25px',
+    padding: theme.spacing.unit
+  },
+  institutionWrapper: {
+    display: 'flex'
+  },
+  institutionIcon: {
+    marginRight: 16
+  },
+  accountName: {
+    paddingLeft: 20
   }
 })
 
 const mapStateToProps = state => ({
+  settings: state.settings,
+  accounts: state.accounts,
   formatCurrency: currencyFormatter(state.settings.locale, state.settings.currency),
-  groupedAccounts: state.accounts.byInstitution,
+  formatDate: dateFormatter(state.settings.locale),
   totalBalance: Object.values(state.accounts.byInstitution).reduce(
     (balance, institution) => balance + institution.balance,
     0
@@ -54,8 +73,10 @@ const mapStateToProps = state => ({
 
 export const DashboardComponent = ({
   classes,
+  settings,
+  accounts,
   formatCurrency,
-  groupedAccounts,
+  formatDate,
   totalBalance
 }) => (
   <Grid container>
@@ -80,30 +101,63 @@ export const DashboardComponent = ({
         </Paper>
       </Paper>
     </Grid>
-    <Paper className={classes.summaryPaper}>
-      {Object.keys(groupedAccounts).length === 0 &&
-        <Typography variant="caption" className={classes.noAccounts}>
-          You don&apos;t have any accounts yet
-        </Typography>
-      }
-      <Table className={classes.table}>
-        <TableBody>
-          {Object.keys(groupedAccounts).map(institution => (
-            <TableRow key={institution}>
-              <TableCell component="th" scope="row">{institution}</TableCell>
-              <TableCell align="right">{formatCurrency(groupedAccounts[institution].balance)}</TableCell>
+    <Grid container>
+      <Paper className={classes.summaryPaper}>
+        {Object.keys(accounts.byId).length === 0 &&
+          <Typography variant="caption" className={classes.noAccounts}>
+            You don&apos;t have any accounts yet
+          </Typography>
+        }
+        <Table className={classes.table}>
+          <TableHead>
+            <TableRow>
+              <TableCell />
+              <TableCell align="right">Last updated</TableCell>
+              <TableCell align="right">{settings.currency}</TableCell>
             </TableRow>
+          </TableHead>
+          {Object.keys(accounts.byInstitution).map(institution => (
+            <TableBody key={institution}>
+              <TableRow>
+                <TableCell>
+                  <span className={classes.institutionWrapper}>
+                    <InstitutionIcon institution={institution} size="small" className={classes.institutionIcon} />
+                    <Typography variant="subtitle2">{institution}</Typography>
+                  </span>
+                </TableCell>
+                <TableCell />
+                <TableCell align="right">
+                  <Typography variant="subtitle2">
+                    {formatCurrency(accounts.byInstitution[institution].balance)}
+                  </Typography>
+                </TableCell>
+              </TableRow>
+              {accounts.byInstitution[institution].accountIds.map((accountId) => {
+                const account = accounts.byId[accountId]
+                return (
+                  <TableRow key={accountId}>
+                    <TableCell>
+                      <Typography className={classes.accountName}>{account.name}</Typography>
+                    </TableCell>
+                    <TableCell align="right">{formatDate(Date.now())}</TableCell>
+                    <TableCell align="right">{formatCurrency(account.currentBalance)}</TableCell>
+                  </TableRow>
+                )
+              })}
+            </TableBody>
           ))}
-        </TableBody>
-      </Table>
-    </Paper>
+        </Table>
+      </Paper>
+    </Grid>
   </Grid>
 )
 
 DashboardComponent.propTypes = {
   classes: PropTypes.object.isRequired,
+  settings: PropTypes.object.isRequired,
+  accounts: PropTypes.object.isRequired,
   formatCurrency: PropTypes.func.isRequired,
-  groupedAccounts: PropTypes.object.isRequired,
+  formatDate: PropTypes.func.isRequired,
   totalBalance: PropTypes.number.isRequired
 }
 

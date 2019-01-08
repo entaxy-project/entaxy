@@ -168,6 +168,7 @@ export const AccountFormComponent = ({
             size="small"
             onClick={() => handleDelete(account)}
             className={classes.deleteButton}
+            disabled={isSubmitting}
           >
             Delete this account
           </Button>

@@ -21,7 +21,7 @@ exports[`Import Transactions matches snapshot 1`] = `
       >
         <img
           alt="TD"
-          className="InstitutionIcon-small-162"
+          className="InstitutionIcon-small-162 "
           src="undefined"
         />
       </p>

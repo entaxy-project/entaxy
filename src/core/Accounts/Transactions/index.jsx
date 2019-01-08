@@ -59,7 +59,7 @@ const makeMapStateToProps = () => {
     const account = state.accounts.byId[props.match.params.accountId]
     return {
       formatCurrency: currencyFormatter(state.settings.locale, account.currency),
-      formatDate: dateFormatter(state),
+      formatDate: dateFormatter(state.settings.locale),
       sortBy: state.transactions.sortBy,
       sortDirection: state.transactions.sortDirection,
       account,

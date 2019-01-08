@@ -14,14 +14,28 @@ const styles = () => ({
   }
 })
 
-const InstitutionIcon = ({ classes, institution, size }) => (
-  <img src={`${importLogos[institution]}`} alt={institution} className={classes[size]} />
+const InstitutionIcon = ({
+  classes,
+  className,
+  institution,
+  size
+}) => (
+  <img
+    src={`${importLogos[institution]}`}
+    alt={institution}
+    className={`${[classes[size], className].join(' ')}`}
+  />
 )
 
 InstitutionIcon.propTypes = {
   classes: PropTypes.object.isRequired,
+  className: PropTypes.string,
   institution: PropTypes.string.isRequired,
   size: PropTypes.string.isRequired
+}
+
+InstitutionIcon.defaultProps = {
+  className: undefined
 }
 
 export default withStyles(styles)(InstitutionIcon)
