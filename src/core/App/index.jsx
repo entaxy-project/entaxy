@@ -8,7 +8,11 @@ import '../../styles/globals.css'
 const theme = createMuiTheme({
   palette: {
     primary: { main: blueGrey[800] },
-    secondary: { main: '#1B9CC4' }
+    secondary: { main: '#1B9CC4' },
+    info: {
+      main: '#00acc1',
+      light: '#00acc11a'
+    }
   },
   typography: {
     useNextVariants: true

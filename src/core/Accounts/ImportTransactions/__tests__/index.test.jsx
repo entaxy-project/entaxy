@@ -85,12 +85,14 @@ describe('Import Transactions', () => {
 
     it('handles the parsed data (before saving)', () => {
       expect(instance.state).toEqual({
+        importType: 'CSV',
         errors: {},
         transactions: [],
         showTransactions: false
       })
       instance.handleParsedData(['transactions'], { errors: ['some errors'] })
       expect(instance.state).toEqual({
+        importType: 'CSV',
         errors: { errors: ['some errors'] },
         transactions: ['transactions'],
         showTransactions: true

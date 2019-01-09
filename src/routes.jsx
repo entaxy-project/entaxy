@@ -63,7 +63,7 @@ export class RoutesComponent extends React.Component {
               <Route exact path="/accounts/:accountId/transactions" render={this.authenticatedTransactions} />
               <Route
                 exact
-                path="/accounts/:accountId/import/:importType"
+                path="/accounts/:accountId/import"
                 render={this.authenticatedImportTransactions}
               />
             </Switch>

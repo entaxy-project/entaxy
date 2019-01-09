@@ -44,31 +44,5 @@ describe('TransactionsToolbar', () => {
       expect(instance.pageTitle(account)).toEqual(`${account.institution} - ${account.name}`)
       expect(instance.pageTitle(null)).toBeNull()
     })
-
-    it('should show the popup menu', () => {
-      expect(wrapper.state('anchorEl')).toBeNull()
-      expect(wrapper.state('openPopup')).toBe(false)
-      instance.showPopup({ currentTarget: <div>something</div> })
-      expect(wrapper.state('anchorEl')).toEqual(<div>something</div>)
-      expect(wrapper.state('openPopup')).toBe(true)
-    })
-
-    it('should close the popup menu', () => {
-      expect(wrapper.state('openPopup')).toBe(true)
-      instance.closePopup()
-      expect(wrapper.state('openPopup')).toBe(false)
-    })
-
-    it('should handle the popup selection', () => {
-      const importType = 'CSV'
-      instance.handlePopupSelection(importType)
-      expect(mochHistoryPush).toHaveBeenCalledWith(`/accounts/${account.id}/import/${importType}`)
-    })
-
-    it('should call reset selection', () => {
-      instance.resetSelection()
-      expect(wrapper.state('anchorEl')).toBeNull()
-      expect(wrapper.state('openPopup')).toBe(false)
-    })
   })
 })

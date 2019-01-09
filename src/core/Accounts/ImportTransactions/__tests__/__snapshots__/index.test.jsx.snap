@@ -2,100 +2,44 @@
 
 exports[`Import Transactions matches snapshot 1`] = `
 <div
-  className="MuiGrid-container-3 MuiGrid-justify-xs-center-20"
+  className="MuiGrid-container-4 MuiGrid-justify-xs-center-21"
 >
   <div
-    className="MuiPaper-root-100 MuiPaper-elevation2-104 MuiPaper-rounded-101 ImportTransactionsComponent-root-1"
+    className="MuiPaper-root-101 MuiPaper-elevation2-105 MuiPaper-rounded-102 ImportTransactionsComponent-root-1"
   >
     <div
-      className="ImportTransactionsComponent-importAreaHeader-2"
+      className="ImportTransactionsComponent-importHeader-2"
     >
       <h6
-        className="MuiTypography-root-127 MuiTypography-h6-144 MuiTypography-alignCenter-150"
+        className="MuiTypography-root-128 MuiTypography-h6-145 MuiTypography-alignCenter-151"
       >
         Import transactions from 
-        CSV
+        TD
       </h6>
       <p
-        className="MuiTypography-root-127 MuiTypography-body1-136"
+        className="MuiTypography-root-128 MuiTypography-body1-137"
       >
         <img
           alt="TD"
-          className="InstitutionIcon-small-162 "
+          className="InstitutionIcon-small-163 "
           src="undefined"
         />
       </p>
     </div>
     <hr
-      className="MuiDivider-root-164"
+      className="MuiDivider-root-165"
     />
-    <form
-      onSubmit={[Function]}
+    <div
+      className="MuiGrid-container-4"
     >
       <div
-        className="CsvImportForm-root-169"
+        className="MuiGrid-item-5 MuiGrid-grid-xs-2-34"
       >
-        <div
-          aria-disabled={false}
-          className="CsvDropzone-root-175"
-          onClick={[Function]}
-          onDragEnter={[Function]}
-          onDragLeave={[Function]}
-          onDragOver={[Function]}
-          onDragStart={[Function]}
-          onDrop={[Function]}
-          style={
-            Object {
-              "position": "relative",
-            }
-          }
+        <ul
+          className="MuiList-root-170 MuiList-padding-171"
         >
-          <div>
-            <div>
-              <h4
-                className="MuiTypography-root-127 MuiTypography-h4-142 MuiTypography-colorTextSecondary-160 MuiTypography-alignCenter-150"
-              >
-                Drag a CSV file here
-              </h4>
-              <h6
-                className="MuiTypography-root-127 MuiTypography-subtitle2-146 MuiTypography-colorTextSecondary-160 MuiTypography-alignCenter-150"
-              >
-                or click to select a file to upload.
-              </h6>
-            </div>
-          </div>
-          <input
-            autoComplete="off"
-            disabled={false}
-            multiple={false}
-            onChange={[Function]}
-            style={
-              Object {
-                "bottom": 0,
-                "left": 0,
-                "opacity": 0.00001,
-                "pointerEvents": "none",
-                "position": "absolute",
-                "right": 0,
-                "top": 0,
-              }
-            }
-            type="file"
-          />
-        </div>
-      </div>
-      <hr
-        className="MuiDivider-root-164"
-      />
-      <div
-        className="CsvImportForm-formActions-171"
-      >
-        <div
-          className="CsvImportForm-buttonWrapper-172"
-        >
-          <button
-            className="MuiButtonBase-root-203 MuiButtonBase-disabled-204 MuiButton-root-177 MuiButton-contained-188 MuiButton-containedPrimary-189 MuiButton-raised-191 MuiButton-raisedPrimary-192 MuiButton-disabled-197"
-            disabled={true}
+          <div
+            className="MuiButtonBase-root-186 MuiListItem-root-174 MuiListItem-default-177 MuiListItem-gutters-182 MuiListItem-button-183 MuiListItem-selected-185"
             onBlur={[Function]}
             onContextMenu={[Function]}
             onFocus={[Function]}
@@ -107,45 +51,146 @@ exports[`Import Transactions matches snapshot 1`] = `
             onTouchEnd={[Function]}
             onTouchMove={[Function]}
             onTouchStart={[Function]}
-            tabIndex="-1"
-            type="submit"
+            role="button"
+            tabIndex="0"
           >
-            <span
-              className="MuiButton-label-178"
+            <div
+              className="MuiListItemText-root-189"
             >
-              Import
-            </span>
-          </button>
-        </div>
-        <button
-          className="MuiButtonBase-root-203 MuiButton-root-177 MuiButton-text-179 MuiButton-textSecondary-181 MuiButton-flat-182 MuiButton-flatSecondary-184"
-          disabled={false}
-          onBlur={[Function]}
-          onClick={[Function]}
-          onContextMenu={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          tabIndex="0"
-          type="button"
-        >
-          <span
-            className="MuiButton-label-178"
-          >
-            Cancel
-          </span>
-          <span
-            className="MuiTouchRipple-root-206"
-          />
-        </button>
+              <span
+                className="MuiTypography-root-128 MuiTypography-subheading-135 MuiListItemText-primary-192"
+              >
+                CSV
+              </span>
+            </div>
+            <span
+              className="MuiTouchRipple-root-229"
+            />
+          </div>
+        </ul>
       </div>
-    </form>
+      <div
+        className="MuiGrid-item-5 MuiGrid-grid-xs-10-42"
+      >
+        <form
+          onSubmit={[Function]}
+        >
+          <div
+            className="CsvImportForm-root-195"
+          >
+            <div
+              aria-disabled={false}
+              className="CsvDropzone-root-201"
+              onClick={[Function]}
+              onDragEnter={[Function]}
+              onDragLeave={[Function]}
+              onDragOver={[Function]}
+              onDragStart={[Function]}
+              onDrop={[Function]}
+              style={
+                Object {
+                  "position": "relative",
+                }
+              }
+            >
+              <div>
+                <div>
+                  <h4
+                    className="MuiTypography-root-128 MuiTypography-h4-143 MuiTypography-colorTextSecondary-161 MuiTypography-alignCenter-151"
+                  >
+                    Drag a CSV file here
+                  </h4>
+                  <h6
+                    className="MuiTypography-root-128 MuiTypography-subtitle2-147 MuiTypography-colorTextSecondary-161 MuiTypography-alignCenter-151"
+                  >
+                    or click to select a file to upload.
+                  </h6>
+                </div>
+              </div>
+              <input
+                autoComplete="off"
+                disabled={false}
+                multiple={false}
+                onChange={[Function]}
+                style={
+                  Object {
+                    "bottom": 0,
+                    "left": 0,
+                    "opacity": 0.00001,
+                    "pointerEvents": "none",
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                  }
+                }
+                type="file"
+              />
+            </div>
+          </div>
+          <hr
+            className="MuiDivider-root-165"
+          />
+          <div
+            className="CsvImportForm-formActions-197"
+          >
+            <div
+              className="CsvImportForm-buttonWrapper-198"
+            >
+              <button
+                className="MuiButtonBase-root-186 MuiButtonBase-disabled-187 MuiButton-root-203 MuiButton-contained-214 MuiButton-containedPrimary-215 MuiButton-raised-217 MuiButton-raisedPrimary-218 MuiButton-disabled-223"
+                disabled={true}
+                onBlur={[Function]}
+                onContextMenu={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex="-1"
+                type="submit"
+              >
+                <span
+                  className="MuiButton-label-204"
+                >
+                  Import
+                </span>
+              </button>
+            </div>
+            <button
+              className="MuiButtonBase-root-186 MuiButton-root-203 MuiButton-text-205 MuiButton-textSecondary-207 MuiButton-flat-208 MuiButton-flatSecondary-210"
+              disabled={false}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onContextMenu={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              tabIndex="0"
+              type="button"
+            >
+              <span
+                className="MuiButton-label-204"
+              >
+                Cancel
+              </span>
+              <span
+                className="MuiTouchRipple-root-229"
+              />
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
 </div>
 `;

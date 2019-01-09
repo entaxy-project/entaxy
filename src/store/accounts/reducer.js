@@ -1,7 +1,5 @@
 /* eslint-disable no-case-declarations */
-/* eslint-disable no-console */
 import types from './types'
-// import institutions from '../../data/institutions'
 
 export const initialState = {
   byId: {}, // {id1: {id: id1, name: 'account1', institution: 'TD'}, id2: {...}}
