@@ -12,32 +12,6 @@ Using beautiful data visualizations we want to build an opinionated framework th
 
 Staging site: http://entaxy-staging.s3-website.ca-central-1.amazonaws.com/
 
-## Running the build on your local machine
-
-Clone the repository on your local machine:
-`git clone https://github.com/twg/entaxy.git`
-
-
-### To run the app
-
-1- Make sure npm is installed: https://www.npmjs.com/get-npm
-
-2- Make sure git is installed: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
-
-Pull the code:
-
-`git clone git@github.com:twg/qa-entaxy.git`
-
-Fetch package dependencies:
-
-`npm install`
-
-Launch the dev server:
-
-`npm start`
-
-open `http://localhost:3000/`
-
 
 ## Feature roadmap
 * Investments
