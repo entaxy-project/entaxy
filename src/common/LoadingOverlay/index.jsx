@@ -29,16 +29,16 @@ const styles = {
   }
 }
 
-const mapStateToProps = ({ user }) => {
-  return { isLoading: user.isLoading }
+const mapStateToProps = ({ settings }) => {
+  return { overlayMessage: settings.overlayMessage }
 }
 
-const LoadingOverlay = ({ classes, isLoading }) => {
-  if (isLoading) {
+const LoadingOverlay = ({ classes, overlayMessage }) => {
+  if (overlayMessage) {
     return (
       <div className={classes.root}>
         <div className="rotating-icon" />
-        <div className={classes.label}>Loading ...</div>
+        <div className={classes.label}>{overlayMessage}</div>
       </div>
     )
   }
@@ -47,8 +47,11 @@ const LoadingOverlay = ({ classes, isLoading }) => {
 
 LoadingOverlay.propTypes = {
   classes: PropTypes.object.isRequired,
-  isLoading: PropTypes.bool.isRequired
+  overlayMessage: PropTypes.string
 }
 
+LoadingOverlay.defaultProps = {
+  overlayMessage: null
+}
 
 export default connect(mapStateToProps)(withStyles(styles)(LoadingOverlay))

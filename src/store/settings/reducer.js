@@ -2,6 +2,7 @@ import _ from 'lodash'
 import types from './types'
 
 export const initialState = {
+  overlayMessage: null,
   currency: 'USD',
   locale: window.navigator.language || 'en-US',
   portfolioFilters: {
@@ -12,6 +13,10 @@ export const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case types.SHOW_OVERLAY:
+      return { ...state, overlayMessage: action.payload }
+    case types.HIDE_OVERLAY:
+      return { ...state, overlayMessage: null }
     case types.LOAD_SETTINGS:
       return action.payload || initialState
     case types.UPDATE_SETTINGS:

@@ -6,45 +6,39 @@ export const initialState = {
   byInstitution: {} // {TD: {accountIds: [id1, id2], balance: 100, apiKey: XYZ}, BMO: {...}}
 }
 
-export const sortedAccountsGroupedByInstitution = (state, accountsArray) => {
-  // Group sorted accounts by institution
-  // results in something like:
-  // {
-  //   TD: {accountIds: [id1, id2], balance: 100},
-  //   BMO: {accountIds: [id3], balance: 200}
-  // }
-  const groupedAccountIds = accountsArray
-    // Sort accounts by name
-    .sort((a, b) => (a.name > b.name))
-    // Group them by institution
-    .reduce((result, account) => {
-      const { id, institution, currentBalance } = account
-      const institutionData = result[institution] || {}
-      const institutionAccountIds = institutionData.accountIds || []
-      const institutionBalance = institutionData.balance || 0
-      return {
-        ...result,
-        [institution]: {
-          ...institutionData,
-          accountIds: [...institutionAccountIds, id],
-          balance: institutionBalance + currentBalance
-        }
-      }
-    }, {})
+/*
+// accounts: {
+//   a1: {
+//     id: 'a1',
+//     description: 'Checking',
+//     institution: 'TD',
+//     currency: 'CAD',
+//     currenctBalance: 10
+//   },
+//   a2: {
+//     id: 'a2',
+//     description: 'Checking',
+//     institution: 'TD',
+//     currency: 'CAD',
+//     currenctBalance: 10,
+//     groupId: 'g1'
+//   }
+// }
 
-  // But now the institutions are not sorted and we lost existing institution data
-  return Object.keys(groupedAccountIds)
-    // Sort institutions by name
-    .sort((a, b) => (a > b))
-    // Merge new sorted institutions with existing institution data
-    .reduce((result, institution) => ({
-      ...result,
-      [institution]: {
-        ...state.byInstitution[institution],
-        ...groupedAccountIds[institution]
-      }
-    }), {})
-}
+// institutions: {
+//   'TD': {
+//     balance: 0,
+//     accountIds: ['id1'],
+//     groups: {
+//       g1: {
+//         id: 'g1'
+//         accountIds: ['id2'],
+//         apiKey: 'ABC'
+//       }
+//     }
+//   }
+// }
+*/
 
 let accounts
 export default (state = initialState, { type, payload }) => {
@@ -55,32 +49,37 @@ export default (state = initialState, { type, payload }) => {
       accounts = { ...state.byId, [payload.id]: payload }
       return {
         ...state,
-        byId: accounts,
-        byInstitution: sortedAccountsGroupedByInstitution(state, Object.values(accounts))
+        byId: accounts
       }
     case types.UPDATE_ACCOUNT:
       accounts = { ...state.byId, [payload.id]: payload }
       return {
         ...state,
-        byId: accounts,
-        byInstitution: sortedAccountsGroupedByInstitution(state, Object.values(accounts))
+        byId: accounts
       }
     case types.DELETE_ACCOUNT:
       const { [payload]: _, ...rest } = state.byId
-
       return {
         ...state,
-        byId: rest,
-        byInstitution: sortedAccountsGroupedByInstitution(state, Object.values(rest))
+        byId: rest
       }
-    case types.UPDATE_INSTITUTION_DATA:
+    case types.UPDATE_GROUP_BY_INSTITUTION:
+      return {
+        ...state,
+        byInstitution: payload
+      }
+    case types.CREATE_ACCOUNT_GROUP:
+      const institutionData = state.byInstitution[payload.institution] || { accountIds: [], groups: {} }
       return {
         ...state,
         byInstitution: {
           ...state.byInstitution,
           [payload.institution]: {
-            ...state.byInstitution[payload.institution],
-            ...payload.data
+            ...institutionData,
+            groups: {
+              ...institutionData.groups,
+              [payload.accountGroup.id]: payload.accountGroup
+            }
           }
         }
       }

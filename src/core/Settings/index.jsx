@@ -47,7 +47,7 @@ export class SettingsComponent extends React.Component {
   }
 
   handleResetData = async () => {
-    await this.props.deleteAllData()
+    this.props.deleteAllData()
     this.props.history.push('/dashboard')
   }
 

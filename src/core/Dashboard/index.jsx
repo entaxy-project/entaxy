@@ -78,79 +78,87 @@ export const DashboardComponent = ({
   formatCurrency,
   formatDate,
   totalBalance
-}) => (
-  <Grid container>
-    <Grid container justify="flex-end" className={classes.root}>
-      <Paper className={classes.balancePaper}>
-        <Typography
-          variant="body1"
-          color="textSecondary"
-          align="right"
-        >
-          Balance
-        </Typography>
-        <Typography
-          variant="h5"
-          align="right"
-          className={classes.balanceAmount}
-        >
-          {formatCurrency(totalBalance)}
-        </Typography>
-        <Paper className={classes.balancePaperIcon}>
-          <DashboardIcon className={classes.balanceIcon} />
-        </Paper>
-      </Paper>
-    </Grid>
+}) => {
+  const userHasAccounts = Object.keys(accounts.byInstitution).length > 0
+
+  return (
     <Grid container>
-      <Paper className={classes.summaryPaper}>
-        {Object.keys(accounts.byId).length === 0 &&
-          <Typography variant="caption" className={classes.noAccounts}>
-            You don&apos;t have any accounts yet
+      <Grid container justify="flex-end" className={classes.root}>
+        <Paper className={classes.balancePaper}>
+          <Typography
+            variant="body1"
+            color="textSecondary"
+            align="right"
+          >
+            Balance
           </Typography>
-        }
-        <Table className={classes.table}>
-          <TableHead>
-            <TableRow>
-              <TableCell />
-              <TableCell align="right">Last updated</TableCell>
-              <TableCell align="right">{settings.currency}</TableCell>
-            </TableRow>
-          </TableHead>
-          {Object.keys(accounts.byInstitution).map(institution => (
-            <TableBody key={institution}>
-              <TableRow>
-                <TableCell>
-                  <span className={classes.institutionWrapper}>
-                    <InstitutionIcon institution={institution} size="small" className={classes.institutionIcon} />
-                    <Typography variant="subtitle2">{institution}</Typography>
-                  </span>
-                </TableCell>
-                <TableCell />
-                <TableCell align="right">
-                  <Typography variant="subtitle2">
-                    {formatCurrency(accounts.byInstitution[institution].balance)}
-                  </Typography>
-                </TableCell>
-              </TableRow>
-              {accounts.byInstitution[institution].accountIds.map((accountId) => {
-                const account = accounts.byId[accountId]
-                return (
-                  <TableRow key={accountId}>
-                    <TableCell>
-                      <Typography className={classes.accountName}>{account.name}</Typography>
-                    </TableCell>
-                    <TableCell align="right">{formatDate(Date.now())}</TableCell>
-                    <TableCell align="right">{formatCurrency(account.currentBalance)}</TableCell>
-                  </TableRow>
-                )
-              })}
-            </TableBody>
-          ))}
-        </Table>
-      </Paper>
+          <Typography
+            variant="h5"
+            align="right"
+            className={classes.balanceAmount}
+          >
+            {formatCurrency(totalBalance)}
+          </Typography>
+          <Paper className={classes.balancePaperIcon}>
+            <DashboardIcon className={classes.balanceIcon} />
+          </Paper>
+        </Paper>
+      </Grid>
+      <Grid container>
+        <Paper className={classes.summaryPaper}>
+          {!userHasAccounts &&
+            <Typography variant="caption" className={classes.noAccounts}>
+              You don&apos;t have any accounts yet
+            </Typography>
+          }
+          {userHasAccounts &&
+            <Table className={classes.table}>
+              <TableHead>
+                <TableRow>
+                  <TableCell />
+                  <TableCell align="right">Last updated</TableCell>
+                  <TableCell align="right">{settings.currency}</TableCell>
+                </TableRow>
+              </TableHead>
+              {Object.keys(accounts.byInstitution).map(institution => (
+                Object.values(accounts.byInstitution[institution].groups).map(institutionGroup => (
+                  <TableBody key={institution}>
+                    <TableRow>
+                      <TableCell>
+                        <span className={classes.institutionWrapper}>
+                          <InstitutionIcon institution={institution} size="small" className={classes.institutionIcon} />
+                          <Typography variant="subtitle2">{institution}</Typography>
+                        </span>
+                      </TableCell>
+                      <TableCell />
+                      <TableCell align="right">
+                        <Typography variant="subtitle2">
+                          {formatCurrency(institutionGroup.balance)}
+                        </Typography>
+                      </TableCell>
+                    </TableRow>
+                    {institutionGroup.accountIds.map((id) => {
+                      const account = accounts.byId[id]
+                      return (
+                        <TableRow key={id}>
+                          <TableCell>
+                            <Typography className={classes.accountName}>{account.name}</Typography>
+                          </TableCell>
+                          <TableCell align="right">{formatDate(Date.now())}</TableCell>
+                          <TableCell align="right">{formatCurrency(account.currentBalance)}</TableCell>
+                        </TableRow>
+                      )
+                    })}
+                  </TableBody>
+                ))
+              ))}
+            </Table>
+          }
+        </Paper>
+      </Grid>
     </Grid>
-  </Grid>
-)
+  )
+}
 
 DashboardComponent.propTypes = {
   classes: PropTypes.object.isRequired,

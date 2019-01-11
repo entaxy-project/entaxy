@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React from 'react'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
@@ -6,25 +5,23 @@ import { withStyles } from '@material-ui/core/styles'
 import { withFormik } from 'formik'
 import * as Yup from 'yup'
 import PropTypes from 'prop-types'
+import { NavLink } from 'react-router-dom'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
 import TextField from '@material-ui/core/TextField'
 import IconButton from '@material-ui/core/IconButton'
-import InfolIcon from '@material-ui/icons/Info'
 import CloseIcon from '@material-ui/icons/Close'
 import Divider from '@material-ui/core/Divider'
 import Button from '@material-ui/core/Button'
 import red from '@material-ui/core/colors/red'
-import Card from '@material-ui/core/Card'
-import CardActions from '@material-ui/core/CardActions'
-import CardContent from '@material-ui/core/CardContent'
 import format from 'date-fns/format'
 import parse from 'date-fns/parse'
 import currencies, { filteredCurrencies } from '../../data/currencies'
 import AutoComplete from '../../common/AutoComplete'
 import institutions, { formatedInstitutions } from '../../data/institutions'
 import SubmitButtonWithProgress from '../../common/SubmitButtonWithProgress'
+import DescriptionCard from '../../common/DescriptionCard'
 
 const styles = theme => ({
   root: {
@@ -65,20 +62,6 @@ const styles = theme => ({
   deleteButton: {
     color: red[500],
     margin: theme.spacing.unit * 2
-  },
-  institutionOptions: {
-    backgroundColor: theme.palette.info.light
-  },
-  institutionOptionsContent: {
-    display: 'flex'
-  },
-  institutionOptionsActions: {
-    display: 'flex',
-    flexDirection: 'column'
-  },
-  institutionOptionsIcon: {
-    color: theme.palette.info.main,
-    marginRight: theme.spacing.unit
   }
 })
 
@@ -103,23 +86,37 @@ export class AccountFormComponent extends React.Component {
 
     if (institutions[value].importTypes.includes('API')) {
       return (
-        <Card className={[classes.input, classes.institutionOptions].join(' ')}>
-          <CardContent className={classes.institutionOptionsContent}>
-            <InfolIcon className={classes.institutionOptionsIcon} />
-            <Typography variant="caption">
-              <strong>{institutions[value].name}</strong> allows you to import all your accounts
-              at once using their API.
-              <br />
-              This is the easiest way to keep your transactions in sync.
-            </Typography>
-          </CardContent>
-          <CardActions className={classes.institutionOptionsActions}>
-            <Button size="small" color="secondary">Great, Let&apos;s do it</Button>
-            <Button size="small" color="primary" onClick={this.handleCloseInstitutionOptions}>
-              No, I&apos;d rather do it manually
-            </Button>
-          </CardActions>
-        </Card>
+        <DescriptionCard
+          info
+          className={classes.input}
+          actions={
+            <Grid align="center">
+              <Button
+                size="small"
+                color="secondary"
+                component={NavLink}
+                to={`/institutions/${value}/import/new`}
+              >
+                Great, Let&apos;s do it
+              </Button>
+              <Button
+                size="small"
+                color="primary"
+                onClick={this.handleCloseInstitutionOptions}
+              >
+                No, I&apos;d rather do it manually
+              </Button>
+            </Grid>
+          }
+        >
+          <Typography variant="caption" paragraph>
+            You can import <strong>all your accounts</strong> in one go
+            from <strong>{institutions[value].name}</strong> by using their API.
+          </Typography>
+          <Typography variant="caption" align="center">
+            This is also the easiest way to keep your transactions up to date.
+          </Typography>
+        </DescriptionCard>
       )
     }
     return null

@@ -1,11 +1,13 @@
 import uuid from 'uuid/v4'
 import types from './types'
-import { updateAccount } from '../accounts/actions'
-import { updateMarketValues } from '../marketValues/actions'
+import { saveState } from '../user/actions'
+import { updateAccountBalance } from '../accounts/actions'
+// import { updateMarketValues } from '../marketValues/actions'
 
 export const afterTransactionsChanged = async (dispatch, account) => {
-  await dispatch(updateMarketValues())
-  await dispatch(updateAccount(account))
+  // await dispatch(updateMarketValues())
+  await dispatch(updateAccountBalance(account))
+  saveState()
 }
 
 export const createTransaction = (account, transaction) => {
@@ -22,10 +24,13 @@ export const updateTransaction = (account, transaction) => {
   }
 }
 
-export const deleteTransactions = (account, transactionIds) => {
+export const deleteTransactions = (account, transactionIds, options = { skipAfterChange: false }) => {
+  const { skipAfterChange } = options
   return (dispatch) => {
     dispatch({ type: types.DELETE_TRANSACTIONS, payload: transactionIds })
-    return afterTransactionsChanged(dispatch, account)
+    if (!skipAfterChange) {
+      afterTransactionsChanged(dispatch, account)
+    }
   }
 }
 
@@ -36,13 +41,21 @@ export const loadTransactions = (transactions) => {
 }
 
 // Add new transactions to the existing ones
-export const addTransactions = (account, transactions) => {
+export const addTransactions = (account, transactions, options = { skipAfterChange: false }) => {
+  const { skipAfterChange } = options
   return async (dispatch) => {
     await dispatch({ type: types.ADD_TRANSACTIONS, payload: transactions })
-    return afterTransactionsChanged(dispatch, account)
+    if (!skipAfterChange) {
+      afterTransactionsChanged(dispatch, account)
+    }
   }
 }
 
 export const updateSortBy = (sortBy, sortDirection) => {
   return { type: types.UPDATE_SORT_BY, payload: { sortBy, sortDirection } }
 }
+
+export const getAccountTransactions = (accountId, transactions) => {
+  return transactions.filter(transaction => transaction.accountId === accountId)
+}
+

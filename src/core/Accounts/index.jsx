@@ -15,7 +15,7 @@ import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
 import IconButton from '@material-ui/core/IconButton'
 import AddIcon from '@material-ui/icons/Add'
 import EditIcon from '@material-ui/icons/Edit'
-import Chip from '@material-ui/core/Chip'
+import SettingsIcon from '@material-ui/icons/Settings'
 import { NavLink } from 'react-router-dom'
 import grey from '@material-ui/core/colors/grey'
 import InstitutionIcon from '../../common/InstitutionIcon'
@@ -54,108 +54,117 @@ const styles = theme => ({
 })
 
 const mapStateToProps = state => ({
-  accounts: state.accounts,
-  settings: state.settings
+  settings: state.settings,
+  accounts: state.accounts
 })
 
 export const AccountsComponent = ({
   classes,
+  settings,
   accounts,
-  accountId,
-  settings
-}) => (
-  <List
-    component="nav"
-    dense={true}
-    subheader={
-      <ListSubheader component="div">
-        Accounts
-        <ListItemSecondaryAction>
-          <Tooltip id="tooltip-icon" title="New account">
-            <IconButton
-              aria-label="New account"
-              className={classes.smallButton}
-              component={NavLink}
-              to="/accounts/new"
-            >
-              <AddIcon />
-            </IconButton>
-          </Tooltip>
-        </ListItemSecondaryAction>
-      </ListSubheader>
-    }
-  >
-    {Object.keys(accounts.byId).length === 0 &&
-      <Typography variant="caption" className={classes.noAccounts}>
-        You don&apos;t have any accounts yet
-      </Typography>
-    }
-    <List dense={true}>
-      {Object.keys(accounts.byInstitution).map(institution => (
-        <div key={institution}>
-          <ListItem className={classes.institutionListItem}>
-            <ListItemIcon>
-              <InstitutionIcon institution={institution} size="small" />
-            </ListItemIcon>
-            <ListItemText primary={institution} className={classes.institution} />
-          </ListItem>
-          <List dense={true}>
-            {accounts.byInstitution[institution].accountIds.map((id) => {
-              const account = accounts.byId[id]
-              return (
-                <ListItem
-                  className={classes.account}
-                  button
-                  key={id}
-                  selected={id === accountId}
-                  component={NavLink}
-                  to={`/accounts/${id}/transactions`}
-                >
-                  <ListItemText
-                    primary={account.name}
-                    secondary={
-                      <span>
-                        {currencyFormatter(settings.locale, account.currency)(account.currentBalance)}
-                        {account.currency !== settings.currency &&
-                          <Chip
-                            label={account.currency}
-                            component="span"
-                            classes={{
-                              root: classes.smallChipRoot,
-                              label: classes.smallChipLabel
-                            }}
-                          />
-                        }
-                      </span>
-                    }
-                  />
-                  <ListItemSecondaryAction>
-                    <Tooltip id="tooltip-icon" title="Edit account">
-                      <IconButton
-                        aria-label="Edit account"
-                        className={classes.smallButton}
-                        component={NavLink}
-                        to={`/accounts/${account.id}/edit`}
-                      >
-                        <EditIcon className={classes.smallIcon} />
-                      </IconButton>
-                    </Tooltip>
-                  </ListItemSecondaryAction>
+  accountId
+}) => {
+  const userHasAccounts = Object.keys(accounts.byInstitution).length > 0
+
+  return (
+    <List
+      component="nav"
+      dense={true}
+      subheader={
+        <ListSubheader component="div">
+          Accounts
+          <ListItemSecondaryAction>
+            <Tooltip id="tooltip-icon" title="New account">
+              <IconButton
+                aria-label="New account"
+                className={classes.smallButton}
+                component={NavLink}
+                to="/accounts/new"
+              >
+                <AddIcon />
+              </IconButton>
+            </Tooltip>
+          </ListItemSecondaryAction>
+        </ListSubheader>
+      }
+    >
+      {!userHasAccounts &&
+        <Typography variant="caption" className={classes.noAccounts}>
+          You don&apos;t have any accounts yet
+        </Typography>
+      }
+      {userHasAccounts &&
+        <List dense={true}>
+          {Object.keys(accounts.byInstitution).map(institution => (
+            Object.values(accounts.byInstitution[institution].groups).map(institutionGroup => (
+              <div key={institution}>
+                <ListItem className={classes.institutionListItem}>
+                  <ListItemIcon>
+                    <InstitutionIcon institution={institution} size="small" />
+                  </ListItemIcon>
+                  <ListItemText primary={institution} className={classes.institution} />
+                  {institutionGroup.type === 'api' &&
+                    <ListItemSecondaryAction>
+                      <Tooltip id="tooltip-icon" title="Edit API details">
+                        <IconButton
+                          aria-label="Edit API details"
+                          className={classes.smallButton}
+                          component={NavLink}
+                          to={`/institution/${institution}/import/:groupId`}
+                        >
+                          <SettingsIcon className={classes.smallIcon} />
+                        </IconButton>
+                      </Tooltip>
+                    </ListItemSecondaryAction>
+                  }
                 </ListItem>
-              )
-            })}
-          </List>
-        </div>
-      ))}
+                <List dense={true}>
+                  {institutionGroup.accountIds.map((id) => {
+                    if (accounts.byId[id] === undefined) return undefined
+                    const { name, currency, currentBalance } = accounts.byId[id]
+                    return (
+                      <ListItem
+                        className={classes.account}
+                        button
+                        key={id}
+                        selected={id === accountId}
+                        component={NavLink}
+                        to={`/accounts/${id}/transactions`}
+                      >
+                        <ListItemText
+                          primary={name}
+                          secondary={currencyFormatter(settings.locale, currency)(currentBalance)}
+                        />
+                        <ListItemSecondaryAction>
+                          <Tooltip id="tooltip-icon" title="Edit account">
+                            <IconButton
+                              aria-label="Edit account"
+                              className={classes.smallButton}
+                              component={NavLink}
+                              to={`/accounts/${id}/edit`}
+                            >
+                              <EditIcon className={classes.smallIcon} />
+                            </IconButton>
+                          </Tooltip>
+                        </ListItemSecondaryAction>
+                      </ListItem>
+                    )
+                  })}
+                </List>
+              </div>
+            ))
+          ))}
+        </List>
+      }
     </List>
-  </List>
-)
+  )
+}
 
 AccountsComponent.propTypes = {
   classes: PropTypes.object.isRequired,
+  settings: PropTypes.object.isRequired,
   accounts: PropTypes.object.isRequired,
-  accountId: PropTypes.string,
-  settings: PropTypes.object.isRequired
+  accountId: PropTypes.string
 }
 
 AccountsComponent.defaultProps = {

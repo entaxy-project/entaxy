@@ -96,16 +96,25 @@ export class ImportTransactionsComponent extends React.Component {
           </div>
           <Divider />
           <Grid container>
-            <Grid item xs={2} >
+            <Grid item xs={3} >
               <List>
                 {institutions[account.institution].importTypes.map(text => (
                   <ListItem button key={text} selected={true}>
                     <ListItemText primary={text} />
                   </ListItem>
                 ))}
+                <ListItem button key="Microsoft Money" disabled={true}>
+                  <ListItemText primary="Microsoft Money" />
+                </ListItem>
+                <ListItem button key="Intuit Quicken" disabled={true}>
+                  <ListItemText primary="Intuit Quicken" />
+                </ListItem>
+                <ListItem button key="Intuit QuickBooks" disabled={true}>
+                  <ListItemText primary="Intuit QuickBooks" />
+                </ListItem>
               </List>
             </Grid>
-            <Grid item xs={10} >
+            <Grid item xs={9} >
               {!showTransactions && importType === 'CSV' &&
                 <CsvImportForm
                   account={account}

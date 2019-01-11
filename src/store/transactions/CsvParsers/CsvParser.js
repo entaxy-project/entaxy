@@ -52,11 +52,7 @@ export default class CsvParser {
           if (!this.hasErrors()) {
             // Generate the transactions
             results.data.forEach((row) => {
-              transactions.push(this.map(row, {
-                id: uuid(),
-                accountId: account.id,
-                ticker: account.currency
-              }))
+              transactions.push(this.map(row, { id: uuid(), accountId: account.id }))
               this._currentRow += 1
             })
           }
