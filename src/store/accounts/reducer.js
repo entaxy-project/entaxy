@@ -6,41 +6,9 @@ export const initialState = {
   byInstitution: {} // {TD: {accountIds: [id1, id2], balance: 100, apiKey: XYZ}, BMO: {...}}
 }
 
-/*
-// accounts: {
-//   a1: {
-//     id: 'a1',
-//     description: 'Checking',
-//     institution: 'TD',
-//     currency: 'CAD',
-//     currenctBalance: 10
-//   },
-//   a2: {
-//     id: 'a2',
-//     description: 'Checking',
-//     institution: 'TD',
-//     currency: 'CAD',
-//     currenctBalance: 10,
-//     groupId: 'g1'
-//   }
-// }
-
-// institutions: {
-//   'TD': {
-//     balance: 0,
-//     accountIds: ['id1'],
-//     groups: {
-//       g1: {
-//         id: 'g1'
-//         accountIds: ['id2'],
-//         apiKey: 'ABC'
-//       }
-//     }
-//   }
-// }
-*/
 
 let accounts
+let institutionData
 export default (state = initialState, { type, payload }) => {
   switch (type) {
     case types.LOAD_ACCOUNTS:
@@ -63,13 +31,14 @@ export default (state = initialState, { type, payload }) => {
         ...state,
         byId: rest
       }
-    case types.UPDATE_GROUP_BY_INSTITUTION:
+    case types.UPDATE_GROUPS_BY_INSTITUTION:
       return {
         ...state,
         byInstitution: payload
       }
     case types.CREATE_ACCOUNT_GROUP:
-      const institutionData = state.byInstitution[payload.institution] || { accountIds: [], groups: {} }
+    case types.UPDATE_ACCOUNT_GROUP:
+      institutionData = state.byInstitution[payload.institution] || { groups: {} }
       return {
         ...state,
         byInstitution: {

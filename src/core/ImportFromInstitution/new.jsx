@@ -6,14 +6,14 @@ import ImportFromInstitutionForm from './form'
 import { createAccountGroup } from '../../store/accounts/actions'
 
 const mapDispatchToProps = {
-  handleSave: (institution, institutionGroup, accounts) =>
-    createAccountGroup(institution, institutionGroup, accounts)
+  handleSave: (institution, accountGroup, accounts) =>
+    createAccountGroup(institution, accountGroup, accounts)
 }
 
 export class NewImportFromInstitutionComponent extends React.Component {
-  onSave = async (institutionGroup, accounts) => {
+  onSave = async (accountGroup, accounts) => {
     const { institution } = this.props.match.params
-    await this.props.handleSave(institution, institutionGroup, accounts)
+    await this.props.handleSave(institution, accountGroup, accounts)
     this.props.history.push('/dashboard')
   }
 

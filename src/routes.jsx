@@ -14,6 +14,7 @@ import NewAccount from './core/Accounts/new'
 import EditAccount from './core/Accounts/edit'
 import ImportTransactions from './core/Accounts/ImportTransactions'
 import NewImportFromInstitution from './core/ImportFromInstitution/new'
+import EditImportFromInstitution from './core/ImportFromInstitution/edit'
 import Header from './common/Header'
 
 const mapStateToProps = ({ user, settings, accounts }) => {
@@ -47,6 +48,7 @@ export class RoutesComponent extends React.Component {
   authenticatedTransactions = this.loginRequired(Transactions, { accountRequired: true })
   authenticatedImportTransactions = this.loginRequired(ImportTransactions, { accountRequired: true })
   authenticatedNewImportFromInstitution = this.loginRequired(NewImportFromInstitution)
+  authenticatedEditImportFromInstitution = this.loginRequired(EditImportFromInstitution)
 
   render() {
     return (
@@ -73,6 +75,12 @@ export class RoutesComponent extends React.Component {
                 path="/institutions/:institution/import/new"
                 render={this.authenticatedNewImportFromInstitution}
               />
+              <Route
+                exact
+                path="/institutions/:institution/import/:groupId/edit"
+                render={this.authenticatedEditImportFromInstitution}
+              />
+              <Redirect to="/" />
             </Switch>
           }
         </BrowserRouter>

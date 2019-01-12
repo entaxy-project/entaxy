@@ -33,7 +33,7 @@ const styles = theme => ({
 const mapDispatchToProps = dispatch => ({
   saveSettings: settings => dispatch(updateSettings(settings)),
   deleteAllData: async () => {
-    await dispatch(resetState())
+    await resetState(dispatch)
     await saveState()
   }
 })

@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React from 'react'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
@@ -15,7 +14,6 @@ import IconButton from '@material-ui/core/IconButton'
 import CloseIcon from '@material-ui/icons/Close'
 import Divider from '@material-ui/core/Divider'
 import red from '@material-ui/core/colors/red'
-// import institutions, { formatedInstitutions } from '../../data/institutions'
 import SubmitButtonWithProgress from '../../common/SubmitButtonWithProgress'
 import DescriptionCard from '../../common/DescriptionCard'
 import importFromCoinbase from './importers/coinbase'
@@ -65,9 +63,11 @@ const styles = theme => ({
   }
 })
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
+  const institutionData = state.accounts.byInstitution[ownProps.institution]
   return {
-    settings: state.settings
+    settings: state.settings,
+    accountGroup: institutionData ? institutionData.groups[ownProps.groupId] : undefined
   }
 }
 
@@ -168,14 +168,14 @@ export default compose(
   withStyles(styles),
   withFormik({
     enableReinitialize: true,
-    mapPropsToValues: ({ institutionGroup }) => {
-      if (institutionGroup === undefined) {
+    mapPropsToValues: ({ accountGroup }) => {
+      if (accountGroup === undefined) {
         return {
-          apiKey: 'i06rEsEEUFkuZO0A',
-          apiSecret: 'g6vpxFErL2aLmSLpJTUwBjjtkM6tOyfL'
+          apiKey: 'HG30HwGtsTC0MzbD',
+          apiSecret: 'EutYe6f97nP0NM3BWJkflYqyGelvQiyw'
         }
       }
-      return institutionGroup
+      return accountGroup
     },
     validationSchema: Yup.object().shape({
       apiKey: Yup.string()

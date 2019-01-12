@@ -96,21 +96,21 @@ export const AccountsComponent = ({
       {userHasAccounts &&
         <List dense={true}>
           {Object.keys(accounts.byInstitution).map(institution => (
-            Object.values(accounts.byInstitution[institution].groups).map(institutionGroup => (
+            Object.values(accounts.byInstitution[institution].groups).map(accountGroup => (
               <div key={institution}>
                 <ListItem className={classes.institutionListItem}>
                   <ListItemIcon>
                     <InstitutionIcon institution={institution} size="small" />
                   </ListItemIcon>
                   <ListItemText primary={institution} className={classes.institution} />
-                  {institutionGroup.type === 'api' &&
+                  {accountGroup.type === 'api' &&
                     <ListItemSecondaryAction>
                       <Tooltip id="tooltip-icon" title="Edit API details">
                         <IconButton
                           aria-label="Edit API details"
                           className={classes.smallButton}
                           component={NavLink}
-                          to={`/institution/${institution}/import/:groupId`}
+                          to={`/institutions/${institution}/import/${accountGroup.id}/edit`}
                         >
                           <SettingsIcon className={classes.smallIcon} />
                         </IconButton>
@@ -119,7 +119,7 @@ export const AccountsComponent = ({
                   }
                 </ListItem>
                 <List dense={true}>
-                  {institutionGroup.accountIds.map((id) => {
+                  {accountGroup.accountIds.map((id) => {
                     if (accounts.byId[id] === undefined) return undefined
                     const { name, currency, currentBalance } = accounts.byId[id]
                     return (
@@ -135,18 +135,20 @@ export const AccountsComponent = ({
                           primary={name}
                           secondary={currencyFormatter(settings.locale, currency)(currentBalance)}
                         />
-                        <ListItemSecondaryAction>
-                          <Tooltip id="tooltip-icon" title="Edit account">
-                            <IconButton
-                              aria-label="Edit account"
-                              className={classes.smallButton}
-                              component={NavLink}
-                              to={`/accounts/${id}/edit`}
-                            >
-                              <EditIcon className={classes.smallIcon} />
-                            </IconButton>
-                          </Tooltip>
-                        </ListItemSecondaryAction>
+                        {accountGroup.type === 'default' &&
+                          <ListItemSecondaryAction>
+                            <Tooltip id="tooltip-icon" title="Edit account">
+                              <IconButton
+                                aria-label="Edit account"
+                                className={classes.smallButton}
+                                component={NavLink}
+                                to={`/accounts/${id}/edit`}
+                              >
+                                <EditIcon className={classes.smallIcon} />
+                              </IconButton>
+                            </Tooltip>
+                          </ListItemSecondaryAction>
+                        }
                       </ListItem>
                     )
                   })}

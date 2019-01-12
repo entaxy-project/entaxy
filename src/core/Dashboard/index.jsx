@@ -121,7 +121,7 @@ export const DashboardComponent = ({
                 </TableRow>
               </TableHead>
               {Object.keys(accounts.byInstitution).map(institution => (
-                Object.values(accounts.byInstitution[institution].groups).map(institutionGroup => (
+                Object.values(accounts.byInstitution[institution].groups).map(accountGroup => (
                   <TableBody key={institution}>
                     <TableRow>
                       <TableCell>
@@ -133,11 +133,11 @@ export const DashboardComponent = ({
                       <TableCell />
                       <TableCell align="right">
                         <Typography variant="subtitle2">
-                          {formatCurrency(institutionGroup.balance)}
+                          {formatCurrency(accountGroup.balance)}
                         </Typography>
                       </TableCell>
                     </TableRow>
-                    {institutionGroup.accountIds.map((id) => {
+                    {accountGroup.accountIds.map((id) => {
                       const account = accounts.byId[id]
                       return (
                         <TableRow key={id}>
