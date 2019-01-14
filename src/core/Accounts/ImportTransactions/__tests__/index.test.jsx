@@ -10,10 +10,12 @@ import ImportTransactions, { ImportTransactionsComponent } from '../'
 jest.mock('../../../../common/InstitutionIcon/importLogos', () => [])
 
 const account = {
-  description: 'Checking',
   institution: 'TD',
+  groupId: '0',
+  description: 'Checking',
   currency: 'CAD',
-  currenctBalance: 10
+  openingBalance: 10,
+  currentBalance: 10
 }
 
 describe('Import Transactions', () => {

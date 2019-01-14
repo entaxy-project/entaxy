@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React from 'react'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
@@ -12,6 +13,7 @@ import Typography from '@material-ui/core/Typography'
 import TextField from '@material-ui/core/TextField'
 import IconButton from '@material-ui/core/IconButton'
 import CloseIcon from '@material-ui/icons/Close'
+import Button from '@material-ui/core/Button'
 import Divider from '@material-ui/core/Divider'
 import red from '@material-ui/core/colors/red'
 import SubmitButtonWithProgress from '../../common/SubmitButtonWithProgress'
@@ -80,7 +82,9 @@ export const ImportFromInstitutionFormComponent = ({
   touched,
   handleChange,
   handleCancel,
-  institution
+  institution,
+  accountGroup,
+  handleDelete
 }) => (
   <Grid container direction="row" justify="center">
     <Paper className={classes.root}>
@@ -113,6 +117,16 @@ export const ImportFromInstitutionFormComponent = ({
         </DescriptionCard>
       </Grid>
       <form onSubmit={handleSubmit} className={classes.form}>
+        {handleDelete && accountGroup &&
+          <Button
+            size="small"
+            onClick={() => handleDelete(accountGroup)}
+            className={classes.deleteButton}
+            disabled={isSubmitting}
+          >
+            Delete all {accountGroup.accountIds.length} accounts connected to {institution}
+          </Button>
+        }
         <TextField
           className={classes.input}
           label="API key"
@@ -160,7 +174,14 @@ ImportFromInstitutionFormComponent.propTypes = {
   touched: PropTypes.object.isRequired,
   handleChange: PropTypes.func.isRequired,
   handleCancel: PropTypes.func.isRequired,
-  institution: PropTypes.string.isRequired
+  institution: PropTypes.string.isRequired,
+  accountGroup: PropTypes.object,
+  handleDelete: PropTypes.func
+}
+
+ImportFromInstitutionFormComponent.defaultProps = {
+  accountGroup: undefined,
+  handleDelete: undefined
 }
 
 export default compose(
@@ -171,8 +192,8 @@ export default compose(
     mapPropsToValues: ({ accountGroup }) => {
       if (accountGroup === undefined) {
         return {
-          apiKey: 'HG30HwGtsTC0MzbD',
-          apiSecret: 'EutYe6f97nP0NM3BWJkflYqyGelvQiyw'
+          apiKey: '',
+          apiSecret: ''
         }
       }
       return accountGroup

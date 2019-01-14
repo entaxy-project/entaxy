@@ -120,6 +120,8 @@ export default compose(
     mapPropsToValues: ({ transaction }) => {
       if (transaction === null) {
         return {
+          description: '',
+          amount: '',
           createdAt: format(Date.now(), 'YYYY-MM-DD')
         }
       }

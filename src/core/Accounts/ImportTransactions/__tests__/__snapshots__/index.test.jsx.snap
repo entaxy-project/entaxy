@@ -33,7 +33,7 @@ exports[`Import Transactions matches snapshot 1`] = `
       className="MuiGrid-container-4"
     >
       <div
-        className="MuiGrid-item-5 MuiGrid-grid-xs-2-34"
+        className="MuiGrid-item-5 MuiGrid-grid-xs-3-35"
       >
         <ul
           className="MuiList-root-170 MuiList-padding-171"
@@ -67,10 +67,88 @@ exports[`Import Transactions matches snapshot 1`] = `
               className="MuiTouchRipple-root-229"
             />
           </div>
+          <div
+            className="MuiButtonBase-root-186 MuiButtonBase-disabled-187 MuiListItem-root-174 MuiListItem-default-177 MuiListItem-gutters-182 MuiListItem-disabled-180 MuiListItem-button-183"
+            onBlur={[Function]}
+            onContextMenu={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            role="button"
+            tabIndex="-1"
+          >
+            <div
+              className="MuiListItemText-root-189"
+            >
+              <span
+                className="MuiTypography-root-128 MuiTypography-subheading-135 MuiListItemText-primary-192"
+              >
+                Microsoft Money
+              </span>
+            </div>
+          </div>
+          <div
+            className="MuiButtonBase-root-186 MuiButtonBase-disabled-187 MuiListItem-root-174 MuiListItem-default-177 MuiListItem-gutters-182 MuiListItem-disabled-180 MuiListItem-button-183"
+            onBlur={[Function]}
+            onContextMenu={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            role="button"
+            tabIndex="-1"
+          >
+            <div
+              className="MuiListItemText-root-189"
+            >
+              <span
+                className="MuiTypography-root-128 MuiTypography-subheading-135 MuiListItemText-primary-192"
+              >
+                Intuit Quicken
+              </span>
+            </div>
+          </div>
+          <div
+            className="MuiButtonBase-root-186 MuiButtonBase-disabled-187 MuiListItem-root-174 MuiListItem-default-177 MuiListItem-gutters-182 MuiListItem-disabled-180 MuiListItem-button-183"
+            onBlur={[Function]}
+            onContextMenu={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            role="button"
+            tabIndex="-1"
+          >
+            <div
+              className="MuiListItemText-root-189"
+            >
+              <span
+                className="MuiTypography-root-128 MuiTypography-subheading-135 MuiListItemText-primary-192"
+              >
+                Intuit QuickBooks
+              </span>
+            </div>
+          </div>
         </ul>
       </div>
       <div
-        className="MuiGrid-item-5 MuiGrid-grid-xs-10-42"
+        className="MuiGrid-item-5 MuiGrid-grid-xs-9-41"
       >
         <form
           onSubmit={[Function]}

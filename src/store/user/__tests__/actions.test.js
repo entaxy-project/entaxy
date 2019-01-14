@@ -95,7 +95,7 @@ describe('user actions', () => {
     const mockStore = configureMockStore([thunk])
     const store = mockStore({})
 
-    store.dispatch(actions.resetState())
+    actions.resetState(store.dispatch)
     expect(store.getActions()).toEqual([
       {
         type: 'LOAD_SETTINGS',
@@ -121,7 +121,7 @@ describe('user actions', () => {
 
     await actions.userLogout()(dispatch)
     expect(signUserOutSpy).toHaveBeenCalled()
-    expect(dispatch).toBeCalledTimes(2)
+    expect(dispatch).toBeCalledTimes(5)
     expect(dispatch).toBeCalledWith({ type: types.USER_LOGOUT })
   })
 
@@ -149,7 +149,7 @@ describe('user actions', () => {
       store.dispatch(actions.handleBlockstackLogin())
         .then(() => {
           expect(store.getActions()).toEqual([
-            { type: 'DATA_IS_LOADING', payload: true },
+            { type: 'SHOW_OVERLAY', payload: 'Loading data from Blockstack...' },
             {
               type: 'SAVE_LOGIN_DATA',
               payload: {
@@ -164,7 +164,7 @@ describe('user actions', () => {
             { type: 'LOAD_ACCOUNTS', payload: undefined },
             { type: 'LOAD_TRANSACTIONS', payload: undefined },
             { type: 'LOAD_MARKET_VALUES', payload: undefined },
-            { type: 'DATA_IS_LOADING', payload: false }
+            { type: 'HIDE_OVERLAY' }
           ])
           done()
         })

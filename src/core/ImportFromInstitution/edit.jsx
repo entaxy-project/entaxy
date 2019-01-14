@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
@@ -10,7 +9,7 @@ const mapDispatchToProps = dispatch => ({
   handleSave: (institution, accountGroup, accounts) => (
     dispatch(updateAccountGroup(institution, accountGroup, accounts))
   ),
-  handleDelete: accountGroup => deleteAccountGroup(accountGroup)
+  handleDelete: accountGroup => dispatch(deleteAccountGroup(accountGroup))
 })
 
 export class EditImportFromInstitutionComponent extends React.Component {
@@ -21,10 +20,13 @@ export class EditImportFromInstitutionComponent extends React.Component {
   }
 
   onDelete = (accountGroup) => {
-    confirm('Delete all the accounts in this group?', 'Are you sure?').then(() => {
-      this.props.handleDelete(accountGroup)
-      this.props.history.push('/dashboard')
-    })
+    const { accountIds } = accountGroup
+    const { institution } = this.props.match.params
+    confirm(`Delete all the ${accountIds.length} accounts connected to ${institution}?`, 'Are you sure?')
+      .then(async () => {
+        await this.props.handleDelete(accountGroup)
+        this.props.history.push('/dashboard')
+      })
   }
 
   onCancel = () => {
@@ -38,6 +40,7 @@ export class EditImportFromInstitutionComponent extends React.Component {
         groupId={groupId}
         handleSave={this.onSave}
         handleCancel={this.onCancel}
+        handleDelete={this.onDelete}
         institution={institution}
       />
     )

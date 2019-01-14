@@ -122,7 +122,7 @@ export const DashboardComponent = ({
               </TableHead>
               {Object.keys(accounts.byInstitution).map(institution => (
                 Object.values(accounts.byInstitution[institution].groups).map(accountGroup => (
-                  <TableBody key={institution}>
+                  <TableBody key={accountGroup.id}>
                     <TableRow>
                       <TableCell>
                         <span className={classes.institutionWrapper}>

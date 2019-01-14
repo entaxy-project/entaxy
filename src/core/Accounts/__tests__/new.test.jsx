@@ -6,8 +6,7 @@ import { NewAccountComponent } from '../new'
 jest.mock('../form', () => 'AccountForm')
 
 describe('New Account', () => {
-  const mochHandleSave = jest.fn()
-  const mochHandleCancel = jest.fn()
+  const mochCreateAccount = jest.fn()
 
   beforeEach(() => {
     jest.clearAllMocks()
@@ -16,8 +15,7 @@ describe('New Account', () => {
   it('matches snapshot', () => {
     const component = renderer.create((
       <NewAccountComponent
-        handleSave={mochHandleSave}
-        handleCancel={mochHandleCancel}
+        createAccount={mochCreateAccount}
         history={{}}
       />
     ))
@@ -28,8 +26,7 @@ describe('New Account', () => {
     const mochHistoryPush = jest.fn()
     const wrapper = shallow((
       <NewAccountComponent
-        handleSave={mochHandleSave}
-        handleCancel={mochHandleCancel}
+        createAccount={mochCreateAccount}
         history={{ push: mochHistoryPush }}
       />
     ))
@@ -37,15 +34,15 @@ describe('New Account', () => {
 
     it('saves the form', async () => {
       const accountId = 'abc'
-      mochHandleSave.mockImplementation(() => accountId)
+      mochCreateAccount.mockImplementation(() => accountId)
 
-      await instance.onSave({ name: 'new account' })
-      expect(mochHandleSave).toHaveBeenCalled()
+      await instance.handleSave({ name: 'new account' })
+      expect(mochCreateAccount).toHaveBeenCalled()
       expect(mochHistoryPush).toHaveBeenCalledWith(`/accounts/${accountId}/transactions`)
     })
 
     it('cancels the account creation', () => {
-      instance.onCancel()
+      instance.handleCancel()
       expect(mochHistoryPush).toHaveBeenCalledWith('/dashboard')
     })
   })

@@ -4,24 +4,20 @@ import { saveState } from '../user/actions'
 import { updateAccountBalance } from '../accounts/actions'
 // import { updateMarketValues } from '../marketValues/actions'
 
-export const afterTransactionsChanged = async (dispatch, account) => {
+export const afterTransactionsChanged = account => (dispatch) => {
   // await dispatch(updateMarketValues())
-  await dispatch(updateAccountBalance(account))
+  dispatch(updateAccountBalance(account))
   saveState()
 }
 
-export const createTransaction = (account, transaction) => {
-  return (dispatch) => {
-    dispatch({ type: types.CREATE_TRANSACTION, payload: { ...transaction, id: uuid() } })
-    return afterTransactionsChanged(dispatch, account)
-  }
+export const createTransaction = (account, transaction) => (dispatch) => {
+  dispatch({ type: types.CREATE_TRANSACTION, payload: { ...transaction, id: uuid() } })
+  dispatch(afterTransactionsChanged(account))
 }
 
-export const updateTransaction = (account, transaction) => {
-  return async (dispatch) => {
-    dispatch({ type: types.UPDATE_TRANSACTION, payload: transaction })
-    return afterTransactionsChanged(dispatch, account)
-  }
+export const updateTransaction = (account, transaction) => (dispatch) => {
+  dispatch({ type: types.UPDATE_TRANSACTION, payload: transaction })
+  dispatch(afterTransactionsChanged(account))
 }
 
 export const deleteTransactions = (account, transactionIds, options = { skipAfterChange: false }) => {
@@ -29,7 +25,7 @@ export const deleteTransactions = (account, transactionIds, options = { skipAfte
   return (dispatch) => {
     dispatch({ type: types.DELETE_TRANSACTIONS, payload: transactionIds })
     if (!skipAfterChange) {
-      afterTransactionsChanged(dispatch, account)
+      dispatch(afterTransactionsChanged(account))
     }
   }
 }
@@ -43,10 +39,10 @@ export const loadTransactions = (transactions) => {
 // Add new transactions to the existing ones
 export const addTransactions = (account, transactions, options = { skipAfterChange: false }) => {
   const { skipAfterChange } = options
-  return async (dispatch) => {
-    await dispatch({ type: types.ADD_TRANSACTIONS, payload: transactions })
+  return (dispatch) => {
+    dispatch({ type: types.ADD_TRANSACTIONS, payload: transactions })
     if (!skipAfterChange) {
-      afterTransactionsChanged(dispatch, account)
+      dispatch(afterTransactionsChanged(account))
     }
   }
 }

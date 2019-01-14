@@ -65,43 +65,6 @@ exports[`Dashboard snapshot matches with no accounts 1`] = `
                               </span>
                             </Typography>
                           </WithStyles(Typography)>
-                          <WithStyles(Table) className={[undefined]}>
-                            <Table className={[undefined]} classes={{...}} component=\\"table\\" padding=\\"default\\">
-                              <table className=\\"MuiTable-root-178\\">
-                                <WithStyles(TableHead)>
-                                  <TableHead classes={{...}} component=\\"thead\\">
-                                    <thead className=\\"MuiTableHead-root-179\\">
-                                      <WithStyles(TableRow)>
-                                        <TableRow classes={{...}} component=\\"tr\\" hover={false} selected={false}>
-                                          <tr className=\\"MuiTableRow-root-180 MuiTableRow-head-183\\">
-                                            <WithStyles(TableCell)>
-                                              <TableCell classes={{...}} align=\\"inherit\\">
-                                                <th className=\\"MuiTableCell-root-185 MuiTableCell-head-186\\" aria-sort={{...}} scope=\\"col\\" />
-                                              </TableCell>
-                                            </WithStyles(TableCell)>
-                                            <WithStyles(TableCell) align=\\"right\\">
-                                              <TableCell align=\\"right\\" classes={{...}}>
-                                                <th className=\\"MuiTableCell-root-185 MuiTableCell-head-186 MuiTableCell-alignRight-195\\" aria-sort={{...}} scope=\\"col\\">
-                                                  Last updated
-                                                </th>
-                                              </TableCell>
-                                            </WithStyles(TableCell)>
-                                            <WithStyles(TableCell) align=\\"right\\">
-                                              <TableCell align=\\"right\\" classes={{...}}>
-                                                <th className=\\"MuiTableCell-root-185 MuiTableCell-head-186 MuiTableCell-alignRight-195\\" aria-sort={{...}} scope=\\"col\\">
-                                                  USD
-                                                </th>
-                                              </TableCell>
-                                            </WithStyles(TableCell)>
-                                          </tr>
-                                        </TableRow>
-                                      </WithStyles(TableRow)>
-                                    </thead>
-                                  </TableHead>
-                                </WithStyles(TableHead)>
-                              </table>
-                            </Table>
-                          </WithStyles(Table)>
                         </div>
                       </Paper>
                     </WithStyles(Paper)>
@@ -273,7 +236,7 @@ exports[`Dashboard snapshot matches with one account 1`] = `
                                             <WithStyles(TableCell) align=\\"right\\">
                                               <TableCell align=\\"right\\" classes={{...}}>
                                                 <td className=\\"MuiTableCell-root-185 MuiTableCell-body-187 MuiTableCell-alignRight-195\\" aria-sort={{...}} scope={[undefined]}>
-                                                  Jan 8, 2019
+                                                  Jan 13, 2019
                                                 </td>
                                               </TableCell>
                                             </WithStyles(TableCell)>
@@ -464,7 +427,7 @@ exports[`Dashboard snapshot matches with two accounts in a different currency 1`
                                             <WithStyles(TableCell) align=\\"right\\">
                                               <TableCell align=\\"right\\" classes={{...}}>
                                                 <td className=\\"MuiTableCell-root-185 MuiTableCell-body-187 MuiTableCell-alignRight-195\\" aria-sort={{...}} scope={[undefined]}>
-                                                  Jan 8, 2019
+                                                  Jan 13, 2019
                                                 </td>
                                               </TableCell>
                                             </WithStyles(TableCell)>
@@ -495,7 +458,7 @@ exports[`Dashboard snapshot matches with two accounts in a different currency 1`
                                             <WithStyles(TableCell) align=\\"right\\">
                                               <TableCell align=\\"right\\" classes={{...}}>
                                                 <td className=\\"MuiTableCell-root-185 MuiTableCell-body-187 MuiTableCell-alignRight-195\\" aria-sort={{...}} scope={[undefined]}>
-                                                  Jan 8, 2019
+                                                  Jan 13, 2019
                                                 </td>
                                               </TableCell>
                                             </WithStyles(TableCell)>

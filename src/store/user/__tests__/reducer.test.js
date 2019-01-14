@@ -18,18 +18,6 @@ describe('user reducer', () => {
     expect(userReducer(undefined, { type, payload })).toEqual({ ...initialState, ...payload })
   })
 
-  it('should handle DATA_IS_LOADING with pending user', () => {
-    const type = types.DATA_IS_LOADING
-    const payload = true
-    expect(userReducer(undefined, { type, payload })).toEqual({ ...initialState, isLoading: payload })
-  })
-
-  // it('should handle USER_LOGIN', () => {
-  //   const type = types.USER_LOGIN
-  //   const payload = { isLoginPending: true }
-  //   expect(userReducer(undefined, { type, payload })).toEqual({ ...initialState, ...payload })
-  // })
-
   it('should handle USER_LOGOUT', () => {
     const type = types.USER_LOGOUT
     const payload = { isAuthenticatedWith: 'blockstack' }

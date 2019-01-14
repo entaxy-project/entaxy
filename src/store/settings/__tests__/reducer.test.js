@@ -6,6 +6,27 @@ describe('settings reducer', () => {
     expect(settingsReducer(undefined, {})).toEqual(initialState)
   })
 
+  it('should return initial state', () => {
+    expect(settingsReducer(undefined, {})).toEqual(initialState)
+  })
+
+  it('should handle SHOW_OVERLAY', () => {
+    const type = types.SHOW_OVERLAY
+    const payload = 'Loading ...'
+    expect(settingsReducer(undefined, { type, payload })).toEqual({
+      ...initialState,
+      overlayMessage: payload
+    })
+  })
+
+  it('should handle HIDE_OVERLAY', () => {
+    const type = types.HIDE_OVERLAY
+    expect(settingsReducer(undefined, { type })).toEqual({
+      ...initialState,
+      overlayMessage: null
+    })
+  })
+
   it('should handle LOAD_SETTINGS', () => {
     const type = types.LOAD_SETTINGS
     const payload = {

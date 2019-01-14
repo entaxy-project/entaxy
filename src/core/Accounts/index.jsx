@@ -97,7 +97,7 @@ export const AccountsComponent = ({
         <List dense={true}>
           {Object.keys(accounts.byInstitution).map(institution => (
             Object.values(accounts.byInstitution[institution].groups).map(accountGroup => (
-              <div key={institution}>
+              <div key={`${institution}-${accountGroup.id}`}>
                 <ListItem className={classes.institutionListItem}>
                   <ListItemIcon>
                     <InstitutionIcon institution={institution} size="small" />

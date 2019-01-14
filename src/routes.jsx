@@ -48,7 +48,7 @@ export class RoutesComponent extends React.Component {
   authenticatedTransactions = this.loginRequired(Transactions, { accountRequired: true })
   authenticatedImportTransactions = this.loginRequired(ImportTransactions, { accountRequired: true })
   authenticatedNewImportFromInstitution = this.loginRequired(NewImportFromInstitution)
-  authenticatedEditImportFromInstitution = this.loginRequired(EditImportFromInstitution)
+  authenticatedEditImportFromInstitution = this.loginRequired(EditImportFromInstitution, { accountRequired: true })
 
   render() {
     return (

@@ -106,7 +106,7 @@ const importData = async (apiKey, apiSecret) => {
   }))
 
   // Return only the accounts with transactions
-  return accounts // .filter(account => account.transactions.length > 0)
+  return accounts.filter(account => account.transactions.length > 0)
 }
 
 export default importData

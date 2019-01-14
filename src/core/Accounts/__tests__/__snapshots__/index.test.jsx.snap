@@ -116,22 +116,7 @@ exports[`Accounts index (Left Nav) snapshot matches snapshot with a few account 
               <p
                 className="MuiTypography-root-38 MuiTypography-body1-47 MuiTypography-colorTextSecondary-71 MuiListItemText-secondary-97 MuiListItemText-textDense-98"
               >
-                <span>
-                  NaN
-                  <span
-                    className="MuiChip-root-99"
-                    onKeyDown={[Function]}
-                    onKeyUp={[Function]}
-                    role="button"
-                    tabIndex={-1}
-                  >
-                    <span
-                      className="MuiChip-label-118"
-                    >
-                      CAD
-                    </span>
-                  </span>
-                </span>
+                NaN
               </p>
             </div>
             <span
@@ -217,22 +202,7 @@ exports[`Accounts index (Left Nav) snapshot matches snapshot with a few account 
               <p
                 className="MuiTypography-root-38 MuiTypography-body1-47 MuiTypography-colorTextSecondary-71 MuiListItemText-secondary-97 MuiListItemText-textDense-98"
               >
-                <span>
-                  NaN
-                  <span
-                    className="MuiChip-root-99"
-                    onKeyDown={[Function]}
-                    onKeyUp={[Function]}
-                    role="button"
-                    tabIndex={-1}
-                  >
-                    <span
-                      className="MuiChip-label-118"
-                    >
-                      CAD
-                    </span>
-                  </span>
-                </span>
+                NaN
               </p>
             </div>
             <span
@@ -323,8 +293,8 @@ exports[`Accounts index (Left Nav) snapshot matches snapshot with a few account 
         >
           <a
             aria-current={null}
-            className="MuiButtonBase-root-26 MuiListItem-root-80 MuiListItem-default-83 MuiListItem-dense-84 MuiListItem-gutters-88 MuiListItem-button-89 MuiListItem-secondaryAction-90 MuiListItem-selected-91"
-            href="/accounts/1/transactions"
+            className="MuiButtonBase-root-26 MuiListItem-root-80 MuiListItem-default-83 MuiListItem-dense-84 MuiListItem-gutters-88 MuiListItem-button-89 MuiListItem-secondaryAction-90"
+            href="/accounts/3/transactions"
             onBlur={[Function]}
             onClick={[Function]}
             onContextMenu={[Function]}
@@ -346,22 +316,7 @@ exports[`Accounts index (Left Nav) snapshot matches snapshot with a few account 
               <p
                 className="MuiTypography-root-38 MuiTypography-body1-47 MuiTypography-colorTextSecondary-71 MuiListItemText-secondary-97 MuiListItemText-textDense-98"
               >
-                <span>
-                  NaN
-                  <span
-                    className="MuiChip-root-99"
-                    onKeyDown={[Function]}
-                    onKeyUp={[Function]}
-                    role="button"
-                    tabIndex={-1}
-                  >
-                    <span
-                      className="MuiChip-label-118"
-                    >
-                      CAD
-                    </span>
-                  </span>
-                </span>
+                NaN
               </p>
             </div>
             <span
@@ -376,7 +331,7 @@ exports[`Accounts index (Left Nav) snapshot matches snapshot with a few account 
               aria-describedby={null}
               aria-label="Edit account"
               className="MuiButtonBase-root-26 MuiIconButton-root-20"
-              href="/accounts/1/edit"
+              href="/accounts/3/edit"
               onBlur={[Function]}
               onClick={[Function]}
               onContextMenu={[Function]}
@@ -419,13 +374,43 @@ exports[`Accounts index (Left Nav) snapshot matches snapshot with a few account 
             </a>
           </div>
         </li>
-        <li
-          className="MuiListItem-container-81"
+      </ul>
+    </div>
+    <div>
+      <li
+        className="MuiListItem-container-81"
+      >
+        <div
+          className="MuiListItem-root-80 MuiListItem-default-83 MuiListItem-dense-84 MuiListItem-gutters-88 MuiListItem-secondaryAction-90"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemIcon-root-92"
+          >
+            <InstitutionIcon
+              institution="Coinbase"
+              size="small"
+            />
+          </div>
+          <div
+            className="MuiListItemText-root-93 MuiListItemText-dense-95"
+          >
+            <span
+              className="MuiTypography-root-38 MuiTypography-subheading-45 MuiListItemText-primary-96 MuiListItemText-textDense-98"
+            >
+              Coinbase
+            </span>
+          </div>
+        </div>
+        <div
+          className="MuiListItemSecondaryAction-root-11"
         >
           <a
             aria-current={null}
-            className="MuiButtonBase-root-26 MuiListItem-root-80 MuiListItem-default-83 MuiListItem-dense-84 MuiListItem-gutters-88 MuiListItem-button-89 MuiListItem-secondaryAction-90"
-            href="/accounts/2/transactions"
+            aria-describedby={null}
+            aria-label="Edit API details"
+            className="MuiButtonBase-root-26 MuiIconButton-root-20"
+            href="/institutions/Coinbase/import/undefined/edit"
             onBlur={[Function]}
             onClick={[Function]}
             onContextMenu={[Function]}
@@ -434,92 +419,77 @@ exports[`Accounts index (Left Nav) snapshot matches snapshot with a few account 
             onKeyUp={[Function]}
             onMouseDown={[Function]}
             onMouseLeave={[Function]}
+            onMouseOver={[Function]}
             onMouseUp={[Function]}
             onTouchEnd={[Function]}
             onTouchMove={[Function]}
             onTouchStart={[Function]}
             role="button"
             tabIndex="0"
+            title="Edit API details"
           >
-            <div
-              className="MuiListItemText-root-93 MuiListItemText-dense-95"
+            <span
+              className="MuiIconButton-label-25"
             >
-              <p
-                className="MuiTypography-root-38 MuiTypography-body1-47 MuiTypography-colorTextSecondary-71 MuiListItemText-secondary-97 MuiListItemText-textDense-98"
+              <svg
+                aria-hidden="true"
+                className="MuiSvgIcon-root-29"
+                focusable="false"
+                role="presentation"
+                viewBox="0 0 24 24"
               >
-                <span>
-                  NaN
-                  <span
-                    className="MuiChip-root-99"
-                    onKeyDown={[Function]}
-                    onKeyUp={[Function]}
-                    role="button"
-                    tabIndex={-1}
-                  >
-                    <span
-                      className="MuiChip-label-118"
-                    >
-                      CAD
-                    </span>
-                  </span>
-                </span>
-              </p>
-            </div>
+                <path
+                  d="M0 0h20v20H0V0z"
+                  fill="none"
+                  transform="scale(1.2, 1.2)"
+                />
+                <path
+                  d="M15.95 10.78c.03-.25.05-.51.05-.78s-.02-.53-.06-.78l1.69-1.32c.15-.12.19-.34.1-.51l-1.6-2.77c-.1-.18-.31-.24-.49-.18l-1.99.8c-.42-.32-.86-.58-1.35-.78L12 2.34c-.03-.2-.2-.34-.4-.34H8.4c-.2 0-.36.14-.39.34l-.3 2.12c-.49.2-.94.47-1.35.78l-1.99-.8c-.18-.07-.39 0-.49.18l-1.6 2.77c-.1.18-.06.39.1.51l1.69 1.32c-.04.25-.07.52-.07.78s.02.53.06.78L2.37 12.1c-.15.12-.19.34-.1.51l1.6 2.77c.1.18.31.24.49.18l1.99-.8c.42.32.86.58 1.35.78l.3 2.12c.04.2.2.34.4.34h3.2c.2 0 .37-.14.39-.34l.3-2.12c.49-.2.94-.47 1.35-.78l1.99.8c.18.07.39 0 .49-.18l1.6-2.77c.1-.18.06-.39-.1-.51l-1.67-1.32zM10 13c-1.65 0-3-1.35-3-3s1.35-3 3-3 3 1.35 3 3-1.35 3-3 3z"
+                  transform="scale(1.2, 1.2)"
+                />
+              </svg>
+            </span>
             <span
               className="MuiTouchRipple-root-73"
             />
           </a>
+        </div>
+      </li>
+      <ul
+        className="MuiList-root-1 MuiList-dense-3 MuiList-padding-2"
+      >
+        <a
+          aria-current={null}
+          className="MuiButtonBase-root-26 MuiListItem-root-80 MuiListItem-default-83 MuiListItem-dense-84 MuiListItem-gutters-88 MuiListItem-button-89"
+          href="/accounts/4/transactions"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          role="button"
+          tabIndex="0"
+        >
           <div
-            className="MuiListItemSecondaryAction-root-11"
+            className="MuiListItemText-root-93 MuiListItemText-dense-95"
           >
-            <a
-              aria-current={null}
-              aria-describedby={null}
-              aria-label="Edit account"
-              className="MuiButtonBase-root-26 MuiIconButton-root-20"
-              href="/accounts/2/edit"
-              onBlur={[Function]}
-              onClick={[Function]}
-              onContextMenu={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onKeyUp={[Function]}
-              onMouseDown={[Function]}
-              onMouseLeave={[Function]}
-              onMouseOver={[Function]}
-              onMouseUp={[Function]}
-              onTouchEnd={[Function]}
-              onTouchMove={[Function]}
-              onTouchStart={[Function]}
-              role="button"
-              tabIndex="0"
-              title="Edit account"
+            <p
+              className="MuiTypography-root-38 MuiTypography-body1-47 MuiTypography-colorTextSecondary-71 MuiListItemText-secondary-97 MuiListItemText-textDense-98"
             >
-              <span
-                className="MuiIconButton-label-25"
-              >
-                <svg
-                  aria-hidden="true"
-                  className="MuiSvgIcon-root-29"
-                  focusable="false"
-                  role="presentation"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
-                  />
-                  <path
-                    d="M0 0h24v24H0z"
-                    fill="none"
-                  />
-                </svg>
-              </span>
-              <span
-                className="MuiTouchRipple-root-73"
-              />
-            </a>
+              NaN
+            </p>
           </div>
-        </li>
+          <span
+            className="MuiTouchRipple-root-73"
+          />
+        </a>
       </ul>
     </div>
   </ul>
@@ -642,22 +612,7 @@ exports[`Accounts index (Left Nav) snapshot matches with a few accounts but none
               <p
                 className="MuiTypography-root-38 MuiTypography-body1-47 MuiTypography-colorTextSecondary-71 MuiListItemText-secondary-97 MuiListItemText-textDense-98"
               >
-                <span>
-                  NaN
-                  <span
-                    className="MuiChip-root-99"
-                    onKeyDown={[Function]}
-                    onKeyUp={[Function]}
-                    role="button"
-                    tabIndex={-1}
-                  >
-                    <span
-                      className="MuiChip-label-118"
-                    >
-                      CAD
-                    </span>
-                  </span>
-                </span>
+                NaN
               </p>
             </div>
             <span
@@ -743,22 +698,7 @@ exports[`Accounts index (Left Nav) snapshot matches with a few accounts but none
               <p
                 className="MuiTypography-root-38 MuiTypography-body1-47 MuiTypography-colorTextSecondary-71 MuiListItemText-secondary-97 MuiListItemText-textDense-98"
               >
-                <span>
-                  NaN
-                  <span
-                    className="MuiChip-root-99"
-                    onKeyDown={[Function]}
-                    onKeyUp={[Function]}
-                    role="button"
-                    tabIndex={-1}
-                  >
-                    <span
-                      className="MuiChip-label-118"
-                    >
-                      CAD
-                    </span>
-                  </span>
-                </span>
+                NaN
               </p>
             </div>
             <span
@@ -850,7 +790,7 @@ exports[`Accounts index (Left Nav) snapshot matches with a few accounts but none
           <a
             aria-current={null}
             className="MuiButtonBase-root-26 MuiListItem-root-80 MuiListItem-default-83 MuiListItem-dense-84 MuiListItem-gutters-88 MuiListItem-button-89 MuiListItem-secondaryAction-90"
-            href="/accounts/1/transactions"
+            href="/accounts/3/transactions"
             onBlur={[Function]}
             onClick={[Function]}
             onContextMenu={[Function]}
@@ -872,22 +812,7 @@ exports[`Accounts index (Left Nav) snapshot matches with a few accounts but none
               <p
                 className="MuiTypography-root-38 MuiTypography-body1-47 MuiTypography-colorTextSecondary-71 MuiListItemText-secondary-97 MuiListItemText-textDense-98"
               >
-                <span>
-                  NaN
-                  <span
-                    className="MuiChip-root-99"
-                    onKeyDown={[Function]}
-                    onKeyUp={[Function]}
-                    role="button"
-                    tabIndex={-1}
-                  >
-                    <span
-                      className="MuiChip-label-118"
-                    >
-                      CAD
-                    </span>
-                  </span>
-                </span>
+                NaN
               </p>
             </div>
             <span
@@ -902,7 +827,7 @@ exports[`Accounts index (Left Nav) snapshot matches with a few accounts but none
               aria-describedby={null}
               aria-label="Edit account"
               className="MuiButtonBase-root-26 MuiIconButton-root-20"
-              href="/accounts/1/edit"
+              href="/accounts/3/edit"
               onBlur={[Function]}
               onClick={[Function]}
               onContextMenu={[Function]}
@@ -945,13 +870,43 @@ exports[`Accounts index (Left Nav) snapshot matches with a few accounts but none
             </a>
           </div>
         </li>
-        <li
-          className="MuiListItem-container-81"
+      </ul>
+    </div>
+    <div>
+      <li
+        className="MuiListItem-container-81"
+      >
+        <div
+          className="MuiListItem-root-80 MuiListItem-default-83 MuiListItem-dense-84 MuiListItem-gutters-88 MuiListItem-secondaryAction-90"
+          disabled={false}
+        >
+          <div
+            className="MuiListItemIcon-root-92"
+          >
+            <InstitutionIcon
+              institution="Coinbase"
+              size="small"
+            />
+          </div>
+          <div
+            className="MuiListItemText-root-93 MuiListItemText-dense-95"
+          >
+            <span
+              className="MuiTypography-root-38 MuiTypography-subheading-45 MuiListItemText-primary-96 MuiListItemText-textDense-98"
+            >
+              Coinbase
+            </span>
+          </div>
+        </div>
+        <div
+          className="MuiListItemSecondaryAction-root-11"
         >
           <a
             aria-current={null}
-            className="MuiButtonBase-root-26 MuiListItem-root-80 MuiListItem-default-83 MuiListItem-dense-84 MuiListItem-gutters-88 MuiListItem-button-89 MuiListItem-secondaryAction-90"
-            href="/accounts/2/transactions"
+            aria-describedby={null}
+            aria-label="Edit API details"
+            className="MuiButtonBase-root-26 MuiIconButton-root-20"
+            href="/institutions/Coinbase/import/undefined/edit"
             onBlur={[Function]}
             onClick={[Function]}
             onContextMenu={[Function]}
@@ -960,92 +915,77 @@ exports[`Accounts index (Left Nav) snapshot matches with a few accounts but none
             onKeyUp={[Function]}
             onMouseDown={[Function]}
             onMouseLeave={[Function]}
+            onMouseOver={[Function]}
             onMouseUp={[Function]}
             onTouchEnd={[Function]}
             onTouchMove={[Function]}
             onTouchStart={[Function]}
             role="button"
             tabIndex="0"
+            title="Edit API details"
           >
-            <div
-              className="MuiListItemText-root-93 MuiListItemText-dense-95"
+            <span
+              className="MuiIconButton-label-25"
             >
-              <p
-                className="MuiTypography-root-38 MuiTypography-body1-47 MuiTypography-colorTextSecondary-71 MuiListItemText-secondary-97 MuiListItemText-textDense-98"
+              <svg
+                aria-hidden="true"
+                className="MuiSvgIcon-root-29"
+                focusable="false"
+                role="presentation"
+                viewBox="0 0 24 24"
               >
-                <span>
-                  NaN
-                  <span
-                    className="MuiChip-root-99"
-                    onKeyDown={[Function]}
-                    onKeyUp={[Function]}
-                    role="button"
-                    tabIndex={-1}
-                  >
-                    <span
-                      className="MuiChip-label-118"
-                    >
-                      CAD
-                    </span>
-                  </span>
-                </span>
-              </p>
-            </div>
+                <path
+                  d="M0 0h20v20H0V0z"
+                  fill="none"
+                  transform="scale(1.2, 1.2)"
+                />
+                <path
+                  d="M15.95 10.78c.03-.25.05-.51.05-.78s-.02-.53-.06-.78l1.69-1.32c.15-.12.19-.34.1-.51l-1.6-2.77c-.1-.18-.31-.24-.49-.18l-1.99.8c-.42-.32-.86-.58-1.35-.78L12 2.34c-.03-.2-.2-.34-.4-.34H8.4c-.2 0-.36.14-.39.34l-.3 2.12c-.49.2-.94.47-1.35.78l-1.99-.8c-.18-.07-.39 0-.49.18l-1.6 2.77c-.1.18-.06.39.1.51l1.69 1.32c-.04.25-.07.52-.07.78s.02.53.06.78L2.37 12.1c-.15.12-.19.34-.1.51l1.6 2.77c.1.18.31.24.49.18l1.99-.8c.42.32.86.58 1.35.78l.3 2.12c.04.2.2.34.4.34h3.2c.2 0 .37-.14.39-.34l.3-2.12c.49-.2.94-.47 1.35-.78l1.99.8c.18.07.39 0 .49-.18l1.6-2.77c.1-.18.06-.39-.1-.51l-1.67-1.32zM10 13c-1.65 0-3-1.35-3-3s1.35-3 3-3 3 1.35 3 3-1.35 3-3 3z"
+                  transform="scale(1.2, 1.2)"
+                />
+              </svg>
+            </span>
             <span
               className="MuiTouchRipple-root-73"
             />
           </a>
+        </div>
+      </li>
+      <ul
+        className="MuiList-root-1 MuiList-dense-3 MuiList-padding-2"
+      >
+        <a
+          aria-current={null}
+          className="MuiButtonBase-root-26 MuiListItem-root-80 MuiListItem-default-83 MuiListItem-dense-84 MuiListItem-gutters-88 MuiListItem-button-89"
+          href="/accounts/4/transactions"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          role="button"
+          tabIndex="0"
+        >
           <div
-            className="MuiListItemSecondaryAction-root-11"
+            className="MuiListItemText-root-93 MuiListItemText-dense-95"
           >
-            <a
-              aria-current={null}
-              aria-describedby={null}
-              aria-label="Edit account"
-              className="MuiButtonBase-root-26 MuiIconButton-root-20"
-              href="/accounts/2/edit"
-              onBlur={[Function]}
-              onClick={[Function]}
-              onContextMenu={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onKeyUp={[Function]}
-              onMouseDown={[Function]}
-              onMouseLeave={[Function]}
-              onMouseOver={[Function]}
-              onMouseUp={[Function]}
-              onTouchEnd={[Function]}
-              onTouchMove={[Function]}
-              onTouchStart={[Function]}
-              role="button"
-              tabIndex="0"
-              title="Edit account"
+            <p
+              className="MuiTypography-root-38 MuiTypography-body1-47 MuiTypography-colorTextSecondary-71 MuiListItemText-secondary-97 MuiListItemText-textDense-98"
             >
-              <span
-                className="MuiIconButton-label-25"
-              >
-                <svg
-                  aria-hidden="true"
-                  className="MuiSvgIcon-root-29"
-                  focusable="false"
-                  role="presentation"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
-                  />
-                  <path
-                    d="M0 0h24v24H0z"
-                    fill="none"
-                  />
-                </svg>
-              </span>
-              <span
-                className="MuiTouchRipple-root-73"
-              />
-            </a>
+              NaN
+            </p>
           </div>
-        </li>
+          <span
+            className="MuiTouchRipple-root-73"
+          />
+        </a>
       </ul>
     </div>
   </ul>
@@ -1116,8 +1056,5 @@ exports[`Accounts index (Left Nav) snapshot matches with no accounts and no sele
   >
     You don't have any accounts yet
   </span>
-  <ul
-    className="MuiList-root-1 MuiList-dense-3 MuiList-padding-2"
-  />
 </nav>
 `;
