@@ -148,8 +148,8 @@ describe('transactions actions', () => {
       store.dispatch(actions.addTransactions(account, payload))
       expect(store.getActions()).toEqual([
         {
-          payload,
-          type: 'ADD_TRANSACTIONS'
+          type: 'ADD_TRANSACTIONS',
+          payload
         }, {
           payload: account,
           type: 'UPDATE_ACCOUNT'

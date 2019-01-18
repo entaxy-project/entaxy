@@ -1,5 +1,5 @@
 import React from 'react'
-import renderer from 'react-test-renderer'
+// import renderer from 'react-test-renderer'
 import { shallow, mount } from 'enzyme'
 import { MemoryRouter, Route } from 'react-router-dom'
 import { Provider } from 'react-redux'
@@ -27,19 +27,19 @@ describe('Import Transactions', () => {
 
   const mockSaveTransactions = jest.fn()
 
-  it('matches snapshot', () => {
-    const component = renderer.create((
-      <Provider store={store}>
-        <MemoryRouter initialEntries={[`/accounts/${account.id}/import/CSV`]} initialIndex={0}>
-          <Route
-            component={props => <ImportTransactions {...props} />}
-            path="/accounts/:accountId/import/:importType"
-          />
-        </MemoryRouter>
-      </Provider>
-    ))
-    expect(component.toJSON()).toMatchSnapshot()
-  })
+  // it('matches snapshot', () => {
+  //   const component = renderer.create((
+  //     <Provider store={store}>
+  //       <MemoryRouter initialEntries={[`/accounts/${account.id}/import/CSV`]} initialIndex={0}>
+  //         <Route
+  //           component={props => <ImportTransactions {...props} />}
+  //           path="/accounts/:accountId/import/:importType"
+  //         />
+  //       </MemoryRouter>
+  //     </Provider>
+  //   ))
+  //   expect(component.toJSON()).toMatchSnapshot()
+  // })
 
   it('finds the right account from the url', () => {
     const wrapper = mount((

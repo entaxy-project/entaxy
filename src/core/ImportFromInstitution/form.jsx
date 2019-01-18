@@ -212,9 +212,9 @@ export default compose(
       importFromCoinbase(apiKey, apiSecret)
         .then((accounts) => {
           props.handleSave({ apiKey, apiSecret }, accounts)
+          setSubmitting(false)
         }).catch((errorMessage) => {
           setErrors({ global: `Sorry, something went wrong.${errorMessage}` })
-        }).finally(() => {
           setSubmitting(false)
         })
     }

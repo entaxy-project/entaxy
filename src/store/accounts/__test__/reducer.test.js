@@ -94,6 +94,11 @@ describe('account reducer', () => {
       groupId: 'g4',
       institution: 'TD',
       currentBalance: 400
+    }, {
+      id: 'a5',
+      groupId: 'g5',
+      institution: 'Coinbase',
+      currentBalance: 500
     }]
     const byInstitutionAccount1 = {
       BMO: {
@@ -101,7 +106,6 @@ describe('account reducer', () => {
         groups: {
           [accounts[0].groupId]: {
             id: accounts[0].groupId,
-            type: 'default',
             balance: accounts[0].currentBalance,
             accountIds: [accounts[0].id]
           }
@@ -117,7 +121,19 @@ describe('account reducer', () => {
     it('should group 1 account', () => {
       const state = {
         byId: { [accounts[0].id]: accounts[0] },
-        byInstitution: {}
+        byInstitution: {
+          BMO: {
+            balance: accounts[0].currentBalance + 100,
+            groups: {
+              [accounts[0].groupId]: {
+                id: accounts[0].groupId,
+                type: 'default',
+                balance: accounts[0].currentBalance + 200,
+                accountIds: [accounts[0].id]
+              }
+            }
+          }
+        }
       }
 
       expect(accountReducer(state, { type })).toEqual({
@@ -240,7 +256,7 @@ describe('account reducer', () => {
       const state = {
         byId: {
           [accounts[0].id]: accounts[0],
-          [accounts[3].id]: accounts[3]
+          [accounts[4].id]: accounts[4]
         },
         byInstitution: {
           BMO: {
@@ -250,21 +266,20 @@ describe('account reducer', () => {
                 id: accounts[0].groupId,
                 type: 'default',
                 balance: accounts[0].currentBalance,
-                accountIds: [accounts[0].id],
-                apiKey: 'ABC', // existing data
-                apiSecret: 'DEF'
+                accountIds: [accounts[0].id]
               }
             }
           },
-          TD: {
-            balance: accounts[3].currentBalance,
-            updatedAt: 'some time', // existing data
+          Coinbase: {
+            balance: accounts[4].currentBalance,
             groups: {
-              [accounts[3].groupId]: {
-                id: accounts[3].groupId,
-                type: 'default',
-                balance: accounts[3].currentBalance,
-                accountIds: [accounts[3].id]
+              [accounts[4].groupId]: {
+                id: accounts[4].groupId,
+                type: 'api',
+                balance: accounts[4].currentBalance,
+                accountIds: [accounts[4].id],
+                apiKey: 'ABC', // existing data
+                apiSecret: 'DEF'
               }
             }
           }

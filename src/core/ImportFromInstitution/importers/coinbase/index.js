@@ -45,7 +45,7 @@ const getDataFrom = async (apiKey, apiSecret, resource, params = null) => {
   return response.json()
 }
 
-const getPaginatedDataFrom = async (apiKey, apiSecret, url, params) => {
+export const getPaginatedDataFrom = async (apiKey, apiSecret, url, params) => {
   const response = await getDataFrom(apiKey, apiSecret, url, params)
 
   if (response.pagination.next_uri) {
@@ -60,7 +60,7 @@ const getPaginatedDataFrom = async (apiKey, apiSecret, url, params) => {
   return response.data
 }
 
-const normalizeAccounts = accounts => (
+export const normalizeAccounts = accounts => (
   accounts.map(account => ({
     type: 'wallet', // TODO check for other types
     sourceId: account.id,
@@ -72,17 +72,17 @@ const normalizeAccounts = accounts => (
   }))
 )
 
-const normalizeTransactions = transactions => (
+export const normalizeTransactions = transactions => (
   transactions.map((transaction) => {
-    const amount = Big(transaction.native_amount.amount)
-    const units = Big(transaction.amount.amount)
+    const nativeAmount = Big(transaction.native_amount.amount)
+    const amount = Big(transaction.amount.amount)
 
     return {
       sourceId: transaction.id,
       description: [transaction.details.title, transaction.details.subtitle].join(' - '),
-      units: units.toFixed(8),
-      amount: amount.toFixed(2),
-      pricePerUnit: Math.abs(amount.div(units).toFixed(2)),
+      nativeAmount: parseFloat(nativeAmount),
+      amount: parseFloat(amount),
+      pricePerUnit: parseFloat(nativeAmount.div(amount).abs()),
       createdAt: parse(transaction.created_at).getTime()
     }
   })
@@ -102,6 +102,8 @@ const importData = async (apiKey, apiSecret) => {
       `accounts/${account.sourceId}/transactions`,
       { limit: 2 }
     )
+    console.log(transactions)
+
     account.transactions = normalizeTransactions(transactions)
   }))
 

@@ -236,7 +236,7 @@ exports[`Dashboard snapshot matches with one account 1`] = `
                                             <WithStyles(TableCell) align=\\"right\\">
                                               <TableCell align=\\"right\\" classes={{...}}>
                                                 <td className=\\"MuiTableCell-root-185 MuiTableCell-body-187 MuiTableCell-alignRight-195\\" aria-sort={{...}} scope={[undefined]}>
-                                                  Jan 13, 2019
+                                                  Jan 1, 2018
                                                 </td>
                                               </TableCell>
                                             </WithStyles(TableCell)>
@@ -427,7 +427,7 @@ exports[`Dashboard snapshot matches with two accounts in a different currency 1`
                                             <WithStyles(TableCell) align=\\"right\\">
                                               <TableCell align=\\"right\\" classes={{...}}>
                                                 <td className=\\"MuiTableCell-root-185 MuiTableCell-body-187 MuiTableCell-alignRight-195\\" aria-sort={{...}} scope={[undefined]}>
-                                                  Jan 13, 2019
+                                                  Jan 1, 2018
                                                 </td>
                                               </TableCell>
                                             </WithStyles(TableCell)>
@@ -458,7 +458,7 @@ exports[`Dashboard snapshot matches with two accounts in a different currency 1`
                                             <WithStyles(TableCell) align=\\"right\\">
                                               <TableCell align=\\"right\\" classes={{...}}>
                                                 <td className=\\"MuiTableCell-root-185 MuiTableCell-body-187 MuiTableCell-alignRight-195\\" aria-sort={{...}} scope={[undefined]}>
-                                                  Jan 13, 2019
+                                                  Jan 1, 2018
                                                 </td>
                                               </TableCell>
                                             </WithStyles(TableCell)>

@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
@@ -6,18 +5,18 @@ import ImportFromInstitutionForm from './form'
 import { createAccountGroup } from '../../store/accounts/actions'
 
 const mapDispatchToProps = {
-  handleSave: (institution, accountGroup, accounts) =>
+  createAccountGroup: (institution, accountGroup, accounts) =>
     createAccountGroup(institution, accountGroup, accounts)
 }
 
 export class NewImportFromInstitutionComponent extends React.Component {
-  onSave = async (accountGroup, accounts) => {
+  handleSave = (accountGroup, accounts) => {
     const { institution } = this.props.match.params
-    await this.props.handleSave(institution, accountGroup, accounts)
+    this.props.createAccountGroup(institution, accountGroup, accounts)
     this.props.history.push('/dashboard')
   }
 
-  onCancel = () => {
+  handleCancel = () => {
     this.props.history.push('/dashboard')
   }
 
@@ -25,8 +24,8 @@ export class NewImportFromInstitutionComponent extends React.Component {
     const { institution } = this.props.match.params
     return (
       <ImportFromInstitutionForm
-        handleSave={this.onSave}
-        handleCancel={this.onCancel}
+        handleSave={this.handleSave}
+        handleCancel={this.handleCancel}
         institution={institution}
       />
     )
@@ -35,7 +34,7 @@ export class NewImportFromInstitutionComponent extends React.Component {
 
 NewImportFromInstitutionComponent.propTypes = {
   history: PropTypes.object.isRequired,
-  handleSave: PropTypes.func.isRequired,
+  createAccountGroup: PropTypes.func.isRequired,
   match: PropTypes.object.isRequired
 }
 

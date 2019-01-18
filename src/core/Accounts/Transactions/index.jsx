@@ -10,13 +10,17 @@ import Paper from '@material-ui/core/Paper'
 import Checkbox from '@material-ui/core/Checkbox'
 import Tooltip from '@material-ui/core/Tooltip'
 import { Column, Table, AutoSizer } from 'react-virtualized'
+import grey from '@material-ui/core/colors/grey'
 import 'react-virtualized/styles.css'
 import TransactionDialog from './TransactionDialog'
 import TransactionsToolbar from './TransactionsToolbar'
 import confirm from '../../../util/confirm'
 import { deleteTransactions, updateSortBy } from '../../../store/transactions/actions'
 import { makeAccountTransactions } from '../../../store/transactions/selectors'
-import { currencyFormatter, dateFormatter } from '../../../util/stringFormatter'
+import {
+  currencyFormatter,
+  dateFormatter
+} from '../../../util/stringFormatter'
 
 const styles = theme => ({
   paper: {
@@ -46,6 +50,10 @@ const styles = theme => ({
   },
   tableButton: {
     padding: 4
+  },
+  nativeAmount: {
+    color: grey[500],
+    display: 'block'
   },
   smallIcon: {
     fontSize: 18
@@ -162,9 +170,21 @@ export class TransactionsComponent extends React.Component {
 
   isSelected = id => this.state.selected.indexOf(id) !== -1
 
+  displayCurrency = ({ amount, nativeAmount }) => {
+    const { classes, account, formatCurrency } = this.props
+    if (account.type === 'wallet') {
+      return (
+        <div>
+          {amount} {account.symbol}
+          <small className={classes.nativeAmount}>{formatCurrency(nativeAmount)}</small>
+        </div>
+      )
+    }
+    return formatCurrency(amount)
+  }
+
   render() {
     const {
-      formatCurrency,
       formatDate,
       classes,
       transactions,
@@ -174,6 +194,7 @@ export class TransactionsComponent extends React.Component {
       account
     } = this.props
     const { selected } = this.state
+    const rowHeight = account.type === 'wallet' ? 42 : 30
 
     return (
       <div>
@@ -197,7 +218,7 @@ export class TransactionsComponent extends React.Component {
                   width={width}
                   height={height}
                   headerHeight={25}
-                  rowHeight={30}
+                  rowHeight={rowHeight}
                   rowClassName={index => this.rowClassName(index, classes)}
                   rowCount={transactions.length}
                   rowGetter={({ index }) => transactions[index]}
@@ -250,22 +271,18 @@ export class TransactionsComponent extends React.Component {
                     flexGrow={1}
                   />
                   <Column
-                    width={100}
+                    width={130}
                     label="In"
                     dataKey="amount"
-                    cellDataGetter={({ rowData }) => {
-                      if (rowData.amount > 0) { return formatCurrency(rowData.amount) }
-                      return null
-                    }}
+                    cellDataGetter={({ rowData }) => ({ amount: rowData.amount, nativeAmount: rowData.nativeAmount })}
+                    cellRenderer={({ cellData }) => (cellData.amount > 0 ? this.displayCurrency(cellData) : null)}
                   />
                   <Column
-                    width={100}
+                    width={130}
                     label="Out"
                     dataKey="amount"
-                    cellDataGetter={({ rowData }) => {
-                      if (rowData.amount < 0) { return formatCurrency(rowData.amount) }
-                      return null
-                    }}
+                    cellDataGetter={({ rowData }) => ({ amount: rowData.amount, nativeAmount: rowData.nativeAmount })}
+                    cellRenderer={({ cellData }) => (cellData.amount < 0 ? this.displayCurrency(cellData) : null)}
                   />
                   <Column
                     width={40}

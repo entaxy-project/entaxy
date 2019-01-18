@@ -34,7 +34,6 @@ export const groupByInstitution = ({ byId, byInstitution }) => {
       const existingGroupData = existingInstitutionData.groups[groupId] || {}
       const currentGroupData = currentInstitutionData.groups[groupId] || {
         id: groupId,
-        type: 'default',
         balance: 0,
         accountIds: []
       }
@@ -48,6 +47,7 @@ export const groupByInstitution = ({ byId, byInstitution }) => {
           groups: {
             ...newInstitutionData.groups,
             [groupId]: {
+              type: 'default',
               ...newGroupData,
               balance: currentGroupData.balance + currentBalance,
               accountIds: [...newGroupData.accountIds, id]

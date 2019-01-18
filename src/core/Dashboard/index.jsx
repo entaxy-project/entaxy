@@ -144,7 +144,7 @@ export const DashboardComponent = ({
                           <TableCell>
                             <Typography className={classes.accountName}>{account.name}</Typography>
                           </TableCell>
-                          <TableCell align="right">{formatDate(Date.now())}</TableCell>
+                          <TableCell align="right">{formatDate(new Date('01/01/2018'))}</TableCell>
                           <TableCell align="right">{formatCurrency(account.currentBalance)}</TableCell>
                         </TableRow>
                       )
