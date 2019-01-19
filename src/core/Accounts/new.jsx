@@ -5,29 +5,29 @@ import AccountForm from './form'
 import { createAccount } from '../../store/accounts/actions'
 
 const mapDispatchToProps = {
-  handleSave: account => createAccount(account)
+  createAccount: account => createAccount(account)
 }
 
 export class NewAccountComponent extends React.Component {
-  onSave = async (account) => {
-    const accountId = await this.props.handleSave(account)
+  handleSave = async (account) => {
+    const accountId = await this.props.createAccount(account)
     this.props.history.push(`/accounts/${accountId}/transactions`)
   }
 
-  onCancel = () => {
+  handleCancel = () => {
     this.props.history.push('/dashboard')
   }
 
   render() {
     return (
-      <AccountForm handleSave={this.onSave} handleCancel={this.onCancel} />
+      <AccountForm handleSave={this.handleSave} handleCancel={this.handleCancel} />
     )
   }
 }
 
 NewAccountComponent.propTypes = {
   history: PropTypes.object.isRequired,
-  handleSave: PropTypes.func.isRequired
+  createAccount: PropTypes.func.isRequired
 }
 
 export default connect(null, mapDispatchToProps)(NewAccountComponent)

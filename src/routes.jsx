@@ -13,21 +13,23 @@ import Transactions from './core/Accounts/Transactions'
 import NewAccount from './core/Accounts/new'
 import EditAccount from './core/Accounts/edit'
 import ImportTransactions from './core/Accounts/ImportTransactions'
+import NewImportFromInstitution from './core/ImportFromInstitution/new'
+import EditImportFromInstitution from './core/ImportFromInstitution/edit'
 import Header from './common/Header'
 
-const mapStateToProps = ({ user, accounts }) => {
-  return { user, accounts }
+const mapStateToProps = ({ user, settings, accounts }) => {
+  return { user, settings, accounts }
 }
 
 export class RoutesComponent extends React.Component {
-  loginRequired = (Component, params) => (props) => {
+  loginRequired = (Component, options) => (props) => {
     // Check for authentication
     if (this.props.user.isAuthenticatedWith === null) {
       return <Redirect to="/" />
     }
     // Check for at least one account
-    if (params !== undefined) {
-      const { accountRequired } = params
+    if (options !== undefined) {
+      const { accountRequired } = options
       if (accountRequired && Object.keys(this.props.accounts.byId).length === 0) {
         return <Redirect to="/" />
       }
@@ -42,15 +44,17 @@ export class RoutesComponent extends React.Component {
   authenticatedSettings = this.loginRequired(Settings)
   authenticatedDashBoard = this.loginRequired(Dashboard)
   authenticatedNewAccount = this.loginRequired(NewAccount)
-  authenticatedEditAccount = this.loginRequired(EditAccount, { requiresAccount: true })
-  authenticatedTransactions = this.loginRequired(Transactions, { requiresAccount: true })
-  authenticatedImportTransactions = this.loginRequired(ImportTransactions, { requiresAccount: true })
+  authenticatedEditAccount = this.loginRequired(EditAccount, { accountRequired: true })
+  authenticatedTransactions = this.loginRequired(Transactions, { accountRequired: true })
+  authenticatedImportTransactions = this.loginRequired(ImportTransactions, { accountRequired: true })
+  authenticatedNewImportFromInstitution = this.loginRequired(NewImportFromInstitution)
+  authenticatedEditImportFromInstitution = this.loginRequired(EditImportFromInstitution, { accountRequired: true })
 
   render() {
     return (
       <div>
         <BrowserRouter basename={process.env.PUBLIC_URL}>
-          {!this.props.user.isLoading &&
+          {!this.props.settings.overlayMessage &&
             <Switch>
               <Route exact path="/" component={Landing} />
               <Route exact path="/handle-login" component={HandleLogin} />
@@ -63,9 +67,20 @@ export class RoutesComponent extends React.Component {
               <Route exact path="/accounts/:accountId/transactions" render={this.authenticatedTransactions} />
               <Route
                 exact
-                path="/accounts/:accountId/import/:importType"
+                path="/accounts/:accountId/import"
                 render={this.authenticatedImportTransactions}
               />
+              <Route
+                exact
+                path="/institutions/:institution/import/new"
+                render={this.authenticatedNewImportFromInstitution}
+              />
+              <Route
+                exact
+                path="/institutions/:institution/import/:groupId/edit"
+                render={this.authenticatedEditImportFromInstitution}
+              />
+              <Redirect to="/" />
             </Switch>
           }
         </BrowserRouter>
@@ -77,6 +92,7 @@ export class RoutesComponent extends React.Component {
 
 RoutesComponent.propTypes = {
   user: PropTypes.object.isRequired,
+  settings: PropTypes.object.isRequired,
   accounts: PropTypes.object.isRequired
 }
 

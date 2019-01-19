@@ -47,18 +47,16 @@ describe('transactions actions', () => {
 
       // NOTE: UPDATE_ACCOUNT is called but account balance is not changed
       // because test library doesn't actually update the store
-      return store.dispatch(actions.createTransaction(account, transaction))
-        .then(() => {
-          expect(store.getActions()).toEqual([
-            {
-              type: 'CREATE_TRANSACTION',
-              payload: { ...transaction, id: 1 }
-            }, {
-              payload: account,
-              type: 'UPDATE_ACCOUNT'
-            }
-          ])
-        })
+      store.dispatch(actions.createTransaction(account, transaction))
+      expect(store.getActions()).toEqual([
+        {
+          type: 'CREATE_TRANSACTION',
+          payload: { ...transaction, id: 1 }
+        }, {
+          payload: account,
+          type: 'UPDATE_ACCOUNT'
+        }
+      ])
     })
   })
 
@@ -72,18 +70,16 @@ describe('transactions actions', () => {
 
       // NOTE: UPDATE_ACCOUNT is called but account balance is not changed
       // because test library doesn't actually update the store
-      return store.dispatch(actions.updateTransaction(account, { ...transaction, id: 1, amount: 100 }))
-        .then(() => {
-          expect(store.getActions()).toEqual([
-            {
-              type: 'UPDATE_TRANSACTION',
-              payload: { ...transaction, id: 1, amount: 100 }
-            }, {
-              payload: account,
-              type: 'UPDATE_ACCOUNT'
-            }
-          ])
-        })
+      store.dispatch(actions.updateTransaction(account, { ...transaction, id: 1, amount: 100 }))
+      expect(store.getActions()).toEqual([
+        {
+          type: 'UPDATE_TRANSACTION',
+          payload: { ...transaction, id: 1, amount: 100 }
+        }, {
+          payload: account,
+          type: 'UPDATE_ACCOUNT'
+        }
+      ])
     })
   })
 
@@ -97,18 +93,34 @@ describe('transactions actions', () => {
 
       // NOTE: UPDATE_ACCOUNT is called but account balance is not changed
       // because test library doesn't actually update the store
-      return store.dispatch(actions.deleteTransactions(account, [1]))
-        .then(() => {
-          expect(store.getActions()).toEqual([
-            {
-              type: 'DELETE_TRANSACTIONS',
-              payload: [1]
-            }, {
-              payload: account,
-              type: 'UPDATE_ACCOUNT'
-            }
-          ])
-        })
+      store.dispatch(actions.deleteTransactions(account, [1]))
+      expect(store.getActions()).toEqual([
+        {
+          type: 'DELETE_TRANSACTIONS',
+          payload: [1]
+        }, {
+          payload: account,
+          type: 'UPDATE_ACCOUNT'
+        }
+      ])
+    })
+
+    it('should delete a transaction but skipAfterChange', () => {
+      const mockStore = configureMockStore([thunk])
+      const store = mockStore({
+        transactions: { list: [{ ...transaction, id: 1 }], transactionsInitialState },
+        settings: settingsInitialState
+      })
+
+      // NOTE: UPDATE_ACCOUNT is called but account balance is not changed
+      // because test library doesn't actually update the store
+      store.dispatch(actions.deleteTransactions(account, [1], { skipAfterChange: true }))
+      expect(store.getActions()).toEqual([
+        {
+          type: 'DELETE_TRANSACTIONS',
+          payload: [1]
+        }
+      ])
     })
   })
 
@@ -133,27 +145,45 @@ describe('transactions actions', () => {
 
       // NOTE: UPDATE_ACCOUNT is called but account balance is not changed
       // because test library doesn't actually update the store
-      return store.dispatch(actions.addTransactions(account, payload))
-        .then(() => {
-          expect(store.getActions()).toEqual([
-            {
-              payload,
-              type: 'ADD_TRANSACTIONS'
-            }, {
-              payload: account,
-              type: 'UPDATE_ACCOUNT'
-            }
-          ])
-        })
+      store.dispatch(actions.addTransactions(account, payload))
+      expect(store.getActions()).toEqual([
+        {
+          type: 'ADD_TRANSACTIONS',
+          payload
+        }, {
+          payload: account,
+          type: 'UPDATE_ACCOUNT'
+        }
+      ])
     })
-  })
 
-  describe('updateSortBy', () => {
-    it('should update sorting options', () => {
-      expect(actions.updateSortBy('account', 'ASC')).toEqual({
-        type: types.UPDATE_SORT_BY,
-        payload: { sortBy: 'account', sortDirection: 'ASC' }
+    it('should add transactions but skipAfterChange', () => {
+      const mockStore = configureMockStore([thunk])
+      const store = mockStore({
+        transactions: { ...transactionsInitialState, list: [{ ...transaction, id: 1 }] },
+        settings: {
+          portfolioFilters: {
+            institution: { Questrade: true },
+            account: { RRSP: true }
+          }
+        }
       })
+      const payload = [{
+        id: 2,
+        accountId: 1,
+        amount: 1,
+        createdAt: Date.now() + 100000
+      }]
+
+      // NOTE: UPDATE_ACCOUNT is called but account balance is not changed
+      // because test library doesn't actually update the store
+      store.dispatch(actions.addTransactions(account, payload, { skipAfterChange: true }))
+      expect(store.getActions()).toEqual([
+        {
+          payload,
+          type: 'ADD_TRANSACTIONS'
+        }
+      ])
     })
   })
 })

@@ -1,12 +1,12 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 import { shallow } from 'enzyme'
-import { NewAccountComponent } from '../new'
+import { NewImportFromInstitutionComponent } from '../new'
 
 jest.mock('../form', () => 'AccountForm')
 
-describe('New Account', () => {
-  const mochCreateAccount = jest.fn()
+describe('New Import From Institution', () => {
+  const mochCreateAccountGroup = jest.fn()
 
   beforeEach(() => {
     jest.clearAllMocks()
@@ -14,9 +14,10 @@ describe('New Account', () => {
 
   it('matches snapshot', () => {
     const component = renderer.create((
-      <NewAccountComponent
-        createAccount={mochCreateAccount}
+      <NewImportFromInstitutionComponent
+        createAccountGroup={mochCreateAccountGroup}
         history={{}}
+        match={{ params: { institution: 'TD' } }}
       />
     ))
     expect(component.toJSON()).toMatchSnapshot()
@@ -25,20 +26,21 @@ describe('New Account', () => {
   describe('Component methods', () => {
     const mochHistoryPush = jest.fn()
     const wrapper = shallow((
-      <NewAccountComponent
-        createAccount={mochCreateAccount}
+      <NewImportFromInstitutionComponent
+        createAccountGroup={mochCreateAccountGroup}
         history={{ push: mochHistoryPush }}
+        match={{ params: { institution: 'TD' } }}
       />
     ))
     const instance = wrapper.instance()
 
     it('saves the form', async () => {
-      const accountId = 'abc'
-      mochCreateAccount.mockImplementation(() => accountId)
+      const accountGroup = { apiKey: 'abc', apiSecret: 'def' }
+      const accounts = [{ name: 'account 1' }, { name: 'account 2' }]
 
-      await instance.handleSave({ name: 'new account' })
-      expect(mochCreateAccount).toHaveBeenCalled()
-      expect(mochHistoryPush).toHaveBeenCalledWith(`/accounts/${accountId}/transactions`)
+      instance.handleSave(accountGroup, accounts)
+      expect(mochCreateAccountGroup).toHaveBeenCalled()
+      expect(mochHistoryPush).toHaveBeenCalledWith('/dashboard')
     })
 
     it('cancels the account creation', () => {

@@ -1,40 +1,63 @@
 /* eslint-disable no-case-declarations */
-/* eslint-disable no-console */
 import types from './types'
-// import institutions from '../../data/institutions'
 
 export const initialState = {
   byId: {}, // {id1: {id: id1, name: 'account1', institution: 'TD'}, id2: {...}}
   byInstitution: {} // {TD: {accountIds: [id1, id2], balance: 100, apiKey: XYZ}, BMO: {...}}
 }
 
-export const sortedAccountsGroupedByInstitution = (state, accountsArray) => {
+export const groupByInstitution = ({ byId, byInstitution }) => {
   // Group sorted accounts by institution
   // results in something like:
   // {
   //   TD: {accountIds: [id1, id2], balance: 100},
   //   BMO: {accountIds: [id3], balance: 200}
   // }
-  const groupedAccountIds = accountsArray
+  const groupedAccountIds = Object.values(byId)
     // Sort accounts by name
     .sort((a, b) => (a.name > b.name))
     // Group them by institution
     .reduce((result, account) => {
-      const { id, institution, currentBalance } = account
-      const institutionData = result[institution] || {}
-      const institutionAccountIds = institutionData.accountIds || []
-      const institutionBalance = institutionData.balance || 0
+      const {
+        id,
+        institution,
+        groupId,
+        currentBalance
+      } = account
+
+      // Merge existing institution data
+      const existingInstitutionData = byInstitution[institution] || { groups: {} }
+      const currentInstitutionData = (result[institution] || { balance: 0, groups: {} })
+      const newInstitutionData = { ...existingInstitutionData, ...currentInstitutionData }
+
+      // Merge existing group data
+      const existingGroupData = existingInstitutionData.groups[groupId] || {}
+      const currentGroupData = currentInstitutionData.groups[groupId] || {
+        id: groupId,
+        balance: 0,
+        accountIds: []
+      }
+      const newGroupData = { ...existingGroupData, ...currentGroupData }
+
       return {
         ...result,
         [institution]: {
-          ...institutionData,
-          accountIds: [...institutionAccountIds, id],
-          balance: institutionBalance + currentBalance
+          ...newInstitutionData,
+          balance: currentInstitutionData.balance + currentBalance,
+          groups: {
+            ...newInstitutionData.groups,
+            [groupId]: {
+              type: 'default',
+              ...newGroupData,
+              balance: currentGroupData.balance + currentBalance,
+              accountIds: [...newGroupData.accountIds, id]
+            }
+          }
         }
       }
     }, {})
 
-  // But now the institutions are not sorted and we lost existing institution data
+    // But now the institutions are not sorted and we lost existing institution data
   return Object.keys(groupedAccountIds)
     // Sort institutions by name
     .sort((a, b) => (a > b))
@@ -42,13 +65,14 @@ export const sortedAccountsGroupedByInstitution = (state, accountsArray) => {
     .reduce((result, institution) => ({
       ...result,
       [institution]: {
-        ...state.byInstitution[institution],
+        ...byInstitution[institution],
         ...groupedAccountIds[institution]
       }
     }), {})
 }
 
 let accounts
+let institutionData
 export default (state = initialState, { type, payload }) => {
   switch (type) {
     case types.LOAD_ACCOUNTS:
@@ -57,32 +81,40 @@ export default (state = initialState, { type, payload }) => {
       accounts = { ...state.byId, [payload.id]: payload }
       return {
         ...state,
-        byId: accounts,
-        byInstitution: sortedAccountsGroupedByInstitution(state, Object.values(accounts))
+        byId: accounts
       }
     case types.UPDATE_ACCOUNT:
       accounts = { ...state.byId, [payload.id]: payload }
       return {
         ...state,
-        byId: accounts,
-        byInstitution: sortedAccountsGroupedByInstitution(state, Object.values(accounts))
+        byId: accounts
       }
     case types.DELETE_ACCOUNT:
       const { [payload]: _, ...rest } = state.byId
-
       return {
         ...state,
-        byId: rest,
-        byInstitution: sortedAccountsGroupedByInstitution(state, Object.values(rest))
+        byId: rest
       }
-    case types.UPDATE_INSTITUTION_DATA:
+    case types.GROUP_BY_INSTITUTION:
+      return {
+        ...state,
+        byInstitution: groupByInstitution(state)
+      }
+    case types.CREATE_ACCOUNT_GROUP:
+    case types.UPDATE_ACCOUNT_GROUP:
+      if (payload === undefined) return state
+      const { institution, accountGroup } = payload
+      institutionData = state.byInstitution[institution] || { groups: {} }
       return {
         ...state,
         byInstitution: {
           ...state.byInstitution,
-          [payload.institution]: {
-            ...state.byInstitution[payload.institution],
-            ...payload.data
+          [institution]: {
+            ...institutionData,
+            groups: {
+              ...institutionData.groups,
+              [accountGroup.id]: accountGroup
+            }
           }
         }
       }

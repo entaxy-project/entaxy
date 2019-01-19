@@ -2,7 +2,7 @@ import * as blockstack from 'blockstack'
 import types from './types'
 import store from '../index'
 import * as storage from '../blockstackStorage'
-import { loadSettings } from '../settings/actions'
+import { showOverlay, hideOverlay, loadSettings } from '../settings/actions'
 import { initialState as settingsInitialState } from '../settings/reducer'
 import { loadAccounts } from '../accounts/actions'
 import { initialState as accountsInitialState } from '../accounts/reducer'
@@ -10,11 +10,6 @@ import { loadTransactions } from '../transactions/actions'
 import { initialState as transactionsInitialState } from '../transactions/reducer'
 import { loadMarketValues } from '../marketValues/actions'
 import { initialState as marketValuesInitialState } from '../marketValues/reducer'
-
-export const dataIsLoading = bool => ({
-  type: types.DATA_IS_LOADING,
-  payload: bool
-})
 
 export const saveLoginData = loginData => ({
   type: types.SAVE_LOGIN_DATA,
@@ -24,7 +19,7 @@ export const saveLoginData = loginData => ({
 export const loadUserData = () => {
   return (dispatch, getState) => {
     if (!getState().user.isLoading && blockstack.isUserSignedIn()) {
-      dispatch(dataIsLoading(true))
+      dispatch(showOverlay('Loading data from Blockstack...'))
 
       const { username, profile } = blockstack.loadUserData()
       const person = new blockstack.Person(profile)
@@ -41,7 +36,7 @@ export const loadUserData = () => {
         dispatch(loadAccounts((state || {}).accounts))
         dispatch(loadTransactions((state || {}).transactions))
         dispatch(loadMarketValues((state || {}).marketValues))
-        dispatch(dataIsLoading(false))
+        dispatch(hideOverlay())
       }).catch((error) => {
         throw error
       })
@@ -81,19 +76,17 @@ export const handleBlockstackLogin = () => {
   }
 }
 
-export const resetState = () => {
-  return (dispatch) => {
-    dispatch(loadSettings(settingsInitialState))
-    dispatch(loadAccounts(accountsInitialState))
-    dispatch(loadTransactions(transactionsInitialState))
-    dispatch(loadMarketValues(marketValuesInitialState))
-  }
+export const resetState = (dispatch) => {
+  dispatch(loadSettings(settingsInitialState))
+  dispatch(loadAccounts(accountsInitialState))
+  dispatch(loadTransactions(transactionsInitialState))
+  dispatch(loadMarketValues(marketValuesInitialState))
 }
 
 export const userLogout = () => {
   return async (dispatch) => {
     await blockstack.signUserOut()
-    await dispatch(resetState())
+    await resetState(dispatch)
     await dispatch({ type: types.USER_LOGOUT })
   }
 }

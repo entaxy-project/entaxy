@@ -2,9 +2,16 @@ import _ from 'lodash'
 import types from './types'
 import { saveState } from '../user/actions'
 
-export const loadSettings = (settings) => {
-  return { type: types.LOAD_SETTINGS, payload: settings }
-}
+export const showOverlay = message => ({
+  type: types.SHOW_OVERLAY,
+  payload: message
+})
+
+export const hideOverlay = () => ({ type: types.HIDE_OVERLAY })
+
+export const loadSettings = settings => (
+  { type: types.LOAD_SETTINGS, payload: settings }
+)
 
 export const updateSettings = (settings) => {
   return async (dispatch) => {

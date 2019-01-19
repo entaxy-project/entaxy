@@ -163,9 +163,9 @@ exports[`Transactions matches snapshot with no transactions 1`] = `
               role="columnheader"
               style={
                 Object {
-                  "WebkitFlex": "0 1 100px",
-                  "flex": "0 1 100px",
-                  "msFlex": "0 1 100px",
+                  "WebkitFlex": "0 1 130px",
+                  "flex": "0 1 130px",
+                  "msFlex": "0 1 130px",
                 }
               }
               tabIndex={0}
@@ -186,9 +186,9 @@ exports[`Transactions matches snapshot with no transactions 1`] = `
               role="columnheader"
               style={
                 Object {
-                  "WebkitFlex": "0 1 100px",
-                  "flex": "0 1 100px",
-                  "msFlex": "0 1 100px",
+                  "WebkitFlex": "0 1 130px",
+                  "flex": "0 1 130px",
+                  "msFlex": "0 1 130px",
                 }
               }
               tabIndex={0}
@@ -409,9 +409,9 @@ exports[`Transactions matches snapshot with one transaction 1`] = `
               role="columnheader"
               style={
                 Object {
-                  "WebkitFlex": "0 1 100px",
-                  "flex": "0 1 100px",
-                  "msFlex": "0 1 100px",
+                  "WebkitFlex": "0 1 130px",
+                  "flex": "0 1 130px",
+                  "msFlex": "0 1 130px",
                 }
               }
               tabIndex={0}
@@ -432,9 +432,9 @@ exports[`Transactions matches snapshot with one transaction 1`] = `
               role="columnheader"
               style={
                 Object {
-                  "WebkitFlex": "0 1 100px",
-                  "flex": "0 1 100px",
-                  "msFlex": "0 1 100px",
+                  "WebkitFlex": "0 1 130px",
+                  "flex": "0 1 130px",
+                  "msFlex": "0 1 130px",
                 }
               }
               tabIndex={0}

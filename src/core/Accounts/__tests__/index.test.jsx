@@ -11,6 +11,7 @@ const accounts = {
   byId: {
     1: {
       id: '1',
+      groupId: 0,
       description: 'Checking',
       institution: 'TD',
       currency: 'CAD',
@@ -18,22 +19,33 @@ const accounts = {
     },
     2: {
       id: '2',
+      groupId: 0,
       description: 'Savings',
       institution: 'TD',
       currency: 'CAD',
       currenctBalance: 10
     },
     3: {
-      id: '2',
+      id: '3',
+      groupId: 0,
       description: 'Checking',
       institution: 'BMO',
       currency: 'USD', // Different currency
       currenctBalance: 10
+    },
+    4: {
+      id: '4',
+      groupId: 'yzv',
+      description: 'BTC wallet',
+      institution: 'Coinbase',
+      currency: 'BTC',
+      currenctBalance: 10
     }
   },
   byInstitution: {
-    TD: { accountIds: ['1', '2'], balance: 20 },
-    BMO: { accountIds: ['1', '2'], balance: 10 }
+    TD: { groups: { 0: { type: 'default', accountIds: ['1', '2'], balance: 20 } } },
+    BMO: { groups: { 0: { type: 'default', accountIds: ['3'], balance: 10 } } },
+    Coinbase: { groups: { xyz: { type: 'api', accountIds: ['4'], balance: 10 } } }
   }
 }
 

@@ -5,6 +5,7 @@ import { withStyles } from '@material-ui/core/styles'
 import { withFormik } from 'formik'
 import * as Yup from 'yup'
 import PropTypes from 'prop-types'
+import { NavLink } from 'react-router-dom'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
@@ -18,8 +19,9 @@ import format from 'date-fns/format'
 import parse from 'date-fns/parse'
 import currencies, { filteredCurrencies } from '../../data/currencies'
 import AutoComplete from '../../common/AutoComplete'
-import { sortedInstitutionsForAutoselect } from '../../store/accounts/selectors'
+import institutions, { formatedInstitutions } from '../../data/institutions'
 import SubmitButtonWithProgress from '../../common/SubmitButtonWithProgress'
+import DescriptionCard from '../../common/DescriptionCard'
 
 const styles = theme => ({
   root: {
@@ -66,125 +68,187 @@ const styles = theme => ({
 const mapStateToProps = (state, ownProps) => {
   return {
     settings: state.settings,
-    account: state.accounts.byId[ownProps.accountId],
-    institutions: sortedInstitutionsForAutoselect()
+    account: state.accounts.byId[ownProps.accountId]
   }
 }
 
-export const AccountFormComponent = ({
-  classes,
-  institutions,
-  handleSubmit,
-  isSubmitting,
-  values,
-  errors,
-  touched,
-  handleChange,
-  setFieldValue,
-  handleDelete,
-  handleCancel,
-  account
-}) => (
-  <Grid container direction="row" justify="center">
-    <Paper className={classes.root}>
-      <div className={classes.formHeader}>
-        <Typography variant="h6" align="center">
-          {account ? 'Edit account' : 'New account'}
-        </Typography>
-        <IconButton aria-label="Close" className={classes.closeButton} onClick={handleCancel}>
-          <CloseIcon />
-        </IconButton>
-      </div>
-      <Divider />
-      <form onSubmit={handleSubmit} className={classes.form}>
-        <TextField
+export class AccountFormComponent extends React.Component {
+  state = {
+    hideInstitutionOptions: false
+  }
+
+  institutionOptions = (institution) => {
+    const { classes } = this.props
+    const { hideInstitutionOptions } = this.state
+    const { value } = (institution || {})
+
+    if (value === undefined || hideInstitutionOptions) return null
+
+    if (institutions[value].importTypes.includes('API')) {
+      return (
+        <DescriptionCard
+          info
           className={classes.input}
-          label="Account name"
-          inputProps={{
-            'aria-label': 'Account name',
-            maxLength: 100
-          }}
-          value={values.name}
-          name="name"
-          onChange={handleChange}
-          error={errors.name && touched.name}
-          helperText={errors.name}
-          autoFocus
-        />
-        <AutoComplete
-          className={classes.input}
-          label="Institution"
-          name="institution"
-          value={values.institution}
-          options={institutions}
-          onChange={setFieldValue}
-          error={errors.institution && touched.institution}
-          helperText={errors.institution}
-        />
-        <TextField
-          className={classes.input}
-          type="number"
-          label="Opening balance"
-          inputProps={{
-            'aria-label': 'Opening balance',
-            maxLength: 10,
-            min: Number.MIN_SAFE_INTEGER,
-            max: Number.MAX_SAFE_INTEGER,
-            step: 0.01
-          }}
-          value={values.openingBalance}
-          name="openingBalance"
-          onChange={handleChange}
-          error={errors.openingBalance && touched.openingBalance}
-          helperText={errors.openingBalance}
-        />
-        <TextField
-          type="date"
-          label="Opening Balance Date"
-          InputLabelProps={{
-            shrink: true,
-            'aria-label': 'Opening Balance Date'
-          }}
-          name="openingBalanceDate"
-          className={classes.input}
-          value={values.openingBalanceDate}
-          onChange={handleChange}
-          error={errors.openingBalanceDate && touched.openingBalanceDate}
-          helperText={errors.openingBalanceDate}
-        />
-        <AutoComplete
-          async
-          className={classes.input}
-          label="Display Currency"
-          name="currency"
-          value={values.currency}
-          loadOptions={filteredCurrencies}
-          onChange={setFieldValue}
-          error={errors.currency && touched.currency}
-          helperText={errors.currency}
-        />
-        {handleDelete &&
-          <Button
-            size="small"
-            onClick={() => handleDelete(account)}
-            className={classes.deleteButton}
-            disabled={isSubmitting}
-          >
-            Delete this account
-          </Button>
-        }
-        <Divider />
-        <div className={classes.formActions}>
-          <SubmitButtonWithProgress label="Save" isSubmitting={isSubmitting} />
-        </div>
-      </form>
-    </Paper>
-  </Grid>
-)
+          actions={
+            <Grid align="center">
+              <Button
+                size="small"
+                color="secondary"
+                component={NavLink}
+                to={`/institutions/${value}/import/new`}
+              >
+                Great, Let&apos;s do it
+              </Button>
+              <Button
+                size="small"
+                color="primary"
+                onClick={this.handleCloseInstitutionOptions}
+              >
+                No, I&apos;d rather do it manually
+              </Button>
+            </Grid>
+          }
+        >
+          <Typography variant="caption" paragraph>
+            You can import <strong>all your accounts</strong> in one go
+            from <strong>{institutions[value].name}</strong> by using their API.
+          </Typography>
+          <Typography variant="caption" align="center">
+            This is also the easiest way to keep your transactions up to date.
+          </Typography>
+        </DescriptionCard>
+      )
+    }
+    return null
+  }
+
+  handleInstitutionChange = (...args) => {
+    this.setState({ hideInstitutionOptions: false })
+    this.props.setFieldValue(...args)
+  }
+
+  handleCloseInstitutionOptions = () => {
+    this.setState({ hideInstitutionOptions: true })
+  }
+
+  render() {
+    const {
+      classes,
+      handleSubmit,
+      isSubmitting,
+      values,
+      errors,
+      touched,
+      handleChange,
+      setFieldValue,
+      handleDelete,
+      handleCancel,
+      account
+    } = this.props
+
+    return (
+      <Grid container direction="row" justify="center">
+        <Paper className={classes.root}>
+          <div className={classes.formHeader}>
+            <Typography variant="h6">
+              {account ? 'Edit account' : 'New account'}
+            </Typography>
+            <IconButton aria-label="Close" className={classes.closeButton} onClick={handleCancel}>
+              <CloseIcon />
+            </IconButton>
+          </div>
+          <Divider />
+          <form onSubmit={handleSubmit} className={classes.form}>
+            <AutoComplete
+              className={classes.input}
+              label="Institution"
+              name="institution"
+              value={values.institution}
+              options={formatedInstitutions}
+              onChange={this.handleInstitutionChange}
+              error={errors.institution && touched.institution}
+              helperText={errors.institution}
+              autoFocus
+            />
+            {this.institutionOptions(values.institution)}
+            <TextField
+              className={classes.input}
+              label="Account name"
+              inputProps={{
+                'aria-label': 'Account name',
+                maxLength: 100
+              }}
+              value={values.name}
+              name="name"
+              onChange={handleChange}
+              error={errors.name && touched.name}
+              helperText={errors.name}
+            />
+            <TextField
+              className={classes.input}
+              type="number"
+              label="Opening balance"
+              inputProps={{
+                'aria-label': 'Opening balance',
+                maxLength: 10,
+                min: Number.MIN_SAFE_INTEGER,
+                max: Number.MAX_SAFE_INTEGER,
+                step: 0.01
+              }}
+              value={values.openingBalance}
+              name="openingBalance"
+              onChange={handleChange}
+              error={errors.openingBalance && touched.openingBalance}
+              helperText={errors.openingBalance}
+            />
+            <TextField
+              type="date"
+              label="Opening Balance Date"
+              InputLabelProps={{
+                shrink: true,
+                'aria-label': 'Opening Balance Date'
+              }}
+              name="openingBalanceDate"
+              className={classes.input}
+              value={values.openingBalanceDate}
+              onChange={handleChange}
+              error={errors.openingBalanceDate && touched.openingBalanceDate}
+              helperText={errors.openingBalanceDate}
+            />
+            <AutoComplete
+              async
+              className={classes.input}
+              label="Currency"
+              name="currency"
+              value={values.currency}
+              loadOptions={filteredCurrencies}
+              onChange={setFieldValue}
+              error={errors.currency && touched.currency}
+              helperText={errors.currency}
+            />
+            {handleDelete &&
+              <Button
+                size="small"
+                onClick={() => handleDelete(account)}
+                className={classes.deleteButton}
+                disabled={isSubmitting}
+              >
+                Delete this account
+              </Button>
+            }
+            <Divider />
+            <div className={classes.formActions}>
+              <SubmitButtonWithProgress label="Save" isSubmitting={isSubmitting} />
+            </div>
+          </form>
+        </Paper>
+      </Grid>
+    )
+  }
+}
 
 AccountFormComponent.propTypes = {
   classes: PropTypes.object.isRequired,
-  institutions: PropTypes.array.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   isSubmitting: PropTypes.bool.isRequired,
   values: PropTypes.object.isRequired,

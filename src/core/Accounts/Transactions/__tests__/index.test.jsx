@@ -10,6 +10,7 @@ describe('Transactions', () => {
   const mochDeleteTransactions = jest.fn()
   const mochHandleSort = jest.fn()
   const mochFormatCurrency = jest.fn().mockReturnValue(() => {})
+  const mochFormatDecimal = jest.fn().mockReturnValue(() => {})
   const mochFormatDate = jest.fn().mockReturnValue(() => {})
 
   beforeEach(() => {
@@ -27,6 +28,7 @@ describe('Transactions', () => {
         classes={{ }}
         account={{ id: 1, nstitution: 'TD' }}
         formatCurrency={mochFormatCurrency}
+        formatDecimal={mochFormatDecimal}
         formatDate={mochFormatDate}
       />
     ))
@@ -49,6 +51,7 @@ describe('Transactions', () => {
         sortDirection="DESC"
         classes={{ }}
         formatCurrency={mochFormatCurrency()}
+        formatDecimal={mochFormatDecimal()}
         formatDate={mochFormatDate}
       />
     ))
@@ -67,6 +70,7 @@ describe('Transactions', () => {
           classes={{ }}
           account={{ id: 1, nstitution: 'TD' }}
           formatCurrency={mochFormatCurrency}
+          formatDecimal={mochFormatDecimal}
           formatDate={mochFormatDate}
         />
       ))
@@ -116,6 +120,7 @@ describe('Transactions', () => {
           classes={{ }}
           account={{ id: 1, nstitution: 'TD' }}
           formatCurrency={mochFormatCurrency}
+          formatDecimal={mochFormatDecimal}
           formatDate={mochFormatDate}
         />
       ))

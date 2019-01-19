@@ -6,7 +6,8 @@ import { initialState as accountsInitialState } from '../reducer'
 import { initialState as transactionsInitialState } from '../../transactions/reducer'
 import { initialState as settingsInitialState } from '../../settings/reducer'
 
-jest.mock('uuid/v4', () => jest.fn(() => 1))
+jest.mock('uuid/v4', () => jest.fn(() => 'xyz'))
+const mockStore = configureMockStore([thunk])
 
 beforeEach(() => {
   jest.resetModules()
@@ -14,84 +15,294 @@ beforeEach(() => {
 })
 
 const account = {
+  groupId: 'g1',
   name: 'Checking',
   institution: 'TD',
   openingBalance: 1000
 }
 
 describe('accounts actions', () => {
-  describe('loadAccounts', () => {
-    it('should load accounts', () => {
-      expect(actions.loadAccounts([account])).toEqual({
-        type: types.LOAD_ACCOUNTS,
-        payload: [account]
-      })
+  it('should load accounts', () => {
+    expect(actions.loadAccounts([account])).toEqual({
+      type: types.LOAD_ACCOUNTS,
+      payload: [account]
+    })
+  })
+
+  describe('calculateCurrentBalance', () => {
+    it('should return account openingBalance if no transactions', () => {
+      expect(actions.calculateCurrentBalance(account)).toBe(account.openingBalance)
+    })
+
+    it('should add openingBalance and transactions created after openingBalanceDate', () => {
+      account.openingBalanceDate = Date.now()
+      const transactions = [
+        { amount: 1, createdAt: account.openingBalanceDate - 1 },
+        { amount: 2, createdAt: account.openingBalanceDate },
+        { amount: 3, createdAt: account.openingBalanceDate + 1 }
+      ]
+      expect(actions.calculateCurrentBalance(account, transactions))
+        .toBe(account.openingBalance + transactions[2].amount)
     })
   })
 
   describe('createAccount', () => {
-    it('should create a account', () => {
-      const mockStore = configureMockStore([thunk])
+    it('should createAccount and default to group 0', () => {
       const store = mockStore({
         accounts: accountsInitialState
       })
+      store.dispatch(actions.createAccount({ ...account, groupId: null }))
+      expect(store.getActions()).toEqual([
+        {
+          type: 'CREATE_ACCOUNT',
+          payload: {
+            ...account,
+            id: 'xyz',
+            groupId: '0',
+            currentBalance: 1000
+          }
+        }, {
+          type: types.GROUP_BY_INSTITUTION
+        }
+      ])
+    })
 
-      return store.dispatch(actions.createAccount(account))
-        .then(() => {
-          expect(store.getActions()).toEqual([
-            {
-              type: 'CREATE_ACCOUNT',
-              payload: { ...account, id: 1, currentBalance: 1000 }
-            }
-          ])
-        })
+    it('should createAccount and use the account groupId', () => {
+      const store = mockStore({
+        accounts: accountsInitialState
+      })
+      store.dispatch(actions.createAccount(account))
+      expect(store.getActions()).toEqual([
+        {
+          type: 'CREATE_ACCOUNT',
+          payload: { ...account, id: 'xyz', currentBalance: 1000 }
+        }, {
+          type: types.GROUP_BY_INSTITUTION
+        }
+      ])
     })
   })
 
-  describe('updateAccount', () => {
-    it('should update a account', () => {
-      const mockStore = configureMockStore([thunk])
-      const store = mockStore({
-        accounts: [{ ...account, id: 1 }],
-        transactions: transactionsInitialState
-      })
-      return store.dispatch(actions.updateAccount({ ...account, id: 1, openingBalance: 0 }))
-        .then(() => {
-          expect(store.getActions()).toEqual([
-            {
-              type: 'UPDATE_ACCOUNT',
-              payload: {
-                ...account,
-                id: 1,
-                openingBalance: 0,
-                currentBalance: 0
-              }
-            }
-          ])
-        })
+  it('should updateAccount', () => {
+    const store = mockStore({
+      accounts: accountsInitialState,
+      transactions: transactionsInitialState
     })
+
+    store.dispatch(actions.updateAccount({ ...account, id: 1, openingBalance: 0 }))
+    expect(store.getActions()).toEqual([
+      {
+        type: types.UPDATE_ACCOUNT,
+        payload: {
+          ...account,
+          id: 1,
+          openingBalance: 0,
+          currentBalance: 0 // updates currentBalance
+        }
+      }, {
+        type: types.GROUP_BY_INSTITUTION
+      }
+    ])
   })
 
-  describe('DeleteAccount', () => {
-    it('should delete a account', () => {
-      const mockStore = configureMockStore([thunk])
-      const store = mockStore({
-        accounts: [{ ...account, id: 1 }],
-        transactions: transactionsInitialState,
-        settings: settingsInitialState
-      })
-      return store.dispatch(actions.deleteAccount({ ...account, id: 1 }))
-        .then(() => {
-          expect(store.getActions()).toEqual([
-            {
-              type: 'DELETE_TRANSACTIONS',
-              payload: []
-            }, {
-              type: 'DELETE_ACCOUNT',
-              payload: 1
-            }
-          ])
-        })
+  it('should updateAccountBalance', () => {
+    const store = mockStore({
+      accounts: accountsInitialState,
+      transactions: transactionsInitialState
     })
+
+    store.dispatch(actions.updateAccountBalance({ ...account, id: 1, openingBalance: 0 }))
+    expect(store.getActions()).toEqual([
+      {
+        type: types.UPDATE_ACCOUNT,
+        payload: {
+          ...account,
+          id: 1,
+          openingBalance: 0,
+          currentBalance: 0
+        }
+      }
+    ])
+  })
+
+
+  it('should deleteAccount', () => {
+    const store = mockStore({
+      accounts: {
+        ...accountsInitialState,
+        byId: { a1: [{ ...account, id: 'a1' }] },
+        byInstitution: {
+          TD: {
+            groups: {
+              [account.groupId]: { accountIds: ['a1'] }
+            }
+          }
+        }
+      },
+      transactions: { list: [{ id: 1, accountId: 'a1', amount: 1 }] },
+      settings: settingsInitialState
+    })
+    store.dispatch(actions.deleteAccount({ ...account, id: 'a1' }))
+    expect(store.getActions()).toEqual([
+      {
+        type: 'DELETE_TRANSACTIONS',
+        payload: [1]
+      }, {
+        type: types.DELETE_ACCOUNT,
+        payload: 'a1'
+      }, {
+        type: types.GROUP_BY_INSTITUTION
+      }
+    ])
+  })
+
+  it('should deleteAccount but skip skipAfterChange', () => {
+    const store = mockStore({
+      accounts: {
+        ...accountsInitialState,
+        byId: { a1: [{ ...account, id: 'a1' }] },
+        byInstitution: {
+          TD: {
+            groups: {
+              [account.groupId]: { accountIds: ['a1'] }
+            }
+          }
+        }
+      },
+      transactions: transactionsInitialState,
+      settings: settingsInitialState
+    })
+    store.dispatch(actions.deleteAccount({ ...account, id: 'a1' }, { skipAfterChange: true }))
+    expect(store.getActions()).toEqual([
+      {
+        type: 'DELETE_TRANSACTIONS',
+        payload: []
+      }, {
+        type: types.DELETE_ACCOUNT,
+        payload: 'a1'
+      }
+    ])
+  })
+
+  it('should createAccountWithTransactions', () => {
+    const transactions = [{ id: 'xyz', accountId: 'xyz', amount: 1 }]
+
+    const store = mockStore({
+      accounts: accountsInitialState
+    })
+    const accountId = actions.createAccountWithTransactions(store.dispatch, { ...account, groupId: null }, transactions)
+    expect(accountId).toBe('xyz')
+    expect(store.getActions()).toEqual([
+      {
+        type: types.CREATE_ACCOUNT,
+        payload: {
+          ...account,
+          id: 'xyz',
+          groupId: '0',
+          currentBalance: 1000
+        }
+      }, {
+        type: 'ADD_TRANSACTIONS',
+        payload: transactions
+      }
+    ])
+  })
+
+  it('should createAccountGroup', () => {
+    const store = mockStore({
+      accounts: accountsInitialState,
+      transactions: transactionsInitialState,
+      settings: settingsInitialState
+    })
+    const institution = 'Coinbase'
+    const accountGroupData = { apiKey: 'ABC' }
+    const importedAccounts = [{
+      sourceId: 's1',
+      name: 'BTC wallet',
+      openingBalance: 0,
+      transactions: [{ sourceId: 's2', accountId: 'xyz', amount: 1 }]
+    }]
+
+    store.dispatch(actions.createAccountGroup(institution, accountGroupData, importedAccounts))
+    expect(store.getActions()).toEqual([
+      {
+        type: types.CREATE_ACCOUNT,
+        payload: {
+          id: 'xyz',
+          sourceId: 's1',
+          groupId: 'xyz',
+          name: 'BTC wallet',
+          openingBalance: 0,
+          currentBalance: 0,
+          institution
+        }
+      }, {
+        type: 'ADD_TRANSACTIONS',
+        payload: [{
+          ...importedAccounts[0].transactions[0],
+          id: 'xyz'
+        }]
+      }, {
+        type: types.CREATE_ACCOUNT_GROUP,
+        payload: {
+          institution,
+          accountGroup: {
+            ...accountGroupData,
+            accountIds: ['xyz'],
+            id: 'xyz',
+            type: 'api'
+          }
+        }
+      }, {
+        type: 'GROUP_BY_INSTITUTION'
+      }
+    ])
+  })
+
+  it('should deleteAccountGroup', () => {
+    const accountGroup = { id: 'g1', accountIds: ['a1', 'a2'] }
+    const transactions = [
+      { id: 't1', accountId: 'a1' },
+      { id: 't2', accountId: 'a1' },
+      { id: 't3', accountId: 'a2' },
+      { id: 't4', accountId: 'a3' }
+    ]
+    const store = mockStore({
+      accounts: {
+        byId: {
+          a1: { id: 'a1', groupId: 'g1', institution: 'Coinbase' },
+          a2: { id: 'a2', groupId: 'g1', institution: 'Coinbase' },
+          a3: { id: 'a3', groupId: '0', institution: 'TD' }
+        },
+        byInstitution: {
+          Coinbase: {
+            groups: { g1: accountGroup }
+          },
+          TD: {
+            groups: { 0: { id: '0', accountIds: ['a3'] } }
+          }
+        }
+      },
+      transactions: { list: transactions }
+    })
+
+    store.dispatch(actions.deleteAccountGroup(accountGroup))
+    expect(store.getActions()).toEqual([
+      {
+        type: 'DELETE_TRANSACTIONS',
+        payload: ['t1', 't2']
+      }, {
+        type: types.DELETE_ACCOUNT,
+        payload: 'a1'
+      }, {
+        type: 'DELETE_TRANSACTIONS',
+        payload: ['t3']
+      }, {
+        type: types.DELETE_ACCOUNT,
+        payload: 'a2'
+      }, {
+        type: types.GROUP_BY_INSTITUTION
+      }
+    ])
   })
 })

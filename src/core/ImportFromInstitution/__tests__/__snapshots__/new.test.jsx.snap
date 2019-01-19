@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`New Import From Institution matches snapshot 1`] = `
+<AccountForm
+  handleCancel={[Function]}
+  handleSave={[Function]}
+  institution="TD"
+/>
+`;
