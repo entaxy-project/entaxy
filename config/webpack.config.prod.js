@@ -149,7 +149,11 @@ module.exports = {
               path.resolve(paths.appNodeModules, 'tiny-secp256k1'),
               path.resolve(paths.appNodeModules, 'jsontokens'),
               path.resolve(paths.appNodeModules, 'bip32'),
-              path.resolve(paths.appNodeModules, 'base64url')
+              path.resolve(paths.appNodeModules, 'base64url'),
+              path.resolve(paths.appNodeModules, 'key-encoder'),
+              path.resolve(paths.appNodeModules, 'bip32'),
+              path.resolve(paths.appNodeModules, 'typeforce'),
+              path.resolve(paths.appNodeModules, 'base-x')
             ],
             loader: require.resolve('babel-loader'),
             options: {
