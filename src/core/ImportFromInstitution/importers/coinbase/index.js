@@ -102,7 +102,6 @@ const importData = async (apiKey, apiSecret) => {
       `accounts/${account.sourceId}/transactions`,
       { limit: 2 }
     )
-    console.log(transactions)
 
     account.transactions = normalizeTransactions(transactions)
   }))

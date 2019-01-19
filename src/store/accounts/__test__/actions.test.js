@@ -226,9 +226,6 @@ describe('accounts actions', () => {
     store.dispatch(actions.createAccountGroup(institution, accountGroupData, importedAccounts))
     expect(store.getActions()).toEqual([
       {
-        type: 'SHOW_OVERLAY',
-        payload: 'Importing data from Coinbase ...'
-      }, {
         type: types.CREATE_ACCOUNT,
         payload: {
           id: 'xyz',
@@ -257,7 +254,7 @@ describe('accounts actions', () => {
           }
         }
       }, {
-        type: 'HIDE_OVERLAY'
+        type: 'GROUP_BY_INSTITUTION'
       }
     ])
   })

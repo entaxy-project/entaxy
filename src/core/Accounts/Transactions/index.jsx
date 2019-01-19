@@ -19,6 +19,7 @@ import { deleteTransactions, updateSortBy } from '../../../store/transactions/ac
 import { makeAccountTransactions } from '../../../store/transactions/selectors'
 import {
   currencyFormatter,
+  decimalFormatter,
   dateFormatter
 } from '../../../util/stringFormatter'
 
@@ -67,6 +68,7 @@ const makeMapStateToProps = () => {
     const account = state.accounts.byId[props.match.params.accountId]
     return {
       formatCurrency: currencyFormatter(state.settings.locale, account.currency),
+      formatDecimal: decimalFormatter(state.settings.locale, account.type),
       formatDate: dateFormatter(state.settings.locale),
       sortBy: state.transactions.sortBy,
       sortDirection: state.transactions.sortDirection,
@@ -171,11 +173,16 @@ export class TransactionsComponent extends React.Component {
   isSelected = id => this.state.selected.indexOf(id) !== -1
 
   displayCurrency = ({ amount, nativeAmount }) => {
-    const { classes, account, formatCurrency } = this.props
+    const {
+      classes,
+      account,
+      formatCurrency,
+      formatDecimal
+    } = this.props
     if (account.type === 'wallet') {
       return (
         <div>
-          {amount} {account.symbol}
+          {formatDecimal(amount)} {account.symbol}
           <small className={classes.nativeAmount}>{formatCurrency(nativeAmount)}</small>
         </div>
       )
@@ -315,6 +322,7 @@ export class TransactionsComponent extends React.Component {
 
 TransactionsComponent.propTypes = {
   formatCurrency: PropTypes.func.isRequired,
+  formatDecimal: PropTypes.func.isRequired,
   formatDate: PropTypes.func.isRequired,
   classes: PropTypes.object.isRequired,
   transactions: PropTypes.array.isRequired,

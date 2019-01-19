@@ -1,10 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
+import AccountBalanceIcon from '@material-ui/icons/AccountBalance'
 import importLogos from './importLogos'
 
 const styles = () => ({
   small: {
+    fontSize: 20,
     width: 20,
     height: 20
   },
@@ -19,13 +21,18 @@ const InstitutionIcon = ({
   className,
   institution,
   size
-}) => (
-  <img
-    src={`${importLogos[institution]}`}
-    alt={institution}
-    className={`${[classes[size], className].join(' ')}`}
-  />
-)
+}) => {
+  if (importLogos[institution]) {
+    return (
+      <img
+        src={`${importLogos[institution]}`}
+        alt={institution}
+        className={`${[classes[size], className].join(' ')}`}
+      />
+    )
+  }
+  return <AccountBalanceIcon className={`${[classes[size], className].join(' ')}`} />
+}
 
 InstitutionIcon.propTypes = {
   classes: PropTypes.object.isRequired,

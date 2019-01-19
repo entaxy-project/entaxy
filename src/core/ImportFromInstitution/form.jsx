@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React from 'react'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
@@ -19,6 +18,7 @@ import red from '@material-ui/core/colors/red'
 import SubmitButtonWithProgress from '../../common/SubmitButtonWithProgress'
 import DescriptionCard from '../../common/DescriptionCard'
 import importFromCoinbase from './importers/coinbase'
+import { showOverlay, hideOverlay } from '../../store/settings/actions'
 
 const styles = theme => ({
   root: {
@@ -64,6 +64,11 @@ const styles = theme => ({
     padding: theme.spacing.unit * 2
   }
 })
+
+const mapDispatchToProps = {
+  showOverlay,
+  hideOverlay
+}
 
 const mapStateToProps = (state, ownProps) => {
   const institutionData = state.accounts.byInstitution[ownProps.institution]
@@ -185,7 +190,7 @@ ImportFromInstitutionFormComponent.defaultProps = {
 }
 
 export default compose(
-  connect(mapStateToProps),
+  connect(mapStateToProps, mapDispatchToProps),
   withStyles(styles),
   withFormik({
     enableReinitialize: true,
@@ -209,13 +214,16 @@ export default compose(
     handleSubmit: (values, { props, setSubmitting, setErrors }) => {
       const { apiKey, apiSecret } = values
       setSubmitting(true)
+      props.showOverlay(`Importing data from ${props.institution} ...`)
       importFromCoinbase(apiKey, apiSecret)
         .then((accounts) => {
           props.handleSave({ apiKey, apiSecret }, accounts)
           setSubmitting(false)
+          props.hideOverlay()
         }).catch((errorMessage) => {
           setErrors({ global: `Sorry, something went wrong.${errorMessage}` })
           setSubmitting(false)
+          props.hideOverlay()
         })
     }
   })

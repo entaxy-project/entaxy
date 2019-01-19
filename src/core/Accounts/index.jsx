@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React from 'react'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
@@ -19,7 +18,7 @@ import SettingsIcon from '@material-ui/icons/Settings'
 import { NavLink } from 'react-router-dom'
 import grey from '@material-ui/core/colors/grey'
 import InstitutionIcon from '../../common/InstitutionIcon'
-import { currencyFormatter } from '../../util/stringFormatter'
+import { currencyFormatter, decimalFormatter } from '../../util/stringFormatter'
 
 const styles = theme => ({
   noAccounts: {
@@ -65,6 +64,13 @@ export const AccountsComponent = ({
   accountId
 }) => {
   const userHasAccounts = Object.keys(accounts.byInstitution).length > 0
+
+  const displayCurrency = (account) => {
+    if (account.type === 'wallet') {
+      return `${decimalFormatter(settings.locale, account.type)(account.currentBalance)} ${account.symbol}`
+    }
+    return currencyFormatter(settings.locale, account.currency)(account.currentBalance)
+  }
 
   return (
     <List
@@ -121,19 +127,19 @@ export const AccountsComponent = ({
                 <List dense={true}>
                   {accountGroup.accountIds.map((id) => {
                     if (accounts.byId[id] === undefined) return undefined
-                    const { name, currency, currentBalance } = accounts.byId[id]
+                    const account = accounts.byId[id]
                     return (
                       <ListItem
                         className={classes.account}
                         button
-                        key={id}
-                        selected={id === accountId}
+                        key={account.id}
+                        selected={account.id === accountId}
                         component={NavLink}
-                        to={`/accounts/${id}/transactions`}
+                        to={`/accounts/${account.id}/transactions`}
                       >
                         <ListItemText
-                          primary={name}
-                          secondary={currencyFormatter(settings.locale, currency)(currentBalance)}
+                          primary={account.name}
+                          secondary={displayCurrency(account)}
                         />
                         {accountGroup.type === 'default' &&
                           <ListItemSecondaryAction>

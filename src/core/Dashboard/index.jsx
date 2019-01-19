@@ -53,7 +53,8 @@ const styles = theme => ({
     display: 'flex'
   },
   institutionIcon: {
-    marginRight: 16
+    marginRight: 16,
+    color: grey[600]
   },
   accountName: {
     paddingLeft: 20

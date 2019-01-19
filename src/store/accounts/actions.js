@@ -1,8 +1,7 @@
-/* eslint-disable no-console */
 import uuid from 'uuid/v4'
+import Big from 'big.js'
 import types from './types'
 import { saveState } from '../user/actions'
-import { showOverlay, hideOverlay } from '../settings/actions'
 import {
   addTransactions,
   deleteTransactions,
@@ -18,14 +17,15 @@ export const afterAccountsChanged = () => (dispatch) => {
   saveState()
 }
 
-export const calculateCurrentBalance = (account, transactions = []) => (
-  transactions.reduce((balance, transaction) => {
+export const calculateCurrentBalance = (account, transactions = []) => {
+  const total = transactions.reduce((balance, transaction) => {
     if (transaction.createdAt > account.openingBalanceDate) {
-      return balance + transaction.amount
+      return balance.add(Big(transaction.amount))
     }
     return balance
-  }, account.openingBalance)
-)
+  }, Big(account.openingBalance))
+  return parseFloat(total)
+}
 
 export const createAccount = account => (dispatch) => {
   const newAccount = {
@@ -89,7 +89,6 @@ export const createAccountWithTransactions = (dispatch, account, transactions) =
 
 export const createAccountGroup = (institution, accountGroupData, importedAccounts) => {
   return (dispatch) => {
-    dispatch(showOverlay(`Importing data from ${institution} ...`))
     const accountGroupId = uuid()
 
     const accountIds = importedAccounts.map((importedAccount) => {
@@ -108,15 +107,12 @@ export const createAccountGroup = (institution, accountGroupData, importedAccoun
     }
 
     dispatch({ type: types.CREATE_ACCOUNT_GROUP, payload: { institution, accountGroup } })
-    saveState()
-    dispatch(hideOverlay())
+    dispatch(afterAccountsChanged())
   }
 }
 
 export const updateAccountGroup = (institution, accountGroup, importedAccounts) => {
   return async (dispatch, getState) => {
-    dispatch(showOverlay(`Importing data from ${institution} ...`))
-
     const existingAccounts = []
     importedAccounts.map((importedAccount) => {
       // Find existing account
@@ -134,7 +130,6 @@ export const updateAccountGroup = (institution, accountGroup, importedAccounts) 
       }
       return null
     })
-    return dispatch(hideOverlay())
   }
 }
 
