@@ -16,6 +16,7 @@ export default class TangerineCsvParser extends CsvParser {
     return {
       ...accountData,
       amount: row.Amount,
+      category: '',
       description: this.parseString(row.Memo),
       createdAt: this.parseDate(row.Date, 'mm/dd/yyyy')
     }

@@ -21,6 +21,7 @@ export default class BmoCsvParser extends CsvParser {
       ...accountData,
       amount: row['Transaction Amount'],
       description: this.parseString(row.Description),
+      category: '',
       createdAt: this.parseDate(row['Date Posted'], 'yyyymmdd')
     }
   }

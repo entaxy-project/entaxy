@@ -63,6 +63,19 @@ export const TransactionDialogComponent = ({
       helperText={errors.description}
     />
     <TextField
+      label="Category"
+      inputProps={{
+        'aria-label': 'Category',
+        maxLength: 64
+      }}
+      className={classes.input}
+      value={values.category}
+      name="category"
+      onChange={handleChange}
+      error={errors.category && touched.category}
+      helperText={errors.category}
+    />
+    <TextField
       type="number"
       label="Amount"
       inputProps={{
@@ -121,6 +134,7 @@ export default compose(
       if (transaction === null) {
         return {
           description: '',
+          category: '',
           amount: '',
           createdAt: format(Date.now(), 'YYYY-MM-DD')
         }
@@ -133,6 +147,8 @@ export default compose(
     validationSchema: Yup.object().shape({
       description: Yup.string()
         .max(256, 'Too Long!'),
+      category: Yup.string()
+        .max(64, 'Too long!'),
       amount: Yup.number()
         .required('Please enter an amount'),
       createdAt: Yup.number()
