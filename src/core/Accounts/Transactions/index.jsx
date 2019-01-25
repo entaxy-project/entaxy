@@ -202,7 +202,6 @@ export class TransactionsComponent extends React.Component {
     } = this.props
     const { selected } = this.state
     const rowHeight = account.type === 'wallet' ? 42 : 30
-
     return (
       <div>
         <TransactionDialog
@@ -276,6 +275,11 @@ export class TransactionsComponent extends React.Component {
                     dataKey="description"
                     disableSort={true}
                     flexGrow={1}
+                  />
+                  <Column
+                    width={130}
+                    label="Category"
+                    dataKey="category"
                   />
                   <Column
                     width={130}
