@@ -3,21 +3,23 @@ import { compose } from 'recompose'
 import { connect } from 'react-redux'
 import { withStyles } from '@material-ui/core/styles'
 import { withFormik } from 'formik'
-import * as Yup from 'yup'
 import PropTypes from 'prop-types'
-import { NavLink } from 'react-router-dom'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
-import TextField from '@material-ui/core/TextField'
 import IconButton from '@material-ui/core/IconButton'
 import CloseIcon from '@material-ui/icons/Close'
 import Button from '@material-ui/core/Button'
 import Divider from '@material-ui/core/Divider'
 import red from '@material-ui/core/colors/red'
 import SubmitButtonWithProgress from '../../common/SubmitButtonWithProgress'
-import DescriptionCard from '../../common/DescriptionCard'
+import InstitutionFormFields, {
+  initialValues,
+  validationScheme,
+  instructionsFor
+} from './formFields'
 import importFromCoinbase from './importers/coinbase'
+import importFromQuestrade from './importers/questrade'
 import { showOverlay, hideOverlay } from '../../store/settings/actions'
 
 const styles = theme => ({
@@ -104,22 +106,10 @@ export const ImportFromInstitutionFormComponent = ({
       <Divider />
       <Grid container className={classes.input} spacing={16}>
         <Typography variant="caption" paragraph>
-          Your browser will connect directly to <strong>{institution}</strong> using
-          the API key you enter bellow, so you&apos;re really importing your own data.
+          Your browser will connect directly to <strong>{institution}</strong> so
+          you&apos;re really importing your own data.
         </Typography>
-        <Typography variant="caption" paragraph>
-          <NavLink to="/">Create an API key on Coinbase</NavLink> (opens in a new tab)
-        </Typography>
-        <DescriptionCard info>
-          <Typography variant="caption">
-            Make sure your api key has access to <strong>all accounts</strong> and has
-            the following permimisions:
-            <ul>
-              <li><strong>wallet:accounts:read</strong></li>
-              <li><strong>wallet:transactions:read</strong></li>
-            </ul>
-          </Typography>
-        </DescriptionCard>
+        {instructionsFor(institution)}
       </Grid>
       <form onSubmit={handleSubmit} className={classes.form}>
         {handleDelete && accountGroup &&
@@ -132,31 +122,14 @@ export const ImportFromInstitutionFormComponent = ({
             Delete all {accountGroup.accountIds.length} accounts connected to {institution}
           </Button>
         }
-        <TextField
-          className={classes.input}
-          label="API key"
-          inputProps={{
-            'aria-label': 'API key',
-            maxLength: 100
-          }}
-          value={values.apiKey}
-          name="apiKey"
-          onChange={handleChange}
-          error={errors.apiKey && touched.apiKey}
-          helperText={errors.apiKey}
-        />
-        <TextField
-          className={classes.input}
-          label="API secret"
-          inputProps={{
-            'aria-label': 'API secret',
-            maxLength: 100
-          }}
-          value={values.apiSecret}
-          name="apiSecret"
-          onChange={handleChange}
-          error={errors.apiSecret && touched.apiSecret}
-          helperText={errors.apiSecret}
+        <InstitutionFormFields
+          institution={institution}
+          formClassName={classes.form}
+          inputClassName={classes.input}
+          values={values}
+          handleChange={handleChange}
+          errors={errors}
+          touched={touched}
         />
         {errors.global &&
           <Typography color="error" variant="caption">{errors.global}</Typography>
@@ -194,30 +167,24 @@ export default compose(
   withStyles(styles),
   withFormik({
     enableReinitialize: true,
-    mapPropsToValues: ({ accountGroup }) => {
+    mapPropsToValues: ({ institution, accountGroup }) => {
       if (accountGroup === undefined) {
-        return {
-          apiKey: '',
-          apiSecret: ''
-        }
+        return initialValues(institution)
       }
       return accountGroup
     },
-    validationSchema: Yup.object().shape({
-      apiKey: Yup.string()
-        .max(100, 'Too Long!')
-        .required('Please enter the API key'),
-      apiSecret: Yup.string()
-        .max(100, 'Too Long!')
-        .required('Please enter the API secret')
-    }),
+    validationSchema: ({ institution }) => validationScheme(institution),
     handleSubmit: (values, { props, setSubmitting, setErrors }) => {
-      const { apiKey, apiSecret } = values
       setSubmitting(true)
       props.showOverlay(`Importing data from ${props.institution} ...`)
-      importFromCoinbase(apiKey, apiSecret)
-        .then((accounts) => {
-          props.handleSave({ apiKey, apiSecret }, accounts)
+      const importData = {
+        Coinbase: formValues => importFromCoinbase(formValues),
+        Questrade: formValues => importFromQuestrade(formValues)
+      }[props.institution]
+
+      importData(values)
+        .then(({ accountGroup, accounts }) => {
+          props.handleSave(accountGroup, accounts)
           setSubmitting(false)
           props.hideOverlay()
         }).catch((errorMessage) => {

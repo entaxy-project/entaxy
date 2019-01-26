@@ -1,16 +1,76 @@
-import uuid from 'uuid/v4'
+/* eslint-disable no-console */
 import { isEqual, isNil } from 'lodash'
 import Papa from 'papaparse'
 import parse from 'date-fns/parse'
 
+const DONT_IMPORT = 'Don\'t import'
+
 // The base class for all CSV parsers
 export default class CsvParser {
-  constructor() {
-    this._errors = { base: [], transactions: {} }
-    this._currentRow = 0
-    this._headerIsValid = false
-    this._header = [] // This should be overriten in a deriver class
-    this._config = { header: true } // Specific parser configuration - override in derived class
+  constructor(file) {
+    this._file = file
+    this._columnsCount = 0
+    this._headerRowIndex = 0
+    // this._errors = { base: [], transactions: {} }
+    // this._currentRow = 0
+    // this._headerIsValid = false
+    // this._header = [] // This should be overriten in a deriver class
+    // this._config = { header: true } // Specific parser configuration - override in derived class
+  }
+
+  // Look through the first few rows and return the most common number of columns
+  countColumns(rows) {
+    // crete a hash with {numColums: numRows}
+    const columnCount = rows.reduce((count, row) => {
+      return {
+        ...count,
+        [row.length]: (count[row.length] || 0) + 1
+      }
+    }, {})
+
+    // Select the most common column length
+    const mostCommonLength = Object.keys(columnCount)
+      .reduce((mostCommon, length) => (
+        columnCount[length] > columnCount[mostCommon] ? length : mostCommon
+      ))
+    return parseInt(mostCommonLength, 10)
+  }
+
+  // Return the first row that has the same number of columns as most of the other rows
+  findHeaderRow(rows) {
+    return rows.findIndex(row => row.length === this._columnsCount)
+  }
+
+  mapHeaderRow() {
+    const transactionFields = {
+      description: /Description|Memo/gi,
+      amount: /Amount/gi,
+      createdAt: /Date/gi
+    }
+    return this._csvData[this._headerRowIndex].reduce((res, columnHeader) => {
+      const transactionField = Object.keys(transactionFields).find(field => (
+        transactionFields[field].test(columnHeader)
+      ))
+      console.log('transactionField', columnHeader, transactionField)
+      return ({ ...res, [columnHeader]: transactionField || DONT_IMPORT })
+    }, {})
+  }
+
+  getHeaders() {
+    return new Promise((resolve) => {
+      Papa.parse(this._file, {
+        preview: 10,
+        trimHeaders: true,
+        dynamicTyping: true,
+        skipEmptyLines: 'greedy',
+        complete: (results) => {
+          this._csvData = results.data
+          this._columnsCount = this.countColumns(this._csvData)
+          this._headerRowIndex = this.findHeaderRow(this._csvData)
+          return resolve(this.mapHeaderRow())
+        }
+      })
+    })
   }
 
   hasErrors() {
@@ -35,34 +95,44 @@ export default class CsvParser {
     throw (new Error(`map() method not defined ${row}`))
   }
 
-  parse(file, account) {
-    const transactions = []
+  parse() {
     return new Promise((resolve) => {
-      Papa.parse(file, {
+      Papa.parse(this._file, {
         trimHeaders: true,
         dynamicTyping: true,
         skipEmptyLines: 'greedy',
-        complete: (results) => {
-          this._currentRow = 0
-          this.validateHeader(results.meta.fields) // The first row is the header
-          // Record any errors from the parsing library
-          results.errors.forEach((error) => {
-            this.addError(`${error.type}: (row ${error.row}) ${error.message}`, 'base')
-          })
-          if (!this.hasErrors()) {
-            // Generate the transactions
-            results.data.forEach((row) => {
-              transactions.push(this.map(row, { id: uuid(), accountId: account.id }))
-              this._currentRow += 1
-            })
-          }
-          // Return the transactions and any errors found
-          resolve({ transactions, errors: this._errors })
-        },
-        ...this._config
+        complete: results => resolve(results)
       })
     })
   }
+  // parse(file, account) {
+  //   const transactions = []
+  //   return new Promise((resolve) => {
+  //     Papa.parse(file, {
+  //       trimHeaders: true,
+  //       dynamicTyping: true,
+  //       skipEmptyLines: 'greedy',
+  //       complete: (results) => {
+  //         this._currentRow = 0
+  //         this.validateHeader(results.meta.fields) // The first row is the header
+  //         // Record any errors from the parsing library
+  //         results.errors.forEach((error) => {
+  //           this.addError(`${error.type}: (row ${error.row}) ${error.message}`, 'base')
+  //         })
+  //         if (!this.hasErrors()) {
+  //           // Generate the transactions
+  //           results.data.forEach((row) => {
+  //             transactions.push(this.map(row, { id: uuid(), accountId: account.id }))
+  //             this._currentRow += 1
+  //           })
+  //         }
+  //         // Return the transactions and any errors found
+  //         resolve({ transactions, errors: this._errors })
+  //       },
+  //       ...this._config
+  //     })
+  //   })
+  // }
 
   parseString(string) {
     return (isNil(string) ? '' : string.trim())

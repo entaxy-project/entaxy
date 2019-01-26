@@ -11,7 +11,6 @@ const styles = theme => ({
     border: '3px dashed rgb(200, 200, 200)',
     borderRadius: '5px',
     padding: '50px',
-    margin: '20px',
     cursor: 'pointer',
     display: 'flex',
     'align-items': 'center',
