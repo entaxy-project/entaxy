@@ -2,65 +2,90 @@
 import React from 'react'
 import { withStyles } from '@material-ui/core/styles'
 import PropTypes from 'prop-types'
+import Paper from '@material-ui/core/Paper'
 import Table from '@material-ui/core/Table'
+import TableHead from '@material-ui/core/TableHead'
 import TableBody from '@material-ui/core/TableBody'
 import TableCell from '@material-ui/core/TableCell'
 import TableRow from '@material-ui/core/TableRow'
 import MenuItem from '@material-ui/core/MenuItem'
 import FormControl from '@material-ui/core/FormControl'
 import Typography from '@material-ui/core/Typography'
+import InputLabel from '@material-ui/core/InputLabel'
 import Select from '@material-ui/core/Select'
 import Button from '@material-ui/core/Button'
 import Divider from '@material-ui/core/Divider'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import green from '@material-ui/core/colors/green'
+import Icon from '@mdi/react'
+import { mdiFileDelimited } from '@mdi/js'
 import CsvDropzone from './CsvDropzone'
 import CsvParser from '../../../store/transactions/CsvParsers/CsvParser'
-// import BmoCsvParser from '../../../store/transactions/CsvParsers/BmoCsvParser'
-// import TdCsvParser from '../../../store/transactions/CsvParsers/TdCsvParser'
-// import TangerineCsvParser from '../../../store/transactions/CsvParsers/TangerineCsvParser'
 
-const styles = theme => ({
-  root: {
-    display: 'flex',
-    justifyContent: 'center',
-    margin: '20px'
-  },
-  formField: {
-    width: '100%'
-  },
-  formActions: {
-    display: 'flex',
-    'justify-content': 'flex-end',
-    'padding-top': '10px'
-  },
-  buttonWrapper: {
-    margin: theme.spacing.unit,
-    position: 'relative'
-  },
-  buttonSuccess: {
-    backgroundColor: green[500],
-    '&:hover': {
-      backgroundColor: green[700]
+const styles = (theme) => {
+  console.log('theme', theme)
+
+  return ({
+    root: {
+      display: 'flex',
+      justifyContent: 'center',
+      margin: '20px'
+    },
+    fileDetails: {
+      display: 'flex',
+      padding: 5,
+      background: theme.palette.secondary.light,
+      color: theme.palette.primary.contrastText,
+      borderRadius: 4,
+      marginBottom: 10
+    },
+    csvFileIcon: {
+      marginRight: 5,
+      verticalAlign: 'text-bottom',
+      fill: '#fff'
+    },
+    formField: {
+      width: '100%'
+    },
+    table: {
+      marginBottom: 20
+    },
+    formOptions: {
+      display: 'flex',
+      justifyContent: 'center',
+      flexDirection: 'column',
+      marginTop: 10,
+      padding: 10,
+      border: 'solid #999 2px'
+    },
+    formActions: {
+      display: 'flex',
+      'justify-content': 'flex-end',
+      'padding-top': '10px'
+    },
+    buttonWrapper: {
+      margin: theme.spacing.unit,
+      position: 'relative'
+    },
+    buttonSuccess: {
+      backgroundColor: green[500],
+      '&:hover': {
+        backgroundColor: green[700]
+      }
+    },
+    buttonProgress: {
+      color: green[500],
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      marginTop: -12,
+      marginLeft: -12
     }
-  },
-  buttonProgress: {
-    color: green[500],
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    marginTop: -12,
-    marginLeft: -12
-  }
-})
+  })
+}
 
-// const parsers = {
-//   RBC: RbcCsvParser,
-//   BMO: BmoCsvParser,
-//   TD: TdCsvParser,
-//   Tangerine: TangerineCsvParser
-// }
 const DONT_IMPORT = 'Don\'t import'
+const parser = new CsvParser()
 
 class CsvImportForm extends React.Component {
   state = {
@@ -68,11 +93,12 @@ class CsvImportForm extends React.Component {
     file: null,
     error: null,
     transactionFields: {
-      description: { label: 'Description', mapTo: DONT_IMPORT },
-      amount: { label: 'Amount', mapTo: DONT_IMPORT },
-      createdAt: { label: 'Date', mapTo: DONT_IMPORT }
+      description: { label: 'Description', column: { name: DONT_IMPORT, index: null } },
+      amount: { label: 'Amount', column: { name: DONT_IMPORT, index: null } },
+      createdAt: { label: 'Date', column: { name: DONT_IMPORT, index: null } }
     },
-    csvHeader: null
+    csvHeader: null,
+    dateFormat: null
   }
 
   setSubmitting = (value) => {
@@ -86,24 +112,36 @@ class CsvImportForm extends React.Component {
         error: 'The file you uploaded is not a CSV file'
       })
     } else {
-      this.setState({ file: acceptedFiles[0] })
-      const parser = new CsvParser(acceptedFiles[0])
-      this.setState({ csvHeader: await parser.getHeaders() })
+      const csvHeader = await parser.getHeaders(acceptedFiles[0])
+      const transactionFields = {}
+      Object.keys(csvHeader).forEach((column, index) => {
+        if (csvHeader[column] !== DONT_IMPORT) {
+          transactionFields[csvHeader[column]] = {
+            ...this.state.transactionFields[csvHeader[column]],
+            column: { name: column, index }
+          }
+        }
+      })
+      this.setState({
+        file: acceptedFiles[0],
+        csvHeader,
+        transactionFields,
+        dateFormat: parser.dateFormat
+      })
     }
   }
 
   handleChange = ({ target }) => {
-    const { transactionFields } = this.state
+    const { transactionFields, csvHeader } = this.state
     if (target.value === DONT_IMPORT) {
       const oldSelection = Object.keys(transactionFields)
-        .find(field => transactionFields[field].mapTo === target.name)
-
+        .find(field => transactionFields[field].column.name === target.name)
       this.setState({
         transactionFields: {
           ...transactionFields,
           [oldSelection]: {
             ...transactionFields[oldSelection],
-            mapTo: DONT_IMPORT
+            column: { name: DONT_IMPORT, index: null }
           }
         }
       })
@@ -113,27 +151,32 @@ class CsvImportForm extends React.Component {
           ...transactionFields,
           [target.value]: {
             ...transactionFields[target.value],
-            mapTo: target.name
+            column: {
+              name: target.name,
+              index: Object.keys(csvHeader).indexOf(target.name)
+            }
           }
         }
       })
     }
     this.setState({
       csvHeader: {
-        ...this.state.csvHeader,
+        ...csvHeader,
         [target.name]: target.value
       }
     })
   }
 
   handleSubmit = (event) => {
-    console.log(event)
-    // const { account, handleParsedData } = this.props
-    // new parsers[account.institution]().parse(this.state.file, account)
-    //   .then(({ transactions, errors }) => {
-    //     this.setSubmitting(false)
-    //     handleParsedData(transactions, errors)
-    //   })
+    // const { handleParsedData } = this.props
+    const res = parser.mapToTransactions({
+      transactionFieldsMap: this.state.transactionFields
+    })
+    console.log('res', res)
+    // .then(({ transactions, errors }) => {
+    //   this.setSubmitting(false)
+    //   handleParsedData(transactions, errors)
+    // })
     event.preventDefault()
   }
 
@@ -149,9 +192,11 @@ class CsvImportForm extends React.Component {
       error,
       isSubmitting,
       transactionFields,
-      csvHeader
+      csvHeader,
+      dateFormat
     } = this.state
-
+    console.log('csvHeader', csvHeader)
+    console.log('transactionFields', transactionFields)
     return (
       <form onSubmit={this.handleSubmit}>
         <div className={classes.root}>
@@ -166,19 +211,26 @@ class CsvImportForm extends React.Component {
           }
           {csvHeader &&
             <div>
-              <Typography>
+              <Typography variant="subtitle2" className={classes.fileDetails}>
+                <Icon path={mdiFileDelimited} size={0.7} className={classes.csvFileIcon} />
                 {file.name}
               </Typography>
-              <Typography>
-                Choose the transaction fields that match the CSV columns
+              <Typography variant="caption">
+                Choose the transaction field that matches each CSV columns
               </Typography>
               <Table className={classes.table}>
+                <TableHead>
+                  <TableRow>
+                    <TableCell align="right">CSV column</TableCell>
+                    <TableCell>Transaction field</TableCell>
+                  </TableRow>
+                </TableHead>
                 <TableBody>
                   {Object.keys(csvHeader).map(csvField => (
                     <TableRow key={csvField} selected={csvHeader[csvField] !== DONT_IMPORT}>
                       <TableCell align="right">{csvField}</TableCell>
                       <TableCell align="left">
-                        <FormControl variant="outlined" className={classes.formField}>
+                        <FormControl className={classes.formField}>
                           <Select
                             value={csvHeader[csvField] || ''}
                             onChange={this.handleChange}
@@ -191,7 +243,7 @@ class CsvImportForm extends React.Component {
                               <MenuItem
                                 key={field}
                                 value={field}
-                                disabled={transactionFields[field].mapTo !== DONT_IMPORT}
+                                disabled={transactionFields[field].column.index !== null}
                               >
                                 {transactionFields[field].label}
                               </MenuItem>
@@ -203,6 +255,21 @@ class CsvImportForm extends React.Component {
                   ))}
                 </TableBody>
               </Table>
+              <Typography variant="subtitle2">Import options</Typography>
+              <Paper elevation={0} className={classes.formOptions}>
+                <FormControl className={classes.formField}>
+                  <InputLabel htmlFor="dateFormat">Date format</InputLabel>
+                  <Select
+                    value={dateFormat}
+                    onChange={this.handleChange}
+                    inputProps={{ name: `${dateFormat}`, id: `${dateFormat}` }}
+                  >
+                    {parser.dateFormats.map(format => (
+                      <MenuItem key={format} value={format}>{format}</MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+              </Paper>
             </div>
           }
         </div>

@@ -1,27 +1,48 @@
 /* eslint-disable no-console */
-import { isEqual, isNil } from 'lodash'
+/* eslint-disable prefer-destructuring */
+import { isNil } from 'lodash'
 import Papa from 'papaparse'
 import parse from 'date-fns/parse'
 
 const DONT_IMPORT = 'Don\'t import'
+const DATE_FORMATS = [
+  'mm/dd/yyyy',
+  'yyyymmdd'
+]
 
 // The base class for all CSV parsers
 export default class CsvParser {
-  constructor(file) {
-    this._file = file
+  constructor() {
     this._columnsCount = 0
     this._headerRowIndex = 0
-    // this._errors = { base: [], transactions: {} }
+    this._dateFormat = DATE_FORMATS[0]
+    this._errors = { base: [], transactions: {} }
     // this._currentRow = 0
     // this._headerIsValid = false
     // this._header = [] // This should be overriten in a deriver class
     // this._config = { header: true } // Specific parser configuration - override in derived class
   }
 
-  // Look through the first few rows and return the most common number of columns
-  countColumns(rows) {
+  get headerRowIndex() {
+    return this._headerRowIndex
+  }
+
+  get dateFormats() {
+    return DATE_FORMATS
+  }
+
+  get dateFormat() {
+    return this._dateFormat
+  }
+
+  set dateFormat(newDateFormat) {
+    this._dateFormat = newDateFormat
+  }
+
+  // Look through the first few rows and find the most common number of columns
+  countColumns() {
     // crete a hash with {numColums: numRows}
-    const columnCount = rows.reduce((count, row) => {
+    const columnCount = this._csvData.reduce((count, row) => {
       return {
         ...count,
         [row.length]: (count[row.length] || 0) + 1
@@ -33,15 +54,16 @@ export default class CsvParser {
       .reduce((mostCommon, length) => (
         columnCount[length] > columnCount[mostCommon] ? length : mostCommon
       ))
-    return parseInt(mostCommonLength, 10)
+
+    this._columnsCount = parseInt(mostCommonLength, 10)
   }
 
-  // Return the first row that has the same number of columns as most of the other rows
-  findHeaderRow(rows) {
-    return rows.findIndex(row => row.length === this._columnsCount)
+  // Find the first row that has the same number of columns as most of the other rows
+  findHeaderRow() {
+    this._headerRowIndex = this._csvData.findIndex(row => row.length === this._columnsCount)
   }
 
-  mapHeaderRow() {
+  mapHeaderToTransactionFields() {
     const transactionFields = {
       description: /Description|Memo/gi,
       amount: /Amount/gi,
@@ -51,23 +73,31 @@ export default class CsvParser {
       const transactionField = Object.keys(transactionFields).find(field => (
         transactionFields[field].test(columnHeader)
       ))
-      console.log('transactionField', columnHeader, transactionField)
-      return ({ ...res, [columnHeader]: transactionField || DONT_IMPORT })
+      return ({
+        ...res,
+        [columnHeader]: transactionField || DONT_IMPORT
+      })
     }, {})
   }
 
-  getHeaders() {
+  getHeaders(file) {
+    this._file = file
     return new Promise((resolve) => {
       Papa.parse(this._file, {
-        preview: 10,
         trimHeaders: true,
         dynamicTyping: true,
         skipEmptyLines: 'greedy',
         complete: (results) => {
           this._csvData = results.data
-          this._columnsCount = this.countColumns(this._csvData)
-          this._headerRowIndex = this.findHeaderRow(this._csvData)
-          return resolve(this.mapHeaderRow())
+          this.countColumns()
+          this.findHeaderRow()
+
+          // Record any errors from the parsing library
+          results.errors.forEach((error) => {
+            this.addError(`${error.type}: (row ${error.row}) ${error.message}`, 'base')
+          })
+
+          return resolve(this.mapHeaderToTransactionFields())
         }
       })
     })
@@ -77,33 +107,23 @@ export default class CsvParser {
     return this._errors.base.length > 0 || Object.keys(this._errors.transactions).length > 0
   }
 
-  validateHeader(row) {
-    if (!this._config.header) {
-      // Skip if the file has no headers
-      this._headerIsValid = true
-    } else {
-      // Otherwise compare the header in the parser with the one from the file
-      this._headerIsValid = isEqual(row, this._header)
-      if (!this._headerIsValid) {
-        this.addError(`Invalid header. Expected [${this._header}] but found [${row}]`, 'base')
-      }
-    }
-  }
-
   // This should be overriten in a derived class
   map(row) {
     throw (new Error(`map() method not defined ${row}`))
   }
 
-  parse() {
-    return new Promise((resolve) => {
-      Papa.parse(this._file, {
-        trimHeaders: true,
-        dynamicTyping: true,
-        skipEmptyLines: 'greedy',
-        complete: results => resolve(results)
-      })
+  mapToTransactions({ transactionFieldsMap }) {
+    const transactions = []
+    this._csvData.forEach((row, index) => {
+      if (index > this._headerRowIndex) {
+        transactions.push({
+          amount: row[transactionFieldsMap.amount.column.index],
+          description: this.parseString(`${row[transactionFieldsMap.description.column.index]}`),
+          createdAt: this.parseDate(row[transactionFieldsMap.createdAt.column.index], 'mm/dd/yyyy')
+        })
+      }
     })
+    return transactions
   }
   // parse(file, account) {
   //   const transactions = []
@@ -187,5 +207,9 @@ export default class CsvParser {
       }
       this._errors.transactions[this._currentRow].push(error)
     }
+  }
+
+  detectDateFormat() {
+
   }
 }

@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import TextField from '@material-ui/core/TextField'
 import * as Yup from 'yup'
-import { NavLink } from 'react-router-dom'
 import Typography from '@material-ui/core/Typography'
 import DescriptionCard from '../../common/DescriptionCard'
 
@@ -40,7 +39,11 @@ export const instructionsFor = institution => ({
   Coinbase: (
     <div>
       <Typography variant="caption" paragraph>
-        <NavLink to="/">Create an API key on Coinbase</NavLink> (opens in a new tab)
+        <a href="https://www.coinbase.com/settings/api" target="_blank" rel="noopener noreferrer">
+          <Typography variant="caption" color="secondary">
+            Create an API key on Coinbase (opens in a new tab)
+          </Typography>
+        </a>
       </Typography>
       <DescriptionCard info>
         <Typography variant="caption">

@@ -11,7 +11,7 @@ export const afterTransactionsChanged = account => (dispatch) => {
 }
 
 export const createTransaction = (account, transaction) => (dispatch) => {
-  dispatch({ type: types.CREATE_TRANSACTION, payload: { ...transaction, id: uuid() } })
+  dispatch({ type: types.CREATE_TRANSACTION, payload: { ...transaction, id: uuid(), accountId: account.id } })
   dispatch(afterTransactionsChanged(account))
 }
 
@@ -40,7 +40,10 @@ export const loadTransactions = (transactions) => {
 export const addTransactions = (account, transactions, options = { skipAfterChange: false }) => {
   const { skipAfterChange } = options
   return (dispatch) => {
-    dispatch({ type: types.ADD_TRANSACTIONS, payload: transactions })
+    dispatch({
+      type: types.ADD_TRANSACTIONS,
+      payload: transactions.map(t => Object.assign(t, { id: uuid(), accountId: account.id }))
+    })
     if (!skipAfterChange) {
       dispatch(afterTransactionsChanged(account))
     }

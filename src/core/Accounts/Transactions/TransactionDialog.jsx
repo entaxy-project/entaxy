@@ -158,7 +158,6 @@ export default compose(
       setSubmitting(true)
       props.handleSave(props.account, {
         ...values,
-        accountId: props.account.id,
         createdAt: parse(values.createdAt).getTime()
       })
       resetForm()
