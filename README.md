@@ -6,7 +6,7 @@
 Entaxy is your personal finance toolbelt.
 It will help you understand and gain control of your financial life.
 
-We want to raise the bar on finance literacy by bringing to light concepts that should be easy to understand by everyone but currently take an unreasonable amount of time to learn.
+We want to raise the bar on financial literacy by bringing to light concepts that should be easy to understand by everyone but currently take an unreasonable amount of time to learn.
 
 Using beautiful data visualizations we want to build an opinionated framework that will provide you with useful insights and help improve your day to day life by dramatically reducing the financial stress and confusion you may be experiencing
 
@@ -14,28 +14,32 @@ Staging site: http://entaxy-staging.s3-website.ca-central-1.amazonaws.com/
 
 
 ## Feature roadmap
+* Import/Export
+* Budget management
+	* Income and spending tracking and allocation
+	* Bank statements tracking (securely import your bank transactions)
+	* Auto statement categorization
+	* Reporting
+	* Receipt management
+* Providing insights using visualizations to better reach your financial goals
+* Machine learning
+* Mortgage/debt
+* Pensions
+* Retirement projections
 * Investments
 	* ETFs / Cryptocurrencies / Stocks / Mutual funds
 	* Keep track of buy prices
 	* Fees tracking + Keep track of deviations from plan
 	* Re-investment calculations
+* Net worth
+* Insurance
+	* Auto/house
+	* Life insurance
+	* Disability
+* Estate planning
 * Taxes
 	* Tax brackets
 	* RRSP and TFSA limits and optimization
-* Mortgage/debt
-* Budget management
-	* Income tracking and allocation
-	* Bank statements tracking (securely import your bank transactions)
-	* Auto statement categorization
-	* Vacation tracking (variable expenses)
-	* Reporting
-	* Receipt management
-* Net worth
-* Retirement projections
-* import/export
-* Insurance
-* Estate planning
-* Pensions
 
 ## Contributing
 

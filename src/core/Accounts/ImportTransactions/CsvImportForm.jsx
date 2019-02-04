@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+/* eslint-disable react/no-array-index-key */
 import React from 'react'
 import { withStyles } from '@material-ui/core/styles'
 import PropTypes from 'prop-types'
@@ -23,8 +24,6 @@ import CsvDropzone from './CsvDropzone'
 import CsvParser from '../../../store/transactions/CsvParsers/CsvParser'
 
 const styles = (theme) => {
-  console.log('theme', theme)
-
   return ({
     root: {
       display: 'flex',
@@ -49,6 +48,24 @@ const styles = (theme) => {
     },
     table: {
       marginBottom: 20
+    },
+    tableHeader: {
+      height: 20,
+      background: theme.palette.grey[500]
+    },
+    tableCell: {
+      width: 150,
+      color: 'white'
+    },
+    sample: {
+      color: theme.palette.grey[500],
+      fontSize: 11,
+      width: 150,
+      overflow: 'hidden',
+      whiteSpace: 'nowrap'
+    },
+    elipsys: {
+      textOverflow: 'ellipsis'
     },
     formOptions: {
       display: 'flex',
@@ -92,11 +109,6 @@ class CsvImportForm extends React.Component {
     isSubmitting: false,
     file: null,
     error: null,
-    transactionFields: {
-      description: { label: 'Description', column: { name: DONT_IMPORT, index: null } },
-      amount: { label: 'Amount', column: { name: DONT_IMPORT, index: null } },
-      createdAt: { label: 'Date', column: { name: DONT_IMPORT, index: null } }
-    },
     csvHeader: null,
     dateFormat: null
   }
@@ -112,66 +124,32 @@ class CsvImportForm extends React.Component {
         error: 'The file you uploaded is not a CSV file'
       })
     } else {
-      const csvHeader = await parser.getHeaders(acceptedFiles[0])
-      const transactionFields = {}
-      Object.keys(csvHeader).forEach((column, index) => {
-        if (csvHeader[column] !== DONT_IMPORT) {
-          transactionFields[csvHeader[column]] = {
-            ...this.state.transactionFields[csvHeader[column]],
-            column: { name: column, index }
-          }
-        }
-      })
+      await parser.parse(acceptedFiles[0])
       this.setState({
         file: acceptedFiles[0],
-        csvHeader,
-        transactionFields,
+        error: null,
+        csvHeader: parser.csvHeader,
         dateFormat: parser.dateFormat
       })
     }
   }
 
   handleChange = ({ target }) => {
-    const { transactionFields, csvHeader } = this.state
-    if (target.value === DONT_IMPORT) {
-      const oldSelection = Object.keys(transactionFields)
-        .find(field => transactionFields[field].column.name === target.name)
-      this.setState({
-        transactionFields: {
-          ...transactionFields,
-          [oldSelection]: {
-            ...transactionFields[oldSelection],
-            column: { name: DONT_IMPORT, index: null }
-          }
-        }
-      })
-    } else {
-      this.setState({
-        transactionFields: {
-          ...transactionFields,
-          [target.value]: {
-            ...transactionFields[target.value],
-            column: {
-              name: target.name,
-              index: Object.keys(csvHeader).indexOf(target.name)
-            }
-          }
-        }
-      })
-    }
-    this.setState({
-      csvHeader: {
-        ...csvHeader,
-        [target.name]: target.value
-      }
+    parser.mapColumnToTransactionField({
+      columnIndex: parseInt(target.name, 10),
+      transactionField: target.value
     })
+    this.setState({ csvHeader: parser.csvHeader })
+  }
+
+  handleChangeDateFormat = ({ target }) => {
+    parser.dateFormat = target.value
+    this.setState({ dateFormat: parser.dateFormat })
   }
 
   handleSubmit = (event) => {
     // const { handleParsedData } = this.props
-    const res = parser.mapToTransactions({
-      transactionFieldsMap: this.state.transactionFields
-    })
+    const res = parser.mapToTransactions()
     console.log('res', res)
     // .then(({ transactions, errors }) => {
     //   this.setSubmitting(false)
@@ -191,16 +169,15 @@ class CsvImportForm extends React.Component {
       file,
       error,
       isSubmitting,
-      transactionFields,
       csvHeader,
       dateFormat
     } = this.state
+
     console.log('csvHeader', csvHeader)
-    console.log('transactionFields', transactionFields)
     return (
       <form onSubmit={this.handleSubmit}>
         <div className={classes.root}>
-          {!this.state.csvHeader &&
+          {(!file || error) &&
             <CsvDropzone
               className={classes.dropzone}
               handleFileUpload={this.handleFileUpload}
@@ -209,7 +186,7 @@ class CsvImportForm extends React.Component {
               error={error}
             />
           }
-          {csvHeader &&
+          {file && !error &&
             <div>
               <Typography variant="subtitle2" className={classes.fileDetails}>
                 <Icon path={mdiFileDelimited} size={0.7} className={classes.csvFileIcon} />
@@ -218,34 +195,40 @@ class CsvImportForm extends React.Component {
               <Typography variant="caption">
                 Choose the transaction field that matches each CSV columns
               </Typography>
+
               <Table className={classes.table}>
                 <TableHead>
-                  <TableRow>
-                    <TableCell align="right">CSV column</TableCell>
-                    <TableCell>Transaction field</TableCell>
+                  <TableRow className={classes.tableHeader}>
+                    <TableCell className={classes.tableCell} align="right">CSV column</TableCell>
+                    <TableCell className={classes.tableCell}>Transaction field</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {Object.keys(csvHeader).map(csvField => (
-                    <TableRow key={csvField} selected={csvHeader[csvField] !== DONT_IMPORT}>
-                      <TableCell align="right">{csvField}</TableCell>
+                  {csvHeader.map(({ label, transactionField, sample }, index) => (
+                    <TableRow key={label} selected={transactionField !== DONT_IMPORT}>
+                      <TableCell align="right">
+                        {label}
+                        <div className={classes.sample}>
+                          <div className={classes.elipsys}>{sample}</div>
+                        </div>
+                      </TableCell>
                       <TableCell align="left">
                         <FormControl className={classes.formField}>
                           <Select
-                            value={csvHeader[csvField] || ''}
+                            value={transactionField}
                             onChange={this.handleChange}
-                            inputProps={{ name: `${csvField}`, id: `${csvField}` }}
+                            inputProps={{ name: `${index}` }}
                           >
                             <MenuItem key={DONT_IMPORT} value={DONT_IMPORT}>
                               <Typography color="textSecondary">{DONT_IMPORT}</Typography>
                             </MenuItem>
-                            {Object.keys(transactionFields).map(field => (
+                            {Object.keys(parser.transactionFields).map(field => (
                               <MenuItem
                                 key={field}
                                 value={field}
-                                disabled={transactionFields[field].column.index !== null}
+                                disabled={parser.isFieldSelected(field)}
                               >
-                                {transactionFields[field].label}
+                                {parser.transactionFields[field].label}
                               </MenuItem>
                             ))}
                           </Select>
@@ -261,8 +244,8 @@ class CsvImportForm extends React.Component {
                   <InputLabel htmlFor="dateFormat">Date format</InputLabel>
                   <Select
                     value={dateFormat}
-                    onChange={this.handleChange}
-                    inputProps={{ name: `${dateFormat}`, id: `${dateFormat}` }}
+                    onChange={this.handleChangeDateFormat}
+                    inputProps={{ name: 'dateFormat' }}
                   >
                     {parser.dateFormats.map(format => (
                       <MenuItem key={format} value={format}>{format}</MenuItem>
