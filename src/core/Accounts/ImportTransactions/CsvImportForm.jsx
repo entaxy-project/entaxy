@@ -11,6 +11,8 @@ import TableCell from '@material-ui/core/TableCell'
 import TableRow from '@material-ui/core/TableRow'
 import MenuItem from '@material-ui/core/MenuItem'
 import FormControl from '@material-ui/core/FormControl'
+import FormControlLabel from '@material-ui/core/FormControlLabel'
+import Checkbox from '@material-ui/core/Checkbox'
 import Typography from '@material-ui/core/Typography'
 import InputLabel from '@material-ui/core/InputLabel'
 import Select from '@material-ui/core/Select'
@@ -147,14 +149,17 @@ class CsvImportForm extends React.Component {
     this.setState({ dateFormat: parser.dateFormat })
   }
 
+  handleChangeStartingRow = (event) => {
+    console.log(event)
+    // parser.startingRow = target.value
+    // this.setState({ startingRow: parser.startingRow })
+  }
+
   handleSubmit = (event) => {
-    // const { handleParsedData } = this.props
-    const res = parser.mapToTransactions()
-    console.log('res', res)
-    // .then(({ transactions, errors }) => {
-    //   this.setSubmitting(false)
-    //   handleParsedData(transactions, errors)
-    // })
+    const { handleParsedData } = this.props
+    const { transactions, errors } = parser.mapToTransactions()
+    this.setSubmitting(false)
+    handleParsedData(transactions, errors)
     event.preventDefault()
   }
 
@@ -205,7 +210,7 @@ class CsvImportForm extends React.Component {
                 </TableHead>
                 <TableBody>
                   {csvHeader.map(({ label, transactionField, sample }, index) => (
-                    <TableRow key={label} selected={transactionField !== DONT_IMPORT}>
+                    <TableRow key={`${index}-${label}`} selected={transactionField !== DONT_IMPORT}>
                       <TableCell align="right">
                         {label}
                         <div className={classes.sample}>
@@ -240,6 +245,17 @@ class CsvImportForm extends React.Component {
               </Table>
               <Typography variant="subtitle2">Import options</Typography>
               <Paper elevation={0} className={classes.formOptions}>
+                <FormControlLabel
+                  className={classes.formField}
+                  control={
+                    <Checkbox
+                      checked={this.state.startingRow}
+                      onChange={this.handleChangeStartingRow}
+                      value="startingRow"
+                    />
+                  }
+                  label="Starting Row"
+                />
                 <FormControl className={classes.formField}>
                   <InputLabel htmlFor="dateFormat">Date format</InputLabel>
                   <Select
@@ -279,7 +295,7 @@ class CsvImportForm extends React.Component {
 
 CsvImportForm.propTypes = {
   classes: PropTypes.object.isRequired,
-  // handleParsedData: PropTypes.func.isRequired,
+  handleParsedData: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired,
   account: PropTypes.object.isRequired
 }

@@ -12,6 +12,7 @@
         "browser": true
     },
     "rules": {
+        "import/no-named-as-default": 0,
         "max-len": [
             "error",
             {

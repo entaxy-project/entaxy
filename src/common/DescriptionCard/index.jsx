@@ -8,11 +8,11 @@ import InfolIcon from '@material-ui/icons/Info'
 
 const styles = theme => ({
   card: {
-    backgroundColor: theme.palette.info.light
+    backgroundColor: theme.palette.info.background
   },
   icon: {
     float: 'left',
-    color: theme.palette.info.main,
+    color: theme.palette.info.text,
     marginRight: theme.spacing.unit
   }
 })

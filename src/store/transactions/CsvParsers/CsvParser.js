@@ -177,17 +177,22 @@ export default class CsvParser {
         const amount = this.readAmount(row, columns)
         const description = this.readDescription(row, columns)
         const createdAt = this.dateFromString(row[columns.createdAt])
-
+        let error
         if (typeof amount !== 'number') {
-          this.addError('Amount is not a number')
+          error = 'Could not read the amount'
         } else if (createdAt === null) {
-          this.addError(`Invalid date. Expecting format '${this._dateFormat}'`)
-        } else {
-          transactions.push({ amount, description, createdAt: createdAt.getTime() })
+          error = `Invalid date. Expecting format '${this._dateFormat}'`
         }
+        transactions.push({
+          amount,
+          description,
+          createdAt,
+          error,
+          lineNumber: index
+        })
       }
     })
-    return transactions
+    return { transactions, errors: this._errors }
   }
 
   readAmount(row, columns) {
@@ -224,7 +229,7 @@ export default class CsvParser {
     }
     try {
       const [year, month, day] = DATE_FORMATS[this._dateFormat](string)
-      return parse(`${year}-${month}-${day}`)
+      return parse(`${year}-${month}-${day}`).getTime()
     } catch (error) {
       return null
     }

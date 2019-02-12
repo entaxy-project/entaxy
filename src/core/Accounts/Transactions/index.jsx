@@ -3,58 +3,26 @@ import { compose } from 'recompose'
 import { connect } from 'react-redux'
 import { withStyles } from '@material-ui/core/styles'
 import PropTypes from 'prop-types'
-import classNames from 'classnames'
 import IconButton from '@material-ui/core/IconButton'
 import EditIcon from '@material-ui/icons/Edit'
-import Paper from '@material-ui/core/Paper'
-import Checkbox from '@material-ui/core/Checkbox'
 import Tooltip from '@material-ui/core/Tooltip'
-import { Column, Table, AutoSizer } from 'react-virtualized'
-import grey from '@material-ui/core/colors/grey'
+import { Column } from 'react-virtualized'
 import 'react-virtualized/styles.css'
 import TransactionDialog from './TransactionDialog'
+import TransactionsTable from './TransactionsTable'
 import TransactionsToolbar from './TransactionsToolbar'
-import confirm from '../../../util/confirm'
-import { deleteTransactions, updateSortBy } from '../../../store/transactions/actions'
+import { deleteTransactions } from '../../../store/transactions/actions'
 import { makeAccountTransactions } from '../../../store/transactions/selectors'
-import {
-  currencyFormatter,
-  decimalFormatter,
-  dateFormatter
-} from '../../../util/stringFormatter'
 
-const styles = theme => ({
-  paper: {
+const styles = () => ({
+  tableWrapper: {
     display: 'flex',
     flexDirection: 'column',
     position: 'relative',
-    height: 'calc(100vh - 70px)'
-  },
-  tableWrapper: {
-    flex: '1 1 auto'
-  },
-  headerRow: {
-    borderBottom: '1px solid #e0e0e0',
-    fontFamily: theme.typography.subtitle2.fontFamily,
-    fontWeight: theme.typography.subtitle2.fontWeight,
-    fontSize: theme.typography.subtitle2.fontSize,
-    color: theme.palette.text.disabled
-  },
-  row: {
-    borderBottom: '1px solid #e0e0e0',
-    fontFamily: theme.typography.subtitle2.fontFamily,
-    fontWeight: theme.typography.body2.fontWeight,
-    fontSize: theme.typography.subtitle2.fontSize
-  },
-  oddRow: {
-    backgroundColor: '#fafafa'
+    height: 'calc(100vh - 170px)'
   },
   tableButton: {
     padding: 4
-  },
-  nativeAmount: {
-    color: grey[500],
-    display: 'block'
   },
   smallIcon: {
     fontSize: 18
@@ -65,14 +33,8 @@ const styles = theme => ({
 const makeMapStateToProps = () => {
   const accountTransactions = makeAccountTransactions()
   const mapStateToProps = (state, props) => {
-    const account = state.accounts.byId[props.match.params.accountId]
     return {
-      formatCurrency: currencyFormatter(state.settings.locale, account.currency),
-      formatDecimal: decimalFormatter(state.settings.locale, account.type),
-      formatDate: dateFormatter(state.settings.locale),
-      sortBy: state.transactions.sortBy,
-      sortDirection: state.transactions.sortDirection,
-      account,
+      account: state.accounts.byId[props.match.params.accountId],
       transactions: accountTransactions(state, props).transactions
     }
   }
@@ -81,44 +43,27 @@ const makeMapStateToProps = () => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    deleteTransactions: (account, transactionIds) => dispatch(deleteTransactions(account, transactionIds)),
-    handleSort: ({ sortBy, sortDirection }) => dispatch(updateSortBy(sortBy, sortDirection))
+    deleteTransactions: (account, transactionIds) => dispatch(deleteTransactions(account, transactionIds))
   }
 }
 
 export class TransactionsComponent extends React.Component {
-  static getDerivedStateFromProps(props, state) {
-    // Reset the selected transactions when choosing a different account
-    if (props.account.id !== state.prevPropsAccountId) {
-      return {
-        prevPropsAccountId: props.account.id,
-        openTransactionDialog: false,
-        transaction: null,
-        selected: []
-      }
-    }
-    return null
-  }
-
   state = {
     openTransactionDialog: false,
-    transaction: null,
-    selected: []
+    transaction: null
   }
 
   handleNew = () => {
     this.setState({
       openTransactionDialog: true,
-      transaction: null,
-      selected: []
+      transaction: null
     })
   }
 
   handleEdit = (transaction) => {
     this.setState({
       openTransactionDialog: true,
-      transaction,
-      selected: []
+      transaction
     })
   }
 
@@ -126,82 +71,17 @@ export class TransactionsComponent extends React.Component {
     this.setState({ openTransactionDialog: false })
   }
 
-  rowClassName = ({ index }, classes) => (
-    classNames({
-      [classes.headerRow]: index < 0,
-      [classes.row]: index >= 0,
-      [classes.oddRow]: index % 2 !== 0
-    })
-  )
-
-  handleSelectAllClick = (event) => {
-    if (event.target.checked) {
-      this.setState({ selected: this.props.transactions.map(n => n.id) })
-      return
-    }
-    this.setState({ selected: [] })
-  }
-
-  handleCheckboxClick = (event, transactionId) => {
-    const { selected } = this.state
-    const selectedIndex = selected.indexOf(transactionId)
-    let newSelected = []
-
-    if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, transactionId)
-    } else if (selectedIndex === 0) {
-      newSelected = newSelected.concat(selected.slice(1))
-    } else if (selectedIndex === selected.length - 1) {
-      newSelected = newSelected.concat(selected.slice(0, -1))
-    } else if (selectedIndex > 0) {
-      newSelected = newSelected.concat(
-        selected.slice(0, selectedIndex),
-        selected.slice(selectedIndex + 1)
-      )
-    }
-
-    this.setState({ selected: newSelected })
-  }
-
-  handleDelete = () => {
-    confirm('Delete selected transactions?', 'Are you sure?').then(() => {
-      this.props.deleteTransactions(this.props.account, this.state.selected)
-      this.setState({ selected: [] })
-    })
-  }
-
-  isSelected = id => this.state.selected.indexOf(id) !== -1
-
-  displayCurrency = ({ amount, nativeAmount }) => {
-    const {
-      classes,
-      account,
-      formatCurrency,
-      formatDecimal
-    } = this.props
-    if (account.type === 'wallet') {
-      return (
-        <div>
-          {formatDecimal(amount)} {account.symbol}
-          <small className={classes.nativeAmount}>{formatCurrency(nativeAmount)}</small>
-        </div>
-      )
-    }
-    return formatCurrency(amount)
-  }
-
   render() {
     const {
-      formatDate,
       classes,
       transactions,
-      sortBy,
-      sortDirection,
-      handleSort,
       account
     } = this.props
+<<<<<<< HEAD
     const { selected } = this.state
     const rowHeight = account.type === 'wallet' ? 42 : 30
+=======
+>>>>>>> Added import transaction preview
     return (
       <div>
         <TransactionDialog
@@ -210,13 +90,36 @@ export class TransactionsComponent extends React.Component {
           account={account}
           transaction={this.state.transaction}
         />
-        <Paper elevation={0} className={classes.paper}>
-          <TransactionsToolbar
-            account={account}
-            handleNew={this.handleNew}
-            handleDelete={this.handleDelete}
-            selectedTransactions={selected}
+        <TransactionsTable
+          className={classes.tableWrapper}
+          account={account}
+          transactions={transactions}
+          Toolbar={TransactionsToolbar}
+          toolbarProps={{
+            handleNew: this.handleNew,
+            handleDelete: this.props.deleteTransactions
+          }}
+        >
+          <Column
+            width={40}
+            dataKey="index"
+            disableSort={true}
+            cellRenderer={
+              ({ rowData }) => (
+                <Tooltip title="Edit transaction">
+                  <IconButton
+                    disableRipple={true}
+                    aria-label="Edit Transaction"
+                    onClick={() => this.handleEdit(rowData)}
+                    className={classes.tableButton}
+                  >
+                    <EditIcon className={classes.smallIcon} />
+                  </IconButton>
+                </Tooltip>
+              )
+            }
           />
+<<<<<<< HEAD
           <div className={classes.tableWrapper}>
             <AutoSizer>
               {({ width, height }) => (
@@ -319,20 +222,17 @@ export class TransactionsComponent extends React.Component {
             </AutoSizer>
           </div>
         </Paper>
+=======
+        </TransactionsTable>
+>>>>>>> Added import transaction preview
       </div>
     )
   }
 }
 
 TransactionsComponent.propTypes = {
-  formatCurrency: PropTypes.func.isRequired,
-  formatDecimal: PropTypes.func.isRequired,
-  formatDate: PropTypes.func.isRequired,
   classes: PropTypes.object.isRequired,
   transactions: PropTypes.array.isRequired,
-  handleSort: PropTypes.func.isRequired,
-  sortBy: PropTypes.string.isRequired,
-  sortDirection: PropTypes.string.isRequired,
   deleteTransactions: PropTypes.func.isRequired,
   account: PropTypes.object.isRequired
 }

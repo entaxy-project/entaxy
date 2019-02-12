@@ -10,9 +10,14 @@ const theme = createMuiTheme({
     primary: { main: blueGrey[800] },
     secondary: { main: '#1B9CC4' },
     info: {
-      main: '#00acc1',
-      light: '#00acc11a'
+      text: '#00acc1',
+      background: '#00acc11a'
+    },
+    danger: {
+      text: '#721c24',
+      background: '#f8d7da66'
     }
+
   },
   typography: {
     useNextVariants: true

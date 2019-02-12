@@ -6,17 +6,28 @@ import IconButton from '@material-ui/core/IconButton'
 import Tooltip from '@material-ui/core/Tooltip'
 import AddIcon from '@material-ui/icons/Add'
 import Icon from '@mdi/react'
-// import { mdiFileUploadOutline, mdiUploadNetwork, mdiImport } from '@mdi/js'
+import DeleteIcon from '@material-ui/icons/Delete'
 import { mdiImport } from '@mdi/js'
+import confirm from '../../../util/confirm'
 import TableToolbar from '../../../common/TableToolbar'
 
 const styles = theme => ({
   importButton: {
     fill: theme.palette.text.secondary
+  },
+  buttons: {
+    display: 'flex'
   }
 })
 
 export class TransactionsToolbarComponent extends React.Component {
+  onDelete = () => {
+    confirm('Delete selected transactions?', 'Are you sure?').then(() => {
+      this.props.handleDelete(this.props.account, this.props.selectedTransactions)
+      this.props.resetSelection()
+    })
+  }
+
   pageTitle = (account) => {
     if (account) {
       return `${account.institution} - ${account.name}`
@@ -29,7 +40,6 @@ export class TransactionsToolbarComponent extends React.Component {
       classes,
       account,
       handleNew,
-      handleDelete,
       selectedTransactions
     } = this.props
 
@@ -37,26 +47,35 @@ export class TransactionsToolbarComponent extends React.Component {
       <TableToolbar
         title={this.pageTitle(account)}
         selectedItems={selectedTransactions}
-        onDelete={handleDelete}
       >
-        <Tooltip title="Import transaction">
-          <IconButton
-            aria-label="Import transaction"
-            component={NavLink}
-            to={`/accounts/${account.id}/import`}
-          >
-            <Icon
-              path={mdiImport}
-              size={1}
-              className={classes.importButton}
-            />
-          </IconButton>
-        </Tooltip>
-        <Tooltip title="New transaction">
-          <IconButton aria-label="New transaction" onClick={handleNew}>
-            <AddIcon />
-          </IconButton>
-        </Tooltip>
+        {selectedTransactions.length > 0 ? (
+          <Tooltip title="Delete">
+            <IconButton aria-label="Delete" onClick={this.onDelete}>
+              <DeleteIcon />
+            </IconButton>
+          </Tooltip>
+        ) : (
+          <div className={classes.buttons}>
+            <Tooltip title="Import transaction">
+              <IconButton
+                aria-label="Import transaction"
+                component={NavLink}
+                to={`/accounts/${account.id}/import`}
+              >
+                <Icon
+                  path={mdiImport}
+                  size={1}
+                  className={classes.importButton}
+                />
+              </IconButton>
+            </Tooltip>
+            <Tooltip title="New transaction">
+              <IconButton aria-label="New transaction" onClick={handleNew}>
+                <AddIcon />
+              </IconButton>
+            </Tooltip>
+          </div>
+        )}
       </TableToolbar>
     )
   }
@@ -67,7 +86,8 @@ TransactionsToolbarComponent.propTypes = {
   account: PropTypes.object.isRequired,
   handleNew: PropTypes.func.isRequired,
   handleDelete: PropTypes.func.isRequired,
-  selectedTransactions: PropTypes.array.isRequired
+  selectedTransactions: PropTypes.array.isRequired,
+  resetSelection: PropTypes.func.isRequired
 }
 
 export default withStyles(styles)(withRouter(TransactionsToolbarComponent))

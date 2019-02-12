@@ -1,23 +1,21 @@
 import React from 'react'
-import _ from 'lodash'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
-import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import Divider from '@material-ui/core/Divider'
 import CheckCircleIcon from '@material-ui/icons/CheckCircle'
 import ErrorIcon from '@material-ui/icons/Error'
+import Tooltip from '@material-ui/core/Tooltip'
 import green from '@material-ui/core/colors/green'
 import red from '@material-ui/core/colors/red'
-import Table from '@material-ui/core/Table'
-import TableBody from '@material-ui/core/TableBody'
-import TableCell from '@material-ui/core/TableCell'
-import TableHead from '@material-ui/core/TableHead'
-import TableRow from '@material-ui/core/TableRow'
+import { Column } from 'react-virtualized'
+import ResultsToolbar from './ResultsToolbar'
+import TransactionsTable from '../Transactions/TransactionsTable'
 
 const styles = () => ({
-  root: {
-    padding: '20px'
+  tableWrapper: {
+    height: 'calc(100vh - 350px)',
+    marginBottom: 100
   },
   formActions: {
     display: 'flex',
@@ -27,98 +25,117 @@ const styles = () => ({
   iconCheck: {
     color: green[500],
     marginRight: '8px',
-    'vertical-align': 'text-bottom'
+    'vertical-align': 'text-bottom',
+    fontSize: 18
   },
   iconError: {
     color: red[800],
     marginRight: '8px',
-    'vertical-align': 'text-bottom'
+    'vertical-align': 'text-bottom',
+    fontSize: 18
   }
 })
 
-const ImportResults = ({
-  classes,
-  transactions,
-  errors,
-  onSave,
-  onCancel
-}) => {
-  const maxErrorsToODisplay = 10
-  const transactionTotalErrorsCount = Object.keys(errors.transactions).length
-  const transactionErrorsToDisplay = Math.min(maxErrorsToODisplay, transactionTotalErrorsCount)
-  const transactionErrorKeys = Object.keys(errors.transactions).slice(0, transactionErrorsToDisplay)
+export class ImportResults extends React.Component {
+  state = {
+    showOnlyErrors: false
+  }
 
-  return (
-    <div>
-      {errors.base.length === 0 && transactionErrorsToDisplay === 0 &&
-        <div className={classes.root}>
-          <Typography variant="h6" align="center">
-            <CheckCircleIcon className={classes.iconCheck} />
-            Found {transactions.length} transactions
-          </Typography>
-        </div>
-      }
-      {errors.base.length > 0 &&
-        <div className={classes.root}>
-          <Typography variant="h6" align="center">
+  onFilter = (event) => {
+    this.setState({
+      showOnlyErrors: event.target.checked
+    })
+  }
+
+  toolbarProps = (transactionsWithErrors) => {
+    const { transactions, classes } = this.props
+
+    if (transactionsWithErrors.length > 0) {
+      return {
+        title: `Found ${transactions.length} transactions`,
+        subTitle: (
+          <div>
             <ErrorIcon className={classes.iconError} />
-            Some problems were found with the file
-          </Typography>
-          <Typography variant="body2" align="center">
-            {errors.base[0]}
-          </Typography>
-        </div>
+            {transactionsWithErrors.length} transactions have errors and will not be imported
+          </div>
+        ),
+        showOnlyErrors: this.state.showOnlyErrors,
+        onFilter: this.onFilter
       }
-      {transactionErrorsToDisplay > 0 &&
-        <div className={classes.root}>
-          <Typography variant="h6" align="center">
-            <ErrorIcon className={classes.iconError} />
-            Found errors in {transactionTotalErrorsCount} transactions.
-          </Typography>
-          {transactionTotalErrorsCount > transactionErrorsToDisplay &&
-            <Typography variant="body" align="center">
-              Displaying top {transactionErrorsToDisplay} errors
-            </Typography>
-          }
-          <Table className={classes.table}>
-            <TableHead>
-              <TableRow>
-                <TableCell>Line</TableCell>
-                <TableCell>Error</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {_.map(transactionErrorKeys, line => (
-                <TableRow key={line}>
-                  <TableCell>{line}</TableCell>
-                  <TableCell>{errors.transactions[line][0]}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </div>
-      }
-      <Divider />
-      <div className={classes.formActions}>
-        <Button
-          onClick={onSave}
-          color="secondary"
-          disabled={errors.base.length > 0 || transactionErrorsToDisplay > 0}
+    }
+    return {
+      title: `Found ${transactions.length} transactions`,
+      subTitle: 'No errors'
+    }
+  }
+
+  render() {
+    const {
+      classes,
+      account,
+      transactions,
+      errors,
+      onSave,
+      onBack
+    } = this.props
+    const transactionsWithErrors = transactions.filter(transaction => transaction.error !== undefined)
+
+    return (
+      <div>
+        <TransactionsTable
+          className={classes.tableWrapper}
+          account={account}
+          transactions={this.state.showOnlyErrors ? transactionsWithErrors : transactions}
+          hideChekboxes
+          Toolbar={ResultsToolbar}
+          toolbarProps={this.toolbarProps(transactionsWithErrors)}
         >
-          Save Transactions
-        </Button>
-        <Button onClick={onCancel} color="secondary">Discard</Button>
+          <Column
+            width={40}
+            label="Line"
+            dataKey="lineNumber"
+          />
+          <Column
+            width={20}
+            disableSort={true}
+            dataKey="error"
+            cellRenderer={
+              ({ cellData }) => {
+                if (cellData === undefined) {
+                  return <CheckCircleIcon className={classes.iconCheck} />
+                }
+                return (
+                  <Tooltip title={cellData}>
+                    <ErrorIcon className={classes.iconError} />
+                  </Tooltip>
+                )
+              }
+            }
+          />
+        </TransactionsTable>
+        <Divider />
+        <div className={classes.formActions}>
+          <Button
+            onClick={onSave}
+            color="secondary"
+            disabled={errors.base.length > 0}
+          >
+            Save Transactions
+          </Button>
+          <Button onClick={onBack} color="secondary">Back</Button>
+        </div>
       </div>
-    </div>
-  )
+    )
+  }
 }
 
 ImportResults.propTypes = {
   classes: PropTypes.object.isRequired,
+  account: PropTypes.object.isRequired,
   transactions: PropTypes.array.isRequired,
   errors: PropTypes.object.isRequired,
   onSave: PropTypes.func.isRequired,
-  onCancel: PropTypes.func.isRequired
+  onBack: PropTypes.func.isRequired
 }
 
 export default withStyles(styles)(ImportResults)
