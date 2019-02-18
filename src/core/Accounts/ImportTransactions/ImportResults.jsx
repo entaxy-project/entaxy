@@ -37,35 +37,23 @@ const styles = () => ({
 })
 
 export class ImportResults extends React.Component {
-  state = {
-    showOnlyErrors: false
-  }
-
-  onFilter = (event) => {
-    this.setState({
-      showOnlyErrors: event.target.checked
-    })
-  }
-
-  toolbarProps = (transactionsWithErrors) => {
+  toolbarProps = () => {
     const { transactions, classes } = this.props
+    const transactionsWithErrors = transactions.filter(transaction => transaction.error !== undefined)
+    let subTitle = 'No errors'
 
     if (transactionsWithErrors.length > 0) {
-      return {
-        title: `Found ${transactions.length} transactions`,
-        subTitle: (
-          <div>
-            <ErrorIcon className={classes.iconError} />
-            {transactionsWithErrors.length} transactions have errors and will not be imported
-          </div>
-        ),
-        showOnlyErrors: this.state.showOnlyErrors,
-        onFilter: this.onFilter
-      }
+      subTitle = (
+        <div>
+          <ErrorIcon className={classes.iconError} />
+          {transactionsWithErrors.length} transactions have errors and will not be imported
+        </div>
+      )
     }
+
     return {
       title: `Found ${transactions.length} transactions`,
-      subTitle: 'No errors'
+      subTitle
     }
   }
 
@@ -78,23 +66,17 @@ export class ImportResults extends React.Component {
       onSave,
       onBack
     } = this.props
-    const transactionsWithErrors = transactions.filter(transaction => transaction.error !== undefined)
 
     return (
       <div>
         <TransactionsTable
           className={classes.tableWrapper}
           account={account}
-          transactions={this.state.showOnlyErrors ? transactionsWithErrors : transactions}
+          transactions={transactions}
           hideChekboxes
           Toolbar={ResultsToolbar}
-          toolbarProps={this.toolbarProps(transactionsWithErrors)}
+          toolbarProps={this.toolbarProps()}
         >
-          <Column
-            width={40}
-            label="Line"
-            dataKey="lineNumber"
-          />
           <Column
             width={20}
             disableSort={true}

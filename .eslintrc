@@ -30,7 +30,7 @@
         "import/named": "error",
         "jsx-a11y/no-static-element-interaction": "off",
         "no-alert": "error",
-        "no-console": "error",
+        "no-console": "off",
         "no-underscore-dangle": "off",
         "padded-blocks": "error",
         "semi": [

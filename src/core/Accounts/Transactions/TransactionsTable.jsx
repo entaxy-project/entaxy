@@ -47,24 +47,17 @@ const mapStateToProps = (state, props) => {
   return {
     formatCurrency: currencyFormatter(state.settings.locale, props.account.currency),
     formatDecimal: decimalFormatter(state.settings.locale, props.account.type),
-    formatDate: dateFormatter(state.settings.locale),
-    sortBy: state.transactions.sortBy,
-    sortDirection: state.transactions.sortDirection
-  }
-}
-
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    handleSort: ({ sortBy, sortDirection }) => dispatch(updateSortBy(sortBy, sortDirection))
+    formatDate: dateFormatter(state.settings.locale)
   }
 }
 
 export class TransactionTableComponent extends React.Component {
   state = {
     selected: [],
+    filters: {},
     sortBy: 'createdAt',
-    sortDirection: 'DESC'
+    sortDirection: 'DESC',
+    filteredTransactions: []
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -74,15 +67,69 @@ export class TransactionTableComponent extends React.Component {
         prevPropsAccountId: props.account.id,
         selected: [],
         sortBy: 'createdAt',
-        sortDirection: 'DESC'
+        sortDirection: 'DESC',
+        filteredTransactions: props.transactions.sort((a, b) => a.createdAt < b.createdAt)
       }
     }
     return null
   }
 
-  handleSort = ({ sortBy, sortDirection }) => {
-    console.log('handleSort', sortBy, sortDirection )
+  setFilter = ({ attr, value }) => {
+    const filters = {
+      ...this.state.filters,
+      [attr]: value
+    }
+    this.setState({
+      filters,
+      filteredTransactions: this.filterTransactions({ filters })
+    })
   }
+
+  unsetFilter = ({ attr }) => {
+    const { [attr]: _, ...filters } = this.state.filters
+    this.setState({
+      filters,
+      filteredTransactions: this.filterTransactions({ filters })
+    })
+  }
+
+  resetFilters = () => {
+    const filters = {}
+    this.setState({
+      filters,
+      filteredTransactions: this.filterTransactions({ filters })
+    })
+  }
+
+  handleSort = ({ sortBy, sortDirection }) => {
+    this.setState({
+      sortBy,
+      sortDirection,
+      filteredTransactions: this.filterTransactions({ sortBy, sortDirection })
+    })
+  }
+
+  filterTransactions = ({
+    sortBy = this.state.sortBy,
+    sortDirection = this.state.sortDirection,
+    filters = this.state.filters
+  }) => (
+    this.props.transactions
+      .filter(transaction => (
+        Object.keys(filters).reduce((result, attr) => {
+          let evaluation
+          if (typeof filters[attr] === 'function') {
+            evaluation = filters[attr](transaction)
+          } else {
+            evaluation = transaction[attr] === filters[attr]
+          }
+          return result && evaluation
+        }, true)
+      ))
+      .sort((a, b) => (
+        sortDirection === 'ASC' ? a[sortBy] > b[sortBy] : a[sortBy] < b[sortBy]
+      ))
+  )
 
   resetSelection = () => this.setState({ selected: [] })
 
@@ -111,7 +158,7 @@ export class TransactionTableComponent extends React.Component {
 
   handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      this.setState({ selected: this.props.transactions.map(n => n.id) })
+      this.setState({ selected: this.state.filteredTransactions.map(n => n.id) })
       return
     }
     this.resetSelection()
@@ -120,7 +167,7 @@ export class TransactionTableComponent extends React.Component {
   rowClassName = ({ index }, classes) => {
     return classNames({
       [classes.headerRow]: index < 0,
-      [classes.rowWithError]: (index >= 0 && this.props.transactions[index].error !== undefined),
+      [classes.rowWithError]: (index >= 0 && this.state.filteredTransactions[index].error !== undefined),
       [classes.row]: index >= 0,
       [classes.oddRow]: index % 2 !== 0
     })
@@ -150,14 +197,17 @@ export class TransactionTableComponent extends React.Component {
       className,
       children,
       account,
-      transactions,
       formatDate,
       Toolbar,
       toolbarProps,
-      handleSort,
       hideChekboxes
     } = this.props
-    const { selected, sortBy, sortDirection } = this.state
+    const {
+      selected,
+      sortBy,
+      sortDirection,
+      filteredTransactions
+    } = this.state
     const rowHeight = account.type === 'wallet' ? 42 : 30
 
     return (
@@ -167,6 +217,11 @@ export class TransactionTableComponent extends React.Component {
           account={account}
           selectedTransactions={selected}
           resetSelection={this.resetSelection}
+          filterProps={{
+            filters: this.state.filters,
+            setFilter: this.setFilter,
+            unsetFilter: this.unsetFilter
+          }}
         />
         <AutoSizer>
           {({ width, height }) => (
@@ -176,9 +231,9 @@ export class TransactionTableComponent extends React.Component {
               headerHeight={25}
               rowHeight={rowHeight}
               rowClassName={index => this.rowClassName(index, classes)}
-              rowCount={transactions.length}
-              rowGetter={({ index }) => transactions[index]}
-              sort={handleSort}
+              rowCount={filteredTransactions.length}
+              rowGetter={({ index }) => filteredTransactions[index]}
+              sort={this.handleSort}
               sortBy={sortBy}
               sortDirection={sortDirection}
             >
@@ -193,8 +248,8 @@ export class TransactionTableComponent extends React.Component {
                       key="label"
                     >
                       <Checkbox
-                        indeterminate={selected.length > 0 && selected.length < transactions.length}
-                        checked={selected.length > 0 && selected.length === transactions.length}
+                        indeterminate={selected.length > 0 && selected.length < filteredTransactions.length}
+                        checked={selected.length > 0 && selected.length === filteredTransactions.length}
                         onChange={event => this.handleSelectAllClick(event)}
                       />
                     </span>
@@ -262,7 +317,6 @@ TransactionTableComponent.propTypes = {
   formatCurrency: PropTypes.func.isRequired,
   formatDecimal: PropTypes.func.isRequired,
   formatDate: PropTypes.func.isRequired,
-  handleSort: PropTypes.func.isRequired,
   hideChekboxes: PropTypes.bool
 }
 
@@ -274,6 +328,6 @@ TransactionTableComponent.defaultProps = {
 }
 
 export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
+  connect(mapStateToProps),
   withStyles(styles)
 )(TransactionTableComponent)

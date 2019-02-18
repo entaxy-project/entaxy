@@ -178,7 +178,6 @@ class CsvImportForm extends React.Component {
       dateFormat
     } = this.state
 
-    console.log('csvHeader', csvHeader)
     return (
       <form onSubmit={this.handleSubmit}>
         <div className={classes.root}>
