@@ -14,7 +14,7 @@ import TransactionsToolbar from './TransactionsToolbar'
 import { deleteTransactions } from '../../../store/transactions/actions'
 import { makeAccountTransactions } from '../../../store/transactions/selectors'
 
-const styles = () => ({
+const styles = {
   tableWrapper: {
     display: 'flex',
     flexDirection: 'column',
@@ -27,25 +27,21 @@ const styles = () => ({
   smallIcon: {
     fontSize: 18
   }
-})
+}
 
 // https://medium.com/@parkerdan/react-reselect-and-redux-b34017f8194c
 const makeMapStateToProps = () => {
   const accountTransactions = makeAccountTransactions()
-  const mapStateToProps = (state, props) => {
-    return {
-      account: state.accounts.byId[props.match.params.accountId],
-      transactions: accountTransactions(state, props).transactions
-    }
-  }
+  const mapStateToProps = (state, props) => ({
+    account: state.accounts.byId[props.match.params.accountId],
+    transactions: accountTransactions(state, props).transactions
+  })
   return mapStateToProps
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    deleteTransactions: (account, transactionIds) => dispatch(deleteTransactions(account, transactionIds))
-  }
-}
+const mapDispatchToProps = dispatch => ({
+  deleteTransactions: (account, transactionIds) => dispatch(deleteTransactions(account, transactionIds))
+})
 
 export class TransactionsComponent extends React.Component {
   state = {

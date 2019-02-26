@@ -4,9 +4,11 @@ import { shallow } from 'enzyme'
 import { EditAccountComponent } from '../edit'
 
 jest.mock('../form', () => 'AccountForm')
+jest.mock('../../../util/confirm', () => jest.fn())
+const confirm = require('../../../util/confirm')
 
 describe('New Account', () => {
-  const mochHandleSave = jest.fn()
+  const mochHandleUpdate = jest.fn()
   const mochHandleCancel = jest.fn()
   const mochHandleDelete = jest.fn()
 
@@ -17,7 +19,7 @@ describe('New Account', () => {
   it('matches snapshot', () => {
     const component = renderer.create((
       <EditAccountComponent
-        handleSave={mochHandleSave}
+        handleUpdate={mochHandleUpdate}
         handleCancel={mochHandleCancel}
         handleDelete={mochHandleDelete}
         history={{}}
@@ -38,7 +40,7 @@ describe('New Account', () => {
     const mochHistoryPush = jest.fn()
     const wrapper = shallow((
       <EditAccountComponent
-        handleSave={mochHandleSave}
+        handleUpdate={mochHandleUpdate}
         handleCancel={mochHandleCancel}
         handleDelete={mochHandleDelete}
         history={{ push: mochHistoryPush }}
@@ -47,15 +49,24 @@ describe('New Account', () => {
     ))
     const instance = wrapper.instance()
 
-    it('saves the account', async () => {
+    it('should save the account', async () => {
       await instance.onSave(account)
-      expect(mochHandleSave).toHaveBeenCalled()
+      expect(mochHandleUpdate).toHaveBeenCalled()
       expect(mochHistoryPush).toHaveBeenCalledWith(`/accounts/${account.id}/transactions`)
     })
 
-    it('cancels the account edit', () => {
+    it('should cancel the account edit', () => {
       instance.onCancel()
       expect(mochHistoryPush).toHaveBeenCalledWith(`/accounts/${account.id}/transactions`)
+    })
+
+    it('should delete the account', async () => {
+      confirm.mockImplementation(() => Promise.resolve())
+
+      instance.onDelete(account)
+      await expect(confirm).toHaveBeenCalledWith('Delete selected account?', 'Are you sure?')
+      expect(mochHandleDelete).toHaveBeenCalledWith(account)
+      expect(mochHistoryPush).toHaveBeenCalledWith('/dashboard')
     })
   })
 })

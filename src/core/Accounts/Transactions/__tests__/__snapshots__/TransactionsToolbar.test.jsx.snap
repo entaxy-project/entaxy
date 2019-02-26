@@ -1,16 +1,135 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TransactionsToolbar matches snapshot with no transactions 1`] = `
+exports[`TransactionsToolbar matches snapshot with no selected transactions 1`] = `
 <div
-  className="MuiToolbar-root-7 MuiToolbar-regular-9 MuiToolbar-gutters-8 TableToolbar-root-1 TableToolbar-highlight-2"
+  className="MuiToolbar-root-6 MuiToolbar-regular-8 MuiToolbar-gutters-7 TableToolbar-root-1"
 >
   <div
-    className="TableToolbar-title-6"
+    className="TableToolbar-title-5"
+  >
+    <div>
+      <h6
+        className="MuiTypography-root-10 MuiTypography-h6-27"
+      >
+        TD - Checking
+      </h6>
+      <span
+        className="MuiTypography-root-10 MuiTypography-caption-20"
+      />
+    </div>
+  </div>
+  <div
+    className="TableToolbar-spacer-3"
+  />
+  <div
+    className="TableToolbar-actions-4"
+  >
+    <div>
+      <a
+        aria-current={null}
+        aria-describedby={null}
+        aria-label="Import transaction"
+        className="MuiButtonBase-root-59 MuiIconButton-root-53"
+        href="/accounts/1/import"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseOver={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        role="button"
+        tabIndex="0"
+        title="Import transaction"
+      >
+        <span
+          className="MuiIconButton-label-58"
+        >
+          <svg
+            style={
+              Object {
+                "width": "1.5rem",
+              }
+            }
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M14,12L10,8V11H2V13H10V16M20,18V6C20,4.89 19.1,4 18,4H6C4.9,4 4,4.9 4,6V9H6V6H18V18H6V15H4V18C4,19.1 4.9,20 6,20H18C19.1,20 20,19.1 20,18Z"
+              style={Object {}}
+            />
+          </svg>
+        </span>
+        <span
+          className="MuiTouchRipple-root-71"
+        />
+      </a>
+      <button
+        aria-describedby={null}
+        aria-label="New transaction"
+        className="MuiButtonBase-root-59 MuiIconButton-root-53"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[MockFunction]}
+        onContextMenu={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseOver={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="0"
+        title="New transaction"
+        type="button"
+      >
+        <span
+          className="MuiIconButton-label-58"
+        >
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root-62"
+            focusable="false"
+            role="presentation"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+            />
+            <path
+              d="M0 0h24v24H0z"
+              fill="none"
+            />
+          </svg>
+        </span>
+        <span
+          className="MuiTouchRipple-root-71"
+        />
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`TransactionsToolbar matches snapshot with some selected transactions 1`] = `
+<div
+  className="MuiToolbar-root-6 MuiToolbar-regular-8 MuiToolbar-gutters-7 TableToolbar-root-1 TableToolbar-highlight-2"
+>
+  <div
+    className="TableToolbar-title-5"
   >
     <h6
-      className="MuiTypography-root-11 MuiTypography-subtitle1-29 MuiTypography-colorInherit-40"
+      className="MuiTypography-root-10 MuiTypography-subtitle1-28 MuiTypography-colorInherit-39"
     >
-      4
+      2
        selected
     </h6>
   </div>
@@ -23,10 +142,10 @@ exports[`TransactionsToolbar matches snapshot with no transactions 1`] = `
     <button
       aria-describedby={null}
       aria-label="Delete"
-      className="MuiButtonBase-root-60 MuiIconButton-root-54"
+      className="MuiButtonBase-root-59 MuiIconButton-root-53"
       disabled={false}
       onBlur={[Function]}
-      onClick={[MockFunction]}
+      onClick={[Function]}
       onContextMenu={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
@@ -43,11 +162,11 @@ exports[`TransactionsToolbar matches snapshot with no transactions 1`] = `
       type="button"
     >
       <span
-        className="MuiIconButton-label-59"
+        className="MuiIconButton-label-58"
       >
         <svg
           aria-hidden="true"
-          className="MuiSvgIcon-root-63"
+          className="MuiSvgIcon-root-62"
           focusable="false"
           role="presentation"
           viewBox="0 0 24 24"
@@ -62,7 +181,7 @@ exports[`TransactionsToolbar matches snapshot with no transactions 1`] = `
         </svg>
       </span>
       <span
-        className="MuiTouchRipple-root-72"
+        className="MuiTouchRipple-root-71"
       />
     </button>
   </div>

@@ -1,48 +1,41 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TableToolbar matches snapshot with no transactions 1`] = `
+exports[`TableToolbar matches snapshot with no selected items 1`] = `
 <div
-  className="MuiToolbar-root-7 MuiToolbar-regular-9 MuiToolbar-gutters-8 TableToolbar-root-1"
+  className="MuiToolbar-root-6 MuiToolbar-regular-8 MuiToolbar-gutters-7 TableToolbar-root-1"
 >
   <div
-    className="TableToolbar-title-6"
+    className="TableToolbar-title-5"
   >
-    <h6
-      className="MuiTypography-root-11 MuiTypography-h6-28"
-      id="tableTitle"
-    >
-      Transactions
-    </h6>
+    <div>
+      <h6
+        className="MuiTypography-root-10 MuiTypography-h6-27"
+      >
+        Transactions
+      </h6>
+      <span
+        className="MuiTypography-root-10 MuiTypography-caption-20"
+      />
+    </div>
   </div>
   <div
     className="TableToolbar-spacer-3"
   />
   <div
     className="TableToolbar-actions-4"
-  >
-    <div
-      className="TableToolbar-buttons-5"
-    >
-      <div>
-        Content 1
-      </div>
-      <div>
-        Content 2
-      </div>
-    </div>
-  </div>
+  />
 </div>
 `;
 
-exports[`TableToolbar matches snapshot with some transactions 1`] = `
+exports[`TableToolbar matches snapshot with some selected items 1`] = `
 <div
-  className="MuiToolbar-root-7 MuiToolbar-regular-9 MuiToolbar-gutters-8 TableToolbar-root-1 TableToolbar-highlight-2"
+  className="MuiToolbar-root-6 MuiToolbar-regular-8 MuiToolbar-gutters-7 TableToolbar-root-1 TableToolbar-highlight-2"
 >
   <div
-    className="TableToolbar-title-6"
+    className="TableToolbar-title-5"
   >
     <h6
-      className="MuiTypography-root-11 MuiTypography-subtitle1-29 MuiTypography-colorInherit-40"
+      className="MuiTypography-root-10 MuiTypography-subtitle1-28 MuiTypography-colorInherit-39"
     >
       1
        selected
@@ -54,51 +47,12 @@ exports[`TableToolbar matches snapshot with some transactions 1`] = `
   <div
     className="TableToolbar-actions-4"
   >
-    <button
-      aria-describedby={null}
-      aria-label="Delete"
-      className="MuiButtonBase-root-60 MuiIconButton-root-54"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[MockFunction]}
-      onContextMenu={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseOver={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex="0"
-      title="Delete"
-      type="button"
-    >
-      <span
-        className="MuiIconButton-label-59"
-      >
-        <svg
-          aria-hidden="true"
-          className="MuiSvgIcon-root-63"
-          focusable="false"
-          role="presentation"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
-          />
-          <path
-            d="M0 0h24v24H0z"
-            fill="none"
-          />
-        </svg>
-      </span>
-      <span
-        className="MuiTouchRipple-root-72"
-      />
-    </button>
+    <div>
+      Content 1
+    </div>
+    <div>
+      Content 2
+    </div>
   </div>
 </div>
 `;

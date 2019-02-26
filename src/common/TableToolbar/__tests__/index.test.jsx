@@ -3,14 +3,11 @@ import renderer from 'react-test-renderer'
 import TableToolbar from '../'
 
 describe('TableToolbar', () => {
-  const mochOnDelete = jest.fn()
-
-  it('matches snapshot with some transactions', () => {
+  it('matches snapshot with some selected items', () => {
     const component = renderer.create((
       <TableToolbar
         title="Transactions"
         selectedItems={['a']}
-        onDelete={mochOnDelete}
       >
         <div>Content 1</div>
         <div>Content 2</div>
@@ -20,16 +17,13 @@ describe('TableToolbar', () => {
   })
 
 
-  it('matches snapshot with no transactions', () => {
+  it('matches snapshot with no selected items', () => {
     const component = renderer.create((
       <TableToolbar
         title="Transactions"
+        subtitle="Some error was found"
         selectedItems={[]}
-        onDelete={mochOnDelete}
-      >
-        <div>Content 1</div>
-        <div>Content 2</div>
-      </TableToolbar>
+      />
     ))
     expect(component.toJSON()).toMatchSnapshot()
   })

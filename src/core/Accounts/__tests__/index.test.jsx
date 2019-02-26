@@ -39,7 +39,8 @@ const accounts = {
       description: 'BTC wallet',
       institution: 'Coinbase',
       currency: 'BTC',
-      currenctBalance: 10
+      currenctBalance: 10,
+      type: 'wallet'
     }
   },
   byInstitution: {

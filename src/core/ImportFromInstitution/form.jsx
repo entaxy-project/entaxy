@@ -89,9 +89,9 @@ export const ImportFromInstitutionFormComponent = ({
   touched,
   handleChange,
   handleCancel,
+  handleDelete,
   institution,
-  accountGroup,
-  handleDelete
+  accountGroup
 }) => (
   <Grid container direction="row" justify="center">
     <Paper className={classes.root}>

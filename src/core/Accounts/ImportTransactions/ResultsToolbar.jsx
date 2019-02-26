@@ -5,13 +5,13 @@ import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Switch from '@material-ui/core/Switch'
 import TableToolbar from '../../../common/TableToolbar'
 
-const styles = () => ({
+const styles = {
   chekbox: {
     width: 200
   }
-})
+}
 
-export class ResultsToolbar extends React.Component {
+export class ResultsToolbarComponent extends React.Component {
   state = {
     showOnlyErrors: false
   }
@@ -20,7 +20,7 @@ export class ResultsToolbar extends React.Component {
     if (target.checked) {
       this.props.filterProps.setFilter({
         attr: 'errors',
-        value: transaction => transaction.error !== undefined
+        value: this.props.filterTransactionsWithErrors
       })
     } else {
       this.props.filterProps.unsetFilter({ attr: 'errors' })
@@ -29,10 +29,6 @@ export class ResultsToolbar extends React.Component {
       showOnlyErrors: target.checked
     })
   }
-
-  showOnlyErrors = () => (
-    Object.keys[this.props.filterProps.filters].include('showOnlyErrors')
-  )
 
   render() {
     const {
@@ -63,12 +59,13 @@ export class ResultsToolbar extends React.Component {
   }
 }
 
-ResultsToolbar.propTypes = {
+ResultsToolbarComponent.propTypes = {
   classes: PropTypes.object.isRequired,
   title: PropTypes.string.isRequired,
   subTitle: PropTypes.node.isRequired,
   selectedTransactions: PropTypes.array.isRequired,
-  filterProps: PropTypes.object.isRequired
+  filterProps: PropTypes.object.isRequired,
+  filterTransactionsWithErrors: PropTypes.func.isRequired
 }
 
-export default withStyles(styles)(ResultsToolbar)
+export default withStyles(styles)(ResultsToolbarComponent)

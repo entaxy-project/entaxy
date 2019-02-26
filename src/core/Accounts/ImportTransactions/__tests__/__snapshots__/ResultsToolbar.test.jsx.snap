@@ -1,0 +1,153 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ResultsToolbar matches snapshot with no selected transactions 1`] = `
+<div
+  className="MuiToolbar-root-6 MuiToolbar-regular-8 MuiToolbar-gutters-7 TableToolbar-root-1"
+>
+  <div
+    className="TableToolbar-title-5"
+  >
+    <div>
+      <h6
+        className="MuiTypography-root-10 MuiTypography-h6-27"
+      >
+        Title
+      </h6>
+      <span
+        className="MuiTypography-root-10 MuiTypography-caption-20"
+      >
+        subTitle
+      </span>
+    </div>
+  </div>
+  <div
+    className="TableToolbar-spacer-3"
+  />
+  <div
+    className="TableToolbar-actions-4"
+  >
+    <label
+      className="MuiFormControlLabel-root-45"
+    >
+      <span
+        className="MuiSwitch-root-51"
+      >
+        <span
+          className="MuiButtonBase-root-70 MuiIconButton-root-64 MuiPrivateSwitchBase-root-60 MuiSwitch-switchBase-54 MuiSwitch-colorSecondary-57"
+          onBlur={[Function]}
+          onContextMenu={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={null}
+        >
+          <span
+            className="MuiIconButton-label-69"
+          >
+            <span
+              className="MuiSwitch-icon-52"
+            />
+            <input
+              checked={false}
+              className="MuiPrivateSwitchBase-input-63"
+              onChange={[Function]}
+              type="checkbox"
+              value="showOnlyErrors"
+            />
+          </span>
+          <span
+            className="MuiTouchRipple-root-73"
+          />
+        </span>
+        <span
+          className="MuiSwitch-bar-59"
+        />
+      </span>
+      <span
+        className="MuiTypography-root-10 MuiTypography-body1-19 MuiFormControlLabel-label-50"
+      >
+        Show only errors
+      </span>
+    </label>
+  </div>
+</div>
+`;
+
+exports[`ResultsToolbar matches snapshot with some selected transactions 1`] = `
+<div
+  className="MuiToolbar-root-6 MuiToolbar-regular-8 MuiToolbar-gutters-7 TableToolbar-root-1 TableToolbar-highlight-2"
+>
+  <div
+    className="TableToolbar-title-5"
+  >
+    <h6
+      className="MuiTypography-root-10 MuiTypography-subtitle1-28 MuiTypography-colorInherit-39"
+    >
+      2
+       selected
+    </h6>
+  </div>
+  <div
+    className="TableToolbar-spacer-3"
+  />
+  <div
+    className="TableToolbar-actions-4"
+  >
+    <label
+      className="MuiFormControlLabel-root-45"
+    >
+      <span
+        className="MuiSwitch-root-51"
+      >
+        <span
+          className="MuiButtonBase-root-70 MuiIconButton-root-64 MuiPrivateSwitchBase-root-60 MuiSwitch-switchBase-54 MuiSwitch-colorSecondary-57"
+          onBlur={[Function]}
+          onContextMenu={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={null}
+        >
+          <span
+            className="MuiIconButton-label-69"
+          >
+            <span
+              className="MuiSwitch-icon-52"
+            />
+            <input
+              checked={false}
+              className="MuiPrivateSwitchBase-input-63"
+              onChange={[Function]}
+              type="checkbox"
+              value="showOnlyErrors"
+            />
+          </span>
+          <span
+            className="MuiTouchRipple-root-73"
+          />
+        </span>
+        <span
+          className="MuiSwitch-bar-59"
+        />
+      </span>
+      <span
+        className="MuiTypography-root-10 MuiTypography-body1-19 MuiFormControlLabel-label-50"
+      >
+        Show only errors
+      </span>
+    </label>
+  </div>
+</div>
+`;

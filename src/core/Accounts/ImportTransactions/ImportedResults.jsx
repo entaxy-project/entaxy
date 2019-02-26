@@ -12,7 +12,7 @@ import { Column } from 'react-virtualized'
 import ResultsToolbar from './ResultsToolbar'
 import TransactionsTable from '../Transactions/TransactionsTable'
 
-const styles = () => ({
+const styles = {
   tableWrapper: {
     height: 'calc(100vh - 350px)',
     marginBottom: 100
@@ -34,12 +34,16 @@ const styles = () => ({
     'vertical-align': 'text-bottom',
     fontSize: 18
   }
-})
+}
 
-export class ImportResults extends React.Component {
+export class ImportedResultsComponent extends React.Component {
+  filterTransactionsWithErrors = transaction => (
+    Object.keys(transaction).includes('errors') && transaction.errors.length > 0
+  )
+
   toolbarProps = () => {
     const { transactions, classes } = this.props
-    const transactionsWithErrors = transactions.filter(transaction => transaction.error !== undefined)
+    const transactionsWithErrors = transactions.filter(this.filterTransactionsWithErrors)
     let subTitle = 'No errors'
 
     if (transactionsWithErrors.length > 0) {
@@ -53,8 +57,21 @@ export class ImportResults extends React.Component {
 
     return {
       title: `Found ${transactions.length} transactions`,
-      subTitle
+      subTitle,
+      filterTransactionsWithErrors: this.filterTransactionsWithErrors
     }
+  }
+
+  errorCellRenderer = ({ cellData }) => {
+    const { classes } = this.props
+    if (cellData.length === 0) {
+      return <CheckCircleIcon className={classes.iconCheck} />
+    }
+    return (
+      <Tooltip title={cellData}>
+        <ErrorIcon className={classes.iconError} />
+      </Tooltip>
+    )
   }
 
   render() {
@@ -80,19 +97,8 @@ export class ImportResults extends React.Component {
           <Column
             width={20}
             disableSort={true}
-            dataKey="error"
-            cellRenderer={
-              ({ cellData }) => {
-                if (cellData === undefined) {
-                  return <CheckCircleIcon className={classes.iconCheck} />
-                }
-                return (
-                  <Tooltip title={cellData}>
-                    <ErrorIcon className={classes.iconError} />
-                  </Tooltip>
-                )
-              }
-            }
+            dataKey="errors"
+            cellRenderer={this.errorCellRenderer}
           />
         </TransactionsTable>
         <Divider />
@@ -111,7 +117,7 @@ export class ImportResults extends React.Component {
   }
 }
 
-ImportResults.propTypes = {
+ImportedResultsComponent.propTypes = {
   classes: PropTypes.object.isRequired,
   account: PropTypes.object.isRequired,
   transactions: PropTypes.array.isRequired,
@@ -120,4 +126,4 @@ ImportResults.propTypes = {
   onBack: PropTypes.func.isRequired
 }
 
-export default withStyles(styles)(ImportResults)
+export default withStyles(styles)(ImportedResultsComponent)

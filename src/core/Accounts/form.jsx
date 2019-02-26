@@ -65,12 +65,10 @@ const styles = theme => ({
   }
 })
 
-const mapStateToProps = (state, ownProps) => {
-  return {
-    settings: state.settings,
-    account: state.accounts.byId[ownProps.accountId]
-  }
-}
+const mapStateToProps = (state, ownProps) => ({
+  settings: state.settings,
+  account: state.accounts.byId[ownProps.accountId]
+})
 
 export class AccountFormComponent extends React.Component {
   state = {

@@ -104,19 +104,18 @@ const styles = (theme) => {
 }
 
 const DONT_IMPORT = 'Don\'t import'
-const parser = new CsvParser()
 
-class CsvImportForm extends React.Component {
-  state = {
-    isSubmitting: false,
-    file: null,
-    error: null,
-    csvHeader: null,
-    dateFormat: null
-  }
-
-  setSubmitting = (value) => {
-    this.setState({ isSubmitting: value })
+export class CsvImportFormComponent extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      isSubmitting: false,
+      file: null,
+      error: null,
+      csvHeader: null,
+      dateFormat: null
+    }
+    this.parser = new CsvParser()
   }
 
   handleFileUpload = async (acceptedFiles) => {
@@ -126,40 +125,41 @@ class CsvImportForm extends React.Component {
         error: 'The file you uploaded is not a CSV file'
       })
     } else {
-      await parser.parse(acceptedFiles[0])
+      await this.parser.parse(acceptedFiles[0])
       this.setState({
         file: acceptedFiles[0],
         error: null,
-        csvHeader: parser.csvHeader,
-        dateFormat: parser.dateFormat
+        csvHeader: this.parser.csvHeader,
+        dateFormat: this.parser.dateFormat
       })
     }
   }
 
   handleChange = ({ target }) => {
-    parser.mapColumnToTransactionField({
+    this.parser.mapColumnToTransactionField({
       columnIndex: parseInt(target.name, 10),
       transactionField: target.value
     })
-    this.setState({ csvHeader: parser.csvHeader })
+    this.setState({ csvHeader: this.parser.csvHeader })
   }
 
   handleChangeDateFormat = ({ target }) => {
-    parser.dateFormat = target.value
-    this.setState({ dateFormat: parser.dateFormat })
+    this.parser.dateFormat = target.value
+    this.setState({ dateFormat: this.parser.dateFormat })
   }
 
   handleChangeStartingRow = (event) => {
     console.log(event)
-    // parser.startingRow = target.value
-    // this.setState({ startingRow: parser.startingRow })
+    // this.parser.startingRow = target.value
+    // this.setState({ startingRow: this.parser.startingRow })
   }
 
   handleSubmit = (event) => {
+    this.setState({ isSubmitting: true })
     const { handleParsedData } = this.props
-    const { transactions, errors } = parser.mapToTransactions()
-    this.setSubmitting(false)
+    const { transactions, errors } = this.parser.mapToTransactions()
     handleParsedData(transactions, errors)
+    this.setState({ isSubmitting: false })
     event.preventDefault()
   }
 
@@ -226,13 +226,13 @@ class CsvImportForm extends React.Component {
                             <MenuItem key={DONT_IMPORT} value={DONT_IMPORT}>
                               <Typography color="textSecondary">{DONT_IMPORT}</Typography>
                             </MenuItem>
-                            {Object.keys(parser.transactionFields).map(field => (
+                            {Object.keys(this.parser.transactionFields).map(field => (
                               <MenuItem
                                 key={field}
                                 value={field}
-                                disabled={parser.isFieldSelected(field)}
+                                disabled={this.parser.isFieldSelected(field)}
                               >
-                                {parser.transactionFields[field].label}
+                                {this.parser.transactionFields[field].label}
                               </MenuItem>
                             ))}
                           </Select>
@@ -248,12 +248,12 @@ class CsvImportForm extends React.Component {
                   className={classes.formField}
                   control={
                     <Checkbox
-                      checked={this.state.startingRow}
-                      onChange={this.handleChangeStartingRow}
-                      value="startingRow"
+                      checked={this.state.noHeaderRow}
+                      onChange={this.handleChangeNoHeaderRow}
+                      value="noHeaderRow"
                     />
                   }
-                  label="Starting Row"
+                  label="No header row"
                 />
                 <FormControl className={classes.formField}>
                   <InputLabel htmlFor="dateFormat">Date format</InputLabel>
@@ -262,7 +262,7 @@ class CsvImportForm extends React.Component {
                     onChange={this.handleChangeDateFormat}
                     inputProps={{ name: 'dateFormat' }}
                   >
-                    {parser.dateFormats.map(format => (
+                    {this.parser.dateFormats.map(format => (
                       <MenuItem key={format} value={format}>{format}</MenuItem>
                     ))}
                   </Select>
@@ -292,11 +292,11 @@ class CsvImportForm extends React.Component {
   }
 }
 
-CsvImportForm.propTypes = {
+CsvImportFormComponent.propTypes = {
   classes: PropTypes.object.isRequired,
   handleParsedData: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired,
   account: PropTypes.object.isRequired
 }
 
-export default withStyles(styles)(CsvImportForm)
+export default withStyles(styles)(CsvImportFormComponent)

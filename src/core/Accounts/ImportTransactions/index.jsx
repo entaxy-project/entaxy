@@ -16,7 +16,7 @@ import InstitutionIcon from '../../../common/InstitutionIcon'
 import { addTransactions } from '../../../store/transactions/actions'
 import institutions from '../../../data/institutions'
 import CsvImportForm from './CsvImportForm'
-import ImportResults from './ImportResults'
+import ImportedResults from './ImportedResults'
 
 const styles = theme => ({
   root: {
@@ -131,7 +131,7 @@ export class ImportTransactionsComponent extends React.Component {
                 />
               }
               {showTransactions &&
-                <ImportResults
+                <ImportedResults
                   account={account}
                   transactions={transactions}
                   errors={errors}

@@ -4,7 +4,7 @@ import Papa from 'papaparse'
 import parse from 'date-fns/parse'
 
 const DONT_IMPORT = 'Don\'t import'
-const DATE_FORMATS = {
+export const DATE_FORMATS = {
   'mm/dd/yyyy': (string) => {
     const [, month, day, year] = (/(\d{1,2})\/(\d{1,2})\/(\d{4})/gi).exec(string)
     return [year, month, day]
@@ -45,12 +45,12 @@ const TRANSACTION_FIELDS = {
 export default class CsvParser {
   constructor() {
     this._csvData = []
-    this._csvHeader = null
+    this._csvHeader = []
     this._columnsCount = 0
     this._firstRowIndex = 0
     this._dateFormat = Object.keys(DATE_FORMATS)[0]
     this._errors = { base: [], transactions: {} }
-    // this._currentRow = 0
+    this._currentRow = 0
     // this._headerIsValid = false
     // this._header = [] // This should be overriten in a deriver class
     // this._config = { header: true } // Specific parser configuration - override in derived class
@@ -170,25 +170,22 @@ export default class CsvParser {
       return { ...res, [column.transactionField]: index }
     }, {})
 
-    this._currentRow = 0
     this._csvData.forEach((row, index) => {
-      this._currentRow = index
       if (index > this._firstRowIndex) {
         const amount = this.readAmount(row, columns)
         const description = this.readDescription(row, columns)
         const createdAt = this.dateFromString(row[columns.createdAt])
-        let error
+        const errors = []
         if (typeof amount !== 'number') {
-          error = 'Could not read the amount'
+          errors.push('Could not read the amount')
         } else if (createdAt === null) {
-          error = `Invalid date. Expecting format '${this._dateFormat}'`
+          errors.push(`Invalid date. Expecting format '${this._dateFormat}'`)
         }
         transactions.push({
           amount,
           description,
           createdAt,
-          error,
-          lineNumber: index
+          errors
         })
       }
     })

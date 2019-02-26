@@ -43,15 +43,13 @@ const styles = theme => ({
   }
 })
 
-const mapStateToProps = (state, props) => {
-  return {
-    formatCurrency: currencyFormatter(state.settings.locale, props.account.currency),
-    formatDecimal: decimalFormatter(state.settings.locale, props.account.type),
-    formatDate: dateFormatter(state.settings.locale)
-  }
-}
+const mapStateToProps = (state, props) => ({
+  formatCurrency: currencyFormatter(state.settings.locale, props.account.currency),
+  formatDecimal: decimalFormatter(state.settings.locale, props.account.type),
+  formatDate: dateFormatter(state.settings.locale)
+})
 
-export class TransactionTableComponent extends React.Component {
+export class TransactionsTableComponent extends React.Component {
   state = {
     selected: [],
     filters: {},
@@ -71,7 +69,7 @@ export class TransactionTableComponent extends React.Component {
         filteredTransactions: props.transactions.sort((a, b) => a.createdAt < b.createdAt)
       }
     }
-    return null
+    return {}
   }
 
   setFilter = ({ attr, value }) => {
@@ -164,10 +162,13 @@ export class TransactionTableComponent extends React.Component {
     this.resetSelection()
   }
 
+  transactionHasErrors = transaction =>
+    transaction.errors !== undefined && transaction.errors.length > 0
+
   rowClassName = ({ index }, classes) => {
     return classNames({
       [classes.headerRow]: index < 0,
-      [classes.rowWithError]: (index >= 0 && this.state.filteredTransactions[index].error !== undefined),
+      [classes.rowWithError]: (index >= 0 && this.transactionHasErrors(this.state.filteredTransactions[index])),
       [classes.row]: index >= 0,
       [classes.oddRow]: index % 2 !== 0
     })
@@ -306,7 +307,7 @@ export class TransactionTableComponent extends React.Component {
   }
 }
 
-TransactionTableComponent.propTypes = {
+TransactionsTableComponent.propTypes = {
   classes: PropTypes.object.isRequired,
   className: PropTypes.string,
   children: PropTypes.node,
@@ -320,7 +321,7 @@ TransactionTableComponent.propTypes = {
   hideChekboxes: PropTypes.bool
 }
 
-TransactionTableComponent.defaultProps = {
+TransactionsTableComponent.defaultProps = {
   className: undefined,
   children: undefined,
   toolbarProps: undefined,
@@ -330,4 +331,4 @@ TransactionTableComponent.defaultProps = {
 export default compose(
   connect(mapStateToProps),
   withStyles(styles)
-)(TransactionTableComponent)
+)(TransactionsTableComponent)
