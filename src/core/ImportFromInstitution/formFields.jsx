@@ -119,7 +119,7 @@ export class FormFieldsComponent extends React.Component {
           helperText={errors.refreshToken}
         />
       )
-    }[institution]
+    }[institution] || null
   }
 }
 

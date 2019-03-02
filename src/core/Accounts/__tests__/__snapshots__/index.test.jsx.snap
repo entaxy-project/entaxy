@@ -992,7 +992,7 @@ exports[`Accounts index (Left Nav) snapshot matches with a few accounts but none
 </nav>
 `;
 
-exports[`Accounts index (Left Nav) snapshot matches with no accounts and no selected accountId 1`] = `
+exports[`Accounts index (Left Nav) snapshot matches with no accounts 1`] = `
 <nav
   className="MuiList-root-1 MuiList-dense-3 MuiList-padding-2 MuiList-subheader-4"
 >

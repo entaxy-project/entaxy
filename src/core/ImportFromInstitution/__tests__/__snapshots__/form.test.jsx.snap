@@ -1,0 +1,610 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Account form matches snapshot for existing Coinbase account 1`] = `
+<div
+  className="MuiGrid-container-238 MuiGrid-justify-xs-center-255"
+>
+  <div
+    className="MuiPaper-root-335 MuiPaper-elevation2-339 MuiPaper-rounded-336 WithFormik-Function--root-228"
+  >
+    <div
+      className="WithFormik-Function--formHeader-229"
+    >
+      <h6
+        className="MuiTypography-root-362 MuiTypography-h6-379"
+      >
+        Import from 
+        Coinbase
+      </h6>
+      <button
+        aria-label="Close"
+        className="MuiButtonBase-root-403 MuiIconButton-root-397 WithFormik-Function--closeButton-230"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[MockFunction]}
+        onContextMenu={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="0"
+        type="button"
+      >
+        <span
+          className="MuiIconButton-label-402"
+        >
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root-406"
+            focusable="false"
+            role="presentation"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+            />
+            <path
+              d="M0 0h24v24H0z"
+              fill="none"
+            />
+          </svg>
+        </span>
+        <span
+          className="MuiTouchRipple-root-504"
+        />
+      </button>
+    </div>
+    <hr
+      className="MuiDivider-root-415"
+    />
+    <div
+      className="MuiGrid-container-238 MuiGrid-spacing-xs-16-261 WithFormik-Function--input-232"
+    >
+      <p
+        className="MuiTypography-root-362 MuiTypography-caption-372 MuiTypography-paragraph-390"
+      >
+        Your browser will connect directly to 
+        <strong>
+          Coinbase
+        </strong>
+         so you're really importing your own data.
+      </p>
+      <div>
+        <p
+          className="MuiTypography-root-362 MuiTypography-caption-372 MuiTypography-paragraph-390"
+        >
+          <a
+            href="https://www.coinbase.com/settings/api"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <span
+              className="MuiTypography-root-362 MuiTypography-caption-372 MuiTypography-colorSecondary-393"
+            >
+              Create an API key on Coinbase (opens in a new tab)
+            </span>
+          </a>
+        </p>
+        <div
+          className="MuiPaper-root-335 MuiPaper-elevation1-338 MuiPaper-rounded-336 MuiCard-root-422  DescriptionCard-card-420"
+        >
+          <div
+            className="MuiCardContent-root-423"
+          >
+            <svg
+              aria-hidden="true"
+              className="MuiSvgIcon-root-406 DescriptionCard-icon-421"
+              focusable="false"
+              role="presentation"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M0 0h24v24H0z"
+                fill="none"
+              />
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
+              />
+            </svg>
+            <span
+              className="MuiTypography-root-362 MuiTypography-caption-372"
+            >
+              Make sure your api key has access to 
+              <strong>
+                all accounts
+              </strong>
+               and has the following permimisions:
+              <ul>
+                <li>
+                  <strong>
+                    wallet:accounts:read
+                  </strong>
+                </li>
+                <li>
+                  <strong>
+                    wallet:transactions:read
+                  </strong>
+                </li>
+              </ul>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <form
+      className="WithFormik-Function--form-231"
+      onSubmit={[Function]}
+    >
+      <span
+        className="WithFormik-Function--form-231"
+      >
+        <div
+          className="MuiFormControl-root-424 WithFormik-Function--input-232"
+        >
+          <label
+            className="MuiFormLabel-root-439 MuiInputLabel-root-428 MuiInputLabel-formControl-433 MuiInputLabel-animated-436"
+            data-shrink={false}
+          >
+            API key
+          </label>
+          <div
+            className="MuiInputBase-root-459 MuiInput-root-446 MuiInput-underline-450 MuiInputBase-formControl-460 MuiInput-formControl-447"
+            onClick={[Function]}
+          >
+            <input
+              aria-invalid={false}
+              aria-label="API key"
+              className="MuiInputBase-input-469 MuiInput-input-454"
+              disabled={false}
+              maxLength={100}
+              name="apiKey"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              required={false}
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+        <div
+          className="MuiFormControl-root-424 WithFormik-Function--input-232"
+        >
+          <label
+            className="MuiFormLabel-root-439 MuiInputLabel-root-428 MuiInputLabel-formControl-433 MuiInputLabel-animated-436"
+            data-shrink={false}
+          >
+            API secret
+          </label>
+          <div
+            className="MuiInputBase-root-459 MuiInput-root-446 MuiInput-underline-450 MuiInputBase-formControl-460 MuiInput-formControl-447"
+            onClick={[Function]}
+          >
+            <input
+              aria-invalid={false}
+              aria-label="API secret"
+              className="MuiInputBase-input-469 MuiInput-input-454"
+              disabled={false}
+              maxLength={100}
+              name="apiSecret"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              required={false}
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+      </span>
+      <hr
+        className="MuiDivider-root-415"
+      />
+      <div
+        className="WithFormik-Function--formActions-235"
+      >
+        <div
+          className="SubmitButtonWithProgress-wrapper-476"
+        >
+          <button
+            className="MuiButtonBase-root-403 MuiButton-root-478 MuiButton-text-480 MuiButton-textSecondary-482 MuiButton-flat-483 MuiButton-flatSecondary-485"
+            disabled={false}
+            onBlur={[Function]}
+            onContextMenu={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex="0"
+            type="submit"
+          >
+            <span
+              className="MuiButton-label-479"
+            >
+              Import
+            </span>
+            <span
+              className="MuiTouchRipple-root-504"
+            />
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+`;
+
+exports[`Account form matches snapshot for new Coinbase account 1`] = `
+<div
+  className="MuiGrid-container-238 MuiGrid-justify-xs-center-255"
+>
+  <div
+    className="MuiPaper-root-335 MuiPaper-elevation2-339 MuiPaper-rounded-336 WithFormik-Function--root-228"
+  >
+    <div
+      className="WithFormik-Function--formHeader-229"
+    >
+      <h6
+        className="MuiTypography-root-362 MuiTypography-h6-379"
+      >
+        Import from 
+        Coinbase
+      </h6>
+      <button
+        aria-label="Close"
+        className="MuiButtonBase-root-403 MuiIconButton-root-397 WithFormik-Function--closeButton-230"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[MockFunction]}
+        onContextMenu={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="0"
+        type="button"
+      >
+        <span
+          className="MuiIconButton-label-402"
+        >
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root-406"
+            focusable="false"
+            role="presentation"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+            />
+            <path
+              d="M0 0h24v24H0z"
+              fill="none"
+            />
+          </svg>
+        </span>
+        <span
+          className="MuiTouchRipple-root-504"
+        />
+      </button>
+    </div>
+    <hr
+      className="MuiDivider-root-415"
+    />
+    <div
+      className="MuiGrid-container-238 MuiGrid-spacing-xs-16-261 WithFormik-Function--input-232"
+    >
+      <p
+        className="MuiTypography-root-362 MuiTypography-caption-372 MuiTypography-paragraph-390"
+      >
+        Your browser will connect directly to 
+        <strong>
+          Coinbase
+        </strong>
+         so you're really importing your own data.
+      </p>
+      <div>
+        <p
+          className="MuiTypography-root-362 MuiTypography-caption-372 MuiTypography-paragraph-390"
+        >
+          <a
+            href="https://www.coinbase.com/settings/api"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <span
+              className="MuiTypography-root-362 MuiTypography-caption-372 MuiTypography-colorSecondary-393"
+            >
+              Create an API key on Coinbase (opens in a new tab)
+            </span>
+          </a>
+        </p>
+        <div
+          className="MuiPaper-root-335 MuiPaper-elevation1-338 MuiPaper-rounded-336 MuiCard-root-422  DescriptionCard-card-420"
+        >
+          <div
+            className="MuiCardContent-root-423"
+          >
+            <svg
+              aria-hidden="true"
+              className="MuiSvgIcon-root-406 DescriptionCard-icon-421"
+              focusable="false"
+              role="presentation"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M0 0h24v24H0z"
+                fill="none"
+              />
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
+              />
+            </svg>
+            <span
+              className="MuiTypography-root-362 MuiTypography-caption-372"
+            >
+              Make sure your api key has access to 
+              <strong>
+                all accounts
+              </strong>
+               and has the following permimisions:
+              <ul>
+                <li>
+                  <strong>
+                    wallet:accounts:read
+                  </strong>
+                </li>
+                <li>
+                  <strong>
+                    wallet:transactions:read
+                  </strong>
+                </li>
+              </ul>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <form
+      className="WithFormik-Function--form-231"
+      onSubmit={[Function]}
+    >
+      <span
+        className="WithFormik-Function--form-231"
+      >
+        <div
+          className="MuiFormControl-root-424 WithFormik-Function--input-232"
+        >
+          <label
+            className="MuiFormLabel-root-439 MuiInputLabel-root-428 MuiInputLabel-formControl-433 MuiInputLabel-animated-436"
+            data-shrink={false}
+          >
+            API key
+          </label>
+          <div
+            className="MuiInputBase-root-459 MuiInput-root-446 MuiInput-underline-450 MuiInputBase-formControl-460 MuiInput-formControl-447"
+            onClick={[Function]}
+          >
+            <input
+              aria-invalid={false}
+              aria-label="API key"
+              className="MuiInputBase-input-469 MuiInput-input-454"
+              disabled={false}
+              maxLength={100}
+              name="apiKey"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              required={false}
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+        <div
+          className="MuiFormControl-root-424 WithFormik-Function--input-232"
+        >
+          <label
+            className="MuiFormLabel-root-439 MuiInputLabel-root-428 MuiInputLabel-formControl-433 MuiInputLabel-animated-436"
+            data-shrink={false}
+          >
+            API secret
+          </label>
+          <div
+            className="MuiInputBase-root-459 MuiInput-root-446 MuiInput-underline-450 MuiInputBase-formControl-460 MuiInput-formControl-447"
+            onClick={[Function]}
+          >
+            <input
+              aria-invalid={false}
+              aria-label="API secret"
+              className="MuiInputBase-input-469 MuiInput-input-454"
+              disabled={false}
+              maxLength={100}
+              name="apiSecret"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              required={false}
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+      </span>
+      <hr
+        className="MuiDivider-root-415"
+      />
+      <div
+        className="WithFormik-Function--formActions-235"
+      >
+        <div
+          className="SubmitButtonWithProgress-wrapper-476"
+        >
+          <button
+            className="MuiButtonBase-root-403 MuiButton-root-478 MuiButton-text-480 MuiButton-textSecondary-482 MuiButton-flat-483 MuiButton-flatSecondary-485"
+            disabled={false}
+            onBlur={[Function]}
+            onContextMenu={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex="0"
+            type="submit"
+          >
+            <span
+              className="MuiButton-label-479"
+            >
+              Import
+            </span>
+            <span
+              className="MuiTouchRipple-root-504"
+            />
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+`;
+
+exports[`Account form matches snapshot for regular account 1`] = `
+<div
+  className="MuiGrid-container-11 MuiGrid-justify-xs-center-28"
+>
+  <div
+    className="MuiPaper-root-108 MuiPaper-elevation2-112 MuiPaper-rounded-109 WithFormik-Function--root-1"
+  >
+    <div
+      className="WithFormik-Function--formHeader-2"
+    >
+      <h6
+        className="MuiTypography-root-135 MuiTypography-h6-152"
+      >
+        Import from 
+        TD
+      </h6>
+      <button
+        aria-label="Close"
+        className="MuiButtonBase-root-176 MuiIconButton-root-170 WithFormik-Function--closeButton-3"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[MockFunction]}
+        onContextMenu={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="0"
+        type="button"
+      >
+        <span
+          className="MuiIconButton-label-175"
+        >
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root-179"
+            focusable="false"
+            role="presentation"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+            />
+            <path
+              d="M0 0h24v24H0z"
+              fill="none"
+            />
+          </svg>
+        </span>
+        <span
+          className="MuiTouchRipple-root-221"
+        />
+      </button>
+    </div>
+    <hr
+      className="MuiDivider-root-188"
+    />
+    <div
+      className="MuiGrid-container-11 MuiGrid-spacing-xs-16-34 WithFormik-Function--input-5"
+    >
+      <p
+        className="MuiTypography-root-135 MuiTypography-caption-145 MuiTypography-paragraph-163"
+      >
+        Your browser will connect directly to 
+        <strong>
+          TD
+        </strong>
+         so you're really importing your own data.
+      </p>
+    </div>
+    <form
+      className="WithFormik-Function--form-4"
+      onSubmit={[Function]}
+    >
+      <hr
+        className="MuiDivider-root-188"
+      />
+      <div
+        className="WithFormik-Function--formActions-8"
+      >
+        <div
+          className="SubmitButtonWithProgress-wrapper-193"
+        >
+          <button
+            className="MuiButtonBase-root-176 MuiButton-root-195 MuiButton-text-197 MuiButton-textSecondary-199 MuiButton-flat-200 MuiButton-flatSecondary-202"
+            disabled={false}
+            onBlur={[Function]}
+            onContextMenu={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex="0"
+            type="submit"
+          >
+            <span
+              className="MuiButton-label-196"
+            >
+              Import
+            </span>
+            <span
+              className="MuiTouchRipple-root-221"
+            />
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+`;

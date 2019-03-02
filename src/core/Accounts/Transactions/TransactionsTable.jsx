@@ -6,6 +6,7 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import Checkbox from '@material-ui/core/Checkbox'
 import grey from '@material-ui/core/colors/grey'
+import { orderBy } from 'lodash'
 import { Column, Table, AutoSizer } from 'react-virtualized'
 import {
   currencyFormatter,
@@ -66,7 +67,7 @@ export class TransactionsTableComponent extends React.Component {
         selected: [],
         sortBy: 'createdAt',
         sortDirection: 'DESC',
-        filteredTransactions: props.transactions.sort((a, b) => a.createdAt < b.createdAt)
+        filteredTransactions: orderBy(props.transactions, ['createdAt'], ['desc'])
       }
     }
     return {}
@@ -111,23 +112,18 @@ export class TransactionsTableComponent extends React.Component {
     sortBy = this.state.sortBy,
     sortDirection = this.state.sortDirection,
     filters = this.state.filters
-  }) => (
-    this.props.transactions
+  }) => {
+    const filteredTransactions = this.props.transactions
       .filter(transaction => (
         Object.keys(filters).reduce((result, attr) => {
-          let evaluation
           if (typeof filters[attr] === 'function') {
-            evaluation = filters[attr](transaction)
-          } else {
-            evaluation = transaction[attr] === filters[attr]
+            return result && filters[attr](transaction)
           }
-          return result && evaluation
+          return result && transaction[attr] === filters[attr]
         }, true)
       ))
-      .sort((a, b) => (
-        sortDirection === 'ASC' ? a[sortBy] > b[sortBy] : a[sortBy] < b[sortBy]
-      ))
-  )
+    return orderBy(filteredTransactions, [sortBy], [sortDirection.toLowerCase()])
+  }
 
   resetSelection = () => this.setState({ selected: [] })
 
@@ -192,6 +188,13 @@ export class TransactionsTableComponent extends React.Component {
     return formatCurrency(amount)
   }
 
+  renderCellAmount = ({ cellData }) => (
+    {
+      positiveAmount: cellData.amount > 0 ? this.displayCurrency(cellData) : null,
+      negativeAmount: cellData.amount < 0 ? this.displayCurrency(cellData) : null
+    }[cellData.restrictTo]
+  )
+
   render() {
     const {
       classes,
@@ -255,20 +258,17 @@ export class TransactionsTableComponent extends React.Component {
                       />
                     </span>
                   )}
-                  cellRenderer={({ cellData }) => {
-                    const isSelected = this.isSelected(cellData)
-                    return (
-                      <span
-                        className="ReactVirtualized__Table__headerTruncatedText"
-                        key="label"
-                      >
-                        <Checkbox
-                          checked={isSelected}
-                          onChange={event => this.handleCheckboxClick(event, cellData)}
-                        />
-                      </span>
-                    )
-                  }}
+                  cellRenderer={({ cellData }) => (
+                    <span
+                      className="ReactVirtualized__Table__headerTruncatedText"
+                      key="label"
+                    >
+                      <Checkbox
+                        checked={this.isSelected(cellData)}
+                        onChange={event => this.handleCheckboxClick(event, cellData)}
+                      />
+                    </span>
+                  )}
                 />
               }
               <Column
@@ -288,15 +288,23 @@ export class TransactionsTableComponent extends React.Component {
                 width={130}
                 label="In"
                 dataKey="amount"
-                cellDataGetter={({ rowData }) => ({ amount: rowData.amount, nativeAmount: rowData.nativeAmount })}
-                cellRenderer={({ cellData }) => (cellData.amount > 0 ? this.displayCurrency(cellData) : null)}
+                cellDataGetter={({ rowData }) => ({
+                  amount: rowData.amount,
+                  nativeAmount: rowData.nativeAmount,
+                  restrictTo: 'positiveAmount'
+                })}
+                cellRenderer={this.renderCellAmount}
               />
               <Column
                 width={130}
                 label="Out"
                 dataKey="amount"
-                cellDataGetter={({ rowData }) => ({ amount: rowData.amount, nativeAmount: rowData.nativeAmount })}
-                cellRenderer={({ cellData }) => (cellData.amount < 0 ? this.displayCurrency(cellData) : null)}
+                cellDataGetter={({ rowData }) => ({
+                  amount: rowData.amount,
+                  nativeAmount: rowData.nativeAmount,
+                  restrictTo: 'negativeAmount'
+                })}
+                cellRenderer={this.renderCellAmount}
               />
               { children }
             </Table>

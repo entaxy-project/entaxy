@@ -50,9 +50,12 @@ const accounts = {
   }
 }
 
+// Make sure we start with a specific currency
+settingsInitialState.currency = 'CAD'
+
 describe('Accounts index (Left Nav)', () => {
   describe('snapshot', () => {
-    it('matches with no accounts and no selected accountId', () => {
+    it('matches with no accounts', () => {
       const component = renderer.create((
         <BrowserRouter>
           <AccountsComponent
