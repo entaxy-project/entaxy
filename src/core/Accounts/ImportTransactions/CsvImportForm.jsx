@@ -148,10 +148,9 @@ export class CsvImportFormComponent extends React.Component {
     this.setState({ dateFormat: this.parser.dateFormat })
   }
 
-  handleChangeStartingRow = (event) => {
-    console.log(event)
-    // this.parser.startingRow = target.value
-    // this.setState({ startingRow: this.parser.startingRow })
+  handleChangeNoHeaderRow = ({ target }) => {
+    this.parser.noHeaderRow = target.checked
+    this.setState({ noHeaderRow: this.parser.noHeaderRow })
   }
 
   handleSubmit = (event) => {

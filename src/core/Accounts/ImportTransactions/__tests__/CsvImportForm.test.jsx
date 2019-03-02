@@ -111,13 +111,13 @@ describe('CsvImportForm', () => {
       expect(instance.state.dateFormat).toEqual(Object.keys(DATE_FORMATS)[0])
     })
 
-    it.skip('should handleChangeStartingRow', async () => {
+    it('should handleChangeNoHeaderRow', async () => {
       const file = new File([csvData.join('\n')], 'test.csv', { type: 'text/csv' })
       await instance.handleFileUpload([file])
-      expect(instance.parser.dateFormat).toEqual(Object.keys(DATE_FORMATS)[1])
-      instance.handleChangeStartingRow({ target: { value: Object.keys(DATE_FORMATS)[0] } })
-      expect(instance.parser.dateFormat).toEqual(Object.keys(DATE_FORMATS)[0])
-      expect(instance.state.dateFormat).toEqual(Object.keys(DATE_FORMATS)[0])
+      expect(instance.parser.noHeaderRow).toBeFalsy()
+      instance.handleChangeNoHeaderRow({ target: { checked: true } })
+      expect(instance.parser.noHeaderRow).toBeTruthy()
+      expect(instance.state.noHeaderRow).toBeTruthy()
     })
 
     it('should handleSubmit', async () => {

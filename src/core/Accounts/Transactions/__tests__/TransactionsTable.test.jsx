@@ -198,7 +198,6 @@ describe('TransactionsTable', () => {
       })
     })
 
-
     describe('setFilter, unsetFilter and resetFilters', () => {
       it('should set and unset filters on transactions', () => {
         expect(instance.state).toEqual({

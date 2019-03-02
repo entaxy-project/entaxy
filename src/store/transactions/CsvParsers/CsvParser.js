@@ -48,13 +48,12 @@ export default class CsvParser {
     this._csvHeader = []
     this._columnsCount = 0
     this._firstRowIndex = 0
+    this._noHeaderRow = false
     this._dateFormat = Object.keys(DATE_FORMATS)[0]
     this._errors = { base: [], transactions: {} }
     this._currentRow = 0
-    // this._headerIsValid = false
-    // this._header = [] // This should be overriten in a deriver class
-    // this._config = { header: true } // Specific parser configuration - override in derived class
   }
+
   get csvData() {
     return this._csvData
   }
@@ -89,6 +88,14 @@ export default class CsvParser {
 
   set dateFormat(newDateFormat) {
     this._dateFormat = newDateFormat
+  }
+
+  get noHeaderRow() {
+    return this._noHeaderRow
+  }
+
+  set noHeaderRow(value) {
+    this._noHeaderRow = value
   }
 
   // Look through the first few rows and find the most common number of columns
@@ -171,7 +178,7 @@ export default class CsvParser {
     }, {})
 
     this._csvData.forEach((row, index) => {
-      if (index > this._firstRowIndex) {
+      if (this._noHeaderRow || index > this._firstRowIndex) {
         const amount = this.readAmount(row, columns)
         const description = this.readDescription(row, columns)
         const createdAt = this.dateFromString(row[columns.createdAt])
@@ -199,7 +206,7 @@ export default class CsvParser {
     } else if (Object.keys(columns).includes('income') && row[columns.income] !== null) {
       amount = row[columns.income]
     } else if (Object.keys(columns).includes('expense') && row[columns.expense] !== null) {
-      amount = row[columns.expense]
+      amount = -row[columns.expense]
     }
     return amount
   }
