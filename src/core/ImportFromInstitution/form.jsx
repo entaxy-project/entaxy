@@ -19,7 +19,6 @@ import InstitutionFormFields, {
   instructionsFor
 } from './formFields'
 import importFromCoinbase from './importers/coinbase'
-import importFromQuestrade from './importers/questrade'
 import { showOverlay, hideOverlay } from '../../store/settings/actions'
 
 const styles = theme => ({
@@ -178,8 +177,7 @@ export default compose(
       setSubmitting(true)
       props.showOverlay(`Importing data from ${props.institution} ...`)
       const importData = {
-        Coinbase: formValues => importFromCoinbase(formValues),
-        Questrade: formValues => importFromQuestrade(formValues)
+        Coinbase: formValues => importFromCoinbase(formValues)
       }[props.institution]
 
       importData(values)
