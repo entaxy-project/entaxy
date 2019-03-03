@@ -59,7 +59,9 @@ export class ImportTransactionsComponent extends React.Component {
         description: transaction.description,
         createdAt: transaction.createdAt
       }))
-    saveTransactions(account, transactions)
+    if (transactions.length > 0) {
+      saveTransactions(account, transactions)
+    }
     history.push(`/accounts/${account.id}/transactions`)
   }
 
