@@ -53,7 +53,7 @@ export class ImportTransactionsComponent extends React.Component {
   handleSave = () => {
     const { saveTransactions, account, history } = this.props
     const transactions = this.state.transactions
-      .filter(transaction => transaction.error === undefined)
+      .filter(transaction => transaction.errors.length === 0)
       .map(transaction => ({
         amount: transaction.amount,
         description: transaction.description,

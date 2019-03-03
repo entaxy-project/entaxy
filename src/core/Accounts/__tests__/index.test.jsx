@@ -15,7 +15,7 @@ const accounts = {
       description: 'Checking',
       institution: 'TD',
       currency: 'CAD',
-      currenctBalance: 10
+      currentBalance: 10
     },
     2: {
       id: '2',
@@ -23,7 +23,7 @@ const accounts = {
       description: 'Savings',
       institution: 'TD',
       currency: 'CAD',
-      currenctBalance: 10
+      currentBalance: 10
     },
     3: {
       id: '3',
@@ -31,7 +31,7 @@ const accounts = {
       description: 'Checking',
       institution: 'BMO',
       currency: 'USD', // Different currency
-      currenctBalance: 10
+      currentBalance: 10
     },
     4: {
       id: '4',
@@ -39,7 +39,7 @@ const accounts = {
       description: 'BTC wallet',
       institution: 'Coinbase',
       currency: 'BTC',
-      currenctBalance: 10,
+      currentBalance: 10,
       type: 'wallet'
     }
   },
@@ -51,7 +51,8 @@ const accounts = {
 }
 
 // Make sure we start with a specific currency
-settingsInitialState.currency = 'CAD'
+settingsInitialState.currency = 'USD'
+settingsInitialState.locale = 'en-US'
 
 describe('Accounts index (Left Nav)', () => {
   describe('snapshot', () => {
