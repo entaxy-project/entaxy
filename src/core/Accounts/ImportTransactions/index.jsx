@@ -98,7 +98,8 @@ export class ImportTransactionsComponent extends React.Component {
         <Paper className={classes.root}>
           <div className={classes.importHeader}>
             <Typography variant="h6" align="center">
-              Import transactions from {account.institution}
+              Import transactions from
+              {account.institution}
             </Typography>
             <Typography>
               <InstitutionIcon institution={account.institution} size="small" />
@@ -106,7 +107,7 @@ export class ImportTransactionsComponent extends React.Component {
           </div>
           <Divider />
           <Grid container>
-            <Grid item xs={3} >
+            <Grid item xs={3}>
               <List>
                 {institutions[account.institution].importTypes.map(text => (
                   <ListItem button key={text} selected={true}>
@@ -124,15 +125,15 @@ export class ImportTransactionsComponent extends React.Component {
                 </ListItem>
               </List>
             </Grid>
-            <Grid item xs={9} >
-              {!showTransactions && importType === 'CSV' &&
+            <Grid item xs={9}>
+              {!showTransactions && importType === 'CSV' && (
                 <CsvImportForm
                   account={account}
                   handleParsedData={this.handleParsedData}
                   onCancel={this.handleCancel}
                 />
-              }
-              {showTransactions &&
+              )}
+              {showTransactions && (
                 <ImportedResults
                   account={account}
                   transactions={transactions}
@@ -140,7 +141,7 @@ export class ImportTransactionsComponent extends React.Component {
                   onSave={this.handleSave}
                   onBack={this.handleBack}
                 />
-              }
+              )}
             </Grid>
           </Grid>
         </Paper>

@@ -46,13 +46,13 @@ export class ResultsToolbarComponent extends React.Component {
         <FormControlLabel
           label="Show only errors"
           className={classes.chekbox}
-          control={
+          control={(
             <Switch
               checked={this.state.showOnlyErrors}
               onChange={this.onChange}
               value="showOnlyErrors"
             />
-          }
+          )}
         />
       </TableToolbar>
     )

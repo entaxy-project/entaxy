@@ -68,4 +68,3 @@ export const updateMarketValues = () => {
     return Promise.resolve()
   }
 }
-

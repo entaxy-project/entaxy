@@ -44,7 +44,7 @@ const AutoComplete = ({
     >
       {label}
     </Typography>
-    { !async &&
+    { !async && (
       <Select
         placeholder={label}
         name={name}
@@ -56,8 +56,8 @@ const AutoComplete = ({
         isClearable={true}
         className={className}
       />
-    }
-    { async &&
+    )}
+    { async && (
       <AsyncSelect
         placeholder={label}
         name={name}
@@ -70,12 +70,12 @@ const AutoComplete = ({
         isClearable={true}
         className={className}
       />
-    }
-    {error &&
+    )}
+    {error && (
       <FormHelperText error className={classes.inputError}>
         {helperText}
       </FormHelperText>
-    }
+    )}
   </div>
 )
 

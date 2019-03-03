@@ -107,12 +107,12 @@ export const DashboardComponent = ({
       </Grid>
       <Grid container>
         <Paper className={classes.summaryPaper}>
-          {!userHasAccounts &&
+          {!userHasAccounts && (
             <Typography variant="caption" className={classes.noAccounts}>
               You don&apos;t have any accounts yet
             </Typography>
-          }
-          {userHasAccounts &&
+          )}
+          {userHasAccounts && (
             <Table className={classes.table}>
               <TableHead>
                 <TableRow>
@@ -154,7 +154,7 @@ export const DashboardComponent = ({
                 ))
               ))}
             </Table>
-          }
+          )}
         </Paper>
       </Grid>
     </Grid>

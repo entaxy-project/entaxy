@@ -32,7 +32,7 @@ const CsvDropzone = ({
 }) => (
   <Dropzone multiple={false} className={classes.root} onDrop={handleFileUpload}>
     <div>
-      {file &&
+      {file && (
         <Typography variant="subtitle2" align="center">
           <Icon
             path={mdiFileUploadOutline}
@@ -42,11 +42,11 @@ const CsvDropzone = ({
           />
           {file.name}
         </Typography>
-      }
-      {error &&
+      )}
+      {error && (
         <Typography variant="subtitle2" align="center" color="error">{error}</Typography>
-      }
-      {!file &&
+      )}
+      {!file && (
         <div>
           <Typography variant="h4" align="center" color="textSecondary">
             Drag a CSV file here
@@ -55,7 +55,7 @@ const CsvDropzone = ({
             or click to select a file to upload.
           </Typography>
         </div>
-      }
+      )}
     </div>
   </Dropzone>
 )

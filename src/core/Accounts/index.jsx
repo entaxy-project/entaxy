@@ -76,7 +76,7 @@ export const AccountsComponent = ({
     <List
       component="nav"
       dense={true}
-      subheader={
+      subheader={(
         <ListSubheader component="div">
           Accounts
           <ListItemSecondaryAction>
@@ -92,14 +92,14 @@ export const AccountsComponent = ({
             </Tooltip>
           </ListItemSecondaryAction>
         </ListSubheader>
-      }
+      )}
     >
-      {!userHasAccounts &&
+      {!userHasAccounts && (
         <Typography variant="caption" className={classes.noAccounts}>
           You don&apos;t have any accounts yet
         </Typography>
-      }
-      {userHasAccounts &&
+      )}
+      {userHasAccounts && (
         <List dense={true}>
           {Object.keys(accounts.byInstitution).map(institution => (
             Object.values(accounts.byInstitution[institution].groups).map(accountGroup => (
@@ -109,7 +109,7 @@ export const AccountsComponent = ({
                     <InstitutionIcon institution={institution} size="small" />
                   </ListItemIcon>
                   <ListItemText primary={institution} className={classes.institution} />
-                  {accountGroup.type === 'api' &&
+                  {accountGroup.type === 'api' && (
                     <ListItemSecondaryAction>
                       <Tooltip id="tooltip-icon" title="Edit API details">
                         <IconButton
@@ -122,7 +122,7 @@ export const AccountsComponent = ({
                         </IconButton>
                       </Tooltip>
                     </ListItemSecondaryAction>
-                  }
+                  )}
                 </ListItem>
                 <List dense={true}>
                   {accountGroup.accountIds.map((id) => {
@@ -141,7 +141,7 @@ export const AccountsComponent = ({
                           primary={account.name}
                           secondary={displayCurrency(account)}
                         />
-                        {accountGroup.type === 'default' &&
+                        {accountGroup.type === 'default' && (
                           <ListItemSecondaryAction>
                             <Tooltip id="tooltip-icon" title="Edit account">
                               <IconButton
@@ -154,7 +154,7 @@ export const AccountsComponent = ({
                               </IconButton>
                             </Tooltip>
                           </ListItemSecondaryAction>
-                        }
+                        )}
                       </ListItem>
                     )
                   })}
@@ -163,7 +163,7 @@ export const AccountsComponent = ({
             ))
           ))}
         </List>
-      }
+      )}
     </List>
   )
 }

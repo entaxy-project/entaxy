@@ -1,7 +1,13 @@
+/* eslint-disable react/sort-comp */
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
+import {
+  BrowserRouter,
+  Switch,
+  Route,
+  Redirect
+} from 'react-router-dom'
 import HandleLogin from './common/HandleLogin'
 import Landing from './core/Landing'
 import LoadingOverlay from './common/LoadingOverlay'
@@ -42,19 +48,27 @@ export class RoutesComponent extends React.Component {
   }
 
   authenticatedSettings = this.loginRequired(Settings)
+
   authenticatedDashBoard = this.loginRequired(Dashboard)
+
   authenticatedNewAccount = this.loginRequired(NewAccount)
+
   authenticatedEditAccount = this.loginRequired(EditAccount, { accountRequired: true })
+
   authenticatedTransactions = this.loginRequired(Transactions, { accountRequired: true })
+
   authenticatedImportTransactions = this.loginRequired(ImportTransactions, { accountRequired: true })
+
   authenticatedNewImportFromInstitution = this.loginRequired(NewImportFromInstitution)
+
   authenticatedEditImportFromInstitution = this.loginRequired(EditImportFromInstitution, { accountRequired: true })
+
 
   render() {
     return (
       <div>
         <BrowserRouter basename={process.env.PUBLIC_URL}>
-          {!this.props.settings.overlayMessage &&
+          {!this.props.settings.overlayMessage && (
             <Switch>
               <Route exact path="/" component={Landing} />
               <Route exact path="/handle-login" component={HandleLogin} />
@@ -82,7 +96,7 @@ export class RoutesComponent extends React.Component {
               />
               <Redirect to="/" />
             </Switch>
-          }
+          )}
         </BrowserRouter>
         <LoadingOverlay />
       </div>

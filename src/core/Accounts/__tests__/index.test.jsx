@@ -1,7 +1,7 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 import { BrowserRouter } from 'react-router-dom'
-import { AccountsComponent } from '../'
+import { AccountsComponent } from '..'
 import { initialState } from '../../../store/accounts/reducer'
 import { initialState as settingsInitialState } from '../../../store/settings/reducer'
 

@@ -70,19 +70,19 @@ export class LoginButtonComponent extends React.Component {
     return (
       <ClickAwayListener onClickAway={this.handleClose}>
         <div className={classes.root}>
-          { user.isAuthenticatedWith === 'blockstack' &&
+          { user.isAuthenticatedWith === 'blockstack' && (
             <Tooltip id="tooltip-icon" title={user.username}>
               <Avatar
                 src={user.pictureUrl}
                 alt={user.name}
               />
             </Tooltip>
-          }
-          { user.isAuthenticatedWith === 'guest' &&
+          )}
+          { user.isAuthenticatedWith === 'guest' && (
             <Avatar alt={user.name}>
               <AccountBoxIcon fontSize="small" />
             </Avatar>
-          }
+          )}
           <Button
             color="inherit"
             aria-owns={open ? 'menu-list-grow' : null}

@@ -261,7 +261,7 @@ exports[`SettingsForm matches snapshot before after submitting form 1`] = `
     </div>
   </div>
   <button
-    className="MuiButtonBase-root-65 MuiButtonBase-disabled-66 MuiButton-root-39 MuiButton-text-41 MuiButton-flat-44 MuiButton-sizeSmall-62 MuiButton-disabled-59"
+    className="MuiButtonBase-root-66 MuiButtonBase-disabled-67 MuiButton-root-40 MuiButton-text-42 MuiButton-flat-45 MuiButton-sizeSmall-63 MuiButton-disabled-60"
     disabled={true}
     onBlur={[Function]}
     onClick={[Function]}
@@ -279,20 +279,20 @@ exports[`SettingsForm matches snapshot before after submitting form 1`] = `
     type="button"
   >
     <span
-      className="MuiButton-label-40"
+      className="MuiButton-label-41"
     >
       Reset - delete all my data
     </span>
   </button>
   <hr
-    className="MuiDivider-root-68"
+    className="MuiDivider-root-69"
   />
   <div>
     <div
-      className="SubmitButtonWithProgress-wrapper-73"
+      className="SubmitButtonWithProgress-wrapper-74"
     >
       <button
-        className="MuiButtonBase-root-65 MuiButtonBase-disabled-66 MuiButton-root-39 MuiButton-text-41 MuiButton-textSecondary-43 MuiButton-flat-44 MuiButton-flatSecondary-46 MuiButton-disabled-59"
+        className="MuiButtonBase-root-66 MuiButtonBase-disabled-67 MuiButton-root-40 MuiButton-text-42 MuiButton-textSecondary-44 MuiButton-flat-45 MuiButton-flatSecondary-47 MuiButton-disabled-60"
         disabled={true}
         onBlur={[Function]}
         onContextMenu={[Function]}
@@ -309,13 +309,13 @@ exports[`SettingsForm matches snapshot before after submitting form 1`] = `
         type="submit"
       >
         <span
-          className="MuiButton-label-40"
+          className="MuiButton-label-41"
         >
           Save
         </span>
       </button>
       <div
-        className="MuiCircularProgress-root-82 MuiCircularProgress-colorPrimary-85 MuiCircularProgress-indeterminate-84 SubmitButtonWithProgress-buttonProgress-74"
+        className="MuiCircularProgress-root-83 MuiCircularProgress-colorPrimary-86 MuiCircularProgress-indeterminate-85 SubmitButtonWithProgress-buttonProgress-75"
         role="progressbar"
         style={
           Object {
@@ -325,11 +325,11 @@ exports[`SettingsForm matches snapshot before after submitting form 1`] = `
         }
       >
         <svg
-          className="MuiCircularProgress-svg-87"
+          className="MuiCircularProgress-svg-88"
           viewBox="22 22 44 44"
         >
           <circle
-            className="MuiCircularProgress-circle-88 MuiCircularProgress-circleIndeterminate-90"
+            className="MuiCircularProgress-circle-89 MuiCircularProgress-circleIndeterminate-91"
             cx={44}
             cy={44}
             fill="none"
@@ -605,7 +605,7 @@ exports[`SettingsForm matches snapshot before submitting form 1`] = `
     </div>
   </div>
   <button
-    className="MuiButtonBase-root-65 MuiButton-root-39 MuiButton-text-41 MuiButton-flat-44 MuiButton-sizeSmall-62"
+    className="MuiButtonBase-root-66 MuiButton-root-40 MuiButton-text-42 MuiButton-flat-45 MuiButton-sizeSmall-63"
     disabled={false}
     onBlur={[Function]}
     onClick={[Function]}
@@ -623,23 +623,23 @@ exports[`SettingsForm matches snapshot before submitting form 1`] = `
     type="button"
   >
     <span
-      className="MuiButton-label-40"
+      className="MuiButton-label-41"
     >
       Reset - delete all my data
     </span>
     <span
-      className="MuiTouchRipple-root-75"
+      className="MuiTouchRipple-root-76"
     />
   </button>
   <hr
-    className="MuiDivider-root-68"
+    className="MuiDivider-root-69"
   />
   <div>
     <div
-      className="SubmitButtonWithProgress-wrapper-73"
+      className="SubmitButtonWithProgress-wrapper-74"
     >
       <button
-        className="MuiButtonBase-root-65 MuiButton-root-39 MuiButton-text-41 MuiButton-textSecondary-43 MuiButton-flat-44 MuiButton-flatSecondary-46"
+        className="MuiButtonBase-root-66 MuiButton-root-40 MuiButton-text-42 MuiButton-textSecondary-44 MuiButton-flat-45 MuiButton-flatSecondary-47"
         disabled={false}
         onBlur={[Function]}
         onContextMenu={[Function]}
@@ -656,12 +656,12 @@ exports[`SettingsForm matches snapshot before submitting form 1`] = `
         type="submit"
       >
         <span
-          className="MuiButton-label-40"
+          className="MuiButton-label-41"
         >
           Save
         </span>
         <span
-          className="MuiTouchRipple-root-75"
+          className="MuiTouchRipple-root-76"
         />
       </button>
     </div>

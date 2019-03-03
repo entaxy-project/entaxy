@@ -61,19 +61,22 @@ const Portfolios = ({
               return (
                 <div key={filterName}>
                   <FormControl component="fieldset">
-                    <FormLabel component="legend">Select {filterName}</FormLabel>
+                    <FormLabel component="legend">
+                      Select
+                      {filterName}
+                    </FormLabel>
                     <FormGroup>
                       {_.map(options, (value, option) => {
                         return (
                           <FormControlLabel
                             key={option}
-                            control={
+                            control={(
                               <Checkbox
                                 value={option}
                                 checked={value}
                                 onChange={handleChange(filterName, option)}
                               />
-                            }
+                            )}
                             label={option}
                           />
                         )

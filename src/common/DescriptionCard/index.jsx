@@ -26,16 +26,10 @@ const DescriptionCard = ({
 }) => (
   <Card className={[className, classes.card].join(' ')}>
     <CardContent className={classes.content}>
-      { info &&
-        <InfolIcon className={classes.icon} />
-      }
+      { info && <InfolIcon className={classes.icon} />}
       {children}
     </CardContent>
-    { actions &&
-      <CardActions>
-        {actions}
-      </CardActions>
-    }
+    { actions && <CardActions>{actions}</CardActions> }
   </Card>
 )
 

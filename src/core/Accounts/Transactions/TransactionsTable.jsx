@@ -59,11 +59,12 @@ export class TransactionsTableComponent extends React.Component {
   }
 
   setFilter = ({ attr, value }) => {
-    const filters = {
-      ...this.state.filters,
-      [attr]: value
-    }
-    this.setState({ filters })
+    this.setState(prevState => ({
+      filters: {
+        ...prevState.filters,
+        [attr]: value
+      }
+    }))
   }
 
   unsetFilter = ({ attr }) => {
@@ -126,8 +127,9 @@ export class TransactionsTableComponent extends React.Component {
     this.resetSelection()
   }
 
-  transactionHasErrors = transaction =>
+  transactionHasErrors = transaction => (
     transaction.errors !== undefined && transaction.errors.length > 0
+  )
 
   rowClassName = ({ index }, filteredTransactions, classes) => {
     return classNames({
@@ -148,7 +150,8 @@ export class TransactionsTableComponent extends React.Component {
     if (account.type === 'wallet') {
       return (
         <div>
-          {formatDecimal(amount)} {account.symbol}
+          {formatDecimal(amount)}
+          {account.symbol}
           <small className={classes.nativeAmount}>{formatCurrency(nativeAmount)}</small>
         </div>
       )
@@ -209,7 +212,7 @@ export class TransactionsTableComponent extends React.Component {
               sortBy={sortBy}
               sortDirection={sortDirection}
             >
-              {!hideChekboxes &&
+              {!hideChekboxes && (
                 <Column
                   dataKey="id"
                   width={40}
@@ -238,7 +241,7 @@ export class TransactionsTableComponent extends React.Component {
                     </span>
                   )}
                 />
-              }
+              )}
               <Column
                 width={120}
                 label="Date"

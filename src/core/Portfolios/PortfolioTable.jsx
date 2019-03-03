@@ -68,7 +68,10 @@ const PortfolioTable = ({ classes, portfolioTableData, totals }) => {
           return (
             <TableRow key={position.ticker}>
               <TableCell>{position.ticker}</TableCell>
-              <TableCell numeric>{position.percentage}%</TableCell>
+              <TableCell numeric>
+                {position.percentage}
+                %
+              </TableCell>
               <TableCell numeric>{position.shares}</TableCell>
               <TableCell numeric>{currencyFormatter.format(position.bookValue)}</TableCell>
               <TableCell numeric>{currencyFormatter.format(position.marketValue)}</TableCell>
@@ -87,7 +90,8 @@ const PortfolioTable = ({ classes, portfolioTableData, totals }) => {
           <TableCell numeric>{currencyFormatter.format(totals.pl)}</TableCell>
         </TableRow>
       </TableFooter>
-    </Table>)
+    </Table>
+  )
 }
 
 PortfolioTable.propTypes = {

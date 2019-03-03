@@ -5,7 +5,7 @@ import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
 import store from '../../../../store'
 import ThemeProvider from '../../../ThemeProvider'
-import { TransactionsComponent } from '../'
+import { TransactionsComponent } from '..'
 
 jest.mock('../TransactionDialog', () => 'TransactionDialog')
 

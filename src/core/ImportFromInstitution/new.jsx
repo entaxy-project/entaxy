@@ -5,8 +5,9 @@ import ImportFromInstitutionForm from './form'
 import { createAccountGroup } from '../../store/accounts/actions'
 
 const mapDispatchToProps = {
-  createAccountGroup: (institution, accountGroup, accounts) =>
+  createAccountGroup: (institution, accountGroup, accounts) => (
     createAccountGroup(institution, accountGroup, accounts)
+  )
 }
 
 export class NewImportFromInstitutionComponent extends React.Component {

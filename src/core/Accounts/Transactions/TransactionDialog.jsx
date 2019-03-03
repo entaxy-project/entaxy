@@ -66,7 +66,7 @@ export const TransactionDialogComponent = ({
       label="Category"
       inputProps={{
         'aria-label': 'Category',
-        maxLength: 64
+        maxLength: 256
       }}
       className={classes.input}
       value={values.category}
@@ -151,7 +151,7 @@ export default compose(
         .max(256, 'Too long!'),
       amount: Yup.number()
         .required('Please enter an amount'),
-      createdAt: Yup.number()
+      createdAt: Yup.date()
         .required('Please select the date of this transaction')
     }),
     handleSubmit: (values, { props, setSubmitting, resetForm }) => {

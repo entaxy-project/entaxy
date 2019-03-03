@@ -57,4 +57,3 @@ export const updateSortBy = (sortBy, sortDirection) => {
 export const getAccountTransactions = (accountId, transactions) => {
   return transactions.filter(transaction => transaction.accountId === accountId)
 }
-

@@ -4,7 +4,7 @@ import { MemoryRouter, Route } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import store from '../../../../store'
 import { createAccount } from '../../../../store/accounts/actions'
-import ImportTransactions, { ImportTransactionsComponent } from '../'
+import ImportTransactions, { ImportTransactionsComponent } from '..'
 
 jest.mock('../../../../common/InstitutionIcon/importLogos', () => [])
 

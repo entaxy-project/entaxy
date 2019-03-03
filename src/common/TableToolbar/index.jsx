@@ -42,7 +42,8 @@ const TableToolbar = ({
     <div className={classes.title}>
       {selectedItems.length > 0 ? (
         <Typography color="inherit" variant="subtitle1">
-          {selectedItems.length} selected
+          {selectedItems.length}
+          selected
         </Typography>
       ) : (
         <div>

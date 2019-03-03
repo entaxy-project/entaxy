@@ -180,7 +180,7 @@ export class CsvImportFormComponent extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <div className={classes.root}>
-          {(!file || error) &&
+          {(!file || error) && (
             <CsvDropzone
               className={classes.dropzone}
               handleFileUpload={this.handleFileUpload}
@@ -188,8 +188,8 @@ export class CsvImportFormComponent extends React.Component {
               file={file}
               error={error}
             />
-          }
-          {file && !error &&
+          )}
+          {file && !error && (
             <div>
               <Typography variant="subtitle2" className={classes.fileDetails}>
                 <Icon path={mdiFileDelimited} size={0.7} className={classes.csvFileIcon} />
@@ -245,13 +245,13 @@ export class CsvImportFormComponent extends React.Component {
               <Paper elevation={0} className={classes.formOptions}>
                 <FormControlLabel
                   className={classes.formField}
-                  control={
+                  control={(
                     <Checkbox
                       checked={this.state.noHeaderRow}
                       onChange={this.handleChangeNoHeaderRow}
                       value="noHeaderRow"
                     />
-                  }
+                  )}
                   label="No header row"
                 />
                 <FormControl className={classes.formField}>
@@ -268,7 +268,7 @@ export class CsvImportFormComponent extends React.Component {
                 </FormControl>
               </Paper>
             </div>
-          }
+          )}
         </div>
         <Divider />
         <div className={classes.formActions}>

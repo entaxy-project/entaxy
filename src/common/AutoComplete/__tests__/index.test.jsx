@@ -1,6 +1,6 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
-import AutoComplete from '../'
+import AutoComplete from '..'
 
 describe('AutoComplete', () => {
   const mochOnChange = jest.fn()

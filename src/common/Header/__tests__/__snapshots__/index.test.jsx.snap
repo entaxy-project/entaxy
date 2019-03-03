@@ -30,20 +30,20 @@ exports[`Header matches snapshot 1`] = `
     </div>
   </header>
   <div
-    className="MuiDrawer-root-84 MuiDrawer-docked-85"
+    className="MuiDrawer-root-85 MuiDrawer-docked-86"
   >
     <div
-      className="MuiPaper-root-13 MuiPaper-elevation0-15 MuiDrawer-paper-86 withRouter-LeftDrawer--drawerPaper-83 MuiDrawer-paperAnchorLeft-87 MuiDrawer-paperAnchorDockedLeft-91"
+      className="MuiPaper-root-13 MuiPaper-elevation0-15 MuiDrawer-paper-87 withRouter-LeftDrawer--drawerPaper-84 MuiDrawer-paperAnchorLeft-88 MuiDrawer-paperAnchorDockedLeft-92"
     >
       <div
-        className="withRouter-LeftDrawer--toolbar-82"
+        className="withRouter-LeftDrawer--toolbar-83"
       />
       <ul
-        className="MuiList-root-96 MuiList-padding-97"
+        className="MuiList-root-97 MuiList-padding-98"
       >
         <a
           aria-current={null}
-          className="MuiButtonBase-root-112 MuiListItem-root-100 MuiListItem-default-103 MuiListItem-gutters-108 MuiListItem-button-109"
+          className="MuiButtonBase-root-113 MuiListItem-root-101 MuiListItem-default-104 MuiListItem-gutters-109 MuiListItem-button-110"
           href="/dashboard"
           onBlur={[Function]}
           onClick={[Function]}
@@ -61,11 +61,11 @@ exports[`Header matches snapshot 1`] = `
           tabIndex="0"
         >
           <div
-            className="MuiListItemIcon-root-115"
+            className="MuiListItemIcon-root-116"
           >
             <svg
               aria-hidden="true"
-              className="MuiSvgIcon-root-116"
+              className="MuiSvgIcon-root-117"
               focusable="false"
               role="presentation"
               viewBox="0 0 24 24"
@@ -80,21 +80,21 @@ exports[`Header matches snapshot 1`] = `
             </svg>
           </div>
           <div
-            className="MuiListItemText-root-125"
+            className="MuiListItemText-root-126"
           >
             <span
-              className="MuiTypography-root-47 MuiTypography-subheading-54 MuiListItemText-primary-128"
+              className="MuiTypography-root-47 MuiTypography-subheading-54 MuiListItemText-primary-129"
             >
               Dashboard
             </span>
           </div>
           <span
-            className="MuiTouchRipple-root-136"
+            className="MuiTouchRipple-root-137"
           />
         </a>
       </ul>
       <hr
-        className="MuiDivider-root-131"
+        className="MuiDivider-root-132"
       />
       <Accounts
         accountId={null}

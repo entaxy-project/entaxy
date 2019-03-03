@@ -13,7 +13,7 @@ exports[`LandingCard matches snapshot 1`] = `
     className="MuiGrid-item-2 MuiGrid-grid-xs-6-35"
   >
     <div
-      className="MuiPaper-root-133 MuiPaper-elevation1-136 MuiPaper-rounded-134"
+      className="MuiPaper-root-134 MuiPaper-elevation1-137 MuiPaper-rounded-135"
     >
       <h6
         className="MuiTypography-root-98 MuiTypography-subtitle2-117"
@@ -33,7 +33,7 @@ exports[`LandingCard matches snapshot 1`] = `
         </a>
       </span>
       <button
-        className="MuiButtonBase-root-186 MuiButton-root-160 MuiButton-contained-171 MuiButton-containedSecondary-173 MuiButton-raised-174 MuiButton-raisedSecondary-176"
+        className="MuiButtonBase-root-187 MuiButton-root-161 MuiButton-contained-172 MuiButton-containedSecondary-174 MuiButton-raised-175 MuiButton-raisedSecondary-177"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -51,12 +51,12 @@ exports[`LandingCard matches snapshot 1`] = `
         type="button"
       >
         <span
-          className="MuiButton-label-161"
+          className="MuiButton-label-162"
         >
           Sign in with Blockstack
         </span>
         <span
-          className="MuiTouchRipple-root-198"
+          className="MuiTouchRipple-root-199"
         />
       </button>
     </div>
@@ -65,14 +65,14 @@ exports[`LandingCard matches snapshot 1`] = `
     className="MuiGrid-item-2 MuiGrid-grid-xs-6-35"
   >
     <div
-      className="MuiPaper-root-133 MuiPaper-elevation1-136 MuiPaper-rounded-134"
+      className="MuiPaper-root-134 MuiPaper-elevation1-137 MuiPaper-rounded-135"
     >
       <h6
         className="MuiTypography-root-98 MuiTypography-subtitle2-117"
       >
         <svg
           aria-hidden="true"
-          className="MuiSvgIcon-root-189"
+          className="MuiSvgIcon-root-190"
           focusable="false"
           role="presentation"
           viewBox="0 0 24 24"
@@ -95,7 +95,7 @@ exports[`LandingCard matches snapshot 1`] = `
         Your data will be stored temporarily and it be removed once you close your browser
       </span>
       <button
-        className="MuiButtonBase-root-186 MuiButton-root-160 MuiButton-contained-171 MuiButton-containedSecondary-173 MuiButton-raised-174 MuiButton-raisedSecondary-176"
+        className="MuiButtonBase-root-187 MuiButton-root-161 MuiButton-contained-172 MuiButton-containedSecondary-174 MuiButton-raised-175 MuiButton-raisedSecondary-177"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -113,12 +113,12 @@ exports[`LandingCard matches snapshot 1`] = `
         type="button"
       >
         <span
-          className="MuiButton-label-161"
+          className="MuiButton-label-162"
         >
           Take it for a test drive
         </span>
         <span
-          className="MuiTouchRipple-root-198"
+          className="MuiTouchRipple-root-199"
         />
       </button>
     </div>

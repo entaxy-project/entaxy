@@ -4,10 +4,9 @@ exports[`TaxBracketLines matches snapshot 1`] = `
 <g>
   <line
     className="vx-line"
+    fill="transparent"
     stroke="#ffcdd2"
-    strokeDasharray=""
     strokeWidth={1}
-    transform=""
     x1={0}
     x2={0}
     y1={40}
@@ -26,10 +25,9 @@ exports[`TaxBracketLines matches snapshot 1`] = `
   </text>
   <line
     className="vx-line"
+    fill="transparent"
     stroke="#ffcdd2"
-    strokeDasharray=""
     strokeWidth={1}
-    transform=""
     x1={0}
     x2={0}
     y1={40}
@@ -48,10 +46,9 @@ exports[`TaxBracketLines matches snapshot 1`] = `
   </text>
   <line
     className="vx-line"
+    fill="transparent"
     stroke="#ffcdd2"
-    strokeDasharray=""
     strokeWidth={1}
-    transform=""
     x1={0}
     x2={0}
     y1={40}
@@ -70,10 +67,9 @@ exports[`TaxBracketLines matches snapshot 1`] = `
   </text>
   <line
     className="vx-line"
+    fill="transparent"
     stroke="#ffcdd2"
-    strokeDasharray=""
     strokeWidth={1}
-    transform=""
     x1={0}
     x2={0}
     y1={40}
@@ -92,10 +88,9 @@ exports[`TaxBracketLines matches snapshot 1`] = `
   </text>
   <line
     className="vx-line"
+    fill="transparent"
     stroke="#ffcdd2"
-    strokeDasharray=""
     strokeWidth={1}
-    transform=""
     x1={0}
     x2={0}
     y1={40}
@@ -114,10 +109,9 @@ exports[`TaxBracketLines matches snapshot 1`] = `
   </text>
   <line
     className="vx-line"
+    fill="transparent"
     stroke="#ffcdd2"
-    strokeDasharray=""
     strokeWidth={1}
-    transform=""
     x1={0}
     x2={0}
     y1={40}
@@ -136,10 +130,9 @@ exports[`TaxBracketLines matches snapshot 1`] = `
   </text>
   <line
     className="vx-line"
+    fill="transparent"
     stroke="#ffcdd2"
-    strokeDasharray=""
     strokeWidth={1}
-    transform=""
     x1={0}
     x2={0}
     y1={40}
@@ -158,10 +151,9 @@ exports[`TaxBracketLines matches snapshot 1`] = `
   </text>
   <line
     className="vx-line"
+    fill="transparent"
     stroke="#ffcdd2"
-    strokeDasharray=""
     strokeWidth={1}
-    transform=""
     x1={0}
     x2={0}
     y1={40}
@@ -180,10 +172,9 @@ exports[`TaxBracketLines matches snapshot 1`] = `
   </text>
   <line
     className="vx-line"
+    fill="transparent"
     stroke="#ffcdd2"
-    strokeDasharray=""
     strokeWidth={1}
-    transform=""
     x1={0}
     x2={0}
     y1={40}
@@ -202,10 +193,9 @@ exports[`TaxBracketLines matches snapshot 1`] = `
   </text>
   <line
     className="vx-line"
+    fill="transparent"
     stroke="#ffcdd2"
-    strokeDasharray=""
     strokeWidth={1}
-    transform=""
     x1={0}
     x2={0}
     y1={40}

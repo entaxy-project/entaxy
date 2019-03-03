@@ -50,7 +50,8 @@ export class ImportedResultsComponent extends React.Component {
       subTitle = (
         <div>
           <ErrorIcon className={classes.iconError} />
-          {transactionsWithErrors.length} transactions have errors and will not be imported
+          {transactionsWithErrors.length}
+          transactions have errors and will not be imported
         </div>
       )
     }

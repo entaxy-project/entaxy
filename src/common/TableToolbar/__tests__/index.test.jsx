@@ -1,6 +1,6 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
-import TableToolbar from '../'
+import TableToolbar from '..'
 
 describe('TableToolbar', () => {
   it('matches snapshot with some selected items', () => {

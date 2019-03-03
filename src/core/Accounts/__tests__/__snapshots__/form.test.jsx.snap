@@ -15,7 +15,7 @@ exports[`Account form matches snapshot for edit account 1`] = `
       </h6>
       <button
         aria-label="Close"
-        className="MuiButtonBase-root-166 MuiIconButton-root-160"
+        className="MuiButtonBase-root-167 MuiIconButton-root-161"
         disabled={false}
         onBlur={[Function]}
         onClick={[MockFunction]}
@@ -33,11 +33,11 @@ exports[`Account form matches snapshot for edit account 1`] = `
         type="button"
       >
         <span
-          className="MuiIconButton-label-165"
+          className="MuiIconButton-label-166"
         >
           <svg
             aria-hidden="true"
-            className="MuiSvgIcon-root-169"
+            className="MuiSvgIcon-root-170"
             focusable="false"
             role="presentation"
             viewBox="0 0 24 24"
@@ -52,19 +52,19 @@ exports[`Account form matches snapshot for edit account 1`] = `
           </svg>
         </span>
         <span
-          className="MuiTouchRipple-root-266"
+          className="MuiTouchRipple-root-267"
         />
       </button>
     </div>
     <hr
-      className="MuiDivider-root-178"
+      className="MuiDivider-root-179"
     />
     <form
       onSubmit={[MockFunction]}
     >
       <div>
         <h6
-          className="MuiTypography-root-125 MuiTypography-subtitle2-144 AutoComplete-inputTitle-184"
+          className="MuiTypography-root-125 MuiTypography-subtitle2-144 AutoComplete-inputTitle-185"
         >
           Institution
         </h6>
@@ -177,22 +177,22 @@ exports[`Account form matches snapshot for edit account 1`] = `
         </div>
       </div>
       <div
-        className="MuiFormControl-root-186"
+        className="MuiFormControl-root-187"
       >
         <label
-          className="MuiFormLabel-root-201 MuiInputLabel-root-190 MuiInputLabel-formControl-195 MuiInputLabel-animated-198"
+          className="MuiFormLabel-root-202 MuiInputLabel-root-191 MuiInputLabel-formControl-196 MuiInputLabel-animated-199"
           data-shrink={false}
         >
           Account name
         </label>
         <div
-          className="MuiInputBase-root-221 MuiInput-root-208 MuiInput-underline-212 MuiInputBase-formControl-222 MuiInput-formControl-209"
+          className="MuiInputBase-root-222 MuiInput-root-209 MuiInput-underline-213 MuiInputBase-formControl-223 MuiInput-formControl-210"
           onClick={[Function]}
         >
           <input
             aria-invalid={false}
             aria-label="Account name"
-            className="MuiInputBase-input-231 MuiInput-input-216"
+            className="MuiInputBase-input-232 MuiInput-input-217"
             disabled={false}
             maxLength={100}
             name="name"
@@ -205,22 +205,22 @@ exports[`Account form matches snapshot for edit account 1`] = `
         </div>
       </div>
       <div
-        className="MuiFormControl-root-186"
+        className="MuiFormControl-root-187"
       >
         <label
-          className="MuiFormLabel-root-201 MuiInputLabel-root-190 MuiInputLabel-formControl-195 MuiInputLabel-animated-198"
+          className="MuiFormLabel-root-202 MuiInputLabel-root-191 MuiInputLabel-formControl-196 MuiInputLabel-animated-199"
           data-shrink={false}
         >
           Opening balance
         </label>
         <div
-          className="MuiInputBase-root-221 MuiInput-root-208 MuiInput-underline-212 MuiInputBase-formControl-222 MuiInput-formControl-209"
+          className="MuiInputBase-root-222 MuiInput-root-209 MuiInput-underline-213 MuiInputBase-formControl-223 MuiInput-formControl-210"
           onClick={[Function]}
         >
           <input
             aria-invalid={false}
             aria-label="Opening balance"
-            className="MuiInputBase-input-231 MuiInput-input-216 MuiInputBase-inputType-234 MuiInput-inputType-219"
+            className="MuiInputBase-input-232 MuiInput-input-217 MuiInputBase-inputType-235 MuiInput-inputType-220"
             disabled={false}
             max={9007199254740991}
             maxLength={10}
@@ -236,22 +236,22 @@ exports[`Account form matches snapshot for edit account 1`] = `
         </div>
       </div>
       <div
-        className="MuiFormControl-root-186"
+        className="MuiFormControl-root-187"
       >
         <label
           aria-label="Opening Balance Date"
-          className="MuiFormLabel-root-201 MuiInputLabel-root-190 MuiInputLabel-formControl-195 MuiInputLabel-animated-198 MuiInputLabel-shrink-197"
+          className="MuiFormLabel-root-202 MuiInputLabel-root-191 MuiInputLabel-formControl-196 MuiInputLabel-animated-199 MuiInputLabel-shrink-198"
           data-shrink={true}
         >
           Opening Balance Date
         </label>
         <div
-          className="MuiInputBase-root-221 MuiInput-root-208 MuiInput-underline-212 MuiInputBase-formControl-222 MuiInput-formControl-209"
+          className="MuiInputBase-root-222 MuiInput-root-209 MuiInput-underline-213 MuiInputBase-formControl-223 MuiInput-formControl-210"
           onClick={[Function]}
         >
           <input
             aria-invalid={false}
-            className="MuiInputBase-input-231 MuiInput-input-216 MuiInputBase-inputType-234 MuiInput-inputType-219"
+            className="MuiInputBase-input-232 MuiInput-input-217 MuiInputBase-inputType-235 MuiInput-inputType-220"
             disabled={false}
             name="openingBalanceDate"
             onBlur={[Function]}
@@ -264,7 +264,7 @@ exports[`Account form matches snapshot for edit account 1`] = `
       </div>
       <div>
         <h6
-          className="MuiTypography-root-125 MuiTypography-subtitle2-144 AutoComplete-inputTitle-184"
+          className="MuiTypography-root-125 MuiTypography-subtitle2-144 AutoComplete-inputTitle-185"
         >
           Currency
         </h6>
@@ -391,7 +391,7 @@ exports[`Account form matches snapshot for edit account 1`] = `
         </div>
       </div>
       <button
-        className="MuiButtonBase-root-166 MuiButton-root-238 MuiButton-text-240 MuiButton-flat-243 MuiButton-sizeSmall-261"
+        className="MuiButtonBase-root-167 MuiButton-root-239 MuiButton-text-241 MuiButton-flat-244 MuiButton-sizeSmall-262"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -409,23 +409,23 @@ exports[`Account form matches snapshot for edit account 1`] = `
         type="button"
       >
         <span
-          className="MuiButton-label-239"
+          className="MuiButton-label-240"
         >
           Delete this account
         </span>
         <span
-          className="MuiTouchRipple-root-266"
+          className="MuiTouchRipple-root-267"
         />
       </button>
       <hr
-        className="MuiDivider-root-178"
+        className="MuiDivider-root-179"
       />
       <div>
         <div
-          className="SubmitButtonWithProgress-wrapper-264"
+          className="SubmitButtonWithProgress-wrapper-265"
         >
           <button
-            className="MuiButtonBase-root-166 MuiButton-root-238 MuiButton-text-240 MuiButton-textSecondary-242 MuiButton-flat-243 MuiButton-flatSecondary-245"
+            className="MuiButtonBase-root-167 MuiButton-root-239 MuiButton-text-241 MuiButton-textSecondary-243 MuiButton-flat-244 MuiButton-flatSecondary-246"
             disabled={false}
             onBlur={[Function]}
             onContextMenu={[Function]}
@@ -442,12 +442,12 @@ exports[`Account form matches snapshot for edit account 1`] = `
             type="submit"
           >
             <span
-              className="MuiButton-label-239"
+              className="MuiButton-label-240"
             >
               Save
             </span>
             <span
-              className="MuiTouchRipple-root-266"
+              className="MuiTouchRipple-root-267"
             />
           </button>
         </div>
@@ -472,7 +472,7 @@ exports[`Account form matches snapshot for new account 1`] = `
       </h6>
       <button
         aria-label="Close"
-        className="MuiButtonBase-root-166 MuiIconButton-root-160"
+        className="MuiButtonBase-root-167 MuiIconButton-root-161"
         disabled={false}
         onBlur={[Function]}
         onClick={[MockFunction]}
@@ -490,11 +490,11 @@ exports[`Account form matches snapshot for new account 1`] = `
         type="button"
       >
         <span
-          className="MuiIconButton-label-165"
+          className="MuiIconButton-label-166"
         >
           <svg
             aria-hidden="true"
-            className="MuiSvgIcon-root-169"
+            className="MuiSvgIcon-root-170"
             focusable="false"
             role="presentation"
             viewBox="0 0 24 24"
@@ -509,19 +509,19 @@ exports[`Account form matches snapshot for new account 1`] = `
           </svg>
         </span>
         <span
-          className="MuiTouchRipple-root-266"
+          className="MuiTouchRipple-root-267"
         />
       </button>
     </div>
     <hr
-      className="MuiDivider-root-178"
+      className="MuiDivider-root-179"
     />
     <form
       onSubmit={[MockFunction]}
     >
       <div>
         <h6
-          className="MuiTypography-root-125 MuiTypography-subtitle2-144 AutoComplete-inputTitle-184"
+          className="MuiTypography-root-125 MuiTypography-subtitle2-144 AutoComplete-inputTitle-185"
         >
           Institution
         </h6>
@@ -634,22 +634,22 @@ exports[`Account form matches snapshot for new account 1`] = `
         </div>
       </div>
       <div
-        className="MuiFormControl-root-186"
+        className="MuiFormControl-root-187"
       >
         <label
-          className="MuiFormLabel-root-201 MuiInputLabel-root-190 MuiInputLabel-formControl-195 MuiInputLabel-animated-198"
+          className="MuiFormLabel-root-202 MuiInputLabel-root-191 MuiInputLabel-formControl-196 MuiInputLabel-animated-199"
           data-shrink={false}
         >
           Account name
         </label>
         <div
-          className="MuiInputBase-root-221 MuiInput-root-208 MuiInput-underline-212 MuiInputBase-formControl-222 MuiInput-formControl-209"
+          className="MuiInputBase-root-222 MuiInput-root-209 MuiInput-underline-213 MuiInputBase-formControl-223 MuiInput-formControl-210"
           onClick={[Function]}
         >
           <input
             aria-invalid={false}
             aria-label="Account name"
-            className="MuiInputBase-input-231 MuiInput-input-216"
+            className="MuiInputBase-input-232 MuiInput-input-217"
             disabled={false}
             maxLength={100}
             name="name"
@@ -662,22 +662,22 @@ exports[`Account form matches snapshot for new account 1`] = `
         </div>
       </div>
       <div
-        className="MuiFormControl-root-186"
+        className="MuiFormControl-root-187"
       >
         <label
-          className="MuiFormLabel-root-201 MuiInputLabel-root-190 MuiInputLabel-formControl-195 MuiInputLabel-animated-198"
+          className="MuiFormLabel-root-202 MuiInputLabel-root-191 MuiInputLabel-formControl-196 MuiInputLabel-animated-199"
           data-shrink={false}
         >
           Opening balance
         </label>
         <div
-          className="MuiInputBase-root-221 MuiInput-root-208 MuiInput-underline-212 MuiInputBase-formControl-222 MuiInput-formControl-209"
+          className="MuiInputBase-root-222 MuiInput-root-209 MuiInput-underline-213 MuiInputBase-formControl-223 MuiInput-formControl-210"
           onClick={[Function]}
         >
           <input
             aria-invalid={false}
             aria-label="Opening balance"
-            className="MuiInputBase-input-231 MuiInput-input-216 MuiInputBase-inputType-234 MuiInput-inputType-219"
+            className="MuiInputBase-input-232 MuiInput-input-217 MuiInputBase-inputType-235 MuiInput-inputType-220"
             disabled={false}
             max={9007199254740991}
             maxLength={10}
@@ -693,22 +693,22 @@ exports[`Account form matches snapshot for new account 1`] = `
         </div>
       </div>
       <div
-        className="MuiFormControl-root-186"
+        className="MuiFormControl-root-187"
       >
         <label
           aria-label="Opening Balance Date"
-          className="MuiFormLabel-root-201 MuiInputLabel-root-190 MuiInputLabel-formControl-195 MuiInputLabel-animated-198 MuiInputLabel-shrink-197"
+          className="MuiFormLabel-root-202 MuiInputLabel-root-191 MuiInputLabel-formControl-196 MuiInputLabel-animated-199 MuiInputLabel-shrink-198"
           data-shrink={true}
         >
           Opening Balance Date
         </label>
         <div
-          className="MuiInputBase-root-221 MuiInput-root-208 MuiInput-underline-212 MuiInputBase-formControl-222 MuiInput-formControl-209"
+          className="MuiInputBase-root-222 MuiInput-root-209 MuiInput-underline-213 MuiInputBase-formControl-223 MuiInput-formControl-210"
           onClick={[Function]}
         >
           <input
             aria-invalid={false}
-            className="MuiInputBase-input-231 MuiInput-input-216 MuiInputBase-inputType-234 MuiInput-inputType-219"
+            className="MuiInputBase-input-232 MuiInput-input-217 MuiInputBase-inputType-235 MuiInput-inputType-220"
             disabled={false}
             name="openingBalanceDate"
             onBlur={[Function]}
@@ -721,7 +721,7 @@ exports[`Account form matches snapshot for new account 1`] = `
       </div>
       <div>
         <h6
-          className="MuiTypography-root-125 MuiTypography-subtitle2-144 AutoComplete-inputTitle-184"
+          className="MuiTypography-root-125 MuiTypography-subtitle2-144 AutoComplete-inputTitle-185"
         >
           Currency
         </h6>
@@ -848,7 +848,7 @@ exports[`Account form matches snapshot for new account 1`] = `
         </div>
       </div>
       <button
-        className="MuiButtonBase-root-166 MuiButton-root-238 MuiButton-text-240 MuiButton-flat-243 MuiButton-sizeSmall-261"
+        className="MuiButtonBase-root-167 MuiButton-root-239 MuiButton-text-241 MuiButton-flat-244 MuiButton-sizeSmall-262"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -866,23 +866,23 @@ exports[`Account form matches snapshot for new account 1`] = `
         type="button"
       >
         <span
-          className="MuiButton-label-239"
+          className="MuiButton-label-240"
         >
           Delete this account
         </span>
         <span
-          className="MuiTouchRipple-root-266"
+          className="MuiTouchRipple-root-267"
         />
       </button>
       <hr
-        className="MuiDivider-root-178"
+        className="MuiDivider-root-179"
       />
       <div>
         <div
-          className="SubmitButtonWithProgress-wrapper-264"
+          className="SubmitButtonWithProgress-wrapper-265"
         >
           <button
-            className="MuiButtonBase-root-166 MuiButton-root-238 MuiButton-text-240 MuiButton-textSecondary-242 MuiButton-flat-243 MuiButton-flatSecondary-245"
+            className="MuiButtonBase-root-167 MuiButton-root-239 MuiButton-text-241 MuiButton-textSecondary-243 MuiButton-flat-244 MuiButton-flatSecondary-246"
             disabled={false}
             onBlur={[Function]}
             onContextMenu={[Function]}
@@ -899,12 +899,12 @@ exports[`Account form matches snapshot for new account 1`] = `
             type="submit"
           >
             <span
-              className="MuiButton-label-239"
+              className="MuiButton-label-240"
             >
               Save
             </span>
             <span
-              className="MuiTouchRipple-root-266"
+              className="MuiTouchRipple-root-267"
             />
           </button>
         </div>

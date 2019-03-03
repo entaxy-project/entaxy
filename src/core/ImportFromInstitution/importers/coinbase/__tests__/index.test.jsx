@@ -3,7 +3,7 @@ import Big from 'big.js'
 import {
   normalizeAccounts,
   normalizeTransactions
-} from '../'
+} from '..'
 
 const accounts = [{
   id: 'd4f06af7-b529-5ffc-a187-5ae79f2a5522',

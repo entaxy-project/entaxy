@@ -1,3 +1,4 @@
+/* eslint-disable react/no-access-state-in-setstate */
 import React from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
@@ -95,7 +96,9 @@ export class TaxesComponent extends React.Component {
           <Grid item xs={10}>
             <Paper className={`${classes.paper} ${classes.chart}`}>
               <Typography variant="h5" gutterBottom align="center">
-                Taxes for {region} {year}
+                Taxes for
+                {region}
+                {year}
               </Typography>
               <TaxChart
                 country={country}
@@ -140,16 +143,20 @@ export class TaxesComponent extends React.Component {
             </Paper>
             <Paper className={classes.paper}>
               <Typography>
-                <strong>Taxable income:</strong> {currencyFormatter.format(taxableIncome)}
+                <strong>Taxable income:</strong>
+                {currencyFormatter.format(taxableIncome)}
               </Typography>
               <Typography>
-                <strong>Tax amount:</strong> {currencyFormatter.format(taxAmount)}
+                <strong>Tax amount:</strong>
+                {currencyFormatter.format(taxAmount)}
               </Typography>
               <Typography>
-                <strong>Marginal Tax Rate:</strong> {percentFormatter.format(marginalTaxRate)}
+                <strong>Marginal Tax Rate:</strong>
+                {percentFormatter.format(marginalTaxRate)}
               </Typography>
               <Typography>
-                <strong>Average Tax Rate:</strong> {percentFormatter.format(averageTaxRate)}
+                <strong>Average Tax Rate:</strong>
+                {percentFormatter.format(averageTaxRate)}
               </Typography>
             </Paper>
           </Grid>

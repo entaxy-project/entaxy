@@ -87,7 +87,7 @@ export class AccountFormComponent extends React.Component {
         <DescriptionCard
           info
           className={classes.input}
-          actions={
+          actions={(
             <Grid align="center">
               <Button
                 size="small"
@@ -105,11 +105,14 @@ export class AccountFormComponent extends React.Component {
                 No, I&apos;d rather do it manually
               </Button>
             </Grid>
-          }
+          )}
         >
           <Typography variant="caption" paragraph>
-            You can import <strong>all your accounts</strong> in one go
-            from <strong>{institutions[value].name}</strong> by using their API.
+            You can import
+            <strong>all your accounts</strong>
+            in one go from
+            <strong>{institutions[value].name}</strong>
+            by using their API.
           </Typography>
           <Typography variant="caption" align="center">
             This is also the easiest way to keep your transactions up to date.
@@ -224,7 +227,7 @@ export class AccountFormComponent extends React.Component {
               error={errors.currency && touched.currency}
               helperText={errors.currency}
             />
-            {handleDelete &&
+            {handleDelete && (
               <Button
                 size="small"
                 onClick={() => handleDelete(account)}
@@ -233,7 +236,7 @@ export class AccountFormComponent extends React.Component {
               >
                 Delete this account
               </Button>
-            }
+            )}
             <Divider />
             <div className={classes.formActions}>
               <SubmitButtonWithProgress label="Save" isSubmitting={isSubmitting} />
@@ -304,7 +307,7 @@ export default compose(
         .nullable(),
       openingBalance: Yup.number()
         .required('Please enter an opening balance'),
-      openingBalanceDate: Yup.number()
+      openingBalanceDate: Yup.date()
         .required('Please select the date of the opening balance'),
       currency: Yup.object()
         .required('Please select the currency of this account')

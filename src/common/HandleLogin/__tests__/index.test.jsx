@@ -1,7 +1,7 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 import * as blockstack from 'blockstack'
-import { HandleLoginComponent } from '../'
+import { HandleLoginComponent } from '..'
 
 jest.mock('blockstack', () => {
   return require('../../../../mocks/BlockstackMock')

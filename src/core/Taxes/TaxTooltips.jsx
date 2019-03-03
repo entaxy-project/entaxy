@@ -34,7 +34,8 @@ const TaxTooltips = ({
             textAlign: 'left'
           }}
         >
-          <strong>Your Income:</strong> {formater.format(data.income)}
+          <strong>Your Income:</strong>
+          {formater.format(data.income)}
         </Tooltip>
 
       )}

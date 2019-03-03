@@ -1,7 +1,7 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 import { shallow } from 'enzyme'
-import { SettingsComponent } from '../'
+import { SettingsComponent } from '..'
 
 jest.mock('../form', () => 'SettingsForm')
 const mochSaveSettings = jest.fn()

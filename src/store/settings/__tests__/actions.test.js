@@ -2,7 +2,7 @@ import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
 import * as actions from '../actions'
 import types from '../types'
-import { initialState as settingsInitialState } from '../../settings/reducer'
+import { initialState as settingsInitialState } from '../reducer'
 
 beforeEach(() => {
   jest.resetModules()

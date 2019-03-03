@@ -57,7 +57,7 @@ export const groupByInstitution = ({ byId, byInstitution }) => {
       }
     }, {})
 
-    // But now the institutions are not sorted and we lost existing institution data
+  // But now the institutions are not sorted and we lost existing institution data
   return Object.keys(groupedAccountIds)
     // Sort institutions by name
     .sort((a, b) => (a > b))

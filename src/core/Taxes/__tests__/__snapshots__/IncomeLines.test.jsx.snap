@@ -4,10 +4,9 @@ exports[`IncomeLines matches snapshot 1`] = `
 <g>
   <line
     className="vx-line"
+    fill="transparent"
     stroke="#009688"
-    strokeDasharray=""
     strokeWidth={1}
-    transform=""
     x1={0}
     x2={0}
     y1={40}
@@ -15,10 +14,9 @@ exports[`IncomeLines matches snapshot 1`] = `
   />
   <line
     className="vx-line"
+    fill="transparent"
     stroke="#009688"
-    strokeDasharray=""
     strokeWidth={1}
-    transform=""
     x1={0}
     x2={0}
     y1={0}

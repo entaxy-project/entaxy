@@ -47,8 +47,9 @@ export const instructionsFor = institution => ({
       </Typography>
       <DescriptionCard info>
         <Typography variant="caption">
-          Make sure your api key has access to <strong>all accounts</strong> and has
-          the following permimisions:
+          Make sure your api key has access to
+          <strong>all accounts</strong>
+          and has the following permimisions:
           <ul>
             <li><strong>wallet:accounts:read</strong></li>
             <li><strong>wallet:transactions:read</strong></li>

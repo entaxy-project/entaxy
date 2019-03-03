@@ -1,7 +1,7 @@
 import React from 'react'
 import { mount } from 'enzyme'
 import Input from '@material-ui/core/Input'
-import CurrencyFormat from '../'
+import CurrencyFormat from '..'
 
 describe('CurrencyFormat', () => {
   it('formats numbers to currency', () => {

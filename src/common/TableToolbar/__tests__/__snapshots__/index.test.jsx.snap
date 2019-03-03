@@ -38,7 +38,7 @@ exports[`TableToolbar matches snapshot with some selected items 1`] = `
       className="MuiTypography-root-10 MuiTypography-subtitle1-28 MuiTypography-colorInherit-39"
     >
       1
-       selected
+      selected
     </h6>
   </div>
   <div

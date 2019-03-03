@@ -96,7 +96,8 @@ export const ImportFromInstitutionFormComponent = ({
     <Paper className={classes.root}>
       <div className={classes.formHeader}>
         <Typography variant="h6">
-          Import from {institution}
+          Import from
+          {institution}
         </Typography>
         <IconButton aria-label="Close" className={classes.closeButton} onClick={handleCancel}>
           <CloseIcon />
@@ -105,22 +106,26 @@ export const ImportFromInstitutionFormComponent = ({
       <Divider />
       <Grid container className={classes.input} spacing={16}>
         <Typography variant="caption" paragraph>
-          Your browser will connect directly to <strong>{institution}</strong> so
-          you&apos;re really importing your own data.
+          Your browser will connect directly to
+          <strong>{institution}</strong>
+          so you&apos;re really importing your own data.
         </Typography>
         {instructionsFor(institution)}
       </Grid>
       <form onSubmit={handleSubmit} className={classes.form}>
-        {handleDelete && accountGroup &&
+        {handleDelete && accountGroup && (
           <Button
             size="small"
             onClick={() => handleDelete(accountGroup)}
             className={classes.deleteButton}
             disabled={isSubmitting}
           >
-            Delete all {accountGroup.accountIds.length} accounts connected to {institution}
+            Delete all
+            {accountGroup.accountIds.length}
+            accounts connected to
+            {institution}
           </Button>
-        }
+        )}
         <InstitutionFormFields
           institution={institution}
           formClassName={classes.form}
@@ -130,9 +135,9 @@ export const ImportFromInstitutionFormComponent = ({
           errors={errors}
           touched={touched}
         />
-        {errors.global &&
+        {errors.global && (
           <Typography color="error" variant="caption">{errors.global}</Typography>
-        }
+        )}
         <Divider />
         <div className={classes.formActions}>
           <SubmitButtonWithProgress label="Import" isSubmitting={isSubmitting} />

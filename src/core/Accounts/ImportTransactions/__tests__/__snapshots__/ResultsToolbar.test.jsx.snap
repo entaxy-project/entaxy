@@ -27,13 +27,13 @@ exports[`ResultsToolbar matches snapshot with no selected transactions 1`] = `
     className="TableToolbar-actions-4"
   >
     <label
-      className="MuiFormControlLabel-root-45"
+      className="MuiFormControlLabel-root-46"
     >
       <span
-        className="MuiSwitch-root-51"
+        className="MuiSwitch-root-52"
       >
         <span
-          className="MuiButtonBase-root-70 MuiIconButton-root-64 MuiPrivateSwitchBase-root-60 MuiSwitch-switchBase-54 MuiSwitch-colorSecondary-57"
+          className="MuiButtonBase-root-71 MuiIconButton-root-65 MuiPrivateSwitchBase-root-61 MuiSwitch-switchBase-55 MuiSwitch-colorSecondary-58"
           onBlur={[Function]}
           onContextMenu={[Function]}
           onFocus={[Function]}
@@ -48,29 +48,29 @@ exports[`ResultsToolbar matches snapshot with no selected transactions 1`] = `
           tabIndex={null}
         >
           <span
-            className="MuiIconButton-label-69"
+            className="MuiIconButton-label-70"
           >
             <span
-              className="MuiSwitch-icon-52"
+              className="MuiSwitch-icon-53"
             />
             <input
               checked={false}
-              className="MuiPrivateSwitchBase-input-63"
+              className="MuiPrivateSwitchBase-input-64"
               onChange={[Function]}
               type="checkbox"
               value="showOnlyErrors"
             />
           </span>
           <span
-            className="MuiTouchRipple-root-73"
+            className="MuiTouchRipple-root-74"
           />
         </span>
         <span
-          className="MuiSwitch-bar-59"
+          className="MuiSwitch-bar-60"
         />
       </span>
       <span
-        className="MuiTypography-root-10 MuiTypography-body1-19 MuiFormControlLabel-label-50"
+        className="MuiTypography-root-10 MuiTypography-body1-19 MuiFormControlLabel-label-51"
       >
         Show only errors
       </span>
@@ -90,7 +90,7 @@ exports[`ResultsToolbar matches snapshot with some selected transactions 1`] = `
       className="MuiTypography-root-10 MuiTypography-subtitle1-28 MuiTypography-colorInherit-39"
     >
       2
-       selected
+      selected
     </h6>
   </div>
   <div
@@ -100,13 +100,13 @@ exports[`ResultsToolbar matches snapshot with some selected transactions 1`] = `
     className="TableToolbar-actions-4"
   >
     <label
-      className="MuiFormControlLabel-root-45"
+      className="MuiFormControlLabel-root-46"
     >
       <span
-        className="MuiSwitch-root-51"
+        className="MuiSwitch-root-52"
       >
         <span
-          className="MuiButtonBase-root-70 MuiIconButton-root-64 MuiPrivateSwitchBase-root-60 MuiSwitch-switchBase-54 MuiSwitch-colorSecondary-57"
+          className="MuiButtonBase-root-71 MuiIconButton-root-65 MuiPrivateSwitchBase-root-61 MuiSwitch-switchBase-55 MuiSwitch-colorSecondary-58"
           onBlur={[Function]}
           onContextMenu={[Function]}
           onFocus={[Function]}
@@ -121,29 +121,29 @@ exports[`ResultsToolbar matches snapshot with some selected transactions 1`] = `
           tabIndex={null}
         >
           <span
-            className="MuiIconButton-label-69"
+            className="MuiIconButton-label-70"
           >
             <span
-              className="MuiSwitch-icon-52"
+              className="MuiSwitch-icon-53"
             />
             <input
               checked={false}
-              className="MuiPrivateSwitchBase-input-63"
+              className="MuiPrivateSwitchBase-input-64"
               onChange={[Function]}
               type="checkbox"
               value="showOnlyErrors"
             />
           </span>
           <span
-            className="MuiTouchRipple-root-73"
+            className="MuiTouchRipple-root-74"
           />
         </span>
         <span
-          className="MuiSwitch-bar-59"
+          className="MuiSwitch-bar-60"
         />
       </span>
       <span
-        className="MuiTypography-root-10 MuiTypography-body1-19 MuiFormControlLabel-label-50"
+        className="MuiTypography-root-10 MuiTypography-body1-19 MuiFormControlLabel-label-51"
       >
         Show only errors
       </span>

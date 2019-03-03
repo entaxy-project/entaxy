@@ -54,7 +54,7 @@ exports[`Accounts index (Left Nav) snapshot matches snapshot with a few account 
           </svg>
         </span>
         <span
-          className="MuiTouchRipple-root-73"
+          className="MuiTouchRipple-root-74"
         />
       </a>
     </div>
@@ -64,11 +64,11 @@ exports[`Accounts index (Left Nav) snapshot matches snapshot with a few account 
   >
     <div>
       <li
-        className="MuiListItem-root-80 MuiListItem-default-83 MuiListItem-dense-84 MuiListItem-gutters-88"
+        className="MuiListItem-root-81 MuiListItem-default-84 MuiListItem-dense-85 MuiListItem-gutters-89"
         disabled={false}
       >
         <div
-          className="MuiListItemIcon-root-92"
+          className="MuiListItemIcon-root-93"
         >
           <InstitutionIcon
             institution="TD"
@@ -76,10 +76,10 @@ exports[`Accounts index (Left Nav) snapshot matches snapshot with a few account 
           />
         </div>
         <div
-          className="MuiListItemText-root-93 MuiListItemText-dense-95"
+          className="MuiListItemText-root-94 MuiListItemText-dense-96"
         >
           <span
-            className="MuiTypography-root-38 MuiTypography-subheading-45 MuiListItemText-primary-96 MuiListItemText-textDense-98"
+            className="MuiTypography-root-38 MuiTypography-subheading-45 MuiListItemText-primary-97 MuiListItemText-textDense-99"
           >
             TD
           </span>
@@ -89,11 +89,11 @@ exports[`Accounts index (Left Nav) snapshot matches snapshot with a few account 
         className="MuiList-root-1 MuiList-dense-3 MuiList-padding-2"
       >
         <li
-          className="MuiListItem-container-81"
+          className="MuiListItem-container-82"
         >
           <a
             aria-current={null}
-            className="MuiButtonBase-root-26 MuiListItem-root-80 MuiListItem-default-83 MuiListItem-dense-84 MuiListItem-gutters-88 MuiListItem-button-89 MuiListItem-secondaryAction-90 MuiListItem-selected-91"
+            className="MuiButtonBase-root-26 MuiListItem-root-81 MuiListItem-default-84 MuiListItem-dense-85 MuiListItem-gutters-89 MuiListItem-button-90 MuiListItem-secondaryAction-91 MuiListItem-selected-92"
             href="/accounts/1/transactions"
             onBlur={[Function]}
             onClick={[Function]}
@@ -111,16 +111,16 @@ exports[`Accounts index (Left Nav) snapshot matches snapshot with a few account 
             tabIndex="0"
           >
             <div
-              className="MuiListItemText-root-93 MuiListItemText-dense-95"
+              className="MuiListItemText-root-94 MuiListItemText-dense-96"
             >
               <p
-                className="MuiTypography-root-38 MuiTypography-body1-47 MuiTypography-colorTextSecondary-71 MuiListItemText-secondary-97 MuiListItemText-textDense-98"
+                className="MuiTypography-root-38 MuiTypography-body1-47 MuiTypography-colorTextSecondary-71 MuiListItemText-secondary-98 MuiListItemText-textDense-99"
               >
                 CA$10.00
               </p>
             </div>
             <span
-              className="MuiTouchRipple-root-73"
+              className="MuiTouchRipple-root-74"
             />
           </a>
           <div
@@ -169,17 +169,17 @@ exports[`Accounts index (Left Nav) snapshot matches snapshot with a few account 
                 </svg>
               </span>
               <span
-                className="MuiTouchRipple-root-73"
+                className="MuiTouchRipple-root-74"
               />
             </a>
           </div>
         </li>
         <li
-          className="MuiListItem-container-81"
+          className="MuiListItem-container-82"
         >
           <a
             aria-current={null}
-            className="MuiButtonBase-root-26 MuiListItem-root-80 MuiListItem-default-83 MuiListItem-dense-84 MuiListItem-gutters-88 MuiListItem-button-89 MuiListItem-secondaryAction-90"
+            className="MuiButtonBase-root-26 MuiListItem-root-81 MuiListItem-default-84 MuiListItem-dense-85 MuiListItem-gutters-89 MuiListItem-button-90 MuiListItem-secondaryAction-91"
             href="/accounts/2/transactions"
             onBlur={[Function]}
             onClick={[Function]}
@@ -197,16 +197,16 @@ exports[`Accounts index (Left Nav) snapshot matches snapshot with a few account 
             tabIndex="0"
           >
             <div
-              className="MuiListItemText-root-93 MuiListItemText-dense-95"
+              className="MuiListItemText-root-94 MuiListItemText-dense-96"
             >
               <p
-                className="MuiTypography-root-38 MuiTypography-body1-47 MuiTypography-colorTextSecondary-71 MuiListItemText-secondary-97 MuiListItemText-textDense-98"
+                className="MuiTypography-root-38 MuiTypography-body1-47 MuiTypography-colorTextSecondary-71 MuiListItemText-secondary-98 MuiListItemText-textDense-99"
               >
                 CA$10.00
               </p>
             </div>
             <span
-              className="MuiTouchRipple-root-73"
+              className="MuiTouchRipple-root-74"
             />
           </a>
           <div
@@ -255,7 +255,7 @@ exports[`Accounts index (Left Nav) snapshot matches snapshot with a few account 
                 </svg>
               </span>
               <span
-                className="MuiTouchRipple-root-73"
+                className="MuiTouchRipple-root-74"
               />
             </a>
           </div>
@@ -264,11 +264,11 @@ exports[`Accounts index (Left Nav) snapshot matches snapshot with a few account 
     </div>
     <div>
       <li
-        className="MuiListItem-root-80 MuiListItem-default-83 MuiListItem-dense-84 MuiListItem-gutters-88"
+        className="MuiListItem-root-81 MuiListItem-default-84 MuiListItem-dense-85 MuiListItem-gutters-89"
         disabled={false}
       >
         <div
-          className="MuiListItemIcon-root-92"
+          className="MuiListItemIcon-root-93"
         >
           <InstitutionIcon
             institution="BMO"
@@ -276,10 +276,10 @@ exports[`Accounts index (Left Nav) snapshot matches snapshot with a few account 
           />
         </div>
         <div
-          className="MuiListItemText-root-93 MuiListItemText-dense-95"
+          className="MuiListItemText-root-94 MuiListItemText-dense-96"
         >
           <span
-            className="MuiTypography-root-38 MuiTypography-subheading-45 MuiListItemText-primary-96 MuiListItemText-textDense-98"
+            className="MuiTypography-root-38 MuiTypography-subheading-45 MuiListItemText-primary-97 MuiListItemText-textDense-99"
           >
             BMO
           </span>
@@ -289,11 +289,11 @@ exports[`Accounts index (Left Nav) snapshot matches snapshot with a few account 
         className="MuiList-root-1 MuiList-dense-3 MuiList-padding-2"
       >
         <li
-          className="MuiListItem-container-81"
+          className="MuiListItem-container-82"
         >
           <a
             aria-current={null}
-            className="MuiButtonBase-root-26 MuiListItem-root-80 MuiListItem-default-83 MuiListItem-dense-84 MuiListItem-gutters-88 MuiListItem-button-89 MuiListItem-secondaryAction-90"
+            className="MuiButtonBase-root-26 MuiListItem-root-81 MuiListItem-default-84 MuiListItem-dense-85 MuiListItem-gutters-89 MuiListItem-button-90 MuiListItem-secondaryAction-91"
             href="/accounts/3/transactions"
             onBlur={[Function]}
             onClick={[Function]}
@@ -311,16 +311,16 @@ exports[`Accounts index (Left Nav) snapshot matches snapshot with a few account 
             tabIndex="0"
           >
             <div
-              className="MuiListItemText-root-93 MuiListItemText-dense-95"
+              className="MuiListItemText-root-94 MuiListItemText-dense-96"
             >
               <p
-                className="MuiTypography-root-38 MuiTypography-body1-47 MuiTypography-colorTextSecondary-71 MuiListItemText-secondary-97 MuiListItemText-textDense-98"
+                className="MuiTypography-root-38 MuiTypography-body1-47 MuiTypography-colorTextSecondary-71 MuiListItemText-secondary-98 MuiListItemText-textDense-99"
               >
                 $10.00
               </p>
             </div>
             <span
-              className="MuiTouchRipple-root-73"
+              className="MuiTouchRipple-root-74"
             />
           </a>
           <div
@@ -369,7 +369,7 @@ exports[`Accounts index (Left Nav) snapshot matches snapshot with a few account 
                 </svg>
               </span>
               <span
-                className="MuiTouchRipple-root-73"
+                className="MuiTouchRipple-root-74"
               />
             </a>
           </div>
@@ -378,14 +378,14 @@ exports[`Accounts index (Left Nav) snapshot matches snapshot with a few account 
     </div>
     <div>
       <li
-        className="MuiListItem-container-81"
+        className="MuiListItem-container-82"
       >
         <div
-          className="MuiListItem-root-80 MuiListItem-default-83 MuiListItem-dense-84 MuiListItem-gutters-88 MuiListItem-secondaryAction-90"
+          className="MuiListItem-root-81 MuiListItem-default-84 MuiListItem-dense-85 MuiListItem-gutters-89 MuiListItem-secondaryAction-91"
           disabled={false}
         >
           <div
-            className="MuiListItemIcon-root-92"
+            className="MuiListItemIcon-root-93"
           >
             <InstitutionIcon
               institution="Coinbase"
@@ -393,10 +393,10 @@ exports[`Accounts index (Left Nav) snapshot matches snapshot with a few account 
             />
           </div>
           <div
-            className="MuiListItemText-root-93 MuiListItemText-dense-95"
+            className="MuiListItemText-root-94 MuiListItemText-dense-96"
           >
             <span
-              className="MuiTypography-root-38 MuiTypography-subheading-45 MuiListItemText-primary-96 MuiListItemText-textDense-98"
+              className="MuiTypography-root-38 MuiTypography-subheading-45 MuiListItemText-primary-97 MuiListItemText-textDense-99"
             >
               Coinbase
             </span>
@@ -450,7 +450,7 @@ exports[`Accounts index (Left Nav) snapshot matches snapshot with a few account 
               </svg>
             </span>
             <span
-              className="MuiTouchRipple-root-73"
+              className="MuiTouchRipple-root-74"
             />
           </a>
         </div>
@@ -460,7 +460,7 @@ exports[`Accounts index (Left Nav) snapshot matches snapshot with a few account 
       >
         <a
           aria-current={null}
-          className="MuiButtonBase-root-26 MuiListItem-root-80 MuiListItem-default-83 MuiListItem-dense-84 MuiListItem-gutters-88 MuiListItem-button-89"
+          className="MuiButtonBase-root-26 MuiListItem-root-81 MuiListItem-default-84 MuiListItem-dense-85 MuiListItem-gutters-89 MuiListItem-button-90"
           href="/accounts/4/transactions"
           onBlur={[Function]}
           onClick={[Function]}
@@ -478,16 +478,16 @@ exports[`Accounts index (Left Nav) snapshot matches snapshot with a few account 
           tabIndex="0"
         >
           <div
-            className="MuiListItemText-root-93 MuiListItemText-dense-95"
+            className="MuiListItemText-root-94 MuiListItemText-dense-96"
           >
             <p
-              className="MuiTypography-root-38 MuiTypography-body1-47 MuiTypography-colorTextSecondary-71 MuiListItemText-secondary-97 MuiListItemText-textDense-98"
+              className="MuiTypography-root-38 MuiTypography-body1-47 MuiTypography-colorTextSecondary-71 MuiListItemText-secondary-98 MuiListItemText-textDense-99"
             >
               10.00000000 undefined
             </p>
           </div>
           <span
-            className="MuiTouchRipple-root-73"
+            className="MuiTouchRipple-root-74"
           />
         </a>
       </ul>
@@ -550,7 +550,7 @@ exports[`Accounts index (Left Nav) snapshot matches with a few accounts but none
           </svg>
         </span>
         <span
-          className="MuiTouchRipple-root-73"
+          className="MuiTouchRipple-root-74"
         />
       </a>
     </div>
@@ -560,11 +560,11 @@ exports[`Accounts index (Left Nav) snapshot matches with a few accounts but none
   >
     <div>
       <li
-        className="MuiListItem-root-80 MuiListItem-default-83 MuiListItem-dense-84 MuiListItem-gutters-88"
+        className="MuiListItem-root-81 MuiListItem-default-84 MuiListItem-dense-85 MuiListItem-gutters-89"
         disabled={false}
       >
         <div
-          className="MuiListItemIcon-root-92"
+          className="MuiListItemIcon-root-93"
         >
           <InstitutionIcon
             institution="TD"
@@ -572,10 +572,10 @@ exports[`Accounts index (Left Nav) snapshot matches with a few accounts but none
           />
         </div>
         <div
-          className="MuiListItemText-root-93 MuiListItemText-dense-95"
+          className="MuiListItemText-root-94 MuiListItemText-dense-96"
         >
           <span
-            className="MuiTypography-root-38 MuiTypography-subheading-45 MuiListItemText-primary-96 MuiListItemText-textDense-98"
+            className="MuiTypography-root-38 MuiTypography-subheading-45 MuiListItemText-primary-97 MuiListItemText-textDense-99"
           >
             TD
           </span>
@@ -585,11 +585,11 @@ exports[`Accounts index (Left Nav) snapshot matches with a few accounts but none
         className="MuiList-root-1 MuiList-dense-3 MuiList-padding-2"
       >
         <li
-          className="MuiListItem-container-81"
+          className="MuiListItem-container-82"
         >
           <a
             aria-current={null}
-            className="MuiButtonBase-root-26 MuiListItem-root-80 MuiListItem-default-83 MuiListItem-dense-84 MuiListItem-gutters-88 MuiListItem-button-89 MuiListItem-secondaryAction-90"
+            className="MuiButtonBase-root-26 MuiListItem-root-81 MuiListItem-default-84 MuiListItem-dense-85 MuiListItem-gutters-89 MuiListItem-button-90 MuiListItem-secondaryAction-91"
             href="/accounts/1/transactions"
             onBlur={[Function]}
             onClick={[Function]}
@@ -607,16 +607,16 @@ exports[`Accounts index (Left Nav) snapshot matches with a few accounts but none
             tabIndex="0"
           >
             <div
-              className="MuiListItemText-root-93 MuiListItemText-dense-95"
+              className="MuiListItemText-root-94 MuiListItemText-dense-96"
             >
               <p
-                className="MuiTypography-root-38 MuiTypography-body1-47 MuiTypography-colorTextSecondary-71 MuiListItemText-secondary-97 MuiListItemText-textDense-98"
+                className="MuiTypography-root-38 MuiTypography-body1-47 MuiTypography-colorTextSecondary-71 MuiListItemText-secondary-98 MuiListItemText-textDense-99"
               >
                 CA$10.00
               </p>
             </div>
             <span
-              className="MuiTouchRipple-root-73"
+              className="MuiTouchRipple-root-74"
             />
           </a>
           <div
@@ -665,17 +665,17 @@ exports[`Accounts index (Left Nav) snapshot matches with a few accounts but none
                 </svg>
               </span>
               <span
-                className="MuiTouchRipple-root-73"
+                className="MuiTouchRipple-root-74"
               />
             </a>
           </div>
         </li>
         <li
-          className="MuiListItem-container-81"
+          className="MuiListItem-container-82"
         >
           <a
             aria-current={null}
-            className="MuiButtonBase-root-26 MuiListItem-root-80 MuiListItem-default-83 MuiListItem-dense-84 MuiListItem-gutters-88 MuiListItem-button-89 MuiListItem-secondaryAction-90"
+            className="MuiButtonBase-root-26 MuiListItem-root-81 MuiListItem-default-84 MuiListItem-dense-85 MuiListItem-gutters-89 MuiListItem-button-90 MuiListItem-secondaryAction-91"
             href="/accounts/2/transactions"
             onBlur={[Function]}
             onClick={[Function]}
@@ -693,16 +693,16 @@ exports[`Accounts index (Left Nav) snapshot matches with a few accounts but none
             tabIndex="0"
           >
             <div
-              className="MuiListItemText-root-93 MuiListItemText-dense-95"
+              className="MuiListItemText-root-94 MuiListItemText-dense-96"
             >
               <p
-                className="MuiTypography-root-38 MuiTypography-body1-47 MuiTypography-colorTextSecondary-71 MuiListItemText-secondary-97 MuiListItemText-textDense-98"
+                className="MuiTypography-root-38 MuiTypography-body1-47 MuiTypography-colorTextSecondary-71 MuiListItemText-secondary-98 MuiListItemText-textDense-99"
               >
                 CA$10.00
               </p>
             </div>
             <span
-              className="MuiTouchRipple-root-73"
+              className="MuiTouchRipple-root-74"
             />
           </a>
           <div
@@ -751,7 +751,7 @@ exports[`Accounts index (Left Nav) snapshot matches with a few accounts but none
                 </svg>
               </span>
               <span
-                className="MuiTouchRipple-root-73"
+                className="MuiTouchRipple-root-74"
               />
             </a>
           </div>
@@ -760,11 +760,11 @@ exports[`Accounts index (Left Nav) snapshot matches with a few accounts but none
     </div>
     <div>
       <li
-        className="MuiListItem-root-80 MuiListItem-default-83 MuiListItem-dense-84 MuiListItem-gutters-88"
+        className="MuiListItem-root-81 MuiListItem-default-84 MuiListItem-dense-85 MuiListItem-gutters-89"
         disabled={false}
       >
         <div
-          className="MuiListItemIcon-root-92"
+          className="MuiListItemIcon-root-93"
         >
           <InstitutionIcon
             institution="BMO"
@@ -772,10 +772,10 @@ exports[`Accounts index (Left Nav) snapshot matches with a few accounts but none
           />
         </div>
         <div
-          className="MuiListItemText-root-93 MuiListItemText-dense-95"
+          className="MuiListItemText-root-94 MuiListItemText-dense-96"
         >
           <span
-            className="MuiTypography-root-38 MuiTypography-subheading-45 MuiListItemText-primary-96 MuiListItemText-textDense-98"
+            className="MuiTypography-root-38 MuiTypography-subheading-45 MuiListItemText-primary-97 MuiListItemText-textDense-99"
           >
             BMO
           </span>
@@ -785,11 +785,11 @@ exports[`Accounts index (Left Nav) snapshot matches with a few accounts but none
         className="MuiList-root-1 MuiList-dense-3 MuiList-padding-2"
       >
         <li
-          className="MuiListItem-container-81"
+          className="MuiListItem-container-82"
         >
           <a
             aria-current={null}
-            className="MuiButtonBase-root-26 MuiListItem-root-80 MuiListItem-default-83 MuiListItem-dense-84 MuiListItem-gutters-88 MuiListItem-button-89 MuiListItem-secondaryAction-90"
+            className="MuiButtonBase-root-26 MuiListItem-root-81 MuiListItem-default-84 MuiListItem-dense-85 MuiListItem-gutters-89 MuiListItem-button-90 MuiListItem-secondaryAction-91"
             href="/accounts/3/transactions"
             onBlur={[Function]}
             onClick={[Function]}
@@ -807,16 +807,16 @@ exports[`Accounts index (Left Nav) snapshot matches with a few accounts but none
             tabIndex="0"
           >
             <div
-              className="MuiListItemText-root-93 MuiListItemText-dense-95"
+              className="MuiListItemText-root-94 MuiListItemText-dense-96"
             >
               <p
-                className="MuiTypography-root-38 MuiTypography-body1-47 MuiTypography-colorTextSecondary-71 MuiListItemText-secondary-97 MuiListItemText-textDense-98"
+                className="MuiTypography-root-38 MuiTypography-body1-47 MuiTypography-colorTextSecondary-71 MuiListItemText-secondary-98 MuiListItemText-textDense-99"
               >
                 $10.00
               </p>
             </div>
             <span
-              className="MuiTouchRipple-root-73"
+              className="MuiTouchRipple-root-74"
             />
           </a>
           <div
@@ -865,7 +865,7 @@ exports[`Accounts index (Left Nav) snapshot matches with a few accounts but none
                 </svg>
               </span>
               <span
-                className="MuiTouchRipple-root-73"
+                className="MuiTouchRipple-root-74"
               />
             </a>
           </div>
@@ -874,14 +874,14 @@ exports[`Accounts index (Left Nav) snapshot matches with a few accounts but none
     </div>
     <div>
       <li
-        className="MuiListItem-container-81"
+        className="MuiListItem-container-82"
       >
         <div
-          className="MuiListItem-root-80 MuiListItem-default-83 MuiListItem-dense-84 MuiListItem-gutters-88 MuiListItem-secondaryAction-90"
+          className="MuiListItem-root-81 MuiListItem-default-84 MuiListItem-dense-85 MuiListItem-gutters-89 MuiListItem-secondaryAction-91"
           disabled={false}
         >
           <div
-            className="MuiListItemIcon-root-92"
+            className="MuiListItemIcon-root-93"
           >
             <InstitutionIcon
               institution="Coinbase"
@@ -889,10 +889,10 @@ exports[`Accounts index (Left Nav) snapshot matches with a few accounts but none
             />
           </div>
           <div
-            className="MuiListItemText-root-93 MuiListItemText-dense-95"
+            className="MuiListItemText-root-94 MuiListItemText-dense-96"
           >
             <span
-              className="MuiTypography-root-38 MuiTypography-subheading-45 MuiListItemText-primary-96 MuiListItemText-textDense-98"
+              className="MuiTypography-root-38 MuiTypography-subheading-45 MuiListItemText-primary-97 MuiListItemText-textDense-99"
             >
               Coinbase
             </span>
@@ -946,7 +946,7 @@ exports[`Accounts index (Left Nav) snapshot matches with a few accounts but none
               </svg>
             </span>
             <span
-              className="MuiTouchRipple-root-73"
+              className="MuiTouchRipple-root-74"
             />
           </a>
         </div>
@@ -956,7 +956,7 @@ exports[`Accounts index (Left Nav) snapshot matches with a few accounts but none
       >
         <a
           aria-current={null}
-          className="MuiButtonBase-root-26 MuiListItem-root-80 MuiListItem-default-83 MuiListItem-dense-84 MuiListItem-gutters-88 MuiListItem-button-89"
+          className="MuiButtonBase-root-26 MuiListItem-root-81 MuiListItem-default-84 MuiListItem-dense-85 MuiListItem-gutters-89 MuiListItem-button-90"
           href="/accounts/4/transactions"
           onBlur={[Function]}
           onClick={[Function]}
@@ -974,16 +974,16 @@ exports[`Accounts index (Left Nav) snapshot matches with a few accounts but none
           tabIndex="0"
         >
           <div
-            className="MuiListItemText-root-93 MuiListItemText-dense-95"
+            className="MuiListItemText-root-94 MuiListItemText-dense-96"
           >
             <p
-              className="MuiTypography-root-38 MuiTypography-body1-47 MuiTypography-colorTextSecondary-71 MuiListItemText-secondary-97 MuiListItemText-textDense-98"
+              className="MuiTypography-root-38 MuiTypography-body1-47 MuiTypography-colorTextSecondary-71 MuiListItemText-secondary-98 MuiListItemText-textDense-99"
             >
               10.00000000 undefined
             </p>
           </div>
           <span
-            className="MuiTouchRipple-root-73"
+            className="MuiTouchRipple-root-74"
           />
         </a>
       </ul>
@@ -1046,7 +1046,7 @@ exports[`Accounts index (Left Nav) snapshot matches with no accounts 1`] = `
           </svg>
         </span>
         <span
-          className="MuiTouchRipple-root-73"
+          className="MuiTouchRipple-root-74"
         />
       </a>
     </div>

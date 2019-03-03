@@ -1,41 +1,41 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Dashboard snapshot matches with no accounts 1`] = `
+exports[`Dashboard matches snapshot with no accounts 1`] = `
 "<Provider store={{...}}>
-  <Connect(WithStyles(Component))>
-    <WithStyles(Component) settings={{...}} accounts={{...}} formatCurrency={[Function]} formatDate={[Function]} totalBalance={0} dispatch={[Function]}>
-      <Component settings={{...}} accounts={{...}} formatCurrency={[Function]} formatDate={[Function]} totalBalance={0} dispatch={[Function]} classes={{...}}>
+  <Connect(WithStyles(DashboardComponent))>
+    <WithStyles(DashboardComponent) settings={{...}} accounts={{...}} formatCurrency={[Function]} formatDate={[Function]} totalBalance={0} dispatch={[Function]}>
+      <DashboardComponent settings={{...}} accounts={{...}} formatCurrency={[Function]} formatDate={[Function]} totalBalance={0} dispatch={[Function]} classes={{...}}>
         <WithStyles(Grid) container={true}>
           <Grid container={true} classes={{...}} alignContent=\\"stretch\\" alignItems=\\"stretch\\" component=\\"div\\" direction=\\"row\\" item={false} justify=\\"flex-start\\" lg={false} md={false} sm={false} spacing={0} wrap=\\"wrap\\" xl={false} xs={false} zeroMinWidth={false}>
             <div className=\\"MuiGrid-container-10\\">
               <WithStyles(Grid) container={true} justify=\\"flex-end\\" className={[undefined]}>
                 <Grid container={true} justify=\\"flex-end\\" className={[undefined]} classes={{...}} alignContent=\\"stretch\\" alignItems=\\"stretch\\" component=\\"div\\" direction=\\"row\\" item={false} lg={false} md={false} sm={false} spacing={0} wrap=\\"wrap\\" xl={false} xs={false} zeroMinWidth={false}>
                   <div className=\\"MuiGrid-container-10 MuiGrid-justify-xs-flex-end-28\\">
-                    <WithStyles(Paper) className=\\"Component-balancePaper-1\\">
-                      <Paper className=\\"Component-balancePaper-1\\" classes={{...}} component=\\"div\\" elevation={2} square={false}>
-                        <div className=\\"MuiPaper-root-107 MuiPaper-elevation2-111 MuiPaper-rounded-108 Component-balancePaper-1\\">
+                    <WithStyles(Paper) className=\\"DashboardComponent-balancePaper-1\\">
+                      <Paper className=\\"DashboardComponent-balancePaper-1\\" classes={{...}} component=\\"div\\" elevation={2} square={false}>
+                        <div className=\\"MuiPaper-root-107 MuiPaper-elevation2-111 MuiPaper-rounded-108 DashboardComponent-balancePaper-1\\">
                           <WithStyles(Typography) variant=\\"body1\\" color=\\"textSecondary\\" align=\\"right\\">
-                            <Typography variant=\\"body1\\" color=\\"textSecondary\\" align=\\"right\\" theme={{...}} classes={{...}} gutterBottom={false} headlineMapping={{...}} noWrap={false} paragraph={false}>
+                            <Typography variant=\\"body1\\" color=\\"textSecondary\\" align=\\"right\\" theme={{...}} classes={{...}} gutterBottom={false} headlineMapping={{...}} inline={false} noWrap={false} paragraph={false}>
                               <p className=\\"MuiTypography-root-134 MuiTypography-body1-143 MuiTypography-colorTextSecondary-167 MuiTypography-alignRight-158\\">
                                 Balance
                               </p>
                             </Typography>
                           </WithStyles(Typography)>
-                          <WithStyles(Typography) variant=\\"h5\\" align=\\"right\\" className=\\"Component-balanceAmount-2\\">
-                            <Typography variant=\\"h5\\" align=\\"right\\" className=\\"Component-balanceAmount-2\\" theme={{...}} classes={{...}} color=\\"default\\" gutterBottom={false} headlineMapping={{...}} noWrap={false} paragraph={false}>
-                              <h5 className=\\"MuiTypography-root-134 MuiTypography-h5-150 MuiTypography-alignRight-158 Component-balanceAmount-2\\">
+                          <WithStyles(Typography) variant=\\"h5\\" align=\\"right\\" className=\\"DashboardComponent-balanceAmount-2\\">
+                            <Typography variant=\\"h5\\" align=\\"right\\" className=\\"DashboardComponent-balanceAmount-2\\" theme={{...}} classes={{...}} color=\\"default\\" gutterBottom={false} headlineMapping={{...}} inline={false} noWrap={false} paragraph={false}>
+                              <h5 className=\\"MuiTypography-root-134 MuiTypography-h5-150 MuiTypography-alignRight-158 DashboardComponent-balanceAmount-2\\">
                                 $0.00
                               </h5>
                             </Typography>
                           </WithStyles(Typography)>
-                          <WithStyles(Paper) className=\\"Component-balancePaperIcon-3\\">
-                            <Paper className=\\"Component-balancePaperIcon-3\\" classes={{...}} component=\\"div\\" elevation={2} square={false}>
-                              <div className=\\"MuiPaper-root-107 MuiPaper-elevation2-111 MuiPaper-rounded-108 Component-balancePaperIcon-3\\">
-                                <pure(DashboardIcon) className=\\"Component-balanceIcon-4\\">
-                                  <DashboardIcon className=\\"Component-balanceIcon-4\\">
-                                    <WithStyles(SvgIcon) className=\\"Component-balanceIcon-4\\">
-                                      <SvgIcon className=\\"Component-balanceIcon-4\\" classes={{...}} color=\\"inherit\\" component=\\"svg\\" fontSize=\\"default\\" viewBox=\\"0 0 24 24\\">
-                                        <svg className=\\"MuiSvgIcon-root-169 Component-balanceIcon-4\\" focusable=\\"false\\" viewBox=\\"0 0 24 24\\" color={[undefined]} aria-hidden=\\"true\\" role=\\"presentation\\">
+                          <WithStyles(Paper) className=\\"DashboardComponent-balancePaperIcon-3\\">
+                            <Paper className=\\"DashboardComponent-balancePaperIcon-3\\" classes={{...}} component=\\"div\\" elevation={2} square={false}>
+                              <div className=\\"MuiPaper-root-107 MuiPaper-elevation2-111 MuiPaper-rounded-108 DashboardComponent-balancePaperIcon-3\\">
+                                <pure(DashboardIcon) className=\\"DashboardComponent-balanceIcon-4\\">
+                                  <DashboardIcon className=\\"DashboardComponent-balanceIcon-4\\">
+                                    <WithStyles(SvgIcon) className=\\"DashboardComponent-balanceIcon-4\\">
+                                      <SvgIcon className=\\"DashboardComponent-balanceIcon-4\\" classes={{...}} color=\\"inherit\\" component=\\"svg\\" fontSize=\\"default\\" viewBox=\\"0 0 24 24\\">
+                                        <svg className=\\"MuiSvgIcon-root-170 DashboardComponent-balanceIcon-4\\" focusable=\\"false\\" viewBox=\\"0 0 24 24\\" color={[undefined]} aria-hidden=\\"true\\" role=\\"presentation\\">
                                           <path fill=\\"none\\" d=\\"M0 0h24v24H0z\\" />
                                           <path d=\\"M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z\\" />
                                         </svg>
@@ -55,12 +55,12 @@ exports[`Dashboard snapshot matches with no accounts 1`] = `
               <WithStyles(Grid) container={true}>
                 <Grid container={true} classes={{...}} alignContent=\\"stretch\\" alignItems=\\"stretch\\" component=\\"div\\" direction=\\"row\\" item={false} justify=\\"flex-start\\" lg={false} md={false} sm={false} spacing={0} wrap=\\"wrap\\" xl={false} xs={false} zeroMinWidth={false}>
                   <div className=\\"MuiGrid-container-10\\">
-                    <WithStyles(Paper) className=\\"Component-summaryPaper-5\\">
-                      <Paper className=\\"Component-summaryPaper-5\\" classes={{...}} component=\\"div\\" elevation={2} square={false}>
-                        <div className=\\"MuiPaper-root-107 MuiPaper-elevation2-111 MuiPaper-rounded-108 Component-summaryPaper-5\\">
-                          <WithStyles(Typography) variant=\\"caption\\" className=\\"Component-noAccounts-6\\">
-                            <Typography variant=\\"caption\\" className=\\"Component-noAccounts-6\\" theme={{...}} classes={{...}} align=\\"inherit\\" color=\\"default\\" gutterBottom={false} headlineMapping={{...}} noWrap={false} paragraph={false}>
-                              <span className=\\"MuiTypography-root-134 MuiTypography-caption-144 Component-noAccounts-6\\">
+                    <WithStyles(Paper) className=\\"DashboardComponent-summaryPaper-5\\">
+                      <Paper className=\\"DashboardComponent-summaryPaper-5\\" classes={{...}} component=\\"div\\" elevation={2} square={false}>
+                        <div className=\\"MuiPaper-root-107 MuiPaper-elevation2-111 MuiPaper-rounded-108 DashboardComponent-summaryPaper-5\\">
+                          <WithStyles(Typography) variant=\\"caption\\" className=\\"DashboardComponent-noAccounts-6\\">
+                            <Typography variant=\\"caption\\" className=\\"DashboardComponent-noAccounts-6\\" theme={{...}} classes={{...}} align=\\"inherit\\" color=\\"default\\" gutterBottom={false} headlineMapping={{...}} inline={false} noWrap={false} paragraph={false}>
+                              <span className=\\"MuiTypography-root-134 MuiTypography-caption-144 DashboardComponent-noAccounts-6\\">
                                 You don&#39;t have any accounts yet
                               </span>
                             </Typography>
@@ -74,48 +74,48 @@ exports[`Dashboard snapshot matches with no accounts 1`] = `
             </div>
           </Grid>
         </WithStyles(Grid)>
-      </Component>
-    </WithStyles(Component)>
-  </Connect(WithStyles(Component))>
+      </DashboardComponent>
+    </WithStyles(DashboardComponent)>
+  </Connect(WithStyles(DashboardComponent))>
 </Provider>"
 `;
 
-exports[`Dashboard snapshot matches with one account 1`] = `
+exports[`Dashboard matches snapshot with one account 1`] = `
 "<Provider store={{...}}>
-  <Connect(WithStyles(Component))>
-    <WithStyles(Component) settings={{...}} accounts={{...}} formatCurrency={[Function]} formatDate={[Function]} totalBalance={10} dispatch={[Function]}>
-      <Component settings={{...}} accounts={{...}} formatCurrency={[Function]} formatDate={[Function]} totalBalance={10} dispatch={[Function]} classes={{...}}>
+  <Connect(WithStyles(DashboardComponent))>
+    <WithStyles(DashboardComponent) settings={{...}} accounts={{...}} formatCurrency={[Function]} formatDate={[Function]} totalBalance={10} dispatch={[Function]}>
+      <DashboardComponent settings={{...}} accounts={{...}} formatCurrency={[Function]} formatDate={[Function]} totalBalance={10} dispatch={[Function]} classes={{...}}>
         <WithStyles(Grid) container={true}>
           <Grid container={true} classes={{...}} alignContent=\\"stretch\\" alignItems=\\"stretch\\" component=\\"div\\" direction=\\"row\\" item={false} justify=\\"flex-start\\" lg={false} md={false} sm={false} spacing={0} wrap=\\"wrap\\" xl={false} xs={false} zeroMinWidth={false}>
             <div className=\\"MuiGrid-container-10\\">
               <WithStyles(Grid) container={true} justify=\\"flex-end\\" className={[undefined]}>
                 <Grid container={true} justify=\\"flex-end\\" className={[undefined]} classes={{...}} alignContent=\\"stretch\\" alignItems=\\"stretch\\" component=\\"div\\" direction=\\"row\\" item={false} lg={false} md={false} sm={false} spacing={0} wrap=\\"wrap\\" xl={false} xs={false} zeroMinWidth={false}>
                   <div className=\\"MuiGrid-container-10 MuiGrid-justify-xs-flex-end-28\\">
-                    <WithStyles(Paper) className=\\"Component-balancePaper-1\\">
-                      <Paper className=\\"Component-balancePaper-1\\" classes={{...}} component=\\"div\\" elevation={2} square={false}>
-                        <div className=\\"MuiPaper-root-107 MuiPaper-elevation2-111 MuiPaper-rounded-108 Component-balancePaper-1\\">
+                    <WithStyles(Paper) className=\\"DashboardComponent-balancePaper-1\\">
+                      <Paper className=\\"DashboardComponent-balancePaper-1\\" classes={{...}} component=\\"div\\" elevation={2} square={false}>
+                        <div className=\\"MuiPaper-root-107 MuiPaper-elevation2-111 MuiPaper-rounded-108 DashboardComponent-balancePaper-1\\">
                           <WithStyles(Typography) variant=\\"body1\\" color=\\"textSecondary\\" align=\\"right\\">
-                            <Typography variant=\\"body1\\" color=\\"textSecondary\\" align=\\"right\\" theme={{...}} classes={{...}} gutterBottom={false} headlineMapping={{...}} noWrap={false} paragraph={false}>
+                            <Typography variant=\\"body1\\" color=\\"textSecondary\\" align=\\"right\\" theme={{...}} classes={{...}} gutterBottom={false} headlineMapping={{...}} inline={false} noWrap={false} paragraph={false}>
                               <p className=\\"MuiTypography-root-134 MuiTypography-body1-143 MuiTypography-colorTextSecondary-167 MuiTypography-alignRight-158\\">
                                 Balance
                               </p>
                             </Typography>
                           </WithStyles(Typography)>
-                          <WithStyles(Typography) variant=\\"h5\\" align=\\"right\\" className=\\"Component-balanceAmount-2\\">
-                            <Typography variant=\\"h5\\" align=\\"right\\" className=\\"Component-balanceAmount-2\\" theme={{...}} classes={{...}} color=\\"default\\" gutterBottom={false} headlineMapping={{...}} noWrap={false} paragraph={false}>
-                              <h5 className=\\"MuiTypography-root-134 MuiTypography-h5-150 MuiTypography-alignRight-158 Component-balanceAmount-2\\">
+                          <WithStyles(Typography) variant=\\"h5\\" align=\\"right\\" className=\\"DashboardComponent-balanceAmount-2\\">
+                            <Typography variant=\\"h5\\" align=\\"right\\" className=\\"DashboardComponent-balanceAmount-2\\" theme={{...}} classes={{...}} color=\\"default\\" gutterBottom={false} headlineMapping={{...}} inline={false} noWrap={false} paragraph={false}>
+                              <h5 className=\\"MuiTypography-root-134 MuiTypography-h5-150 MuiTypography-alignRight-158 DashboardComponent-balanceAmount-2\\">
                                 $10.00
                               </h5>
                             </Typography>
                           </WithStyles(Typography)>
-                          <WithStyles(Paper) className=\\"Component-balancePaperIcon-3\\">
-                            <Paper className=\\"Component-balancePaperIcon-3\\" classes={{...}} component=\\"div\\" elevation={2} square={false}>
-                              <div className=\\"MuiPaper-root-107 MuiPaper-elevation2-111 MuiPaper-rounded-108 Component-balancePaperIcon-3\\">
-                                <pure(DashboardIcon) className=\\"Component-balanceIcon-4\\">
-                                  <DashboardIcon className=\\"Component-balanceIcon-4\\">
-                                    <WithStyles(SvgIcon) className=\\"Component-balanceIcon-4\\">
-                                      <SvgIcon className=\\"Component-balanceIcon-4\\" classes={{...}} color=\\"inherit\\" component=\\"svg\\" fontSize=\\"default\\" viewBox=\\"0 0 24 24\\">
-                                        <svg className=\\"MuiSvgIcon-root-169 Component-balanceIcon-4\\" focusable=\\"false\\" viewBox=\\"0 0 24 24\\" color={[undefined]} aria-hidden=\\"true\\" role=\\"presentation\\">
+                          <WithStyles(Paper) className=\\"DashboardComponent-balancePaperIcon-3\\">
+                            <Paper className=\\"DashboardComponent-balancePaperIcon-3\\" classes={{...}} component=\\"div\\" elevation={2} square={false}>
+                              <div className=\\"MuiPaper-root-107 MuiPaper-elevation2-111 MuiPaper-rounded-108 DashboardComponent-balancePaperIcon-3\\">
+                                <pure(DashboardIcon) className=\\"DashboardComponent-balanceIcon-4\\">
+                                  <DashboardIcon className=\\"DashboardComponent-balanceIcon-4\\">
+                                    <WithStyles(SvgIcon) className=\\"DashboardComponent-balanceIcon-4\\">
+                                      <SvgIcon className=\\"DashboardComponent-balanceIcon-4\\" classes={{...}} color=\\"inherit\\" component=\\"svg\\" fontSize=\\"default\\" viewBox=\\"0 0 24 24\\">
+                                        <svg className=\\"MuiSvgIcon-root-170 DashboardComponent-balanceIcon-4\\" focusable=\\"false\\" viewBox=\\"0 0 24 24\\" color={[undefined]} aria-hidden=\\"true\\" role=\\"presentation\\">
                                           <path fill=\\"none\\" d=\\"M0 0h24v24H0z\\" />
                                           <path d=\\"M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z\\" />
                                         </svg>
@@ -135,33 +135,33 @@ exports[`Dashboard snapshot matches with one account 1`] = `
               <WithStyles(Grid) container={true}>
                 <Grid container={true} classes={{...}} alignContent=\\"stretch\\" alignItems=\\"stretch\\" component=\\"div\\" direction=\\"row\\" item={false} justify=\\"flex-start\\" lg={false} md={false} sm={false} spacing={0} wrap=\\"wrap\\" xl={false} xs={false} zeroMinWidth={false}>
                   <div className=\\"MuiGrid-container-10\\">
-                    <WithStyles(Paper) className=\\"Component-summaryPaper-5\\">
-                      <Paper className=\\"Component-summaryPaper-5\\" classes={{...}} component=\\"div\\" elevation={2} square={false}>
-                        <div className=\\"MuiPaper-root-107 MuiPaper-elevation2-111 MuiPaper-rounded-108 Component-summaryPaper-5\\">
+                    <WithStyles(Paper) className=\\"DashboardComponent-summaryPaper-5\\">
+                      <Paper className=\\"DashboardComponent-summaryPaper-5\\" classes={{...}} component=\\"div\\" elevation={2} square={false}>
+                        <div className=\\"MuiPaper-root-107 MuiPaper-elevation2-111 MuiPaper-rounded-108 DashboardComponent-summaryPaper-5\\">
                           <WithStyles(Table) className={[undefined]}>
                             <Table className={[undefined]} classes={{...}} component=\\"table\\" padding=\\"default\\">
-                              <table className=\\"MuiTable-root-178\\">
+                              <table className=\\"MuiTable-root-179\\">
                                 <WithStyles(TableHead)>
                                   <TableHead classes={{...}} component=\\"thead\\">
-                                    <thead className=\\"MuiTableHead-root-179\\">
+                                    <thead className=\\"MuiTableHead-root-180\\">
                                       <WithStyles(TableRow)>
                                         <TableRow classes={{...}} component=\\"tr\\" hover={false} selected={false}>
-                                          <tr className=\\"MuiTableRow-root-180 MuiTableRow-head-183\\">
+                                          <tr className=\\"MuiTableRow-root-181 MuiTableRow-head-184\\">
                                             <WithStyles(TableCell)>
                                               <TableCell classes={{...}} align=\\"inherit\\">
-                                                <th className=\\"MuiTableCell-root-185 MuiTableCell-head-186\\" aria-sort={{...}} scope=\\"col\\" />
+                                                <th className=\\"MuiTableCell-root-186 MuiTableCell-head-187\\" aria-sort={{...}} scope=\\"col\\" />
                                               </TableCell>
                                             </WithStyles(TableCell)>
                                             <WithStyles(TableCell) align=\\"right\\">
                                               <TableCell align=\\"right\\" classes={{...}}>
-                                                <th className=\\"MuiTableCell-root-185 MuiTableCell-head-186 MuiTableCell-alignRight-195\\" aria-sort={{...}} scope=\\"col\\">
+                                                <th className=\\"MuiTableCell-root-186 MuiTableCell-head-187 MuiTableCell-alignRight-196\\" aria-sort={{...}} scope=\\"col\\">
                                                   Last updated
                                                 </th>
                                               </TableCell>
                                             </WithStyles(TableCell)>
                                             <WithStyles(TableCell) align=\\"right\\">
                                               <TableCell align=\\"right\\" classes={{...}}>
-                                                <th className=\\"MuiTableCell-root-185 MuiTableCell-head-186 MuiTableCell-alignRight-195\\" aria-sort={{...}} scope=\\"col\\">
+                                                <th className=\\"MuiTableCell-root-186 MuiTableCell-head-187 MuiTableCell-alignRight-196\\" aria-sort={{...}} scope=\\"col\\">
                                                   USD
                                                 </th>
                                               </TableCell>
@@ -174,21 +174,21 @@ exports[`Dashboard snapshot matches with one account 1`] = `
                                 </WithStyles(TableHead)>
                                 <WithStyles(TableBody)>
                                   <TableBody classes={{...}} component=\\"tbody\\">
-                                    <tbody className=\\"MuiTableBody-root-197\\">
+                                    <tbody className=\\"MuiTableBody-root-198\\">
                                       <WithStyles(TableRow)>
                                         <TableRow classes={{...}} component=\\"tr\\" hover={false} selected={false}>
-                                          <tr className=\\"MuiTableRow-root-180\\">
+                                          <tr className=\\"MuiTableRow-root-181\\">
                                             <WithStyles(TableCell)>
                                               <TableCell classes={{...}} align=\\"inherit\\">
-                                                <td className=\\"MuiTableCell-root-185 MuiTableCell-body-187\\" aria-sort={{...}} scope={[undefined]}>
-                                                  <span className=\\"Component-institutionWrapper-7\\">
-                                                    <WithStyles(InstitutionIcon) institution=\\"TD\\" size=\\"small\\" className=\\"Component-institutionIcon-8\\">
-                                                      <InstitutionIcon institution=\\"TD\\" size=\\"small\\" className=\\"Component-institutionIcon-8\\" classes={{...}}>
-                                                        <pure(AccountBalanceIcon) className=\\"InstitutionIcon-small-198 Component-institutionIcon-8\\">
-                                                          <AccountBalanceIcon className=\\"InstitutionIcon-small-198 Component-institutionIcon-8\\">
-                                                            <WithStyles(SvgIcon) className=\\"InstitutionIcon-small-198 Component-institutionIcon-8\\">
-                                                              <SvgIcon className=\\"InstitutionIcon-small-198 Component-institutionIcon-8\\" classes={{...}} color=\\"inherit\\" component=\\"svg\\" fontSize=\\"default\\" viewBox=\\"0 0 24 24\\">
-                                                                <svg className=\\"MuiSvgIcon-root-169 InstitutionIcon-small-198 Component-institutionIcon-8\\" focusable=\\"false\\" viewBox=\\"0 0 24 24\\" color={[undefined]} aria-hidden=\\"true\\" role=\\"presentation\\">
+                                                <td className=\\"MuiTableCell-root-186 MuiTableCell-body-188\\" aria-sort={{...}} scope={[undefined]}>
+                                                  <span className=\\"DashboardComponent-institutionWrapper-7\\">
+                                                    <WithStyles(InstitutionIcon) institution=\\"TD\\" size=\\"small\\" className=\\"DashboardComponent-institutionIcon-8\\">
+                                                      <InstitutionIcon institution=\\"TD\\" size=\\"small\\" className=\\"DashboardComponent-institutionIcon-8\\" classes={{...}}>
+                                                        <pure(AccountBalanceIcon) className=\\"InstitutionIcon-small-199 DashboardComponent-institutionIcon-8\\">
+                                                          <AccountBalanceIcon className=\\"InstitutionIcon-small-199 DashboardComponent-institutionIcon-8\\">
+                                                            <WithStyles(SvgIcon) className=\\"InstitutionIcon-small-199 DashboardComponent-institutionIcon-8\\">
+                                                              <SvgIcon className=\\"InstitutionIcon-small-199 DashboardComponent-institutionIcon-8\\" classes={{...}} color=\\"inherit\\" component=\\"svg\\" fontSize=\\"default\\" viewBox=\\"0 0 24 24\\">
+                                                                <svg className=\\"MuiSvgIcon-root-170 InstitutionIcon-small-199 DashboardComponent-institutionIcon-8\\" focusable=\\"false\\" viewBox=\\"0 0 24 24\\" color={[undefined]} aria-hidden=\\"true\\" role=\\"presentation\\">
                                                                   <path fill=\\"none\\" d=\\"M0 0h24v24H0z\\" />
                                                                   <path d=\\"M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z\\" />
                                                                 </svg>
@@ -199,7 +199,7 @@ exports[`Dashboard snapshot matches with one account 1`] = `
                                                       </InstitutionIcon>
                                                     </WithStyles(InstitutionIcon)>
                                                     <WithStyles(Typography) variant=\\"subtitle2\\">
-                                                      <Typography variant=\\"subtitle2\\" theme={{...}} classes={{...}} align=\\"inherit\\" color=\\"default\\" gutterBottom={false} headlineMapping={{...}} noWrap={false} paragraph={false}>
+                                                      <Typography variant=\\"subtitle2\\" theme={{...}} classes={{...}} align=\\"inherit\\" color=\\"default\\" gutterBottom={false} headlineMapping={{...}} inline={false} noWrap={false} paragraph={false}>
                                                         <h6 className=\\"MuiTypography-root-134 MuiTypography-subtitle2-153\\">
                                                           TD
                                                         </h6>
@@ -211,14 +211,14 @@ exports[`Dashboard snapshot matches with one account 1`] = `
                                             </WithStyles(TableCell)>
                                             <WithStyles(TableCell)>
                                               <TableCell classes={{...}} align=\\"inherit\\">
-                                                <td className=\\"MuiTableCell-root-185 MuiTableCell-body-187\\" aria-sort={{...}} scope={[undefined]} />
+                                                <td className=\\"MuiTableCell-root-186 MuiTableCell-body-188\\" aria-sort={{...}} scope={[undefined]} />
                                               </TableCell>
                                             </WithStyles(TableCell)>
                                             <WithStyles(TableCell) align=\\"right\\">
                                               <TableCell align=\\"right\\" classes={{...}}>
-                                                <td className=\\"MuiTableCell-root-185 MuiTableCell-body-187 MuiTableCell-alignRight-195\\" aria-sort={{...}} scope={[undefined]}>
+                                                <td className=\\"MuiTableCell-root-186 MuiTableCell-body-188 MuiTableCell-alignRight-196\\" aria-sort={{...}} scope={[undefined]}>
                                                   <WithStyles(Typography) variant=\\"subtitle2\\">
-                                                    <Typography variant=\\"subtitle2\\" theme={{...}} classes={{...}} align=\\"inherit\\" color=\\"default\\" gutterBottom={false} headlineMapping={{...}} noWrap={false} paragraph={false}>
+                                                    <Typography variant=\\"subtitle2\\" theme={{...}} classes={{...}} align=\\"inherit\\" color=\\"default\\" gutterBottom={false} headlineMapping={{...}} inline={false} noWrap={false} paragraph={false}>
                                                       <h6 className=\\"MuiTypography-root-134 MuiTypography-subtitle2-153\\">
                                                         $10.00
                                                       </h6>
@@ -232,13 +232,13 @@ exports[`Dashboard snapshot matches with one account 1`] = `
                                       </WithStyles(TableRow)>
                                       <WithStyles(TableRow)>
                                         <TableRow classes={{...}} component=\\"tr\\" hover={false} selected={false}>
-                                          <tr className=\\"MuiTableRow-root-180\\">
+                                          <tr className=\\"MuiTableRow-root-181\\">
                                             <WithStyles(TableCell)>
                                               <TableCell classes={{...}} align=\\"inherit\\">
-                                                <td className=\\"MuiTableCell-root-185 MuiTableCell-body-187\\" aria-sort={{...}} scope={[undefined]}>
-                                                  <WithStyles(Typography) className=\\"Component-accountName-9\\">
-                                                    <Typography className=\\"Component-accountName-9\\" theme={{...}} classes={{...}} align=\\"inherit\\" color=\\"default\\" gutterBottom={false} headlineMapping={{...}} noWrap={false} paragraph={false}>
-                                                      <p className=\\"MuiTypography-root-134 MuiTypography-body1-143 Component-accountName-9\\" />
+                                                <td className=\\"MuiTableCell-root-186 MuiTableCell-body-188\\" aria-sort={{...}} scope={[undefined]}>
+                                                  <WithStyles(Typography) className=\\"DashboardComponent-accountName-9\\">
+                                                    <Typography className=\\"DashboardComponent-accountName-9\\" theme={{...}} classes={{...}} align=\\"inherit\\" color=\\"default\\" gutterBottom={false} headlineMapping={{...}} inline={false} noWrap={false} paragraph={false}>
+                                                      <p className=\\"MuiTypography-root-134 MuiTypography-body1-143 DashboardComponent-accountName-9\\" />
                                                     </Typography>
                                                   </WithStyles(Typography)>
                                                 </td>
@@ -246,14 +246,14 @@ exports[`Dashboard snapshot matches with one account 1`] = `
                                             </WithStyles(TableCell)>
                                             <WithStyles(TableCell) align=\\"right\\">
                                               <TableCell align=\\"right\\" classes={{...}}>
-                                                <td className=\\"MuiTableCell-root-185 MuiTableCell-body-187 MuiTableCell-alignRight-195\\" aria-sort={{...}} scope={[undefined]}>
+                                                <td className=\\"MuiTableCell-root-186 MuiTableCell-body-188 MuiTableCell-alignRight-196\\" aria-sort={{...}} scope={[undefined]}>
                                                   Jan 1, 2018
                                                 </td>
                                               </TableCell>
                                             </WithStyles(TableCell)>
                                             <WithStyles(TableCell) align=\\"right\\">
                                               <TableCell align=\\"right\\" classes={{...}}>
-                                                <td className=\\"MuiTableCell-root-185 MuiTableCell-body-187 MuiTableCell-alignRight-195\\" aria-sort={{...}} scope={[undefined]}>
+                                                <td className=\\"MuiTableCell-root-186 MuiTableCell-body-188 MuiTableCell-alignRight-196\\" aria-sort={{...}} scope={[undefined]}>
                                                   $10.00
                                                 </td>
                                               </TableCell>
@@ -276,48 +276,48 @@ exports[`Dashboard snapshot matches with one account 1`] = `
             </div>
           </Grid>
         </WithStyles(Grid)>
-      </Component>
-    </WithStyles(Component)>
-  </Connect(WithStyles(Component))>
+      </DashboardComponent>
+    </WithStyles(DashboardComponent)>
+  </Connect(WithStyles(DashboardComponent))>
 </Provider>"
 `;
 
-exports[`Dashboard snapshot matches with two accounts in a different currency 1`] = `
+exports[`Dashboard matches snapshot with two accounts in a different currency 1`] = `
 "<Provider store={{...}}>
-  <Connect(WithStyles(Component))>
-    <WithStyles(Component) settings={{...}} accounts={{...}} formatCurrency={[Function]} formatDate={[Function]} totalBalance={20} dispatch={[Function]}>
-      <Component settings={{...}} accounts={{...}} formatCurrency={[Function]} formatDate={[Function]} totalBalance={20} dispatch={[Function]} classes={{...}}>
+  <Connect(WithStyles(DashboardComponent))>
+    <WithStyles(DashboardComponent) settings={{...}} accounts={{...}} formatCurrency={[Function]} formatDate={[Function]} totalBalance={20} dispatch={[Function]}>
+      <DashboardComponent settings={{...}} accounts={{...}} formatCurrency={[Function]} formatDate={[Function]} totalBalance={20} dispatch={[Function]} classes={{...}}>
         <WithStyles(Grid) container={true}>
           <Grid container={true} classes={{...}} alignContent=\\"stretch\\" alignItems=\\"stretch\\" component=\\"div\\" direction=\\"row\\" item={false} justify=\\"flex-start\\" lg={false} md={false} sm={false} spacing={0} wrap=\\"wrap\\" xl={false} xs={false} zeroMinWidth={false}>
             <div className=\\"MuiGrid-container-10\\">
               <WithStyles(Grid) container={true} justify=\\"flex-end\\" className={[undefined]}>
                 <Grid container={true} justify=\\"flex-end\\" className={[undefined]} classes={{...}} alignContent=\\"stretch\\" alignItems=\\"stretch\\" component=\\"div\\" direction=\\"row\\" item={false} lg={false} md={false} sm={false} spacing={0} wrap=\\"wrap\\" xl={false} xs={false} zeroMinWidth={false}>
                   <div className=\\"MuiGrid-container-10 MuiGrid-justify-xs-flex-end-28\\">
-                    <WithStyles(Paper) className=\\"Component-balancePaper-1\\">
-                      <Paper className=\\"Component-balancePaper-1\\" classes={{...}} component=\\"div\\" elevation={2} square={false}>
-                        <div className=\\"MuiPaper-root-107 MuiPaper-elevation2-111 MuiPaper-rounded-108 Component-balancePaper-1\\">
+                    <WithStyles(Paper) className=\\"DashboardComponent-balancePaper-1\\">
+                      <Paper className=\\"DashboardComponent-balancePaper-1\\" classes={{...}} component=\\"div\\" elevation={2} square={false}>
+                        <div className=\\"MuiPaper-root-107 MuiPaper-elevation2-111 MuiPaper-rounded-108 DashboardComponent-balancePaper-1\\">
                           <WithStyles(Typography) variant=\\"body1\\" color=\\"textSecondary\\" align=\\"right\\">
-                            <Typography variant=\\"body1\\" color=\\"textSecondary\\" align=\\"right\\" theme={{...}} classes={{...}} gutterBottom={false} headlineMapping={{...}} noWrap={false} paragraph={false}>
+                            <Typography variant=\\"body1\\" color=\\"textSecondary\\" align=\\"right\\" theme={{...}} classes={{...}} gutterBottom={false} headlineMapping={{...}} inline={false} noWrap={false} paragraph={false}>
                               <p className=\\"MuiTypography-root-134 MuiTypography-body1-143 MuiTypography-colorTextSecondary-167 MuiTypography-alignRight-158\\">
                                 Balance
                               </p>
                             </Typography>
                           </WithStyles(Typography)>
-                          <WithStyles(Typography) variant=\\"h5\\" align=\\"right\\" className=\\"Component-balanceAmount-2\\">
-                            <Typography variant=\\"h5\\" align=\\"right\\" className=\\"Component-balanceAmount-2\\" theme={{...}} classes={{...}} color=\\"default\\" gutterBottom={false} headlineMapping={{...}} noWrap={false} paragraph={false}>
-                              <h5 className=\\"MuiTypography-root-134 MuiTypography-h5-150 MuiTypography-alignRight-158 Component-balanceAmount-2\\">
+                          <WithStyles(Typography) variant=\\"h5\\" align=\\"right\\" className=\\"DashboardComponent-balanceAmount-2\\">
+                            <Typography variant=\\"h5\\" align=\\"right\\" className=\\"DashboardComponent-balanceAmount-2\\" theme={{...}} classes={{...}} color=\\"default\\" gutterBottom={false} headlineMapping={{...}} inline={false} noWrap={false} paragraph={false}>
+                              <h5 className=\\"MuiTypography-root-134 MuiTypography-h5-150 MuiTypography-alignRight-158 DashboardComponent-balanceAmount-2\\">
                                 €20.00
                               </h5>
                             </Typography>
                           </WithStyles(Typography)>
-                          <WithStyles(Paper) className=\\"Component-balancePaperIcon-3\\">
-                            <Paper className=\\"Component-balancePaperIcon-3\\" classes={{...}} component=\\"div\\" elevation={2} square={false}>
-                              <div className=\\"MuiPaper-root-107 MuiPaper-elevation2-111 MuiPaper-rounded-108 Component-balancePaperIcon-3\\">
-                                <pure(DashboardIcon) className=\\"Component-balanceIcon-4\\">
-                                  <DashboardIcon className=\\"Component-balanceIcon-4\\">
-                                    <WithStyles(SvgIcon) className=\\"Component-balanceIcon-4\\">
-                                      <SvgIcon className=\\"Component-balanceIcon-4\\" classes={{...}} color=\\"inherit\\" component=\\"svg\\" fontSize=\\"default\\" viewBox=\\"0 0 24 24\\">
-                                        <svg className=\\"MuiSvgIcon-root-169 Component-balanceIcon-4\\" focusable=\\"false\\" viewBox=\\"0 0 24 24\\" color={[undefined]} aria-hidden=\\"true\\" role=\\"presentation\\">
+                          <WithStyles(Paper) className=\\"DashboardComponent-balancePaperIcon-3\\">
+                            <Paper className=\\"DashboardComponent-balancePaperIcon-3\\" classes={{...}} component=\\"div\\" elevation={2} square={false}>
+                              <div className=\\"MuiPaper-root-107 MuiPaper-elevation2-111 MuiPaper-rounded-108 DashboardComponent-balancePaperIcon-3\\">
+                                <pure(DashboardIcon) className=\\"DashboardComponent-balanceIcon-4\\">
+                                  <DashboardIcon className=\\"DashboardComponent-balanceIcon-4\\">
+                                    <WithStyles(SvgIcon) className=\\"DashboardComponent-balanceIcon-4\\">
+                                      <SvgIcon className=\\"DashboardComponent-balanceIcon-4\\" classes={{...}} color=\\"inherit\\" component=\\"svg\\" fontSize=\\"default\\" viewBox=\\"0 0 24 24\\">
+                                        <svg className=\\"MuiSvgIcon-root-170 DashboardComponent-balanceIcon-4\\" focusable=\\"false\\" viewBox=\\"0 0 24 24\\" color={[undefined]} aria-hidden=\\"true\\" role=\\"presentation\\">
                                           <path fill=\\"none\\" d=\\"M0 0h24v24H0z\\" />
                                           <path d=\\"M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z\\" />
                                         </svg>
@@ -337,33 +337,33 @@ exports[`Dashboard snapshot matches with two accounts in a different currency 1`
               <WithStyles(Grid) container={true}>
                 <Grid container={true} classes={{...}} alignContent=\\"stretch\\" alignItems=\\"stretch\\" component=\\"div\\" direction=\\"row\\" item={false} justify=\\"flex-start\\" lg={false} md={false} sm={false} spacing={0} wrap=\\"wrap\\" xl={false} xs={false} zeroMinWidth={false}>
                   <div className=\\"MuiGrid-container-10\\">
-                    <WithStyles(Paper) className=\\"Component-summaryPaper-5\\">
-                      <Paper className=\\"Component-summaryPaper-5\\" classes={{...}} component=\\"div\\" elevation={2} square={false}>
-                        <div className=\\"MuiPaper-root-107 MuiPaper-elevation2-111 MuiPaper-rounded-108 Component-summaryPaper-5\\">
+                    <WithStyles(Paper) className=\\"DashboardComponent-summaryPaper-5\\">
+                      <Paper className=\\"DashboardComponent-summaryPaper-5\\" classes={{...}} component=\\"div\\" elevation={2} square={false}>
+                        <div className=\\"MuiPaper-root-107 MuiPaper-elevation2-111 MuiPaper-rounded-108 DashboardComponent-summaryPaper-5\\">
                           <WithStyles(Table) className={[undefined]}>
                             <Table className={[undefined]} classes={{...}} component=\\"table\\" padding=\\"default\\">
-                              <table className=\\"MuiTable-root-178\\">
+                              <table className=\\"MuiTable-root-179\\">
                                 <WithStyles(TableHead)>
                                   <TableHead classes={{...}} component=\\"thead\\">
-                                    <thead className=\\"MuiTableHead-root-179\\">
+                                    <thead className=\\"MuiTableHead-root-180\\">
                                       <WithStyles(TableRow)>
                                         <TableRow classes={{...}} component=\\"tr\\" hover={false} selected={false}>
-                                          <tr className=\\"MuiTableRow-root-180 MuiTableRow-head-183\\">
+                                          <tr className=\\"MuiTableRow-root-181 MuiTableRow-head-184\\">
                                             <WithStyles(TableCell)>
                                               <TableCell classes={{...}} align=\\"inherit\\">
-                                                <th className=\\"MuiTableCell-root-185 MuiTableCell-head-186\\" aria-sort={{...}} scope=\\"col\\" />
+                                                <th className=\\"MuiTableCell-root-186 MuiTableCell-head-187\\" aria-sort={{...}} scope=\\"col\\" />
                                               </TableCell>
                                             </WithStyles(TableCell)>
                                             <WithStyles(TableCell) align=\\"right\\">
                                               <TableCell align=\\"right\\" classes={{...}}>
-                                                <th className=\\"MuiTableCell-root-185 MuiTableCell-head-186 MuiTableCell-alignRight-195\\" aria-sort={{...}} scope=\\"col\\">
+                                                <th className=\\"MuiTableCell-root-186 MuiTableCell-head-187 MuiTableCell-alignRight-196\\" aria-sort={{...}} scope=\\"col\\">
                                                   Last updated
                                                 </th>
                                               </TableCell>
                                             </WithStyles(TableCell)>
                                             <WithStyles(TableCell) align=\\"right\\">
                                               <TableCell align=\\"right\\" classes={{...}}>
-                                                <th className=\\"MuiTableCell-root-185 MuiTableCell-head-186 MuiTableCell-alignRight-195\\" aria-sort={{...}} scope=\\"col\\">
+                                                <th className=\\"MuiTableCell-root-186 MuiTableCell-head-187 MuiTableCell-alignRight-196\\" aria-sort={{...}} scope=\\"col\\">
                                                   EUR
                                                 </th>
                                               </TableCell>
@@ -376,21 +376,21 @@ exports[`Dashboard snapshot matches with two accounts in a different currency 1`
                                 </WithStyles(TableHead)>
                                 <WithStyles(TableBody)>
                                   <TableBody classes={{...}} component=\\"tbody\\">
-                                    <tbody className=\\"MuiTableBody-root-197\\">
+                                    <tbody className=\\"MuiTableBody-root-198\\">
                                       <WithStyles(TableRow)>
                                         <TableRow classes={{...}} component=\\"tr\\" hover={false} selected={false}>
-                                          <tr className=\\"MuiTableRow-root-180\\">
+                                          <tr className=\\"MuiTableRow-root-181\\">
                                             <WithStyles(TableCell)>
                                               <TableCell classes={{...}} align=\\"inherit\\">
-                                                <td className=\\"MuiTableCell-root-185 MuiTableCell-body-187\\" aria-sort={{...}} scope={[undefined]}>
-                                                  <span className=\\"Component-institutionWrapper-7\\">
-                                                    <WithStyles(InstitutionIcon) institution=\\"TD\\" size=\\"small\\" className=\\"Component-institutionIcon-8\\">
-                                                      <InstitutionIcon institution=\\"TD\\" size=\\"small\\" className=\\"Component-institutionIcon-8\\" classes={{...}}>
-                                                        <pure(AccountBalanceIcon) className=\\"InstitutionIcon-small-198 Component-institutionIcon-8\\">
-                                                          <AccountBalanceIcon className=\\"InstitutionIcon-small-198 Component-institutionIcon-8\\">
-                                                            <WithStyles(SvgIcon) className=\\"InstitutionIcon-small-198 Component-institutionIcon-8\\">
-                                                              <SvgIcon className=\\"InstitutionIcon-small-198 Component-institutionIcon-8\\" classes={{...}} color=\\"inherit\\" component=\\"svg\\" fontSize=\\"default\\" viewBox=\\"0 0 24 24\\">
-                                                                <svg className=\\"MuiSvgIcon-root-169 InstitutionIcon-small-198 Component-institutionIcon-8\\" focusable=\\"false\\" viewBox=\\"0 0 24 24\\" color={[undefined]} aria-hidden=\\"true\\" role=\\"presentation\\">
+                                                <td className=\\"MuiTableCell-root-186 MuiTableCell-body-188\\" aria-sort={{...}} scope={[undefined]}>
+                                                  <span className=\\"DashboardComponent-institutionWrapper-7\\">
+                                                    <WithStyles(InstitutionIcon) institution=\\"TD\\" size=\\"small\\" className=\\"DashboardComponent-institutionIcon-8\\">
+                                                      <InstitutionIcon institution=\\"TD\\" size=\\"small\\" className=\\"DashboardComponent-institutionIcon-8\\" classes={{...}}>
+                                                        <pure(AccountBalanceIcon) className=\\"InstitutionIcon-small-199 DashboardComponent-institutionIcon-8\\">
+                                                          <AccountBalanceIcon className=\\"InstitutionIcon-small-199 DashboardComponent-institutionIcon-8\\">
+                                                            <WithStyles(SvgIcon) className=\\"InstitutionIcon-small-199 DashboardComponent-institutionIcon-8\\">
+                                                              <SvgIcon className=\\"InstitutionIcon-small-199 DashboardComponent-institutionIcon-8\\" classes={{...}} color=\\"inherit\\" component=\\"svg\\" fontSize=\\"default\\" viewBox=\\"0 0 24 24\\">
+                                                                <svg className=\\"MuiSvgIcon-root-170 InstitutionIcon-small-199 DashboardComponent-institutionIcon-8\\" focusable=\\"false\\" viewBox=\\"0 0 24 24\\" color={[undefined]} aria-hidden=\\"true\\" role=\\"presentation\\">
                                                                   <path fill=\\"none\\" d=\\"M0 0h24v24H0z\\" />
                                                                   <path d=\\"M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z\\" />
                                                                 </svg>
@@ -401,7 +401,7 @@ exports[`Dashboard snapshot matches with two accounts in a different currency 1`
                                                       </InstitutionIcon>
                                                     </WithStyles(InstitutionIcon)>
                                                     <WithStyles(Typography) variant=\\"subtitle2\\">
-                                                      <Typography variant=\\"subtitle2\\" theme={{...}} classes={{...}} align=\\"inherit\\" color=\\"default\\" gutterBottom={false} headlineMapping={{...}} noWrap={false} paragraph={false}>
+                                                      <Typography variant=\\"subtitle2\\" theme={{...}} classes={{...}} align=\\"inherit\\" color=\\"default\\" gutterBottom={false} headlineMapping={{...}} inline={false} noWrap={false} paragraph={false}>
                                                         <h6 className=\\"MuiTypography-root-134 MuiTypography-subtitle2-153\\">
                                                           TD
                                                         </h6>
@@ -413,14 +413,14 @@ exports[`Dashboard snapshot matches with two accounts in a different currency 1`
                                             </WithStyles(TableCell)>
                                             <WithStyles(TableCell)>
                                               <TableCell classes={{...}} align=\\"inherit\\">
-                                                <td className=\\"MuiTableCell-root-185 MuiTableCell-body-187\\" aria-sort={{...}} scope={[undefined]} />
+                                                <td className=\\"MuiTableCell-root-186 MuiTableCell-body-188\\" aria-sort={{...}} scope={[undefined]} />
                                               </TableCell>
                                             </WithStyles(TableCell)>
                                             <WithStyles(TableCell) align=\\"right\\">
                                               <TableCell align=\\"right\\" classes={{...}}>
-                                                <td className=\\"MuiTableCell-root-185 MuiTableCell-body-187 MuiTableCell-alignRight-195\\" aria-sort={{...}} scope={[undefined]}>
+                                                <td className=\\"MuiTableCell-root-186 MuiTableCell-body-188 MuiTableCell-alignRight-196\\" aria-sort={{...}} scope={[undefined]}>
                                                   <WithStyles(Typography) variant=\\"subtitle2\\">
-                                                    <Typography variant=\\"subtitle2\\" theme={{...}} classes={{...}} align=\\"inherit\\" color=\\"default\\" gutterBottom={false} headlineMapping={{...}} noWrap={false} paragraph={false}>
+                                                    <Typography variant=\\"subtitle2\\" theme={{...}} classes={{...}} align=\\"inherit\\" color=\\"default\\" gutterBottom={false} headlineMapping={{...}} inline={false} noWrap={false} paragraph={false}>
                                                       <h6 className=\\"MuiTypography-root-134 MuiTypography-subtitle2-153\\">
                                                         €20.00
                                                       </h6>
@@ -434,13 +434,13 @@ exports[`Dashboard snapshot matches with two accounts in a different currency 1`
                                       </WithStyles(TableRow)>
                                       <WithStyles(TableRow)>
                                         <TableRow classes={{...}} component=\\"tr\\" hover={false} selected={false}>
-                                          <tr className=\\"MuiTableRow-root-180\\">
+                                          <tr className=\\"MuiTableRow-root-181\\">
                                             <WithStyles(TableCell)>
                                               <TableCell classes={{...}} align=\\"inherit\\">
-                                                <td className=\\"MuiTableCell-root-185 MuiTableCell-body-187\\" aria-sort={{...}} scope={[undefined]}>
-                                                  <WithStyles(Typography) className=\\"Component-accountName-9\\">
-                                                    <Typography className=\\"Component-accountName-9\\" theme={{...}} classes={{...}} align=\\"inherit\\" color=\\"default\\" gutterBottom={false} headlineMapping={{...}} noWrap={false} paragraph={false}>
-                                                      <p className=\\"MuiTypography-root-134 MuiTypography-body1-143 Component-accountName-9\\" />
+                                                <td className=\\"MuiTableCell-root-186 MuiTableCell-body-188\\" aria-sort={{...}} scope={[undefined]}>
+                                                  <WithStyles(Typography) className=\\"DashboardComponent-accountName-9\\">
+                                                    <Typography className=\\"DashboardComponent-accountName-9\\" theme={{...}} classes={{...}} align=\\"inherit\\" color=\\"default\\" gutterBottom={false} headlineMapping={{...}} inline={false} noWrap={false} paragraph={false}>
+                                                      <p className=\\"MuiTypography-root-134 MuiTypography-body1-143 DashboardComponent-accountName-9\\" />
                                                     </Typography>
                                                   </WithStyles(Typography)>
                                                 </td>
@@ -448,14 +448,14 @@ exports[`Dashboard snapshot matches with two accounts in a different currency 1`
                                             </WithStyles(TableCell)>
                                             <WithStyles(TableCell) align=\\"right\\">
                                               <TableCell align=\\"right\\" classes={{...}}>
-                                                <td className=\\"MuiTableCell-root-185 MuiTableCell-body-187 MuiTableCell-alignRight-195\\" aria-sort={{...}} scope={[undefined]}>
+                                                <td className=\\"MuiTableCell-root-186 MuiTableCell-body-188 MuiTableCell-alignRight-196\\" aria-sort={{...}} scope={[undefined]}>
                                                   Jan 1, 2018
                                                 </td>
                                               </TableCell>
                                             </WithStyles(TableCell)>
                                             <WithStyles(TableCell) align=\\"right\\">
                                               <TableCell align=\\"right\\" classes={{...}}>
-                                                <td className=\\"MuiTableCell-root-185 MuiTableCell-body-187 MuiTableCell-alignRight-195\\" aria-sort={{...}} scope={[undefined]}>
+                                                <td className=\\"MuiTableCell-root-186 MuiTableCell-body-188 MuiTableCell-alignRight-196\\" aria-sort={{...}} scope={[undefined]}>
                                                   €10.00
                                                 </td>
                                               </TableCell>
@@ -465,13 +465,13 @@ exports[`Dashboard snapshot matches with two accounts in a different currency 1`
                                       </WithStyles(TableRow)>
                                       <WithStyles(TableRow)>
                                         <TableRow classes={{...}} component=\\"tr\\" hover={false} selected={false}>
-                                          <tr className=\\"MuiTableRow-root-180\\">
+                                          <tr className=\\"MuiTableRow-root-181\\">
                                             <WithStyles(TableCell)>
                                               <TableCell classes={{...}} align=\\"inherit\\">
-                                                <td className=\\"MuiTableCell-root-185 MuiTableCell-body-187\\" aria-sort={{...}} scope={[undefined]}>
-                                                  <WithStyles(Typography) className=\\"Component-accountName-9\\">
-                                                    <Typography className=\\"Component-accountName-9\\" theme={{...}} classes={{...}} align=\\"inherit\\" color=\\"default\\" gutterBottom={false} headlineMapping={{...}} noWrap={false} paragraph={false}>
-                                                      <p className=\\"MuiTypography-root-134 MuiTypography-body1-143 Component-accountName-9\\" />
+                                                <td className=\\"MuiTableCell-root-186 MuiTableCell-body-188\\" aria-sort={{...}} scope={[undefined]}>
+                                                  <WithStyles(Typography) className=\\"DashboardComponent-accountName-9\\">
+                                                    <Typography className=\\"DashboardComponent-accountName-9\\" theme={{...}} classes={{...}} align=\\"inherit\\" color=\\"default\\" gutterBottom={false} headlineMapping={{...}} inline={false} noWrap={false} paragraph={false}>
+                                                      <p className=\\"MuiTypography-root-134 MuiTypography-body1-143 DashboardComponent-accountName-9\\" />
                                                     </Typography>
                                                   </WithStyles(Typography)>
                                                 </td>
@@ -479,14 +479,14 @@ exports[`Dashboard snapshot matches with two accounts in a different currency 1`
                                             </WithStyles(TableCell)>
                                             <WithStyles(TableCell) align=\\"right\\">
                                               <TableCell align=\\"right\\" classes={{...}}>
-                                                <td className=\\"MuiTableCell-root-185 MuiTableCell-body-187 MuiTableCell-alignRight-195\\" aria-sort={{...}} scope={[undefined]}>
+                                                <td className=\\"MuiTableCell-root-186 MuiTableCell-body-188 MuiTableCell-alignRight-196\\" aria-sort={{...}} scope={[undefined]}>
                                                   Jan 1, 2018
                                                 </td>
                                               </TableCell>
                                             </WithStyles(TableCell)>
                                             <WithStyles(TableCell) align=\\"right\\">
                                               <TableCell align=\\"right\\" classes={{...}}>
-                                                <td className=\\"MuiTableCell-root-185 MuiTableCell-body-187 MuiTableCell-alignRight-195\\" aria-sort={{...}} scope={[undefined]}>
+                                                <td className=\\"MuiTableCell-root-186 MuiTableCell-body-188 MuiTableCell-alignRight-196\\" aria-sort={{...}} scope={[undefined]}>
                                                   €10.00
                                                 </td>
                                               </TableCell>
@@ -509,8 +509,8 @@ exports[`Dashboard snapshot matches with two accounts in a different currency 1`
             </div>
           </Grid>
         </WithStyles(Grid)>
-      </Component>
-    </WithStyles(Component)>
-  </Connect(WithStyles(Component))>
+      </DashboardComponent>
+    </WithStyles(DashboardComponent)>
+  </Connect(WithStyles(DashboardComponent))>
 </Provider>"
 `;

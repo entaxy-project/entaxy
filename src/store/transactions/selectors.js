@@ -84,4 +84,3 @@ export const portfolioPieChartSelector = createSelector(
     })
   }
 )
-

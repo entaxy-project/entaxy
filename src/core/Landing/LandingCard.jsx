@@ -72,12 +72,12 @@ export class LandingCardComponent extends React.Component {
           </Typography>
           <Card className={classes.card}>
             <CardHeader
-              avatar={
+              avatar={(
                 <Avatar
                   src={user.pictureUrl}
                   alt={user.name}
                 />
-              }
+              )}
               title={user.name}
             />
             <CardActions>

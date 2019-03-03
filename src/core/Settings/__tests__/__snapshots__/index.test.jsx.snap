@@ -15,7 +15,7 @@ exports[`Settings matches snapshot with no accounts and no selected accountId 1`
       </h6>
       <button
         aria-label="Close"
-        className="MuiButtonBase-root-166 MuiIconButton-root-160"
+        className="MuiButtonBase-root-167 MuiIconButton-root-161"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -33,11 +33,11 @@ exports[`Settings matches snapshot with no accounts and no selected accountId 1`
         type="button"
       >
         <span
-          className="MuiIconButton-label-165"
+          className="MuiIconButton-label-166"
         >
           <svg
             aria-hidden="true"
-            className="MuiSvgIcon-root-169"
+            className="MuiSvgIcon-root-170"
             focusable="false"
             role="presentation"
             viewBox="0 0 24 24"
@@ -52,12 +52,12 @@ exports[`Settings matches snapshot with no accounts and no selected accountId 1`
           </svg>
         </span>
         <span
-          className="MuiTouchRipple-root-190"
+          className="MuiTouchRipple-root-191"
         />
       </button>
     </div>
     <hr
-      className="MuiDivider-root-178"
+      className="MuiDivider-root-179"
     />
     <SettingsForm
       handleDeleteAllData={[Function]}
