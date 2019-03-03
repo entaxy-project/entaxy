@@ -5,22 +5,6 @@ const getTransactions = ({ transactions }) => transactions
 const getMarketValues = state => state.marketValues
 const getPortfolioFilters = state => state.settings.portfolioFilters
 
-const accountTransactions = ({ transactions }, { match }) => {
-  const { list, sortBy, sortDirection } = transactions
-  return list
-    .filter(transaction => (
-      transaction.accountId === match.params.accountId
-    ))
-    .sort((a, b) => (
-      sortDirection === 'ASC' ? a[sortBy] > b[sortBy] : a[sortBy] < b[sortBy]
-    ))
-}
-
-export const makeAccountTransactions = () => createSelector(
-  accountTransactions,
-  transactions => ({ transactions })
-)
-
 const filteredTransactions = createSelector(
   getTransactions,
   getPortfolioFilters,

@@ -29,12 +29,6 @@ const institutions = {
     url: 'https://www.rbcroyalbank.com',
     favicon: 'https://www.rbcroyalbank.com/uos/_assets/images/icons/favicon.ico'
   },
-  Questrade: {
-    name: 'Questrade',
-    importTypes: ['API'],
-    url: 'https://www.questrade.com',
-    favicon: 'https://www.questrade.com/Resources/images/favicon.ico'
-  },
   Coinbase: {
     name: 'Coinbase',
     importTypes: ['API'],
@@ -42,6 +36,13 @@ const institutions = {
     favicon: 'https://www.coinbase.com/favicon.ico'
   }
 }
+
+// Questrade: {
+//   name: 'Questrade',
+//   importTypes: ['API'],
+//   url: 'https://www.questrade.com',
+//   favicon: 'https://www.questrade.com/Resources/images/favicon.ico'
+// }
 
 export const formatedInstitutions = Object.keys(institutions)
   .map(key => ({

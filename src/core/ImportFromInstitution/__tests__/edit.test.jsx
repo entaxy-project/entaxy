@@ -4,6 +4,8 @@ import { shallow } from 'enzyme'
 import { EditImportFromInstitutionComponent } from '../edit'
 
 jest.mock('../form', () => 'AccountForm')
+jest.mock('../../../util/confirm', () => jest.fn())
+const confirm = require('../../../util/confirm')
 
 describe('New Import From Institution', () => {
   const mochUpdateAccountGroup = jest.fn()
@@ -36,7 +38,12 @@ describe('New Import From Institution', () => {
       />
     ))
     const instance = wrapper.instance()
-    const accountGroup = { id: 'g1', apiKey: 'abc', apiSecret: 'def' }
+    const accountGroup = {
+      id: 'g1',
+      apiKey: 'abc',
+      apiSecret: 'def',
+      accountIds: []
+    }
 
     it('saves the form', async () => {
       const accounts = [{ name: 'account 1' }, { name: 'account 2' }]
@@ -46,11 +53,13 @@ describe('New Import From Institution', () => {
       expect(mochHistoryPush).toHaveBeenCalledWith('/dashboard')
     })
 
-    // it('deletes the form', async () => {
-    //   instance.handleDelete(accountGroup)
-    //   expect(mochUpdateAccountGroup).toHaveBeenCalled()
-    //   expect(mochHistoryPush).toHaveBeenCalledWith('/dashboard')
-    // })
+    it('deletes the form', async () => {
+      confirm.mockImplementation(() => Promise.resolve())
+      instance.handleDelete(accountGroup)
+      await expect(confirm).toHaveBeenCalledWith('Delete all the 0 accounts connected to TD?', 'Are you sure?')
+      await expect(mochDeleteAccountGroup).toHaveBeenCalledWith(accountGroup)
+      expect(mochHistoryPush).toHaveBeenCalledWith('/dashboard')
+    })
 
     it('cancels the account creation', () => {
       instance.handleCancel()

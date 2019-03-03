@@ -7,13 +7,13 @@ import { updateAccount, deleteAccount } from '../../store/accounts/actions'
 import confirm from '../../util/confirm'
 
 const mapDispatchToProps = {
-  handleSave: account => updateAccount(account),
+  handleUpdate: account => updateAccount(account),
   handleDelete: account => deleteAccount(account)
 }
 
 export class EditAccountComponent extends React.Component {
   onSave = async (account) => {
-    await this.props.handleSave(account)
+    await this.props.handleUpdate(account)
     this.props.history.push(`/accounts/${account.id}/transactions`)
   }
 
@@ -43,7 +43,7 @@ export class EditAccountComponent extends React.Component {
 EditAccountComponent.propTypes = {
   history: PropTypes.object.isRequired,
   match: PropTypes.object.isRequired,
-  handleSave: PropTypes.func.isRequired,
+  handleUpdate: PropTypes.func.isRequired,
   handleDelete: PropTypes.func.isRequired
 }
 

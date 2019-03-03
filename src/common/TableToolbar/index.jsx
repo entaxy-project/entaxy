@@ -3,9 +3,6 @@ import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
-import IconButton from '@material-ui/core/IconButton'
-import Tooltip from '@material-ui/core/Tooltip'
-import DeleteIcon from '@material-ui/icons/Delete'
 import { withStyles } from '@material-ui/core/styles'
 import { lighten } from '@material-ui/core/styles/colorManipulator'
 
@@ -25,9 +22,6 @@ const styles = theme => ({
   actions: {
     color: theme.palette.text.secondary
   },
-  buttons: {
-    display: 'flex'
-  },
   title: {
     flex: '0 0 auto'
   }
@@ -35,9 +29,9 @@ const styles = theme => ({
 
 const TableToolbar = ({
   title,
+  subTitle,
   selectedItems,
   classes,
-  onDelete,
   children
 }) => (
   <Toolbar
@@ -51,38 +45,31 @@ const TableToolbar = ({
           {selectedItems.length} selected
         </Typography>
       ) : (
-        <Typography variant="h6" id="tableTitle">
-          {title}
-        </Typography>
+        <div>
+          <Typography variant="h6">{title}</Typography>
+          <Typography variant="caption">{subTitle}</Typography>
+        </div>
       )}
     </div>
     <div className={classes.spacer} />
     <div className={classes.actions}>
-      {selectedItems.length > 0 ? (
-        <Tooltip title="Delete">
-          <IconButton aria-label="Delete" onClick={onDelete}>
-            <DeleteIcon />
-          </IconButton>
-        </Tooltip>
-      ) : (
-        <div className={classes.buttons}>
-          {children}
-        </div>
-      )}
+      {children}
     </div>
   </Toolbar>
 )
 
 TableToolbar.propTypes = {
   title: PropTypes.string,
+  subTitle: PropTypes.node,
   selectedItems: PropTypes.array.isRequired,
   classes: PropTypes.object.isRequired,
-  onDelete: PropTypes.func.isRequired,
-  children: PropTypes.array.isRequired
+  children: PropTypes.node
 }
 
 TableToolbar.defaultProps = {
-  title: null
+  title: undefined,
+  subTitle: undefined,
+  children: undefined
 }
 
 export default withStyles(styles)(TableToolbar)

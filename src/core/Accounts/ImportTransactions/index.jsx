@@ -4,6 +4,7 @@ import { withStyles } from '@material-ui/core/styles'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
+import uuid from 'uuid/v4'
 import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
@@ -15,22 +16,19 @@ import InstitutionIcon from '../../../common/InstitutionIcon'
 import { addTransactions } from '../../../store/transactions/actions'
 import institutions from '../../../data/institutions'
 import CsvImportForm from './CsvImportForm'
-import ImportResults from './ImportResults'
+import ImportedResults from './ImportedResults'
 
 const styles = theme => ({
   root: {
     margin: theme.spacing.unit * 2,
     padding: theme.spacing.unit * 2,
-    width: '80%'
+    width: '100%'
   },
   importHeader: {
     padding: 10,
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between'
-  },
-  importContent: {
-
   }
 })
 
@@ -54,7 +52,16 @@ export class ImportTransactionsComponent extends React.Component {
 
   handleSave = () => {
     const { saveTransactions, account, history } = this.props
-    saveTransactions(account, this.state.transactions)
+    const transactions = this.state.transactions
+      .filter(transaction => transaction.errors.length === 0)
+      .map(transaction => ({
+        amount: transaction.amount,
+        description: transaction.description,
+        createdAt: transaction.createdAt
+      }))
+    if (transactions.length > 0) {
+      saveTransactions(account, transactions)
+    }
     history.push(`/accounts/${account.id}/transactions`)
   }
 
@@ -62,11 +69,15 @@ export class ImportTransactionsComponent extends React.Component {
     this.props.history.push(`/accounts/${this.props.account.id}/transactions`)
   }
 
+  handleBack = () => {
+    return this.setState({ showTransactions: false })
+  }
+
 
   handleParsedData = (transactions, errors) => {
     return this.setState({
       showTransactions: true,
-      transactions,
+      transactions: transactions.map(t => Object.assign(t, { id: uuid() })),
       errors
     })
   }
@@ -82,7 +93,6 @@ export class ImportTransactionsComponent extends React.Component {
       classes,
       account
     } = this.props
-
     return (
       <Grid container direction="row" justify="center">
         <Paper className={classes.root}>
@@ -123,11 +133,12 @@ export class ImportTransactionsComponent extends React.Component {
                 />
               }
               {showTransactions &&
-                <ImportResults
+                <ImportedResults
+                  account={account}
                   transactions={transactions}
                   errors={errors}
                   onSave={this.handleSave}
-                  onCancel={this.handleCancel}
+                  onBack={this.handleBack}
                 />
               }
             </Grid>

@@ -116,7 +116,7 @@ exports[`Accounts index (Left Nav) snapshot matches snapshot with a few account 
               <p
                 className="MuiTypography-root-38 MuiTypography-body1-47 MuiTypography-colorTextSecondary-71 MuiListItemText-secondary-97 MuiListItemText-textDense-98"
               >
-                NaN
+                CA$10.00
               </p>
             </div>
             <span
@@ -202,7 +202,7 @@ exports[`Accounts index (Left Nav) snapshot matches snapshot with a few account 
               <p
                 className="MuiTypography-root-38 MuiTypography-body1-47 MuiTypography-colorTextSecondary-71 MuiListItemText-secondary-97 MuiListItemText-textDense-98"
               >
-                NaN
+                CA$10.00
               </p>
             </div>
             <span
@@ -316,7 +316,7 @@ exports[`Accounts index (Left Nav) snapshot matches snapshot with a few account 
               <p
                 className="MuiTypography-root-38 MuiTypography-body1-47 MuiTypography-colorTextSecondary-71 MuiListItemText-secondary-97 MuiListItemText-textDense-98"
               >
-                NaN
+                $10.00
               </p>
             </div>
             <span
@@ -483,7 +483,7 @@ exports[`Accounts index (Left Nav) snapshot matches snapshot with a few account 
             <p
               className="MuiTypography-root-38 MuiTypography-body1-47 MuiTypography-colorTextSecondary-71 MuiListItemText-secondary-97 MuiListItemText-textDense-98"
             >
-              NaN
+              10.00000000 undefined
             </p>
           </div>
           <span
@@ -612,7 +612,7 @@ exports[`Accounts index (Left Nav) snapshot matches with a few accounts but none
               <p
                 className="MuiTypography-root-38 MuiTypography-body1-47 MuiTypography-colorTextSecondary-71 MuiListItemText-secondary-97 MuiListItemText-textDense-98"
               >
-                NaN
+                CA$10.00
               </p>
             </div>
             <span
@@ -698,7 +698,7 @@ exports[`Accounts index (Left Nav) snapshot matches with a few accounts but none
               <p
                 className="MuiTypography-root-38 MuiTypography-body1-47 MuiTypography-colorTextSecondary-71 MuiListItemText-secondary-97 MuiListItemText-textDense-98"
               >
-                NaN
+                CA$10.00
               </p>
             </div>
             <span
@@ -812,7 +812,7 @@ exports[`Accounts index (Left Nav) snapshot matches with a few accounts but none
               <p
                 className="MuiTypography-root-38 MuiTypography-body1-47 MuiTypography-colorTextSecondary-71 MuiListItemText-secondary-97 MuiListItemText-textDense-98"
               >
-                NaN
+                $10.00
               </p>
             </div>
             <span
@@ -979,7 +979,7 @@ exports[`Accounts index (Left Nav) snapshot matches with a few accounts but none
             <p
               className="MuiTypography-root-38 MuiTypography-body1-47 MuiTypography-colorTextSecondary-71 MuiListItemText-secondary-97 MuiListItemText-textDense-98"
             >
-              NaN
+              10.00000000 undefined
             </p>
           </div>
           <span
@@ -992,7 +992,7 @@ exports[`Accounts index (Left Nav) snapshot matches with a few accounts but none
 </nav>
 `;
 
-exports[`Accounts index (Left Nav) snapshot matches with no accounts and no selected accountId 1`] = `
+exports[`Accounts index (Left Nav) snapshot matches with no accounts 1`] = `
 <nav
   className="MuiList-root-1 MuiList-dense-3 MuiList-padding-2 MuiList-subheader-4"
 >

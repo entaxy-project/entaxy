@@ -9,10 +9,33 @@ describe('CsvDropzone', () => {
     jest.clearAllMocks()
   })
 
-  it('matches snapshot', () => {
+  it('matches snapshot without a file', () => {
     const component = renderer.create((
       <CsvDropzone
         handleFileUpload={mockHandleFileUpload}
+        classes={{ }}
+      />
+    ))
+    expect(component.toJSON()).toMatchSnapshot()
+  })
+
+  it('matches snapshot with a good file', () => {
+    const component = renderer.create((
+      <CsvDropzone
+        handleFileUpload={mockHandleFileUpload}
+        file={{ }}
+        classes={{ }}
+      />
+    ))
+    expect(component.toJSON()).toMatchSnapshot()
+  })
+
+  it('matches snapshot with a bad file', () => {
+    const component = renderer.create((
+      <CsvDropzone
+        handleFileUpload={mockHandleFileUpload}
+        file={{ }}
+        error="Some error"
         classes={{ }}
       />
     ))

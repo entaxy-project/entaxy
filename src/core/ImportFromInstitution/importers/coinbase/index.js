@@ -88,7 +88,7 @@ export const normalizeTransactions = transactions => (
   })
 )
 
-const importData = async (apiKey, apiSecret) => {
+const importData = async ({ apiKey, apiSecret }) => {
   // Grab all the accounts
   // [{id: "bf999c72-b2d7-5158-a449-3aa46755f49d", name: "BCT Wallet", currency: "BCH", ...}, {...}]
   const result = await getDataFrom(apiKey, apiSecret, 'accounts')
@@ -106,8 +106,12 @@ const importData = async (apiKey, apiSecret) => {
     account.transactions = normalizeTransactions(transactions)
   }))
 
-  // Return only the accounts with transactions
-  return accounts.filter(account => account.transactions.length > 0)
+  // Return only the accounts with transactions or the user will
+  // end up with a bunch of wallets she never used
+  return {
+    accountGroup: { apiKey, apiSecret },
+    accounts: accounts.filter(account => account.transactions.length > 0)
+  }
 }
 
 export default importData
