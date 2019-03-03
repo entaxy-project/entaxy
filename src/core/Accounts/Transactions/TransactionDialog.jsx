@@ -148,7 +148,7 @@ export default compose(
       description: Yup.string()
         .max(256, 'Too Long!'),
       category: Yup.string()
-        .max(64, 'Too long!'),
+        .max(256, 'Too long!'),
       amount: Yup.number()
         .required('Please enter an amount'),
       createdAt: Yup.number()

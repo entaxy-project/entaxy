@@ -93,55 +93,59 @@ describe('TransactionsTable', () => {
       it('should sort ASC and DESC', () => {
         expect(instance.state.sortBy).toEqual('createdAt')
         expect(instance.state.sortDirection).toEqual('DESC')
-        expect(instance.state.filteredTransactions).toEqual([...transactions].reverse())
 
         instance.handleSort({ sortBy: 'createdAt', sortDirection: 'ASC' })
         expect(instance.state.sortBy).toEqual('createdAt')
         expect(instance.state.sortDirection).toEqual('ASC')
-        expect(instance.state.filteredTransactions).toEqual(transactions)
       })
     })
 
     describe('filterTransactions', () => {
       it('should do basic orderBy', () => {
-        expect(instance.filterTransactions({
+        instance.setState({
           sortBy: 'createdAt',
           sortDirection: 'ASC'
-        })).toEqual(transactions)
-        expect(instance.filterTransactions({
+        })
+        expect(instance.filterTransactions()).toEqual(transactions)
+        instance.setState({
           sortBy: 'createdAt',
           sortDirection: 'DESC'
-        })).toEqual([...transactions].reverse())
+        })
+        expect(instance.filterTransactions()).toEqual([...transactions].reverse())
       })
 
       it('should do basic filter', () => {
-        expect(instance.filterTransactions({
+        instance.setState({
           filters: {
             createdAt: transactions[0].createdAt
           }
-        })).toEqual([transactions[0]])
-        expect(instance.filterTransactions({
+        })
+        expect(instance.filterTransactions()).toEqual([transactions[0]])
+        instance.setState({
           filters: {
             createdAt: transactions[1].createdAt,
             description: 'Bogus'
           }
-        })).toEqual([])
-        expect(instance.filterTransactions({
+        })
+        expect(instance.filterTransactions()).toEqual([])
+        instance.setState({
           filters: {
             createdAt: transactions[1].createdAt,
             description: transactions[1].description
           }
-        })).toEqual([transactions[1]])
+        })
+        expect(instance.filterTransactions()).toEqual([transactions[1]])
       })
 
       it('should filter with a function', () => {
-        expect(instance.filterTransactions({
+        instance.setState({
           sortBy: 'createdAt',
           sortDirection: 'ASC',
           filters: {
             createdAt: t => t.createdAt > transactions[0].createdAt
           }
-        })).toEqual([transactions[1], transactions[2]])
+        })
+        expect(instance.filterTransactions()).toEqual([transactions[1], transactions[2]])
       })
     })
 
@@ -156,14 +160,11 @@ describe('TransactionsTable', () => {
       }
 
       it('should select row classes', () => {
-        expect(instance.state.filteredTransactions).toEqual([...transactions].reverse())
-        expect(instance.rowClassName({ index: -1 }, classes)).toEqual('headerRow oddRow')
-        expect(instance.rowClassName({ index: 0 }, classes)).toEqual('row')
-        expect(instance.rowClassName({ index: 1 }, classes)).toEqual('row oddRow')
-        transactions[0].errors = ['Some error']
-        instance.resetFilters()
-        expect(instance.state.filteredTransactions[2].errors).toEqual(['Some error'])
-        expect(instance.rowClassName({ index: 2 }, classes)).toEqual('rowWithError row')
+        expect(instance.rowClassName({ index: -1 }, transactions, classes)).toEqual('headerRow oddRow')
+        expect(instance.rowClassName({ index: 0 }, transactions, classes)).toEqual('row')
+        expect(instance.rowClassName({ index: 1 }, transactions, classes)).toEqual('row oddRow')
+        transactions[2].errors = ['Some error']
+        expect(instance.rowClassName({ index: 2 }, transactions, classes)).toEqual('rowWithError row')
       })
     })
 
@@ -204,31 +205,24 @@ describe('TransactionsTable', () => {
           selected: [],
           filters: {},
           sortBy: 'createdAt',
-          sortDirection: 'DESC',
-          filteredTransactions: [...transactions].reverse(),
-          prevPropsAccountId: account.id
+          sortDirection: 'DESC'
         })
 
         // Bogus filter
         instance.setFilter({ attr: 'filter1', value: 1 })
         expect(instance.state.filters).toEqual({ filter1: 1 })
-        expect(instance.state.filteredTransactions).toEqual([])
         // Same filter again
         instance.setFilter({ attr: 'filter1', value: 1 })
         expect(instance.state.filters).toEqual({ filter1: 1 })
-        expect(instance.state.filteredTransactions).toEqual([])
         // New filter
         instance.setFilter({ attr: 'id', value: 2 })
         expect(instance.state.filters).toEqual({ filter1: 1, id: 2 })
-        expect(instance.state.filteredTransactions).toEqual([])
         // Remove the first filter
         instance.unsetFilter({ attr: 'filter1' })
         expect(instance.state.filters).toEqual({ id: 2 })
-        expect(instance.state.filteredTransactions).toEqual([transactions[1]])
         // Reset all filter
         instance.resetFilters()
         expect(instance.state.filters).toEqual({ })
-        expect(instance.state.filteredTransactions).toEqual([...transactions].reverse())
       })
     })
 
@@ -264,8 +258,8 @@ describe('TransactionsTable', () => {
 
       it('selects all transactions', () => {
         expect(wrapper.state('selected')).toEqual([])
-        instance.handleSelectAllClick({ target: { checked: true } })
-        expect(wrapper.state('selected')).toEqual(transactions.map(n => n.id).reverse())
+        instance.handleSelectAllClick({ target: { checked: true } }, transactions)
+        expect(wrapper.state('selected')).toEqual(transactions.map(n => n.id))
       })
 
       it('check selection', () => {
@@ -280,7 +274,7 @@ describe('TransactionsTable', () => {
         instance.handleCheckboxClick(null, 1)
         instance.handleCheckboxClick(null, 2)
         expect(wrapper.state('selected')).toEqual([1, 2])
-        instance.handleSelectAllClick({ target: { checked: false } })
+        instance.handleSelectAllClick({ target: { checked: false } }, transactions)
         expect(wrapper.state('selected')).toEqual([])
       })
     })

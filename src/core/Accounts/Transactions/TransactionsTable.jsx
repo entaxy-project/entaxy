@@ -55,22 +55,7 @@ export class TransactionsTableComponent extends React.Component {
     selected: [],
     filters: {},
     sortBy: 'createdAt',
-    sortDirection: 'DESC',
-    filteredTransactions: []
-  }
-
-  static getDerivedStateFromProps(props, state) {
-    // Reset the selected transactions when choosing a different account
-    if (props.account.id !== state.prevPropsAccountId) {
-      return {
-        prevPropsAccountId: props.account.id,
-        selected: [],
-        sortBy: 'createdAt',
-        sortDirection: 'DESC',
-        filteredTransactions: orderBy(props.transactions, ['createdAt'], ['desc'])
-      }
-    }
-    return {}
+    sortDirection: 'DESC'
   }
 
   setFilter = ({ attr, value }) => {
@@ -78,41 +63,24 @@ export class TransactionsTableComponent extends React.Component {
       ...this.state.filters,
       [attr]: value
     }
-    this.setState({
-      filters,
-      filteredTransactions: this.filterTransactions({ filters })
-    })
+    this.setState({ filters })
   }
 
   unsetFilter = ({ attr }) => {
     const { [attr]: _, ...filters } = this.state.filters
-    this.setState({
-      filters,
-      filteredTransactions: this.filterTransactions({ filters })
-    })
+    this.setState({ filters })
   }
 
   resetFilters = () => {
-    const filters = {}
-    this.setState({
-      filters,
-      filteredTransactions: this.filterTransactions({ filters })
-    })
+    this.setState({ filters: {} })
   }
 
   handleSort = ({ sortBy, sortDirection }) => {
-    this.setState({
-      sortBy,
-      sortDirection,
-      filteredTransactions: this.filterTransactions({ sortBy, sortDirection })
-    })
+    this.setState({ sortBy, sortDirection })
   }
 
-  filterTransactions = ({
-    sortBy = this.state.sortBy,
-    sortDirection = this.state.sortDirection,
-    filters = this.state.filters
-  }) => {
+  filterTransactions = () => {
+    const { sortBy, sortDirection, filters } = this.state
     const filteredTransactions = this.props.transactions
       .filter(transaction => (
         Object.keys(filters).reduce((result, attr) => {
@@ -150,9 +118,9 @@ export class TransactionsTableComponent extends React.Component {
     this.setState({ selected: newSelected })
   }
 
-  handleSelectAllClick = (event) => {
+  handleSelectAllClick = (event, filteredTransactions) => {
     if (event.target.checked) {
-      this.setState({ selected: this.state.filteredTransactions.map(n => n.id) })
+      this.setState({ selected: filteredTransactions.map(n => n.id) })
       return
     }
     this.resetSelection()
@@ -161,10 +129,10 @@ export class TransactionsTableComponent extends React.Component {
   transactionHasErrors = transaction =>
     transaction.errors !== undefined && transaction.errors.length > 0
 
-  rowClassName = ({ index }, classes) => {
+  rowClassName = ({ index }, filteredTransactions, classes) => {
     return classNames({
       [classes.headerRow]: index < 0,
-      [classes.rowWithError]: (index >= 0 && this.transactionHasErrors(this.state.filteredTransactions[index])),
+      [classes.rowWithError]: (index >= 0 && this.transactionHasErrors(filteredTransactions[index])),
       [classes.row]: index >= 0,
       [classes.oddRow]: index % 2 !== 0
     })
@@ -209,9 +177,9 @@ export class TransactionsTableComponent extends React.Component {
     const {
       selected,
       sortBy,
-      sortDirection,
-      filteredTransactions
+      sortDirection
     } = this.state
+    const filteredTransactions = this.filterTransactions()
     const rowHeight = account.type === 'wallet' ? 42 : 30
 
     return (
@@ -234,7 +202,7 @@ export class TransactionsTableComponent extends React.Component {
               height={height}
               headerHeight={25}
               rowHeight={rowHeight}
-              rowClassName={index => this.rowClassName(index, classes)}
+              rowClassName={index => this.rowClassName(index, filteredTransactions, classes)}
               rowCount={filteredTransactions.length}
               rowGetter={({ index }) => filteredTransactions[index]}
               sort={this.handleSort}
@@ -254,7 +222,7 @@ export class TransactionsTableComponent extends React.Component {
                       <Checkbox
                         indeterminate={selected.length > 0 && selected.length < filteredTransactions.length}
                         checked={selected.length > 0 && selected.length === filteredTransactions.length}
-                        onChange={event => this.handleSelectAllClick(event)}
+                        onChange={event => this.handleSelectAllClick(event, filteredTransactions)}
                       />
                     </span>
                   )}
