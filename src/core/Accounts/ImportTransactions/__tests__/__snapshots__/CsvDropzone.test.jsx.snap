@@ -2,178 +2,151 @@
 
 exports[`CsvDropzone matches snapshot with a bad file 1`] = `
 <div
-  aria-disabled={false}
   className="CsvDropzone-root-1"
+  onBlur={[Function]}
   onClick={[Function]}
   onDragEnter={[Function]}
   onDragLeave={[Function]}
   onDragOver={[Function]}
   onDragStart={[Function]}
   onDrop={[Function]}
-  style={
-    Object {
-      "position": "relative",
-    }
-  }
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  tabIndex={0}
 >
-  <div>
-    <h6
-      className="MuiTypography-root-3 MuiTypography-subtitle2-22 MuiTypography-alignCenter-26"
-    >
-      <svg
-        className="CsvDropzone-menuIcon-2"
-        style={
-          Object {
-            "width": "1.5rem",
-          }
-        }
-        viewBox="0 0 24 24"
-      >
-        <path
-          d="M14,2L20,8V20C20,21.1 19.1,22 18,22H6C4.9,22 4,21.1 4,20V4C4,2.9 4.9,2 6,2H14M18,20V9H13V4H6V20H18M12,12L16,16H13.5V19H10.5V16H8L12,12Z"
-          style={
-            Object {
-              "fill": "textSecondary",
-            }
-          }
-        />
-      </svg>
-    </h6>
-    <h6
-      className="MuiTypography-root-3 MuiTypography-subtitle2-22 MuiTypography-colorError-37 MuiTypography-alignCenter-26"
-    >
-      Some error
-    </h6>
-  </div>
   <input
     autoComplete="off"
-    disabled={false}
     multiple={false}
     onChange={[Function]}
+    onClick={[Function]}
     style={
       Object {
-        "bottom": 0,
-        "left": 0,
-        "opacity": 0.00001,
-        "pointerEvents": "none",
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
+        "display": "none",
       }
     }
+    tabIndex={-1}
     type="file"
   />
+  <h6
+    className="MuiTypography-root-3 MuiTypography-subtitle2-22 MuiTypography-alignCenter-26"
+  >
+    <svg
+      className="CsvDropzone-menuIcon-2"
+      style={
+        Object {
+          "width": "1.5rem",
+        }
+      }
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M14,2L20,8V20C20,21.1 19.1,22 18,22H6C4.9,22 4,21.1 4,20V4C4,2.9 4.9,2 6,2H14M18,20V9H13V4H6V20H18M12,12L16,16H13.5V19H10.5V16H8L12,12Z"
+        style={
+          Object {
+            "fill": "textSecondary",
+          }
+        }
+      />
+    </svg>
+  </h6>
+  <h6
+    className="MuiTypography-root-3 MuiTypography-subtitle2-22 MuiTypography-colorError-37 MuiTypography-alignCenter-26"
+  >
+    Some error
+  </h6>
 </div>
 `;
 
 exports[`CsvDropzone matches snapshot with a good file 1`] = `
 <div
-  aria-disabled={false}
   className="CsvDropzone-root-1"
+  onBlur={[Function]}
   onClick={[Function]}
   onDragEnter={[Function]}
   onDragLeave={[Function]}
   onDragOver={[Function]}
   onDragStart={[Function]}
   onDrop={[Function]}
-  style={
-    Object {
-      "position": "relative",
-    }
-  }
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  tabIndex={0}
 >
-  <div>
-    <h6
-      className="MuiTypography-root-3 MuiTypography-subtitle2-22 MuiTypography-alignCenter-26"
-    >
-      <svg
-        className="CsvDropzone-menuIcon-2"
-        style={
-          Object {
-            "width": "1.5rem",
-          }
-        }
-        viewBox="0 0 24 24"
-      >
-        <path
-          d="M14,2L20,8V20C20,21.1 19.1,22 18,22H6C4.9,22 4,21.1 4,20V4C4,2.9 4.9,2 6,2H14M18,20V9H13V4H6V20H18M12,12L16,16H13.5V19H10.5V16H8L12,12Z"
-          style={
-            Object {
-              "fill": "textSecondary",
-            }
-          }
-        />
-      </svg>
-    </h6>
-  </div>
   <input
     autoComplete="off"
-    disabled={false}
     multiple={false}
     onChange={[Function]}
+    onClick={[Function]}
     style={
       Object {
-        "bottom": 0,
-        "left": 0,
-        "opacity": 0.00001,
-        "pointerEvents": "none",
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
+        "display": "none",
       }
     }
+    tabIndex={-1}
     type="file"
   />
+  <h6
+    className="MuiTypography-root-3 MuiTypography-subtitle2-22 MuiTypography-alignCenter-26"
+  >
+    <svg
+      className="CsvDropzone-menuIcon-2"
+      style={
+        Object {
+          "width": "1.5rem",
+        }
+      }
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M14,2L20,8V20C20,21.1 19.1,22 18,22H6C4.9,22 4,21.1 4,20V4C4,2.9 4.9,2 6,2H14M18,20V9H13V4H6V20H18M12,12L16,16H13.5V19H10.5V16H8L12,12Z"
+        style={
+          Object {
+            "fill": "textSecondary",
+          }
+        }
+      />
+    </svg>
+  </h6>
 </div>
 `;
 
 exports[`CsvDropzone matches snapshot without a file 1`] = `
 <div
-  aria-disabled={false}
   className="CsvDropzone-root-1"
+  onBlur={[Function]}
   onClick={[Function]}
   onDragEnter={[Function]}
   onDragLeave={[Function]}
   onDragOver={[Function]}
   onDragStart={[Function]}
   onDrop={[Function]}
-  style={
-    Object {
-      "position": "relative",
-    }
-  }
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  tabIndex={0}
 >
-  <div>
-    <div>
-      <h4
-        className="MuiTypography-root-3 MuiTypography-h4-18 MuiTypography-colorTextSecondary-36 MuiTypography-alignCenter-26"
-      >
-        Drag a CSV file here
-      </h4>
-      <h6
-        className="MuiTypography-root-3 MuiTypography-subtitle2-22 MuiTypography-colorTextSecondary-36 MuiTypography-alignCenter-26"
-      >
-        or click to select a file to upload.
-      </h6>
-    </div>
-  </div>
   <input
     autoComplete="off"
-    disabled={false}
     multiple={false}
     onChange={[Function]}
+    onClick={[Function]}
     style={
       Object {
-        "bottom": 0,
-        "left": 0,
-        "opacity": 0.00001,
-        "pointerEvents": "none",
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
+        "display": "none",
       }
     }
+    tabIndex={-1}
     type="file"
   />
+  <div>
+    <h4
+      className="MuiTypography-root-3 MuiTypography-h4-18 MuiTypography-colorTextSecondary-36 MuiTypography-alignCenter-26"
+    >
+      Drag a CSV file here
+    </h4>
+    <h6
+      className="MuiTypography-root-3 MuiTypography-subtitle2-22 MuiTypography-colorTextSecondary-36 MuiTypography-alignCenter-26"
+    >
+      or click to select a file to upload.
+    </h6>
+  </div>
 </div>
 `;

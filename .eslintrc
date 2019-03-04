@@ -12,6 +12,7 @@
         "browser": true
     },
     "rules": {
+        "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
         "react/destructuring-assignment": 0,
         "import/no-named-as-default": 0,
         "max-len": [
@@ -64,8 +65,6 @@
         "react/no-multi-comp": "warn",
         "react/no-unknown-property": "warn",
         "react/sort-comp": "warn",
-        // work around for latest jsx-a11y breaking changes
-        // should be removed in future versions when addressed upstream
         "jsx-a11y/href-no-hash": "off",
         "jsx-a11y/anchor-is-valid": [
             "warn",
