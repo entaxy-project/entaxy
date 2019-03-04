@@ -12,6 +12,7 @@
         "browser": true
     },
     "rules": {
+        "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
         "react/destructuring-assignment": 0,
         "import/no-named-as-default": 0,
         "max-len": [

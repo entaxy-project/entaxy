@@ -24,9 +24,14 @@ const styles = theme => ({
   }
 })
 
-const CsvDropzone = ({ classes, handleFileUpload, file, error}) => (
+const CsvDropzone = ({
+  classes,
+  handleFileUpload,
+  file,
+  error
+}) => (
   <Dropzone multiple={false} onDrop={handleFileUpload}>
-    {({getRootProps, getInputProps}) => (
+    {({ getRootProps, getInputProps }) => (
       <div className={classes.root} {...getRootProps()}>
         <input {...getInputProps()} />
         {file && (
