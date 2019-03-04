@@ -8,6 +8,7 @@
         "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test --coverage --watch --onlyChanged",
+        "test:ci": "react-scripts test --coverage --verbose",
         "eject": "react-scripts eject",
         "lint": "eslint src --ext '.js,.jsx' --config .eslintrc",
         "lint:fix": "npm run lint --fix",
