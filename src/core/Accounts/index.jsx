@@ -26,11 +26,22 @@ const styles = theme => ({
     margin: '0 20px 20px 25px',
     padding: theme.spacing.unit
   },
-  institutionListItem: {
+  institutionListItemRoot: {
     padding: '4px 24px'
   },
+  institutionListItem: {
+    paddingRight: 0
+  },
+  institutionListItemIcon: {
+    margin: 0
+  },
   institution: {
-    paddingLeft: 0
+    padding: 0,
+    textOverflow: 'ellipsis',
+    overflow: 'hidden',
+    whiteSpace: 'nowrap',
+    maxWidth: 100,
+    fontWeight: 500
   },
   account: {
     padding: '4px 24px 4px 40px'
@@ -104,11 +115,16 @@ export const AccountsComponent = ({
           {Object.keys(accounts.byInstitution).map(institution => (
             Object.values(accounts.byInstitution[institution].groups).map(accountGroup => (
               <div key={`${institution}-${accountGroup.id}`}>
-                <ListItem className={classes.institutionListItem}>
-                  <ListItemIcon>
+                <ListItem className={classes.institutionListItemRoot}>
+                  <ListItemIcon className={classes.institutionListItemIcon}>
                     <InstitutionIcon institution={institution} size="small" />
                   </ListItemIcon>
-                  <ListItemText primary={institution} className={classes.institution} />
+                  <ListItemText
+                    primary={institution}
+                    className={classes.institutionListItem}
+                    classes={{ primary: classes.institution }}
+                    title={institution}
+                  />
                   {accountGroup.type === 'api' && (
                     <ListItemSecondaryAction>
                       <Tooltip id="tooltip-icon" title="Edit API details">

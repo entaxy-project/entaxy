@@ -14,7 +14,6 @@ import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
 import InstitutionIcon from '../../../common/InstitutionIcon'
 import { addTransactions } from '../../../store/transactions/actions'
-import institutions from '../../../data/institutions'
 import CsvImportForm from './CsvImportForm'
 import ImportedResults from './ImportedResults'
 
@@ -109,20 +108,11 @@ export class ImportTransactionsComponent extends React.Component {
           <Grid container>
             <Grid item xs={3}>
               <List>
-                {institutions[account.institution].importTypes.map(text => (
-                  <ListItem button key={text} selected={true}>
+                {['CSV', 'Microsoft Money', 'Intuit Quicken', 'Intuit QuickBooks'].map((text, index) => (
+                  <ListItem button key={text} selected={index === 0}>
                     <ListItemText primary={text} />
                   </ListItem>
                 ))}
-                <ListItem button key="Microsoft Money" disabled={true}>
-                  <ListItemText primary="Microsoft Money" />
-                </ListItem>
-                <ListItem button key="Intuit Quicken" disabled={true}>
-                  <ListItemText primary="Intuit Quicken" />
-                </ListItem>
-                <ListItem button key="Intuit QuickBooks" disabled={true}>
-                  <ListItemText primary="Intuit QuickBooks" />
-                </ListItem>
               </List>
             </Grid>
             <Grid item xs={9}>

@@ -77,6 +77,7 @@ exports[`Accounts index (Left Nav) snapshot matches snapshot with a few account 
         </div>
         <div
           className="MuiListItemText-root-94 MuiListItemText-dense-96"
+          title="TD"
         >
           <span
             className="MuiTypography-root-38 MuiTypography-subheading-45 MuiListItemText-primary-97 MuiListItemText-textDense-99"
@@ -277,6 +278,7 @@ exports[`Accounts index (Left Nav) snapshot matches snapshot with a few account 
         </div>
         <div
           className="MuiListItemText-root-94 MuiListItemText-dense-96"
+          title="BMO"
         >
           <span
             className="MuiTypography-root-38 MuiTypography-subheading-45 MuiListItemText-primary-97 MuiListItemText-textDense-99"
@@ -394,6 +396,7 @@ exports[`Accounts index (Left Nav) snapshot matches snapshot with a few account 
           </div>
           <div
             className="MuiListItemText-root-94 MuiListItemText-dense-96"
+            title="Coinbase"
           >
             <span
               className="MuiTypography-root-38 MuiTypography-subheading-45 MuiListItemText-primary-97 MuiListItemText-textDense-99"
@@ -573,6 +576,7 @@ exports[`Accounts index (Left Nav) snapshot matches with a few accounts but none
         </div>
         <div
           className="MuiListItemText-root-94 MuiListItemText-dense-96"
+          title="TD"
         >
           <span
             className="MuiTypography-root-38 MuiTypography-subheading-45 MuiListItemText-primary-97 MuiListItemText-textDense-99"
@@ -773,6 +777,7 @@ exports[`Accounts index (Left Nav) snapshot matches with a few accounts but none
         </div>
         <div
           className="MuiListItemText-root-94 MuiListItemText-dense-96"
+          title="BMO"
         >
           <span
             className="MuiTypography-root-38 MuiTypography-subheading-45 MuiListItemText-primary-97 MuiListItemText-textDense-99"
@@ -890,6 +895,7 @@ exports[`Accounts index (Left Nav) snapshot matches with a few accounts but none
           </div>
           <div
             className="MuiListItemText-root-94 MuiListItemText-dense-96"
+            title="Coinbase"
           >
             <span
               className="MuiTypography-root-38 MuiTypography-subheading-45 MuiListItemText-primary-97 MuiListItemText-textDense-99"

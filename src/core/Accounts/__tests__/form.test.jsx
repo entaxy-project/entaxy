@@ -29,6 +29,7 @@ describe('Account form', () => {
         handleDelete={mochHandleDelete}
         handleCancel={mochHandleCancel}
         classes={{ }}
+        accountInstitutions={[]}
       />
     ))
     expect(component.toJSON()).toMatchSnapshot()
@@ -49,6 +50,7 @@ describe('Account form', () => {
         handleDelete={mochHandleDelete}
         handleCancel={mochHandleCancel}
         classes={{ }}
+        accountInstitutions={['My institution']}
       />
     ))
     expect(component.toJSON()).toMatchSnapshot()
@@ -69,6 +71,7 @@ describe('Account form', () => {
         handleDelete={mochHandleDelete}
         handleCancel={mochHandleCancel}
         classes={{ }}
+        accountInstitutions={['My institution']}
       />
     ))
     const instance = wrapper.instance()
@@ -99,8 +102,8 @@ describe('Account form', () => {
 
       expect(instance.institutionOptions()).toBeNull()
 
-      expect(institutions.BMO.importTypes).not.toContain('API')
-      expect(instance.institutionOptions({ value: 'BMO' })).toBeNull()
+      expect(institutions['Bank of Montreal'].importTypes).not.toContain('API')
+      expect(instance.institutionOptions({ value: 'Bank of Montreal' })).toBeNull()
 
       expect(institutions.Coinbase.importTypes).toContain('API')
       expect(instance.institutionOptions({ value: 'Coinbase' })).not.toBeNull()
@@ -112,8 +115,8 @@ describe('Account form', () => {
 
       expect(instance.institutionOptions()).toBeNull()
 
-      expect(institutions.BMO.importTypes).not.toContain('API')
-      expect(instance.institutionOptions({ value: 'BMO' })).toBeNull()
+      expect(institutions['Bank of Montreal'].importTypes).not.toContain('API')
+      expect(instance.institutionOptions({ value: 'Bank of Montreal' })).toBeNull()
 
       expect(institutions.Coinbase.importTypes).toContain('API')
       expect(instance.institutionOptions({ value: 'Coinbase' })).toBeNull()
