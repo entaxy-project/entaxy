@@ -6,6 +6,7 @@ exports[`CsvImportForm matches snapshot for BMO 1`] = `
 >
   <div>
     <div
+      className="CsvDropzone-root-1"
       onBlur={[Function]}
       onClick={[Function]}
       onDragEnter={[Function]}

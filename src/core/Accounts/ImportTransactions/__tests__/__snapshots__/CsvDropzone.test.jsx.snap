@@ -2,6 +2,7 @@
 
 exports[`CsvDropzone matches snapshot with a bad file 1`] = `
 <div
+  className="CsvDropzone-root-1"
   onBlur={[Function]}
   onClick={[Function]}
   onDragEnter={[Function]}
@@ -58,6 +59,7 @@ exports[`CsvDropzone matches snapshot with a bad file 1`] = `
 
 exports[`CsvDropzone matches snapshot with a good file 1`] = `
 <div
+  className="CsvDropzone-root-1"
   onBlur={[Function]}
   onClick={[Function]}
   onDragEnter={[Function]}
@@ -109,6 +111,7 @@ exports[`CsvDropzone matches snapshot with a good file 1`] = `
 
 exports[`CsvDropzone matches snapshot without a file 1`] = `
 <div
+  className="CsvDropzone-root-1"
   onBlur={[Function]}
   onClick={[Function]}
   onDragEnter={[Function]}
