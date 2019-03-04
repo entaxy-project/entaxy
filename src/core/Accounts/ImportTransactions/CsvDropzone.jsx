@@ -13,9 +13,9 @@ const styles = theme => ({
     padding: '50px',
     cursor: 'pointer',
     display: 'flex',
-    'align-items': 'center',
-    'justify-content': 'center',
-    'flex-direction': 'row'
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'column'
   },
   menuIcon: {
     marginRight: '5px',
@@ -24,39 +24,37 @@ const styles = theme => ({
   }
 })
 
-const CsvDropzone = ({
-  classes,
-  handleFileUpload,
-  file,
-  error
-}) => (
-  <Dropzone multiple={false} className={classes.root} onDrop={handleFileUpload}>
-    <div>
-      {file && (
-        <Typography variant="subtitle2" align="center">
-          <Icon
-            path={mdiFileUploadOutline}
-            size={1}
-            className={classes.menuIcon}
-            color="textSecondary"
-          />
-          {file.name}
-        </Typography>
-      )}
-      {error && (
-        <Typography variant="subtitle2" align="center" color="error">{error}</Typography>
-      )}
-      {!file && (
-        <div>
-          <Typography variant="h4" align="center" color="textSecondary">
-            Drag a CSV file here
+const CsvDropzone = ({ classes, handleFileUpload, file, error}) => (
+  <Dropzone multiple={false} onDrop={handleFileUpload}>
+    {({getRootProps, getInputProps}) => (
+      <div className={classes.root} {...getRootProps()}>
+        <input {...getInputProps()} />
+        {file && (
+          <Typography variant="subtitle2" align="center">
+            <Icon
+              path={mdiFileUploadOutline}
+              size={1}
+              className={classes.menuIcon}
+              color="textSecondary"
+            />
+            {file.name}
           </Typography>
-          <Typography variant="subtitle2" align="center" color="textSecondary">
-            or click to select a file to upload.
-          </Typography>
-        </div>
-      )}
-    </div>
+        )}
+        {error && (
+          <Typography variant="subtitle2" align="center" color="error">{error}</Typography>
+        )}
+        {!file && (
+          <div>
+            <Typography variant="h4" align="center" color="textSecondary">
+              Drag a CSV file here
+            </Typography>
+            <Typography variant="subtitle2" align="center" color="textSecondary">
+              or click to select a file to upload.
+            </Typography>
+          </div>
+        )}
+      </div>
+    )}
   </Dropzone>
 )
 

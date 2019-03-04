@@ -64,8 +64,6 @@
         "react/no-multi-comp": "warn",
         "react/no-unknown-property": "warn",
         "react/sort-comp": "warn",
-        // work around for latest jsx-a11y breaking changes
-        // should be removed in future versions when addressed upstream
         "jsx-a11y/href-no-hash": "off",
         "jsx-a11y/anchor-is-valid": [
             "warn",

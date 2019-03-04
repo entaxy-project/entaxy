@@ -5,8 +5,8 @@ cache:
   directories:
     - node_modules
 script:
-  - yarn build
-  - yarn test:coverage
+  - npm run build
+  - npm run test
   - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 before_install:
 - export TZ=America/Toronto
