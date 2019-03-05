@@ -227,7 +227,7 @@ export class AccountFormComponent extends React.Component {
             <AutoComplete
               async
               className={classes.input}
-              label="Currency"
+              label="Account Currency"
               name="currency"
               value={values.currency}
               loadOptions={filteredCurrencies}

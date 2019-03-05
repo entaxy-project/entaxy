@@ -2,9 +2,7 @@ import _ from 'lodash'
 import types from './types'
 
 export const initialState = {
-  list: [],
-  sortBy: 'createdAt',
-  sortDirection: 'DESC'
+  list: []
 }
 
 export default (state = initialState, action) => {

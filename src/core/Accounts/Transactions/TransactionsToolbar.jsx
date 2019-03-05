@@ -28,13 +28,6 @@ export class TransactionsToolbarComponent extends React.Component {
     })
   }
 
-  pageTitle = (account) => {
-    if (account) {
-      return `${account.institution} - ${account.name}`
-    }
-    return null
-  }
-
   render() {
     const {
       classes,
@@ -45,7 +38,8 @@ export class TransactionsToolbarComponent extends React.Component {
 
     return (
       <TableToolbar
-        title={this.pageTitle(account)}
+        title={`${account.institution} - ${account.name}`}
+        subTitle={account.currency}
         selectedItems={selectedTransactions}
       >
         {selectedTransactions.length > 0 ? (

@@ -32,7 +32,9 @@ exports[`Transactions matches snapshot with no transactions 1`] = `
           </h6>
           <span
             className="MuiTypography-root-18 MuiTypography-caption-28"
-          />
+          >
+            CAD
+          </span>
         </div>
       </div>
       <div
@@ -398,7 +400,9 @@ exports[`Transactions matches snapshot with one transaction in a fiat account 1`
           </h6>
           <span
             className="MuiTypography-root-18 MuiTypography-caption-28"
-          />
+          >
+            CAD
+          </span>
         </div>
       </div>
       <div

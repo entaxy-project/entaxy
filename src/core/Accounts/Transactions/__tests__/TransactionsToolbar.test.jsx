@@ -63,11 +63,6 @@ describe('TransactionsToolbar', () => {
     ))
     const instance = wrapper.instance()
 
-    it('should return the pageTitle', () => {
-      expect(instance.pageTitle(account)).toEqual(`${account.institution} - ${account.name}`)
-      expect(instance.pageTitle(null)).toBeNull()
-    })
-
     it('should delete transactions', async () => {
       confirm.mockImplementation(() => Promise.resolve())
 

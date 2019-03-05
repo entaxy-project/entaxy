@@ -266,7 +266,7 @@ exports[`Account form matches snapshot for edit account 1`] = `
         <h6
           className="MuiTypography-root-125 MuiTypography-subtitle2-144 AutoComplete-inputTitle-185"
         >
-          Currency
+          Account Currency
         </h6>
         <div
           className="css-10nd86i"
@@ -283,7 +283,7 @@ exports[`Account form matches snapshot for edit account 1`] = `
               <div
                 className="css-1492t68"
               >
-                Currency
+                Account Currency
               </div>
               <div
                 className="css-1g6gooi"
@@ -723,7 +723,7 @@ exports[`Account form matches snapshot for new account 1`] = `
         <h6
           className="MuiTypography-root-125 MuiTypography-subtitle2-144 AutoComplete-inputTitle-185"
         >
-          Currency
+          Account Currency
         </h6>
         <div
           className="css-10nd86i"
@@ -740,7 +740,7 @@ exports[`Account form matches snapshot for new account 1`] = `
               <div
                 className="css-1492t68"
               >
-                Currency
+                Account Currency
               </div>
               <div
                 className="css-1g6gooi"
