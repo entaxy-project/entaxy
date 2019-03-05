@@ -58,6 +58,20 @@ export class TransactionsTableComponent extends React.Component {
     sortDirection: 'DESC'
   }
 
+  static getDerivedStateFromProps(props, state) {
+    // Reset the selected transactions when choosing a different account
+    if (props.account.id !== state.prevPropsAccountId) {
+      return {
+        prevPropsAccountId: props.account.id,
+        selected: [],
+        filters: {},
+        sortBy: 'createdAt',
+        sortDirection: 'DESC'
+      }
+    }
+    return null
+  }
+
   setFilter = ({ attr, value }) => {
     this.setState(prevState => ({
       filters: {
@@ -80,11 +94,17 @@ export class TransactionsTableComponent extends React.Component {
     this.setState({ sortBy, sortDirection })
   }
 
-  filterTransactions = () => {
+  filterAndSortTransactions = () => {
     const { sortBy, sortDirection, filters } = this.state
     const filteredTransactions = this.props.transactions
       .filter(transaction => (
         Object.keys(filters).reduce((result, attr) => {
+          if (attr === 'description') {
+            return result && this.filterByDescription(transaction)
+          }
+          if (attr === 'errors') {
+            return result && this.filterByErrors(transaction)
+          }
           if (typeof filters[attr] === 'function') {
             return result && filters[attr](transaction)
           }
@@ -93,6 +113,14 @@ export class TransactionsTableComponent extends React.Component {
       ))
     return orderBy(filteredTransactions, [sortBy], [sortDirection.toLowerCase()])
   }
+
+  filterByDescription = transaction => (
+    transaction.description.toLowerCase().includes(this.state.filters.description)
+  )
+
+  filterByErrors = transaction => (
+    Object.keys(transaction).includes('errors') && transaction.errors.length > 0
+  )
 
   resetSelection = () => this.setState({ selected: [] })
 
@@ -182,7 +210,7 @@ export class TransactionsTableComponent extends React.Component {
       sortBy,
       sortDirection
     } = this.state
-    const filteredTransactions = this.filterTransactions()
+    const filteredTransactions = this.filterAndSortTransactions()
     const rowHeight = account.type === 'wallet' ? 42 : 30
 
     return (

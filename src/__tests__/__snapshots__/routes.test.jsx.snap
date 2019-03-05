@@ -1,0 +1,172 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Routes snapshot matches with no accounts 1`] = `
+<div>
+  <div
+    className="MuiGrid-container-8 LandingComponent-root-1"
+  >
+    <div
+      className="MuiGrid-item-9 MuiGrid-grid-xs-6-42 LandingComponent-left-2"
+    >
+      <div
+        className="LandingComponent-logo-3"
+      >
+        Entaxy
+        <div
+          className="LandingComponent-tagline-4"
+        >
+          Order from chaos
+        </div>
+      </div>
+      <div
+        className="LandingComponent-title-5"
+      >
+        Your Personal Finance Simple & Private
+        <div
+          className="LandingComponent-description-6"
+        >
+          Insights into your finances, without sacrificing your data
+        </div>
+      </div>
+      <div
+        className="MuiGrid-container-8"
+      >
+        <h5
+          className="MuiTypography-root-111 MuiTypography-h5-127 MuiTypography-colorSecondary-142"
+        >
+          Where do you want to store your data?
+        </h5>
+        <div
+          className="MuiGrid-item-9 MuiGrid-grid-xs-6-42"
+        >
+          <div
+            className="MuiPaper-root-147 MuiPaper-elevation1-150 MuiPaper-rounded-148 LandingCardComponent-loggedInContainer-106"
+          >
+            <h6
+              className="MuiTypography-root-111 MuiTypography-subtitle2-130 LandingCardComponent-blockstackTitle-109"
+            >
+              Anywhere with blockstack
+            </h6>
+            <span
+              className="MuiTypography-root-111 MuiTypography-caption-121 LandingCardComponent-signingDescription-107"
+            >
+              Keep your data encrypted and decentralized. Learn more about  
+              <a
+                href="https://blockstack.org/what-is-blockstack"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Blockstack
+              </a>
+            </span>
+            <button
+              className="MuiButtonBase-root-200 MuiButton-root-174 MuiButton-contained-185 MuiButton-containedSecondary-187 MuiButton-raised-188 MuiButton-raisedSecondary-190 LandingCardComponent-signinButton-108"
+              disabled={false}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onContextMenu={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              tabIndex="0"
+              type="button"
+            >
+              <span
+                className="MuiButton-label-175"
+              >
+                Sign in with Blockstack
+              </span>
+              <span
+                className="MuiTouchRipple-root-214"
+              />
+            </button>
+          </div>
+        </div>
+        <div
+          className="MuiGrid-item-9 MuiGrid-grid-xs-6-42"
+        >
+          <div
+            className="MuiPaper-root-147 MuiPaper-elevation1-150 MuiPaper-rounded-148 LandingCardComponent-loggedInContainer-106"
+          >
+            <h6
+              className="MuiTypography-root-111 MuiTypography-subtitle2-130"
+            >
+              <svg
+                aria-hidden="true"
+                className="MuiSvgIcon-root-203 LandingCardComponent-browserIcon-110"
+                focusable="false"
+                role="presentation"
+                viewBox="0 0 24 24"
+              >
+                <defs>
+                  <path
+                    d="M0 0h24v24H0V0z"
+                    id="a"
+                  />
+                </defs>
+                <path
+                  d="M20 18c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"
+                />
+              </svg>
+              Locally in your browser
+            </h6>
+            <span
+              className="MuiTypography-root-111 MuiTypography-caption-121 LandingCardComponent-signingDescription-107"
+            >
+              Your data will be stored temporarily and it be removed once you close your browser
+            </span>
+            <button
+              className="MuiButtonBase-root-200 MuiButton-root-174 MuiButton-contained-185 MuiButton-containedSecondary-187 MuiButton-raised-188 MuiButton-raisedSecondary-190 LandingCardComponent-signinButton-108"
+              disabled={false}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onContextMenu={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              tabIndex="0"
+              type="button"
+            >
+              <span
+                className="MuiButton-label-175"
+              >
+                Take it for a test drive
+              </span>
+              <span
+                className="MuiTouchRipple-root-214"
+              />
+            </button>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p
+          className="MuiTypography-root-111 MuiTypography-body2-119"
+        >
+          Entaxy is free and you get to keep your data.
+        </p>
+        <p
+          className="MuiTypography-root-111 MuiTypography-body2-119"
+        >
+          That's right, we don't store your data in a big database so we don't need to convince you to trust us.
+        </p>
+      </div>
+    </div>
+    <div
+      className="MuiGrid-item-9 MuiGrid-grid-xs-6-42 LandingComponent-right-7"
+    />
+  </div>
+</div>
+`;

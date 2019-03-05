@@ -28,6 +28,9 @@ describe('TransactionsToolbar', () => {
           handleDelete={mochHandleDelete}
           selectedTransactions={[]}
           resetSelection={mochaResetSelection}
+          filterProps={{
+            filters: {}
+          }}
         />
       </BrowserRouter>
     ))
@@ -44,6 +47,9 @@ describe('TransactionsToolbar', () => {
           handleDelete={mochHandleDelete}
           selectedTransactions={[1, 2]}
           resetSelection={mochaResetSelection}
+          filterProps={{
+            filters: {}
+          }}
         />
       </BrowserRouter>
     ))
@@ -59,6 +65,9 @@ describe('TransactionsToolbar', () => {
         handleDelete={mochHandleDelete}
         selectedTransactions={[1, 2, 3, 4]}
         resetSelection={mochaResetSelection}
+        filterProps={{
+          filters: {}
+        }}
       />
     ))
     const instance = wrapper.instance()

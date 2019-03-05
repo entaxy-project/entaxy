@@ -76,16 +76,17 @@ describe('ResultsToolbar', () => {
 
     it('should set the value of showOnlyErrors', () => {
       instance.onChange({ target: { checked: true } })
-      expect(mochaSetFilter).toHaveBeenCalled()
+      expect(mochaSetFilter).toHaveBeenCalledWith({
+        attr: 'errors',
+        value: true
+      })
       expect(mochaUnsetFilter).not.toHaveBeenCalled()
-      expect(instance.state.showOnlyErrors).toEqual(true)
     })
 
     it('should unset the value of showOnlyErrors', () => {
       instance.onChange({ target: { checked: false } })
       expect(mochaSetFilter).not.toHaveBeenCalled()
-      expect(mochaUnsetFilter).toHaveBeenCalled()
-      expect(instance.state.showOnlyErrors).toEqual(false)
+      expect(mochaUnsetFilter).toHaveBeenCalledWith({ attr: 'errors' })
     })
   })
 })

@@ -100,18 +100,18 @@ describe('TransactionsTable', () => {
       })
     })
 
-    describe('filterTransactions', () => {
+    describe('filterAndSortTransactions', () => {
       it('should do basic orderBy', () => {
         instance.setState({
           sortBy: 'createdAt',
           sortDirection: 'ASC'
         })
-        expect(instance.filterTransactions()).toEqual(transactions)
+        expect(instance.filterAndSortTransactions()).toEqual(transactions)
         instance.setState({
           sortBy: 'createdAt',
           sortDirection: 'DESC'
         })
-        expect(instance.filterTransactions()).toEqual([...transactions].reverse())
+        expect(instance.filterAndSortTransactions()).toEqual([...transactions].reverse())
       })
 
       it('should do basic filter', () => {
@@ -120,21 +120,21 @@ describe('TransactionsTable', () => {
             createdAt: transactions[0].createdAt
           }
         })
-        expect(instance.filterTransactions()).toEqual([transactions[0]])
+        expect(instance.filterAndSortTransactions()).toEqual([transactions[0]])
         instance.setState({
           filters: {
             createdAt: transactions[1].createdAt,
             description: 'Bogus'
           }
         })
-        expect(instance.filterTransactions()).toEqual([])
+        expect(instance.filterAndSortTransactions()).toEqual([])
         instance.setState({
           filters: {
             createdAt: transactions[1].createdAt,
-            description: transactions[1].description
+            description: transactions[1].description.toLowerCase()
           }
         })
-        expect(instance.filterTransactions()).toEqual([transactions[1]])
+        expect(instance.filterAndSortTransactions()).toEqual([transactions[1]])
       })
 
       it('should filter with a function', () => {
@@ -145,7 +145,7 @@ describe('TransactionsTable', () => {
             createdAt: t => t.createdAt > transactions[0].createdAt
           }
         })
-        expect(instance.filterTransactions()).toEqual([transactions[1], transactions[2]])
+        expect(instance.filterAndSortTransactions()).toEqual([transactions[1], transactions[2]])
       })
     })
 
@@ -205,7 +205,8 @@ describe('TransactionsTable', () => {
           selected: [],
           filters: {},
           sortBy: 'createdAt',
-          sortDirection: 'DESC'
+          sortDirection: 'DESC',
+          prevPropsAccountId: account.id
         })
 
         // Bogus filter

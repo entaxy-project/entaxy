@@ -37,13 +37,13 @@ const styles = {
 }
 
 export class ImportedResultsComponent extends React.Component {
-  filterTransactionsWithErrors = transaction => (
+  filterByErrors = transaction => (
     Object.keys(transaction).includes('errors') && transaction.errors.length > 0
   )
 
   toolbarProps = () => {
     const { transactions, classes } = this.props
-    const transactionsWithErrors = transactions.filter(this.filterTransactionsWithErrors)
+    const transactionsWithErrors = transactions.filter(this.filterByErrors)
     let subTitle = 'No errors'
 
     if (transactionsWithErrors.length > 0) {
@@ -58,8 +58,7 @@ export class ImportedResultsComponent extends React.Component {
 
     return {
       title: `Found ${transactions.length} transactions`,
-      subTitle,
-      filterTransactionsWithErrors: this.filterTransactionsWithErrors
+      subTitle
     }
   }
 

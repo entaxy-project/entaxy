@@ -12,22 +12,15 @@ const styles = {
 }
 
 export class ResultsToolbarComponent extends React.Component {
-  state = {
-    showOnlyErrors: false
-  }
-
   onChange = ({ target }) => {
     if (target.checked) {
       this.props.filterProps.setFilter({
         attr: 'errors',
-        value: this.props.filterTransactionsWithErrors
+        value: true
       })
     } else {
       this.props.filterProps.unsetFilter({ attr: 'errors' })
     }
-    this.setState({
-      showOnlyErrors: target.checked
-    })
   }
 
   render() {
@@ -48,7 +41,7 @@ export class ResultsToolbarComponent extends React.Component {
           className={classes.chekbox}
           control={(
             <Switch
-              checked={this.state.showOnlyErrors}
+              checked={Object.keys(this.props.filterProps.filters).includes('errors')}
               onChange={this.onChange}
               value="showOnlyErrors"
             />
@@ -64,8 +57,7 @@ ResultsToolbarComponent.propTypes = {
   title: PropTypes.string.isRequired,
   subTitle: PropTypes.node.isRequired,
   selectedTransactions: PropTypes.array.isRequired,
-  filterProps: PropTypes.object.isRequired,
-  filterTransactionsWithErrors: PropTypes.func.isRequired
+  filterProps: PropTypes.object.isRequired
 }
 
 export default withStyles(styles)(ResultsToolbarComponent)
