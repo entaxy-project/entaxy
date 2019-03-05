@@ -3,6 +3,7 @@ import { withStyles } from '@material-ui/core/styles'
 import PropTypes from 'prop-types'
 import Select from 'react-select'
 import AsyncSelect from 'react-select/lib/Async'
+import CreatableSelect from 'react-select/lib/Creatable'
 import Typography from '@material-ui/core/Typography'
 import FormHelperText from '@material-ui/core/FormHelperText'
 
@@ -25,6 +26,7 @@ const styles = theme => ({
 
 const AutoComplete = ({
   async,
+  creatable,
   label,
   name,
   value,
@@ -44,7 +46,7 @@ const AutoComplete = ({
     >
       {label}
     </Typography>
-    { !async && (
+    { !async && !creatable && (
       <Select
         placeholder={label}
         name={name}
@@ -53,7 +55,20 @@ const AutoComplete = ({
         options={options}
         inputProps={{ 'aria-label': label, required: true }}
         onChange={selection => onChange(name, selection)}
-        isClearable={true}
+        isClearable
+        className={className}
+      />
+    )}
+    { !async && creatable && (
+      <CreatableSelect
+        placeholder={label}
+        name={name}
+        value={value}
+        defaultValue={value}
+        options={options}
+        inputProps={{ 'aria-label': label, required: true }}
+        onChange={selection => onChange(name, selection)}
+        isClearable
         className={className}
       />
     )}
@@ -67,7 +82,7 @@ const AutoComplete = ({
         loadOptions={loadOptions}
         inputProps={{ 'aria-label': label }}
         onChange={selection => onChange(name, selection)}
-        isClearable={true}
+        isClearable
         className={className}
       />
     )}
@@ -81,6 +96,7 @@ const AutoComplete = ({
 
 AutoComplete.propTypes = {
   async: PropTypes.bool,
+  creatable: PropTypes.bool,
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   value: PropTypes.object,
@@ -95,6 +111,7 @@ AutoComplete.propTypes = {
 
 AutoComplete.defaultProps = {
   async: false,
+  creatable: false,
   value: null,
   options: undefined,
   loadOptions: undefined,

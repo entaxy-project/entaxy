@@ -19,7 +19,7 @@ import format from 'date-fns/format'
 import parse from 'date-fns/parse'
 import currencies, { filteredCurrencies } from '../../data/currencies'
 import AutoComplete from '../../common/AutoComplete'
-import institutions, { formatedInstitutions } from '../../data/institutions'
+import institutions from '../../data/institutions'
 import SubmitButtonWithProgress from '../../common/SubmitButtonWithProgress'
 import DescriptionCard from '../../common/DescriptionCard'
 
@@ -67,6 +67,7 @@ const styles = theme => ({
 
 const mapStateToProps = (state, ownProps) => ({
   settings: state.settings,
+  accountInstitutions: Object.keys(state.accounts.byInstitution),
   account: state.accounts.byId[ownProps.accountId]
 })
 
@@ -80,7 +81,7 @@ export class AccountFormComponent extends React.Component {
     const { hideInstitutionOptions } = this.state
     const { value } = (institution || {})
 
-    if (value === undefined || hideInstitutionOptions) return null
+    if (!Object.keys(institutions).includes(value) || hideInstitutionOptions) return null
 
     if (institutions[value].importTypes.includes('API')) {
       return (
@@ -132,6 +133,12 @@ export class AccountFormComponent extends React.Component {
     this.setState({ hideInstitutionOptions: true })
   }
 
+
+  formatedInstitutions = () => {
+    const allInstitutions = new Set(this.props.accountInstitutions.concat(Object.keys(institutions)))
+    return Array.from(allInstitutions).sort().map(key => ({ value: key, label: key }))
+  }
+
   render() {
     const {
       classes,
@@ -161,11 +168,12 @@ export class AccountFormComponent extends React.Component {
           <Divider />
           <form onSubmit={handleSubmit} className={classes.form}>
             <AutoComplete
+              creatable
               className={classes.input}
               label="Institution"
               name="institution"
               value={values.institution}
-              options={formatedInstitutions}
+              options={this.formatedInstitutions()}
               onChange={this.handleInstitutionChange}
               error={errors.institution && touched.institution}
               helperText={errors.institution}
@@ -259,6 +267,7 @@ AccountFormComponent.propTypes = {
   setFieldValue: PropTypes.func.isRequired,
   handleDelete: PropTypes.func,
   handleCancel: PropTypes.func.isRequired,
+  accountInstitutions: PropTypes.array.isRequired,
   account: PropTypes.object
 }
 
