@@ -8,6 +8,9 @@ import AddIcon from '@material-ui/icons/Add'
 import Icon from '@mdi/react'
 import DeleteIcon from '@material-ui/icons/Delete'
 import { mdiImport } from '@mdi/js'
+import InputBase from '@material-ui/core/InputBase'
+import SearchIcon from '@material-ui/icons/Search'
+import { fade } from '@material-ui/core/styles/colorManipulator'
 import confirm from '../../../util/confirm'
 import TableToolbar from '../../../common/TableToolbar'
 
@@ -17,6 +20,41 @@ const styles = theme => ({
   },
   buttons: {
     display: 'flex'
+  },
+  search: {
+    position: 'relative',
+    borderRadius: theme.shape.borderRadius,
+    backgroundColor: fade(theme.palette.grey[400], 0.15),
+    '&:hover': {
+      backgroundColor: fade(theme.palette.grey[400], 0.25)
+    },
+    marginRight: theme.spacing.unit * 2,
+    marginLeft: 0,
+    width: '100%'
+  },
+  searchIcon: {
+    width: theme.spacing.unit * 9,
+    height: '100%',
+    position: 'absolute',
+    pointerEvents: 'none',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  inputRoot: {
+    color: 'inherit',
+    width: '100%'
+  },
+  inputInput: {
+    paddingTop: theme.spacing.unit * 1.8,
+    paddingRight: theme.spacing.unit,
+    paddingBottom: theme.spacing.unit,
+    paddingLeft: theme.spacing.unit * 8,
+    transition: theme.transitions.create('width'),
+    width: '100%',
+    [theme.breakpoints.up('md')]: {
+      width: 200
+    }
   }
 })
 
@@ -28,12 +66,25 @@ export class TransactionsToolbarComponent extends React.Component {
     })
   }
 
+  onChangeSearch = ({ target: { value } }) => {
+    const { filterProps } = this.props
+    if (value !== '') {
+      filterProps.setFilter({
+        attr: 'description',
+        value: value.toLowerCase()
+      })
+    } else {
+      filterProps.unsetFilter({ attr: 'description' })
+    }
+  }
+
   render() {
     const {
       classes,
       account,
       handleNew,
-      selectedTransactions
+      selectedTransactions,
+      filterProps
     } = this.props
 
     return (
@@ -50,6 +101,20 @@ export class TransactionsToolbarComponent extends React.Component {
           </Tooltip>
         ) : (
           <div className={classes.buttons}>
+            <div className={classes.search}>
+              <div className={classes.searchIcon}>
+                <SearchIcon />
+              </div>
+              <InputBase
+                placeholder="Search…"
+                onChange={this.onChangeSearch}
+                value={filterProps.filters.description || ''}
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput
+                }}
+              />
+            </div>
             <Tooltip title="Import transaction">
               <IconButton
                 aria-label="Import transaction"
@@ -81,7 +146,8 @@ TransactionsToolbarComponent.propTypes = {
   handleNew: PropTypes.func.isRequired,
   handleDelete: PropTypes.func.isRequired,
   selectedTransactions: PropTypes.array.isRequired,
-  resetSelection: PropTypes.func.isRequired
+  resetSelection: PropTypes.func.isRequired,
+  filterProps: PropTypes.object.isRequired
 }
 
 export default withStyles(styles)(withRouter(TransactionsToolbarComponent))

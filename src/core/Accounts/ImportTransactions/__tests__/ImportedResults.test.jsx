@@ -76,7 +76,7 @@ describe('ImportedResults', () => {
   })
 
   describe('Component methods', () => {
-    describe('filterTransactionsWithErrors', () => {
+    describe('filterByErrors', () => {
       const wrapper = shallow((
         <ImportedResultsComponent
           classes={{ }}
@@ -90,9 +90,9 @@ describe('ImportedResults', () => {
       const instance = wrapper.instance()
 
       it('should filter transactions with errors', () => {
-        expect(instance.filterTransactionsWithErrors({})).toBeFalsy()
-        expect(instance.filterTransactionsWithErrors({ errors: [] })).toBeFalsy()
-        expect(instance.filterTransactionsWithErrors({ errors: ['some error'] })).toBeTruthy()
+        expect(instance.filterByErrors({})).toBeFalsy()
+        expect(instance.filterByErrors({ errors: [] })).toBeFalsy()
+        expect(instance.filterByErrors({ errors: ['some error'] })).toBeTruthy()
       })
     })
 
@@ -119,8 +119,7 @@ describe('ImportedResults', () => {
 
         expect(instance.toolbarProps({})).toEqual({
           title: `Found ${transactions.length} transactions`,
-          subTitle: 'No errors',
-          filterTransactionsWithErrors: instance.filterTransactionsWithErrors
+          subTitle: 'No errors'
         })
       })
 
@@ -151,10 +150,9 @@ describe('ImportedResults', () => {
         const instance = wrapper.instance()
 
         const props = instance.toolbarProps({})
-        expect(Object.keys(props)).toEqual(['title', 'subTitle', 'filterTransactionsWithErrors'])
+        expect(Object.keys(props)).toEqual(['title', 'subTitle'])
         expect(props.title).toEqual(`Found ${transactions.length} transactions`)
         expect(props.subTitle).not.toEqual('No errors')
-        expect(props.filterTransactionsWithErrors).toEqual(instance.filterTransactionsWithErrors)
       })
     })
 
