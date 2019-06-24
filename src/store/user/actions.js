@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import * as blockstack from 'blockstack'
 import types from './types'
 import store from '../index'
@@ -8,8 +9,8 @@ import { loadAccounts } from '../accounts/actions'
 import { initialState as accountsInitialState } from '../accounts/reducer'
 import { loadTransactions } from '../transactions/actions'
 import { initialState as transactionsInitialState } from '../transactions/reducer'
-import { loadMarketValues } from '../marketValues/actions'
-import { initialState as marketValuesInitialState } from '../marketValues/reducer'
+import { loadExchangeRates } from '../exchangeRates/actions'
+import { initialState as exchangeRatesInitialState } from '../exchangeRates/reducer'
 
 export const saveLoginData = loginData => ({
   type: types.SAVE_LOGIN_DATA,
@@ -35,7 +36,7 @@ export const loadUserData = () => {
         dispatch(loadSettings((state || {}).settings))
         dispatch(loadAccounts((state || {}).accounts))
         dispatch(loadTransactions((state || {}).transactions))
-        dispatch(loadMarketValues((state || {}).marketValues))
+        dispatch(loadExchangeRates((state || {}).exchangeRates))
         dispatch(hideOverlay())
       }).catch((error) => {
         throw error
@@ -80,7 +81,7 @@ export const resetState = (dispatch) => {
   dispatch(loadSettings(settingsInitialState))
   dispatch(loadAccounts(accountsInitialState))
   dispatch(loadTransactions(transactionsInitialState))
-  dispatch(loadMarketValues(marketValuesInitialState))
+  dispatch(loadExchangeRates(exchangeRatesInitialState))
 }
 
 export const userLogout = () => {

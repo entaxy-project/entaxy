@@ -139,15 +139,14 @@ export default compose(
         .required('Please select a currency')
         .nullable()
     }),
-    handleSubmit: (values, { props, setSubmitting }) => {
+    handleSubmit: async (values, { props, setSubmitting }) => {
       setSubmitting(true)
-      props.handleSave({
+      await props.handleSave({
         ...values,
         locale: values.locale.value,
         currency: values.currency.value
-      }).then(() => {
-        setSubmitting(false)
       })
+      setSubmitting(false)
     }
   })
 )(SettingsFormComponent)

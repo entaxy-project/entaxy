@@ -64,6 +64,7 @@ const styles = theme => ({
 const mapStateToProps = state => ({
   settings: state.settings,
   accounts: state.accounts,
+  exchangeRates: state.exchangeRates,
   formatCurrency: currencyFormatter(state.settings.locale, state.settings.currency),
   formatDate: dateFormatter(state.settings.locale),
   totalBalance: Object.values(state.accounts.byInstitution).reduce(
@@ -72,98 +73,113 @@ const mapStateToProps = state => ({
   )
 })
 
-export const DashboardComponent = ({
-  classes,
-  settings,
-  accounts,
-  formatCurrency,
-  formatDate,
-  totalBalance
-}) => {
-  const userHasAccounts = Object.keys(accounts.byInstitution).length > 0
+export class DashboardComponent extends React.Component {
+  accountBalance = (account) => {
+    const { formatCurrency, settings, exchangeRates } = this.props
+    if (account.currency === settings.currency) {
+      return formatCurrency(account.currentBalance)
+    }
+    if (exchangeRates[account.currency] !== undefined) {
+      return formatCurrency(account.currency * exchangeRates[account.currency].exchangeRate)
+    }
+    return 0
+  }
 
-  return (
-    <Grid container>
-      <Grid container justify="flex-end" className={classes.root}>
-        <Paper className={classes.balancePaper}>
-          <Typography
-            variant="body1"
-            color="textSecondary"
-            align="right"
-          >
-            Balance
-          </Typography>
-          <Typography
-            variant="h5"
-            align="right"
-            className={classes.balanceAmount}
-          >
-            {formatCurrency(totalBalance)}
-          </Typography>
-          <Paper className={classes.balancePaperIcon}>
-            <DashboardIcon className={classes.balanceIcon} />
-          </Paper>
-        </Paper>
-      </Grid>
+  render() {
+    const {
+      classes,
+      settings,
+      accounts,
+      formatCurrency,
+      formatDate,
+      totalBalance
+    } = this.props
+    const userHasAccounts = Object.keys(accounts.byInstitution).length > 0
+
+    return (
       <Grid container>
-        <Paper className={classes.summaryPaper}>
-          {!userHasAccounts && (
-            <Typography variant="caption" className={classes.noAccounts}>
-              You don&apos;t have any accounts yet
+        <Grid container justify="flex-end" className={classes.root}>
+          <Paper className={classes.balancePaper}>
+            <Typography
+              variant="body1"
+              color="textSecondary"
+              align="right"
+            >
+              Balance
             </Typography>
-          )}
-          {userHasAccounts && (
-            <Table className={classes.table}>
-              <TableHead>
-                <TableRow>
-                  <TableCell />
-                  <TableCell align="right">Last updated</TableCell>
-                  <TableCell align="right">{settings.currency}</TableCell>
-                </TableRow>
-              </TableHead>
-              {Object.keys(accounts.byInstitution).map(institution => (
-                Object.values(accounts.byInstitution[institution].groups).map(accountGroup => (
-                  <TableBody key={accountGroup.id}>
-                    <TableRow>
-                      <TableCell>
-                        <span className={classes.institutionWrapper}>
-                          <InstitutionIcon institution={institution} size="small" className={classes.institutionIcon} />
-                          <Typography variant="subtitle2">{institution}</Typography>
-                        </span>
-                      </TableCell>
-                      <TableCell />
-                      <TableCell align="right">
-                        <Typography variant="subtitle2">
-                          {formatCurrency(accountGroup.balance)}
-                        </Typography>
-                      </TableCell>
-                    </TableRow>
-                    {accountGroup.accountIds.map((id) => {
-                      const account = accounts.byId[id]
-                      return (
-                        <TableRow key={id}>
-                          <TableCell>
-                            <Typography className={classes.accountName}>{account.name}</Typography>
-                          </TableCell>
-                          <TableCell align="right">{formatDate(new Date('01/01/2018'))}</TableCell>
-                          <TableCell align="right">{formatCurrency(account.currentBalance)}</TableCell>
-                        </TableRow>
-                      )
-                    })}
-                  </TableBody>
-                ))
-              ))}
-            </Table>
-          )}
-        </Paper>
+            <Typography
+              variant="h5"
+              align="right"
+              className={classes.balanceAmount}
+            >
+              {formatCurrency(totalBalance)}
+            </Typography>
+            <Paper className={classes.balancePaperIcon}>
+              <DashboardIcon className={classes.balanceIcon} />
+            </Paper>
+          </Paper>
+        </Grid>
+        <Grid container>
+          <Paper className={classes.summaryPaper}>
+            {!userHasAccounts && (
+              <Typography variant="caption" className={classes.noAccounts}>
+                You don&apos;t have any accounts yet
+              </Typography>
+            )}
+            {userHasAccounts && (
+              <Table className={classes.table}>
+                <TableHead>
+                  <TableRow>
+                    <TableCell />
+                    <TableCell align="right">Last updated</TableCell>
+                    <TableCell align="right">{settings.currency}</TableCell>
+                  </TableRow>
+                </TableHead>
+                {Object.keys(accounts.byInstitution).map(institution => (
+                  Object.values(accounts.byInstitution[institution].groups).map(accountGroup => (
+                    <TableBody key={accountGroup.id}>
+                      <TableRow>
+                        <TableCell>
+                          <span className={classes.institutionWrapper}>
+                            <InstitutionIcon institution={institution} size="small" className={classes.institutionIcon} />
+                            <Typography variant="subtitle2">{institution}</Typography>
+                          </span>
+                        </TableCell>
+                        <TableCell />
+                        <TableCell align="right">
+                          <Typography variant="subtitle2">
+                            {formatCurrency(accountGroup.balance)}
+                          </Typography>
+                        </TableCell>
+                      </TableRow>
+                      {accountGroup.accountIds.map((id) => {
+                        const account = accounts.byId[id]
+                        return (
+                          <TableRow key={id}>
+                            <TableCell>
+                              <Typography className={classes.accountName}>{account.name}</Typography>
+                            </TableCell>
+                            <TableCell align="right">{formatDate(new Date('01/01/2018'))}</TableCell>
+                            <TableCell align="right">{this.accountBalance(account)}</TableCell>
+                          </TableRow>
+                        )
+                      })}
+                    </TableBody>
+                  ))
+                ))}
+              </Table>
+            )}
+          </Paper>
+        </Grid>
       </Grid>
-    </Grid>
-  )
+    )
+  }
 }
 
 DashboardComponent.propTypes = {
   classes: PropTypes.object.isRequired,
   settings: PropTypes.object.isRequired,
+  exchangeRates: PropTypes.object.isRequired,
   accounts: PropTypes.object.isRequired,
   formatCurrency: PropTypes.func.isRequired,
   formatDate: PropTypes.func.isRequired,

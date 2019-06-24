@@ -1,12 +1,11 @@
+/* eslint-disable import/no-cycle */
 import uuid from 'uuid/v4'
 import types from './types'
 import { saveState } from '../user/actions'
-import { updateAccountBalance } from '../accounts/actions'
-// import { updateMarketValues } from '../marketValues/actions'
+import { updateAccount } from '../accounts/actions'
 
 export const afterTransactionsChanged = account => (dispatch) => {
-  // await dispatch(updateMarketValues())
-  dispatch(updateAccountBalance(account))
+  dispatch(updateAccount(account, { forceUpdateBalance: true }))
   saveState()
 }
 
@@ -54,6 +53,6 @@ export const updateSortBy = (sortBy, sortDirection) => {
   return { type: types.UPDATE_SORT_BY, payload: { sortBy, sortDirection } }
 }
 
-export const getAccountTransactions = (accountId, transactions) => {
-  return transactions.filter(transaction => transaction.accountId === accountId)
+export const getAccountTransactions = ({ transactions }, accountId) => {
+  return transactions.list.filter(transaction => transaction.accountId === accountId)
 }

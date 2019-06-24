@@ -9,6 +9,20 @@ import { initialState as accountsInitialState } from '../../../store/accounts/re
 import { initialState as settingsInitialState } from '../../../store/settings/reducer'
 
 jest.mock('../../../common/InstitutionIcon/importLogos', () => [])
+// Mock call to alphavantage in fetchExchangeRates
+window.fetch = jest.fn().mockImplementation(() => (
+  Promise.resolve(new window.Response(
+    JSON.stringify({
+      'Realtime Currency Exchange Rate': {
+        '6. Last Refreshed': '2018-01-01',
+        '5. Exchange Rate': 1
+      }
+    }), {
+      status: 200,
+      headers: { 'Content-type': 'application/json' }
+    }
+  ))
+))
 
 const accounts = [{
   description: 'Checking',

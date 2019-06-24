@@ -6,7 +6,7 @@ import { initialState } from '../reducer'
 import { initialState as settingsInitialState } from '../../settings/reducer'
 import { initialState as accountsInitialState } from '../../accounts/reducer'
 import { initialState as transactionsInitialState } from '../../transactions/reducer'
-import { initialState as marketValuesInitialState } from '../../marketValues/reducer'
+import { initialState as exchangeRatesInitialState } from '../../exchangeRates/reducer'
 import * as actions from '../actions'
 import types from '../types'
 
@@ -110,8 +110,8 @@ describe('user actions', () => {
         payload: transactionsInitialState
       },
       {
-        type: 'LOAD_MARKET_VALUES',
-        payload: marketValuesInitialState
+        type: 'LOAD_EXCHANGE_RATES',
+        payload: exchangeRatesInitialState
       }
     ])
   })
@@ -163,7 +163,7 @@ describe('user actions', () => {
             { type: 'LOAD_SETTINGS', payload: undefined },
             { type: 'LOAD_ACCOUNTS', payload: undefined },
             { type: 'LOAD_TRANSACTIONS', payload: undefined },
-            { type: 'LOAD_MARKET_VALUES', payload: undefined },
+            { type: 'LOAD_EXCHANGE_RATES', payload: undefined },
             { type: 'HIDE_OVERLAY' }
           ])
           done()

@@ -186,4 +186,30 @@ describe('transactions actions', () => {
       ])
     })
   })
+
+  describe.only('getAccountTransactions', () => {
+    it('should return empty array if there are no transactions', async () => {
+      const mockStore = configureMockStore([thunk])
+      const store = mockStore({
+        transactions: transactionsInitialState
+      })
+      const transactions = await store.dispatch(actions.getAccountTransactions(account))
+      expect(transactions).toEqual([])
+    })
+
+    it('should return account transactions only', async () => {
+      const mockStore = configureMockStore([thunk])
+      const store = mockStore({
+        transactions: {
+          ...transactionsInitialState,
+          list: [
+            { id: 1, ...transaction },
+            { id: 1, accountId: account.id + 1 }
+          ]
+        }
+      })
+      const transactions = await store.dispatch(actions.getAccountTransactions(account))
+      expect(transactions).toEqual([{ ...transaction, id: 1 }])
+    })
+  })
 })

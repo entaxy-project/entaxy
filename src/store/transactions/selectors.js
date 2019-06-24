@@ -2,7 +2,7 @@ import _ from 'lodash'
 import { createSelector } from 'reselect'
 
 const getTransactions = ({ transactions }) => transactions
-const getMarketValues = state => state.marketValues
+const getExchangeRates = state => state.exchangeRates
 const getPortfolioFilters = state => state.settings.portfolioFilters
 
 const filteredTransactions = createSelector(
@@ -19,8 +19,8 @@ const filteredTransactions = createSelector(
 
 export const portfolioTableDataSelector = createSelector(
   filteredTransactions,
-  getMarketValues,
-  (transactions, marketValues) => {
+  getExchangeRates,
+  (transactions, exchangeRates) => {
     const portfolioTable = _(transactions)
       .groupBy('ticker')
       .map((entries, ticker) => {
@@ -38,7 +38,7 @@ export const portfolioTableDataSelector = createSelector(
           }
         })
 
-        const marketValue = marketValues[ticker] ? marketValues[ticker].marketValue : 0
+        const marketValue = exchangeRates[ticker] ? exchangeRates[ticker].marketValue : 0
         return {
           ticker,
           shares,

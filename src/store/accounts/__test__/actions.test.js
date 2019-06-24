@@ -8,6 +8,20 @@ import { initialState as settingsInitialState } from '../../settings/reducer'
 
 jest.mock('uuid/v4', () => jest.fn(() => 'xyz'))
 const mockStore = configureMockStore([thunk])
+// Mock call to alphavantage in fetchExchangeRates
+window.fetch = jest.fn().mockImplementation(() => (
+  Promise.resolve(new window.Response(
+    JSON.stringify({
+      'Realtime Currency Exchange Rate': {
+        '6. Last Refreshed': '2018-01-01',
+        '5. Exchange Rate': 1
+      }
+    }), {
+      status: 200,
+      headers: { 'Content-type': 'application/json' }
+    }
+  ))
+))
 
 beforeEach(() => {
   jest.resetModules()
@@ -18,7 +32,8 @@ const account = {
   groupId: 'g1',
   name: 'Checking',
   institution: 'TD',
-  openingBalance: 1000
+  openingBalance: 1000,
+  currency: 'USD'
 }
 
 describe('accounts actions', () => {
@@ -29,20 +44,55 @@ describe('accounts actions', () => {
     })
   })
 
-  describe('calculateCurrentBalance', () => {
-    it('should return account openingBalance if no transactions', () => {
-      expect(actions.calculateCurrentBalance(account)).toBe(account.openingBalance)
+  describe.only('calculateBalance', () => {
+    it('should return account openingBalance if there are no transactions', async () => {
+      const store = mockStore({
+        settings: { ...settingsInitialState, currency: account.currency },
+        transactions: transactionsInitialState
+      })
+      expect(store.getState().settings.currency).toBe(account.currency)
+      expect(actions.calculateBalance(store.getState(), account)).toEqual({
+        accountCurrency: account.openingBalance,
+        localCurrency: account.openingBalance
+      })
     })
 
     it('should add openingBalance and transactions created after openingBalanceDate', () => {
+      const store = mockStore({
+        settings: { ...settingsInitialState, currency: account.currency },
+        transactions: transactionsInitialState
+      })
       account.openingBalanceDate = Date.now()
       const transactions = [
         { amount: 1, createdAt: account.openingBalanceDate - 1 },
         { amount: 2, createdAt: account.openingBalanceDate },
         { amount: 3, createdAt: account.openingBalanceDate + 1 }
       ]
-      expect(actions.calculateCurrentBalance(account, transactions))
-        .toBe(account.openingBalance + transactions[2].amount)
+      expect(store.getState().settings.currency).toBe(account.currency)
+      expect(actions.calculateBalance(store.getState(), account, transactions)).toEqual({
+        accountCurrency: account.openingBalance + transactions[2].amount,
+        localCurrency: account.openingBalance + transactions[2].amount
+      })
+    })
+
+    it('should calculateBalance and convert to Local currency', () => {
+      const store = mockStore({
+        settings: { ...settingsInitialState, currency: 'XYZ' },
+        transactions: transactionsInitialState,
+        exchangeRates: { XYZ: 2 }
+      })
+      account.openingBalanceDate = Date.now()
+      const transactions = [
+        { amount: 1, createdAt: account.openingBalanceDate - 1 },
+        { amount: 2, createdAt: account.openingBalanceDate },
+        { amount: 3, createdAt: account.openingBalanceDate + 1 }
+      ]
+      expect(store.getState().settings.currency).not.toBe(account.currency)
+      const balance = account.openingBalance + transactions[2].amount
+      expect(actions.calculateBalance(store.getState(), account, transactions)).toEqual({
+        accountCurrency: balance,
+        localCurrency: balance * 2
+      })
     })
   })
 

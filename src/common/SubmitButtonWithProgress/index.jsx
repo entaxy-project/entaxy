@@ -20,18 +20,20 @@ const styles = theme => ({
   }
 })
 
-const SubmitButtonWithProgress = ({ classes, label, isSubmitting }) => (
-  <div className={classes.wrapper}>
-    <Button
-      type="submit"
-      color="secondary"
-      disabled={isSubmitting}
-    >
-      {label}
-    </Button>
-    {isSubmitting && <CircularProgress size={24} className={classes.buttonProgress} />}
-  </div>
-)
+const SubmitButtonWithProgress = ({ classes, label, isSubmitting }) => {
+  return (
+    <div className={classes.wrapper}>
+      <Button
+        type="submit"
+        color="secondary"
+        disabled={isSubmitting}
+      >
+        {label}
+      </Button>
+      {isSubmitting && <CircularProgress size={24} className={classes.buttonProgress} />}
+    </div>
+  )
+}
 
 SubmitButtonWithProgress.propTypes = {
   classes: PropTypes.object.isRequired,
