@@ -6,34 +6,6 @@ export const initialState = {
   byInstitution: {} // {TD: {accountIds: [id1, id2], balance: 100, apiKey: XYZ}, BMO: {...}}
 }
 
-// export const initialState = {
-//   byId: {
-//     'a53af892-5534-42e1-82fa-0681dbd17f49': {
-//       currency: 'USD',
-//       currentBalance: { accountCurrency: 10, localCurrency: 10 },
-//       groupId: '0',
-//       id: 'a53af892-5534-42e1-82fa-0681dbd17f49',
-//       institution: 'Bank of Montreal',
-//       name: 'checking',
-//       openingBalance: 10,
-//       openingBalanceDate: 1561348800000
-//     }
-//   },
-//   byInstitution: {
-//     'Bank of Montreal': {
-//       balance: 10,
-//       groups: {
-//         0: {
-//           accountIds: ['a53af892-5534-42e1-82fa-0681dbd17f49'],
-//           balance: 10,
-//           id: '0',
-//           type: 'default'
-//         }
-//       }
-//     }
-//   }
-// }
-
 export const groupByInstitution = ({ byId, byInstitution }) => {
   // Group sorted accounts by institution
   // results in something like:

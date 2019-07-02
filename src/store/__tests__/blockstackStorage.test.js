@@ -43,6 +43,12 @@ describe('saveState', () => {
 
     saveState(state)
     expect(blockstackUserSession.isUserSignedIn).toHaveBeenCalled()
-    expect(blockstackUserSession.putFile).toHaveBeenCalledWith('entaxy.json', JSON.stringify(state))
+    expect(blockstackUserSession.putFile).toHaveBeenCalledWith('entaxy.json', JSON.stringify({
+      ...state,
+      settings: {
+        ...state.settings,
+        snackbarMessage: null
+      }
+    }))
   })
 })

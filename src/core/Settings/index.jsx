@@ -9,8 +9,7 @@ import Typography from '@material-ui/core/Typography'
 import IconButton from '@material-ui/core/IconButton'
 import CloseIcon from '@material-ui/icons/Close'
 import Divider from '@material-ui/core/Divider'
-import Snackbar from '@material-ui/core/Snackbar'
-import { updateSettings } from '../../store/settings/actions'
+import { updateSettings, showSnackbar } from '../../store/settings/actions'
 import { resetState, saveState } from '../../store/user/actions'
 import SettingsForm from './form'
 
@@ -32,6 +31,7 @@ const styles = theme => ({
 
 const mapDispatchToProps = dispatch => ({
   saveSettings: settings => dispatch(updateSettings(settings)),
+  showSnackbarMessage: message => dispatch(showSnackbar(message)),
   deleteAllData: async () => {
     await resetState(dispatch)
     await saveState()
@@ -39,11 +39,9 @@ const mapDispatchToProps = dispatch => ({
 })
 
 export class SettingsComponent extends React.Component {
-  state = { openSnackbar: false }
-
   handleSave = async (settings) => {
     await this.props.saveSettings(settings)
-    this.setState({ openSnackbar: true })
+    this.props.showSnackbarMessage({ text: 'Your settings have been saved', status: 'success' })
   }
 
   handleResetData = async () => {
@@ -53,10 +51,6 @@ export class SettingsComponent extends React.Component {
 
   handleCancel = () => {
     this.props.history.push('/dashboard')
-  }
-
-  handleCloseSnackbar = () => {
-    this.setState({ openSnackbar: false })
   }
 
   render() {
@@ -80,14 +74,6 @@ export class SettingsComponent extends React.Component {
             handleDeleteAllData={this.handleResetData}
           />
         </Paper>
-        <Snackbar
-          anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
-          open={this.state.openSnackbar}
-          autoHideDuration={4000}
-          onClose={this.handleCloseSnackbar}
-          ContentProps={{ 'aria-describedby': 'message-id' }}
-          message={<span id="message-id">Your settings have been saved</span>}
-        />
       </Grid>
     )
   }
@@ -96,6 +82,7 @@ export class SettingsComponent extends React.Component {
 SettingsComponent.propTypes = {
   classes: PropTypes.object.isRequired,
   saveSettings: PropTypes.func.isRequired,
+  showSnackbarMessage: PropTypes.func.isRequired,
   deleteAllData: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired
 }

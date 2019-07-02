@@ -64,7 +64,6 @@ const styles = theme => ({
 const mapStateToProps = state => ({
   settings: state.settings,
   accounts: state.accounts,
-  exchangeRates: state.exchangeRates,
   formatCurrency: currencyFormatter(state.settings.locale, state.settings.currency),
   totalBalance: Object.values(state.accounts.byInstitution).reduce(
     (balance, institution) => balance + institution.balance,
