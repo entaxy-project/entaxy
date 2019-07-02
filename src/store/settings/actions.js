@@ -17,7 +17,6 @@ export const showSnackbar = message => ({
 })
 
 export const hideSnackbar = () => {
-  console.log('hideSnackbar')
   return { type: types.HIDE_SNACKBAR }
 }
 

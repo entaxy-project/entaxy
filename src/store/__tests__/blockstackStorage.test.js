@@ -1,13 +1,9 @@
-import * as blockstack from 'blockstack'
+import { UserSession } from 'blockstack'
 import { loadState, saveState } from '../blockstackStorage'
+import { blockstackUserSession } from '../../../mocks/BlockstackMock'
 
-jest.mock('blockstack', () => {
-  return require('../../../mocks/BlockstackMock')
-})
-
-const isUserSignedInSpy = jest.spyOn(blockstack, 'isUserSignedIn')
-const getFileSpy = jest.spyOn(blockstack, 'getFile').mockReturnValue(Promise.resolve('{}'))
-const putFileSpy = jest.spyOn(blockstack, 'putFile').mockReturnValue(Promise.resolve())
+jest.mock('blockstack')
+UserSession.mockImplementation(() => blockstackUserSession)
 
 beforeEach(() => {
   jest.resetModules()
@@ -16,37 +12,37 @@ beforeEach(() => {
 
 describe('loadState', () => {
   it('returns undefined if user is not signed in', () => {
-    isUserSignedInSpy.mockReturnValue(false)
+    blockstackUserSession.isUserSignedIn.mockReturnValue(false)
 
     expect(loadState()).toMatchObject({})
-    expect(isUserSignedInSpy).toHaveBeenCalled()
-    expect(getFileSpy).not.toHaveBeenCalled()
+    expect(blockstackUserSession.isUserSignedIn).toHaveBeenCalled()
+    expect(blockstackUserSession.getFile).not.toHaveBeenCalled()
   })
 
   it('returns if user is signed in', () => {
-    isUserSignedInSpy.mockReturnValue(true)
+    blockstackUserSession.isUserSignedIn.mockReturnValue(true)
 
     expect(loadState()).toMatchObject({})
-    expect(isUserSignedInSpy).toHaveBeenCalled()
-    expect(getFileSpy).toHaveBeenCalledWith('entaxy.json')
+    expect(blockstackUserSession.isUserSignedIn).toHaveBeenCalled()
+    expect(blockstackUserSession.getFile).toHaveBeenCalledWith('entaxy.json')
   })
 })
 
 describe('saveState', () => {
   it('returns undefined if user is not signed in', () => {
-    isUserSignedInSpy.mockReturnValue(false)
+    blockstackUserSession.isUserSignedIn.mockReturnValue(false)
 
     expect(saveState('test data')).toBe(undefined)
-    expect(isUserSignedInSpy).toHaveBeenCalled()
-    expect(putFileSpy).not.toHaveBeenCalled()
+    expect(blockstackUserSession.isUserSignedIn).toHaveBeenCalled()
+    expect(blockstackUserSession.putFile).not.toHaveBeenCalled()
   })
 
   it('returns if user is signed in', () => {
-    isUserSignedInSpy.mockReturnValue(true)
+    blockstackUserSession.isUserSignedIn.mockReturnValue(true)
     const state = { user: { testField: 'test' } }
 
     saveState(state)
-    expect(isUserSignedInSpy).toHaveBeenCalled()
-    expect(putFileSpy).toHaveBeenCalledWith('entaxy.json', JSON.stringify(state))
+    expect(blockstackUserSession.isUserSignedIn).toHaveBeenCalled()
+    expect(blockstackUserSession.putFile).toHaveBeenCalledWith('entaxy.json', JSON.stringify(state))
   })
 })
