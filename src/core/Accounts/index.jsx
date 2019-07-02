@@ -80,7 +80,7 @@ export const AccountsComponent = ({
     if (account.type === 'wallet') {
       return `${decimalFormatter(settings.locale, account.type)(account.currentBalance)} ${account.symbol}`
     }
-    return currencyFormatter(settings.locale, account.currency)(account.currentBalance)
+    return currencyFormatter(settings.locale, account.currency)(account.currentBalance.accountCurrency)
   }
 
   return (

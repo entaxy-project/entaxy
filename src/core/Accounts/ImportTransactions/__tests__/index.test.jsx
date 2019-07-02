@@ -28,7 +28,10 @@ const account = {
   description: 'Checking',
   currency: 'CAD',
   openingBalance: 10,
-  currentBalance: 10
+  currentBalance: {
+    accountCurrency: 10,
+    localCurrency: null
+  }
 }
 
 describe('Import Transactions', () => {

@@ -169,11 +169,11 @@ describe('TransactionsTable', () => {
     })
 
     describe('displayCurrency', () => {
-      it('should displayCurrency for fiat account', () => {
-        expect(instance.props.account.type).toEqual()
+      it('should formatDecimal for fiat account', () => {
+        expect(instance.props.account.type).toEqual(undefined)
         instance.displayCurrency({ amount: 10, nativeAmount: 12 })
-        expect(mochFormatCurrency).toHaveBeenCalledWith(10)
-        expect(mochFormatDecimal).not.toHaveBeenCalledWith(10)
+        expect(mochFormatCurrency).not.toHaveBeenCalledWith(10)
+        expect(mochFormatDecimal).toHaveBeenCalledWith(10)
       })
 
       it('should displayCurrency for wallet account', () => {

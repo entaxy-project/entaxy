@@ -1,34 +1,29 @@
 /* eslint-disable import/no-cycle */
 import Big from 'big.js'
-// import parse from 'date-fns/parse'
 import types from './types'
-import { dateFormatter } from '../../util/stringFormatter'
+import { showSnackbar } from '../settings/actions'
 
 export const loadExchangeRates = (exchangeRate) => {
   return { type: types.LOAD_EXCHANGE_RATES, payload: exchangeRate }
 }
 
-export const createExchangeRate = (currency, exchangeRate, updatedOn) => {
-  return { type: types.CREATE_EXCHANGE_RATE, payload: { currency, exchangeRate, updatedOn } }
-}
-
-export const updateExchangeRate = (currency, exchangeRate, updatedOn) => {
-  return { type: types.UPDATE_EXCHANGE_RATE, payload: { currency, exchangeRate, updatedOn } }
+export const updateExchangeRates = (newExchangeRates) => {
+  return { type: types.UPDATE_EXCHANGE_RATES, payload: newExchangeRates }
 }
 
 export const deleteCurrencies = (currencies) => {
   return { type: types.DELETE_CURRENCIES, payload: currencies }
 }
 
-export const currencyExists = currency => (_, getState) => (
-  Object.keys(getState().exchangeRates).includes(currency)
-)
-
 export const convertToLocalCurrency = ({ settings, exchangeRates }, value, srcCurrency) => {
   if (srcCurrency === settings.currency) {
     return value
   }
-  return parseFloat(Big(value).times(Big(exchangeRates[srcCurrency] || 1)))
+  if (exchangeRates[srcCurrency] === undefined) {
+    return null
+  }
+  const latestExchangeRate = exchangeRates[srcCurrency][exchangeRates[srcCurrency].dates[0]]
+  return parseFloat(Big(value).div(Big(latestExchangeRate)))
 }
 
 // Alphavantage
@@ -69,48 +64,41 @@ export const convertToLocalCurrency = ({ settings, exchangeRates }, value, srcCu
 export const fetchExchangeRates = async (currencies, localCurrency, starDateString, endDateString) => {
   const baseUrl = 'https://api.exchangeratesapi.io/history'
   const params = `base=${localCurrency}&symbols=${currencies.join()}&start_at=${starDateString}&end_at=${endDateString}`
-  console.log('fetchExchangeRates', `${baseUrl}?${params}`)
-  console.log('fetchExchangeRates', `${baseUrl}?${params}`)
-  console.log('fetchExchangeRates', `${baseUrl}?${params}`)
-
   const response = await fetch(`${baseUrl}?${params}`, { method: 'GET' })
   if (response.ok) {
     const data = await response.json()
     if (data.base !== localCurrency) {
-      console.log(`Error: Currency returned '${data.base}' is not the same as requested '${localCurrency}'`)
-      return []
+      return [] // This happens when there is no data available
     }
     return data.rates
   }
-  console.log('Error:', response)
+  // console.log('fetchExchangeRates: Error:', response)
   return []
 }
 
-export const updateCurrencies = () => {
-  return async (dispatch, getState) => {
-    const { exchangeRates, accounts, settings } = getState()
-    const existingCurrencies = Object.keys(exchangeRates || {})
-    let newCurrencies = new Set(Object.values(accounts.byId).map(account => account.currency))
-    newCurrencies.delete(settings.currency)
-    newCurrencies = Array.from(newCurrencies)
+// This is called only when accounts change
+export const updateCurrencies = async (dispatch, { exchangeRates, accounts, settings }) => {
+  const existingCurrencies = Object.keys(exchangeRates || {})
+  let accountCurrencies = new Set(Object.values(accounts.byId).map(account => account.currency))
+  accountCurrencies.delete(settings.currency)
+  accountCurrencies = Array.from(accountCurrencies)
+  const currenciesToRemove = existingCurrencies.filter(x => !accountCurrencies.includes(x))
+  const currenciesToAdd = accountCurrencies.filter(x => !existingCurrencies.includes(x))
 
-    const currenciesToRemove = existingCurrencies.filter(x => !newCurrencies.includes(x))
-    const currenciesToAdd = newCurrencies.filter(x => !existingCurrencies.includes(x))
-
-    if (currenciesToRemove.length > 0) {
-      dispatch(deleteCurrencies(currenciesToRemove))
-    }
-
-    if (currenciesToAdd.length > 0) {
-      const todaysDateString = dateFormatter(settings.locale)(new Date())
-      const newExchangeRates = await fetchExchangeRates(
-        currenciesToAdd,
-        settings.currency,
-        todaysDateString,
-        todaysDateString
-      )
-      console.log('updateExchangeRates', newExchangeRates)
-      // dispatch({ type: UPDATE_EXCHANGE_RATES, payload: newExchangeRates })
-    }
+  if (currenciesToRemove.length > 0) {
+    dispatch(deleteCurrencies(currenciesToRemove))
+  }
+  if (currenciesToAdd.length > 0) {
+    // Fetch today's exchange rates for the new currencies
+    dispatch(showSnackbar({ text: `Fetching exchange rates for ${currenciesToAdd}...` }))
+    const today = new Date()
+    const threeDaysAgo = today.setDate(today.getDate() - 3)
+    const newExchangeRates = await fetchExchangeRates(
+      currenciesToAdd,
+      settings.currency,
+      new Intl.DateTimeFormat('en-CA').format(threeDaysAgo), // 3 days ago
+      new Intl.DateTimeFormat('en-CA').format(new Date()) // today
+    )
+    dispatch({ type: types.UPDATE_EXCHANGE_RATES, payload: newExchangeRates })
   }
 }

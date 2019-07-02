@@ -62,9 +62,12 @@ describe('Dashboard', () => {
     expect(wrapper.debug()).toMatchSnapshot()
 
     const component = wrapper.findWhere(node => node.name() === 'DashboardComponent')
-    expect(component.props().settings).toEqual(settingsInitialState)
+    expect(component.props().settings).toEqual({
+      ...settingsInitialState,
+      snackbarMessage: { text: 'Account created', status: 'success' }
+    })
     expect(component.props().accounts).toEqual(store.getState().accounts)
-    expect(component.props().totalBalance).toEqual(10)
+    expect(component.props().totalBalance).toEqual(0)
 
     expect(store.getState().settings.locale).toBe('en-US')
     expect(component.props().formatCurrency(10000)).toEqual('$10,000.00')
@@ -87,7 +90,7 @@ describe('Dashboard', () => {
     const component = wrapper.findWhere(node => node.name() === 'DashboardComponent')
     expect(component.props().settings).toEqual(store.getState().settings)
     expect(component.props().accounts).toEqual(store.getState().accounts)
-    expect(component.props().totalBalance).toEqual(20)
+    expect(component.props().totalBalance).toEqual(accounts[1].openingBalance)
     expect(component.props().formatCurrency(10000)).toEqual('€10,000.00')
   })
 })

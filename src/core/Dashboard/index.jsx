@@ -141,7 +141,11 @@ export class DashboardComponent extends React.Component {
                       <TableRow>
                         <TableCell>
                           <span className={classes.institutionWrapper}>
-                            <InstitutionIcon institution={institution} size="small" className={classes.institutionIcon} />
+                            <InstitutionIcon
+                              institution={institution}
+                              size="small"
+                              className={classes.institutionIcon}
+                            />
                             <Typography variant="subtitle2">{institution}</Typography>
                           </span>
                         </TableCell>

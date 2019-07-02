@@ -83,7 +83,7 @@ exports[`Routes snapshot matches with no accounts 1`] = `
                 Sign in with Blockstack
               </span>
               <span
-                className="MuiTouchRipple-root-214"
+                className="MuiTouchRipple-root-224"
               />
             </button>
           </div>
@@ -145,7 +145,7 @@ exports[`Routes snapshot matches with no accounts 1`] = `
                 Take it for a test drive
               </span>
               <span
-                className="MuiTouchRipple-root-214"
+                className="MuiTouchRipple-root-224"
               />
             </button>
           </div>

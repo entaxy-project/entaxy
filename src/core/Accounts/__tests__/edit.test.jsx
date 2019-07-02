@@ -65,7 +65,7 @@ describe('New Account', () => {
 
       instance.onDelete(account)
       await expect(confirm).toHaveBeenCalledWith('Delete selected account?', 'Are you sure?')
-      expect(mochHandleDelete).toHaveBeenCalledWith(account)
+      await expect(mochHandleDelete).toHaveBeenCalledWith(account)
       expect(mochHistoryPush).toHaveBeenCalledWith('/dashboard')
     })
   })

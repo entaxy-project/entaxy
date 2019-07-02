@@ -18,8 +18,8 @@ export class EditAccountComponent extends React.Component {
   }
 
   onDelete = (account) => {
-    confirm('Delete selected account?', 'Are you sure?').then(() => {
-      this.props.handleDelete(account)
+    confirm('Delete selected account?', 'Are you sure?').then(async () => {
+      await this.props.handleDelete(account)
       this.props.history.push('/dashboard')
     })
   }

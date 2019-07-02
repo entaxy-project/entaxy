@@ -184,7 +184,7 @@ export class TransactionsTableComponent extends React.Component {
         </div>
       )
     }
-    return formatCurrency(amount)
+    return formatDecimal(amount)
   }
 
   renderCellAmount = ({ cellData }) => (

@@ -117,7 +117,7 @@ exports[`Accounts index (Left Nav) snapshot matches snapshot with a few account 
               <p
                 className="MuiTypography-root-38 MuiTypography-body1-47 MuiTypography-colorTextSecondary-71 MuiListItemText-secondary-98 MuiListItemText-textDense-99"
               >
-                CA$10.00
+                CA$NaN
               </p>
             </div>
             <span
@@ -203,7 +203,7 @@ exports[`Accounts index (Left Nav) snapshot matches snapshot with a few account 
               <p
                 className="MuiTypography-root-38 MuiTypography-body1-47 MuiTypography-colorTextSecondary-71 MuiListItemText-secondary-98 MuiListItemText-textDense-99"
               >
-                CA$10.00
+                CA$NaN
               </p>
             </div>
             <span
@@ -318,7 +318,7 @@ exports[`Accounts index (Left Nav) snapshot matches snapshot with a few account 
               <p
                 className="MuiTypography-root-38 MuiTypography-body1-47 MuiTypography-colorTextSecondary-71 MuiListItemText-secondary-98 MuiListItemText-textDense-99"
               >
-                $10.00
+                $NaN
               </p>
             </div>
             <span
@@ -616,7 +616,7 @@ exports[`Accounts index (Left Nav) snapshot matches with a few accounts but none
               <p
                 className="MuiTypography-root-38 MuiTypography-body1-47 MuiTypography-colorTextSecondary-71 MuiListItemText-secondary-98 MuiListItemText-textDense-99"
               >
-                CA$10.00
+                CA$NaN
               </p>
             </div>
             <span
@@ -702,7 +702,7 @@ exports[`Accounts index (Left Nav) snapshot matches with a few accounts but none
               <p
                 className="MuiTypography-root-38 MuiTypography-body1-47 MuiTypography-colorTextSecondary-71 MuiListItemText-secondary-98 MuiListItemText-textDense-99"
               >
-                CA$10.00
+                CA$NaN
               </p>
             </div>
             <span
@@ -817,7 +817,7 @@ exports[`Accounts index (Left Nav) snapshot matches with a few accounts but none
               <p
                 className="MuiTypography-root-38 MuiTypography-body1-47 MuiTypography-colorTextSecondary-71 MuiListItemText-secondary-98 MuiListItemText-textDense-99"
               >
-                $10.00
+                $NaN
               </p>
             </div>
             <span

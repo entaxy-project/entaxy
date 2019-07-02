@@ -13,7 +13,10 @@ const account = {
   name: 'Checking',
   institution: 'TD',
   initialBalance: 1000,
-  currentBalance: 1000
+  currentBalance: {
+    accountCurrency: 1000,
+    localCurrency: 1000
+  }
 }
 
 describe('account reducer', () => {
@@ -53,7 +56,10 @@ describe('account reducer', () => {
       name: 'Savings',
       institution: 'BMO',
       initialBalance: 200,
-      currentBalance: 200
+      currentBalance: {
+        accountCurrency: 200,
+        localCurrency: 200
+      }
     }
 
     expect(accountReducer(state, { type, payload })).toEqual({
@@ -78,27 +84,42 @@ describe('account reducer', () => {
       id: 'a1',
       groupId: 'g1',
       institution: 'BMO',
-      currentBalance: 100
+      currentBalance: {
+        accountCurrency: 100,
+        localCurrency: 100
+      }
     }, {
       id: 'a2',
       groupId: 'g1',
       institution: 'BMO',
-      currentBalance: 200
+      currentBalance: {
+        accountCurrency: 200,
+        localCurrency: 200
+      }
     }, {
       id: 'a3',
       groupId: 'g3',
       institution: 'BMO',
-      currentBalance: 300
+      currentBalance: {
+        accountCurrency: 300,
+        localCurrency: 300
+      }
     }, {
       id: 'a4',
       groupId: 'g4',
       institution: 'TD',
-      currentBalance: 400
+      currentBalance: {
+        accountCurrency: 400,
+        localCurrency: 400
+      }
     }, {
       id: 'a5',
       groupId: 'g5',
       institution: 'Coinbase',
-      currentBalance: 500
+      currentBalance: {
+        accountCurrency: 500,
+        localCurrency: 500
+      }
     }]
     const byInstitutionAccount1 = {
       BMO: {
@@ -106,7 +127,7 @@ describe('account reducer', () => {
         groups: {
           [accounts[0].groupId]: {
             id: accounts[0].groupId,
-            balance: accounts[0].currentBalance,
+            balance: accounts[0].currentBalance.localCurrency,
             accountIds: [accounts[0].id]
           }
         }
@@ -123,12 +144,12 @@ describe('account reducer', () => {
         byId: { [accounts[0].id]: accounts[0] },
         byInstitution: {
           BMO: {
-            balance: accounts[0].currentBalance + 100,
+            balance: accounts[0].currentBalance.localCurrency + 100,
             groups: {
               [accounts[0].groupId]: {
                 id: accounts[0].groupId,
                 type: 'default',
-                balance: accounts[0].currentBalance + 200,
+                balance: accounts[0].currentBalance.localCurrency + 200,
                 accountIds: [accounts[0].id]
               }
             }
@@ -140,12 +161,12 @@ describe('account reducer', () => {
         ...state,
         byInstitution: {
           BMO: {
-            balance: accounts[0].currentBalance,
+            balance: accounts[0].currentBalance.localCurrency,
             groups: {
               [accounts[0].groupId]: {
                 id: accounts[0].groupId,
                 type: 'default',
-                balance: accounts[0].currentBalance,
+                balance: accounts[0].currentBalance.localCurrency,
                 accountIds: [accounts[0].id]
               }
             }
@@ -167,12 +188,12 @@ describe('account reducer', () => {
         ...state,
         byInstitution: {
           BMO: {
-            balance: accounts[0].currentBalance + accounts[1].currentBalance,
+            balance: accounts[0].currentBalance.localCurrency + accounts[1].currentBalance.localCurrency,
             groups: {
               [accounts[0].groupId]: {
                 id: accounts[0].groupId,
                 type: 'default',
-                balance: accounts[0].currentBalance + accounts[1].currentBalance,
+                balance: accounts[0].currentBalance.localCurrency + accounts[1].currentBalance.localCurrency,
                 accountIds: [accounts[0].id, accounts[1].id]
               }
             }
@@ -194,18 +215,18 @@ describe('account reducer', () => {
         ...state,
         byInstitution: {
           BMO: {
-            balance: accounts[0].currentBalance + accounts[2].currentBalance,
+            balance: accounts[0].currentBalance.localCurrency + accounts[2].currentBalance.localCurrency,
             groups: {
               [accounts[0].groupId]: {
                 id: accounts[0].groupId,
                 type: 'default',
-                balance: accounts[0].currentBalance,
+                balance: accounts[0].currentBalance.localCurrency,
                 accountIds: [accounts[0].id]
               },
               [accounts[2].groupId]: {
                 id: accounts[2].groupId,
                 type: 'default',
-                balance: accounts[2].currentBalance,
+                balance: accounts[2].currentBalance.localCurrency,
                 accountIds: [accounts[2].id]
               }
             }
@@ -227,23 +248,23 @@ describe('account reducer', () => {
         ...state,
         byInstitution: {
           BMO: {
-            balance: accounts[0].currentBalance,
+            balance: accounts[0].currentBalance.localCurrency,
             groups: {
               [accounts[0].groupId]: {
                 id: accounts[0].groupId,
                 type: 'default',
-                balance: accounts[0].currentBalance,
+                balance: accounts[0].currentBalance.localCurrency,
                 accountIds: [accounts[0].id]
               }
             }
           },
           TD: {
-            balance: accounts[3].currentBalance,
+            balance: accounts[3].currentBalance.localCurrency,
             groups: {
               [accounts[3].groupId]: {
                 id: accounts[3].groupId,
                 type: 'default',
-                balance: accounts[3].currentBalance,
+                balance: accounts[3].currentBalance.localCurrency,
                 accountIds: [accounts[3].id]
               }
             }
@@ -260,23 +281,23 @@ describe('account reducer', () => {
         },
         byInstitution: {
           BMO: {
-            balance: accounts[0].currentBalance,
+            balance: accounts[0].currentBalance.localCurrency,
             groups: {
               [accounts[0].groupId]: {
                 id: accounts[0].groupId,
                 type: 'default',
-                balance: accounts[0].currentBalance,
+                balance: accounts[0].currentBalance.localCurrency,
                 accountIds: [accounts[0].id]
               }
             }
           },
           Coinbase: {
-            balance: accounts[4].currentBalance,
+            balance: accounts[4].currentBalance.localCurrency,
             groups: {
               [accounts[4].groupId]: {
                 id: accounts[4].groupId,
                 type: 'api',
-                balance: accounts[4].currentBalance,
+                balance: accounts[4].currentBalance.localCurrency,
                 accountIds: [accounts[4].id],
                 apiKey: 'ABC', // existing data
                 apiSecret: 'DEF'

@@ -3,13 +3,13 @@ import uuid from 'uuid/v4'
 import Big from 'big.js'
 import types from './types'
 import { saveState } from '../user/actions'
+import { showSnackbar } from '../settings/actions'
 import {
   addTransactions,
   deleteTransactions,
   getAccountTransactions
 } from '../transactions/actions'
 import {
-  currencyExists,
   updateCurrencies,
   convertToLocalCurrency
 } from '../exchangeRates/actions'
@@ -19,24 +19,41 @@ export const loadAccounts = accounts => ({
 })
 
 export const calculateBalance = (state, account, transactions = []) => {
-  console.log('calculateBalance', transactions, state)
   const total = transactions.reduce((balance, transaction) => {
-    if (transaction.createdAt > account.openingBalanceDate) {
+    if (transaction.createdAt >= account.openingBalanceDate) {
       return balance.add(Big(transaction.amount))
     }
     return balance
   }, Big(account.openingBalance))
   const totalBalance = parseFloat(total)
-  const localCurrency = convertToLocalCurrency(state, totalBalance, account.currency)
-  console.log('accountCurrency', totalBalance)
-  console.log('localCurrency', localCurrency)
   return {
     accountCurrency: totalBalance,
-    localCurrency
+    localCurrency: convertToLocalCurrency(state, totalBalance, account.currency)
   }
 }
 
-export const afterAccountsChanged = () => (dispatch) => {
+// Convert account balances to local currency
+export const convertAccountsBalancesToLocalCurrency = (dispatch, getState) => {
+  Object.keys(getState().accounts.byId).forEach((accountId) => {
+    const account = getState().accounts.byId[accountId]
+    if (account.currency !== getState().settings.currency) {
+      dispatch({
+        type: types.UPDATE_ACCOUNT,
+        payload: {
+          ...account,
+          currentBalance: {
+            ...account.currentBalance,
+            localCurrency: convertToLocalCurrency(getState(), account.currentBalance.accountCurrency, account.currency)
+          }
+        }
+      })
+    }
+  })
+}
+
+export const afterAccountsChanged = () => async (dispatch, getState) => {
+  await updateCurrencies(dispatch, getState())
+  convertAccountsBalancesToLocalCurrency(dispatch, getState)
   dispatch({ type: types.GROUP_BY_INSTITUTION })
   saveState()
 }
@@ -47,71 +64,72 @@ export const openingBalanceChanged = (oldAccount, newAccount) => (
   ), false)
 )
 
-export const valueHasChanged = (attr, oldAccount, newAccount) => (
-  oldAccount[attr] !== newAccount[attr]
-)
-
 // --- CREATE ---
-export const createAccount = (account, transactions = []) => async (dispatch, getState) => {
-  if (!currencyExists(account.currency)) {
-    await updateCurrencies()
+export const createAccount = (account, transactions = [], options = { skipAfterChange: false }) => {
+  const { skipAfterChange } = options
+  return async (dispatch, getState) => {
+    const newAccount = {
+      ...account,
+      id: uuid(),
+      groupId: account.groupId || '0',
+      currentBalance: await calculateBalance(getState(), account, transactions)
+    }
+    dispatch({ type: types.CREATE_ACCOUNT, payload: newAccount })
+    if (transactions.length > 0) {
+      await dispatch(addTransactions(newAccount, transactions, { skipAfterChange: true }))
+    }
+    if (!skipAfterChange) {
+      await dispatch(afterAccountsChanged())
+      dispatch(showSnackbar({ text: 'Account created', status: 'success' }))
+    }
+    return Promise.resolve(newAccount.id)
   }
-
-  const newAccount = {
-    ...account,
-    id: uuid(),
-    groupId: account.groupId || '0',
-    currentBalance: await calculateBalance(getState, account, transactions)
-  }
-  dispatch({ type: types.CREATE_ACCOUNT, payload: newAccount })
-
-  if (transactions.length > 0) {
-    dispatch(addTransactions(newAccount, transactions, { skipAfterChange: true }))
-  }
-  dispatch(afterAccountsChanged(account))
-  return newAccount.id
 }
 
 // --- UPDATE ---
-export const updateAccount = (account, options = { forceUpdateBalance: false }) => (
+export const updateAccount = (account, options = { forceUpdateBalance: false, showMessage: true }) => (
   async (dispatch, getState) => {
-    const { forceUpdateBalance } = options
+    const { forceUpdateBalance, showMessage } = options
     const oldAccount = getState().accounts.byId[account.id]
     const payload = account
 
     if (forceUpdateBalance || openingBalanceChanged(oldAccount, account)) {
       const transactions = getAccountTransactions(getState(), account.id)
-      payload.currentBalance = calculateBalance(getState(), account, transactions)
+      payload.currentBalance = await calculateBalance(getState(), account, transactions)
     }
     dispatch({ type: types.UPDATE_ACCOUNT, payload })
     await dispatch(afterAccountsChanged())
+    if (showMessage) {
+      dispatch(showSnackbar({ text: 'Account updated', status: 'success' }))
+    }
   }
 )
 
 // --- DELETE ---
-export const deleteAccount = (account, options = { skipAfterChange: false }) => (_, getState) => {
+export const deleteAccount = (account, options = { skipAfterChange: false }) => {
   const { skipAfterChange } = options
-  return (dispatch) => {
+  return async (dispatch, getState) => {
     const transactionIds = getAccountTransactions(getState(), account.id).map(transaction => transaction.id)
 
     dispatch(deleteTransactions(account, transactionIds, { skipAfterChange: true }))
     dispatch({ type: types.DELETE_ACCOUNT, payload: account.id })
     if (!skipAfterChange) {
-      dispatch(afterAccountsChanged())
+      await dispatch(afterAccountsChanged())
+      dispatch(showSnackbar({ text: 'Account deleted', status: 'success' }))
     }
   }
 }
 
 export const createAccountGroup = (institution, accountGroupData, importedAccounts) => {
-  return (dispatch) => {
+  return async (dispatch) => {
     const accountGroupId = uuid()
-
-    const accountIds = importedAccounts.map((importedAccount) => {
+    const accountIds = await Promise.all(importedAccounts.map(async (importedAccount) => {
       const { transactions, ...newAccount } = importedAccount
       newAccount.institution = institution
       newAccount.groupId = accountGroupId
-      return dispatch(createAccount(newAccount, transactions))
-    })
+      const accountId = await dispatch(createAccount(newAccount, transactions, { skipAfterChange: true }))
+      return Promise.resolve(accountId)
+    }))
 
     // Create the account group
     const accountGroup = {
@@ -122,7 +140,7 @@ export const createAccountGroup = (institution, accountGroupData, importedAccoun
     }
 
     dispatch({ type: types.CREATE_ACCOUNT_GROUP, payload: { institution, accountGroup } })
-    dispatch(afterAccountsChanged())
+    await dispatch(afterAccountsChanged())
   }
 }
 
@@ -149,10 +167,10 @@ export const updateAccountGroup = (institution, accountGroup, importedAccounts) 
 }
 
 export const deleteAccountGroup = (accountGroup) => {
-  return (dispatch, getState) => {
-    Object.values(accountGroup.accountIds).map((accountId) => {
-      return dispatch(deleteAccount(getState().accounts.byId[accountId], { skipAfterChange: true }))
-    })
-    dispatch(afterAccountsChanged())
+  return async (dispatch, getState) => {
+    Promise.all(Object.values(accountGroup.accountIds).map(async (accountId) => {
+      await dispatch(deleteAccount(getState().accounts.byId[accountId], { skipAfterChange: true }))
+    }))
+    await dispatch(afterAccountsChanged())
   }
 }

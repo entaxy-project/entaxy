@@ -4,27 +4,27 @@ import types from './types'
 import { saveState } from '../user/actions'
 import { updateAccount } from '../accounts/actions'
 
-export const afterTransactionsChanged = account => (dispatch) => {
-  dispatch(updateAccount(account, { forceUpdateBalance: true }))
+export const afterTransactionsChanged = account => async (dispatch) => {
+  await dispatch(updateAccount(account, { forceUpdateBalance: true, showMessage: false }))
   saveState()
 }
 
-export const createTransaction = (account, transaction) => (dispatch) => {
+export const createTransaction = (account, transaction) => async (dispatch) => {
   dispatch({ type: types.CREATE_TRANSACTION, payload: { ...transaction, id: uuid(), accountId: account.id } })
-  dispatch(afterTransactionsChanged(account))
+  await dispatch(afterTransactionsChanged(account))
 }
 
-export const updateTransaction = (account, transaction) => (dispatch) => {
+export const updateTransaction = (account, transaction) => async (dispatch) => {
   dispatch({ type: types.UPDATE_TRANSACTION, payload: transaction })
-  dispatch(afterTransactionsChanged(account))
+  await dispatch(afterTransactionsChanged(account))
 }
 
 export const deleteTransactions = (account, transactionIds, options = { skipAfterChange: false }) => {
   const { skipAfterChange } = options
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch({ type: types.DELETE_TRANSACTIONS, payload: transactionIds })
     if (!skipAfterChange) {
-      dispatch(afterTransactionsChanged(account))
+      await dispatch(afterTransactionsChanged(account))
     }
   }
 }
@@ -38,19 +38,15 @@ export const loadTransactions = (transactions) => {
 // Add new transactions to the existing ones
 export const addTransactions = (account, transactions, options = { skipAfterChange: false }) => {
   const { skipAfterChange } = options
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch({
       type: types.ADD_TRANSACTIONS,
       payload: transactions.map(t => Object.assign(t, { id: uuid(), accountId: account.id }))
     })
     if (!skipAfterChange) {
-      dispatch(afterTransactionsChanged(account))
+      await dispatch(afterTransactionsChanged(account))
     }
   }
-}
-
-export const updateSortBy = (sortBy, sortDirection) => {
-  return { type: types.UPDATE_SORT_BY, payload: { sortBy, sortDirection } }
 }
 
 export const getAccountTransactions = ({ transactions }, accountId) => {

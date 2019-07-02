@@ -2,8 +2,10 @@ import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
 import * as actions from '../actions'
 import types from '../types'
+import { initialState as accountsInitialState } from '../../accounts/reducer'
 import { initialState as transactionsInitialState } from '../reducer'
 import { initialState as settingsInitialState } from '../../settings/reducer'
+import { initialState as exchangeRatesInitialState } from '../../exchangeRates/reducer'
 
 jest.mock('uuid/v4', () => jest.fn(() => 1))
 
@@ -38,62 +40,72 @@ describe('transactions actions', () => {
   })
 
   describe('createTransaction', () => {
-    it('should create a transaction', () => {
+    it('should create a transaction', async () => {
       const mockStore = configureMockStore([thunk])
       const store = mockStore({
+        accounts: accountsInitialState,
         transactions: transactionsInitialState,
-        settings: settingsInitialState
+        settings: settingsInitialState,
+        exchangeRates: exchangeRatesInitialState
       })
 
-      // NOTE: UPDATE_ACCOUNT is called but account balance is not changed
-      // because test library doesn't actually update the store
-      store.dispatch(actions.createTransaction(account, transaction))
+      await store.dispatch(actions.createTransaction(account, transaction))
       expect(store.getActions()).toEqual([
         {
           type: 'CREATE_TRANSACTION',
           payload: { ...transaction, id: 1 }
         }, {
+          // NOTE: UPDATE_ACCOUNT is called but account balance is not changed
+          // because test library doesn't actually update the store
           payload: account,
           type: 'UPDATE_ACCOUNT'
+        }, {
+          type: 'GROUP_BY_INSTITUTION'
         }
       ])
     })
   })
 
   describe('updateTransaction', () => {
-    it('should update a transaction', () => {
+    it('should update a transaction', async () => {
       const mockStore = configureMockStore([thunk])
       const store = mockStore({
+        accounts: accountsInitialState,
         transactions: { list: [{ ...transaction, id: 1 }], transactionsInitialState },
-        settings: settingsInitialState
+        settings: settingsInitialState,
+        exchangeRates: exchangeRatesInitialState
       })
 
-      // NOTE: UPDATE_ACCOUNT is called but account balance is not changed
-      // because test library doesn't actually update the store
-      store.dispatch(actions.updateTransaction(account, { ...transaction, id: 1, amount: 100 }))
+      await store.dispatch(actions.updateTransaction(account, { ...transaction, id: 1, amount: 100 }))
       expect(store.getActions()).toEqual([
         {
           type: 'UPDATE_TRANSACTION',
           payload: { ...transaction, id: 1, amount: 100 }
         }, {
+          // NOTE: UPDATE_ACCOUNT is called but account balance is not changed
+          // because test library doesn't actually update the store
           payload: account,
           type: 'UPDATE_ACCOUNT'
+        }, {
+          type: 'GROUP_BY_INSTITUTION'
         }
       ])
     })
   })
 
   describe('deleteTransactions', () => {
-    it('should delete a transaction', () => {
+    it('should delete a transaction', async () => {
       const mockStore = configureMockStore([thunk])
       const store = mockStore({
+        accounts: accountsInitialState,
         transactions: { list: [{ ...transaction, id: 1 }], transactionsInitialState },
-        settings: settingsInitialState
+        settings: settingsInitialState,
+        exchangeRates: exchangeRatesInitialState
       })
 
       // NOTE: UPDATE_ACCOUNT is called but account balance is not changed
       // because test library doesn't actually update the store
-      store.dispatch(actions.deleteTransactions(account, [1]))
+      await store.dispatch(actions.deleteTransactions(account, [1]))
       expect(store.getActions()).toEqual([
         {
           type: 'DELETE_TRANSACTIONS',
@@ -101,11 +113,13 @@ describe('transactions actions', () => {
         }, {
           payload: account,
           type: 'UPDATE_ACCOUNT'
+        }, {
+          type: 'GROUP_BY_INSTITUTION'
         }
       ])
     })
 
-    it('should delete a transaction but skipAfterChange', () => {
+    it('should delete a transaction but skipAfterChange', async () => {
       const mockStore = configureMockStore([thunk])
       const store = mockStore({
         transactions: { list: [{ ...transaction, id: 1 }], transactionsInitialState },
@@ -114,7 +128,7 @@ describe('transactions actions', () => {
 
       // NOTE: UPDATE_ACCOUNT is called but account balance is not changed
       // because test library doesn't actually update the store
-      store.dispatch(actions.deleteTransactions(account, [1], { skipAfterChange: true }))
+      await store.dispatch(actions.deleteTransactions(account, [1], { skipAfterChange: true }))
       expect(store.getActions()).toEqual([
         {
           type: 'DELETE_TRANSACTIONS',
@@ -125,9 +139,10 @@ describe('transactions actions', () => {
   })
 
   describe('addTransactions', () => {
-    it('should add transactions to the existing ones', () => {
+    it('should add transactions to the existing ones', async () => {
       const mockStore = configureMockStore([thunk])
       const store = mockStore({
+        accounts: accountsInitialState,
         transactions: { ...transactionsInitialState, list: [{ ...transaction, id: 1 }] },
         settings: {
           portfolioFilters: {
@@ -145,7 +160,7 @@ describe('transactions actions', () => {
 
       // NOTE: UPDATE_ACCOUNT is called but account balance is not changed
       // because test library doesn't actually update the store
-      store.dispatch(actions.addTransactions(account, payload))
+      await store.dispatch(actions.addTransactions(account, payload))
       expect(store.getActions()).toEqual([
         {
           type: 'ADD_TRANSACTIONS',
@@ -153,11 +168,13 @@ describe('transactions actions', () => {
         }, {
           payload: account,
           type: 'UPDATE_ACCOUNT'
+        }, {
+          type: 'GROUP_BY_INSTITUTION'
         }
       ])
     })
 
-    it('should add transactions but skipAfterChange', () => {
+    it('should add transactions but skipAfterChange', async () => {
       const mockStore = configureMockStore([thunk])
       const store = mockStore({
         transactions: { ...transactionsInitialState, list: [{ ...transaction, id: 1 }] },
@@ -177,7 +194,7 @@ describe('transactions actions', () => {
 
       // NOTE: UPDATE_ACCOUNT is called but account balance is not changed
       // because test library doesn't actually update the store
-      store.dispatch(actions.addTransactions(account, payload, { skipAfterChange: true }))
+      await store.dispatch(actions.addTransactions(account, payload, { skipAfterChange: true }))
       expect(store.getActions()).toEqual([
         {
           payload,
@@ -187,28 +204,22 @@ describe('transactions actions', () => {
     })
   })
 
-  describe.only('getAccountTransactions', () => {
+  describe('getAccountTransactions', () => {
     it('should return empty array if there are no transactions', async () => {
-      const mockStore = configureMockStore([thunk])
-      const store = mockStore({
-        transactions: transactionsInitialState
-      })
-      const transactions = await store.dispatch(actions.getAccountTransactions(account))
+      const transactions = actions.getAccountTransactions({ transactions: transactionsInitialState }, account.id)
       expect(transactions).toEqual([])
     })
 
     it('should return account transactions only', async () => {
-      const mockStore = configureMockStore([thunk])
-      const store = mockStore({
+      const transactions = actions.getAccountTransactions({
         transactions: {
           ...transactionsInitialState,
           list: [
             { id: 1, ...transaction },
-            { id: 1, accountId: account.id + 1 }
+            { id: 2, accountId: account.id + 1 }
           ]
         }
-      })
-      const transactions = await store.dispatch(actions.getAccountTransactions(account))
+      }, account.id)
       expect(transactions).toEqual([{ ...transaction, id: 1 }])
     })
   })

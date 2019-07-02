@@ -283,15 +283,28 @@ export default compose(
     mapPropsToValues: ({ account, settings }) => {
       if (account === undefined) {
         return {
-          name: '',
-          institution: null,
-          openingBalance: 0,
+          name: 'checking',
+          institution: {
+            label: 'TD',
+            value: 'TD'
+          },
+          openingBalance: 10,
           openingBalanceDate: format(Date.now(), 'YYYY-MM-DD'),
-          currency: settings.currency === undefined ? '' : {
-            label: `(${settings.currency}) ${currencies[settings.currency]}`,
-            value: settings.currency
+          currency: settings.currency === undefined ? {} : {
+            label: `(GBP) ${currencies.GBP}`,
+            value: 'GBP'
           }
         }
+        // return {
+        //   name: '',
+        //   institution: null,
+        //   openingBalance: 0,
+        //   openingBalanceDate: format(Date.now(), 'YYYY-MM-DD'),
+        //   currency: settings.currency === undefined ? '' : {
+        //     label: `(${settings.currency}) ${currencies[settings.currency]}`,
+        //     value: settings.currency
+        //   }
+        // }
       }
       return {
         ...account,

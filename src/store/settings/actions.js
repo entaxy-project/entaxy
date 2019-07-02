@@ -10,6 +10,17 @@ export const showOverlay = message => ({
 
 export const hideOverlay = () => ({ type: types.HIDE_OVERLAY })
 
+
+export const showSnackbar = message => ({
+  type: types.SHOW_SNACKBAR,
+  payload: message
+})
+
+export const hideSnackbar = () => {
+  console.log('hideSnackbar')
+  return { type: types.HIDE_SNACKBAR }
+}
+
 export const loadSettings = settings => (
   { type: types.LOAD_SETTINGS, payload: settings }
 )
