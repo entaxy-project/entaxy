@@ -38,6 +38,7 @@
         "jsdom": "^13.2.0",
         "lodash": "^4.17.11",
         "papaparse": "^4.6.3",
+        "pluralize": "^8.0.0",
         "prop-types": "^15.7.2",
         "query-string": "^6.3.0",
         "react": "^16.8.3",

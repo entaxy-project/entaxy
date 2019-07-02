@@ -1,8 +1,10 @@
 /* eslint-disable import/no-cycle */
 import uuid from 'uuid/v4'
+import pluralize from 'pluralize'
 import types from './types'
 import { saveState } from '../user/actions'
 import { updateAccount } from '../accounts/actions'
+import { showSnackbar } from '../settings/actions'
 
 export const afterTransactionsChanged = account => async (dispatch) => {
   await dispatch(updateAccount(account, { forceUpdateBalance: true, showMessage: false }))
@@ -12,11 +14,13 @@ export const afterTransactionsChanged = account => async (dispatch) => {
 export const createTransaction = (account, transaction) => async (dispatch) => {
   dispatch({ type: types.CREATE_TRANSACTION, payload: { ...transaction, id: uuid(), accountId: account.id } })
   await dispatch(afterTransactionsChanged(account))
+  dispatch(showSnackbar({ text: 'Transaction created', status: 'success' }))
 }
 
 export const updateTransaction = (account, transaction) => async (dispatch) => {
   dispatch({ type: types.UPDATE_TRANSACTION, payload: transaction })
   await dispatch(afterTransactionsChanged(account))
+  dispatch(showSnackbar({ text: 'Transaction updated', status: 'success' }))
 }
 
 export const deleteTransactions = (account, transactionIds, options = { skipAfterChange: false }) => {
@@ -25,6 +29,10 @@ export const deleteTransactions = (account, transactionIds, options = { skipAfte
     dispatch({ type: types.DELETE_TRANSACTIONS, payload: transactionIds })
     if (!skipAfterChange) {
       await dispatch(afterTransactionsChanged(account))
+      dispatch(showSnackbar({
+        text: `${pluralize('transaction', transactionIds.length, true)} deleted`,
+        status: 'success'
+      }))
     }
   }
 }

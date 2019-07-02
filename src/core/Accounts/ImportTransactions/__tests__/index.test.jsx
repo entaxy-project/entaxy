@@ -60,6 +60,7 @@ describe('Import Transactions', () => {
 
   describe('Component methods', () => {
     const mochHistoryPush = jest.fn()
+    const mochShowSnackbar = jest.fn()
     let wrapper
     let instance
 
@@ -69,6 +70,7 @@ describe('Import Transactions', () => {
           account={account}
           classes={{}}
           history={{ push: mochHistoryPush }}
+          showSnackbarMessage={mochShowSnackbar}
           match={{ params: { accountId: account.id } }}
           saveTransactions={mockSaveTransactions}
         />
@@ -87,6 +89,7 @@ describe('Import Transactions', () => {
         expect(instance.setState({ transactions: importedTransactions }))
         await instance.handleSave({ name: 'new account' })
         expect(mockSaveTransactions).toHaveBeenCalledWith(account, transactions)
+        expect(mochShowSnackbar).toHaveBeenCalledWith({ status: 'success', text: '1 transaction imported' })
         expect(mochHistoryPush).toHaveBeenCalledWith(`/accounts/${account.id}/transactions`)
       })
 

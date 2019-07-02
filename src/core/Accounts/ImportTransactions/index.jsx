@@ -5,6 +5,7 @@ import { compose } from 'recompose'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import uuid from 'uuid/v4'
+import pluralize from 'pluralize'
 import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
@@ -14,6 +15,7 @@ import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
 import InstitutionIcon from '../../../common/InstitutionIcon'
 import { addTransactions } from '../../../store/transactions/actions'
+import { showSnackbar } from '../../../store/settings/actions'
 import CsvImportForm from './CsvImportForm'
 import ImportedResults from './ImportedResults'
 
@@ -36,7 +38,8 @@ const mapStateToProps = ({ accounts }, props) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  saveTransactions: (account, transactions) => dispatch(addTransactions(account, transactions))
+  saveTransactions: (account, transactions) => dispatch(addTransactions(account, transactions)),
+  showSnackbarMessage: message => dispatch(showSnackbar(message))
 })
 
 const initialState = {
@@ -49,8 +52,13 @@ const initialState = {
 export class ImportTransactionsComponent extends React.Component {
   state = initialState
 
-  handleSave = () => {
-    const { saveTransactions, account, history } = this.props
+  handleSave = async () => {
+    const {
+      saveTransactions,
+      showSnackbarMessage,
+      account,
+      history
+    } = this.props
     const transactions = this.state.transactions
       .filter(transaction => transaction.errors.length === 0)
       .map(transaction => ({
@@ -59,7 +67,11 @@ export class ImportTransactionsComponent extends React.Component {
         createdAt: transaction.createdAt
       }))
     if (transactions.length > 0) {
-      saveTransactions(account, transactions)
+      await saveTransactions(account, transactions)
+      showSnackbarMessage({
+        text: `${pluralize('transaction', transactions.length, true)} imported`,
+        status: 'success'
+      })
     }
     history.push(`/accounts/${account.id}/transactions`)
   }
@@ -144,7 +156,8 @@ ImportTransactionsComponent.propTypes = {
   classes: PropTypes.object.isRequired,
   account: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
-  saveTransactions: PropTypes.func.isRequired
+  saveTransactions: PropTypes.func.isRequired,
+  showSnackbarMessage: PropTypes.func.isRequired
 }
 
 export default withRouter(compose(

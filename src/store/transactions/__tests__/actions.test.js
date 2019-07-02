@@ -61,6 +61,9 @@ describe('transactions actions', () => {
           type: 'UPDATE_ACCOUNT'
         }, {
           type: 'GROUP_BY_INSTITUTION'
+        }, {
+          type: 'SHOW_SNACKBAR',
+          payload: { text: 'Transaction created', status: 'success' }
         }
       ])
     })
@@ -88,6 +91,9 @@ describe('transactions actions', () => {
           type: 'UPDATE_ACCOUNT'
         }, {
           type: 'GROUP_BY_INSTITUTION'
+        }, {
+          type: 'SHOW_SNACKBAR',
+          payload: { text: 'Transaction updated', status: 'success' }
         }
       ])
     })
@@ -115,6 +121,9 @@ describe('transactions actions', () => {
           type: 'UPDATE_ACCOUNT'
         }, {
           type: 'GROUP_BY_INSTITUTION'
+        }, {
+          type: 'SHOW_SNACKBAR',
+          payload: { text: '1 transaction deleted', status: 'success' }
         }
       ])
     })
