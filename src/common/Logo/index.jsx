@@ -21,11 +21,13 @@ const styles = {
 
 const Logo = ({ classes }) => (
   <div className={classes.logo}>
-    <img
-      src={logoImg}
-      className={classes.image}
-      alt="Entaxy logo"
-    />
+    <Link to="/">
+      <img
+        src={logoImg}
+        className={classes.image}
+        alt="Entaxy logo"
+      />
+    </Link>
     <Typography
       variant="h6"
       color="inherit"
