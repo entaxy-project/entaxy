@@ -4,11 +4,16 @@ exports[`Logo matches snapshot 1`] = `
 <div
   className="Logo-logo-1"
 >
-  <img
-    alt="Entaxy logo"
-    className="Logo-image-2"
-    src="logo.png"
-  />
+  <a
+    href="/"
+    onClick={[Function]}
+  >
+    <img
+      alt="Entaxy logo"
+      className="Logo-image-2"
+      src="logo.png"
+    />
+  </a>
   <a
     className="MuiTypography-root-4 MuiTypography-h6-21 MuiTypography-colorInherit-33 Logo-title-3"
     href="/"

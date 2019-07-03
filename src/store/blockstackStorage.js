@@ -1,11 +1,12 @@
 /* eslint-disable no-console */
-import { getFile, putFile, isUserSignedIn } from 'blockstack'
+import { UserSession } from 'blockstack'
 
 const filename = 'entaxy.json'
 
 export const loadState = () => {
-  if (isUserSignedIn()) {
-    return getFile(filename)
+  const userSession = new UserSession()
+  if (userSession.isUserSignedIn()) {
+    return userSession.getFile(filename)
       .then(data => JSON.parse(data))
       .catch((error) => {
         console.log(`Error loading file ${filename}:`, error)
@@ -16,8 +17,15 @@ export const loadState = () => {
 }
 
 export const saveState = (state) => {
-  if (isUserSignedIn()) {
-    return putFile(filename, JSON.stringify(state))
+  const userSession = new UserSession()
+  if (userSession.isUserSignedIn()) {
+    return userSession.putFile(filename, JSON.stringify({
+      ...state,
+      settings: {
+        ...state.settings,
+        snackbarMessage: null
+      }
+    }))
   }
   return undefined
 }

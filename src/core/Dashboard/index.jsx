@@ -13,7 +13,7 @@ import TableBody from '@material-ui/core/TableBody'
 import TableRow from '@material-ui/core/TableRow'
 import TableCell from '@material-ui/core/TableCell'
 import grey from '@material-ui/core/colors/grey'
-import { currencyFormatter, dateFormatter } from '../../util/stringFormatter'
+import { currencyFormatter } from '../../util/stringFormatter'
 import InstitutionIcon from '../../common/InstitutionIcon'
 
 const styles = theme => ({
@@ -65,23 +65,21 @@ const mapStateToProps = state => ({
   settings: state.settings,
   accounts: state.accounts,
   formatCurrency: currencyFormatter(state.settings.locale, state.settings.currency),
-  formatDate: dateFormatter(state.settings.locale),
   totalBalance: Object.values(state.accounts.byInstitution).reduce(
     (balance, institution) => balance + institution.balance,
     0
   )
 })
 
+// eslint-disable-next-line react/prefer-stateless-function
 export const DashboardComponent = ({
   classes,
   settings,
   accounts,
   formatCurrency,
-  formatDate,
   totalBalance
 }) => {
   const userHasAccounts = Object.keys(accounts.byInstitution).length > 0
-
   return (
     <Grid container>
       <Grid container justify="flex-end" className={classes.root}>
@@ -117,21 +115,23 @@ export const DashboardComponent = ({
               <TableHead>
                 <TableRow>
                   <TableCell />
-                  <TableCell align="right">Last updated</TableCell>
                   <TableCell align="right">{settings.currency}</TableCell>
                 </TableRow>
               </TableHead>
-              {Object.keys(accounts.byInstitution).map(institution => (
+              {Object.keys(accounts.byInstitution).sort().map(institution => (
                 Object.values(accounts.byInstitution[institution].groups).map(accountGroup => (
                   <TableBody key={accountGroup.id}>
                     <TableRow>
                       <TableCell>
                         <span className={classes.institutionWrapper}>
-                          <InstitutionIcon institution={institution} size="small" className={classes.institutionIcon} />
+                          <InstitutionIcon
+                            institution={institution}
+                            size="small"
+                            className={classes.institutionIcon}
+                          />
                           <Typography variant="subtitle2">{institution}</Typography>
                         </span>
                       </TableCell>
-                      <TableCell />
                       <TableCell align="right">
                         <Typography variant="subtitle2">
                           {formatCurrency(accountGroup.balance)}
@@ -145,8 +145,7 @@ export const DashboardComponent = ({
                           <TableCell>
                             <Typography className={classes.accountName}>{account.name}</Typography>
                           </TableCell>
-                          <TableCell align="right">{formatDate(new Date('01/01/2018'))}</TableCell>
-                          <TableCell align="right">{formatCurrency(account.currentBalance)}</TableCell>
+                          <TableCell align="right">{formatCurrency(account.currentBalance.localCurrency)}</TableCell>
                         </TableRow>
                       )
                     })}
@@ -166,7 +165,6 @@ DashboardComponent.propTypes = {
   settings: PropTypes.object.isRequired,
   accounts: PropTypes.object.isRequired,
   formatCurrency: PropTypes.func.isRequired,
-  formatDate: PropTypes.func.isRequired,
   totalBalance: PropTypes.number.isRequired
 }
 

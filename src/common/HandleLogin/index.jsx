@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { isSignInPending } from 'blockstack'
+import { UserSession } from 'blockstack'
 import { handleBlockstackLogin } from '../../store/user/actions'
 
 const mapDispatchToProps = (dispatch) => {
@@ -10,7 +10,8 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export const HandleLoginComponent = ({ history, handlePendingSignIn }) => {
-  if (isSignInPending()) {
+  const userSession = new UserSession()
+  if (userSession.isSignInPending()) {
     handlePendingSignIn().then(() => {
       history.push('/dashboard')
     })

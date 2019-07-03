@@ -163,7 +163,7 @@ exports[`TransactionsToolbar matches snapshot with some selected transactions 1`
       className="MuiTypography-root-10 MuiTypography-subtitle1-28 MuiTypography-colorInherit-39"
     >
       2
-      selected
+       selected
     </h6>
   </div>
   <div

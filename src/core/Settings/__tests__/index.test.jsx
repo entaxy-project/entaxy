@@ -6,6 +6,7 @@ import { SettingsComponent } from '..'
 jest.mock('../form', () => 'SettingsForm')
 const mochSaveSettings = jest.fn()
 const mochDeleteAllData = jest.fn()
+const mochShowSnackbar = jest.fn()
 
 describe('Settings', () => {
   it('matches snapshot with no accounts and no selected accountId', () => {
@@ -15,6 +16,7 @@ describe('Settings', () => {
         classes={{}}
         deleteAllData={mochDeleteAllData}
         saveSettings={mochSaveSettings}
+        showSnackbarMessage={mochShowSnackbar}
       />
     ))
     expect(component.toJSON()).toMatchSnapshot()
@@ -28,15 +30,15 @@ describe('Settings', () => {
         classes={{}}
         deleteAllData={mochDeleteAllData}
         saveSettings={mochSaveSettings}
+        showSnackbarMessage={mochShowSnackbar}
       />
     ))
     const instance = wrapper.instance()
 
     it('saves settings and shows the snackbar', async () => {
-      expect(wrapper.state('openSnackbar')).toBe(false)
       await instance.handleSave()
       expect(mochSaveSettings).toHaveBeenCalled()
-      expect(wrapper.state('openSnackbar')).toBe(true)
+      expect(mochShowSnackbar).toHaveBeenCalledWith({ status: 'success', text: 'Your settings have been saved' })
     })
 
     it('deletes all data', async () => {
@@ -48,12 +50,6 @@ describe('Settings', () => {
     it('cancels and returns to dashboard', async () => {
       instance.handleCancel()
       expect(mochHistoryPush).toHaveBeenCalledWith('/dashboard')
-    })
-
-    it('closes the snackbar', async () => {
-      wrapper.setState({ openSnackbar: true })
-      instance.handleCloseSnackbar()
-      expect(wrapper.state('openSnackbar')).toBe(false)
     })
   })
 })

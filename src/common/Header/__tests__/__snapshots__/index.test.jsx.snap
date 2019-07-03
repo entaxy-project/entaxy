@@ -13,11 +13,16 @@ exports[`Header matches snapshot 1`] = `
       <div
         className="Logo-logo-44"
       >
-        <img
-          alt="Entaxy logo"
-          className="Logo-image-45"
-          src="logo.png"
-        />
+        <a
+          href="/"
+          onClick={[Function]}
+        >
+          <img
+            alt="Entaxy logo"
+            className="Logo-image-45"
+            src="logo.png"
+          />
+        </a>
         <a
           className="MuiTypography-root-47 MuiTypography-h6-64 MuiTypography-colorInherit-76 Logo-title-46"
           href="/"

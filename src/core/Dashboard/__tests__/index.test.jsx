@@ -9,6 +9,20 @@ import { initialState as accountsInitialState } from '../../../store/accounts/re
 import { initialState as settingsInitialState } from '../../../store/settings/reducer'
 
 jest.mock('../../../common/InstitutionIcon/importLogos', () => [])
+// // Mock call to alphavantage in fetchExchangeRates
+// window.fetch = jest.fn().mockImplementation(() => (
+//   Promise.resolve(new window.Response(
+//     JSON.stringify({
+//       'Realtime Currency Exchange Rate': {
+//         '6. Last Refreshed': '2018-01-01',
+//         '5. Exchange Rate': 1
+//       }
+//     }), {
+//       status: 200,
+//       headers: { 'Content-type': 'application/json' }
+//     }
+//   ))
+// ))
 
 const accounts = [{
   description: 'Checking',
@@ -48,9 +62,12 @@ describe('Dashboard', () => {
     expect(wrapper.debug()).toMatchSnapshot()
 
     const component = wrapper.findWhere(node => node.name() === 'DashboardComponent')
-    expect(component.props().settings).toEqual(settingsInitialState)
+    expect(component.props().settings).toEqual({
+      ...settingsInitialState,
+      snackbarMessage: { status: 'success', text: 'Account created' }
+    })
     expect(component.props().accounts).toEqual(store.getState().accounts)
-    expect(component.props().totalBalance).toEqual(10)
+    expect(component.props().totalBalance).toEqual(0)
 
     expect(store.getState().settings.locale).toBe('en-US')
     expect(component.props().formatCurrency(10000)).toEqual('$10,000.00')
@@ -73,7 +90,7 @@ describe('Dashboard', () => {
     const component = wrapper.findWhere(node => node.name() === 'DashboardComponent')
     expect(component.props().settings).toEqual(store.getState().settings)
     expect(component.props().accounts).toEqual(store.getState().accounts)
-    expect(component.props().totalBalance).toEqual(20)
+    expect(component.props().totalBalance).toEqual(accounts[1].openingBalance)
     expect(component.props().formatCurrency(10000)).toEqual('€10,000.00')
   })
 })

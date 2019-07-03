@@ -1,10 +1,15 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
-import * as blockstack from 'blockstack'
+import { UserSession } from 'blockstack'
 import { HandleLoginComponent } from '..'
+import { blockstackUserSession } from '../../../../mocks/BlockstackMock'
 
-jest.mock('blockstack', () => {
-  return require('../../../../mocks/BlockstackMock')
+jest.mock('blockstack')
+UserSession.mockImplementation(() => blockstackUserSession)
+
+beforeEach(() => {
+  jest.resetModules()
+  jest.clearAllMocks()
 })
 
 describe('HandleLogin', () => {
@@ -19,13 +24,12 @@ describe('HandleLogin', () => {
         history={{}}
       />
     ))
-    expect(mochHandlePendingSignIn).not.toHaveBeenCalled()
+    expect(blockstackUserSession.handlePendingSignIn).not.toHaveBeenCalled()
     expect(component.toJSON()).toMatchSnapshot()
   })
 
   it('matches snapshot with logged in user profile', () => {
-    const isSignInPendingSpy = jest.spyOn(blockstack, 'isSignInPending')
-    isSignInPendingSpy.mockReturnValue(true)
+    blockstackUserSession.isSignInPending.mockReturnValue(true)
 
     const component = renderer.create((
       <HandleLoginComponent

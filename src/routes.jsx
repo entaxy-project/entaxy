@@ -22,6 +22,7 @@ import ImportTransactions from './core/Accounts/ImportTransactions'
 import NewImportFromInstitution from './core/ImportFromInstitution/new'
 import EditImportFromInstitution from './core/ImportFromInstitution/edit'
 import Header from './common/Header'
+import SnackbarMessage from './common/SnackbarMessage'
 
 const mapStateToProps = ({ user, settings, accounts }) => {
   return { user, settings, accounts }
@@ -63,7 +64,6 @@ export class RoutesComponent extends React.Component {
 
   authenticatedEditImportFromInstitution = this.loginRequired(EditImportFromInstitution, { accountRequired: true })
 
-
   render() {
     return (
       <div>
@@ -98,6 +98,7 @@ export class RoutesComponent extends React.Component {
             </Switch>
           )}
         </BrowserRouter>
+        <SnackbarMessage />
         <LoadingOverlay />
       </div>
     )

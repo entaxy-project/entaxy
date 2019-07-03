@@ -3,6 +3,7 @@ import types from './types'
 
 export const initialState = {
   overlayMessage: null,
+  snackbarMessage: null,
   currency: 'USD',
   locale: window.navigator.language || 'en-US',
   portfolioFilters: {
@@ -17,6 +18,10 @@ export default (state = initialState, action) => {
       return { ...state, overlayMessage: action.payload }
     case types.HIDE_OVERLAY:
       return { ...state, overlayMessage: null }
+    case types.SHOW_SNACKBAR:
+      return { ...state, snackbarMessage: action.payload }
+    case types.HIDE_SNACKBAR:
+      return { ...state, snackbarMessage: null }
     case types.LOAD_SETTINGS:
       return action.payload || initialState
     case types.UPDATE_SETTINGS:

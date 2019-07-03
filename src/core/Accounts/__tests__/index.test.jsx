@@ -2,7 +2,7 @@ import React from 'react'
 import renderer from 'react-test-renderer'
 import { BrowserRouter } from 'react-router-dom'
 import { AccountsComponent } from '..'
-import { initialState } from '../../../store/accounts/reducer'
+import { initialState, groupByInstitution } from '../../../store/accounts/reducer'
 import { initialState as settingsInitialState } from '../../../store/settings/reducer'
 
 jest.mock('../../../common/InstitutionIcon', () => 'InstitutionIcon')
@@ -15,7 +15,7 @@ const accounts = {
       description: 'Checking',
       institution: 'TD',
       currency: 'CAD',
-      currentBalance: 10
+      currentBalance: { accountCurrency: 1000, localCurrency: 1000 }
     },
     2: {
       id: '2',
@@ -23,7 +23,7 @@ const accounts = {
       description: 'Savings',
       institution: 'TD',
       currency: 'CAD',
-      currentBalance: 10
+      currentBalance: { accountCurrency: 2000, localCurrency: 2000 }
     },
     3: {
       id: '3',
@@ -31,27 +31,15 @@ const accounts = {
       description: 'Checking',
       institution: 'BMO',
       currency: 'USD', // Different currency
-      currentBalance: 10
-    },
-    4: {
-      id: '4',
-      groupId: 'yzv',
-      description: 'BTC wallet',
-      institution: 'Coinbase',
-      currency: 'BTC',
-      currentBalance: 10,
-      type: 'wallet'
+      currentBalance: { accountCurrency: 3000, localCurrency: 3000 }
     }
   },
-  byInstitution: {
-    TD: { groups: { 0: { type: 'default', accountIds: ['1', '2'], balance: 20 } } },
-    BMO: { groups: { 0: { type: 'default', accountIds: ['3'], balance: 10 } } },
-    Coinbase: { groups: { xyz: { type: 'api', accountIds: ['4'], balance: 10 } } }
-  }
+  byInstitution: {}
 }
+accounts.byInstitution = groupByInstitution(accounts)
 
 // Make sure we start with a specific currency
-settingsInitialState.currency = 'USD'
+settingsInitialState.currency = 'XYZ'
 settingsInitialState.locale = 'en-US'
 
 describe('Accounts index (Left Nav)', () => {

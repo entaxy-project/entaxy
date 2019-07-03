@@ -120,9 +120,9 @@ export const ImportFromInstitutionFormComponent = ({
             className={classes.deleteButton}
             disabled={isSubmitting}
           >
-            Delete all
+            Delete all&nbsp;
             {accountGroup.accountIds.length}
-            accounts connected to
+            &nbsp;accounts connected to&nbsp;
             {institution}
           </Button>
         )}

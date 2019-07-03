@@ -43,13 +43,13 @@ export const groupByInstitution = ({ byId, byInstitution }) => {
         ...result,
         [institution]: {
           ...newInstitutionData,
-          balance: currentInstitutionData.balance + currentBalance,
+          balance: currentInstitutionData.balance + currentBalance.localCurrency,
           groups: {
             ...newInstitutionData.groups,
             [groupId]: {
               type: 'default',
               ...newGroupData,
-              balance: currentGroupData.balance + currentBalance,
+              balance: currentGroupData.balance + currentBalance.localCurrency,
               accountIds: [...newGroupData.accountIds, id]
             }
           }

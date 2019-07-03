@@ -52,7 +52,7 @@ exports[`Settings matches snapshot with no accounts and no selected accountId 1`
           </svg>
         </span>
         <span
-          className="MuiTouchRipple-root-191"
+          className="MuiTouchRipple-root-184"
         />
       </button>
     </div>

@@ -153,7 +153,6 @@ export class AccountFormComponent extends React.Component {
       handleCancel,
       account
     } = this.props
-
     return (
       <Grid container direction="row" justify="center">
         <Paper className={classes.root}>
@@ -322,14 +321,15 @@ export default compose(
         .required('Please select the currency of this account')
         .nullable()
     }),
-    handleSubmit: (values, { props, setSubmitting }) => {
+    handleSubmit: async (values, { props, setSubmitting }) => {
       setSubmitting(true)
-      props.handleSave({
+      await props.handleSave({
         ...values,
         institution: values.institution.value,
         openingBalanceDate: parse(values.openingBalanceDate).getTime(),
         currency: values.currency.value
       })
+      setSubmitting(false)
     }
   })
 )(AccountFormComponent)

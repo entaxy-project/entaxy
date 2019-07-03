@@ -7,6 +7,20 @@ import { createAccount } from '../../../../store/accounts/actions'
 import ImportTransactions, { ImportTransactionsComponent } from '..'
 
 jest.mock('../../../../common/InstitutionIcon/importLogos', () => [])
+// Mock call to alphavantage in fetchExchangeRates
+window.fetch = jest.fn().mockImplementation(() => (
+  Promise.resolve(new window.Response(
+    JSON.stringify({
+      'Realtime Currency Exchange Rate': {
+        '6. Last Refreshed': '2018-01-01',
+        '5. Exchange Rate': 1
+      }
+    }), {
+      status: 200,
+      headers: { 'Content-type': 'application/json' }
+    }
+  ))
+))
 
 const account = {
   institution: 'TD',
@@ -14,7 +28,10 @@ const account = {
   description: 'Checking',
   currency: 'CAD',
   openingBalance: 10,
-  currentBalance: 10
+  currentBalance: {
+    accountCurrency: 10,
+    localCurrency: null
+  }
 }
 
 describe('Import Transactions', () => {
@@ -43,6 +60,7 @@ describe('Import Transactions', () => {
 
   describe('Component methods', () => {
     const mochHistoryPush = jest.fn()
+    const mochShowSnackbar = jest.fn()
     let wrapper
     let instance
 
@@ -52,6 +70,7 @@ describe('Import Transactions', () => {
           account={account}
           classes={{}}
           history={{ push: mochHistoryPush }}
+          showSnackbarMessage={mochShowSnackbar}
           match={{ params: { accountId: account.id } }}
           saveTransactions={mockSaveTransactions}
         />
@@ -70,6 +89,7 @@ describe('Import Transactions', () => {
         expect(instance.setState({ transactions: importedTransactions }))
         await instance.handleSave({ name: 'new account' })
         expect(mockSaveTransactions).toHaveBeenCalledWith(account, transactions)
+        expect(mochShowSnackbar).toHaveBeenCalledWith({ status: 'success', text: '1 transaction imported' })
         expect(mochHistoryPush).toHaveBeenCalledWith(`/accounts/${account.id}/transactions`)
       })
 
