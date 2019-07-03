@@ -65,27 +65,22 @@ export const normalizeAccounts = accounts => (
     type: 'wallet', // TODO check for other types
     sourceId: account.id,
     name: account.name,
-    currency: account.native_balance.currency,
-    symbol: account.currency,
+    // currency: account.native_balance.currency,
+    currency: account.currency,
+    // symbol: account.currency,
     openingBalance: 0,
     openingBalanceDate: parse(account.created_at).getTime()
   }))
 )
 
 export const normalizeTransactions = transactions => (
-  transactions.map((transaction) => {
-    const nativeAmount = Big(transaction.native_amount.amount)
-    const amount = Big(transaction.amount.amount)
-
-    return {
-      sourceId: transaction.id,
-      description: [transaction.details.title, transaction.details.subtitle].join(' - '),
-      nativeAmount: parseFloat(nativeAmount),
-      amount: parseFloat(amount),
-      pricePerUnit: parseFloat(nativeAmount.div(amount).abs()),
-      createdAt: parse(transaction.created_at).getTime()
-    }
-  })
+  transactions.map(transaction => ({
+    sourceId: transaction.id,
+    description: [transaction.details.title, transaction.details.subtitle].join(' - '),
+    amount: parseFloat(Big(transaction.amount.amount)),
+    createdAt: parse(transaction.created_at).getTime()
+  }))
+  // localCurrency: parseFloat(Big(transaction.native_amount.amount))
 )
 
 const importData = async ({ apiKey, apiSecret }) => {

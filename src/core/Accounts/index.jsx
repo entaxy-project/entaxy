@@ -18,7 +18,7 @@ import SettingsIcon from '@material-ui/icons/Settings'
 import { NavLink } from 'react-router-dom'
 import grey from '@material-ui/core/colors/grey'
 import InstitutionIcon from '../../common/InstitutionIcon'
-import { currencyFormatter, decimalFormatter } from '../../util/stringFormatter'
+import { currencyFormatter } from '../../util/stringFormatter'
 
 const styles = theme => ({
   noAccounts: {
@@ -75,14 +75,6 @@ export const AccountsComponent = ({
   accountId
 }) => {
   const userHasAccounts = Object.keys(accounts.byInstitution).length > 0
-
-  const displayCurrency = (account) => {
-    if (account.type === 'wallet') {
-      return `${decimalFormatter(settings.locale, account.type)(account.currentBalance)} ${account.symbol}`
-    }
-    return currencyFormatter(settings.locale, account.currency)(account.currentBalance.accountCurrency)
-  }
-
   return (
     <List
       component="nav"
@@ -155,7 +147,9 @@ export const AccountsComponent = ({
                       >
                         <ListItemText
                           primary={account.name}
-                          secondary={displayCurrency(account)}
+                          secondary={
+                            currencyFormatter(settings.locale, account.currency)(account.currentBalance.accountCurrency)
+                          }
                         />
                         {accountGroup.type === 'default' && (
                           <ListItemSecondaryAction>

@@ -168,22 +168,22 @@ export class TransactionsTableComponent extends React.Component {
     })
   }
 
-  displayCurrency = ({ amount, nativeAmount }) => {
+  displayCurrency = ({ amount }) => {
     const {
-      classes,
-      account,
-      formatCurrency,
+      // classes,
+      // account,
+      // formatCurrency,
       formatDecimal
     } = this.props
-    if (account.type === 'wallet') {
-      return (
-        <div>
-          {formatDecimal(amount)}
-          {account.symbol}
-          <small className={classes.nativeAmount}>{formatCurrency(nativeAmount)}</small>
-        </div>
-      )
-    }
+    // if (account.type === 'wallet') {
+    //   return (
+    //     <div>
+    //       {formatDecimal(amount)}
+    //       {account.symbol}
+    //       <small className={classes.nativeAmount}>{formatCurrency(nativeAmount)}</small>
+    //     </div>
+    //   )
+    // }
     return formatDecimal(amount)
   }
 

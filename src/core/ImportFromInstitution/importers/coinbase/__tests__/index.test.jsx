@@ -28,8 +28,7 @@ describe('Coinbase API importer', () => {
       type: 'wallet',
       sourceId: accounts[0].id,
       name: accounts[0].name,
-      currency: accounts[0].native_balance.currency,
-      symbol: accounts[0].currency,
+      currency: accounts[0].currency,
       openingBalance: 0,
       openingBalanceDate: parse(accounts[0].created_at).getTime()
     }])
@@ -37,16 +36,10 @@ describe('Coinbase API importer', () => {
 
   it('should normalizeTransactions', () => {
     expect(normalizeTransactions([])).toEqual([])
-
-    const nativeAmount = Big(transactions[0].native_amount.amount)
-    const amount = Big(transactions[0].amount.amount)
-
     expect(normalizeTransactions(transactions)).toEqual([{
-      amount: parseFloat(amount),
+      amount: parseFloat(Big(transactions[0].amount.amount)),
       sourceId: transactions[0].id,
       description: [transactions[0].details.title, transactions[0].details.subtitle].join(' - '),
-      nativeAmount: parseFloat(nativeAmount),
-      pricePerUnit: parseFloat(nativeAmount.div(amount).abs()),
       createdAt: parse(transactions[0].created_at).getTime()
     }])
   })
