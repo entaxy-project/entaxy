@@ -52,7 +52,7 @@ describe('Dashboard', () => {
     expect(component.props().formatCurrency(10000)).toEqual('$10,000.00')
   })
 
-  it.skip('matches snapshot with one account', async () => {
+  it('matches snapshot with one account', async () => {
     accounts[0].id = await store.dispatch(createAccount(accounts[0]))
     const wrapper = mount((
       <Provider store={store}>
@@ -63,7 +63,8 @@ describe('Dashboard', () => {
 
     const component = wrapper.findWhere(node => node.name() === 'DashboardComponent')
     expect(component.props().settings).toEqual({
-      ...settingsInitialState
+      ...settingsInitialState,
+      snackbarMessage: { status: 'success', text: 'Account created' }
     })
     expect(component.props().accounts).toEqual(store.getState().accounts)
     expect(component.props().totalBalance).toEqual(0)
@@ -75,7 +76,7 @@ describe('Dashboard', () => {
     expect(component.props().formatCurrency(10000)).toEqual('$10,000.00')
   })
 
-  it.skip('matches snapshot with two accounts in a different currency', async () => {
+  it('matches snapshot with two accounts in a different currency', async () => {
     accounts[1].id = await store.dispatch(createAccount(accounts[1]))
     await store.dispatch(updateSettings({ locale: 'en-UK', currency: 'EUR' }))
 
