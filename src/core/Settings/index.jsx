@@ -42,6 +42,7 @@ export class SettingsComponent extends React.Component {
   handleSave = async (settings) => {
     await this.props.saveSettings(settings)
     this.props.showSnackbarMessage({ text: 'Your settings have been saved', status: 'success' })
+    this.props.history.push('/dashboard')
   }
 
   handleResetData = async () => {

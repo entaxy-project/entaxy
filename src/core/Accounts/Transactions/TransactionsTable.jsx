@@ -25,6 +25,12 @@ const styles = theme => ({
     fontSize: theme.typography.subtitle2.fontSize,
     color: theme.palette.text.disabled
   },
+  openingBalance: {
+    fontFamily: theme.typography.subtitle2.fontFamily,
+    fontWeight: theme.typography.subtitle2.fontWeight,
+    fontSize: theme.typography.subtitle2.fontSize,
+    color: theme.palette.text.disabled
+  },
   row: {
     borderBottom: '1px solid #e0e0e0',
     fontFamily: theme.typography.subtitle2.fontFamily,
@@ -162,35 +168,17 @@ export class TransactionsTableComponent extends React.Component {
   rowClassName = ({ index }, filteredTransactions, classes) => {
     return classNames({
       [classes.headerRow]: index < 0,
+      [classes.openingBalance]: index >= 0 && filteredTransactions[index].id === undefined,
       [classes.rowWithError]: (index >= 0 && this.transactionHasErrors(filteredTransactions[index])),
       [classes.row]: index >= 0,
       [classes.oddRow]: index % 2 !== 0
     })
   }
 
-  displayCurrency = ({ amount }) => {
-    const {
-      // classes,
-      // account,
-      // formatCurrency,
-      formatDecimal
-    } = this.props
-    // if (account.type === 'wallet') {
-    //   return (
-    //     <div>
-    //       {formatDecimal(amount)}
-    //       {account.symbol}
-    //       <small className={classes.nativeAmount}>{formatCurrency(nativeAmount)}</small>
-    //     </div>
-    //   )
-    // }
-    return formatDecimal(amount)
-  }
-
   renderCellAmount = ({ cellData }) => (
     {
-      positiveAmount: cellData.amount > 0 ? this.displayCurrency(cellData) : null,
-      negativeAmount: cellData.amount < 0 ? this.displayCurrency(cellData) : null
+      positiveAmount: cellData.amount > 0 ? this.props.formatDecimal(cellData.amount) : null,
+      negativeAmount: cellData.amount < 0 ? this.props.formatDecimal(cellData.amount) : null
     }[cellData.restrictTo]
   )
 
@@ -257,7 +245,7 @@ export class TransactionsTableComponent extends React.Component {
                       />
                     </span>
                   )}
-                  cellRenderer={({ cellData }) => (
+                  cellRenderer={({ cellData }) => cellData !== undefined && (
                     <span
                       className="ReactVirtualized__Table__headerTruncatedText"
                       key="label"

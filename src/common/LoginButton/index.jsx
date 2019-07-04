@@ -101,6 +101,12 @@ export class LoginButtonComponent extends React.Component {
                       </ListItemIcon>
                       <ListItemText primary="Settings" />
                     </MenuItem>
+                    <MenuItem component={NavLink} to="/budget-categories">
+                      <ListItemIcon>
+                        <Settings />
+                      </ListItemIcon>
+                      <ListItemText primary="Budget Categories" />
+                    </MenuItem>
                     <MenuItem onClick={handleLogout}>
                       <ListItemIcon>
                         <Icon

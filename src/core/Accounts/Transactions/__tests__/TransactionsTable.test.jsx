@@ -168,23 +168,6 @@ describe('TransactionsTable', () => {
       })
     })
 
-    describe('displayCurrency', () => {
-      it('should formatDecimal for fiat account', () => {
-        expect(instance.props.account.type).toEqual(undefined)
-        instance.displayCurrency({ amount: 10, nativeAmount: 12 })
-        expect(mochFormatCurrency).not.toHaveBeenCalledWith(10)
-        expect(mochFormatDecimal).toHaveBeenCalledWith(10)
-      })
-
-      it('should displayCurrency for wallet account', () => {
-        instance.props.account.type = 'wallet'
-        expect(instance.props.account.type).toEqual('wallet')
-        instance.displayCurrency({ amount: 10, nativeAmount: 12 })
-        expect(mochFormatCurrency).not.toHaveBeenCalledWith(10)
-        expect(mochFormatDecimal).toHaveBeenCalledWith(10)
-      })
-    })
-
     describe('renderCellAmount', () => {
       it('should render for positive amounts', () => {
         expect(instance.renderCellAmount({ cellData: { amount: 1, restrictTo: 'positiveAmount' } })).not.toBeNull()

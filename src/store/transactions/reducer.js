@@ -36,12 +36,6 @@ export default (state = initialState, action) => {
         ...state,
         list: [...state.list, ...action.payload]
       }
-    case types.UPDATE_SORT_BY:
-      return {
-        ...state,
-        sortBy: action.payload.sortBy,
-        sortDirection: action.payload.sortDirection
-      }
     default:
       return state
   }

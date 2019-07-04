@@ -6,24 +6,24 @@ exports[`ImportedResults matches snapshot with errors 1`] = `
     className="TransactionsTableComponent-tableWrapper-1 "
   >
     <div
-      className="MuiToolbar-root-13 MuiToolbar-regular-15 MuiToolbar-gutters-14 TableToolbar-root-8"
+      className="MuiToolbar-root-14 MuiToolbar-regular-16 MuiToolbar-gutters-15 TableToolbar-root-9"
     >
       <div
-        className="TableToolbar-title-12"
+        className="TableToolbar-title-13"
       >
         <div>
           <h6
-            className="MuiTypography-root-17 MuiTypography-h6-34"
+            className="MuiTypography-root-18 MuiTypography-h6-35"
           >
             Found 3 transactions
           </h6>
           <span
-            className="MuiTypography-root-17 MuiTypography-caption-27"
+            className="MuiTypography-root-18 MuiTypography-caption-28"
           >
             <div>
               <svg
                 aria-hidden="true"
-                className="MuiSvgIcon-root-119"
+                className="MuiSvgIcon-root-120"
                 focusable="false"
                 role="presentation"
                 viewBox="0 0 24 24"
@@ -43,19 +43,19 @@ exports[`ImportedResults matches snapshot with errors 1`] = `
         </div>
       </div>
       <div
-        className="TableToolbar-spacer-10"
+        className="TableToolbar-spacer-11"
       />
       <div
-        className="TableToolbar-actions-11"
+        className="TableToolbar-actions-12"
       >
         <label
-          className="MuiFormControlLabel-root-53 ResultsToolbarComponent-chekbox-7"
+          className="MuiFormControlLabel-root-54 ResultsToolbarComponent-chekbox-8"
         >
           <span
-            className="MuiSwitch-root-59"
+            className="MuiSwitch-root-60"
           >
             <span
-              className="MuiButtonBase-root-78 MuiIconButton-root-72 MuiPrivateSwitchBase-root-68 MuiSwitch-switchBase-62 MuiSwitch-colorSecondary-65"
+              className="MuiButtonBase-root-79 MuiIconButton-root-73 MuiPrivateSwitchBase-root-69 MuiSwitch-switchBase-63 MuiSwitch-colorSecondary-66"
               onBlur={[Function]}
               onContextMenu={[Function]}
               onFocus={[Function]}
@@ -70,29 +70,29 @@ exports[`ImportedResults matches snapshot with errors 1`] = `
               tabIndex={null}
             >
               <span
-                className="MuiIconButton-label-77"
+                className="MuiIconButton-label-78"
               >
                 <span
-                  className="MuiSwitch-icon-60"
+                  className="MuiSwitch-icon-61"
                 />
                 <input
                   checked={false}
-                  className="MuiPrivateSwitchBase-input-71"
+                  className="MuiPrivateSwitchBase-input-72"
                   onChange={[Function]}
                   type="checkbox"
                   value="showOnlyErrors"
                 />
               </span>
               <span
-                className="MuiTouchRipple-root-112"
+                className="MuiTouchRipple-root-113"
               />
             </span>
             <span
-              className="MuiSwitch-bar-67"
+              className="MuiSwitch-bar-68"
             />
           </span>
           <span
-            className="MuiTypography-root-17 MuiTypography-body2-25 MuiFormControlLabel-label-58"
+            className="MuiTypography-root-18 MuiTypography-body2-26 MuiFormControlLabel-label-59"
           >
             Show only errors
           </span>
@@ -116,7 +116,7 @@ exports[`ImportedResults matches snapshot with errors 1`] = `
         style={Object {}}
       >
         <div
-          className="ReactVirtualized__Table__headerRow TransactionsTableComponent-headerRow-2 TransactionsTableComponent-oddRow-4"
+          className="ReactVirtualized__Table__headerRow TransactionsTableComponent-headerRow-2 TransactionsTableComponent-oddRow-5"
           role="row"
           style={
             Object {
@@ -241,6 +241,7 @@ exports[`ImportedResults matches snapshot with errors 1`] = `
           >
             <span
               className="ReactVirtualized__Table__headerTruncatedText"
+              title={null}
             />
           </div>
         </div>
@@ -269,11 +270,11 @@ exports[`ImportedResults matches snapshot with errors 1`] = `
     </div>
   </div>
   <hr
-    className="MuiDivider-root-81"
+    className="MuiDivider-root-82"
   />
   <div>
     <button
-      className="MuiButtonBase-root-78 MuiButton-root-86 MuiButton-text-88 MuiButton-textSecondary-90 MuiButton-flat-91 MuiButton-flatSecondary-93"
+      className="MuiButtonBase-root-79 MuiButton-root-87 MuiButton-text-89 MuiButton-textSecondary-91 MuiButton-flat-92 MuiButton-flatSecondary-94"
       disabled={false}
       onBlur={[Function]}
       onClick={[MockFunction]}
@@ -291,16 +292,16 @@ exports[`ImportedResults matches snapshot with errors 1`] = `
       type="button"
     >
       <span
-        className="MuiButton-label-87"
+        className="MuiButton-label-88"
       >
         Save Transactions
       </span>
       <span
-        className="MuiTouchRipple-root-112"
+        className="MuiTouchRipple-root-113"
       />
     </button>
     <button
-      className="MuiButtonBase-root-78 MuiButton-root-86 MuiButton-text-88 MuiButton-textSecondary-90 MuiButton-flat-91 MuiButton-flatSecondary-93"
+      className="MuiButtonBase-root-79 MuiButton-root-87 MuiButton-text-89 MuiButton-textSecondary-91 MuiButton-flat-92 MuiButton-flatSecondary-94"
       disabled={false}
       onBlur={[Function]}
       onClick={[MockFunction]}
@@ -318,12 +319,12 @@ exports[`ImportedResults matches snapshot with errors 1`] = `
       type="button"
     >
       <span
-        className="MuiButton-label-87"
+        className="MuiButton-label-88"
       >
         Back
       </span>
       <span
-        className="MuiTouchRipple-root-112"
+        className="MuiTouchRipple-root-113"
       />
     </button>
   </div>
@@ -336,38 +337,38 @@ exports[`ImportedResults matches snapshot without errors 1`] = `
     className="TransactionsTableComponent-tableWrapper-1 "
   >
     <div
-      className="MuiToolbar-root-13 MuiToolbar-regular-15 MuiToolbar-gutters-14 TableToolbar-root-8"
+      className="MuiToolbar-root-14 MuiToolbar-regular-16 MuiToolbar-gutters-15 TableToolbar-root-9"
     >
       <div
-        className="TableToolbar-title-12"
+        className="TableToolbar-title-13"
       >
         <div>
           <h6
-            className="MuiTypography-root-17 MuiTypography-h6-34"
+            className="MuiTypography-root-18 MuiTypography-h6-35"
           >
             Found 2 transactions
           </h6>
           <span
-            className="MuiTypography-root-17 MuiTypography-caption-27"
+            className="MuiTypography-root-18 MuiTypography-caption-28"
           >
             No errors
           </span>
         </div>
       </div>
       <div
-        className="TableToolbar-spacer-10"
+        className="TableToolbar-spacer-11"
       />
       <div
-        className="TableToolbar-actions-11"
+        className="TableToolbar-actions-12"
       >
         <label
-          className="MuiFormControlLabel-root-53 ResultsToolbarComponent-chekbox-7"
+          className="MuiFormControlLabel-root-54 ResultsToolbarComponent-chekbox-8"
         >
           <span
-            className="MuiSwitch-root-59"
+            className="MuiSwitch-root-60"
           >
             <span
-              className="MuiButtonBase-root-78 MuiIconButton-root-72 MuiPrivateSwitchBase-root-68 MuiSwitch-switchBase-62 MuiSwitch-colorSecondary-65"
+              className="MuiButtonBase-root-79 MuiIconButton-root-73 MuiPrivateSwitchBase-root-69 MuiSwitch-switchBase-63 MuiSwitch-colorSecondary-66"
               onBlur={[Function]}
               onContextMenu={[Function]}
               onFocus={[Function]}
@@ -382,29 +383,29 @@ exports[`ImportedResults matches snapshot without errors 1`] = `
               tabIndex={null}
             >
               <span
-                className="MuiIconButton-label-77"
+                className="MuiIconButton-label-78"
               >
                 <span
-                  className="MuiSwitch-icon-60"
+                  className="MuiSwitch-icon-61"
                 />
                 <input
                   checked={false}
-                  className="MuiPrivateSwitchBase-input-71"
+                  className="MuiPrivateSwitchBase-input-72"
                   onChange={[Function]}
                   type="checkbox"
                   value="showOnlyErrors"
                 />
               </span>
               <span
-                className="MuiTouchRipple-root-112"
+                className="MuiTouchRipple-root-113"
               />
             </span>
             <span
-              className="MuiSwitch-bar-67"
+              className="MuiSwitch-bar-68"
             />
           </span>
           <span
-            className="MuiTypography-root-17 MuiTypography-body2-25 MuiFormControlLabel-label-58"
+            className="MuiTypography-root-18 MuiTypography-body2-26 MuiFormControlLabel-label-59"
           >
             Show only errors
           </span>
@@ -428,7 +429,7 @@ exports[`ImportedResults matches snapshot without errors 1`] = `
         style={Object {}}
       >
         <div
-          className="ReactVirtualized__Table__headerRow TransactionsTableComponent-headerRow-2 TransactionsTableComponent-oddRow-4"
+          className="ReactVirtualized__Table__headerRow TransactionsTableComponent-headerRow-2 TransactionsTableComponent-oddRow-5"
           role="row"
           style={
             Object {
@@ -553,6 +554,7 @@ exports[`ImportedResults matches snapshot without errors 1`] = `
           >
             <span
               className="ReactVirtualized__Table__headerTruncatedText"
+              title={null}
             />
           </div>
         </div>
@@ -581,11 +583,11 @@ exports[`ImportedResults matches snapshot without errors 1`] = `
     </div>
   </div>
   <hr
-    className="MuiDivider-root-81"
+    className="MuiDivider-root-82"
   />
   <div>
     <button
-      className="MuiButtonBase-root-78 MuiButton-root-86 MuiButton-text-88 MuiButton-textSecondary-90 MuiButton-flat-91 MuiButton-flatSecondary-93"
+      className="MuiButtonBase-root-79 MuiButton-root-87 MuiButton-text-89 MuiButton-textSecondary-91 MuiButton-flat-92 MuiButton-flatSecondary-94"
       disabled={false}
       onBlur={[Function]}
       onClick={[MockFunction]}
@@ -603,16 +605,16 @@ exports[`ImportedResults matches snapshot without errors 1`] = `
       type="button"
     >
       <span
-        className="MuiButton-label-87"
+        className="MuiButton-label-88"
       >
         Save Transactions
       </span>
       <span
-        className="MuiTouchRipple-root-112"
+        className="MuiTouchRipple-root-113"
       />
     </button>
     <button
-      className="MuiButtonBase-root-78 MuiButton-root-86 MuiButton-text-88 MuiButton-textSecondary-90 MuiButton-flat-91 MuiButton-flatSecondary-93"
+      className="MuiButtonBase-root-79 MuiButton-root-87 MuiButton-text-89 MuiButton-textSecondary-91 MuiButton-flat-92 MuiButton-flatSecondary-94"
       disabled={false}
       onBlur={[Function]}
       onClick={[MockFunction]}
@@ -630,12 +632,12 @@ exports[`ImportedResults matches snapshot without errors 1`] = `
       type="button"
     >
       <span
-        className="MuiButton-label-87"
+        className="MuiButton-label-88"
       >
         Back
       </span>
       <span
-        className="MuiTouchRipple-root-112"
+        className="MuiTouchRipple-root-113"
       />
     </button>
   </div>

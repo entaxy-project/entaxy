@@ -97,14 +97,4 @@ describe('transaction reducer', () => {
       list: [...state.list, ...payload]
     })
   })
-
-  it('should handle UPDATE_SORT_BY', () => {
-    const type = types.UPDATE_SORT_BY
-    const payload = {
-      sortBy: 'account',
-      sortDirection: 'ASC'
-
-    }
-    expect(transactionReducer(initialState, { type, payload })).toEqual({ ...initialState, ...payload })
-  })
 })

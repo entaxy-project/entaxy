@@ -53,7 +53,11 @@ describe('transactions actions', () => {
       expect(store.getActions()).toEqual([
         {
           type: 'CREATE_TRANSACTION',
-          payload: { ...transaction, id: 1 }
+          payload: {
+            ...transaction,
+            id: 1,
+            createdAt: transaction.createdAt + 1000
+          }
         }, {
           // NOTE: UPDATE_ACCOUNT is called but account balance is not changed
           // because test library doesn't actually update the store
@@ -83,7 +87,12 @@ describe('transactions actions', () => {
       expect(store.getActions()).toEqual([
         {
           type: 'UPDATE_TRANSACTION',
-          payload: { ...transaction, id: 1, amount: 100 }
+          payload: {
+            ...transaction,
+            id: 1,
+            amount: 100,
+            createdAt: transaction.createdAt + 1000
+          }
         }, {
           // NOTE: UPDATE_ACCOUNT is called but account balance is not changed
           // because test library doesn't actually update the store

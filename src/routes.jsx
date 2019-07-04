@@ -14,6 +14,7 @@ import LoadingOverlay from './common/LoadingOverlay'
 import Taxes from './core/Taxes'
 import Portfolios from './core/Portfolios'
 import Settings from './core/Settings'
+import BudgetCategories from './core/BudgetCategories'
 import Dashboard from './core/Dashboard'
 import Transactions from './core/Accounts/Transactions'
 import NewAccount from './core/Accounts/new'
@@ -50,6 +51,8 @@ export class RoutesComponent extends React.Component {
 
   authenticatedSettings = this.loginRequired(Settings)
 
+  authenticatedBudgetCategories = this.loginRequired(BudgetCategories)
+
   authenticatedDashBoard = this.loginRequired(Dashboard)
 
   authenticatedNewAccount = this.loginRequired(NewAccount)
@@ -75,6 +78,7 @@ export class RoutesComponent extends React.Component {
               <Route exact path="/taxes" component={Taxes} />
               <Route exact path="/portfolio" component={Portfolios} />
               <Route exact path="/settings" render={this.authenticatedSettings} />
+              <Route exact path="/budget-categories" render={this.authenticatedBudgetCategories} />
               <Route exact path="/dashboard" render={this.authenticatedDashBoard} />
               <Route exact path="/accounts/new" render={this.authenticatedNewAccount} />
               <Route exact path="/accounts/:accountId/edit" render={this.authenticatedEditAccount} />

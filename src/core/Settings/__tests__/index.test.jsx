@@ -39,6 +39,7 @@ describe('Settings', () => {
       await instance.handleSave()
       expect(mochSaveSettings).toHaveBeenCalled()
       expect(mochShowSnackbar).toHaveBeenCalledWith({ status: 'success', text: 'Your settings have been saved' })
+      expect(mochHistoryPush).toHaveBeenCalledWith('/dashboard')
     })
 
     it('deletes all data', async () => {

@@ -12,13 +12,27 @@ export const afterTransactionsChanged = account => async (dispatch) => {
 }
 
 export const createTransaction = (account, transaction) => async (dispatch) => {
-  dispatch({ type: types.CREATE_TRANSACTION, payload: { ...transaction, id: uuid(), accountId: account.id } })
+  dispatch({
+    type: types.CREATE_TRANSACTION,
+    payload: {
+      ...transaction,
+      id: uuid(),
+      accountId: account.id,
+      createdAt: transaction.createdAt + 1000 // Plus 1 second
+    }
+  })
   await dispatch(afterTransactionsChanged(account))
   dispatch(showSnackbar({ text: 'Transaction created', status: 'success' }))
 }
 
 export const updateTransaction = (account, transaction) => async (dispatch) => {
-  dispatch({ type: types.UPDATE_TRANSACTION, payload: transaction })
+  dispatch({
+    type: types.UPDATE_TRANSACTION,
+    payload: {
+      ...transaction,
+      createdAt: transaction.createdAt + 1000 // Plus 1 second
+    }
+  })
   await dispatch(afterTransactionsChanged(account))
   dispatch(showSnackbar({ text: 'Transaction updated', status: 'success' }))
 }
@@ -49,7 +63,11 @@ export const addTransactions = (account, transactions, options = { skipAfterChan
   return async (dispatch) => {
     dispatch({
       type: types.ADD_TRANSACTIONS,
-      payload: transactions.map(t => Object.assign(t, { id: uuid(), accountId: account.id }))
+      payload: transactions.map(t => Object.assign(t, {
+        id: uuid(),
+        accountId: account.id,
+        createdAt: t.createdAt + 1000 // Plus 1 second
+      }))
     })
     if (!skipAfterChange) {
       await dispatch(afterTransactionsChanged(account))

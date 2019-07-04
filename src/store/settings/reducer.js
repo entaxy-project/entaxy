@@ -1,11 +1,31 @@
 import _ from 'lodash'
 import types from './types'
+import budgetCategories from '../../data/budgetCategories'
+
+const initialBudgetCategories = () => {
+  return Object.keys(budgetCategories).sort().map((category) => {
+    const categories = [{
+      name: category,
+      open: false
+    }]
+    budgetCategories[category].forEach((subCategory) => {
+      categories.push({
+        name: subCategory,
+        open: false
+      })
+    })
+    return categories
+  })
+}
 
 export const initialState = {
   overlayMessage: null,
   snackbarMessage: null,
   currency: 'USD',
   locale: window.navigator.language || 'en-US',
+  budget: {
+    categories: initialBudgetCategories()
+  },
   portfolioFilters: {
     institution: {},
     account: {}
