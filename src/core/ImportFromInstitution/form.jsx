@@ -104,7 +104,7 @@ export const ImportFromInstitutionFormComponent = ({
         </IconButton>
       </div>
       <Divider />
-      <Grid container className={classes.input} spacing={16}>
+      <Grid container className={classes.input} spacing={2}>
         <Typography variant="caption" paragraph>
           Your browser will connect directly to&nbsp;
           <strong>{institution}</strong>

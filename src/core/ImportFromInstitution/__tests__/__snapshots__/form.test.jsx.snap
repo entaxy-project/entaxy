@@ -60,7 +60,7 @@ exports[`Account form matches snapshot for existing Coinbase account 1`] = `
       className="MuiDivider-root"
     />
     <div
-      className="MuiGrid-root WithFormik(ImportFromInstitutionFormComponent)-input-230 MuiGrid-container"
+      className="MuiGrid-root WithFormik(ImportFromInstitutionFormComponent)-input-230 MuiGrid-container MuiGrid-spacing-xs-2"
     >
       <p
         className="MuiTypography-root MuiTypography-caption MuiTypography-paragraph"
@@ -298,7 +298,7 @@ exports[`Account form matches snapshot for new Coinbase account 1`] = `
       className="MuiDivider-root"
     />
     <div
-      className="MuiGrid-root WithFormik(ImportFromInstitutionFormComponent)-input-230 MuiGrid-container"
+      className="MuiGrid-root WithFormik(ImportFromInstitutionFormComponent)-input-230 MuiGrid-container MuiGrid-spacing-xs-2"
     >
       <p
         className="MuiTypography-root MuiTypography-caption MuiTypography-paragraph"
@@ -536,7 +536,7 @@ exports[`Account form matches snapshot for regular account 1`] = `
       className="MuiDivider-root"
     />
     <div
-      className="MuiGrid-root WithFormik(ImportFromInstitutionFormComponent)-input-5 MuiGrid-container"
+      className="MuiGrid-root WithFormik(ImportFromInstitutionFormComponent)-input-5 MuiGrid-container MuiGrid-spacing-xs-2"
     >
       <p
         className="MuiTypography-root MuiTypography-caption MuiTypography-paragraph"
