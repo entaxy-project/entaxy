@@ -15,8 +15,8 @@ import SettingsForm from './form'
 
 const styles = theme => ({
   root: {
-    margin: theme.spacing.unit * 2,
-    padding: theme.spacing.unit * 2
+    margin: theme.spacing(2),
+    padding: theme.spacing(2)
   },
   formHeader: {
     padding: 10,

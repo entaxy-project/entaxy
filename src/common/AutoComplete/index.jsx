@@ -9,18 +9,18 @@ import FormHelperText from '@material-ui/core/FormHelperText'
 
 const styles = theme => ({
   input: {
-    margin: theme.spacing.unit * 2,
+    margin: theme.spacing(2),
     width: 320
   },
   inputTitle: {
-    marginLeft: theme.spacing.unit * 2,
-    marginTop: theme.spacing.unit * 2,
-    marginBottom: -theme.spacing.unit * 2
+    marginLeft: theme.spacing(2),
+    marginTop: theme.spacing(2),
+    marginBottom: -theme.spacing(2)
   },
   inputError: {
-    marginTop: -theme.spacing.unit,
-    marginLeft: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2
+    marginTop: -theme.spacing(1),
+    marginLeft: theme.spacing(2),
+    marginBottom: theme.spacing(2)
   }
 })
 
@@ -42,7 +42,7 @@ const AutoComplete = ({
     <Typography
       variant="subtitle2"
       className={classes.inputTitle}
-      color={error ? 'error' : 'default'}
+      color={error ? 'error' : 'initial'}
     >
       {label}
     </Typography>

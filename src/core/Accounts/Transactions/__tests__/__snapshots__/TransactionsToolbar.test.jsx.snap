@@ -2,19 +2,19 @@
 
 exports[`TransactionsToolbar matches snapshot with no selected transactions 1`] = `
 <div
-  className="MuiToolbar-root-6 MuiToolbar-regular-8 MuiToolbar-gutters-7 TableToolbar-root-1"
+  className="MuiToolbar-root MuiToolbar-regular TableToolbar-root-1 MuiToolbar-gutters"
 >
   <div
     className="TableToolbar-title-5"
   >
     <div>
       <h6
-        className="MuiTypography-root-10 MuiTypography-h6-27"
+        className="MuiTypography-root MuiTypography-h6"
       >
         TD - Checking
       </h6>
       <span
-        className="MuiTypography-root-10 MuiTypography-caption-20"
+        className="MuiTypography-root MuiTypography-caption"
       />
     </div>
   </div>
@@ -29,7 +29,7 @@ exports[`TransactionsToolbar matches snapshot with no selected transactions 1`] 
         <div>
           <svg
             aria-hidden="true"
-            className="MuiSvgIcon-root-46"
+            className="MuiSvgIcon-root"
             focusable="false"
             role="presentation"
             viewBox="0 0 24 24"
@@ -44,11 +44,11 @@ exports[`TransactionsToolbar matches snapshot with no selected transactions 1`] 
           </svg>
         </div>
         <div
-          className="MuiInputBase-root-55"
+          className="MuiInputBase-root"
           onClick={[Function]}
         >
           <input
-            className="MuiInputBase-input-65"
+            className="MuiInputBase-input"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
@@ -59,14 +59,14 @@ exports[`TransactionsToolbar matches snapshot with no selected transactions 1`] 
         </div>
       </div>
       <a
-        aria-current={null}
         aria-describedby={null}
+        aria-disabled={false}
         aria-label="Import transaction"
-        className="MuiButtonBase-root-86 MuiIconButton-root-80"
+        className="MuiButtonBase-root MuiIconButton-root"
         href="/accounts/1/import"
         onBlur={[Function]}
         onClick={[Function]}
-        onContextMenu={[Function]}
+        onDragLeave={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}
         onKeyUp={[Function]}
@@ -78,11 +78,11 @@ exports[`TransactionsToolbar matches snapshot with no selected transactions 1`] 
         onTouchMove={[Function]}
         onTouchStart={[Function]}
         role="button"
-        tabIndex="0"
+        tabIndex={0}
         title="Import transaction"
       >
         <span
-          className="MuiIconButton-label-85"
+          className="MuiIconButton-label"
         >
           <svg
             style={
@@ -99,17 +99,17 @@ exports[`TransactionsToolbar matches snapshot with no selected transactions 1`] 
           </svg>
         </span>
         <span
-          className="MuiTouchRipple-root-89"
+          className="MuiTouchRipple-root"
         />
       </a>
       <button
         aria-describedby={null}
         aria-label="New transaction"
-        className="MuiButtonBase-root-86 MuiIconButton-root-80"
+        className="MuiButtonBase-root MuiIconButton-root"
         disabled={false}
         onBlur={[Function]}
         onClick={[MockFunction]}
-        onContextMenu={[Function]}
+        onDragLeave={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}
         onKeyUp={[Function]}
@@ -120,16 +120,16 @@ exports[`TransactionsToolbar matches snapshot with no selected transactions 1`] 
         onTouchEnd={[Function]}
         onTouchMove={[Function]}
         onTouchStart={[Function]}
-        tabIndex="0"
+        tabIndex={0}
         title="New transaction"
         type="button"
       >
         <span
-          className="MuiIconButton-label-85"
+          className="MuiIconButton-label"
         >
           <svg
             aria-hidden="true"
-            className="MuiSvgIcon-root-46"
+            className="MuiSvgIcon-root"
             focusable="false"
             role="presentation"
             viewBox="0 0 24 24"
@@ -144,7 +144,7 @@ exports[`TransactionsToolbar matches snapshot with no selected transactions 1`] 
           </svg>
         </span>
         <span
-          className="MuiTouchRipple-root-89"
+          className="MuiTouchRipple-root"
         />
       </button>
     </div>
@@ -154,13 +154,13 @@ exports[`TransactionsToolbar matches snapshot with no selected transactions 1`] 
 
 exports[`TransactionsToolbar matches snapshot with some selected transactions 1`] = `
 <div
-  className="MuiToolbar-root-6 MuiToolbar-regular-8 MuiToolbar-gutters-7 TableToolbar-root-1 TableToolbar-highlight-2"
+  className="MuiToolbar-root MuiToolbar-regular TableToolbar-root-1 TableToolbar-highlight-2 MuiToolbar-gutters"
 >
   <div
     className="TableToolbar-title-5"
   >
     <h6
-      className="MuiTypography-root-10 MuiTypography-subtitle1-28 MuiTypography-colorInherit-39"
+      className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorInherit"
     >
       2
        selected
@@ -175,11 +175,11 @@ exports[`TransactionsToolbar matches snapshot with some selected transactions 1`
     <button
       aria-describedby={null}
       aria-label="Delete"
-      className="MuiButtonBase-root-86 MuiIconButton-root-80"
+      className="MuiButtonBase-root MuiIconButton-root"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
-      onContextMenu={[Function]}
+      onDragLeave={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
@@ -190,16 +190,16 @@ exports[`TransactionsToolbar matches snapshot with some selected transactions 1`
       onTouchEnd={[Function]}
       onTouchMove={[Function]}
       onTouchStart={[Function]}
-      tabIndex="0"
+      tabIndex={0}
       title="Delete"
       type="button"
     >
       <span
-        className="MuiIconButton-label-85"
+        className="MuiIconButton-label"
       >
         <svg
           aria-hidden="true"
-          className="MuiSvgIcon-root-46"
+          className="MuiSvgIcon-root"
           focusable="false"
           role="presentation"
           viewBox="0 0 24 24"
@@ -214,7 +214,7 @@ exports[`TransactionsToolbar matches snapshot with some selected transactions 1`
         </svg>
       </span>
       <span
-        className="MuiTouchRipple-root-89"
+        className="MuiTouchRipple-root"
       />
     </button>
   </div>

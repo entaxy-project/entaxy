@@ -334,43 +334,44 @@ exports[`ImportedResults matches snapshot with errors 1`] = `
 exports[`ImportedResults matches snapshot without errors 1`] = `
 <div>
   <div
-    className="TransactionsTableComponent-tableWrapper-1 "
+    className="TransactionsTableComponent-tableWrapper-9 makeStyles-tableWrapper-5"
   >
     <div
-      className="MuiToolbar-root-14 MuiToolbar-regular-16 MuiToolbar-gutters-15 TableToolbar-root-9"
+      className="MuiToolbar-root MuiToolbar-regular TableToolbar-root-17 MuiToolbar-gutters"
     >
       <div
-        className="TableToolbar-title-13"
+        className="TableToolbar-title-21"
       >
         <div>
           <h6
-            className="MuiTypography-root-18 MuiTypography-h6-35"
+            className="MuiTypography-root MuiTypography-h6"
           >
             Found 2 transactions
           </h6>
           <span
-            className="MuiTypography-root-18 MuiTypography-caption-28"
+            className="MuiTypography-root MuiTypography-caption"
           >
             No errors
           </span>
         </div>
       </div>
       <div
-        className="TableToolbar-spacer-11"
+        className="TableToolbar-spacer-19"
       />
       <div
-        className="TableToolbar-actions-12"
+        className="TableToolbar-actions-20"
       >
         <label
-          className="MuiFormControlLabel-root-54 ResultsToolbarComponent-chekbox-8"
+          className="MuiFormControlLabel-root ResultsToolbarComponent-chekbox-16"
         >
           <span
-            className="MuiSwitch-root-60"
+            className="MuiSwitch-root"
           >
             <span
-              className="MuiButtonBase-root-79 MuiIconButton-root-73 MuiPrivateSwitchBase-root-69 MuiSwitch-switchBase-63 MuiSwitch-colorSecondary-66"
+              aria-disabled={false}
+              className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-73 MuiSwitch-switchBase MuiSwitch-colorSecondary"
               onBlur={[Function]}
-              onContextMenu={[Function]}
+              onDragLeave={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
               onKeyUp={[Function]}
@@ -383,29 +384,29 @@ exports[`ImportedResults matches snapshot without errors 1`] = `
               tabIndex={null}
             >
               <span
-                className="MuiIconButton-label-78"
+                className="MuiIconButton-label"
               >
                 <span
-                  className="MuiSwitch-icon-61"
+                  className="MuiSwitch-thumb"
                 />
                 <input
                   checked={false}
-                  className="MuiPrivateSwitchBase-input-72"
+                  className="PrivateSwitchBase-input-76 MuiSwitch-input"
                   onChange={[Function]}
                   type="checkbox"
                   value="showOnlyErrors"
                 />
               </span>
               <span
-                className="MuiTouchRipple-root-113"
+                className="MuiTouchRipple-root"
               />
             </span>
             <span
-              className="MuiSwitch-bar-68"
+              className="MuiSwitch-track"
             />
           </span>
           <span
-            className="MuiTypography-root-18 MuiTypography-body2-26 MuiFormControlLabel-label-59"
+            className="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
           >
             Show only errors
           </span>
@@ -429,7 +430,7 @@ exports[`ImportedResults matches snapshot without errors 1`] = `
         style={Object {}}
       >
         <div
-          className="ReactVirtualized__Table__headerRow TransactionsTableComponent-headerRow-2 TransactionsTableComponent-oddRow-5"
+          className="ReactVirtualized__Table__headerRow TransactionsTableComponent-headerRow-10 TransactionsTableComponent-oddRow-13"
           role="row"
           style={
             Object {
@@ -583,15 +584,17 @@ exports[`ImportedResults matches snapshot without errors 1`] = `
     </div>
   </div>
   <hr
-    className="MuiDivider-root-82"
+    className="MuiDivider-root"
   />
-  <div>
+  <div
+    className="makeStyles-formActions-6"
+  >
     <button
-      className="MuiButtonBase-root-79 MuiButton-root-87 MuiButton-text-89 MuiButton-textSecondary-91 MuiButton-flat-92 MuiButton-flatSecondary-94"
+      className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary"
       disabled={false}
       onBlur={[Function]}
       onClick={[MockFunction]}
-      onContextMenu={[Function]}
+      onDragLeave={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
@@ -601,24 +604,24 @@ exports[`ImportedResults matches snapshot without errors 1`] = `
       onTouchEnd={[Function]}
       onTouchMove={[Function]}
       onTouchStart={[Function]}
-      tabIndex="0"
+      tabIndex={0}
       type="button"
     >
       <span
-        className="MuiButton-label-88"
+        className="MuiButton-label"
       >
         Save Transactions
       </span>
       <span
-        className="MuiTouchRipple-root-113"
+        className="MuiTouchRipple-root"
       />
     </button>
     <button
-      className="MuiButtonBase-root-79 MuiButton-root-87 MuiButton-text-89 MuiButton-textSecondary-91 MuiButton-flat-92 MuiButton-flatSecondary-94"
+      className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary"
       disabled={false}
       onBlur={[Function]}
       onClick={[MockFunction]}
-      onContextMenu={[Function]}
+      onDragLeave={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
@@ -628,16 +631,16 @@ exports[`ImportedResults matches snapshot without errors 1`] = `
       onTouchEnd={[Function]}
       onTouchMove={[Function]}
       onTouchStart={[Function]}
-      tabIndex="0"
+      tabIndex={0}
       type="button"
     >
       <span
-        className="MuiButton-label-88"
+        className="MuiButton-label"
       >
         Back
       </span>
       <span
-        className="MuiTouchRipple-root-113"
+        className="MuiTouchRipple-root"
       />
     </button>
   </div>

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
 import { withStyles } from '@material-ui/core/styles'
-import { NavLink } from 'react-router-dom'
 import Button from '@material-ui/core/Button'
 import Avatar from '@material-ui/core/Avatar'
 import Popper from '@material-ui/core/Popper'
@@ -19,6 +18,7 @@ import Paper from '@material-ui/core/Paper'
 import Fade from '@material-ui/core/Fade'
 import ClickAwayListener from '@material-ui/core/ClickAwayListener'
 import Tooltip from '@material-ui/core/Tooltip'
+import LinkTo from '../LinkTo'
 import { userLogout } from '../../store/user/actions'
 
 const styles = theme => ({
@@ -95,13 +95,14 @@ export class LoginButtonComponent extends React.Component {
               <Fade {...TransitionProps} timeout={350}>
                 <Paper>
                   <MenuList role="menu">
-                    <MenuItem component={NavLink} to="/settings">
+
+                    <MenuItem component={LinkTo('/settings')}>
                       <ListItemIcon>
                         <Settings />
                       </ListItemIcon>
                       <ListItemText primary="Settings" />
                     </MenuItem>
-                    <MenuItem component={NavLink} to="/budget-categories">
+                    <MenuItem component={LinkTo('/budget-categories')}>
                       <ListItemIcon>
                         <Settings />
                       </ListItemIcon>

@@ -13,7 +13,7 @@ const styles = theme => ({
   icon: {
     float: 'left',
     color: theme.palette.info.text,
-    marginRight: theme.spacing.unit
+    marginRight: theme.spacing(1)
   }
 })
 

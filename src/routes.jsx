@@ -67,6 +67,10 @@ export class RoutesComponent extends React.Component {
 
   authenticatedEditImportFromInstitution = this.loginRequired(EditImportFromInstitution, { accountRequired: true })
 
+  authenticatedTaxes = this.loginRequired(Taxes)
+
+  authenticatedPortfolios = this.loginRequired(Portfolios)
+
   render() {
     return (
       <div>
@@ -75,8 +79,8 @@ export class RoutesComponent extends React.Component {
             <Switch>
               <Route exact path="/" component={Landing} />
               <Route exact path="/handle-login" component={HandleLogin} />
-              <Route exact path="/taxes" component={Taxes} />
-              <Route exact path="/portfolio" component={Portfolios} />
+              <Route exact path="/taxes" component={this.authenticatedTaxes} />
+              <Route exact path="/portfolio" component={this.authenticatedPortfolios} />
               <Route exact path="/settings" render={this.authenticatedSettings} />
               <Route exact path="/budget-categories" render={this.authenticatedBudgetCategories} />
               <Route exact path="/dashboard" render={this.authenticatedDashBoard} />

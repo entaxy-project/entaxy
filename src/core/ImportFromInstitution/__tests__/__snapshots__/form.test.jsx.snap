@@ -2,27 +2,27 @@
 
 exports[`Account form matches snapshot for existing Coinbase account 1`] = `
 <div
-  className="MuiGrid-container-239 MuiGrid-justify-xs-center-256"
+  className="MuiGrid-root MuiGrid-container MuiGrid-justify-xs-center"
 >
   <div
-    className="MuiPaper-root-336 MuiPaper-elevation2-340 MuiPaper-rounded-337 WithFormik-ImportFromInstitutionFormComponent--root-229"
+    className="MuiPaper-root MuiPaper-elevation1 WithFormik(ImportFromInstitutionFormComponent)-root-226 MuiPaper-rounded"
   >
     <div
-      className="WithFormik-ImportFromInstitutionFormComponent--formHeader-230"
+      className="WithFormik(ImportFromInstitutionFormComponent)-formHeader-227"
     >
       <h6
-        className="MuiTypography-root-363 MuiTypography-h6-380"
+        className="MuiTypography-root MuiTypography-h6"
       >
         Import from
         Coinbase
       </h6>
       <button
         aria-label="Close"
-        className="MuiButtonBase-root-405 MuiIconButton-root-399 WithFormik-ImportFromInstitutionFormComponent--closeButton-231"
+        className="MuiButtonBase-root MuiIconButton-root WithFormik(ImportFromInstitutionFormComponent)-closeButton-228"
         disabled={false}
         onBlur={[Function]}
         onClick={[MockFunction]}
-        onContextMenu={[Function]}
+        onDragLeave={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}
         onKeyUp={[Function]}
@@ -32,15 +32,15 @@ exports[`Account form matches snapshot for existing Coinbase account 1`] = `
         onTouchEnd={[Function]}
         onTouchMove={[Function]}
         onTouchStart={[Function]}
-        tabIndex="0"
+        tabIndex={0}
         type="button"
       >
         <span
-          className="MuiIconButton-label-404"
+          className="MuiIconButton-label"
         >
           <svg
             aria-hidden="true"
-            className="MuiSvgIcon-root-408"
+            className="MuiSvgIcon-root"
             focusable="false"
             role="presentation"
             viewBox="0 0 24 24"
@@ -54,29 +54,26 @@ exports[`Account form matches snapshot for existing Coinbase account 1`] = `
             />
           </svg>
         </span>
-        <span
-          className="MuiTouchRipple-root-506"
-        />
       </button>
     </div>
     <hr
-      className="MuiDivider-root-417"
+      className="MuiDivider-root"
     />
     <div
-      className="MuiGrid-container-239 MuiGrid-spacing-xs-16-262 WithFormik-ImportFromInstitutionFormComponent--input-233"
+      className="MuiGrid-root WithFormik(ImportFromInstitutionFormComponent)-input-230 MuiGrid-container"
     >
       <p
-        className="MuiTypography-root-363 MuiTypography-caption-373 MuiTypography-paragraph-391"
+        className="MuiTypography-root MuiTypography-caption MuiTypography-paragraph"
       >
-        Your browser will connect directly to
+        Your browser will connect directly to 
         <strong>
           Coinbase
         </strong>
-        so you're really importing your own data.
+         so you're really importing your own data.
       </p>
       <div>
         <p
-          className="MuiTypography-root-363 MuiTypography-caption-373 MuiTypography-paragraph-391"
+          className="MuiTypography-root MuiTypography-caption MuiTypography-paragraph"
         >
           <a
             href="https://www.coinbase.com/settings/api"
@@ -84,21 +81,21 @@ exports[`Account form matches snapshot for existing Coinbase account 1`] = `
             target="_blank"
           >
             <span
-              className="MuiTypography-root-363 MuiTypography-caption-373 MuiTypography-colorSecondary-394"
+              className="MuiTypography-root MuiTypography-caption MuiTypography-colorSecondary"
             >
               Create an API key on Coinbase (opens in a new tab)
             </span>
           </a>
         </p>
         <div
-          className="MuiPaper-root-336 MuiPaper-elevation1-339 MuiPaper-rounded-337 MuiCard-root-424  DescriptionCard-card-422"
+          className="MuiPaper-root MuiPaper-elevation1 MuiCard-root  DescriptionCard-card-422 MuiPaper-rounded"
         >
           <div
-            className="MuiCardContent-root-425"
+            className="MuiCardContent-root"
           >
             <svg
               aria-hidden="true"
-              className="MuiSvgIcon-root-408 DescriptionCard-icon-423"
+              className="MuiSvgIcon-root DescriptionCard-icon-423"
               focusable="false"
               role="presentation"
               viewBox="0 0 24 24"
@@ -112,13 +109,13 @@ exports[`Account form matches snapshot for existing Coinbase account 1`] = `
               />
             </svg>
             <span
-              className="MuiTypography-root-363 MuiTypography-caption-373"
+              className="MuiTypography-root MuiTypography-caption"
             >
-              Make sure your api key has access to
+              Make sure your api key has access to 
               <strong>
                 all accounts
               </strong>
-              and has the following permimisions:
+               and has the following permimisions:
               <ul>
                 <li>
                   <strong>
@@ -137,29 +134,29 @@ exports[`Account form matches snapshot for existing Coinbase account 1`] = `
       </div>
     </div>
     <form
-      className="WithFormik-ImportFromInstitutionFormComponent--form-232"
+      className="WithFormik(ImportFromInstitutionFormComponent)-form-229"
       onSubmit={[Function]}
     >
       <span
-        className="WithFormik-ImportFromInstitutionFormComponent--form-232"
+        className="WithFormik(ImportFromInstitutionFormComponent)-form-229"
       >
         <div
-          className="MuiFormControl-root-426 WithFormik-ImportFromInstitutionFormComponent--input-233"
+          className="MuiFormControl-root MuiTextField-root WithFormik(ImportFromInstitutionFormComponent)-input-230"
         >
           <label
-            className="MuiFormLabel-root-441 MuiInputLabel-root-430 MuiInputLabel-formControl-435 MuiInputLabel-animated-438"
+            className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
             data-shrink={false}
           >
             API key
           </label>
           <div
-            className="MuiInputBase-root-461 MuiInput-root-448 MuiInput-underline-452 MuiInputBase-formControl-462 MuiInput-formControl-449"
+            className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
             onClick={[Function]}
           >
             <input
               aria-invalid={false}
               aria-label="API key"
-              className="MuiInputBase-input-471 MuiInput-input-456"
+              className="MuiInputBase-input MuiInput-input"
               disabled={false}
               maxLength={100}
               name="apiKey"
@@ -173,22 +170,22 @@ exports[`Account form matches snapshot for existing Coinbase account 1`] = `
           </div>
         </div>
         <div
-          className="MuiFormControl-root-426 WithFormik-ImportFromInstitutionFormComponent--input-233"
+          className="MuiFormControl-root MuiTextField-root WithFormik(ImportFromInstitutionFormComponent)-input-230"
         >
           <label
-            className="MuiFormLabel-root-441 MuiInputLabel-root-430 MuiInputLabel-formControl-435 MuiInputLabel-animated-438"
+            className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
             data-shrink={false}
           >
             API secret
           </label>
           <div
-            className="MuiInputBase-root-461 MuiInput-root-448 MuiInput-underline-452 MuiInputBase-formControl-462 MuiInput-formControl-449"
+            className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
             onClick={[Function]}
           >
             <input
               aria-invalid={false}
               aria-label="API secret"
-              className="MuiInputBase-input-471 MuiInput-input-456"
+              className="MuiInputBase-input MuiInput-input"
               disabled={false}
               maxLength={100}
               name="apiSecret"
@@ -203,19 +200,19 @@ exports[`Account form matches snapshot for existing Coinbase account 1`] = `
         </div>
       </span>
       <hr
-        className="MuiDivider-root-417"
+        className="MuiDivider-root"
       />
       <div
-        className="WithFormik-ImportFromInstitutionFormComponent--formActions-236"
+        className="WithFormik(ImportFromInstitutionFormComponent)-formActions-233"
       >
         <div
-          className="SubmitButtonWithProgress-wrapper-478"
+          className="SubmitButtonWithProgress-wrapper-479"
         >
           <button
-            className="MuiButtonBase-root-405 MuiButton-root-480 MuiButton-text-482 MuiButton-textSecondary-484 MuiButton-flat-485 MuiButton-flatSecondary-487"
+            className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary"
             disabled={false}
             onBlur={[Function]}
-            onContextMenu={[Function]}
+            onDragLeave={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
             onKeyUp={[Function]}
@@ -225,17 +222,14 @@ exports[`Account form matches snapshot for existing Coinbase account 1`] = `
             onTouchEnd={[Function]}
             onTouchMove={[Function]}
             onTouchStart={[Function]}
-            tabIndex="0"
+            tabIndex={0}
             type="submit"
           >
             <span
-              className="MuiButton-label-481"
+              className="MuiButton-label"
             >
               Import
             </span>
-            <span
-              className="MuiTouchRipple-root-506"
-            />
           </button>
         </div>
       </div>
@@ -246,27 +240,27 @@ exports[`Account form matches snapshot for existing Coinbase account 1`] = `
 
 exports[`Account form matches snapshot for new Coinbase account 1`] = `
 <div
-  className="MuiGrid-container-239 MuiGrid-justify-xs-center-256"
+  className="MuiGrid-root MuiGrid-container MuiGrid-justify-xs-center"
 >
   <div
-    className="MuiPaper-root-336 MuiPaper-elevation2-340 MuiPaper-rounded-337 WithFormik-ImportFromInstitutionFormComponent--root-229"
+    className="MuiPaper-root MuiPaper-elevation1 WithFormik(ImportFromInstitutionFormComponent)-root-226 MuiPaper-rounded"
   >
     <div
-      className="WithFormik-ImportFromInstitutionFormComponent--formHeader-230"
+      className="WithFormik(ImportFromInstitutionFormComponent)-formHeader-227"
     >
       <h6
-        className="MuiTypography-root-363 MuiTypography-h6-380"
+        className="MuiTypography-root MuiTypography-h6"
       >
         Import from
         Coinbase
       </h6>
       <button
         aria-label="Close"
-        className="MuiButtonBase-root-405 MuiIconButton-root-399 WithFormik-ImportFromInstitutionFormComponent--closeButton-231"
+        className="MuiButtonBase-root MuiIconButton-root WithFormik(ImportFromInstitutionFormComponent)-closeButton-228"
         disabled={false}
         onBlur={[Function]}
         onClick={[MockFunction]}
-        onContextMenu={[Function]}
+        onDragLeave={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}
         onKeyUp={[Function]}
@@ -276,15 +270,15 @@ exports[`Account form matches snapshot for new Coinbase account 1`] = `
         onTouchEnd={[Function]}
         onTouchMove={[Function]}
         onTouchStart={[Function]}
-        tabIndex="0"
+        tabIndex={0}
         type="button"
       >
         <span
-          className="MuiIconButton-label-404"
+          className="MuiIconButton-label"
         >
           <svg
             aria-hidden="true"
-            className="MuiSvgIcon-root-408"
+            className="MuiSvgIcon-root"
             focusable="false"
             role="presentation"
             viewBox="0 0 24 24"
@@ -298,29 +292,26 @@ exports[`Account form matches snapshot for new Coinbase account 1`] = `
             />
           </svg>
         </span>
-        <span
-          className="MuiTouchRipple-root-506"
-        />
       </button>
     </div>
     <hr
-      className="MuiDivider-root-417"
+      className="MuiDivider-root"
     />
     <div
-      className="MuiGrid-container-239 MuiGrid-spacing-xs-16-262 WithFormik-ImportFromInstitutionFormComponent--input-233"
+      className="MuiGrid-root WithFormik(ImportFromInstitutionFormComponent)-input-230 MuiGrid-container"
     >
       <p
-        className="MuiTypography-root-363 MuiTypography-caption-373 MuiTypography-paragraph-391"
+        className="MuiTypography-root MuiTypography-caption MuiTypography-paragraph"
       >
-        Your browser will connect directly to
+        Your browser will connect directly to 
         <strong>
           Coinbase
         </strong>
-        so you're really importing your own data.
+         so you're really importing your own data.
       </p>
       <div>
         <p
-          className="MuiTypography-root-363 MuiTypography-caption-373 MuiTypography-paragraph-391"
+          className="MuiTypography-root MuiTypography-caption MuiTypography-paragraph"
         >
           <a
             href="https://www.coinbase.com/settings/api"
@@ -328,21 +319,21 @@ exports[`Account form matches snapshot for new Coinbase account 1`] = `
             target="_blank"
           >
             <span
-              className="MuiTypography-root-363 MuiTypography-caption-373 MuiTypography-colorSecondary-394"
+              className="MuiTypography-root MuiTypography-caption MuiTypography-colorSecondary"
             >
               Create an API key on Coinbase (opens in a new tab)
             </span>
           </a>
         </p>
         <div
-          className="MuiPaper-root-336 MuiPaper-elevation1-339 MuiPaper-rounded-337 MuiCard-root-424  DescriptionCard-card-422"
+          className="MuiPaper-root MuiPaper-elevation1 MuiCard-root  DescriptionCard-card-422 MuiPaper-rounded"
         >
           <div
-            className="MuiCardContent-root-425"
+            className="MuiCardContent-root"
           >
             <svg
               aria-hidden="true"
-              className="MuiSvgIcon-root-408 DescriptionCard-icon-423"
+              className="MuiSvgIcon-root DescriptionCard-icon-423"
               focusable="false"
               role="presentation"
               viewBox="0 0 24 24"
@@ -356,13 +347,13 @@ exports[`Account form matches snapshot for new Coinbase account 1`] = `
               />
             </svg>
             <span
-              className="MuiTypography-root-363 MuiTypography-caption-373"
+              className="MuiTypography-root MuiTypography-caption"
             >
-              Make sure your api key has access to
+              Make sure your api key has access to 
               <strong>
                 all accounts
               </strong>
-              and has the following permimisions:
+               and has the following permimisions:
               <ul>
                 <li>
                   <strong>
@@ -381,29 +372,29 @@ exports[`Account form matches snapshot for new Coinbase account 1`] = `
       </div>
     </div>
     <form
-      className="WithFormik-ImportFromInstitutionFormComponent--form-232"
+      className="WithFormik(ImportFromInstitutionFormComponent)-form-229"
       onSubmit={[Function]}
     >
       <span
-        className="WithFormik-ImportFromInstitutionFormComponent--form-232"
+        className="WithFormik(ImportFromInstitutionFormComponent)-form-229"
       >
         <div
-          className="MuiFormControl-root-426 WithFormik-ImportFromInstitutionFormComponent--input-233"
+          className="MuiFormControl-root MuiTextField-root WithFormik(ImportFromInstitutionFormComponent)-input-230"
         >
           <label
-            className="MuiFormLabel-root-441 MuiInputLabel-root-430 MuiInputLabel-formControl-435 MuiInputLabel-animated-438"
+            className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
             data-shrink={false}
           >
             API key
           </label>
           <div
-            className="MuiInputBase-root-461 MuiInput-root-448 MuiInput-underline-452 MuiInputBase-formControl-462 MuiInput-formControl-449"
+            className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
             onClick={[Function]}
           >
             <input
               aria-invalid={false}
               aria-label="API key"
-              className="MuiInputBase-input-471 MuiInput-input-456"
+              className="MuiInputBase-input MuiInput-input"
               disabled={false}
               maxLength={100}
               name="apiKey"
@@ -417,22 +408,22 @@ exports[`Account form matches snapshot for new Coinbase account 1`] = `
           </div>
         </div>
         <div
-          className="MuiFormControl-root-426 WithFormik-ImportFromInstitutionFormComponent--input-233"
+          className="MuiFormControl-root MuiTextField-root WithFormik(ImportFromInstitutionFormComponent)-input-230"
         >
           <label
-            className="MuiFormLabel-root-441 MuiInputLabel-root-430 MuiInputLabel-formControl-435 MuiInputLabel-animated-438"
+            className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
             data-shrink={false}
           >
             API secret
           </label>
           <div
-            className="MuiInputBase-root-461 MuiInput-root-448 MuiInput-underline-452 MuiInputBase-formControl-462 MuiInput-formControl-449"
+            className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
             onClick={[Function]}
           >
             <input
               aria-invalid={false}
               aria-label="API secret"
-              className="MuiInputBase-input-471 MuiInput-input-456"
+              className="MuiInputBase-input MuiInput-input"
               disabled={false}
               maxLength={100}
               name="apiSecret"
@@ -447,19 +438,19 @@ exports[`Account form matches snapshot for new Coinbase account 1`] = `
         </div>
       </span>
       <hr
-        className="MuiDivider-root-417"
+        className="MuiDivider-root"
       />
       <div
-        className="WithFormik-ImportFromInstitutionFormComponent--formActions-236"
+        className="WithFormik(ImportFromInstitutionFormComponent)-formActions-233"
       >
         <div
-          className="SubmitButtonWithProgress-wrapper-478"
+          className="SubmitButtonWithProgress-wrapper-479"
         >
           <button
-            className="MuiButtonBase-root-405 MuiButton-root-480 MuiButton-text-482 MuiButton-textSecondary-484 MuiButton-flat-485 MuiButton-flatSecondary-487"
+            className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary"
             disabled={false}
             onBlur={[Function]}
-            onContextMenu={[Function]}
+            onDragLeave={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
             onKeyUp={[Function]}
@@ -469,17 +460,14 @@ exports[`Account form matches snapshot for new Coinbase account 1`] = `
             onTouchEnd={[Function]}
             onTouchMove={[Function]}
             onTouchStart={[Function]}
-            tabIndex="0"
+            tabIndex={0}
             type="submit"
           >
             <span
-              className="MuiButton-label-481"
+              className="MuiButton-label"
             >
               Import
             </span>
-            <span
-              className="MuiTouchRipple-root-506"
-            />
           </button>
         </div>
       </div>
@@ -490,27 +478,27 @@ exports[`Account form matches snapshot for new Coinbase account 1`] = `
 
 exports[`Account form matches snapshot for regular account 1`] = `
 <div
-  className="MuiGrid-container-11 MuiGrid-justify-xs-center-28"
+  className="MuiGrid-root MuiGrid-container MuiGrid-justify-xs-center"
 >
   <div
-    className="MuiPaper-root-108 MuiPaper-elevation2-112 MuiPaper-rounded-109 WithFormik-ImportFromInstitutionFormComponent--root-1"
+    className="MuiPaper-root MuiPaper-elevation1 WithFormik(ImportFromInstitutionFormComponent)-root-1 MuiPaper-rounded"
   >
     <div
-      className="WithFormik-ImportFromInstitutionFormComponent--formHeader-2"
+      className="WithFormik(ImportFromInstitutionFormComponent)-formHeader-2"
     >
       <h6
-        className="MuiTypography-root-135 MuiTypography-h6-152"
+        className="MuiTypography-root MuiTypography-h6"
       >
         Import from
         TD
       </h6>
       <button
         aria-label="Close"
-        className="MuiButtonBase-root-177 MuiIconButton-root-171 WithFormik-ImportFromInstitutionFormComponent--closeButton-3"
+        className="MuiButtonBase-root MuiIconButton-root WithFormik(ImportFromInstitutionFormComponent)-closeButton-3"
         disabled={false}
         onBlur={[Function]}
         onClick={[MockFunction]}
-        onContextMenu={[Function]}
+        onDragLeave={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}
         onKeyUp={[Function]}
@@ -520,15 +508,15 @@ exports[`Account form matches snapshot for regular account 1`] = `
         onTouchEnd={[Function]}
         onTouchMove={[Function]}
         onTouchStart={[Function]}
-        tabIndex="0"
+        tabIndex={0}
         type="button"
       >
         <span
-          className="MuiIconButton-label-176"
+          className="MuiIconButton-label"
         >
           <svg
             aria-hidden="true"
-            className="MuiSvgIcon-root-180"
+            className="MuiSvgIcon-root"
             focusable="false"
             role="presentation"
             viewBox="0 0 24 24"
@@ -542,45 +530,42 @@ exports[`Account form matches snapshot for regular account 1`] = `
             />
           </svg>
         </span>
-        <span
-          className="MuiTouchRipple-root-222"
-        />
       </button>
     </div>
     <hr
-      className="MuiDivider-root-189"
+      className="MuiDivider-root"
     />
     <div
-      className="MuiGrid-container-11 MuiGrid-spacing-xs-16-34 WithFormik-ImportFromInstitutionFormComponent--input-5"
+      className="MuiGrid-root WithFormik(ImportFromInstitutionFormComponent)-input-5 MuiGrid-container"
     >
       <p
-        className="MuiTypography-root-135 MuiTypography-caption-145 MuiTypography-paragraph-163"
+        className="MuiTypography-root MuiTypography-caption MuiTypography-paragraph"
       >
-        Your browser will connect directly to
+        Your browser will connect directly to 
         <strong>
           TD
         </strong>
-        so you're really importing your own data.
+         so you're really importing your own data.
       </p>
     </div>
     <form
-      className="WithFormik-ImportFromInstitutionFormComponent--form-4"
+      className="WithFormik(ImportFromInstitutionFormComponent)-form-4"
       onSubmit={[Function]}
     >
       <hr
-        className="MuiDivider-root-189"
+        className="MuiDivider-root"
       />
       <div
-        className="WithFormik-ImportFromInstitutionFormComponent--formActions-8"
+        className="WithFormik(ImportFromInstitutionFormComponent)-formActions-8"
       >
         <div
-          className="SubmitButtonWithProgress-wrapper-194"
+          className="SubmitButtonWithProgress-wrapper-197"
         >
           <button
-            className="MuiButtonBase-root-177 MuiButton-root-196 MuiButton-text-198 MuiButton-textSecondary-200 MuiButton-flat-201 MuiButton-flatSecondary-203"
+            className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary"
             disabled={false}
             onBlur={[Function]}
-            onContextMenu={[Function]}
+            onDragLeave={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
             onKeyUp={[Function]}
@@ -590,17 +575,14 @@ exports[`Account form matches snapshot for regular account 1`] = `
             onTouchEnd={[Function]}
             onTouchMove={[Function]}
             onTouchStart={[Function]}
-            tabIndex="0"
+            tabIndex={0}
             type="submit"
           >
             <span
-              className="MuiButton-label-197"
+              className="MuiButton-label"
             >
               Import
             </span>
-            <span
-              className="MuiTouchRipple-root-222"
-            />
           </button>
         </div>
       </div>

@@ -4,7 +4,7 @@ import { shallow } from 'enzyme'
 import { Provider } from 'react-redux'
 import store from '../../../../store'
 import ThemeProvider from '../../../ThemeProvider'
-import { ImportedResultsComponent } from '../ImportedResults'
+import ImportedResults from '../ImportedResults'
 
 
 describe('ImportedResults', () => {
@@ -32,12 +32,11 @@ describe('ImportedResults', () => {
     jest.clearAllMocks()
   })
 
-  it('matches snapshot without errors', () => {
+  it.only('matches snapshot without errors', () => {
     const component = renderer.create((
       <Provider store={store}>
         <ThemeProvider>
-          <ImportedResultsComponent
-            classes={{ }}
+          <ImportedResults
             account={account}
             transactions={transactions}
             errors={{ base: [], transactions: [] }}
@@ -61,7 +60,7 @@ describe('ImportedResults', () => {
     const component = renderer.create((
       <Provider store={store}>
         <ThemeProvider>
-          <ImportedResultsComponent
+          <ImportedResults
             classes={{ }}
             account={account}
             transactions={transactions}
@@ -78,7 +77,7 @@ describe('ImportedResults', () => {
   describe('Component methods', () => {
     describe('filterByErrors', () => {
       const wrapper = shallow((
-        <ImportedResultsComponent
+        <ImportedResults
           classes={{ }}
           account={account}
           transactions={transactions}
@@ -106,7 +105,7 @@ describe('ImportedResults', () => {
         }]
 
         const wrapper = shallow((
-          <ImportedResultsComponent
+          <ImportedResults
             classes={{ }}
             account={account}
             transactions={transactions}
@@ -138,7 +137,7 @@ describe('ImportedResults', () => {
         }]
 
         const wrapper = shallow((
-          <ImportedResultsComponent
+          <ImportedResults
             classes={{ }}
             account={account}
             transactions={transactions}
@@ -158,7 +157,7 @@ describe('ImportedResults', () => {
 
     describe('errorCellRenderer', () => {
       const wrapper = shallow((
-        <ImportedResultsComponent
+        <ImportedResults
           classes={{ }}
           account={account}
           transactions={transactions}

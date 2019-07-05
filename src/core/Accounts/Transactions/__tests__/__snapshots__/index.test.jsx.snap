@@ -19,19 +19,19 @@ exports[`Transactions matches snapshot with no transactions 1`] = `
     className="TransactionsTableComponent-tableWrapper-1 "
   >
     <div
-      className="MuiToolbar-root-19 MuiToolbar-regular-21 MuiToolbar-gutters-20 TableToolbar-root-14"
+      className="MuiToolbar-root MuiToolbar-regular TableToolbar-root-14 MuiToolbar-gutters"
     >
       <div
         className="TableToolbar-title-18"
       >
         <div>
           <h6
-            className="MuiTypography-root-23 MuiTypography-h6-40"
+            className="MuiTypography-root MuiTypography-h6"
           >
             TD - Checking
           </h6>
           <span
-            className="MuiTypography-root-23 MuiTypography-caption-33"
+            className="MuiTypography-root MuiTypography-caption"
           >
             CAD
           </span>
@@ -44,17 +44,17 @@ exports[`Transactions matches snapshot with no transactions 1`] = `
         className="TableToolbar-actions-17"
       >
         <div
-          className="withRouter-TransactionsToolbarComponent--buttons-9"
+          className="withRouter(TransactionsToolbarComponent)-buttons-9"
         >
           <div
-            className="withRouter-TransactionsToolbarComponent--search-10"
+            className="withRouter(TransactionsToolbarComponent)-search-10"
           >
             <div
-              className="withRouter-TransactionsToolbarComponent--searchIcon-11"
+              className="withRouter(TransactionsToolbarComponent)-searchIcon-11"
             >
               <svg
                 aria-hidden="true"
-                className="MuiSvgIcon-root-59"
+                className="MuiSvgIcon-root"
                 focusable="false"
                 role="presentation"
                 viewBox="0 0 24 24"
@@ -69,11 +69,11 @@ exports[`Transactions matches snapshot with no transactions 1`] = `
               </svg>
             </div>
             <div
-              className="MuiInputBase-root-68 withRouter-TransactionsToolbarComponent--inputRoot-12"
+              className="MuiInputBase-root withRouter(TransactionsToolbarComponent)-inputRoot-12"
               onClick={[Function]}
             >
               <input
-                className="MuiInputBase-input-78 withRouter-TransactionsToolbarComponent--inputInput-13"
+                className="MuiInputBase-input withRouter(TransactionsToolbarComponent)-inputInput-13"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
@@ -84,14 +84,14 @@ exports[`Transactions matches snapshot with no transactions 1`] = `
             </div>
           </div>
           <a
-            aria-current={null}
             aria-describedby={null}
+            aria-disabled={false}
             aria-label="Import transaction"
-            className="MuiButtonBase-root-99 MuiIconButton-root-93"
+            className="MuiButtonBase-root MuiIconButton-root"
             href="/accounts/1/import"
             onBlur={[Function]}
             onClick={[Function]}
-            onContextMenu={[Function]}
+            onDragLeave={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
             onKeyUp={[Function]}
@@ -103,14 +103,14 @@ exports[`Transactions matches snapshot with no transactions 1`] = `
             onTouchMove={[Function]}
             onTouchStart={[Function]}
             role="button"
-            tabIndex="0"
+            tabIndex={0}
             title="Import transaction"
           >
             <span
-              className="MuiIconButton-label-98"
+              className="MuiIconButton-label"
             >
               <svg
-                className="withRouter-TransactionsToolbarComponent--importButton-8"
+                className="withRouter(TransactionsToolbarComponent)-importButton-8"
                 style={
                   Object {
                     "width": "1.5rem",
@@ -125,17 +125,17 @@ exports[`Transactions matches snapshot with no transactions 1`] = `
               </svg>
             </span>
             <span
-              className="MuiTouchRipple-root-112"
+              className="MuiTouchRipple-root"
             />
           </a>
           <button
             aria-describedby={null}
             aria-label="New transaction"
-            className="MuiButtonBase-root-99 MuiIconButton-root-93"
+            className="MuiButtonBase-root MuiIconButton-root"
             disabled={false}
             onBlur={[Function]}
             onClick={[Function]}
-            onContextMenu={[Function]}
+            onDragLeave={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
             onKeyUp={[Function]}
@@ -146,16 +146,16 @@ exports[`Transactions matches snapshot with no transactions 1`] = `
             onTouchEnd={[Function]}
             onTouchMove={[Function]}
             onTouchStart={[Function]}
-            tabIndex="0"
+            tabIndex={0}
             title="New transaction"
             type="button"
           >
             <span
-              className="MuiIconButton-label-98"
+              className="MuiIconButton-label"
             >
               <svg
                 aria-hidden="true"
-                className="MuiSvgIcon-root-59"
+                className="MuiSvgIcon-root"
                 focusable="false"
                 role="presentation"
                 viewBox="0 0 24 24"
@@ -170,7 +170,7 @@ exports[`Transactions matches snapshot with no transactions 1`] = `
               </svg>
             </span>
             <span
-              className="MuiTouchRipple-root-112"
+              className="MuiTouchRipple-root"
             />
           </button>
         </div>
@@ -219,9 +219,10 @@ exports[`Transactions matches snapshot with no transactions 1`] = `
               className="ReactVirtualized__Table__headerTruncatedText"
             >
               <span
-                className="MuiButtonBase-root-99 MuiIconButton-root-93 MuiPrivateSwitchBase-root-108 MuiCheckbox-root-102 MuiCheckbox-colorSecondary-107"
+                aria-disabled={false}
+                className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-105 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
                 onBlur={[Function]}
-                onContextMenu={[Function]}
+                onDragLeave={[Function]}
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 onKeyUp={[Function]}
@@ -234,11 +235,11 @@ exports[`Transactions matches snapshot with no transactions 1`] = `
                 tabIndex={null}
               >
                 <span
-                  className="MuiIconButton-label-98"
+                  className="MuiIconButton-label"
                 >
                   <svg
                     aria-hidden="true"
-                    className="MuiSvgIcon-root-59"
+                    className="MuiSvgIcon-root"
                     focusable="false"
                     role="presentation"
                     viewBox="0 0 24 24"
@@ -249,14 +250,14 @@ exports[`Transactions matches snapshot with no transactions 1`] = `
                   </svg>
                   <input
                     checked={false}
-                    className="MuiPrivateSwitchBase-input-111"
+                    className="PrivateSwitchBase-input-108"
                     data-indeterminate={false}
                     onChange={[Function]}
                     type="checkbox"
                   />
                 </span>
                 <span
-                  className="MuiTouchRipple-root-112"
+                  className="MuiTouchRipple-root"
                 />
               </span>
             </span>
@@ -425,19 +426,19 @@ exports[`Transactions matches snapshot with one transaction in a fiat account 1`
     className="TransactionsTableComponent-tableWrapper-1 "
   >
     <div
-      className="MuiToolbar-root-19 MuiToolbar-regular-21 MuiToolbar-gutters-20 TableToolbar-root-14"
+      className="MuiToolbar-root MuiToolbar-regular TableToolbar-root-14 MuiToolbar-gutters"
     >
       <div
         className="TableToolbar-title-18"
       >
         <div>
           <h6
-            className="MuiTypography-root-23 MuiTypography-h6-40"
+            className="MuiTypography-root MuiTypography-h6"
           >
             TD - Checking
           </h6>
           <span
-            className="MuiTypography-root-23 MuiTypography-caption-33"
+            className="MuiTypography-root MuiTypography-caption"
           >
             CAD
           </span>
@@ -450,17 +451,17 @@ exports[`Transactions matches snapshot with one transaction in a fiat account 1`
         className="TableToolbar-actions-17"
       >
         <div
-          className="withRouter-TransactionsToolbarComponent--buttons-9"
+          className="withRouter(TransactionsToolbarComponent)-buttons-9"
         >
           <div
-            className="withRouter-TransactionsToolbarComponent--search-10"
+            className="withRouter(TransactionsToolbarComponent)-search-10"
           >
             <div
-              className="withRouter-TransactionsToolbarComponent--searchIcon-11"
+              className="withRouter(TransactionsToolbarComponent)-searchIcon-11"
             >
               <svg
                 aria-hidden="true"
-                className="MuiSvgIcon-root-59"
+                className="MuiSvgIcon-root"
                 focusable="false"
                 role="presentation"
                 viewBox="0 0 24 24"
@@ -475,11 +476,11 @@ exports[`Transactions matches snapshot with one transaction in a fiat account 1`
               </svg>
             </div>
             <div
-              className="MuiInputBase-root-68 withRouter-TransactionsToolbarComponent--inputRoot-12"
+              className="MuiInputBase-root withRouter(TransactionsToolbarComponent)-inputRoot-12"
               onClick={[Function]}
             >
               <input
-                className="MuiInputBase-input-78 withRouter-TransactionsToolbarComponent--inputInput-13"
+                className="MuiInputBase-input withRouter(TransactionsToolbarComponent)-inputInput-13"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
@@ -490,14 +491,14 @@ exports[`Transactions matches snapshot with one transaction in a fiat account 1`
             </div>
           </div>
           <a
-            aria-current={null}
             aria-describedby={null}
+            aria-disabled={false}
             aria-label="Import transaction"
-            className="MuiButtonBase-root-99 MuiIconButton-root-93"
+            className="MuiButtonBase-root MuiIconButton-root"
             href="/accounts/1/import"
             onBlur={[Function]}
             onClick={[Function]}
-            onContextMenu={[Function]}
+            onDragLeave={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
             onKeyUp={[Function]}
@@ -509,14 +510,14 @@ exports[`Transactions matches snapshot with one transaction in a fiat account 1`
             onTouchMove={[Function]}
             onTouchStart={[Function]}
             role="button"
-            tabIndex="0"
+            tabIndex={0}
             title="Import transaction"
           >
             <span
-              className="MuiIconButton-label-98"
+              className="MuiIconButton-label"
             >
               <svg
-                className="withRouter-TransactionsToolbarComponent--importButton-8"
+                className="withRouter(TransactionsToolbarComponent)-importButton-8"
                 style={
                   Object {
                     "width": "1.5rem",
@@ -531,17 +532,17 @@ exports[`Transactions matches snapshot with one transaction in a fiat account 1`
               </svg>
             </span>
             <span
-              className="MuiTouchRipple-root-112"
+              className="MuiTouchRipple-root"
             />
           </a>
           <button
             aria-describedby={null}
             aria-label="New transaction"
-            className="MuiButtonBase-root-99 MuiIconButton-root-93"
+            className="MuiButtonBase-root MuiIconButton-root"
             disabled={false}
             onBlur={[Function]}
             onClick={[Function]}
-            onContextMenu={[Function]}
+            onDragLeave={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
             onKeyUp={[Function]}
@@ -552,16 +553,16 @@ exports[`Transactions matches snapshot with one transaction in a fiat account 1`
             onTouchEnd={[Function]}
             onTouchMove={[Function]}
             onTouchStart={[Function]}
-            tabIndex="0"
+            tabIndex={0}
             title="New transaction"
             type="button"
           >
             <span
-              className="MuiIconButton-label-98"
+              className="MuiIconButton-label"
             >
               <svg
                 aria-hidden="true"
-                className="MuiSvgIcon-root-59"
+                className="MuiSvgIcon-root"
                 focusable="false"
                 role="presentation"
                 viewBox="0 0 24 24"
@@ -576,7 +577,7 @@ exports[`Transactions matches snapshot with one transaction in a fiat account 1`
               </svg>
             </span>
             <span
-              className="MuiTouchRipple-root-112"
+              className="MuiTouchRipple-root"
             />
           </button>
         </div>
@@ -625,9 +626,10 @@ exports[`Transactions matches snapshot with one transaction in a fiat account 1`
               className="ReactVirtualized__Table__headerTruncatedText"
             >
               <span
-                className="MuiButtonBase-root-99 MuiIconButton-root-93 MuiPrivateSwitchBase-root-108 MuiCheckbox-root-102 MuiCheckbox-colorSecondary-107"
+                aria-disabled={false}
+                className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-105 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
                 onBlur={[Function]}
-                onContextMenu={[Function]}
+                onDragLeave={[Function]}
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 onKeyUp={[Function]}
@@ -640,11 +642,11 @@ exports[`Transactions matches snapshot with one transaction in a fiat account 1`
                 tabIndex={null}
               >
                 <span
-                  className="MuiIconButton-label-98"
+                  className="MuiIconButton-label"
                 >
                   <svg
                     aria-hidden="true"
-                    className="MuiSvgIcon-root-59"
+                    className="MuiSvgIcon-root"
                     focusable="false"
                     role="presentation"
                     viewBox="0 0 24 24"
@@ -655,14 +657,14 @@ exports[`Transactions matches snapshot with one transaction in a fiat account 1`
                   </svg>
                   <input
                     checked={false}
-                    className="MuiPrivateSwitchBase-input-111"
+                    className="PrivateSwitchBase-input-108"
                     data-indeterminate={false}
                     onChange={[Function]}
                     type="checkbox"
                   />
                 </span>
                 <span
-                  className="MuiTouchRipple-root-112"
+                  className="MuiTouchRipple-root"
                 />
               </span>
             </span>

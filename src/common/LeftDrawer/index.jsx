@@ -8,8 +8,9 @@ import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import DashboardIcon from '@material-ui/icons/Dashboard'
 import Divider from '@material-ui/core/Divider'
-import { NavLink, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import Accounts from '../../core/Accounts'
+import LinkTo from '../LinkTo'
 
 const styles = theme => ({
   toolbar: theme.mixins.toolbar,
@@ -17,6 +18,7 @@ const styles = theme => ({
     width: 200
   }
 })
+
 
 const LeftDrawer = ({ classes, match }) => (
   <Drawer
@@ -31,8 +33,7 @@ const LeftDrawer = ({ classes, match }) => (
       <ListItem
         button
         key="Dashboard"
-        component={NavLink}
-        to="/dashboard"
+        component={LinkTo('/dashboard')}
         selected={match.path === '/dashboard'}
       >
         <ListItemIcon><DashboardIcon /></ListItemIcon>

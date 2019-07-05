@@ -3,16 +3,16 @@
 exports[`AutoComplete matches snapshot for async select 1`] = `
 <div>
   <h6
-    className="MuiTypography-root-4 MuiTypography-subtitle2-23 AutoComplete-inputTitle-2"
+    className="MuiTypography-root AutoComplete-inputTitle-2 MuiTypography-subtitle2"
   >
     Institution
   </h6>
   <div
-    className="css-10nd86i"
+    className="css-1pcexqc-container"
     onKeyDown={[Function]}
   >
     <div
-      className="css-vj8t7z"
+      className="css-bg1rzq-control"
       onMouseDown={[Function]}
       onTouchEnd={[Function]}
     >
@@ -20,7 +20,7 @@ exports[`AutoComplete matches snapshot for async select 1`] = `
         className="css-1hwfws3"
       >
         <div
-          className="css-1492t68"
+          className="css-151xaom-placeholder"
         >
           Institution
         </div>
@@ -53,6 +53,7 @@ exports[`AutoComplete matches snapshot for async select 1`] = `
                   "boxSizing": "content-box",
                   "color": "inherit",
                   "fontSize": "inherit",
+                  "label": "input",
                   "opacity": 1,
                   "outline": 0,
                   "padding": 0,
@@ -85,11 +86,11 @@ exports[`AutoComplete matches snapshot for async select 1`] = `
         className="css-1wy0on6"
       >
         <span
-          className="css-d8oujb"
+          className="css-bgvzuu-indicatorSeparator"
         />
         <div
           aria-hidden="true"
-          className="css-1ep9fjw"
+          className="css-16pqwjk-indicatorContainer"
           onMouseDown={[Function]}
           onTouchEnd={[Function]}
         >
@@ -120,16 +121,16 @@ exports[`AutoComplete matches snapshot for async select 1`] = `
 exports[`AutoComplete matches snapshot for creatable select 1`] = `
 <div>
   <h6
-    className="MuiTypography-root-4 MuiTypography-subtitle2-23 AutoComplete-inputTitle-2"
+    className="MuiTypography-root AutoComplete-inputTitle-2 MuiTypography-subtitle2"
   >
     Institution
   </h6>
   <div
-    className="css-10nd86i"
+    className="css-1pcexqc-container"
     onKeyDown={[Function]}
   >
     <div
-      className="css-vj8t7z"
+      className="css-bg1rzq-control"
       onMouseDown={[Function]}
       onTouchEnd={[Function]}
     >
@@ -137,7 +138,7 @@ exports[`AutoComplete matches snapshot for creatable select 1`] = `
         className="css-1hwfws3"
       >
         <div
-          className="css-1492t68"
+          className="css-151xaom-placeholder"
         >
           Institution
         </div>
@@ -170,6 +171,7 @@ exports[`AutoComplete matches snapshot for creatable select 1`] = `
                   "boxSizing": "content-box",
                   "color": "inherit",
                   "fontSize": "inherit",
+                  "label": "input",
                   "opacity": 1,
                   "outline": 0,
                   "padding": 0,
@@ -202,11 +204,11 @@ exports[`AutoComplete matches snapshot for creatable select 1`] = `
         className="css-1wy0on6"
       >
         <span
-          className="css-d8oujb"
+          className="css-bgvzuu-indicatorSeparator"
         />
         <div
           aria-hidden="true"
-          className="css-1ep9fjw"
+          className="css-16pqwjk-indicatorContainer"
           onMouseDown={[Function]}
           onTouchEnd={[Function]}
         >
@@ -237,16 +239,16 @@ exports[`AutoComplete matches snapshot for creatable select 1`] = `
 exports[`AutoComplete matches snapshot for simple select 1`] = `
 <div>
   <h6
-    className="MuiTypography-root-4 MuiTypography-subtitle2-23 AutoComplete-inputTitle-2"
+    className="MuiTypography-root AutoComplete-inputTitle-2 MuiTypography-subtitle2"
   >
     Institution
   </h6>
   <div
-    className="css-10nd86i"
+    className="css-1pcexqc-container"
     onKeyDown={[Function]}
   >
     <div
-      className="css-vj8t7z"
+      className="css-bg1rzq-control"
       onMouseDown={[Function]}
       onTouchEnd={[Function]}
     >
@@ -254,7 +256,7 @@ exports[`AutoComplete matches snapshot for simple select 1`] = `
         className="css-1hwfws3"
       >
         <div
-          className="css-1492t68"
+          className="css-151xaom-placeholder"
         >
           Institution
         </div>
@@ -287,6 +289,7 @@ exports[`AutoComplete matches snapshot for simple select 1`] = `
                   "boxSizing": "content-box",
                   "color": "inherit",
                   "fontSize": "inherit",
+                  "label": "input",
                   "opacity": 1,
                   "outline": 0,
                   "padding": 0,
@@ -319,11 +322,11 @@ exports[`AutoComplete matches snapshot for simple select 1`] = `
         className="css-1wy0on6"
       >
         <span
-          className="css-d8oujb"
+          className="css-bgvzuu-indicatorSeparator"
         />
         <div
           aria-hidden="true"
-          className="css-1ep9fjw"
+          className="css-16pqwjk-indicatorContainer"
           onMouseDown={[Function]}
           onTouchEnd={[Function]}
         >
@@ -354,16 +357,16 @@ exports[`AutoComplete matches snapshot for simple select 1`] = `
 exports[`AutoComplete matches snapshot with error 1`] = `
 <div>
   <h6
-    className="MuiTypography-root-4 MuiTypography-subtitle2-23 MuiTypography-colorError-38 AutoComplete-inputTitle-2"
+    className="MuiTypography-root AutoComplete-inputTitle-2 MuiTypography-subtitle2 MuiTypography-colorError"
   >
     Institution
   </h6>
   <div
-    className="css-10nd86i"
+    className="css-1pcexqc-container"
     onKeyDown={[Function]}
   >
     <div
-      className="css-vj8t7z"
+      className="css-bg1rzq-control"
       onMouseDown={[Function]}
       onTouchEnd={[Function]}
     >
@@ -371,7 +374,7 @@ exports[`AutoComplete matches snapshot with error 1`] = `
         className="css-1hwfws3"
       >
         <div
-          className="css-1492t68"
+          className="css-151xaom-placeholder"
         >
           Institution
         </div>
@@ -404,6 +407,7 @@ exports[`AutoComplete matches snapshot with error 1`] = `
                   "boxSizing": "content-box",
                   "color": "inherit",
                   "fontSize": "inherit",
+                  "label": "input",
                   "opacity": 1,
                   "outline": 0,
                   "padding": 0,
@@ -436,11 +440,11 @@ exports[`AutoComplete matches snapshot with error 1`] = `
         className="css-1wy0on6"
       >
         <span
-          className="css-d8oujb"
+          className="css-bgvzuu-indicatorSeparator"
         />
         <div
           aria-hidden="true"
-          className="css-1ep9fjw"
+          className="css-16pqwjk-indicatorContainer"
           onMouseDown={[Function]}
           onTouchEnd={[Function]}
         >
@@ -466,7 +470,7 @@ exports[`AutoComplete matches snapshot with error 1`] = `
     />
   </div>
   <p
-    className="MuiFormHelperText-root-40 MuiFormHelperText-error-41 AutoComplete-inputError-3"
+    className="MuiFormHelperText-root AutoComplete-inputError-3 Mui-error"
   >
     Some error
   </p>

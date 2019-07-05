@@ -5,7 +5,6 @@ import { withStyles } from '@material-ui/core/styles'
 import { withFormik } from 'formik'
 import * as Yup from 'yup'
 import PropTypes from 'prop-types'
-import { NavLink } from 'react-router-dom'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
@@ -22,11 +21,12 @@ import AutoComplete from '../../common/AutoComplete'
 import institutions from '../../data/institutions'
 import SubmitButtonWithProgress from '../../common/SubmitButtonWithProgress'
 import DescriptionCard from '../../common/DescriptionCard'
+import LinkTo from '../../common/LinkTo'
 
 const styles = theme => ({
   root: {
-    margin: theme.spacing.unit * 2,
-    padding: theme.spacing.unit * 2
+    margin: theme.spacing(2),
+    padding: theme.spacing(2)
   },
   formHeader: {
     padding: 10,
@@ -42,17 +42,17 @@ const styles = theme => ({
     flexDirection: 'column'
   },
   input: {
-    margin: theme.spacing.unit * 2,
+    margin: theme.spacing(2),
     width: 320
   },
   inputTitle: {
-    marginLeft: theme.spacing.unit * 2,
-    marginTop: theme.spacing.unit * 2,
-    marginBottom: -theme.spacing.unit * 2
+    marginLeft: theme.spacing(2),
+    marginTop: theme.spacing(2),
+    marginBottom: -theme.spacing(2)
   },
   inputError: {
     marginTop: -7,
-    marginLeft: theme.spacing.unit * 2
+    marginLeft: theme.spacing(2)
   },
   formActions: {
     display: 'flex',
@@ -61,7 +61,7 @@ const styles = theme => ({
   },
   deleteButton: {
     color: red[500],
-    margin: theme.spacing.unit * 2
+    margin: theme.spacing(2)
   }
 })
 
@@ -93,8 +93,7 @@ export class AccountFormComponent extends React.Component {
               <Button
                 size="small"
                 color="secondary"
-                component={NavLink}
-                to={`/institutions/${value}/import/new`}
+                component={LinkTo(`/institutions/${value}/import/new`)}
               >
                 Great, Let&apos;s do it
               </Button>
@@ -109,11 +108,11 @@ export class AccountFormComponent extends React.Component {
           )}
         >
           <Typography variant="caption" paragraph>
-            You can import
+            You can import&nbsp;
             <strong>all your accounts</strong>
-            in one go from
+            &nbsp;in one go from&nbsp;
             <strong>{institutions[value].name}</strong>
-            by using their API.
+            &nbsp;by using their API.
           </Typography>
           <Typography variant="caption" align="center">
             This is also the easiest way to keep your transactions up to date.

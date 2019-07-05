@@ -3,11 +3,11 @@
 exports[`LoginButton matches snapshot with user logged in as guest 1`] = `
 <div>
   <div
-    className="MuiAvatar-root-9 MuiAvatar-colorDefault-10"
+    className="MuiAvatar-root MuiAvatar-colorDefault"
   >
     <svg
       aria-hidden="true"
-      className="MuiSvgIcon-root-48 MuiSvgIcon-fontSizeSmall-55"
+      className="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
       focusable="false"
       role="presentation"
       viewBox="0 0 24 24"
@@ -23,11 +23,11 @@ exports[`LoginButton matches snapshot with user logged in as guest 1`] = `
   </div>
   <button
     aria-owns={null}
-    className="MuiButtonBase-root-38 MuiButton-root-12 MuiButton-text-14 MuiButton-flat-17 MuiButton-colorInherit-33"
+    className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-colorInherit"
     disabled={false}
     onBlur={[Function]}
     onClick={[Function]}
-    onContextMenu={[Function]}
+    onDragLeave={[Function]}
     onFocus={[Function]}
     onKeyDown={[Function]}
     onKeyUp={[Function]}
@@ -37,17 +37,14 @@ exports[`LoginButton matches snapshot with user logged in as guest 1`] = `
     onTouchEnd={[Function]}
     onTouchMove={[Function]}
     onTouchStart={[Function]}
-    tabIndex="0"
+    tabIndex={0}
     type="button"
   >
     <span
-      className="MuiButton-label-13"
+      className="MuiButton-label"
     >
       Test name
     </span>
-    <span
-      className="MuiTouchRipple-root-41"
-    />
   </button>
 </div>
 `;
@@ -56,7 +53,7 @@ exports[`LoginButton matches snapshot with user logged in with blockstack 1`] = 
 <div>
   <div
     aria-describedby={null}
-    className="MuiAvatar-root-9 MuiAvatar-colorDefault-10"
+    className="MuiAvatar-root MuiAvatar-colorDefault"
     onBlur={[Function]}
     onFocus={[Function]}
     onMouseLeave={[Function]}
@@ -67,11 +64,11 @@ exports[`LoginButton matches snapshot with user logged in with blockstack 1`] = 
   />
   <button
     aria-owns={null}
-    className="MuiButtonBase-root-38 MuiButton-root-12 MuiButton-text-14 MuiButton-flat-17 MuiButton-colorInherit-33"
+    className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-colorInherit"
     disabled={false}
     onBlur={[Function]}
     onClick={[Function]}
-    onContextMenu={[Function]}
+    onDragLeave={[Function]}
     onFocus={[Function]}
     onKeyDown={[Function]}
     onKeyUp={[Function]}
@@ -81,16 +78,16 @@ exports[`LoginButton matches snapshot with user logged in with blockstack 1`] = 
     onTouchEnd={[Function]}
     onTouchMove={[Function]}
     onTouchStart={[Function]}
-    tabIndex="0"
+    tabIndex={0}
     type="button"
   >
     <span
-      className="MuiButton-label-13"
+      className="MuiButton-label"
     >
       Test name
     </span>
     <span
-      className="MuiTouchRipple-root-41"
+      className="MuiTouchRipple-root"
     />
   </button>
 </div>

@@ -16,7 +16,7 @@ const styles = theme => ({
   icon: {
     fontSize: 20,
     opacity: 0.9,
-    marginRight: theme.spacing.unit * 2
+    marginRight: theme.spacing(2)
   },
   success: {
     color: green[600]

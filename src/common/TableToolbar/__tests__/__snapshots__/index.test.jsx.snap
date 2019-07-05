@@ -2,19 +2,19 @@
 
 exports[`TableToolbar matches snapshot with no selected items 1`] = `
 <div
-  className="MuiToolbar-root-6 MuiToolbar-regular-8 MuiToolbar-gutters-7 TableToolbar-root-1"
+  className="MuiToolbar-root MuiToolbar-regular TableToolbar-root-1 MuiToolbar-gutters"
 >
   <div
     className="TableToolbar-title-5"
   >
     <div>
       <h6
-        className="MuiTypography-root-10 MuiTypography-h6-27"
+        className="MuiTypography-root MuiTypography-h6"
       >
         Transactions
       </h6>
       <span
-        className="MuiTypography-root-10 MuiTypography-caption-20"
+        className="MuiTypography-root MuiTypography-caption"
       />
     </div>
   </div>
@@ -29,13 +29,13 @@ exports[`TableToolbar matches snapshot with no selected items 1`] = `
 
 exports[`TableToolbar matches snapshot with some selected items 1`] = `
 <div
-  className="MuiToolbar-root-6 MuiToolbar-regular-8 MuiToolbar-gutters-7 TableToolbar-root-1 TableToolbar-highlight-2"
+  className="MuiToolbar-root MuiToolbar-regular TableToolbar-root-1 TableToolbar-highlight-2 MuiToolbar-gutters"
 >
   <div
     className="TableToolbar-title-5"
   >
     <h6
-      className="MuiTypography-root-10 MuiTypography-subtitle1-28 MuiTypography-colorInherit-39"
+      className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorInherit"
     >
       1
        selected

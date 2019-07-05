@@ -33,12 +33,12 @@ exports[`CsvImportForm matches snapshot for BMO 1`] = `
       />
       <div>
         <h4
-          className="MuiTypography-root-3 MuiTypography-h4-18 MuiTypography-colorTextSecondary-36 MuiTypography-alignCenter-26"
+          className="MuiTypography-root MuiTypography-h4 MuiTypography-colorTextSecondary MuiTypography-alignCenter"
         >
           Drag a CSV file here
         </h4>
         <h6
-          className="MuiTypography-root-3 MuiTypography-subtitle2-22 MuiTypography-colorTextSecondary-36 MuiTypography-alignCenter-26"
+          className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextSecondary MuiTypography-alignCenter"
         >
           or click to select a file to upload.
         </h6>
@@ -46,15 +46,15 @@ exports[`CsvImportForm matches snapshot for BMO 1`] = `
     </div>
   </div>
   <hr
-    className="MuiDivider-root-39"
+    className="MuiDivider-root"
   />
   <div>
     <div>
       <button
-        className="MuiButtonBase-root-70 MuiButtonBase-disabled-71 MuiButton-root-44 MuiButton-contained-55 MuiButton-containedPrimary-56 MuiButton-raised-58 MuiButton-raisedPrimary-59 MuiButton-disabled-64"
+        className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary Mui-disabled Mui-disabled"
         disabled={true}
         onBlur={[Function]}
-        onContextMenu={[Function]}
+        onDragLeave={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}
         onKeyUp={[Function]}
@@ -64,22 +64,22 @@ exports[`CsvImportForm matches snapshot for BMO 1`] = `
         onTouchEnd={[Function]}
         onTouchMove={[Function]}
         onTouchStart={[Function]}
-        tabIndex="-1"
+        tabIndex={-1}
         type="submit"
       >
         <span
-          className="MuiButton-label-45"
+          className="MuiButton-label"
         >
           Import
         </span>
       </button>
     </div>
     <button
-      className="MuiButtonBase-root-70 MuiButton-root-44 MuiButton-text-46 MuiButton-textSecondary-48 MuiButton-flat-49 MuiButton-flatSecondary-51"
+      className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary"
       disabled={false}
       onBlur={[Function]}
       onClick={[MockFunction]}
-      onContextMenu={[Function]}
+      onDragLeave={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
@@ -89,17 +89,14 @@ exports[`CsvImportForm matches snapshot for BMO 1`] = `
       onTouchEnd={[Function]}
       onTouchMove={[Function]}
       onTouchStart={[Function]}
-      tabIndex="0"
+      tabIndex={0}
       type="button"
     >
       <span
-        className="MuiButton-label-45"
+        className="MuiButton-label"
       >
         Cancel
       </span>
-      <span
-        className="MuiTouchRipple-root-73"
-      />
     </button>
   </div>
 </form>

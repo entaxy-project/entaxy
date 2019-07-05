@@ -3,52 +3,52 @@
 exports[`Routes snapshot matches with no accounts 1`] = `
 <div>
   <div
-    className="MuiGrid-container-8 LandingComponent-root-1"
+    className="MuiGrid-root makeStyles-root-1 MuiGrid-container"
   >
     <div
-      className="MuiGrid-item-9 MuiGrid-grid-xs-6-42 LandingComponent-left-2"
+      className="MuiGrid-root makeStyles-left-2 MuiGrid-item MuiGrid-grid-xs-6"
     >
       <div
-        className="LandingComponent-logo-3"
+        className="makeStyles-logo-3"
       >
         Entaxy
         <div
-          className="LandingComponent-tagline-4"
+          className="makeStyles-tagline-4"
         >
           Order from chaos
         </div>
       </div>
       <div
-        className="LandingComponent-title-5"
+        className="makeStyles-title-5"
       >
         Your Personal Finance Simple & Private
         <div
-          className="LandingComponent-description-6"
+          className="makeStyles-description-6"
         >
           Insights into your finances, without sacrificing your data
         </div>
       </div>
       <div
-        className="MuiGrid-container-8"
+        className="MuiGrid-root MuiGrid-container"
       >
         <h5
-          className="MuiTypography-root-111 MuiTypography-h5-127 MuiTypography-colorSecondary-142"
+          className="MuiTypography-root MuiTypography-h5 MuiTypography-colorSecondary"
         >
           Where do you want to store your data?
         </h5>
         <div
-          className="MuiGrid-item-9 MuiGrid-grid-xs-6-42"
+          className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"
         >
           <div
-            className="MuiPaper-root-147 MuiPaper-elevation1-150 MuiPaper-rounded-148 LandingCardComponent-loggedInContainer-106"
+            className="MuiPaper-root MuiPaper-elevation1 LandingCardComponent-loggedInContainer-112 MuiPaper-rounded"
           >
             <h6
-              className="MuiTypography-root-111 MuiTypography-subtitle2-130 LandingCardComponent-blockstackTitle-109"
+              className="MuiTypography-root LandingCardComponent-blockstackTitle-115 MuiTypography-subtitle2"
             >
               Anywhere with blockstack
             </h6>
             <span
-              className="MuiTypography-root-111 MuiTypography-caption-121 LandingCardComponent-signingDescription-107"
+              className="MuiTypography-root LandingCardComponent-signingDescription-113 MuiTypography-caption"
             >
               Keep your data encrypted and decentralized. Learn more about  
               <a
@@ -60,11 +60,11 @@ exports[`Routes snapshot matches with no accounts 1`] = `
               </a>
             </span>
             <button
-              className="MuiButtonBase-root-200 MuiButton-root-174 MuiButton-contained-185 MuiButton-containedSecondary-187 MuiButton-raised-188 MuiButton-raisedSecondary-190 LandingCardComponent-signinButton-108"
+              className="MuiButtonBase-root MuiButton-root LandingCardComponent-signinButton-114 MuiButton-contained MuiButton-containedSecondary"
               disabled={false}
               onBlur={[Function]}
               onClick={[Function]}
-              onContextMenu={[Function]}
+              onDragLeave={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
               onKeyUp={[Function]}
@@ -74,32 +74,29 @@ exports[`Routes snapshot matches with no accounts 1`] = `
               onTouchEnd={[Function]}
               onTouchMove={[Function]}
               onTouchStart={[Function]}
-              tabIndex="0"
+              tabIndex={0}
               type="button"
             >
               <span
-                className="MuiButton-label-175"
+                className="MuiButton-label"
               >
                 Sign in with Blockstack
               </span>
-              <span
-                className="MuiTouchRipple-root-224"
-              />
             </button>
           </div>
         </div>
         <div
-          className="MuiGrid-item-9 MuiGrid-grid-xs-6-42"
+          className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"
         >
           <div
-            className="MuiPaper-root-147 MuiPaper-elevation1-150 MuiPaper-rounded-148 LandingCardComponent-loggedInContainer-106"
+            className="MuiPaper-root MuiPaper-elevation1 LandingCardComponent-loggedInContainer-112 MuiPaper-rounded"
           >
             <h6
-              className="MuiTypography-root-111 MuiTypography-subtitle2-130"
+              className="MuiTypography-root MuiTypography-subtitle2"
             >
               <svg
                 aria-hidden="true"
-                className="MuiSvgIcon-root-203 LandingCardComponent-browserIcon-110"
+                className="MuiSvgIcon-root LandingCardComponent-browserIcon-116"
                 focusable="false"
                 role="presentation"
                 viewBox="0 0 24 24"
@@ -117,16 +114,16 @@ exports[`Routes snapshot matches with no accounts 1`] = `
               Locally in your browser
             </h6>
             <span
-              className="MuiTypography-root-111 MuiTypography-caption-121 LandingCardComponent-signingDescription-107"
+              className="MuiTypography-root LandingCardComponent-signingDescription-113 MuiTypography-caption"
             >
               Your data will be stored temporarily and it be removed once you close your browser
             </span>
             <button
-              className="MuiButtonBase-root-200 MuiButton-root-174 MuiButton-contained-185 MuiButton-containedSecondary-187 MuiButton-raised-188 MuiButton-raisedSecondary-190 LandingCardComponent-signinButton-108"
+              className="MuiButtonBase-root MuiButton-root LandingCardComponent-signinButton-114 MuiButton-contained MuiButton-containedSecondary"
               disabled={false}
               onBlur={[Function]}
               onClick={[Function]}
-              onContextMenu={[Function]}
+              onDragLeave={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
               onKeyUp={[Function]}
@@ -136,36 +133,33 @@ exports[`Routes snapshot matches with no accounts 1`] = `
               onTouchEnd={[Function]}
               onTouchMove={[Function]}
               onTouchStart={[Function]}
-              tabIndex="0"
+              tabIndex={0}
               type="button"
             >
               <span
-                className="MuiButton-label-175"
+                className="MuiButton-label"
               >
                 Take it for a test drive
               </span>
-              <span
-                className="MuiTouchRipple-root-224"
-              />
             </button>
           </div>
         </div>
       </div>
       <div>
         <p
-          className="MuiTypography-root-111 MuiTypography-body2-119"
+          className="MuiTypography-root MuiTypography-body2"
         >
           Entaxy is free and you get to keep your data.
         </p>
         <p
-          className="MuiTypography-root-111 MuiTypography-body2-119"
+          className="MuiTypography-root MuiTypography-body2"
         >
           That's right, we don't store your data in a big database so we don't need to convince you to trust us.
         </p>
       </div>
     </div>
     <div
-      className="MuiGrid-item-9 MuiGrid-grid-xs-6-42 LandingComponent-right-7"
+      className="MuiGrid-root makeStyles-right-7 MuiGrid-item MuiGrid-grid-xs-6"
     />
   </div>
 </div>

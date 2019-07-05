@@ -6,16 +6,16 @@ exports[`SettingsForm matches snapshot before after submitting form 1`] = `
 >
   <div>
     <h6
-      className="MuiTypography-root-4 MuiTypography-subtitle2-23 AutoComplete-inputTitle-2"
+      className="MuiTypography-root AutoComplete-inputTitle-2 MuiTypography-subtitle2"
     >
       Language / Country
     </h6>
     <div
-      className="css-10nd86i"
+      className="css-1pcexqc-container"
       onKeyDown={[Function]}
     >
       <div
-        className="css-vj8t7z"
+        className="css-bg1rzq-control"
         onMouseDown={[Function]}
         onTouchEnd={[Function]}
       >
@@ -23,7 +23,7 @@ exports[`SettingsForm matches snapshot before after submitting form 1`] = `
           className="css-1hwfws3"
         >
           <div
-            className="css-1492t68"
+            className="css-151xaom-placeholder"
           >
             Language / Country
           </div>
@@ -56,6 +56,7 @@ exports[`SettingsForm matches snapshot before after submitting form 1`] = `
                     "boxSizing": "content-box",
                     "color": "inherit",
                     "fontSize": "inherit",
+                    "label": "input",
                     "opacity": 1,
                     "outline": 0,
                     "padding": 0,
@@ -89,7 +90,7 @@ exports[`SettingsForm matches snapshot before after submitting form 1`] = `
         >
           <div
             aria-hidden="true"
-            className="css-fraxkc"
+            className="css-bial7t-loadingIndicator"
           >
             <span
               className="css-pujnn1"
@@ -102,11 +103,11 @@ exports[`SettingsForm matches snapshot before after submitting form 1`] = `
             />
           </div>
           <span
-            className="css-d8oujb"
+            className="css-bgvzuu-indicatorSeparator"
           />
           <div
             aria-hidden="true"
-            className="css-1ep9fjw"
+            className="css-16pqwjk-indicatorContainer"
             onMouseDown={[Function]}
             onTouchEnd={[Function]}
           >
@@ -134,16 +135,16 @@ exports[`SettingsForm matches snapshot before after submitting form 1`] = `
   </div>
   <div>
     <h6
-      className="MuiTypography-root-4 MuiTypography-subtitle2-23 AutoComplete-inputTitle-2"
+      className="MuiTypography-root AutoComplete-inputTitle-2 MuiTypography-subtitle2"
     >
       Display Currency
     </h6>
     <div
-      className="css-10nd86i"
+      className="css-1pcexqc-container"
       onKeyDown={[Function]}
     >
       <div
-        className="css-vj8t7z"
+        className="css-bg1rzq-control"
         onMouseDown={[Function]}
         onTouchEnd={[Function]}
       >
@@ -151,7 +152,7 @@ exports[`SettingsForm matches snapshot before after submitting form 1`] = `
           className="css-1hwfws3"
         >
           <div
-            className="css-1492t68"
+            className="css-151xaom-placeholder"
           >
             Display Currency
           </div>
@@ -184,6 +185,7 @@ exports[`SettingsForm matches snapshot before after submitting form 1`] = `
                     "boxSizing": "content-box",
                     "color": "inherit",
                     "fontSize": "inherit",
+                    "label": "input",
                     "opacity": 1,
                     "outline": 0,
                     "padding": 0,
@@ -217,7 +219,7 @@ exports[`SettingsForm matches snapshot before after submitting form 1`] = `
         >
           <div
             aria-hidden="true"
-            className="css-fraxkc"
+            className="css-bial7t-loadingIndicator"
           >
             <span
               className="css-pujnn1"
@@ -230,11 +232,11 @@ exports[`SettingsForm matches snapshot before after submitting form 1`] = `
             />
           </div>
           <span
-            className="css-d8oujb"
+            className="css-bgvzuu-indicatorSeparator"
           />
           <div
             aria-hidden="true"
-            className="css-1ep9fjw"
+            className="css-16pqwjk-indicatorContainer"
             onMouseDown={[Function]}
             onTouchEnd={[Function]}
           >
@@ -261,11 +263,11 @@ exports[`SettingsForm matches snapshot before after submitting form 1`] = `
     </div>
   </div>
   <button
-    className="MuiButtonBase-root-66 MuiButtonBase-disabled-67 MuiButton-root-40 MuiButton-text-42 MuiButton-flat-45 MuiButton-sizeSmall-63 MuiButton-disabled-60"
+    className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-sizeSmall Mui-disabled Mui-disabled"
     disabled={true}
     onBlur={[Function]}
     onClick={[Function]}
-    onContextMenu={[Function]}
+    onDragLeave={[Function]}
     onFocus={[Function]}
     onKeyDown={[Function]}
     onKeyUp={[Function]}
@@ -275,27 +277,27 @@ exports[`SettingsForm matches snapshot before after submitting form 1`] = `
     onTouchEnd={[Function]}
     onTouchMove={[Function]}
     onTouchStart={[Function]}
-    tabIndex="-1"
+    tabIndex={-1}
     type="button"
   >
     <span
-      className="MuiButton-label-41"
+      className="MuiButton-label"
     >
       Reset - delete all my data
     </span>
   </button>
   <hr
-    className="MuiDivider-root-69"
+    className="MuiDivider-root"
   />
   <div>
     <div
-      className="SubmitButtonWithProgress-wrapper-74"
+      className="SubmitButtonWithProgress-wrapper-59"
     >
       <button
-        className="MuiButtonBase-root-66 MuiButtonBase-disabled-67 MuiButton-root-40 MuiButton-text-42 MuiButton-textSecondary-44 MuiButton-flat-45 MuiButton-flatSecondary-47 MuiButton-disabled-60"
+        className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary Mui-disabled Mui-disabled"
         disabled={true}
         onBlur={[Function]}
-        onContextMenu={[Function]}
+        onDragLeave={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}
         onKeyUp={[Function]}
@@ -305,17 +307,17 @@ exports[`SettingsForm matches snapshot before after submitting form 1`] = `
         onTouchEnd={[Function]}
         onTouchMove={[Function]}
         onTouchStart={[Function]}
-        tabIndex="-1"
+        tabIndex={-1}
         type="submit"
       >
         <span
-          className="MuiButton-label-41"
+          className="MuiButton-label"
         >
           Save
         </span>
       </button>
       <div
-        className="MuiCircularProgress-root-83 MuiCircularProgress-colorPrimary-86 MuiCircularProgress-indeterminate-85 SubmitButtonWithProgress-buttonProgress-75"
+        className="MuiCircularProgress-root SubmitButtonWithProgress-buttonProgress-60 MuiCircularProgress-colorPrimary MuiCircularProgress-indeterminate"
         role="progressbar"
         style={
           Object {
@@ -325,11 +327,11 @@ exports[`SettingsForm matches snapshot before after submitting form 1`] = `
         }
       >
         <svg
-          className="MuiCircularProgress-svg-88"
+          className="MuiCircularProgress-svg"
           viewBox="22 22 44 44"
         >
           <circle
-            className="MuiCircularProgress-circle-89 MuiCircularProgress-circleIndeterminate-91"
+            className="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate"
             cx={44}
             cy={44}
             fill="none"
@@ -350,16 +352,16 @@ exports[`SettingsForm matches snapshot before submitting form 1`] = `
 >
   <div>
     <h6
-      className="MuiTypography-root-4 MuiTypography-subtitle2-23 AutoComplete-inputTitle-2"
+      className="MuiTypography-root AutoComplete-inputTitle-2 MuiTypography-subtitle2"
     >
       Language / Country
     </h6>
     <div
-      className="css-10nd86i"
+      className="css-1pcexqc-container"
       onKeyDown={[Function]}
     >
       <div
-        className="css-vj8t7z"
+        className="css-bg1rzq-control"
         onMouseDown={[Function]}
         onTouchEnd={[Function]}
       >
@@ -367,7 +369,7 @@ exports[`SettingsForm matches snapshot before submitting form 1`] = `
           className="css-1hwfws3"
         >
           <div
-            className="css-1492t68"
+            className="css-151xaom-placeholder"
           >
             Language / Country
           </div>
@@ -400,6 +402,7 @@ exports[`SettingsForm matches snapshot before submitting form 1`] = `
                     "boxSizing": "content-box",
                     "color": "inherit",
                     "fontSize": "inherit",
+                    "label": "input",
                     "opacity": 1,
                     "outline": 0,
                     "padding": 0,
@@ -433,7 +436,7 @@ exports[`SettingsForm matches snapshot before submitting form 1`] = `
         >
           <div
             aria-hidden="true"
-            className="css-fraxkc"
+            className="css-bial7t-loadingIndicator"
           >
             <span
               className="css-pujnn1"
@@ -446,11 +449,11 @@ exports[`SettingsForm matches snapshot before submitting form 1`] = `
             />
           </div>
           <span
-            className="css-d8oujb"
+            className="css-bgvzuu-indicatorSeparator"
           />
           <div
             aria-hidden="true"
-            className="css-1ep9fjw"
+            className="css-16pqwjk-indicatorContainer"
             onMouseDown={[Function]}
             onTouchEnd={[Function]}
           >
@@ -478,16 +481,16 @@ exports[`SettingsForm matches snapshot before submitting form 1`] = `
   </div>
   <div>
     <h6
-      className="MuiTypography-root-4 MuiTypography-subtitle2-23 AutoComplete-inputTitle-2"
+      className="MuiTypography-root AutoComplete-inputTitle-2 MuiTypography-subtitle2"
     >
       Display Currency
     </h6>
     <div
-      className="css-10nd86i"
+      className="css-1pcexqc-container"
       onKeyDown={[Function]}
     >
       <div
-        className="css-vj8t7z"
+        className="css-bg1rzq-control"
         onMouseDown={[Function]}
         onTouchEnd={[Function]}
       >
@@ -495,7 +498,7 @@ exports[`SettingsForm matches snapshot before submitting form 1`] = `
           className="css-1hwfws3"
         >
           <div
-            className="css-1492t68"
+            className="css-151xaom-placeholder"
           >
             Display Currency
           </div>
@@ -528,6 +531,7 @@ exports[`SettingsForm matches snapshot before submitting form 1`] = `
                     "boxSizing": "content-box",
                     "color": "inherit",
                     "fontSize": "inherit",
+                    "label": "input",
                     "opacity": 1,
                     "outline": 0,
                     "padding": 0,
@@ -561,7 +565,7 @@ exports[`SettingsForm matches snapshot before submitting form 1`] = `
         >
           <div
             aria-hidden="true"
-            className="css-fraxkc"
+            className="css-bial7t-loadingIndicator"
           >
             <span
               className="css-pujnn1"
@@ -574,11 +578,11 @@ exports[`SettingsForm matches snapshot before submitting form 1`] = `
             />
           </div>
           <span
-            className="css-d8oujb"
+            className="css-bgvzuu-indicatorSeparator"
           />
           <div
             aria-hidden="true"
-            className="css-1ep9fjw"
+            className="css-16pqwjk-indicatorContainer"
             onMouseDown={[Function]}
             onTouchEnd={[Function]}
           >
@@ -605,11 +609,11 @@ exports[`SettingsForm matches snapshot before submitting form 1`] = `
     </div>
   </div>
   <button
-    className="MuiButtonBase-root-66 MuiButton-root-40 MuiButton-text-42 MuiButton-flat-45 MuiButton-sizeSmall-63"
+    className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-sizeSmall"
     disabled={false}
     onBlur={[Function]}
     onClick={[Function]}
-    onContextMenu={[Function]}
+    onDragLeave={[Function]}
     onFocus={[Function]}
     onKeyDown={[Function]}
     onKeyUp={[Function]}
@@ -619,30 +623,27 @@ exports[`SettingsForm matches snapshot before submitting form 1`] = `
     onTouchEnd={[Function]}
     onTouchMove={[Function]}
     onTouchStart={[Function]}
-    tabIndex="0"
+    tabIndex={0}
     type="button"
   >
     <span
-      className="MuiButton-label-41"
+      className="MuiButton-label"
     >
       Reset - delete all my data
     </span>
-    <span
-      className="MuiTouchRipple-root-76"
-    />
   </button>
   <hr
-    className="MuiDivider-root-69"
+    className="MuiDivider-root"
   />
   <div>
     <div
-      className="SubmitButtonWithProgress-wrapper-74"
+      className="SubmitButtonWithProgress-wrapper-59"
     >
       <button
-        className="MuiButtonBase-root-66 MuiButton-root-40 MuiButton-text-42 MuiButton-textSecondary-44 MuiButton-flat-45 MuiButton-flatSecondary-47"
+        className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary"
         disabled={false}
         onBlur={[Function]}
-        onContextMenu={[Function]}
+        onDragLeave={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}
         onKeyUp={[Function]}
@@ -652,17 +653,14 @@ exports[`SettingsForm matches snapshot before submitting form 1`] = `
         onTouchEnd={[Function]}
         onTouchMove={[Function]}
         onTouchStart={[Function]}
-        tabIndex="0"
+        tabIndex={0}
         type="submit"
       >
         <span
-          className="MuiButton-label-41"
+          className="MuiButton-label"
         >
           Save
         </span>
-        <span
-          className="MuiTouchRipple-root-76"
-        />
       </button>
     </div>
   </div>

@@ -306,7 +306,7 @@ TransactionsTableComponent.propTypes = {
   classes: PropTypes.object.isRequired,
   className: PropTypes.string,
   children: PropTypes.node,
-  Toolbar: PropTypes.func.isRequired,
+  Toolbar: PropTypes.object.isRequired,
   toolbarProps: PropTypes.object,
   account: PropTypes.object.isRequired,
   transactions: PropTypes.array.isRequired,

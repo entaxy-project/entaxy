@@ -15,25 +15,26 @@ import IconButton from '@material-ui/core/IconButton'
 import AddIcon from '@material-ui/icons/Add'
 import EditIcon from '@material-ui/icons/Edit'
 import SettingsIcon from '@material-ui/icons/Settings'
-import { NavLink } from 'react-router-dom'
 import grey from '@material-ui/core/colors/grey'
 import InstitutionIcon from '../../common/InstitutionIcon'
 import { currencyFormatter } from '../../util/stringFormatter'
+import LinkTo from '../../common/LinkTo'
 
 const styles = theme => ({
   noAccounts: {
     background: grey[100],
     margin: '0 20px 20px 25px',
-    padding: theme.spacing.unit
+    padding: theme.spacing(1)
   },
-  institutionListItemRoot: {
-    padding: '4px 24px'
+  institutionListRoot: {
+    padding: 0
   },
   institutionListItem: {
     paddingRight: 0
   },
   institutionListItemIcon: {
-    margin: 0
+    marginLeft: 10,
+    minWidth: 30
   },
   institution: {
     padding: 0,
@@ -44,11 +45,17 @@ const styles = theme => ({
     fontWeight: 500
   },
   account: {
-    padding: '4px 24px 4px 40px'
+    padding: '0 0 0 40px'
+  },
+  ListItemText: {
+    margin: '3px 0 3px 0'
+  },
+  smallFont: {
+    fontSize: '95%'
   },
   smallButton: {
     padding: 4,
-    marginRight: 5
+    marginRight: -6
   },
   smallIcon: {
     fontSize: 18
@@ -87,8 +94,7 @@ export const AccountsComponent = ({
               <IconButton
                 aria-label="New account"
                 className={classes.smallButton}
-                component={NavLink}
-                to="/accounts/new"
+                component={LinkTo('/accounts/new')}
               >
                 <AddIcon />
               </IconButton>
@@ -103,11 +109,11 @@ export const AccountsComponent = ({
         </Typography>
       )}
       {userHasAccounts && (
-        <List dense={true}>
+        <List dense={true} className={classes.institutionListRoot}>
           {Object.keys(accounts.byInstitution).sort().map(institution => (
             Object.values(accounts.byInstitution[institution].groups).map(accountGroup => (
               <div key={`${institution}-${accountGroup.id}`}>
-                <ListItem className={classes.institutionListItemRoot}>
+                <ListItem>
                   <ListItemIcon className={classes.institutionListItemIcon}>
                     <InstitutionIcon institution={institution} size="small" />
                   </ListItemIcon>
@@ -123,8 +129,7 @@ export const AccountsComponent = ({
                         <IconButton
                           aria-label="Edit API details"
                           className={classes.smallButton}
-                          component={NavLink}
-                          to={`/institutions/${institution}/import/${accountGroup.id}/edit`}
+                          component={LinkTo(`/institutions/${institution}/import/${accountGroup.id}/edit`)}
                         >
                           <SettingsIcon className={classes.smallIcon} />
                         </IconButton>
@@ -132,7 +137,7 @@ export const AccountsComponent = ({
                     </ListItemSecondaryAction>
                   )}
                 </ListItem>
-                <List dense={true}>
+                <List dense={true} className={classes.institutionListRoot}>
                   {accountGroup.accountIds.map((id) => {
                     if (accounts.byId[id] === undefined) return undefined
                     const account = accounts.byId[id]
@@ -142,10 +147,14 @@ export const AccountsComponent = ({
                         button
                         key={account.id}
                         selected={account.id === accountId}
-                        component={NavLink}
-                        to={`/accounts/${account.id}/transactions`}
+                        component={LinkTo(`/accounts/${account.id}/transactions`)}
                       >
                         <ListItemText
+                          classes={{
+                            root: classes.ListItemText,
+                            primary: classes.smallFont,
+                            secondary: classes.smallFont
+                          }}
                           primary={account.name}
                           secondary={
                             currencyFormatter(settings.locale, account.currency)(account.currentBalance.accountCurrency)
@@ -157,8 +166,7 @@ export const AccountsComponent = ({
                               <IconButton
                                 aria-label="Edit account"
                                 className={classes.smallButton}
-                                component={NavLink}
-                                to={`/accounts/${id}/edit`}
+                                component={LinkTo(`/accounts/${id}/edit`)}
                               >
                                 <EditIcon className={classes.smallIcon} />
                               </IconButton>

@@ -20,12 +20,12 @@ const styles = theme => ({
     flexDirection: 'column'
   },
   inputTitle: {
-    marginLeft: theme.spacing.unit * 2,
-    marginTop: theme.spacing.unit * 2,
-    marginBottom: -theme.spacing.unit * 2
+    marginLeft: theme.spacing(2),
+    marginTop: theme.spacing(2),
+    marginBottom: -theme.spacing(2)
   },
   input: {
-    margin: theme.spacing.unit * 2,
+    margin: theme.spacing(2),
     width: 320
   },
   formActions: {
@@ -35,10 +35,10 @@ const styles = theme => ({
   },
   deleteButton: {
     color: red[500],
-    margin: theme.spacing.unit * 2
+    margin: theme.spacing(2)
   },
   close: {
-    padding: theme.spacing.unit / 2
+    padding: theme.spacing(1) / 2
   }
 })
 

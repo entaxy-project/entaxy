@@ -2,24 +2,24 @@
 
 exports[`Settings matches snapshot with no accounts and no selected accountId 1`] = `
 <div
-  className="MuiGrid-container-1 MuiGrid-justify-xs-center-18"
+  className="MuiGrid-root MuiGrid-container MuiGrid-justify-xs-center"
 >
   <div
-    className="MuiPaper-root-98 MuiPaper-elevation2-102 MuiPaper-rounded-99"
+    className="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
   >
     <div>
       <h6
-        className="MuiTypography-root-125 MuiTypography-h6-142 MuiTypography-alignCenter-148"
+        className="MuiTypography-root MuiTypography-h6 MuiTypography-alignCenter"
       >
         Settings
       </h6>
       <button
         aria-label="Close"
-        className="MuiButtonBase-root-167 MuiIconButton-root-161"
+        className="MuiButtonBase-root MuiIconButton-root"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
-        onContextMenu={[Function]}
+        onDragLeave={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}
         onKeyUp={[Function]}
@@ -29,15 +29,15 @@ exports[`Settings matches snapshot with no accounts and no selected accountId 1`
         onTouchEnd={[Function]}
         onTouchMove={[Function]}
         onTouchStart={[Function]}
-        tabIndex="0"
+        tabIndex={0}
         type="button"
       >
         <span
-          className="MuiIconButton-label-166"
+          className="MuiIconButton-label"
         >
           <svg
             aria-hidden="true"
-            className="MuiSvgIcon-root-170"
+            className="MuiSvgIcon-root"
             focusable="false"
             role="presentation"
             viewBox="0 0 24 24"
@@ -51,13 +51,10 @@ exports[`Settings matches snapshot with no accounts and no selected accountId 1`
             />
           </svg>
         </span>
-        <span
-          className="MuiTouchRipple-root-184"
-        />
       </button>
     </div>
     <hr
-      className="MuiDivider-root-179"
+      className="MuiDivider-root"
     />
     <SettingsForm
       handleDeleteAllData={[Function]}
