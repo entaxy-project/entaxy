@@ -12,7 +12,6 @@ exports[`CsvImportForm matches snapshot for BMO 1`] = `
       onDragEnter={[Function]}
       onDragLeave={[Function]}
       onDragOver={[Function]}
-      onDragStart={[Function]}
       onDrop={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}

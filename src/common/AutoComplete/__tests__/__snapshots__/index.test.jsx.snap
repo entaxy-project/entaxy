@@ -8,19 +8,19 @@ exports[`AutoComplete matches snapshot for async select 1`] = `
     Institution
   </h6>
   <div
-    className="css-1pcexqc-container"
+    className=" css-2b097c-container"
     onKeyDown={[Function]}
   >
     <div
-      className="css-bg1rzq-control"
+      className=" css-yk16xz-control"
       onMouseDown={[Function]}
       onTouchEnd={[Function]}
     >
       <div
-        className="css-1hwfws3"
+        className=" css-1hwfws3"
       >
         <div
-          className="css-151xaom-placeholder"
+          className=" css-1wa3eu0-placeholder"
         >
           Institution
         </div>
@@ -83,14 +83,14 @@ exports[`AutoComplete matches snapshot for async select 1`] = `
         </div>
       </div>
       <div
-        className="css-1wy0on6"
+        className=" css-1wy0on6"
       >
         <span
-          className="css-bgvzuu-indicatorSeparator"
+          className=" css-1okebmr-indicatorSeparator"
         />
         <div
           aria-hidden="true"
-          className="css-16pqwjk-indicatorContainer"
+          className=" css-tlfecz-indicatorContainer"
           onMouseDown={[Function]}
           onTouchEnd={[Function]}
         >
@@ -126,19 +126,19 @@ exports[`AutoComplete matches snapshot for creatable select 1`] = `
     Institution
   </h6>
   <div
-    className="css-1pcexqc-container"
+    className=" css-2b097c-container"
     onKeyDown={[Function]}
   >
     <div
-      className="css-bg1rzq-control"
+      className=" css-yk16xz-control"
       onMouseDown={[Function]}
       onTouchEnd={[Function]}
     >
       <div
-        className="css-1hwfws3"
+        className=" css-1hwfws3"
       >
         <div
-          className="css-151xaom-placeholder"
+          className=" css-1wa3eu0-placeholder"
         >
           Institution
         </div>
@@ -201,14 +201,14 @@ exports[`AutoComplete matches snapshot for creatable select 1`] = `
         </div>
       </div>
       <div
-        className="css-1wy0on6"
+        className=" css-1wy0on6"
       >
         <span
-          className="css-bgvzuu-indicatorSeparator"
+          className=" css-1okebmr-indicatorSeparator"
         />
         <div
           aria-hidden="true"
-          className="css-16pqwjk-indicatorContainer"
+          className=" css-tlfecz-indicatorContainer"
           onMouseDown={[Function]}
           onTouchEnd={[Function]}
         >
@@ -244,19 +244,19 @@ exports[`AutoComplete matches snapshot for simple select 1`] = `
     Institution
   </h6>
   <div
-    className="css-1pcexqc-container"
+    className=" css-2b097c-container"
     onKeyDown={[Function]}
   >
     <div
-      className="css-bg1rzq-control"
+      className=" css-yk16xz-control"
       onMouseDown={[Function]}
       onTouchEnd={[Function]}
     >
       <div
-        className="css-1hwfws3"
+        className=" css-1hwfws3"
       >
         <div
-          className="css-151xaom-placeholder"
+          className=" css-1wa3eu0-placeholder"
         >
           Institution
         </div>
@@ -319,14 +319,14 @@ exports[`AutoComplete matches snapshot for simple select 1`] = `
         </div>
       </div>
       <div
-        className="css-1wy0on6"
+        className=" css-1wy0on6"
       >
         <span
-          className="css-bgvzuu-indicatorSeparator"
+          className=" css-1okebmr-indicatorSeparator"
         />
         <div
           aria-hidden="true"
-          className="css-16pqwjk-indicatorContainer"
+          className=" css-tlfecz-indicatorContainer"
           onMouseDown={[Function]}
           onTouchEnd={[Function]}
         >
@@ -362,19 +362,19 @@ exports[`AutoComplete matches snapshot with error 1`] = `
     Institution
   </h6>
   <div
-    className="css-1pcexqc-container"
+    className=" css-2b097c-container"
     onKeyDown={[Function]}
   >
     <div
-      className="css-bg1rzq-control"
+      className=" css-yk16xz-control"
       onMouseDown={[Function]}
       onTouchEnd={[Function]}
     >
       <div
-        className="css-1hwfws3"
+        className=" css-1hwfws3"
       >
         <div
-          className="css-151xaom-placeholder"
+          className=" css-1wa3eu0-placeholder"
         >
           Institution
         </div>
@@ -437,14 +437,14 @@ exports[`AutoComplete matches snapshot with error 1`] = `
         </div>
       </div>
       <div
-        className="css-1wy0on6"
+        className=" css-1wy0on6"
       >
         <span
-          className="css-bgvzuu-indicatorSeparator"
+          className=" css-1okebmr-indicatorSeparator"
         />
         <div
           aria-hidden="true"
-          className="css-16pqwjk-indicatorContainer"
+          className=" css-tlfecz-indicatorContainer"
           onMouseDown={[Function]}
           onTouchEnd={[Function]}
         >

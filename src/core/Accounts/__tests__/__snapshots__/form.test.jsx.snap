@@ -45,10 +45,6 @@ exports[`Account form matches snapshot for edit account 1`] = `
             <path
               d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
             />
-            <path
-              d="M0 0h24v24H0z"
-              fill="none"
-            />
           </svg>
         </span>
       </button>
@@ -66,19 +62,19 @@ exports[`Account form matches snapshot for edit account 1`] = `
           Institution
         </h6>
         <div
-          className="css-1pcexqc-container"
+          className=" css-2b097c-container"
           onKeyDown={[Function]}
         >
           <div
-            className="css-bg1rzq-control"
+            className=" css-yk16xz-control"
             onMouseDown={[Function]}
             onTouchEnd={[Function]}
           >
             <div
-              className="css-1hwfws3"
+              className=" css-1hwfws3"
             >
               <div
-                className="css-151xaom-placeholder"
+                className=" css-1wa3eu0-placeholder"
               >
                 Institution
               </div>
@@ -141,14 +137,14 @@ exports[`Account form matches snapshot for edit account 1`] = `
               </div>
             </div>
             <div
-              className="css-1wy0on6"
+              className=" css-1wy0on6"
             >
               <span
-                className="css-bgvzuu-indicatorSeparator"
+                className=" css-1okebmr-indicatorSeparator"
               />
               <div
                 aria-hidden="true"
-                className="css-16pqwjk-indicatorContainer"
+                className=" css-tlfecz-indicatorContainer"
                 onMouseDown={[Function]}
                 onTouchEnd={[Function]}
               >
@@ -267,19 +263,19 @@ exports[`Account form matches snapshot for edit account 1`] = `
           Account Currency
         </h6>
         <div
-          className="css-1pcexqc-container"
+          className=" css-2b097c-container"
           onKeyDown={[Function]}
         >
           <div
-            className="css-bg1rzq-control"
+            className=" css-yk16xz-control"
             onMouseDown={[Function]}
             onTouchEnd={[Function]}
           >
             <div
-              className="css-1hwfws3"
+              className=" css-1hwfws3"
             >
               <div
-                className="css-151xaom-placeholder"
+                className=" css-1wa3eu0-placeholder"
               >
                 Account Currency
               </div>
@@ -342,28 +338,28 @@ exports[`Account form matches snapshot for edit account 1`] = `
               </div>
             </div>
             <div
-              className="css-1wy0on6"
+              className=" css-1wy0on6"
             >
               <div
                 aria-hidden="true"
-                className="css-bial7t-loadingIndicator"
+                className=" css-at12u2-loadingIndicator"
               >
                 <span
-                  className="css-pujnn1"
+                  className="css-d0ptw1"
                 />
                 <span
-                  className="css-gji98i"
+                  className="css-3utax6"
                 />
                 <span
-                  className="css-1frpy8x"
+                  className="css-1qyc6ze"
                 />
               </div>
               <span
-                className="css-bgvzuu-indicatorSeparator"
+                className=" css-1okebmr-indicatorSeparator"
               />
               <div
                 aria-hidden="true"
-                className="css-16pqwjk-indicatorContainer"
+                className=" css-tlfecz-indicatorContainer"
                 onMouseDown={[Function]}
                 onTouchEnd={[Function]}
               >
@@ -495,10 +491,6 @@ exports[`Account form matches snapshot for new account 1`] = `
             <path
               d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
             />
-            <path
-              d="M0 0h24v24H0z"
-              fill="none"
-            />
           </svg>
         </span>
       </button>
@@ -516,19 +508,19 @@ exports[`Account form matches snapshot for new account 1`] = `
           Institution
         </h6>
         <div
-          className="css-1pcexqc-container"
+          className=" css-2b097c-container"
           onKeyDown={[Function]}
         >
           <div
-            className="css-bg1rzq-control"
+            className=" css-yk16xz-control"
             onMouseDown={[Function]}
             onTouchEnd={[Function]}
           >
             <div
-              className="css-1hwfws3"
+              className=" css-1hwfws3"
             >
               <div
-                className="css-151xaom-placeholder"
+                className=" css-1wa3eu0-placeholder"
               >
                 Institution
               </div>
@@ -591,14 +583,14 @@ exports[`Account form matches snapshot for new account 1`] = `
               </div>
             </div>
             <div
-              className="css-1wy0on6"
+              className=" css-1wy0on6"
             >
               <span
-                className="css-bgvzuu-indicatorSeparator"
+                className=" css-1okebmr-indicatorSeparator"
               />
               <div
                 aria-hidden="true"
-                className="css-16pqwjk-indicatorContainer"
+                className=" css-tlfecz-indicatorContainer"
                 onMouseDown={[Function]}
                 onTouchEnd={[Function]}
               >
@@ -717,19 +709,19 @@ exports[`Account form matches snapshot for new account 1`] = `
           Account Currency
         </h6>
         <div
-          className="css-1pcexqc-container"
+          className=" css-2b097c-container"
           onKeyDown={[Function]}
         >
           <div
-            className="css-bg1rzq-control"
+            className=" css-yk16xz-control"
             onMouseDown={[Function]}
             onTouchEnd={[Function]}
           >
             <div
-              className="css-1hwfws3"
+              className=" css-1hwfws3"
             >
               <div
-                className="css-151xaom-placeholder"
+                className=" css-1wa3eu0-placeholder"
               >
                 Account Currency
               </div>
@@ -792,28 +784,28 @@ exports[`Account form matches snapshot for new account 1`] = `
               </div>
             </div>
             <div
-              className="css-1wy0on6"
+              className=" css-1wy0on6"
             >
               <div
                 aria-hidden="true"
-                className="css-bial7t-loadingIndicator"
+                className=" css-at12u2-loadingIndicator"
               >
                 <span
-                  className="css-pujnn1"
+                  className="css-d0ptw1"
                 />
                 <span
-                  className="css-gji98i"
+                  className="css-3utax6"
                 />
                 <span
-                  className="css-1frpy8x"
+                  className="css-1qyc6ze"
                 />
               </div>
               <span
-                className="css-bgvzuu-indicatorSeparator"
+                className=" css-1okebmr-indicatorSeparator"
               />
               <div
                 aria-hidden="true"
-                className="css-16pqwjk-indicatorContainer"
+                className=" css-tlfecz-indicatorContainer"
                 onMouseDown={[Function]}
                 onTouchEnd={[Function]}
               >

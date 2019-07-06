@@ -8,7 +8,6 @@ exports[`CsvDropzone matches snapshot with a bad file 1`] = `
   onDragEnter={[Function]}
   onDragLeave={[Function]}
   onDragOver={[Function]}
-  onDragStart={[Function]}
   onDrop={[Function]}
   onFocus={[Function]}
   onKeyDown={[Function]}
@@ -32,8 +31,10 @@ exports[`CsvDropzone matches snapshot with a bad file 1`] = `
   >
     <svg
       className="CsvDropzone-menuIcon-2"
+      role="presentation"
       style={
         Object {
+          "height": "1.5rem",
           "width": "1.5rem",
         }
       }
@@ -65,7 +66,6 @@ exports[`CsvDropzone matches snapshot with a good file 1`] = `
   onDragEnter={[Function]}
   onDragLeave={[Function]}
   onDragOver={[Function]}
-  onDragStart={[Function]}
   onDrop={[Function]}
   onFocus={[Function]}
   onKeyDown={[Function]}
@@ -89,8 +89,10 @@ exports[`CsvDropzone matches snapshot with a good file 1`] = `
   >
     <svg
       className="CsvDropzone-menuIcon-2"
+      role="presentation"
       style={
         Object {
+          "height": "1.5rem",
           "width": "1.5rem",
         }
       }
@@ -117,7 +119,6 @@ exports[`CsvDropzone matches snapshot without a file 1`] = `
   onDragEnter={[Function]}
   onDragLeave={[Function]}
   onDragOver={[Function]}
-  onDragStart={[Function]}
   onDrop={[Function]}
   onFocus={[Function]}
   onKeyDown={[Function]}

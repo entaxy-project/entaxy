@@ -11,19 +11,19 @@ exports[`SettingsForm matches snapshot before after submitting form 1`] = `
       Language / Country
     </h6>
     <div
-      className="css-1pcexqc-container"
+      className=" css-2b097c-container"
       onKeyDown={[Function]}
     >
       <div
-        className="css-bg1rzq-control"
+        className=" css-yk16xz-control"
         onMouseDown={[Function]}
         onTouchEnd={[Function]}
       >
         <div
-          className="css-1hwfws3"
+          className=" css-1hwfws3"
         >
           <div
-            className="css-151xaom-placeholder"
+            className=" css-1wa3eu0-placeholder"
           >
             Language / Country
           </div>
@@ -86,28 +86,28 @@ exports[`SettingsForm matches snapshot before after submitting form 1`] = `
           </div>
         </div>
         <div
-          className="css-1wy0on6"
+          className=" css-1wy0on6"
         >
           <div
             aria-hidden="true"
-            className="css-bial7t-loadingIndicator"
+            className=" css-at12u2-loadingIndicator"
           >
             <span
-              className="css-pujnn1"
+              className="css-d0ptw1"
             />
             <span
-              className="css-gji98i"
+              className="css-3utax6"
             />
             <span
-              className="css-1frpy8x"
+              className="css-1qyc6ze"
             />
           </div>
           <span
-            className="css-bgvzuu-indicatorSeparator"
+            className=" css-1okebmr-indicatorSeparator"
           />
           <div
             aria-hidden="true"
-            className="css-16pqwjk-indicatorContainer"
+            className=" css-tlfecz-indicatorContainer"
             onMouseDown={[Function]}
             onTouchEnd={[Function]}
           >
@@ -140,19 +140,19 @@ exports[`SettingsForm matches snapshot before after submitting form 1`] = `
       Display Currency
     </h6>
     <div
-      className="css-1pcexqc-container"
+      className=" css-2b097c-container"
       onKeyDown={[Function]}
     >
       <div
-        className="css-bg1rzq-control"
+        className=" css-yk16xz-control"
         onMouseDown={[Function]}
         onTouchEnd={[Function]}
       >
         <div
-          className="css-1hwfws3"
+          className=" css-1hwfws3"
         >
           <div
-            className="css-151xaom-placeholder"
+            className=" css-1wa3eu0-placeholder"
           >
             Display Currency
           </div>
@@ -215,28 +215,28 @@ exports[`SettingsForm matches snapshot before after submitting form 1`] = `
           </div>
         </div>
         <div
-          className="css-1wy0on6"
+          className=" css-1wy0on6"
         >
           <div
             aria-hidden="true"
-            className="css-bial7t-loadingIndicator"
+            className=" css-at12u2-loadingIndicator"
           >
             <span
-              className="css-pujnn1"
+              className="css-d0ptw1"
             />
             <span
-              className="css-gji98i"
+              className="css-3utax6"
             />
             <span
-              className="css-1frpy8x"
+              className="css-1qyc6ze"
             />
           </div>
           <span
-            className="css-bgvzuu-indicatorSeparator"
+            className=" css-1okebmr-indicatorSeparator"
           />
           <div
             aria-hidden="true"
-            className="css-16pqwjk-indicatorContainer"
+            className=" css-tlfecz-indicatorContainer"
             onMouseDown={[Function]}
             onTouchEnd={[Function]}
           >
@@ -357,19 +357,19 @@ exports[`SettingsForm matches snapshot before submitting form 1`] = `
       Language / Country
     </h6>
     <div
-      className="css-1pcexqc-container"
+      className=" css-2b097c-container"
       onKeyDown={[Function]}
     >
       <div
-        className="css-bg1rzq-control"
+        className=" css-yk16xz-control"
         onMouseDown={[Function]}
         onTouchEnd={[Function]}
       >
         <div
-          className="css-1hwfws3"
+          className=" css-1hwfws3"
         >
           <div
-            className="css-151xaom-placeholder"
+            className=" css-1wa3eu0-placeholder"
           >
             Language / Country
           </div>
@@ -432,28 +432,28 @@ exports[`SettingsForm matches snapshot before submitting form 1`] = `
           </div>
         </div>
         <div
-          className="css-1wy0on6"
+          className=" css-1wy0on6"
         >
           <div
             aria-hidden="true"
-            className="css-bial7t-loadingIndicator"
+            className=" css-at12u2-loadingIndicator"
           >
             <span
-              className="css-pujnn1"
+              className="css-d0ptw1"
             />
             <span
-              className="css-gji98i"
+              className="css-3utax6"
             />
             <span
-              className="css-1frpy8x"
+              className="css-1qyc6ze"
             />
           </div>
           <span
-            className="css-bgvzuu-indicatorSeparator"
+            className=" css-1okebmr-indicatorSeparator"
           />
           <div
             aria-hidden="true"
-            className="css-16pqwjk-indicatorContainer"
+            className=" css-tlfecz-indicatorContainer"
             onMouseDown={[Function]}
             onTouchEnd={[Function]}
           >
@@ -486,19 +486,19 @@ exports[`SettingsForm matches snapshot before submitting form 1`] = `
       Display Currency
     </h6>
     <div
-      className="css-1pcexqc-container"
+      className=" css-2b097c-container"
       onKeyDown={[Function]}
     >
       <div
-        className="css-bg1rzq-control"
+        className=" css-yk16xz-control"
         onMouseDown={[Function]}
         onTouchEnd={[Function]}
       >
         <div
-          className="css-1hwfws3"
+          className=" css-1hwfws3"
         >
           <div
-            className="css-151xaom-placeholder"
+            className=" css-1wa3eu0-placeholder"
           >
             Display Currency
           </div>
@@ -561,28 +561,28 @@ exports[`SettingsForm matches snapshot before submitting form 1`] = `
           </div>
         </div>
         <div
-          className="css-1wy0on6"
+          className=" css-1wy0on6"
         >
           <div
             aria-hidden="true"
-            className="css-bial7t-loadingIndicator"
+            className=" css-at12u2-loadingIndicator"
           >
             <span
-              className="css-pujnn1"
+              className="css-d0ptw1"
             />
             <span
-              className="css-gji98i"
+              className="css-3utax6"
             />
             <span
-              className="css-1frpy8x"
+              className="css-1qyc6ze"
             />
           </div>
           <span
-            className="css-bgvzuu-indicatorSeparator"
+            className=" css-1okebmr-indicatorSeparator"
           />
           <div
             aria-hidden="true"
-            className="css-16pqwjk-indicatorContainer"
+            className=" css-tlfecz-indicatorContainer"
             onMouseDown={[Function]}
             onTouchEnd={[Function]}
           >

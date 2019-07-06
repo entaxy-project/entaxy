@@ -31,18 +31,15 @@ exports[`Dashboard matches snapshot with no accounts 1`] = `
                           <WithStyles(ForwardRef(Paper)) className=\\"DashboardComponent-balancePaperIcon-3\\">
                             <ForwardRef(Paper) classes={{...}} className=\\"DashboardComponent-balancePaperIcon-3\\">
                               <div className=\\"MuiPaper-root MuiPaper-elevation1 DashboardComponent-balancePaperIcon-3 MuiPaper-rounded\\">
-                                <pure(DashboardIcon) className=\\"DashboardComponent-balanceIcon-4\\">
-                                  <DashboardIcon className=\\"DashboardComponent-balanceIcon-4\\">
-                                    <WithStyles(ForwardRef(SvgIcon)) className=\\"DashboardComponent-balanceIcon-4\\">
-                                      <ForwardRef(SvgIcon) classes={{...}} className=\\"DashboardComponent-balanceIcon-4\\">
-                                        <svg className=\\"MuiSvgIcon-root DashboardComponent-balanceIcon-4\\" focusable=\\"false\\" viewBox=\\"0 0 24 24\\" color={[undefined]} aria-hidden=\\"true\\" role=\\"presentation\\">
-                                          <path fill=\\"none\\" d=\\"M0 0h24v24H0z\\" />
-                                          <path d=\\"M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z\\" />
-                                        </svg>
-                                      </ForwardRef(SvgIcon)>
-                                    </WithStyles(ForwardRef(SvgIcon))>
-                                  </DashboardIcon>
-                                </pure(DashboardIcon)>
+                                <ForwardRef className=\\"DashboardComponent-balanceIcon-4\\">
+                                  <WithStyles(ForwardRef(SvgIcon)) className=\\"DashboardComponent-balanceIcon-4\\">
+                                    <ForwardRef(SvgIcon) classes={{...}} className=\\"DashboardComponent-balanceIcon-4\\">
+                                      <svg className=\\"MuiSvgIcon-root DashboardComponent-balanceIcon-4\\" focusable=\\"false\\" viewBox=\\"0 0 24 24\\" color={[undefined]} aria-hidden=\\"true\\" role=\\"presentation\\">
+                                        <path d=\\"M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z\\" />
+                                      </svg>
+                                    </ForwardRef(SvgIcon)>
+                                  </WithStyles(ForwardRef(SvgIcon))>
+                                </ForwardRef>
                               </div>
                             </ForwardRef(Paper)>
                           </WithStyles(ForwardRef(Paper))>
@@ -111,18 +108,15 @@ exports[`Dashboard matches snapshot with one account 1`] = `
                           <WithStyles(ForwardRef(Paper)) className=\\"DashboardComponent-balancePaperIcon-3\\">
                             <ForwardRef(Paper) classes={{...}} className=\\"DashboardComponent-balancePaperIcon-3\\">
                               <div className=\\"MuiPaper-root MuiPaper-elevation1 DashboardComponent-balancePaperIcon-3 MuiPaper-rounded\\">
-                                <pure(DashboardIcon) className=\\"DashboardComponent-balanceIcon-4\\">
-                                  <DashboardIcon className=\\"DashboardComponent-balanceIcon-4\\">
-                                    <WithStyles(ForwardRef(SvgIcon)) className=\\"DashboardComponent-balanceIcon-4\\">
-                                      <ForwardRef(SvgIcon) classes={{...}} className=\\"DashboardComponent-balanceIcon-4\\">
-                                        <svg className=\\"MuiSvgIcon-root DashboardComponent-balanceIcon-4\\" focusable=\\"false\\" viewBox=\\"0 0 24 24\\" color={[undefined]} aria-hidden=\\"true\\" role=\\"presentation\\">
-                                          <path fill=\\"none\\" d=\\"M0 0h24v24H0z\\" />
-                                          <path d=\\"M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z\\" />
-                                        </svg>
-                                      </ForwardRef(SvgIcon)>
-                                    </WithStyles(ForwardRef(SvgIcon))>
-                                  </DashboardIcon>
-                                </pure(DashboardIcon)>
+                                <ForwardRef className=\\"DashboardComponent-balanceIcon-4\\">
+                                  <WithStyles(ForwardRef(SvgIcon)) className=\\"DashboardComponent-balanceIcon-4\\">
+                                    <ForwardRef(SvgIcon) classes={{...}} className=\\"DashboardComponent-balanceIcon-4\\">
+                                      <svg className=\\"MuiSvgIcon-root DashboardComponent-balanceIcon-4\\" focusable=\\"false\\" viewBox=\\"0 0 24 24\\" color={[undefined]} aria-hidden=\\"true\\" role=\\"presentation\\">
+                                        <path d=\\"M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z\\" />
+                                      </svg>
+                                    </ForwardRef(SvgIcon)>
+                                  </WithStyles(ForwardRef(SvgIcon))>
+                                </ForwardRef>
                               </div>
                             </ForwardRef(Paper)>
                           </WithStyles(ForwardRef(Paper))>
@@ -177,18 +171,15 @@ exports[`Dashboard matches snapshot with one account 1`] = `
                                                   <span className=\\"DashboardComponent-institutionWrapper-7\\">
                                                     <WithStyles(InstitutionIcon) institution=\\"TD\\" size=\\"small\\" className=\\"DashboardComponent-institutionIcon-8\\">
                                                       <InstitutionIcon classes={{...}} institution=\\"TD\\" size=\\"small\\" className=\\"DashboardComponent-institutionIcon-8\\">
-                                                        <pure(AccountBalanceIcon) className=\\"InstitutionIcon-small-198 DashboardComponent-institutionIcon-8\\">
-                                                          <AccountBalanceIcon className=\\"InstitutionIcon-small-198 DashboardComponent-institutionIcon-8\\">
-                                                            <WithStyles(ForwardRef(SvgIcon)) className=\\"InstitutionIcon-small-198 DashboardComponent-institutionIcon-8\\">
-                                                              <ForwardRef(SvgIcon) classes={{...}} className=\\"InstitutionIcon-small-198 DashboardComponent-institutionIcon-8\\">
-                                                                <svg className=\\"MuiSvgIcon-root InstitutionIcon-small-198 DashboardComponent-institutionIcon-8\\" focusable=\\"false\\" viewBox=\\"0 0 24 24\\" color={[undefined]} aria-hidden=\\"true\\" role=\\"presentation\\">
-                                                                  <path fill=\\"none\\" d=\\"M0 0h24v24H0z\\" />
-                                                                  <path d=\\"M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z\\" />
-                                                                </svg>
-                                                              </ForwardRef(SvgIcon)>
-                                                            </WithStyles(ForwardRef(SvgIcon))>
-                                                          </AccountBalanceIcon>
-                                                        </pure(AccountBalanceIcon)>
+                                                        <ForwardRef className=\\"InstitutionIcon-small-198 DashboardComponent-institutionIcon-8\\">
+                                                          <WithStyles(ForwardRef(SvgIcon)) className=\\"InstitutionIcon-small-198 DashboardComponent-institutionIcon-8\\">
+                                                            <ForwardRef(SvgIcon) classes={{...}} className=\\"InstitutionIcon-small-198 DashboardComponent-institutionIcon-8\\">
+                                                              <svg className=\\"MuiSvgIcon-root InstitutionIcon-small-198 DashboardComponent-institutionIcon-8\\" focusable=\\"false\\" viewBox=\\"0 0 24 24\\" color={[undefined]} aria-hidden=\\"true\\" role=\\"presentation\\">
+                                                                <path d=\\"M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z\\" />
+                                                              </svg>
+                                                            </ForwardRef(SvgIcon)>
+                                                          </WithStyles(ForwardRef(SvgIcon))>
+                                                        </ForwardRef>
                                                       </InstitutionIcon>
                                                     </WithStyles(InstitutionIcon)>
                                                     <WithStyles(ForwardRef(Typography)) variant=\\"subtitle2\\">
@@ -294,18 +285,15 @@ exports[`Dashboard matches snapshot with two accounts in a different currency 1`
                           <WithStyles(ForwardRef(Paper)) className=\\"DashboardComponent-balancePaperIcon-3\\">
                             <ForwardRef(Paper) classes={{...}} className=\\"DashboardComponent-balancePaperIcon-3\\">
                               <div className=\\"MuiPaper-root MuiPaper-elevation1 DashboardComponent-balancePaperIcon-3 MuiPaper-rounded\\">
-                                <pure(DashboardIcon) className=\\"DashboardComponent-balanceIcon-4\\">
-                                  <DashboardIcon className=\\"DashboardComponent-balanceIcon-4\\">
-                                    <WithStyles(ForwardRef(SvgIcon)) className=\\"DashboardComponent-balanceIcon-4\\">
-                                      <ForwardRef(SvgIcon) classes={{...}} className=\\"DashboardComponent-balanceIcon-4\\">
-                                        <svg className=\\"MuiSvgIcon-root DashboardComponent-balanceIcon-4\\" focusable=\\"false\\" viewBox=\\"0 0 24 24\\" color={[undefined]} aria-hidden=\\"true\\" role=\\"presentation\\">
-                                          <path fill=\\"none\\" d=\\"M0 0h24v24H0z\\" />
-                                          <path d=\\"M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z\\" />
-                                        </svg>
-                                      </ForwardRef(SvgIcon)>
-                                    </WithStyles(ForwardRef(SvgIcon))>
-                                  </DashboardIcon>
-                                </pure(DashboardIcon)>
+                                <ForwardRef className=\\"DashboardComponent-balanceIcon-4\\">
+                                  <WithStyles(ForwardRef(SvgIcon)) className=\\"DashboardComponent-balanceIcon-4\\">
+                                    <ForwardRef(SvgIcon) classes={{...}} className=\\"DashboardComponent-balanceIcon-4\\">
+                                      <svg className=\\"MuiSvgIcon-root DashboardComponent-balanceIcon-4\\" focusable=\\"false\\" viewBox=\\"0 0 24 24\\" color={[undefined]} aria-hidden=\\"true\\" role=\\"presentation\\">
+                                        <path d=\\"M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z\\" />
+                                      </svg>
+                                    </ForwardRef(SvgIcon)>
+                                  </WithStyles(ForwardRef(SvgIcon))>
+                                </ForwardRef>
                               </div>
                             </ForwardRef(Paper)>
                           </WithStyles(ForwardRef(Paper))>
@@ -360,18 +348,15 @@ exports[`Dashboard matches snapshot with two accounts in a different currency 1`
                                                   <span className=\\"DashboardComponent-institutionWrapper-7\\">
                                                     <WithStyles(InstitutionIcon) institution=\\"TD\\" size=\\"small\\" className=\\"DashboardComponent-institutionIcon-8\\">
                                                       <InstitutionIcon classes={{...}} institution=\\"TD\\" size=\\"small\\" className=\\"DashboardComponent-institutionIcon-8\\">
-                                                        <pure(AccountBalanceIcon) className=\\"InstitutionIcon-small-198 DashboardComponent-institutionIcon-8\\">
-                                                          <AccountBalanceIcon className=\\"InstitutionIcon-small-198 DashboardComponent-institutionIcon-8\\">
-                                                            <WithStyles(ForwardRef(SvgIcon)) className=\\"InstitutionIcon-small-198 DashboardComponent-institutionIcon-8\\">
-                                                              <ForwardRef(SvgIcon) classes={{...}} className=\\"InstitutionIcon-small-198 DashboardComponent-institutionIcon-8\\">
-                                                                <svg className=\\"MuiSvgIcon-root InstitutionIcon-small-198 DashboardComponent-institutionIcon-8\\" focusable=\\"false\\" viewBox=\\"0 0 24 24\\" color={[undefined]} aria-hidden=\\"true\\" role=\\"presentation\\">
-                                                                  <path fill=\\"none\\" d=\\"M0 0h24v24H0z\\" />
-                                                                  <path d=\\"M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z\\" />
-                                                                </svg>
-                                                              </ForwardRef(SvgIcon)>
-                                                            </WithStyles(ForwardRef(SvgIcon))>
-                                                          </AccountBalanceIcon>
-                                                        </pure(AccountBalanceIcon)>
+                                                        <ForwardRef className=\\"InstitutionIcon-small-198 DashboardComponent-institutionIcon-8\\">
+                                                          <WithStyles(ForwardRef(SvgIcon)) className=\\"InstitutionIcon-small-198 DashboardComponent-institutionIcon-8\\">
+                                                            <ForwardRef(SvgIcon) classes={{...}} className=\\"InstitutionIcon-small-198 DashboardComponent-institutionIcon-8\\">
+                                                              <svg className=\\"MuiSvgIcon-root InstitutionIcon-small-198 DashboardComponent-institutionIcon-8\\" focusable=\\"false\\" viewBox=\\"0 0 24 24\\" color={[undefined]} aria-hidden=\\"true\\" role=\\"presentation\\">
+                                                                <path d=\\"M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z\\" />
+                                                              </svg>
+                                                            </ForwardRef(SvgIcon)>
+                                                          </WithStyles(ForwardRef(SvgIcon))>
+                                                        </ForwardRef>
                                                       </InstitutionIcon>
                                                     </WithStyles(InstitutionIcon)>
                                                     <WithStyles(ForwardRef(Typography)) variant=\\"subtitle2\\">
