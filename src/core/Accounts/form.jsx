@@ -45,11 +45,6 @@ const styles = theme => ({
     margin: theme.spacing(2),
     width: 320
   },
-  inputTitle: {
-    marginLeft: theme.spacing(2),
-    marginTop: theme.spacing(2),
-    marginBottom: -theme.spacing(2)
-  },
   inputError: {
     marginTop: -7,
     marginLeft: theme.spacing(2)
@@ -286,7 +281,7 @@ export default compose(
           institution: null,
           openingBalance: 0,
           openingBalanceDate: format(Date.now(), 'YYYY-MM-DD'),
-          currency: settings.currency === undefined ? '' : {
+          currency: settings.currency === undefined ? null : {
             label: `(${settings.currency}) ${currencies[settings.currency]}`,
             value: settings.currency
           }

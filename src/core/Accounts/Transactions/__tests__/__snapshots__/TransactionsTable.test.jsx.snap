@@ -164,7 +164,7 @@ exports[`TransactionsTable matches snapshot with no transactions 1`] = `
     }
   >
     <div
-      aria-colcount={5}
+      aria-colcount={6}
       aria-rowcount={0}
       className="ReactVirtualized__Table"
       role="grid"
@@ -293,6 +293,29 @@ exports[`TransactionsTable matches snapshot with no transactions 1`] = `
             title="Description"
           >
             Description
+          </span>
+        </div>
+        <div
+          aria-label="Category"
+          aria-sort="none"
+          className="ReactVirtualized__Table__headerColumn ReactVirtualized__Table__sortableHeaderColumn"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          role="columnheader"
+          style={
+            Object {
+              "WebkitFlex": "0 1 200px",
+              "flex": "0 1 200px",
+              "msFlex": "0 1 200px",
+            }
+          }
+          tabIndex={0}
+        >
+          <span
+            className="ReactVirtualized__Table__headerTruncatedText"
+            title="Category"
+          >
+            Category
           </span>
         </div>
         <div
@@ -532,7 +555,7 @@ exports[`TransactionsTable matches snapshot with some transactions 1`] = `
     }
   >
     <div
-      aria-colcount={5}
+      aria-colcount={6}
       aria-rowcount={3}
       className="ReactVirtualized__Table"
       role="grid"
@@ -661,6 +684,29 @@ exports[`TransactionsTable matches snapshot with some transactions 1`] = `
             title="Description"
           >
             Description
+          </span>
+        </div>
+        <div
+          aria-label="Category"
+          aria-sort="none"
+          className="ReactVirtualized__Table__headerColumn ReactVirtualized__Table__sortableHeaderColumn"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          role="columnheader"
+          style={
+            Object {
+              "WebkitFlex": "0 1 200px",
+              "flex": "0 1 200px",
+              "msFlex": "0 1 200px",
+            }
+          }
+          tabIndex={0}
+        >
+          <span
+            className="ReactVirtualized__Table__headerTruncatedText"
+            title="Category"
+          >
+            Category
           </span>
         </div>
         <div

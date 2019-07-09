@@ -3,7 +3,7 @@
 exports[`AutoComplete matches snapshot for async select 1`] = `
 <div>
   <h6
-    className="MuiTypography-root AutoComplete-inputTitle-2 MuiTypography-subtitle2"
+    className="MuiTypography-root MuiTypography-subtitle2"
   >
     Institution
   </h6>
@@ -121,7 +121,7 @@ exports[`AutoComplete matches snapshot for async select 1`] = `
 exports[`AutoComplete matches snapshot for creatable select 1`] = `
 <div>
   <h6
-    className="MuiTypography-root AutoComplete-inputTitle-2 MuiTypography-subtitle2"
+    className="MuiTypography-root MuiTypography-subtitle2"
   >
     Institution
   </h6>
@@ -239,7 +239,7 @@ exports[`AutoComplete matches snapshot for creatable select 1`] = `
 exports[`AutoComplete matches snapshot for simple select 1`] = `
 <div>
   <h6
-    className="MuiTypography-root AutoComplete-inputTitle-2 MuiTypography-subtitle2"
+    className="MuiTypography-root MuiTypography-subtitle2"
   >
     Institution
   </h6>
@@ -357,7 +357,7 @@ exports[`AutoComplete matches snapshot for simple select 1`] = `
 exports[`AutoComplete matches snapshot with error 1`] = `
 <div>
   <h6
-    className="MuiTypography-root AutoComplete-inputTitle-2 MuiTypography-subtitle2 MuiTypography-colorError"
+    className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorError"
   >
     Institution
   </h6>
@@ -470,7 +470,7 @@ exports[`AutoComplete matches snapshot with error 1`] = `
     />
   </div>
   <p
-    className="MuiFormHelperText-root AutoComplete-inputError-3 Mui-error"
+    className="MuiFormHelperText-root makeStyles-inputError-1 Mui-error"
   >
     Some error
   </p>

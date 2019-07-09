@@ -19,10 +19,10 @@ exports[`Transactions matches snapshot with no transactions 1`] = `
     className="TransactionsTableComponent-tableWrapper-1 "
   >
     <div
-      className="MuiToolbar-root MuiToolbar-regular TableToolbar-root-14 MuiToolbar-gutters"
+      className="MuiToolbar-root MuiToolbar-regular TableToolbar-root-15 MuiToolbar-gutters"
     >
       <div
-        className="TableToolbar-title-18"
+        className="TableToolbar-title-19"
       >
         <div>
           <h6
@@ -38,19 +38,19 @@ exports[`Transactions matches snapshot with no transactions 1`] = `
         </div>
       </div>
       <div
-        className="TableToolbar-spacer-16"
+        className="TableToolbar-spacer-17"
       />
       <div
-        className="TableToolbar-actions-17"
+        className="TableToolbar-actions-18"
       >
         <div
-          className="withRouter(TransactionsToolbarComponent)-buttons-9"
+          className="withRouter(TransactionsToolbarComponent)-buttons-10"
         >
           <div
-            className="withRouter(TransactionsToolbarComponent)-search-10"
+            className="withRouter(TransactionsToolbarComponent)-search-11"
           >
             <div
-              className="withRouter(TransactionsToolbarComponent)-searchIcon-11"
+              className="withRouter(TransactionsToolbarComponent)-searchIcon-12"
             >
               <svg
                 aria-hidden="true"
@@ -65,11 +65,11 @@ exports[`Transactions matches snapshot with no transactions 1`] = `
               </svg>
             </div>
             <div
-              className="MuiInputBase-root withRouter(TransactionsToolbarComponent)-inputRoot-12"
+              className="MuiInputBase-root withRouter(TransactionsToolbarComponent)-inputRoot-13"
               onClick={[Function]}
             >
               <input
-                className="MuiInputBase-input withRouter(TransactionsToolbarComponent)-inputInput-13"
+                className="MuiInputBase-input withRouter(TransactionsToolbarComponent)-inputInput-14"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
@@ -106,7 +106,7 @@ exports[`Transactions matches snapshot with no transactions 1`] = `
               className="MuiIconButton-label"
             >
               <svg
-                className="withRouter(TransactionsToolbarComponent)-importButton-8"
+                className="withRouter(TransactionsToolbarComponent)-importButton-9"
                 role="presentation"
                 style={
                   Object {
@@ -180,7 +180,7 @@ exports[`Transactions matches snapshot with no transactions 1`] = `
       }
     >
       <div
-        aria-colcount={6}
+        aria-colcount={7}
         aria-rowcount={1}
         className="ReactVirtualized__Table"
         role="grid"
@@ -214,7 +214,7 @@ exports[`Transactions matches snapshot with no transactions 1`] = `
             >
               <span
                 aria-disabled={false}
-                className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-105 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+                className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-106 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
                 onBlur={[Function]}
                 onDragLeave={[Function]}
                 onFocus={[Function]}
@@ -244,7 +244,7 @@ exports[`Transactions matches snapshot with no transactions 1`] = `
                   </svg>
                   <input
                     checked={false}
-                    className="PrivateSwitchBase-input-108"
+                    className="PrivateSwitchBase-input-109"
                     data-indeterminate={false}
                     onChange={[Function]}
                     type="checkbox"
@@ -309,6 +309,29 @@ exports[`Transactions matches snapshot with no transactions 1`] = `
               title="Description"
             >
               Description
+            </span>
+          </div>
+          <div
+            aria-label="Category"
+            aria-sort="none"
+            className="ReactVirtualized__Table__headerColumn ReactVirtualized__Table__sortableHeaderColumn"
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            role="columnheader"
+            style={
+              Object {
+                "WebkitFlex": "0 1 200px",
+                "flex": "0 1 200px",
+                "msFlex": "0 1 200px",
+              }
+            }
+            tabIndex={0}
+          >
+            <span
+              className="ReactVirtualized__Table__headerTruncatedText"
+              title="Category"
+            >
+              Category
             </span>
           </div>
           <div
@@ -420,10 +443,10 @@ exports[`Transactions matches snapshot with one transaction in a fiat account 1`
     className="TransactionsTableComponent-tableWrapper-1 "
   >
     <div
-      className="MuiToolbar-root MuiToolbar-regular TableToolbar-root-14 MuiToolbar-gutters"
+      className="MuiToolbar-root MuiToolbar-regular TableToolbar-root-15 MuiToolbar-gutters"
     >
       <div
-        className="TableToolbar-title-18"
+        className="TableToolbar-title-19"
       >
         <div>
           <h6
@@ -439,19 +462,19 @@ exports[`Transactions matches snapshot with one transaction in a fiat account 1`
         </div>
       </div>
       <div
-        className="TableToolbar-spacer-16"
+        className="TableToolbar-spacer-17"
       />
       <div
-        className="TableToolbar-actions-17"
+        className="TableToolbar-actions-18"
       >
         <div
-          className="withRouter(TransactionsToolbarComponent)-buttons-9"
+          className="withRouter(TransactionsToolbarComponent)-buttons-10"
         >
           <div
-            className="withRouter(TransactionsToolbarComponent)-search-10"
+            className="withRouter(TransactionsToolbarComponent)-search-11"
           >
             <div
-              className="withRouter(TransactionsToolbarComponent)-searchIcon-11"
+              className="withRouter(TransactionsToolbarComponent)-searchIcon-12"
             >
               <svg
                 aria-hidden="true"
@@ -466,11 +489,11 @@ exports[`Transactions matches snapshot with one transaction in a fiat account 1`
               </svg>
             </div>
             <div
-              className="MuiInputBase-root withRouter(TransactionsToolbarComponent)-inputRoot-12"
+              className="MuiInputBase-root withRouter(TransactionsToolbarComponent)-inputRoot-13"
               onClick={[Function]}
             >
               <input
-                className="MuiInputBase-input withRouter(TransactionsToolbarComponent)-inputInput-13"
+                className="MuiInputBase-input withRouter(TransactionsToolbarComponent)-inputInput-14"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
@@ -507,7 +530,7 @@ exports[`Transactions matches snapshot with one transaction in a fiat account 1`
               className="MuiIconButton-label"
             >
               <svg
-                className="withRouter(TransactionsToolbarComponent)-importButton-8"
+                className="withRouter(TransactionsToolbarComponent)-importButton-9"
                 role="presentation"
                 style={
                   Object {
@@ -581,7 +604,7 @@ exports[`Transactions matches snapshot with one transaction in a fiat account 1`
       }
     >
       <div
-        aria-colcount={6}
+        aria-colcount={7}
         aria-rowcount={3}
         className="ReactVirtualized__Table"
         role="grid"
@@ -615,7 +638,7 @@ exports[`Transactions matches snapshot with one transaction in a fiat account 1`
             >
               <span
                 aria-disabled={false}
-                className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-105 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+                className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-106 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
                 onBlur={[Function]}
                 onDragLeave={[Function]}
                 onFocus={[Function]}
@@ -645,7 +668,7 @@ exports[`Transactions matches snapshot with one transaction in a fiat account 1`
                   </svg>
                   <input
                     checked={false}
-                    className="PrivateSwitchBase-input-108"
+                    className="PrivateSwitchBase-input-109"
                     data-indeterminate={false}
                     onChange={[Function]}
                     type="checkbox"
@@ -710,6 +733,29 @@ exports[`Transactions matches snapshot with one transaction in a fiat account 1`
               title="Description"
             >
               Description
+            </span>
+          </div>
+          <div
+            aria-label="Category"
+            aria-sort="none"
+            className="ReactVirtualized__Table__headerColumn ReactVirtualized__Table__sortableHeaderColumn"
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            role="columnheader"
+            style={
+              Object {
+                "WebkitFlex": "0 1 200px",
+                "flex": "0 1 200px",
+                "msFlex": "0 1 200px",
+              }
+            }
+            tabIndex={0}
+          >
+            <span
+              className="ReactVirtualized__Table__headerTruncatedText"
+              title="Category"
+            >
+              Category
             </span>
           </div>
           <div

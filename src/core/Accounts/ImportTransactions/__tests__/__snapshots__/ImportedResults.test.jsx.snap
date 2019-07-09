@@ -337,10 +337,10 @@ exports[`ImportedResults matches snapshot without errors 1`] = `
     className="TransactionsTableComponent-tableWrapper-9 makeStyles-tableWrapper-5"
   >
     <div
-      className="MuiToolbar-root MuiToolbar-regular TableToolbar-root-17 MuiToolbar-gutters"
+      className="MuiToolbar-root MuiToolbar-regular TableToolbar-root-18 MuiToolbar-gutters"
     >
       <div
-        className="TableToolbar-title-21"
+        className="TableToolbar-title-22"
       >
         <div>
           <h6
@@ -356,20 +356,20 @@ exports[`ImportedResults matches snapshot without errors 1`] = `
         </div>
       </div>
       <div
-        className="TableToolbar-spacer-19"
+        className="TableToolbar-spacer-20"
       />
       <div
-        className="TableToolbar-actions-20"
+        className="TableToolbar-actions-21"
       >
         <label
-          className="MuiFormControlLabel-root ResultsToolbarComponent-chekbox-16"
+          className="MuiFormControlLabel-root ResultsToolbarComponent-chekbox-17"
         >
           <span
             className="MuiSwitch-root"
           >
             <span
               aria-disabled={false}
-              className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-73 MuiSwitch-switchBase MuiSwitch-colorSecondary"
+              className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-74 MuiSwitch-switchBase MuiSwitch-colorSecondary"
               onBlur={[Function]}
               onDragLeave={[Function]}
               onFocus={[Function]}
@@ -391,7 +391,7 @@ exports[`ImportedResults matches snapshot without errors 1`] = `
                 />
                 <input
                   checked={false}
-                  className="PrivateSwitchBase-input-76 MuiSwitch-input"
+                  className="PrivateSwitchBase-input-77 MuiSwitch-input"
                   onChange={[Function]}
                   type="checkbox"
                   value="showOnlyErrors"
@@ -423,7 +423,7 @@ exports[`ImportedResults matches snapshot without errors 1`] = `
       }
     >
       <div
-        aria-colcount={5}
+        aria-colcount={6}
         aria-rowcount={2}
         className="ReactVirtualized__Table"
         role="grid"
@@ -494,6 +494,29 @@ exports[`ImportedResults matches snapshot without errors 1`] = `
               title="Description"
             >
               Description
+            </span>
+          </div>
+          <div
+            aria-label="Category"
+            aria-sort="none"
+            className="ReactVirtualized__Table__headerColumn ReactVirtualized__Table__sortableHeaderColumn"
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            role="columnheader"
+            style={
+              Object {
+                "WebkitFlex": "0 1 200px",
+                "flex": "0 1 200px",
+                "msFlex": "0 1 200px",
+              }
+            }
+            tabIndex={0}
+          >
+            <span
+              className="ReactVirtualized__Table__headerTruncatedText"
+              title="Category"
+            >
+              Category
             </span>
           </div>
           <div

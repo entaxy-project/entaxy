@@ -1,75 +1,97 @@
 import React from 'react'
-import { compose } from 'recompose'
-import { connect } from 'react-redux'
-import { withStyles } from '@material-ui/core/styles'
-// import PropTypes from 'prop-types'
-// import IconButton from '@material-ui/core/IconButton'
-// import EditIcon from '@material-ui/icons/Edit'
-// import Tooltip from '@material-ui/core/Tooltip'
-import { FixedSizeList as List } from 'react-window'
+import { useSelector } from 'react-redux'
+import { makeStyles } from '@material-ui/core/styles'
+import Grid from '@material-ui/core/Grid'
+import Paper from '@material-ui/core/Paper'
+import List from '@material-ui/core/List'
+import ListItem from '@material-ui/core/ListItem'
+import ListItemIcon from '@material-ui/core/ListItemIcon'
+import ListItemText from '@material-ui/core/ListItemText'
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
+import Collapse from '@material-ui/core/Collapse'
+import Typography from '@material-ui/core/Typography'
+import ExpandLess from '@material-ui/icons/ExpandLess'
+import ExpandMore from '@material-ui/icons/ExpandMore'
+import FolderIcon from '@material-ui/icons/Folder'
+import EditIcon from '@material-ui/icons/Edit'
+import IconButton from '@material-ui/core/IconButton'
 
-const styles = {
-  tableWrapper: {
-    display: 'flex',
-    flexDirection: 'column',
-    position: 'relative',
-    height: 'calc(100vh - 170px)'
+const useStyles = makeStyles(theme => ({
+  root: {
+    padding: theme.spacing(3),
+    flexDirection: 'column'
   },
-  tableButton: {
-    padding: 4
+  nested: {
+    paddingLeft: theme.spacing(3)
   },
-  smallIcon: {
-    fontSize: 18
+  dot: {
+    borderRadius: 4,
+    content: '" "',
+    display: 'block',
+    marginRight: -10,
+    marginLeft: 10,
+    height: 15,
+    width: 15
   }
-}
+}))
 
-const mapStateToProps = state => ({
-  settings: state.settings
-})
+const BudgetCategories = () => {
+  const classes = useStyles()
+  const settings = useSelector(state => state.settings)
+  const [open, setOpen] = React.useState(settings.budget.categories.reduce(
+    (result, category) => ({ ...result, [category.label]: true }),
+    {}
+  ))
 
-// const mapDispatchToProps = dispatch => ({
-//   deleteTransactions: (account, transactionIds) => dispatch(deleteTransactions(account, transactionIds))
-// })
+  function handleClick(category) {
+    setOpen({ ...open, [category]: !open[category] })
+  }
 
-
-export class BudgetCategoriesComponent extends React.Component {
-  renderRow = ({ index, style }) => (
-    <div style={style}>
-      Row
-      {index}
-    </div>
+  return (
+    <Grid container className={classes.root}>
+      <Grid item xs={6}>
+        <Typography variant="h5" gutterBottom={true}>Budget categories</Typography>
+        <Paper className={classes.list}>
+          <List
+            aria-labelledby="nested-list-subheader"
+            className={classes.list}
+          >
+            {settings.budget.categories.map(topCategory => (
+              <div key={topCategory.label}>
+                <ListItem button onClick={() => handleClick(topCategory.label)}>
+                  <ListItemIcon><FolderIcon /></ListItemIcon>
+                  <ListItemText primary={topCategory.label} />
+                  {open[topCategory.label] ? <ExpandLess /> : <ExpandMore />}
+                </ListItem>
+                <Collapse in={open[topCategory.label]} timeout="auto" unmountOnExit>
+                  {topCategory.options.map(category => (
+                    <List disablePadding dense={true} key={category.label}>
+                      <ListItem button className={classes.nested}>
+                        <ListItemIcon>
+                          <div
+                            className={classes.dot}
+                            style={{
+                              background: settings.budget.colours[category.label]
+                            }}
+                          />
+                        </ListItemIcon>
+                        <ListItemText primary={category.label} />
+                        <ListItemSecondaryAction>
+                          <IconButton edge="end" aria-label="Delete">
+                            <EditIcon />
+                          </IconButton>
+                        </ListItemSecondaryAction>
+                      </ListItem>
+                    </List>
+                  ))}
+                </Collapse>
+              </div>
+            ))}
+          </List>
+        </Paper>
+      </Grid>
+    </Grid>
   )
-
-  handleSave = () => {
-
-  }
-
-  isSelected = id => this.state.selected.indexOf(id) !== -1
-
-  render() {
-    // const {
-    //   classes,
-    //   settings
-    // } = this.props
-    return (
-      <List
-        height={150}
-        itemCount={1000}
-        itemSize={35}
-        width={300}
-      >
-        {this.renderRow}
-      </List>
-    )
-  }
 }
 
-// BudgetCategoriesComponent.propTypes = {
-//   classes: PropTypes.object.isRequired,
-//   settings: PropTypes.array.isRequired
-// }
-
-export default compose(
-  connect(mapStateToProps),
-  withStyles(styles)
-)(BudgetCategoriesComponent)
+export default BudgetCategories

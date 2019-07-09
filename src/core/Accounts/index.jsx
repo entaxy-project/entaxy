@@ -23,7 +23,7 @@ import LinkTo from '../../common/LinkTo'
 const styles = theme => ({
   noAccounts: {
     background: grey[100],
-    margin: '0 20px 20px 25px',
+    margin: '0 20px',
     padding: theme.spacing(1)
   },
   institutionListRoot: {
@@ -104,7 +104,7 @@ export const AccountsComponent = ({
       )}
     >
       {!userHasAccounts && (
-        <Typography variant="caption" className={classes.noAccounts}>
+        <Typography variant="caption" component="div" className={classes.noAccounts}>
           You don&apos;t have any accounts yet
         </Typography>
       )}

@@ -57,7 +57,7 @@ exports[`Account form matches snapshot for edit account 1`] = `
     >
       <div>
         <h6
-          className="MuiTypography-root AutoComplete-inputTitle-188 MuiTypography-subtitle2"
+          className="MuiTypography-root MuiTypography-subtitle2"
         >
           Institution
         </h6>
@@ -258,7 +258,7 @@ exports[`Account form matches snapshot for edit account 1`] = `
       </div>
       <div>
         <h6
-          className="MuiTypography-root AutoComplete-inputTitle-188 MuiTypography-subtitle2"
+          className="MuiTypography-root MuiTypography-subtitle2"
         >
           Account Currency
         </h6>
@@ -414,7 +414,7 @@ exports[`Account form matches snapshot for edit account 1`] = `
       />
       <div>
         <div
-          className="SubmitButtonWithProgress-wrapper-260"
+          className="SubmitButtonWithProgress-wrapper-258"
         >
           <button
             className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary"
@@ -503,7 +503,7 @@ exports[`Account form matches snapshot for new account 1`] = `
     >
       <div>
         <h6
-          className="MuiTypography-root AutoComplete-inputTitle-188 MuiTypography-subtitle2"
+          className="MuiTypography-root MuiTypography-subtitle2"
         >
           Institution
         </h6>
@@ -704,7 +704,7 @@ exports[`Account form matches snapshot for new account 1`] = `
       </div>
       <div>
         <h6
-          className="MuiTypography-root AutoComplete-inputTitle-188 MuiTypography-subtitle2"
+          className="MuiTypography-root MuiTypography-subtitle2"
         >
           Account Currency
         </h6>
@@ -860,7 +860,7 @@ exports[`Account form matches snapshot for new account 1`] = `
       />
       <div>
         <div
-          className="SubmitButtonWithProgress-wrapper-260"
+          className="SubmitButtonWithProgress-wrapper-258"
         >
           <button
             className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary"

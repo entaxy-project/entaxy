@@ -8,16 +8,56 @@ import PropTypes from 'prop-types'
 import TextField from '@material-ui/core/TextField'
 import format from 'date-fns/format'
 import parse from 'date-fns/parse'
+import chroma from 'chroma-js'
+import AutoComplete from '../../../common/AutoComplete'
 import ModalDialog from '../../../common/ModalDialog'
 import { createTransaction, updateTransaction } from '../../../store/transactions/actions'
 
-const styles = () => ({
+const styles = theme => ({
   root: {
+    width: 400
   },
   input: {
-    margin: 5,
+    marginBottom: theme.spacing(1),
     width: '100%'
   }
+})
+
+const dot = (color = '#ccc') => ({
+  alignItems: 'center',
+  display: 'flex',
+  ':before': {
+    backgroundColor: color,
+    borderRadius: 4,
+    content: '" "',
+    display: 'block',
+    marginRight: 8,
+    height: 15,
+    width: 15
+  }
+})
+
+const colourStyles = {
+  control: newStyles => ({ ...newStyles, backgroundColor: 'white' }),
+  option: (newStyles, { data, isDisabled, isSelected }) => {
+    const color = chroma(data.colour)
+    return {
+      ...newStyles,
+      ...dot(data.colour),
+      cursor: isDisabled ? 'not-allowed' : 'default',
+      ':active': {
+        ...newStyles[':active'],
+        backgroundColor: !isDisabled && (isSelected ? data.colour : color.alpha(0.3).css())
+      }
+    }
+  },
+  input: newStyles => ({ ...newStyles, ...dot() }),
+  placeholder: newStyles => ({ ...newStyles, ...dot() }),
+  singleValue: (newStyles, { data }) => ({ ...newStyles, ...dot(data.colour) })
+}
+
+const mapStateToProps = ({ settings }) => ({
+  budget: settings.budget
 })
 
 const mapDispatchToProps = (dispatch) => {
@@ -34,13 +74,15 @@ const mapDispatchToProps = (dispatch) => {
 export const TransactionDialogComponent = ({
   classes,
   handleSubmit,
+  setFieldValue,
   values,
   errors,
   touched,
   handleChange,
   onCancel,
   open,
-  transaction
+  transaction,
+  budget
 }) => (
   <ModalDialog
     open={open}
@@ -62,18 +104,16 @@ export const TransactionDialogComponent = ({
       error={errors.description && touched.description}
       helperText={errors.description}
     />
-    <TextField
-      label="Category"
-      inputProps={{
-        'aria-label': 'Category',
-        maxLength: 256
-      }}
+    <AutoComplete
       className={classes.input}
-      value={values.category}
+      label="Budget category"
       name="category"
-      onChange={handleChange}
+      value={values.category}
+      options={budget.categories}
+      onChange={setFieldValue}
       error={errors.category && touched.category}
       helperText={errors.category}
+      styles={colourStyles}
     />
     <TextField
       type="number"
@@ -116,8 +156,10 @@ TransactionDialogComponent.propTypes = {
   errors: PropTypes.object.isRequired,
   touched: PropTypes.object.isRequired,
   handleChange: PropTypes.func.isRequired,
+  setFieldValue: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
   onCancel: PropTypes.func.isRequired,
+  budget: PropTypes.object.isRequired,
   transaction: PropTypes.object
 }
 
@@ -126,29 +168,35 @@ TransactionDialogComponent.defaultProps = {
 }
 
 export default compose(
-  connect(null, mapDispatchToProps),
+  connect(mapStateToProps, mapDispatchToProps),
   withStyles(styles),
   withFormik({
     enableReinitialize: true,
-    mapPropsToValues: ({ transaction }) => {
+    mapPropsToValues: ({ transaction, budget }) => {
+      console.log('budget', budget)
       if (transaction === null) {
         return {
           description: '',
-          category: '',
+          category: null,
           amount: '',
           createdAt: format(Date.now(), 'YYYY-MM-DD')
         }
       }
       return {
         ...transaction,
+        category: {
+          label: transaction.category,
+          value: transaction.category,
+          colour: budget.colours[transaction.category]
+        },
         createdAt: format(new Date(transaction.createdAt), 'YYYY-MM-DD')
       }
     },
     validationSchema: Yup.object().shape({
       description: Yup.string()
         .max(256, 'Too Long!'),
-      category: Yup.string()
-        .max(256, 'Too long!'),
+      category: Yup.object()
+        .nullable(),
       amount: Yup.number()
         .required('Please enter an amount'),
       createdAt: Yup.date()
@@ -158,6 +206,7 @@ export default compose(
       setSubmitting(true)
       props.handleSave(props.account, {
         ...values,
+        category: values.category.value,
         createdAt: parse(values.createdAt).getTime()
       })
       resetForm()

@@ -31,6 +31,7 @@
         "@vx/tooltip": "0.0.189",
         "big.js": "^5.2.2",
         "blockstack": "^19.2.1",
+        "chroma-js": "^2.0.4",
         "classnames": "^2.2.6",
         "d3-array": "^2.2.0",
         "date-fns": "^1.30.1",

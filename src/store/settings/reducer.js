@@ -2,20 +2,26 @@ import _ from 'lodash'
 import types from './types'
 import budgetCategories from '../../data/budgetCategories'
 
+// https://projects.susielu.com
+// http://repec.sowi.unibe.ch/stata/palettes/index.html
+const defaultColours = [
+  '#a6cee3', '#1f78b4', '#b2df8a', '#33a02c', '#fb9a99', '#e31a1c',
+  '#fdbf6f', '#ff7f00', '#cab2d6', '#6a3d9a', '#ffff99', '#b15928'
+]
+
 const initialBudgetCategories = () => {
-  return Object.keys(budgetCategories).sort().map((category) => {
-    const categories = [{
-      name: category,
-      open: false
-    }]
-    budgetCategories[category].forEach((subCategory) => {
-      categories.push({
-        name: subCategory,
-        open: false
+  const colours = {}
+  const categories = Object.keys(budgetCategories).sort().map(category => (
+    {
+      label: category,
+      options: budgetCategories[category].map((subCategory, index) => {
+        const colour = defaultColours[index % defaultColours.length]
+        colours[subCategory] = colour
+        return { label: subCategory, value: subCategory, colour }
       })
-    })
-    return categories
-  })
+    }
+  ))
+  return { categories, colours }
 }
 
 export const initialState = {
@@ -23,9 +29,7 @@ export const initialState = {
   snackbarMessage: null,
   currency: 'USD',
   locale: window.navigator.language || 'en-US',
-  budget: {
-    categories: initialBudgetCategories()
-  },
+  budget: initialBudgetCategories(),
   portfolioFilters: {
     institution: {},
     account: {}

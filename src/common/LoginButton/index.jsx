@@ -96,13 +96,13 @@ export class LoginButtonComponent extends React.Component {
                 <Paper>
                   <MenuList role="menu">
 
-                    <MenuItem component={LinkTo('/settings')}>
+                    <MenuItem onClick={this.handleClose} component={LinkTo('/settings')}>
                       <ListItemIcon>
                         <Settings />
                       </ListItemIcon>
                       <ListItemText primary="Settings" />
                     </MenuItem>
-                    <MenuItem component={LinkTo('/budget-categories')}>
+                    <MenuItem onClick={this.handleClose} component={LinkTo('/budget-categories')}>
                       <ListItemIcon>
                         <Settings />
                       </ListItemIcon>
