@@ -173,7 +173,6 @@ export default compose(
   withFormik({
     enableReinitialize: true,
     mapPropsToValues: ({ transaction, budget }) => {
-      console.log('budget', budget)
       if (transaction === null) {
         return {
           description: '',
@@ -206,7 +205,7 @@ export default compose(
       setSubmitting(true)
       props.handleSave(props.account, {
         ...values,
-        category: values.category.value,
+        category: (values.category || {}).value,
         createdAt: parse(values.createdAt).getTime()
       })
       resetForm()

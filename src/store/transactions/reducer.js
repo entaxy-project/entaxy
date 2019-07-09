@@ -2,7 +2,8 @@ import _ from 'lodash'
 import types from './types'
 
 export const initialState = {
-  list: []
+  list: [],
+  rules: {}
 }
 
 export default (state = initialState, action) => {
@@ -35,6 +36,24 @@ export default (state = initialState, action) => {
       return {
         ...state,
         list: [...state.list, ...action.payload]
+      }
+    case types.CREATE_EXACT_RULE:
+      return {
+        ...state,
+        rules: { ...state.rules, [action.payload.match]: action.payload.category }
+      }
+    case types.APPLY_EXACT_RULE:
+      return {
+        ...state,
+        list: state.list.reduce((result, transaction) => {
+          if (transaction.description === action.payload) {
+            return [
+              ...result,
+              { ...transaction, category: state.rules[transaction.description] }
+            ]
+          }
+          return [...result, transaction]
+        }, [])
       }
     default:
       return state

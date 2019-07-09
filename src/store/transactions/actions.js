@@ -21,6 +21,19 @@ export const createTransaction = (account, transaction) => async (dispatch) => {
       createdAt: transaction.createdAt + 1000 // Plus 1 second
     }
   })
+  if (transaction.category !== undefined) {
+    dispatch({
+      type: types.CREATE_EXACT_RULE,
+      payload: {
+        label: transaction.category,
+        match: transaction.description
+      }
+    })
+    dispatch({
+      type: types.APPLY_EXACT_RULE,
+      payload: transaction.description
+    })
+  }
   await dispatch(afterTransactionsChanged(account))
   dispatch(showSnackbar({ text: 'Transaction created', status: 'success' }))
 }
@@ -33,6 +46,19 @@ export const updateTransaction = (account, transaction) => async (dispatch) => {
       createdAt: transaction.createdAt + 1000 // Plus 1 second
     }
   })
+  if (transaction.category !== undefined) {
+    dispatch({
+      type: types.CREATE_EXACT_RULE,
+      payload: {
+        category: transaction.category,
+        match: transaction.description
+      }
+    })
+    dispatch({
+      type: types.APPLY_EXACT_RULE,
+      payload: transaction.description
+    })
+  }
   await dispatch(afterTransactionsChanged(account))
   dispatch(showSnackbar({ text: 'Transaction updated', status: 'success' }))
 }
