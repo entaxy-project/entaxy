@@ -32,6 +32,7 @@ describe('TransactionsTable', () => {
           className=""
           account={account}
           transactions={[]}
+          budgetColours={{}}
           formatCurrency={mochFormatCurrency}
           formatDecimal={mochFormatDecimal}
           formatDate={mochFormatDate}
@@ -54,6 +55,7 @@ describe('TransactionsTable', () => {
           className=""
           account={account}
           transactions={transactions}
+          budgetColours={{}}
           formatCurrency={mochFormatCurrency}
           formatDecimal={mochFormatDecimal}
           formatDate={mochFormatDate}
@@ -76,6 +78,7 @@ describe('TransactionsTable', () => {
           className=""
           account={account}
           transactions={transactions}
+          budgetColours={{}}
           formatCurrency={mochFormatCurrency}
           formatDecimal={mochFormatDecimal}
           formatDate={mochFormatDate}
@@ -165,23 +168,6 @@ describe('TransactionsTable', () => {
         expect(instance.rowClassName({ index: 1 }, transactions, classes)).toEqual('row oddRow')
         transactions[2].errors = ['Some error']
         expect(instance.rowClassName({ index: 2 }, transactions, classes)).toEqual('rowWithError row')
-      })
-    })
-
-    describe('displayCurrency', () => {
-      it('should formatDecimal for fiat account', () => {
-        expect(instance.props.account.type).toEqual(undefined)
-        instance.displayCurrency({ amount: 10, nativeAmount: 12 })
-        expect(mochFormatCurrency).not.toHaveBeenCalledWith(10)
-        expect(mochFormatDecimal).toHaveBeenCalledWith(10)
-      })
-
-      it('should displayCurrency for wallet account', () => {
-        instance.props.account.type = 'wallet'
-        expect(instance.props.account.type).toEqual('wallet')
-        instance.displayCurrency({ amount: 10, nativeAmount: 12 })
-        expect(mochFormatCurrency).not.toHaveBeenCalledWith(10)
-        expect(mochFormatDecimal).toHaveBeenCalledWith(10)
       })
     })
 

@@ -43,11 +43,18 @@ export class TransactionsComponent extends React.Component {
     transaction: null
   }
 
-  accountTransactions = () => (
-    this.props.transactions.filter(transaction => (
-      transaction.accountId === this.props.account.id
+  accountTransactions = () => {
+    const { account, transactions } = this.props
+    const openingBalanceTransaction = {
+      accountId: account.id,
+      description: 'Opening balance',
+      amount: account.openingBalance,
+      createdAt: account.openingBalanceDate
+    }
+    return [openingBalanceTransaction, ...transactions].filter(transaction => (
+      transaction.accountId === account.id
     ))
-  )
+  }
 
   handleNew = () => {
     this.setState({
@@ -95,7 +102,7 @@ export class TransactionsComponent extends React.Component {
             dataKey="index"
             disableSort={true}
             cellRenderer={
-              ({ rowData }) => (
+              ({ rowData }) => rowData.id !== undefined && (
                 <Tooltip title="Edit transaction">
                   <IconButton
                     disableRipple={true}

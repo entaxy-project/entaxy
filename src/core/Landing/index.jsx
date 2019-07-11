@@ -1,13 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { withStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 import grey from '@material-ui/core/colors/grey'
 import LandingCard from './LandingCard'
 import landingImage from './landing.png'
 
-const styles = () => ({
+const useStyles = makeStyles(() => ({
   root: {
     display: 'flex',
     height: '100vh',
@@ -48,40 +48,43 @@ const styles = () => ({
     'background-size': '100%',
     'background-image': `url(${landingImage}), linear-gradient(to bottom, var(--color-blue), var(--color-cyan))`
   }
-})
+}))
 
-export const LandingComponent = ({ classes, history }) => (
-  <Grid container spacing={0} className={classes.root}>
-    <Grid item xs={6} className={classes.left}>
-      <div className={classes.logo}>
-        Entaxy
-        <div className={classes.tagline}>Order from chaos</div>
-      </div>
-      <div className={classes.title}>
-        Your Personal Finance Simple & Private
-        <div className={classes.description}>
-          Insights into your finances,
-          without sacrificing your data
+const Landing = ({ history }) => {
+  const classes = useStyles()
+  return (
+    <Grid container spacing={0} className={classes.root}>
+      <Grid item xs={6} className={classes.left}>
+        <div className={classes.logo}>
+          Entaxy
+          <div className={classes.tagline}>Order from chaos</div>
         </div>
-      </div>
-      <LandingCard history={history} />
-      <div>
-        <Typography variant="body2">
-          Entaxy is free and you get to keep your data.
-        </Typography>
-        <Typography variant="body2">
-          That&apos;s right, we
-          don&apos;t store your data in a big database so we
-          don&apos;t need to convince you to trust us.
-        </Typography>
-      </div>
+        <div className={classes.title}>
+          Your Personal Finance Simple & Private
+          <div className={classes.description}>
+            Insights into your finances,
+            without sacrificing your data
+          </div>
+        </div>
+        <LandingCard history={history} />
+        <div>
+          <Typography variant="body2">
+            Entaxy is free and you get to keep your data.
+          </Typography>
+          <Typography variant="body2">
+            That&apos;s right, we
+            don&apos;t store your data in a big database so we
+            don&apos;t need to convince you to trust us.
+          </Typography>
+        </div>
+      </Grid>
+      <Grid item xs={6} className={classes.right} />
     </Grid>
-    <Grid item xs={6} className={classes.right} />
-  </Grid>
-)
-LandingComponent.propTypes = {
-  classes: PropTypes.object.isRequired,
+  )
+}
+
+Landing.propTypes = {
   history: PropTypes.object.isRequired
 }
 
-export default withStyles(styles)(LandingComponent)
+export default Landing

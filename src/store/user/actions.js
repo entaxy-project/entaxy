@@ -33,7 +33,7 @@ export const loadUserData = () => (dispatch, getState) => {
       pictureUrl: person.avatarUrl()
     }))
     storage.loadState().then((state) => {
-      dispatch(loadSettings((state || {}).settings))
+      dispatch(loadSettings(({}).settings))
       dispatch(loadAccounts((state || {}).accounts))
       dispatch(loadTransactions((state || {}).transactions))
       dispatch(loadExchangeRates((state || {}).exchangeRates))

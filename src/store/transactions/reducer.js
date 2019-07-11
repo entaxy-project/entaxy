@@ -2,7 +2,8 @@ import _ from 'lodash'
 import types from './types'
 
 export const initialState = {
-  list: []
+  list: [],
+  rules: {} // rules have the format { match: category }
 }
 
 export default (state = initialState, action) => {
@@ -36,11 +37,35 @@ export default (state = initialState, action) => {
         ...state,
         list: [...state.list, ...action.payload]
       }
-    case types.UPDATE_SORT_BY:
+    case types.CREATE_EXACT_RULE:
       return {
         ...state,
-        sortBy: action.payload.sortBy,
-        sortDirection: action.payload.sortDirection
+        rules: { ...state.rules, [action.payload.match]: action.payload.category }
+      }
+    case types.DELETE_EXACT_RULE:
+      // eslint-disable-next-line no-case-declarations
+      const r = Object.keys(state.rules).reduce((result, match) => {
+        if (match !== action.payload) {
+          return {
+            ...result,
+            rules: { ...result.rules, [match]: state.rules[match] }
+          }
+        }
+        return result
+      }, { ...state, rules: {} })
+      return r
+    case types.APPLY_EXACT_RULE:
+      return {
+        ...state,
+        list: state.list.reduce((result, transaction) => {
+          if (transaction.description === action.payload) {
+            return [
+              ...result,
+              { ...transaction, category: state.rules[transaction.description] }
+            ]
+          }
+          return [...result, transaction]
+        }, [])
       }
     default:
       return state

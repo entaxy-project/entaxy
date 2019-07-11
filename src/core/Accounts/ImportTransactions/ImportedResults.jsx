@@ -1,6 +1,7 @@
+/* eslint-disable react/no-multi-comp */
 import React from 'react'
 import PropTypes from 'prop-types'
-import { withStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
 import Divider from '@material-ui/core/Divider'
 import CheckCircleIcon from '@material-ui/icons/CheckCircle'
@@ -12,7 +13,7 @@ import { Column } from 'react-virtualized'
 import ResultsToolbar from './ResultsToolbar'
 import TransactionsTable from '../Transactions/TransactionsTable'
 
-const styles = {
+const useStyles = makeStyles(() => ({
   tableWrapper: {
     height: 'calc(100vh - 350px)',
     marginBottom: 100
@@ -34,16 +35,24 @@ const styles = {
     'vertical-align': 'text-bottom',
     fontSize: 18
   }
-}
+}))
 
-export class ImportedResultsComponent extends React.Component {
-  filterByErrors = transaction => (
+const ImportedResults = (props) => {
+  const classes = useStyles()
+  const {
+    account,
+    transactions,
+    errors,
+    onSave,
+    onBack
+  } = props
+
+  const filterByErrors = transaction => (
     Object.keys(transaction).includes('errors') && transaction.errors.length > 0
   )
 
-  toolbarProps = () => {
-    const { transactions, classes } = this.props
-    const transactionsWithErrors = transactions.filter(this.filterByErrors)
+  const toolbarProps = () => {
+    const transactionsWithErrors = transactions.filter(filterByErrors)
     let subTitle = 'No errors'
 
     if (transactionsWithErrors.length > 0) {
@@ -51,7 +60,7 @@ export class ImportedResultsComponent extends React.Component {
         <div>
           <ErrorIcon className={classes.iconError} />
           {transactionsWithErrors.length}
-          transactions have errors and will not be imported
+          &nbsp;transactions have errors and will not be imported
         </div>
       )
     }
@@ -62,63 +71,51 @@ export class ImportedResultsComponent extends React.Component {
     }
   }
 
-  errorCellRenderer = ({ cellData }) => {
-    const { classes } = this.props
-    if (cellData.length === 0) {
+  const errorCellRenderer = (data) => {
+    console.log('data', data)
+    if (data.cellData.length === 0) {
       return <CheckCircleIcon className={classes.iconCheck} />
     }
     return (
-      <Tooltip title={cellData}>
+      <Tooltip title={data.cellData}>
         <ErrorIcon className={classes.iconError} />
       </Tooltip>
     )
   }
 
-  render() {
-    const {
-      classes,
-      account,
-      transactions,
-      errors,
-      onSave,
-      onBack
-    } = this.props
-
-    return (
-      <div>
-        <TransactionsTable
-          className={classes.tableWrapper}
-          account={account}
-          transactions={transactions}
-          hideChekboxes
-          Toolbar={ResultsToolbar}
-          toolbarProps={this.toolbarProps()}
+  return (
+    <div>
+      <TransactionsTable
+        className={classes.tableWrapper}
+        account={account}
+        transactions={transactions}
+        hideChekboxes
+        Toolbar={ResultsToolbar}
+        toolbarProps={toolbarProps()}
+      >
+        <Column
+          width={20}
+          disableSort={true}
+          dataKey="errors"
+          cellRenderer={errorCellRenderer}
+        />
+      </TransactionsTable>
+      <Divider />
+      <div className={classes.formActions}>
+        <Button
+          onClick={onSave}
+          color="secondary"
+          disabled={errors.base.length > 0}
         >
-          <Column
-            width={20}
-            disableSort={true}
-            dataKey="errors"
-            cellRenderer={this.errorCellRenderer}
-          />
-        </TransactionsTable>
-        <Divider />
-        <div className={classes.formActions}>
-          <Button
-            onClick={onSave}
-            color="secondary"
-            disabled={errors.base.length > 0}
-          >
-            Save Transactions
-          </Button>
-          <Button onClick={onBack} color="secondary">Back</Button>
-        </div>
+          Save Transactions
+        </Button>
+        <Button onClick={onBack} color="secondary">Back</Button>
       </div>
-    )
-  }
+    </div>
+  )
 }
 
-ImportedResultsComponent.propTypes = {
-  classes: PropTypes.object.isRequired,
+ImportedResults.propTypes = {
   account: PropTypes.object.isRequired,
   transactions: PropTypes.array.isRequired,
   errors: PropTypes.object.isRequired,
@@ -126,4 +123,4 @@ ImportedResultsComponent.propTypes = {
   onBack: PropTypes.func.isRequired
 }
 
-export default withStyles(styles)(ImportedResultsComponent)
+export default ImportedResults

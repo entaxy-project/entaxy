@@ -47,14 +47,14 @@ describe('LoginButton', () => {
     const instance = wrapper.instance()
 
     it('handles button click', async () => {
-      wrapper.setState({ anchorEl: undefined, open: true })
+      wrapper.setState({ anchorEl: null, open: true })
       await instance.handleClick({ currentTarget: <div>something</div> })
       expect(wrapper.state('anchorEl')).toEqual(<div>something</div>)
       expect(wrapper.state('open')).toBe(false)
     })
 
     it('closes popup', async () => {
-      wrapper.setState({ open: true })
+      wrapper.setState({ open: true, anchorEl: <div>something</div> })
       await instance.handleClose()
       expect(wrapper.state('open')).toBe(false)
     })

@@ -18,8 +18,8 @@ import InstitutionIcon from '../../common/InstitutionIcon'
 
 const styles = theme => ({
   balancePaper: {
-    margin: theme.spacing.unit * 2,
-    padding: theme.spacing.unit * 2,
+    margin: theme.spacing(2),
+    padding: theme.spacing(2),
     paddingLeft: 150,
     position: 'relative'
   },
@@ -41,13 +41,13 @@ const styles = theme => ({
     color: 'white'
   },
   summaryPaper: {
-    margin: theme.spacing.unit * 2,
-    padding: theme.spacing.unit * 2
+    margin: theme.spacing(2),
+    padding: theme.spacing(2)
   },
   noAccounts: {
     background: grey[100],
     margin: '0 20px 20px 25px',
-    padding: theme.spacing.unit
+    padding: theme.spacing(1)
   },
   institutionWrapper: {
     display: 'flex'

@@ -7,7 +7,7 @@ import green from '@material-ui/core/colors/green'
 
 const styles = theme => ({
   wrapper: {
-    margin: theme.spacing.unit,
+    margin: theme.spacing(1),
     position: 'relative'
   },
   buttonProgress: {

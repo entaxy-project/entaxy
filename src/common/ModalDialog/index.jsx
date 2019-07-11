@@ -38,12 +38,15 @@ const ModalDialog = ({
   onSubmit,
   onCancel,
   open,
-  classes
+  classes,
+  className
 }) => (
   <Dialog
     aria-labelledby="form-dialog-title"
     open={open}
+    scroll="body"
     onClose={onCancel}
+    className={className}
   >
     <div className={classes.formwrapper}>
       <DialogTitle disableTypography className={classes.formHeader}>
@@ -71,7 +74,12 @@ ModalDialog.propTypes = {
   children: PropTypes.array.isRequired,
   onSubmit: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired,
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  className: PropTypes.string
+}
+
+ModalDialog.defaultProps = {
+  className: null
 }
 
 export default withStyles(styles)(ModalDialog)

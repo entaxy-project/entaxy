@@ -13,9 +13,9 @@ import grey from '@material-ui/core/colors/grey'
 import Card from '@material-ui/core/Card'
 import CardHeader from '@material-ui/core/CardHeader'
 import CardActions from '@material-ui/core/CardActions'
-import { NavLink } from 'react-router-dom'
 import { loginAs } from '../../store/user/actions'
 import blockstackLogo from './blockstack-bug-rounded.svg'
+import LinkTo from '../../common/LinkTo'
 
 const styles = {
   loggedOutContainer: {
@@ -84,8 +84,7 @@ export class LandingCardComponent extends React.Component {
               <Button
                 size="small"
                 color="secondary"
-                component={NavLink}
-                to="/dashboard"
+                component={LinkTo('/dashboard')}
               >
                 Continue to your Dashboard
               </Button>

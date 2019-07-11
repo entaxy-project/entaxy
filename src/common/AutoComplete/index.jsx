@@ -1,28 +1,23 @@
 import React from 'react'
-import { withStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@material-ui/core/styles'
 import PropTypes from 'prop-types'
 import Select from 'react-select'
-import AsyncSelect from 'react-select/lib/Async'
-import CreatableSelect from 'react-select/lib/Creatable'
+import AsyncSelect from 'react-select/async'
+import CreatableSelect from 'react-select/creatable'
 import Typography from '@material-ui/core/Typography'
 import FormHelperText from '@material-ui/core/FormHelperText'
 
-const styles = theme => ({
-  input: {
-    margin: theme.spacing.unit * 2,
-    width: 320
-  },
-  inputTitle: {
-    marginLeft: theme.spacing.unit * 2,
-    marginTop: theme.spacing.unit * 2,
-    marginBottom: -theme.spacing.unit * 2
+const useStyles = makeStyles(theme => ({
+
+  select: {
+    marginTop: -theme.spacing(1)
   },
   inputError: {
-    marginTop: -theme.spacing.unit,
-    marginLeft: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2
+    marginTop: -theme.spacing(1),
+    marginLeft: theme.spacing(2),
+    marginBottom: theme.spacing(2)
   }
-})
+}))
 
 const AutoComplete = ({
   async,
@@ -36,63 +31,66 @@ const AutoComplete = ({
   error,
   helperText,
   className,
-  classes
-}) => (
-  <div>
-    <Typography
-      variant="subtitle2"
-      className={classes.inputTitle}
-      color={error ? 'error' : 'default'}
-    >
-      {label}
-    </Typography>
-    { !async && !creatable && (
-      <Select
-        placeholder={label}
-        name={name}
-        value={value}
-        defaultValue={value}
-        options={options}
-        inputProps={{ 'aria-label': label, required: true }}
-        onChange={selection => onChange(name, selection)}
-        isClearable
-        className={className}
-      />
-    )}
-    { !async && creatable && (
-      <CreatableSelect
-        placeholder={label}
-        name={name}
-        value={value}
-        defaultValue={value}
-        options={options}
-        inputProps={{ 'aria-label': label, required: true }}
-        onChange={selection => onChange(name, selection)}
-        isClearable
-        className={className}
-      />
-    )}
-    { async && (
-      <AsyncSelect
-        placeholder={label}
-        name={name}
-        value={value}
-        cacheOptions
-        defaultOptions
-        loadOptions={loadOptions}
-        inputProps={{ 'aria-label': label }}
-        onChange={selection => onChange(name, selection)}
-        isClearable
-        className={className}
-      />
-    )}
-    {error && (
-      <FormHelperText error className={classes.inputError}>
-        {helperText}
-      </FormHelperText>
-    )}
-  </div>
-)
+  styles
+}) => {
+  const classes = useStyles()
+
+  return (
+    <div className={className}>
+      <Typography
+        variant="caption"
+        color={error ? 'error' : 'textSecondary'}
+      >
+        {label}
+      </Typography>
+      { !async && !creatable && (
+        <Select
+          placeholder={label}
+          name={name}
+          value={value}
+          defaultValue={value}
+          options={options}
+          inputProps={{ 'aria-label': label, required: true }}
+          onChange={selection => onChange(name, selection)}
+          isClearable
+          styles={styles}
+        />
+      )}
+      { !async && creatable && (
+        <CreatableSelect
+          placeholder={label}
+          name={name}
+          value={value}
+          defaultValue={value}
+          options={options}
+          inputProps={{ 'aria-label': label, required: true }}
+          onChange={selection => onChange(name, selection)}
+          isClearable
+          styles={styles}
+        />
+      )}
+      { async && (
+        <AsyncSelect
+          placeholder={label}
+          name={name}
+          value={value}
+          cacheOptions
+          defaultOptions
+          loadOptions={loadOptions}
+          inputProps={{ 'aria-label': label }}
+          onChange={selection => onChange(name, selection)}
+          isClearable
+          styles={styles}
+        />
+      )}
+      {error && (
+        <FormHelperText error className={classes.inputError}>
+          {helperText}
+        </FormHelperText>
+      )}
+    </div>
+  )
+}
 
 AutoComplete.propTypes = {
   async: PropTypes.bool,
@@ -103,7 +101,7 @@ AutoComplete.propTypes = {
   options: PropTypes.array,
   loadOptions: PropTypes.func,
   onChange: PropTypes.func.isRequired,
-  classes: PropTypes.object.isRequired,
+  styles: PropTypes.object,
   className: PropTypes.string,
   error: PropTypes.bool,
   helperText: PropTypes.string
@@ -116,8 +114,9 @@ AutoComplete.defaultProps = {
   options: undefined,
   loadOptions: undefined,
   className: undefined,
+  styles: undefined,
   error: undefined,
   helperText: undefined
 }
 
-export default withStyles(styles)(AutoComplete)
+export default AutoComplete

@@ -2,65 +2,64 @@
 
 exports[`Taxes matches snapshot 1`] = `
 "<div className={[undefined]}>
-  <WithStyles(Header) />
-  <WithStyles(Grid) container={true} spacing={0}>
-    <WithStyles(Grid) item={true} xs={10}>
-      <WithStyles(Paper) className=\\"undefined undefined\\">
-        <WithStyles(Typography) variant=\\"h5\\" gutterBottom={true} align=\\"center\\">
+  <WithStyles(ForwardRef(Grid)) container={true} spacing={0}>
+    <WithStyles(ForwardRef(Grid)) item={true} xs={10}>
+      <WithStyles(ForwardRef(Paper)) className=\\"undefined undefined\\">
+        <WithStyles(ForwardRef(Typography)) variant=\\"h5\\" gutterBottom={true} align=\\"center\\">
           Taxes for
           Ontario
           2017
-        </WithStyles(Typography)>
+        </WithStyles(ForwardRef(Typography))>
         <n country=\\"Canada\\" year={2017} region=\\"Ontario\\" income={90000} rrsp={10000} taxBeforeCredits={20282.9731} debounceTime={300} />
-      </WithStyles(Paper)>
-    </WithStyles(Grid)>
-    <WithStyles(Grid) item={true} xs={2}>
-      <WithStyles(Paper) className={[undefined]}>
-        <WithStyles(FormControl) fullWidth={true} className={[undefined]}>
-          <WithStyles(WithFormControlContext(InputLabel)) htmlFor=\\"income\\">
+      </WithStyles(ForwardRef(Paper))>
+    </WithStyles(ForwardRef(Grid))>
+    <WithStyles(ForwardRef(Grid)) item={true} xs={2}>
+      <WithStyles(ForwardRef(Paper)) className={[undefined]}>
+        <WithStyles(ForwardRef(FormControl)) fullWidth={true} className={[undefined]}>
+          <WithStyles(WithFormControlContext(ForwardRef(InputLabel))) htmlFor=\\"income\\">
             Your income
-          </WithStyles(WithFormControlContext(InputLabel))>
-          <WithStyles(Input) value={90000} onChange={[Function]} inputComponent={[Function: CurrencyFormat]} className={[undefined]} inputProps={{...}} />
-        </WithStyles(FormControl)>
-      </WithStyles(Paper)>
-      <WithStyles(Paper) className={[undefined]}>
-        <WithStyles(Typography) variant=\\"subtitle1\\">
+          </WithStyles(WithFormControlContext(ForwardRef(InputLabel)))>
+          <WithStyles(ForwardRef(Input)) value={90000} onChange={[Function]} inputComponent={[Function: CurrencyFormat]} className={[undefined]} inputProps={{...}} />
+        </WithStyles(ForwardRef(FormControl))>
+      </WithStyles(ForwardRef(Paper))>
+      <WithStyles(ForwardRef(Paper)) className={[undefined]}>
+        <WithStyles(ForwardRef(Typography)) variant=\\"subtitle1\\">
           Tax credits
-        </WithStyles(Typography)>
-        <WithStyles(FormControl) fullWidth={true} className={[undefined]}>
-          <WithStyles(WithFormControlContext(InputLabel)) htmlFor=\\"rrsp\\">
+        </WithStyles(ForwardRef(Typography))>
+        <WithStyles(ForwardRef(FormControl)) fullWidth={true} className={[undefined]}>
+          <WithStyles(WithFormControlContext(ForwardRef(InputLabel))) htmlFor=\\"rrsp\\">
             RRSP contribution
-          </WithStyles(WithFormControlContext(InputLabel))>
-          <WithStyles(Input) name=\\"rrsp\\" value={10000} onChange={[Function]} inputComponent={[Function: CurrencyFormat]} className={{...}} inputProps={{...}} />
-        </WithStyles(FormControl)>
-      </WithStyles(Paper)>
-      <WithStyles(Paper) className={[undefined]}>
-        <WithStyles(Typography)>
+          </WithStyles(WithFormControlContext(ForwardRef(InputLabel)))>
+          <WithStyles(ForwardRef(Input)) name=\\"rrsp\\" value={10000} onChange={[Function]} inputComponent={[Function: CurrencyFormat]} className={{...}} inputProps={{...}} />
+        </WithStyles(ForwardRef(FormControl))>
+      </WithStyles(ForwardRef(Paper))>
+      <WithStyles(ForwardRef(Paper)) className={[undefined]}>
+        <WithStyles(ForwardRef(Typography))>
           <strong>
             Taxable income:
           </strong>
           CA$80,000.00
-        </WithStyles(Typography)>
-        <WithStyles(Typography)>
+        </WithStyles(ForwardRef(Typography))>
+        <WithStyles(ForwardRef(Typography))>
           <strong>
             Tax amount:
           </strong>
           CA$17,205.49
-        </WithStyles(Typography)>
-        <WithStyles(Typography)>
+        </WithStyles(ForwardRef(Typography))>
+        <WithStyles(ForwardRef(Typography))>
           <strong>
             Marginal Tax Rate:
           </strong>
           29.65%
-        </WithStyles(Typography)>
-        <WithStyles(Typography)>
+        </WithStyles(ForwardRef(Typography))>
+        <WithStyles(ForwardRef(Typography))>
           <strong>
             Average Tax Rate:
           </strong>
           21.51%
-        </WithStyles(Typography)>
-      </WithStyles(Paper)>
-    </WithStyles(Grid)>
-  </WithStyles(Grid)>
+        </WithStyles(ForwardRef(Typography))>
+      </WithStyles(ForwardRef(Paper))>
+    </WithStyles(ForwardRef(Grid))>
+  </WithStyles(ForwardRef(Grid))>
 </div>"
 `;

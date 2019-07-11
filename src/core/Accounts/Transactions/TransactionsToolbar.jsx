@@ -1,7 +1,7 @@
 import React from 'react'
 import { withStyles } from '@material-ui/core/styles'
 import PropTypes from 'prop-types'
-import { NavLink, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import IconButton from '@material-ui/core/IconButton'
 import Tooltip from '@material-ui/core/Tooltip'
 import AddIcon from '@material-ui/icons/Add'
@@ -13,6 +13,7 @@ import SearchIcon from '@material-ui/icons/Search'
 import { fade } from '@material-ui/core/styles/colorManipulator'
 import confirm from '../../../util/confirm'
 import TableToolbar from '../../../common/TableToolbar'
+import LinkTo from '../../../common/LinkTo'
 
 const styles = theme => ({
   importButton: {
@@ -28,12 +29,12 @@ const styles = theme => ({
     '&:hover': {
       backgroundColor: fade(theme.palette.grey[400], 0.25)
     },
-    marginRight: theme.spacing.unit * 2,
+    marginRight: theme.spacing(2),
     marginLeft: 0,
     width: '100%'
   },
   searchIcon: {
-    width: theme.spacing.unit * 9,
+    width: theme.spacing(1) * 9,
     height: '100%',
     position: 'absolute',
     pointerEvents: 'none',
@@ -46,10 +47,10 @@ const styles = theme => ({
     width: '100%'
   },
   inputInput: {
-    paddingTop: theme.spacing.unit * 1.8,
-    paddingRight: theme.spacing.unit,
-    paddingBottom: theme.spacing.unit,
-    paddingLeft: theme.spacing.unit * 8,
+    paddingTop: theme.spacing(1) * 1.8,
+    paddingRight: theme.spacing(1),
+    paddingBottom: theme.spacing(1),
+    paddingLeft: theme.spacing(1) * 8,
     transition: theme.transitions.create('width'),
     width: '100%',
     [theme.breakpoints.up('md')]: {
@@ -118,8 +119,7 @@ export class TransactionsToolbarComponent extends React.Component {
             <Tooltip title="Import transaction">
               <IconButton
                 aria-label="Import transaction"
-                component={NavLink}
-                to={`/accounts/${account.id}/import`}
+                component={LinkTo(`/accounts/${account.id}/import`)}
               >
                 <Icon
                   path={mdiImport}

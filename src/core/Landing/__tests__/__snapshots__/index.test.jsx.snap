@@ -2,20 +2,28 @@
 
 exports[`LandingCard matches snapshot 1`] = `
 <div
-  className="MuiGrid-container-1"
+  className="MuiGrid-root makeStyles-root-1 MuiGrid-container"
 >
   <div
-    className="MuiGrid-item-2 MuiGrid-grid-xs-6-35"
+    className="MuiGrid-root makeStyles-left-2 MuiGrid-item MuiGrid-grid-xs-6"
   >
-    <div>
+    <div
+      className="makeStyles-logo-3"
+    >
       Entaxy
-      <div>
+      <div
+        className="makeStyles-tagline-4"
+      >
         Order from chaos
       </div>
     </div>
-    <div>
+    <div
+      className="makeStyles-title-5"
+    >
       Your Personal Finance Simple & Private
-      <div>
+      <div
+        className="makeStyles-description-6"
+      >
         Insights into your finances, without sacrificing your data
       </div>
     </div>
@@ -24,19 +32,19 @@ exports[`LandingCard matches snapshot 1`] = `
     />
     <div>
       <p
-        className="MuiTypography-root-98 MuiTypography-body2-106"
+        className="MuiTypography-root MuiTypography-body2"
       >
         Entaxy is free and you get to keep your data.
       </p>
       <p
-        className="MuiTypography-root-98 MuiTypography-body2-106"
+        className="MuiTypography-root MuiTypography-body2"
       >
         That's right, we don't store your data in a big database so we don't need to convince you to trust us.
       </p>
     </div>
   </div>
   <div
-    className="MuiGrid-item-2 MuiGrid-grid-xs-6-35"
+    className="MuiGrid-root makeStyles-right-7 MuiGrid-item MuiGrid-grid-xs-6"
   />
 </div>
 `;

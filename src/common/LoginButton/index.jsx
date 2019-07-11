@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
 import { withStyles } from '@material-ui/core/styles'
-import { NavLink } from 'react-router-dom'
 import Button from '@material-ui/core/Button'
 import Avatar from '@material-ui/core/Avatar'
 import Popper from '@material-ui/core/Popper'
@@ -19,6 +18,7 @@ import Paper from '@material-ui/core/Paper'
 import Fade from '@material-ui/core/Fade'
 import ClickAwayListener from '@material-ui/core/ClickAwayListener'
 import Tooltip from '@material-ui/core/Tooltip'
+import LinkTo from '../LinkTo'
 import { userLogout } from '../../store/user/actions'
 
 const styles = theme => ({
@@ -66,7 +66,6 @@ export class LoginButtonComponent extends React.Component {
       user,
       handleLogout
     } = this.props
-
     return (
       <ClickAwayListener onClickAway={this.handleClose}>
         <div className={classes.root}>
@@ -90,32 +89,41 @@ export class LoginButtonComponent extends React.Component {
           >
             {user.name}
           </Button>
-          <Popper open={open} anchorEl={anchorEl} transition className={classes.popper}>
-            {({ TransitionProps }) => (
-              <Fade {...TransitionProps} timeout={350}>
-                <Paper>
-                  <MenuList role="menu">
-                    <MenuItem component={NavLink} to="/settings">
-                      <ListItemIcon>
-                        <Settings />
-                      </ListItemIcon>
-                      <ListItemText primary="Settings" />
-                    </MenuItem>
-                    <MenuItem onClick={handleLogout}>
-                      <ListItemIcon>
-                        <Icon
-                          path={mdiLogout}
-                          size={1}
-                          className={classes.menuIcon}
-                        />
-                      </ListItemIcon>
-                      <ListItemText primary="Logout" />
-                    </MenuItem>
-                  </MenuList>
-                </Paper>
-              </Fade>
-            )}
-          </Popper>
+          {anchorEl !== null && (
+            <Popper open={open} anchorEl={anchorEl} transition className={classes.popper}>
+              {({ TransitionProps }) => (
+                <Fade {...TransitionProps} timeout={350}>
+                  <Paper>
+                    <MenuList role="menu">
+
+                      <MenuItem onClick={this.handleClose} component={LinkTo('/settings')}>
+                        <ListItemIcon>
+                          <Settings />
+                        </ListItemIcon>
+                        <ListItemText primary="Settings" />
+                      </MenuItem>
+                      <MenuItem onClick={this.handleClose} component={LinkTo('/budget-categories')}>
+                        <ListItemIcon>
+                          <Settings />
+                        </ListItemIcon>
+                        <ListItemText primary="Budget Categories" />
+                      </MenuItem>
+                      <MenuItem onClick={handleLogout}>
+                        <ListItemIcon>
+                          <Icon
+                            path={mdiLogout}
+                            size={1}
+                            className={classes.menuIcon}
+                          />
+                        </ListItemIcon>
+                        <ListItemText primary="Logout" />
+                      </MenuItem>
+                    </MenuList>
+                  </Paper>
+                </Fade>
+              )}
+            </Popper>
+          )}
         </div>
       </ClickAwayListener>
     )

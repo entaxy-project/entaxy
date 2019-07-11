@@ -4,76 +4,73 @@ exports[`Dashboard matches snapshot with no accounts 1`] = `
 "<Provider store={{...}}>
   <Connect(WithStyles(DashboardComponent))>
     <WithStyles(DashboardComponent) settings={{...}} accounts={{...}} formatCurrency={[Function]} totalBalance={0} dispatch={[Function]}>
-      <DashboardComponent settings={{...}} accounts={{...}} formatCurrency={[Function]} totalBalance={0} dispatch={[Function]} classes={{...}}>
-        <WithStyles(Grid) container={true}>
-          <Grid container={true} classes={{...}} alignContent=\\"stretch\\" alignItems=\\"stretch\\" component=\\"div\\" direction=\\"row\\" item={false} justify=\\"flex-start\\" lg={false} md={false} sm={false} spacing={0} wrap=\\"wrap\\" xl={false} xs={false} zeroMinWidth={false}>
-            <div className=\\"MuiGrid-container-10\\">
-              <WithStyles(Grid) container={true} justify=\\"flex-end\\" className={[undefined]}>
-                <Grid container={true} justify=\\"flex-end\\" className={[undefined]} classes={{...}} alignContent=\\"stretch\\" alignItems=\\"stretch\\" component=\\"div\\" direction=\\"row\\" item={false} lg={false} md={false} sm={false} spacing={0} wrap=\\"wrap\\" xl={false} xs={false} zeroMinWidth={false}>
-                  <div className=\\"MuiGrid-container-10 MuiGrid-justify-xs-flex-end-28\\">
-                    <WithStyles(Paper) className=\\"DashboardComponent-balancePaper-1\\">
-                      <Paper className=\\"DashboardComponent-balancePaper-1\\" classes={{...}} component=\\"div\\" elevation={2} square={false}>
-                        <div className=\\"MuiPaper-root-107 MuiPaper-elevation2-111 MuiPaper-rounded-108 DashboardComponent-balancePaper-1\\">
-                          <WithStyles(Typography) variant=\\"body1\\" color=\\"textSecondary\\" align=\\"right\\">
-                            <Typography variant=\\"body1\\" color=\\"textSecondary\\" align=\\"right\\" theme={{...}} classes={{...}} gutterBottom={false} headlineMapping={{...}} inline={false} noWrap={false} paragraph={false}>
-                              <p className=\\"MuiTypography-root-134 MuiTypography-body1-143 MuiTypography-colorTextSecondary-167 MuiTypography-alignRight-158\\">
+      <DashboardComponent classes={{...}} settings={{...}} accounts={{...}} formatCurrency={[Function]} totalBalance={0} dispatch={[Function]}>
+        <WithStyles(ForwardRef(Grid)) container={true}>
+          <ForwardRef(Grid) classes={{...}} container={true}>
+            <div className=\\"MuiGrid-root MuiGrid-container\\">
+              <WithStyles(ForwardRef(Grid)) container={true} justify=\\"flex-end\\" className={[undefined]}>
+                <ForwardRef(Grid) classes={{...}} container={true} justify=\\"flex-end\\" className={[undefined]}>
+                  <div className=\\"MuiGrid-root MuiGrid-container MuiGrid-justify-xs-flex-end\\">
+                    <WithStyles(ForwardRef(Paper)) className=\\"DashboardComponent-balancePaper-1\\">
+                      <ForwardRef(Paper) classes={{...}} className=\\"DashboardComponent-balancePaper-1\\">
+                        <div className=\\"MuiPaper-root MuiPaper-elevation1 DashboardComponent-balancePaper-1 MuiPaper-rounded\\">
+                          <WithStyles(ForwardRef(Typography)) variant=\\"body1\\" color=\\"textSecondary\\" align=\\"right\\">
+                            <ForwardRef(Typography) classes={{...}} variant=\\"body1\\" color=\\"textSecondary\\" align=\\"right\\" theme={{...}}>
+                              <p className=\\"MuiTypography-root MuiTypography-body1 MuiTypography-colorTextSecondary MuiTypography-alignRight\\">
                                 Balance
                               </p>
-                            </Typography>
-                          </WithStyles(Typography)>
-                          <WithStyles(Typography) variant=\\"h5\\" align=\\"right\\" className=\\"DashboardComponent-balanceAmount-2\\">
-                            <Typography variant=\\"h5\\" align=\\"right\\" className=\\"DashboardComponent-balanceAmount-2\\" theme={{...}} classes={{...}} color=\\"default\\" gutterBottom={false} headlineMapping={{...}} inline={false} noWrap={false} paragraph={false}>
-                              <h5 className=\\"MuiTypography-root-134 MuiTypography-h5-150 MuiTypography-alignRight-158 DashboardComponent-balanceAmount-2\\">
+                            </ForwardRef(Typography)>
+                          </WithStyles(ForwardRef(Typography))>
+                          <WithStyles(ForwardRef(Typography)) variant=\\"h5\\" align=\\"right\\" className=\\"DashboardComponent-balanceAmount-2\\">
+                            <ForwardRef(Typography) classes={{...}} variant=\\"h5\\" align=\\"right\\" className=\\"DashboardComponent-balanceAmount-2\\" theme={{...}}>
+                              <h5 className=\\"MuiTypography-root DashboardComponent-balanceAmount-2 MuiTypography-h5 MuiTypography-alignRight\\">
                                 $0.00
                               </h5>
-                            </Typography>
-                          </WithStyles(Typography)>
-                          <WithStyles(Paper) className=\\"DashboardComponent-balancePaperIcon-3\\">
-                            <Paper className=\\"DashboardComponent-balancePaperIcon-3\\" classes={{...}} component=\\"div\\" elevation={2} square={false}>
-                              <div className=\\"MuiPaper-root-107 MuiPaper-elevation2-111 MuiPaper-rounded-108 DashboardComponent-balancePaperIcon-3\\">
-                                <pure(DashboardIcon) className=\\"DashboardComponent-balanceIcon-4\\">
-                                  <DashboardIcon className=\\"DashboardComponent-balanceIcon-4\\">
-                                    <WithStyles(SvgIcon) className=\\"DashboardComponent-balanceIcon-4\\">
-                                      <SvgIcon className=\\"DashboardComponent-balanceIcon-4\\" classes={{...}} color=\\"inherit\\" component=\\"svg\\" fontSize=\\"default\\" viewBox=\\"0 0 24 24\\">
-                                        <svg className=\\"MuiSvgIcon-root-170 DashboardComponent-balanceIcon-4\\" focusable=\\"false\\" viewBox=\\"0 0 24 24\\" color={[undefined]} aria-hidden=\\"true\\" role=\\"presentation\\">
-                                          <path fill=\\"none\\" d=\\"M0 0h24v24H0z\\" />
-                                          <path d=\\"M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z\\" />
-                                        </svg>
-                                      </SvgIcon>
-                                    </WithStyles(SvgIcon)>
-                                  </DashboardIcon>
-                                </pure(DashboardIcon)>
+                            </ForwardRef(Typography)>
+                          </WithStyles(ForwardRef(Typography))>
+                          <WithStyles(ForwardRef(Paper)) className=\\"DashboardComponent-balancePaperIcon-3\\">
+                            <ForwardRef(Paper) classes={{...}} className=\\"DashboardComponent-balancePaperIcon-3\\">
+                              <div className=\\"MuiPaper-root MuiPaper-elevation1 DashboardComponent-balancePaperIcon-3 MuiPaper-rounded\\">
+                                <ForwardRef className=\\"DashboardComponent-balanceIcon-4\\">
+                                  <WithStyles(ForwardRef(SvgIcon)) className=\\"DashboardComponent-balanceIcon-4\\">
+                                    <ForwardRef(SvgIcon) classes={{...}} className=\\"DashboardComponent-balanceIcon-4\\">
+                                      <svg className=\\"MuiSvgIcon-root DashboardComponent-balanceIcon-4\\" focusable=\\"false\\" viewBox=\\"0 0 24 24\\" color={[undefined]} aria-hidden=\\"true\\" role=\\"presentation\\">
+                                        <path d=\\"M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z\\" />
+                                      </svg>
+                                    </ForwardRef(SvgIcon)>
+                                  </WithStyles(ForwardRef(SvgIcon))>
+                                </ForwardRef>
                               </div>
-                            </Paper>
-                          </WithStyles(Paper)>
+                            </ForwardRef(Paper)>
+                          </WithStyles(ForwardRef(Paper))>
                         </div>
-                      </Paper>
-                    </WithStyles(Paper)>
+                      </ForwardRef(Paper)>
+                    </WithStyles(ForwardRef(Paper))>
                   </div>
-                </Grid>
-              </WithStyles(Grid)>
-              <WithStyles(Grid) container={true}>
-                <Grid container={true} classes={{...}} alignContent=\\"stretch\\" alignItems=\\"stretch\\" component=\\"div\\" direction=\\"row\\" item={false} justify=\\"flex-start\\" lg={false} md={false} sm={false} spacing={0} wrap=\\"wrap\\" xl={false} xs={false} zeroMinWidth={false}>
-                  <div className=\\"MuiGrid-container-10\\">
-                    <WithStyles(Paper) className=\\"DashboardComponent-summaryPaper-5\\">
-                      <Paper className=\\"DashboardComponent-summaryPaper-5\\" classes={{...}} component=\\"div\\" elevation={2} square={false}>
-                        <div className=\\"MuiPaper-root-107 MuiPaper-elevation2-111 MuiPaper-rounded-108 DashboardComponent-summaryPaper-5\\">
-                          <WithStyles(Typography) variant=\\"caption\\" className=\\"DashboardComponent-noAccounts-6\\">
-                            <Typography variant=\\"caption\\" className=\\"DashboardComponent-noAccounts-6\\" theme={{...}} classes={{...}} align=\\"inherit\\" color=\\"default\\" gutterBottom={false} headlineMapping={{...}} inline={false} noWrap={false} paragraph={false}>
-                              <span className=\\"MuiTypography-root-134 MuiTypography-caption-144 DashboardComponent-noAccounts-6\\">
+                </ForwardRef(Grid)>
+              </WithStyles(ForwardRef(Grid))>
+              <WithStyles(ForwardRef(Grid)) container={true}>
+                <ForwardRef(Grid) classes={{...}} container={true}>
+                  <div className=\\"MuiGrid-root MuiGrid-container\\">
+                    <WithStyles(ForwardRef(Paper)) className=\\"DashboardComponent-summaryPaper-5\\">
+                      <ForwardRef(Paper) classes={{...}} className=\\"DashboardComponent-summaryPaper-5\\">
+                        <div className=\\"MuiPaper-root MuiPaper-elevation1 DashboardComponent-summaryPaper-5 MuiPaper-rounded\\">
+                          <WithStyles(ForwardRef(Typography)) variant=\\"caption\\" className=\\"DashboardComponent-noAccounts-6\\">
+                            <ForwardRef(Typography) classes={{...}} variant=\\"caption\\" className=\\"DashboardComponent-noAccounts-6\\" theme={{...}}>
+                              <span className=\\"MuiTypography-root DashboardComponent-noAccounts-6 MuiTypography-caption\\">
                                 You don&#39;t have any accounts yet
                               </span>
-                            </Typography>
-                          </WithStyles(Typography)>
+                            </ForwardRef(Typography)>
+                          </WithStyles(ForwardRef(Typography))>
                         </div>
-                      </Paper>
-                    </WithStyles(Paper)>
+                      </ForwardRef(Paper)>
+                    </WithStyles(ForwardRef(Paper))>
                   </div>
-                </Grid>
-              </WithStyles(Grid)>
+                </ForwardRef(Grid)>
+              </WithStyles(ForwardRef(Grid))>
             </div>
-          </Grid>
-        </WithStyles(Grid)>
+          </ForwardRef(Grid)>
+        </WithStyles(ForwardRef(Grid))>
       </DashboardComponent>
     </WithStyles(DashboardComponent)>
   </Connect(WithStyles(DashboardComponent))>
@@ -84,179 +81,173 @@ exports[`Dashboard matches snapshot with one account 1`] = `
 "<Provider store={{...}}>
   <Connect(WithStyles(DashboardComponent))>
     <WithStyles(DashboardComponent) settings={{...}} accounts={{...}} formatCurrency={[Function]} totalBalance={0} dispatch={[Function]}>
-      <DashboardComponent settings={{...}} accounts={{...}} formatCurrency={[Function]} totalBalance={0} dispatch={[Function]} classes={{...}}>
-        <WithStyles(Grid) container={true}>
-          <Grid container={true} classes={{...}} alignContent=\\"stretch\\" alignItems=\\"stretch\\" component=\\"div\\" direction=\\"row\\" item={false} justify=\\"flex-start\\" lg={false} md={false} sm={false} spacing={0} wrap=\\"wrap\\" xl={false} xs={false} zeroMinWidth={false}>
-            <div className=\\"MuiGrid-container-10\\">
-              <WithStyles(Grid) container={true} justify=\\"flex-end\\" className={[undefined]}>
-                <Grid container={true} justify=\\"flex-end\\" className={[undefined]} classes={{...}} alignContent=\\"stretch\\" alignItems=\\"stretch\\" component=\\"div\\" direction=\\"row\\" item={false} lg={false} md={false} sm={false} spacing={0} wrap=\\"wrap\\" xl={false} xs={false} zeroMinWidth={false}>
-                  <div className=\\"MuiGrid-container-10 MuiGrid-justify-xs-flex-end-28\\">
-                    <WithStyles(Paper) className=\\"DashboardComponent-balancePaper-1\\">
-                      <Paper className=\\"DashboardComponent-balancePaper-1\\" classes={{...}} component=\\"div\\" elevation={2} square={false}>
-                        <div className=\\"MuiPaper-root-107 MuiPaper-elevation2-111 MuiPaper-rounded-108 DashboardComponent-balancePaper-1\\">
-                          <WithStyles(Typography) variant=\\"body1\\" color=\\"textSecondary\\" align=\\"right\\">
-                            <Typography variant=\\"body1\\" color=\\"textSecondary\\" align=\\"right\\" theme={{...}} classes={{...}} gutterBottom={false} headlineMapping={{...}} inline={false} noWrap={false} paragraph={false}>
-                              <p className=\\"MuiTypography-root-134 MuiTypography-body1-143 MuiTypography-colorTextSecondary-167 MuiTypography-alignRight-158\\">
+      <DashboardComponent classes={{...}} settings={{...}} accounts={{...}} formatCurrency={[Function]} totalBalance={0} dispatch={[Function]}>
+        <WithStyles(ForwardRef(Grid)) container={true}>
+          <ForwardRef(Grid) classes={{...}} container={true}>
+            <div className=\\"MuiGrid-root MuiGrid-container\\">
+              <WithStyles(ForwardRef(Grid)) container={true} justify=\\"flex-end\\" className={[undefined]}>
+                <ForwardRef(Grid) classes={{...}} container={true} justify=\\"flex-end\\" className={[undefined]}>
+                  <div className=\\"MuiGrid-root MuiGrid-container MuiGrid-justify-xs-flex-end\\">
+                    <WithStyles(ForwardRef(Paper)) className=\\"DashboardComponent-balancePaper-1\\">
+                      <ForwardRef(Paper) classes={{...}} className=\\"DashboardComponent-balancePaper-1\\">
+                        <div className=\\"MuiPaper-root MuiPaper-elevation1 DashboardComponent-balancePaper-1 MuiPaper-rounded\\">
+                          <WithStyles(ForwardRef(Typography)) variant=\\"body1\\" color=\\"textSecondary\\" align=\\"right\\">
+                            <ForwardRef(Typography) classes={{...}} variant=\\"body1\\" color=\\"textSecondary\\" align=\\"right\\" theme={{...}}>
+                              <p className=\\"MuiTypography-root MuiTypography-body1 MuiTypography-colorTextSecondary MuiTypography-alignRight\\">
                                 Balance
                               </p>
-                            </Typography>
-                          </WithStyles(Typography)>
-                          <WithStyles(Typography) variant=\\"h5\\" align=\\"right\\" className=\\"DashboardComponent-balanceAmount-2\\">
-                            <Typography variant=\\"h5\\" align=\\"right\\" className=\\"DashboardComponent-balanceAmount-2\\" theme={{...}} classes={{...}} color=\\"default\\" gutterBottom={false} headlineMapping={{...}} inline={false} noWrap={false} paragraph={false}>
-                              <h5 className=\\"MuiTypography-root-134 MuiTypography-h5-150 MuiTypography-alignRight-158 DashboardComponent-balanceAmount-2\\">
+                            </ForwardRef(Typography)>
+                          </WithStyles(ForwardRef(Typography))>
+                          <WithStyles(ForwardRef(Typography)) variant=\\"h5\\" align=\\"right\\" className=\\"DashboardComponent-balanceAmount-2\\">
+                            <ForwardRef(Typography) classes={{...}} variant=\\"h5\\" align=\\"right\\" className=\\"DashboardComponent-balanceAmount-2\\" theme={{...}}>
+                              <h5 className=\\"MuiTypography-root DashboardComponent-balanceAmount-2 MuiTypography-h5 MuiTypography-alignRight\\">
                                 $0.00
                               </h5>
-                            </Typography>
-                          </WithStyles(Typography)>
-                          <WithStyles(Paper) className=\\"DashboardComponent-balancePaperIcon-3\\">
-                            <Paper className=\\"DashboardComponent-balancePaperIcon-3\\" classes={{...}} component=\\"div\\" elevation={2} square={false}>
-                              <div className=\\"MuiPaper-root-107 MuiPaper-elevation2-111 MuiPaper-rounded-108 DashboardComponent-balancePaperIcon-3\\">
-                                <pure(DashboardIcon) className=\\"DashboardComponent-balanceIcon-4\\">
-                                  <DashboardIcon className=\\"DashboardComponent-balanceIcon-4\\">
-                                    <WithStyles(SvgIcon) className=\\"DashboardComponent-balanceIcon-4\\">
-                                      <SvgIcon className=\\"DashboardComponent-balanceIcon-4\\" classes={{...}} color=\\"inherit\\" component=\\"svg\\" fontSize=\\"default\\" viewBox=\\"0 0 24 24\\">
-                                        <svg className=\\"MuiSvgIcon-root-170 DashboardComponent-balanceIcon-4\\" focusable=\\"false\\" viewBox=\\"0 0 24 24\\" color={[undefined]} aria-hidden=\\"true\\" role=\\"presentation\\">
-                                          <path fill=\\"none\\" d=\\"M0 0h24v24H0z\\" />
-                                          <path d=\\"M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z\\" />
-                                        </svg>
-                                      </SvgIcon>
-                                    </WithStyles(SvgIcon)>
-                                  </DashboardIcon>
-                                </pure(DashboardIcon)>
+                            </ForwardRef(Typography)>
+                          </WithStyles(ForwardRef(Typography))>
+                          <WithStyles(ForwardRef(Paper)) className=\\"DashboardComponent-balancePaperIcon-3\\">
+                            <ForwardRef(Paper) classes={{...}} className=\\"DashboardComponent-balancePaperIcon-3\\">
+                              <div className=\\"MuiPaper-root MuiPaper-elevation1 DashboardComponent-balancePaperIcon-3 MuiPaper-rounded\\">
+                                <ForwardRef className=\\"DashboardComponent-balanceIcon-4\\">
+                                  <WithStyles(ForwardRef(SvgIcon)) className=\\"DashboardComponent-balanceIcon-4\\">
+                                    <ForwardRef(SvgIcon) classes={{...}} className=\\"DashboardComponent-balanceIcon-4\\">
+                                      <svg className=\\"MuiSvgIcon-root DashboardComponent-balanceIcon-4\\" focusable=\\"false\\" viewBox=\\"0 0 24 24\\" color={[undefined]} aria-hidden=\\"true\\" role=\\"presentation\\">
+                                        <path d=\\"M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z\\" />
+                                      </svg>
+                                    </ForwardRef(SvgIcon)>
+                                  </WithStyles(ForwardRef(SvgIcon))>
+                                </ForwardRef>
                               </div>
-                            </Paper>
-                          </WithStyles(Paper)>
+                            </ForwardRef(Paper)>
+                          </WithStyles(ForwardRef(Paper))>
                         </div>
-                      </Paper>
-                    </WithStyles(Paper)>
+                      </ForwardRef(Paper)>
+                    </WithStyles(ForwardRef(Paper))>
                   </div>
-                </Grid>
-              </WithStyles(Grid)>
-              <WithStyles(Grid) container={true}>
-                <Grid container={true} classes={{...}} alignContent=\\"stretch\\" alignItems=\\"stretch\\" component=\\"div\\" direction=\\"row\\" item={false} justify=\\"flex-start\\" lg={false} md={false} sm={false} spacing={0} wrap=\\"wrap\\" xl={false} xs={false} zeroMinWidth={false}>
-                  <div className=\\"MuiGrid-container-10\\">
-                    <WithStyles(Paper) className=\\"DashboardComponent-summaryPaper-5\\">
-                      <Paper className=\\"DashboardComponent-summaryPaper-5\\" classes={{...}} component=\\"div\\" elevation={2} square={false}>
-                        <div className=\\"MuiPaper-root-107 MuiPaper-elevation2-111 MuiPaper-rounded-108 DashboardComponent-summaryPaper-5\\">
-                          <WithStyles(Table) className={[undefined]}>
-                            <Table className={[undefined]} classes={{...}} component=\\"table\\" padding=\\"default\\">
-                              <table className=\\"MuiTable-root-179\\">
-                                <WithStyles(TableHead)>
-                                  <TableHead classes={{...}} component=\\"thead\\">
-                                    <thead className=\\"MuiTableHead-root-180\\">
-                                      <WithStyles(TableRow)>
-                                        <TableRow classes={{...}} component=\\"tr\\" hover={false} selected={false}>
-                                          <tr className=\\"MuiTableRow-root-181 MuiTableRow-head-184\\">
-                                            <WithStyles(TableCell)>
-                                              <TableCell classes={{...}} align=\\"inherit\\">
-                                                <th className=\\"MuiTableCell-root-186 MuiTableCell-head-187\\" aria-sort={{...}} scope=\\"col\\" />
-                                              </TableCell>
-                                            </WithStyles(TableCell)>
-                                            <WithStyles(TableCell) align=\\"right\\">
-                                              <TableCell align=\\"right\\" classes={{...}}>
-                                                <th className=\\"MuiTableCell-root-186 MuiTableCell-head-187 MuiTableCell-alignRight-196\\" aria-sort={{...}} scope=\\"col\\">
+                </ForwardRef(Grid)>
+              </WithStyles(ForwardRef(Grid))>
+              <WithStyles(ForwardRef(Grid)) container={true}>
+                <ForwardRef(Grid) classes={{...}} container={true}>
+                  <div className=\\"MuiGrid-root MuiGrid-container\\">
+                    <WithStyles(ForwardRef(Paper)) className=\\"DashboardComponent-summaryPaper-5\\">
+                      <ForwardRef(Paper) classes={{...}} className=\\"DashboardComponent-summaryPaper-5\\">
+                        <div className=\\"MuiPaper-root MuiPaper-elevation1 DashboardComponent-summaryPaper-5 MuiPaper-rounded\\">
+                          <WithStyles(ForwardRef(Table)) className={[undefined]}>
+                            <ForwardRef(Table) classes={{...}} className={[undefined]}>
+                              <table className=\\"MuiTable-root\\">
+                                <WithStyles(ForwardRef(TableHead))>
+                                  <ForwardRef(TableHead) classes={{...}}>
+                                    <thead className=\\"MuiTableHead-root\\">
+                                      <WithStyles(ForwardRef(TableRow))>
+                                        <ForwardRef(TableRow) classes={{...}}>
+                                          <tr className=\\"MuiTableRow-root MuiTableRow-head\\">
+                                            <WithStyles(ForwardRef(TableCell))>
+                                              <ForwardRef(TableCell) classes={{...}}>
+                                                <th className=\\"MuiTableCell-root MuiTableCell-head\\" aria-sort={{...}} scope=\\"col\\" />
+                                              </ForwardRef(TableCell)>
+                                            </WithStyles(ForwardRef(TableCell))>
+                                            <WithStyles(ForwardRef(TableCell)) align=\\"right\\">
+                                              <ForwardRef(TableCell) classes={{...}} align=\\"right\\">
+                                                <th className=\\"MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight\\" aria-sort={{...}} scope=\\"col\\">
                                                   USD
                                                 </th>
-                                              </TableCell>
-                                            </WithStyles(TableCell)>
+                                              </ForwardRef(TableCell)>
+                                            </WithStyles(ForwardRef(TableCell))>
                                           </tr>
-                                        </TableRow>
-                                      </WithStyles(TableRow)>
+                                        </ForwardRef(TableRow)>
+                                      </WithStyles(ForwardRef(TableRow))>
                                     </thead>
-                                  </TableHead>
-                                </WithStyles(TableHead)>
-                                <WithStyles(TableBody)>
-                                  <TableBody classes={{...}} component=\\"tbody\\">
-                                    <tbody className=\\"MuiTableBody-root-198\\">
-                                      <WithStyles(TableRow)>
-                                        <TableRow classes={{...}} component=\\"tr\\" hover={false} selected={false}>
-                                          <tr className=\\"MuiTableRow-root-181\\">
-                                            <WithStyles(TableCell)>
-                                              <TableCell classes={{...}} align=\\"inherit\\">
-                                                <td className=\\"MuiTableCell-root-186 MuiTableCell-body-188\\" aria-sort={{...}} scope={[undefined]}>
+                                  </ForwardRef(TableHead)>
+                                </WithStyles(ForwardRef(TableHead))>
+                                <WithStyles(ForwardRef(TableBody))>
+                                  <ForwardRef(TableBody) classes={{...}}>
+                                    <tbody className=\\"MuiTableBody-root\\">
+                                      <WithStyles(ForwardRef(TableRow))>
+                                        <ForwardRef(TableRow) classes={{...}}>
+                                          <tr className=\\"MuiTableRow-root\\">
+                                            <WithStyles(ForwardRef(TableCell))>
+                                              <ForwardRef(TableCell) classes={{...}}>
+                                                <td className=\\"MuiTableCell-root MuiTableCell-body\\" aria-sort={{...}} scope={[undefined]}>
                                                   <span className=\\"DashboardComponent-institutionWrapper-7\\">
                                                     <WithStyles(InstitutionIcon) institution=\\"TD\\" size=\\"small\\" className=\\"DashboardComponent-institutionIcon-8\\">
-                                                      <InstitutionIcon institution=\\"TD\\" size=\\"small\\" className=\\"DashboardComponent-institutionIcon-8\\" classes={{...}}>
-                                                        <pure(AccountBalanceIcon) className=\\"InstitutionIcon-small-199 DashboardComponent-institutionIcon-8\\">
-                                                          <AccountBalanceIcon className=\\"InstitutionIcon-small-199 DashboardComponent-institutionIcon-8\\">
-                                                            <WithStyles(SvgIcon) className=\\"InstitutionIcon-small-199 DashboardComponent-institutionIcon-8\\">
-                                                              <SvgIcon className=\\"InstitutionIcon-small-199 DashboardComponent-institutionIcon-8\\" classes={{...}} color=\\"inherit\\" component=\\"svg\\" fontSize=\\"default\\" viewBox=\\"0 0 24 24\\">
-                                                                <svg className=\\"MuiSvgIcon-root-170 InstitutionIcon-small-199 DashboardComponent-institutionIcon-8\\" focusable=\\"false\\" viewBox=\\"0 0 24 24\\" color={[undefined]} aria-hidden=\\"true\\" role=\\"presentation\\">
-                                                                  <path fill=\\"none\\" d=\\"M0 0h24v24H0z\\" />
-                                                                  <path d=\\"M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z\\" />
-                                                                </svg>
-                                                              </SvgIcon>
-                                                            </WithStyles(SvgIcon)>
-                                                          </AccountBalanceIcon>
-                                                        </pure(AccountBalanceIcon)>
+                                                      <InstitutionIcon classes={{...}} institution=\\"TD\\" size=\\"small\\" className=\\"DashboardComponent-institutionIcon-8\\">
+                                                        <ForwardRef className=\\"InstitutionIcon-small-198 DashboardComponent-institutionIcon-8\\">
+                                                          <WithStyles(ForwardRef(SvgIcon)) className=\\"InstitutionIcon-small-198 DashboardComponent-institutionIcon-8\\">
+                                                            <ForwardRef(SvgIcon) classes={{...}} className=\\"InstitutionIcon-small-198 DashboardComponent-institutionIcon-8\\">
+                                                              <svg className=\\"MuiSvgIcon-root InstitutionIcon-small-198 DashboardComponent-institutionIcon-8\\" focusable=\\"false\\" viewBox=\\"0 0 24 24\\" color={[undefined]} aria-hidden=\\"true\\" role=\\"presentation\\">
+                                                                <path d=\\"M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z\\" />
+                                                              </svg>
+                                                            </ForwardRef(SvgIcon)>
+                                                          </WithStyles(ForwardRef(SvgIcon))>
+                                                        </ForwardRef>
                                                       </InstitutionIcon>
                                                     </WithStyles(InstitutionIcon)>
-                                                    <WithStyles(Typography) variant=\\"subtitle2\\">
-                                                      <Typography variant=\\"subtitle2\\" theme={{...}} classes={{...}} align=\\"inherit\\" color=\\"default\\" gutterBottom={false} headlineMapping={{...}} inline={false} noWrap={false} paragraph={false}>
-                                                        <h6 className=\\"MuiTypography-root-134 MuiTypography-subtitle2-153\\">
+                                                    <WithStyles(ForwardRef(Typography)) variant=\\"subtitle2\\">
+                                                      <ForwardRef(Typography) classes={{...}} variant=\\"subtitle2\\" theme={{...}}>
+                                                        <h6 className=\\"MuiTypography-root MuiTypography-subtitle2\\">
                                                           TD
                                                         </h6>
-                                                      </Typography>
-                                                    </WithStyles(Typography)>
+                                                      </ForwardRef(Typography)>
+                                                    </WithStyles(ForwardRef(Typography))>
                                                   </span>
                                                 </td>
-                                              </TableCell>
-                                            </WithStyles(TableCell)>
-                                            <WithStyles(TableCell) align=\\"right\\">
-                                              <TableCell align=\\"right\\" classes={{...}}>
-                                                <td className=\\"MuiTableCell-root-186 MuiTableCell-body-188 MuiTableCell-alignRight-196\\" aria-sort={{...}} scope={[undefined]}>
-                                                  <WithStyles(Typography) variant=\\"subtitle2\\">
-                                                    <Typography variant=\\"subtitle2\\" theme={{...}} classes={{...}} align=\\"inherit\\" color=\\"default\\" gutterBottom={false} headlineMapping={{...}} inline={false} noWrap={false} paragraph={false}>
-                                                      <h6 className=\\"MuiTypography-root-134 MuiTypography-subtitle2-153\\">
+                                              </ForwardRef(TableCell)>
+                                            </WithStyles(ForwardRef(TableCell))>
+                                            <WithStyles(ForwardRef(TableCell)) align=\\"right\\">
+                                              <ForwardRef(TableCell) classes={{...}} align=\\"right\\">
+                                                <td className=\\"MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight\\" aria-sort={{...}} scope={[undefined]}>
+                                                  <WithStyles(ForwardRef(Typography)) variant=\\"subtitle2\\">
+                                                    <ForwardRef(Typography) classes={{...}} variant=\\"subtitle2\\" theme={{...}}>
+                                                      <h6 className=\\"MuiTypography-root MuiTypography-subtitle2\\">
                                                         $0.00
                                                       </h6>
-                                                    </Typography>
-                                                  </WithStyles(Typography)>
+                                                    </ForwardRef(Typography)>
+                                                  </WithStyles(ForwardRef(Typography))>
                                                 </td>
-                                              </TableCell>
-                                            </WithStyles(TableCell)>
+                                              </ForwardRef(TableCell)>
+                                            </WithStyles(ForwardRef(TableCell))>
                                           </tr>
-                                        </TableRow>
-                                      </WithStyles(TableRow)>
-                                      <WithStyles(TableRow)>
-                                        <TableRow classes={{...}} component=\\"tr\\" hover={false} selected={false}>
-                                          <tr className=\\"MuiTableRow-root-181\\">
-                                            <WithStyles(TableCell)>
-                                              <TableCell classes={{...}} align=\\"inherit\\">
-                                                <td className=\\"MuiTableCell-root-186 MuiTableCell-body-188\\" aria-sort={{...}} scope={[undefined]}>
-                                                  <WithStyles(Typography) className=\\"DashboardComponent-accountName-9\\">
-                                                    <Typography className=\\"DashboardComponent-accountName-9\\" theme={{...}} classes={{...}} align=\\"inherit\\" color=\\"default\\" gutterBottom={false} headlineMapping={{...}} inline={false} noWrap={false} paragraph={false}>
-                                                      <p className=\\"MuiTypography-root-134 MuiTypography-body1-143 DashboardComponent-accountName-9\\" />
-                                                    </Typography>
-                                                  </WithStyles(Typography)>
+                                        </ForwardRef(TableRow)>
+                                      </WithStyles(ForwardRef(TableRow))>
+                                      <WithStyles(ForwardRef(TableRow))>
+                                        <ForwardRef(TableRow) classes={{...}}>
+                                          <tr className=\\"MuiTableRow-root\\">
+                                            <WithStyles(ForwardRef(TableCell))>
+                                              <ForwardRef(TableCell) classes={{...}}>
+                                                <td className=\\"MuiTableCell-root MuiTableCell-body\\" aria-sort={{...}} scope={[undefined]}>
+                                                  <WithStyles(ForwardRef(Typography)) className=\\"DashboardComponent-accountName-9\\">
+                                                    <ForwardRef(Typography) classes={{...}} className=\\"DashboardComponent-accountName-9\\" theme={{...}}>
+                                                      <p className=\\"MuiTypography-root DashboardComponent-accountName-9 MuiTypography-body1\\" />
+                                                    </ForwardRef(Typography)>
+                                                  </WithStyles(ForwardRef(Typography))>
                                                 </td>
-                                              </TableCell>
-                                            </WithStyles(TableCell)>
-                                            <WithStyles(TableCell) align=\\"right\\">
-                                              <TableCell align=\\"right\\" classes={{...}}>
-                                                <td className=\\"MuiTableCell-root-186 MuiTableCell-body-188 MuiTableCell-alignRight-196\\" aria-sort={{...}} scope={[undefined]}>
+                                              </ForwardRef(TableCell)>
+                                            </WithStyles(ForwardRef(TableCell))>
+                                            <WithStyles(ForwardRef(TableCell)) align=\\"right\\">
+                                              <ForwardRef(TableCell) classes={{...}} align=\\"right\\">
+                                                <td className=\\"MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight\\" aria-sort={{...}} scope={[undefined]}>
                                                   $0.00
                                                 </td>
-                                              </TableCell>
-                                            </WithStyles(TableCell)>
+                                              </ForwardRef(TableCell)>
+                                            </WithStyles(ForwardRef(TableCell))>
                                           </tr>
-                                        </TableRow>
-                                      </WithStyles(TableRow)>
+                                        </ForwardRef(TableRow)>
+                                      </WithStyles(ForwardRef(TableRow))>
                                     </tbody>
-                                  </TableBody>
-                                </WithStyles(TableBody)>
+                                  </ForwardRef(TableBody)>
+                                </WithStyles(ForwardRef(TableBody))>
                               </table>
-                            </Table>
-                          </WithStyles(Table)>
+                            </ForwardRef(Table)>
+                          </WithStyles(ForwardRef(Table))>
                         </div>
-                      </Paper>
-                    </WithStyles(Paper)>
+                      </ForwardRef(Paper)>
+                    </WithStyles(ForwardRef(Paper))>
                   </div>
-                </Grid>
-              </WithStyles(Grid)>
+                </ForwardRef(Grid)>
+              </WithStyles(ForwardRef(Grid))>
             </div>
-          </Grid>
-        </WithStyles(Grid)>
+          </ForwardRef(Grid)>
+        </WithStyles(ForwardRef(Grid))>
       </DashboardComponent>
     </WithStyles(DashboardComponent)>
   </Connect(WithStyles(DashboardComponent))>
@@ -267,203 +258,197 @@ exports[`Dashboard matches snapshot with two accounts in a different currency 1`
 "<Provider store={{...}}>
   <Connect(WithStyles(DashboardComponent))>
     <WithStyles(DashboardComponent) settings={{...}} accounts={{...}} formatCurrency={[Function]} totalBalance={10} dispatch={[Function]}>
-      <DashboardComponent settings={{...}} accounts={{...}} formatCurrency={[Function]} totalBalance={10} dispatch={[Function]} classes={{...}}>
-        <WithStyles(Grid) container={true}>
-          <Grid container={true} classes={{...}} alignContent=\\"stretch\\" alignItems=\\"stretch\\" component=\\"div\\" direction=\\"row\\" item={false} justify=\\"flex-start\\" lg={false} md={false} sm={false} spacing={0} wrap=\\"wrap\\" xl={false} xs={false} zeroMinWidth={false}>
-            <div className=\\"MuiGrid-container-10\\">
-              <WithStyles(Grid) container={true} justify=\\"flex-end\\" className={[undefined]}>
-                <Grid container={true} justify=\\"flex-end\\" className={[undefined]} classes={{...}} alignContent=\\"stretch\\" alignItems=\\"stretch\\" component=\\"div\\" direction=\\"row\\" item={false} lg={false} md={false} sm={false} spacing={0} wrap=\\"wrap\\" xl={false} xs={false} zeroMinWidth={false}>
-                  <div className=\\"MuiGrid-container-10 MuiGrid-justify-xs-flex-end-28\\">
-                    <WithStyles(Paper) className=\\"DashboardComponent-balancePaper-1\\">
-                      <Paper className=\\"DashboardComponent-balancePaper-1\\" classes={{...}} component=\\"div\\" elevation={2} square={false}>
-                        <div className=\\"MuiPaper-root-107 MuiPaper-elevation2-111 MuiPaper-rounded-108 DashboardComponent-balancePaper-1\\">
-                          <WithStyles(Typography) variant=\\"body1\\" color=\\"textSecondary\\" align=\\"right\\">
-                            <Typography variant=\\"body1\\" color=\\"textSecondary\\" align=\\"right\\" theme={{...}} classes={{...}} gutterBottom={false} headlineMapping={{...}} inline={false} noWrap={false} paragraph={false}>
-                              <p className=\\"MuiTypography-root-134 MuiTypography-body1-143 MuiTypography-colorTextSecondary-167 MuiTypography-alignRight-158\\">
+      <DashboardComponent classes={{...}} settings={{...}} accounts={{...}} formatCurrency={[Function]} totalBalance={10} dispatch={[Function]}>
+        <WithStyles(ForwardRef(Grid)) container={true}>
+          <ForwardRef(Grid) classes={{...}} container={true}>
+            <div className=\\"MuiGrid-root MuiGrid-container\\">
+              <WithStyles(ForwardRef(Grid)) container={true} justify=\\"flex-end\\" className={[undefined]}>
+                <ForwardRef(Grid) classes={{...}} container={true} justify=\\"flex-end\\" className={[undefined]}>
+                  <div className=\\"MuiGrid-root MuiGrid-container MuiGrid-justify-xs-flex-end\\">
+                    <WithStyles(ForwardRef(Paper)) className=\\"DashboardComponent-balancePaper-1\\">
+                      <ForwardRef(Paper) classes={{...}} className=\\"DashboardComponent-balancePaper-1\\">
+                        <div className=\\"MuiPaper-root MuiPaper-elevation1 DashboardComponent-balancePaper-1 MuiPaper-rounded\\">
+                          <WithStyles(ForwardRef(Typography)) variant=\\"body1\\" color=\\"textSecondary\\" align=\\"right\\">
+                            <ForwardRef(Typography) classes={{...}} variant=\\"body1\\" color=\\"textSecondary\\" align=\\"right\\" theme={{...}}>
+                              <p className=\\"MuiTypography-root MuiTypography-body1 MuiTypography-colorTextSecondary MuiTypography-alignRight\\">
                                 Balance
                               </p>
-                            </Typography>
-                          </WithStyles(Typography)>
-                          <WithStyles(Typography) variant=\\"h5\\" align=\\"right\\" className=\\"DashboardComponent-balanceAmount-2\\">
-                            <Typography variant=\\"h5\\" align=\\"right\\" className=\\"DashboardComponent-balanceAmount-2\\" theme={{...}} classes={{...}} color=\\"default\\" gutterBottom={false} headlineMapping={{...}} inline={false} noWrap={false} paragraph={false}>
-                              <h5 className=\\"MuiTypography-root-134 MuiTypography-h5-150 MuiTypography-alignRight-158 DashboardComponent-balanceAmount-2\\">
+                            </ForwardRef(Typography)>
+                          </WithStyles(ForwardRef(Typography))>
+                          <WithStyles(ForwardRef(Typography)) variant=\\"h5\\" align=\\"right\\" className=\\"DashboardComponent-balanceAmount-2\\">
+                            <ForwardRef(Typography) classes={{...}} variant=\\"h5\\" align=\\"right\\" className=\\"DashboardComponent-balanceAmount-2\\" theme={{...}}>
+                              <h5 className=\\"MuiTypography-root DashboardComponent-balanceAmount-2 MuiTypography-h5 MuiTypography-alignRight\\">
                                 €10.00
                               </h5>
-                            </Typography>
-                          </WithStyles(Typography)>
-                          <WithStyles(Paper) className=\\"DashboardComponent-balancePaperIcon-3\\">
-                            <Paper className=\\"DashboardComponent-balancePaperIcon-3\\" classes={{...}} component=\\"div\\" elevation={2} square={false}>
-                              <div className=\\"MuiPaper-root-107 MuiPaper-elevation2-111 MuiPaper-rounded-108 DashboardComponent-balancePaperIcon-3\\">
-                                <pure(DashboardIcon) className=\\"DashboardComponent-balanceIcon-4\\">
-                                  <DashboardIcon className=\\"DashboardComponent-balanceIcon-4\\">
-                                    <WithStyles(SvgIcon) className=\\"DashboardComponent-balanceIcon-4\\">
-                                      <SvgIcon className=\\"DashboardComponent-balanceIcon-4\\" classes={{...}} color=\\"inherit\\" component=\\"svg\\" fontSize=\\"default\\" viewBox=\\"0 0 24 24\\">
-                                        <svg className=\\"MuiSvgIcon-root-170 DashboardComponent-balanceIcon-4\\" focusable=\\"false\\" viewBox=\\"0 0 24 24\\" color={[undefined]} aria-hidden=\\"true\\" role=\\"presentation\\">
-                                          <path fill=\\"none\\" d=\\"M0 0h24v24H0z\\" />
-                                          <path d=\\"M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z\\" />
-                                        </svg>
-                                      </SvgIcon>
-                                    </WithStyles(SvgIcon)>
-                                  </DashboardIcon>
-                                </pure(DashboardIcon)>
+                            </ForwardRef(Typography)>
+                          </WithStyles(ForwardRef(Typography))>
+                          <WithStyles(ForwardRef(Paper)) className=\\"DashboardComponent-balancePaperIcon-3\\">
+                            <ForwardRef(Paper) classes={{...}} className=\\"DashboardComponent-balancePaperIcon-3\\">
+                              <div className=\\"MuiPaper-root MuiPaper-elevation1 DashboardComponent-balancePaperIcon-3 MuiPaper-rounded\\">
+                                <ForwardRef className=\\"DashboardComponent-balanceIcon-4\\">
+                                  <WithStyles(ForwardRef(SvgIcon)) className=\\"DashboardComponent-balanceIcon-4\\">
+                                    <ForwardRef(SvgIcon) classes={{...}} className=\\"DashboardComponent-balanceIcon-4\\">
+                                      <svg className=\\"MuiSvgIcon-root DashboardComponent-balanceIcon-4\\" focusable=\\"false\\" viewBox=\\"0 0 24 24\\" color={[undefined]} aria-hidden=\\"true\\" role=\\"presentation\\">
+                                        <path d=\\"M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z\\" />
+                                      </svg>
+                                    </ForwardRef(SvgIcon)>
+                                  </WithStyles(ForwardRef(SvgIcon))>
+                                </ForwardRef>
                               </div>
-                            </Paper>
-                          </WithStyles(Paper)>
+                            </ForwardRef(Paper)>
+                          </WithStyles(ForwardRef(Paper))>
                         </div>
-                      </Paper>
-                    </WithStyles(Paper)>
+                      </ForwardRef(Paper)>
+                    </WithStyles(ForwardRef(Paper))>
                   </div>
-                </Grid>
-              </WithStyles(Grid)>
-              <WithStyles(Grid) container={true}>
-                <Grid container={true} classes={{...}} alignContent=\\"stretch\\" alignItems=\\"stretch\\" component=\\"div\\" direction=\\"row\\" item={false} justify=\\"flex-start\\" lg={false} md={false} sm={false} spacing={0} wrap=\\"wrap\\" xl={false} xs={false} zeroMinWidth={false}>
-                  <div className=\\"MuiGrid-container-10\\">
-                    <WithStyles(Paper) className=\\"DashboardComponent-summaryPaper-5\\">
-                      <Paper className=\\"DashboardComponent-summaryPaper-5\\" classes={{...}} component=\\"div\\" elevation={2} square={false}>
-                        <div className=\\"MuiPaper-root-107 MuiPaper-elevation2-111 MuiPaper-rounded-108 DashboardComponent-summaryPaper-5\\">
-                          <WithStyles(Table) className={[undefined]}>
-                            <Table className={[undefined]} classes={{...}} component=\\"table\\" padding=\\"default\\">
-                              <table className=\\"MuiTable-root-179\\">
-                                <WithStyles(TableHead)>
-                                  <TableHead classes={{...}} component=\\"thead\\">
-                                    <thead className=\\"MuiTableHead-root-180\\">
-                                      <WithStyles(TableRow)>
-                                        <TableRow classes={{...}} component=\\"tr\\" hover={false} selected={false}>
-                                          <tr className=\\"MuiTableRow-root-181 MuiTableRow-head-184\\">
-                                            <WithStyles(TableCell)>
-                                              <TableCell classes={{...}} align=\\"inherit\\">
-                                                <th className=\\"MuiTableCell-root-186 MuiTableCell-head-187\\" aria-sort={{...}} scope=\\"col\\" />
-                                              </TableCell>
-                                            </WithStyles(TableCell)>
-                                            <WithStyles(TableCell) align=\\"right\\">
-                                              <TableCell align=\\"right\\" classes={{...}}>
-                                                <th className=\\"MuiTableCell-root-186 MuiTableCell-head-187 MuiTableCell-alignRight-196\\" aria-sort={{...}} scope=\\"col\\">
+                </ForwardRef(Grid)>
+              </WithStyles(ForwardRef(Grid))>
+              <WithStyles(ForwardRef(Grid)) container={true}>
+                <ForwardRef(Grid) classes={{...}} container={true}>
+                  <div className=\\"MuiGrid-root MuiGrid-container\\">
+                    <WithStyles(ForwardRef(Paper)) className=\\"DashboardComponent-summaryPaper-5\\">
+                      <ForwardRef(Paper) classes={{...}} className=\\"DashboardComponent-summaryPaper-5\\">
+                        <div className=\\"MuiPaper-root MuiPaper-elevation1 DashboardComponent-summaryPaper-5 MuiPaper-rounded\\">
+                          <WithStyles(ForwardRef(Table)) className={[undefined]}>
+                            <ForwardRef(Table) classes={{...}} className={[undefined]}>
+                              <table className=\\"MuiTable-root\\">
+                                <WithStyles(ForwardRef(TableHead))>
+                                  <ForwardRef(TableHead) classes={{...}}>
+                                    <thead className=\\"MuiTableHead-root\\">
+                                      <WithStyles(ForwardRef(TableRow))>
+                                        <ForwardRef(TableRow) classes={{...}}>
+                                          <tr className=\\"MuiTableRow-root MuiTableRow-head\\">
+                                            <WithStyles(ForwardRef(TableCell))>
+                                              <ForwardRef(TableCell) classes={{...}}>
+                                                <th className=\\"MuiTableCell-root MuiTableCell-head\\" aria-sort={{...}} scope=\\"col\\" />
+                                              </ForwardRef(TableCell)>
+                                            </WithStyles(ForwardRef(TableCell))>
+                                            <WithStyles(ForwardRef(TableCell)) align=\\"right\\">
+                                              <ForwardRef(TableCell) classes={{...}} align=\\"right\\">
+                                                <th className=\\"MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight\\" aria-sort={{...}} scope=\\"col\\">
                                                   EUR
                                                 </th>
-                                              </TableCell>
-                                            </WithStyles(TableCell)>
+                                              </ForwardRef(TableCell)>
+                                            </WithStyles(ForwardRef(TableCell))>
                                           </tr>
-                                        </TableRow>
-                                      </WithStyles(TableRow)>
+                                        </ForwardRef(TableRow)>
+                                      </WithStyles(ForwardRef(TableRow))>
                                     </thead>
-                                  </TableHead>
-                                </WithStyles(TableHead)>
-                                <WithStyles(TableBody)>
-                                  <TableBody classes={{...}} component=\\"tbody\\">
-                                    <tbody className=\\"MuiTableBody-root-198\\">
-                                      <WithStyles(TableRow)>
-                                        <TableRow classes={{...}} component=\\"tr\\" hover={false} selected={false}>
-                                          <tr className=\\"MuiTableRow-root-181\\">
-                                            <WithStyles(TableCell)>
-                                              <TableCell classes={{...}} align=\\"inherit\\">
-                                                <td className=\\"MuiTableCell-root-186 MuiTableCell-body-188\\" aria-sort={{...}} scope={[undefined]}>
+                                  </ForwardRef(TableHead)>
+                                </WithStyles(ForwardRef(TableHead))>
+                                <WithStyles(ForwardRef(TableBody))>
+                                  <ForwardRef(TableBody) classes={{...}}>
+                                    <tbody className=\\"MuiTableBody-root\\">
+                                      <WithStyles(ForwardRef(TableRow))>
+                                        <ForwardRef(TableRow) classes={{...}}>
+                                          <tr className=\\"MuiTableRow-root\\">
+                                            <WithStyles(ForwardRef(TableCell))>
+                                              <ForwardRef(TableCell) classes={{...}}>
+                                                <td className=\\"MuiTableCell-root MuiTableCell-body\\" aria-sort={{...}} scope={[undefined]}>
                                                   <span className=\\"DashboardComponent-institutionWrapper-7\\">
                                                     <WithStyles(InstitutionIcon) institution=\\"TD\\" size=\\"small\\" className=\\"DashboardComponent-institutionIcon-8\\">
-                                                      <InstitutionIcon institution=\\"TD\\" size=\\"small\\" className=\\"DashboardComponent-institutionIcon-8\\" classes={{...}}>
-                                                        <pure(AccountBalanceIcon) className=\\"InstitutionIcon-small-199 DashboardComponent-institutionIcon-8\\">
-                                                          <AccountBalanceIcon className=\\"InstitutionIcon-small-199 DashboardComponent-institutionIcon-8\\">
-                                                            <WithStyles(SvgIcon) className=\\"InstitutionIcon-small-199 DashboardComponent-institutionIcon-8\\">
-                                                              <SvgIcon className=\\"InstitutionIcon-small-199 DashboardComponent-institutionIcon-8\\" classes={{...}} color=\\"inherit\\" component=\\"svg\\" fontSize=\\"default\\" viewBox=\\"0 0 24 24\\">
-                                                                <svg className=\\"MuiSvgIcon-root-170 InstitutionIcon-small-199 DashboardComponent-institutionIcon-8\\" focusable=\\"false\\" viewBox=\\"0 0 24 24\\" color={[undefined]} aria-hidden=\\"true\\" role=\\"presentation\\">
-                                                                  <path fill=\\"none\\" d=\\"M0 0h24v24H0z\\" />
-                                                                  <path d=\\"M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z\\" />
-                                                                </svg>
-                                                              </SvgIcon>
-                                                            </WithStyles(SvgIcon)>
-                                                          </AccountBalanceIcon>
-                                                        </pure(AccountBalanceIcon)>
+                                                      <InstitutionIcon classes={{...}} institution=\\"TD\\" size=\\"small\\" className=\\"DashboardComponent-institutionIcon-8\\">
+                                                        <ForwardRef className=\\"InstitutionIcon-small-198 DashboardComponent-institutionIcon-8\\">
+                                                          <WithStyles(ForwardRef(SvgIcon)) className=\\"InstitutionIcon-small-198 DashboardComponent-institutionIcon-8\\">
+                                                            <ForwardRef(SvgIcon) classes={{...}} className=\\"InstitutionIcon-small-198 DashboardComponent-institutionIcon-8\\">
+                                                              <svg className=\\"MuiSvgIcon-root InstitutionIcon-small-198 DashboardComponent-institutionIcon-8\\" focusable=\\"false\\" viewBox=\\"0 0 24 24\\" color={[undefined]} aria-hidden=\\"true\\" role=\\"presentation\\">
+                                                                <path d=\\"M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z\\" />
+                                                              </svg>
+                                                            </ForwardRef(SvgIcon)>
+                                                          </WithStyles(ForwardRef(SvgIcon))>
+                                                        </ForwardRef>
                                                       </InstitutionIcon>
                                                     </WithStyles(InstitutionIcon)>
-                                                    <WithStyles(Typography) variant=\\"subtitle2\\">
-                                                      <Typography variant=\\"subtitle2\\" theme={{...}} classes={{...}} align=\\"inherit\\" color=\\"default\\" gutterBottom={false} headlineMapping={{...}} inline={false} noWrap={false} paragraph={false}>
-                                                        <h6 className=\\"MuiTypography-root-134 MuiTypography-subtitle2-153\\">
+                                                    <WithStyles(ForwardRef(Typography)) variant=\\"subtitle2\\">
+                                                      <ForwardRef(Typography) classes={{...}} variant=\\"subtitle2\\" theme={{...}}>
+                                                        <h6 className=\\"MuiTypography-root MuiTypography-subtitle2\\">
                                                           TD
                                                         </h6>
-                                                      </Typography>
-                                                    </WithStyles(Typography)>
+                                                      </ForwardRef(Typography)>
+                                                    </WithStyles(ForwardRef(Typography))>
                                                   </span>
                                                 </td>
-                                              </TableCell>
-                                            </WithStyles(TableCell)>
-                                            <WithStyles(TableCell) align=\\"right\\">
-                                              <TableCell align=\\"right\\" classes={{...}}>
-                                                <td className=\\"MuiTableCell-root-186 MuiTableCell-body-188 MuiTableCell-alignRight-196\\" aria-sort={{...}} scope={[undefined]}>
-                                                  <WithStyles(Typography) variant=\\"subtitle2\\">
-                                                    <Typography variant=\\"subtitle2\\" theme={{...}} classes={{...}} align=\\"inherit\\" color=\\"default\\" gutterBottom={false} headlineMapping={{...}} inline={false} noWrap={false} paragraph={false}>
-                                                      <h6 className=\\"MuiTypography-root-134 MuiTypography-subtitle2-153\\">
+                                              </ForwardRef(TableCell)>
+                                            </WithStyles(ForwardRef(TableCell))>
+                                            <WithStyles(ForwardRef(TableCell)) align=\\"right\\">
+                                              <ForwardRef(TableCell) classes={{...}} align=\\"right\\">
+                                                <td className=\\"MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight\\" aria-sort={{...}} scope={[undefined]}>
+                                                  <WithStyles(ForwardRef(Typography)) variant=\\"subtitle2\\">
+                                                    <ForwardRef(Typography) classes={{...}} variant=\\"subtitle2\\" theme={{...}}>
+                                                      <h6 className=\\"MuiTypography-root MuiTypography-subtitle2\\">
                                                         €10.00
                                                       </h6>
-                                                    </Typography>
-                                                  </WithStyles(Typography)>
+                                                    </ForwardRef(Typography)>
+                                                  </WithStyles(ForwardRef(Typography))>
                                                 </td>
-                                              </TableCell>
-                                            </WithStyles(TableCell)>
+                                              </ForwardRef(TableCell)>
+                                            </WithStyles(ForwardRef(TableCell))>
                                           </tr>
-                                        </TableRow>
-                                      </WithStyles(TableRow)>
-                                      <WithStyles(TableRow)>
-                                        <TableRow classes={{...}} component=\\"tr\\" hover={false} selected={false}>
-                                          <tr className=\\"MuiTableRow-root-181\\">
-                                            <WithStyles(TableCell)>
-                                              <TableCell classes={{...}} align=\\"inherit\\">
-                                                <td className=\\"MuiTableCell-root-186 MuiTableCell-body-188\\" aria-sort={{...}} scope={[undefined]}>
-                                                  <WithStyles(Typography) className=\\"DashboardComponent-accountName-9\\">
-                                                    <Typography className=\\"DashboardComponent-accountName-9\\" theme={{...}} classes={{...}} align=\\"inherit\\" color=\\"default\\" gutterBottom={false} headlineMapping={{...}} inline={false} noWrap={false} paragraph={false}>
-                                                      <p className=\\"MuiTypography-root-134 MuiTypography-body1-143 DashboardComponent-accountName-9\\" />
-                                                    </Typography>
-                                                  </WithStyles(Typography)>
+                                        </ForwardRef(TableRow)>
+                                      </WithStyles(ForwardRef(TableRow))>
+                                      <WithStyles(ForwardRef(TableRow))>
+                                        <ForwardRef(TableRow) classes={{...}}>
+                                          <tr className=\\"MuiTableRow-root\\">
+                                            <WithStyles(ForwardRef(TableCell))>
+                                              <ForwardRef(TableCell) classes={{...}}>
+                                                <td className=\\"MuiTableCell-root MuiTableCell-body\\" aria-sort={{...}} scope={[undefined]}>
+                                                  <WithStyles(ForwardRef(Typography)) className=\\"DashboardComponent-accountName-9\\">
+                                                    <ForwardRef(Typography) classes={{...}} className=\\"DashboardComponent-accountName-9\\" theme={{...}}>
+                                                      <p className=\\"MuiTypography-root DashboardComponent-accountName-9 MuiTypography-body1\\" />
+                                                    </ForwardRef(Typography)>
+                                                  </WithStyles(ForwardRef(Typography))>
                                                 </td>
-                                              </TableCell>
-                                            </WithStyles(TableCell)>
-                                            <WithStyles(TableCell) align=\\"right\\">
-                                              <TableCell align=\\"right\\" classes={{...}}>
-                                                <td className=\\"MuiTableCell-root-186 MuiTableCell-body-188 MuiTableCell-alignRight-196\\" aria-sort={{...}} scope={[undefined]}>
+                                              </ForwardRef(TableCell)>
+                                            </WithStyles(ForwardRef(TableCell))>
+                                            <WithStyles(ForwardRef(TableCell)) align=\\"right\\">
+                                              <ForwardRef(TableCell) classes={{...}} align=\\"right\\">
+                                                <td className=\\"MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight\\" aria-sort={{...}} scope={[undefined]}>
                                                   €0.00
                                                 </td>
-                                              </TableCell>
-                                            </WithStyles(TableCell)>
+                                              </ForwardRef(TableCell)>
+                                            </WithStyles(ForwardRef(TableCell))>
                                           </tr>
-                                        </TableRow>
-                                      </WithStyles(TableRow)>
-                                      <WithStyles(TableRow)>
-                                        <TableRow classes={{...}} component=\\"tr\\" hover={false} selected={false}>
-                                          <tr className=\\"MuiTableRow-root-181\\">
-                                            <WithStyles(TableCell)>
-                                              <TableCell classes={{...}} align=\\"inherit\\">
-                                                <td className=\\"MuiTableCell-root-186 MuiTableCell-body-188\\" aria-sort={{...}} scope={[undefined]}>
-                                                  <WithStyles(Typography) className=\\"DashboardComponent-accountName-9\\">
-                                                    <Typography className=\\"DashboardComponent-accountName-9\\" theme={{...}} classes={{...}} align=\\"inherit\\" color=\\"default\\" gutterBottom={false} headlineMapping={{...}} inline={false} noWrap={false} paragraph={false}>
-                                                      <p className=\\"MuiTypography-root-134 MuiTypography-body1-143 DashboardComponent-accountName-9\\" />
-                                                    </Typography>
-                                                  </WithStyles(Typography)>
+                                        </ForwardRef(TableRow)>
+                                      </WithStyles(ForwardRef(TableRow))>
+                                      <WithStyles(ForwardRef(TableRow))>
+                                        <ForwardRef(TableRow) classes={{...}}>
+                                          <tr className=\\"MuiTableRow-root\\">
+                                            <WithStyles(ForwardRef(TableCell))>
+                                              <ForwardRef(TableCell) classes={{...}}>
+                                                <td className=\\"MuiTableCell-root MuiTableCell-body\\" aria-sort={{...}} scope={[undefined]}>
+                                                  <WithStyles(ForwardRef(Typography)) className=\\"DashboardComponent-accountName-9\\">
+                                                    <ForwardRef(Typography) classes={{...}} className=\\"DashboardComponent-accountName-9\\" theme={{...}}>
+                                                      <p className=\\"MuiTypography-root DashboardComponent-accountName-9 MuiTypography-body1\\" />
+                                                    </ForwardRef(Typography)>
+                                                  </WithStyles(ForwardRef(Typography))>
                                                 </td>
-                                              </TableCell>
-                                            </WithStyles(TableCell)>
-                                            <WithStyles(TableCell) align=\\"right\\">
-                                              <TableCell align=\\"right\\" classes={{...}}>
-                                                <td className=\\"MuiTableCell-root-186 MuiTableCell-body-188 MuiTableCell-alignRight-196\\" aria-sort={{...}} scope={[undefined]}>
+                                              </ForwardRef(TableCell)>
+                                            </WithStyles(ForwardRef(TableCell))>
+                                            <WithStyles(ForwardRef(TableCell)) align=\\"right\\">
+                                              <ForwardRef(TableCell) classes={{...}} align=\\"right\\">
+                                                <td className=\\"MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight\\" aria-sort={{...}} scope={[undefined]}>
                                                   €10.00
                                                 </td>
-                                              </TableCell>
-                                            </WithStyles(TableCell)>
+                                              </ForwardRef(TableCell)>
+                                            </WithStyles(ForwardRef(TableCell))>
                                           </tr>
-                                        </TableRow>
-                                      </WithStyles(TableRow)>
+                                        </ForwardRef(TableRow)>
+                                      </WithStyles(ForwardRef(TableRow))>
                                     </tbody>
-                                  </TableBody>
-                                </WithStyles(TableBody)>
+                                  </ForwardRef(TableBody)>
+                                </WithStyles(ForwardRef(TableBody))>
                               </table>
-                            </Table>
-                          </WithStyles(Table)>
+                            </ForwardRef(Table)>
+                          </WithStyles(ForwardRef(Table))>
                         </div>
-                      </Paper>
-                    </WithStyles(Paper)>
+                      </ForwardRef(Paper)>
+                    </WithStyles(ForwardRef(Paper))>
                   </div>
-                </Grid>
-              </WithStyles(Grid)>
+                </ForwardRef(Grid)>
+              </WithStyles(ForwardRef(Grid))>
             </div>
-          </Grid>
-        </WithStyles(Grid)>
+          </ForwardRef(Grid)>
+        </WithStyles(ForwardRef(Grid))>
       </DashboardComponent>
     </WithStyles(DashboardComponent)>
   </Connect(WithStyles(DashboardComponent))>

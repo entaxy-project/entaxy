@@ -15,8 +15,8 @@ import SettingsForm from './form'
 
 const styles = theme => ({
   root: {
-    margin: theme.spacing.unit * 2,
-    padding: theme.spacing.unit * 2
+    margin: theme.spacing(2),
+    padding: theme.spacing(2)
   },
   formHeader: {
     padding: 10,
@@ -42,6 +42,7 @@ export class SettingsComponent extends React.Component {
   handleSave = async (settings) => {
     await this.props.saveSettings(settings)
     this.props.showSnackbarMessage({ text: 'Your settings have been saved', status: 'success' })
+    this.props.history.push('/dashboard')
   }
 
   handleResetData = async () => {

@@ -4,6 +4,7 @@ import Typography from '@material-ui/core/Typography'
 import { Link } from 'react-router-dom'
 import { withStyles } from '@material-ui/core/styles'
 import logoImg from './logo.png'
+import LinkTo from '../LinkTo'
 
 const styles = {
   logo: {
@@ -32,8 +33,7 @@ const Logo = ({ classes }) => (
       variant="h6"
       color="inherit"
       className={classes.title}
-      component={Link}
-      to="/"
+      component={LinkTo('/')}
     >
       Entaxy
     </Typography>

@@ -2,26 +2,26 @@
 
 exports[`LandingCard matches snapshot 1`] = `
 <div
-  className="MuiGrid-container-1"
+  className="MuiGrid-root MuiGrid-container"
 >
   <h5
-    className="MuiTypography-root-98 MuiTypography-h5-114 MuiTypography-colorSecondary-129"
+    className="MuiTypography-root MuiTypography-h5 MuiTypography-colorSecondary"
   >
     Where do you want to store your data?
   </h5>
   <div
-    className="MuiGrid-item-2 MuiGrid-grid-xs-6-35"
+    className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"
   >
     <div
-      className="MuiPaper-root-134 MuiPaper-elevation1-137 MuiPaper-rounded-135"
+      className="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
     >
       <h6
-        className="MuiTypography-root-98 MuiTypography-subtitle2-117"
+        className="MuiTypography-root MuiTypography-subtitle2"
       >
         Anywhere with blockstack
       </h6>
       <span
-        className="MuiTypography-root-98 MuiTypography-caption-108"
+        className="MuiTypography-root MuiTypography-caption"
       >
         Keep your data encrypted and decentralized. Learn more about  
         <a
@@ -33,11 +33,11 @@ exports[`LandingCard matches snapshot 1`] = `
         </a>
       </span>
       <button
-        className="MuiButtonBase-root-187 MuiButton-root-161 MuiButton-contained-172 MuiButton-containedSecondary-174 MuiButton-raised-175 MuiButton-raisedSecondary-177"
+        className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
-        onContextMenu={[Function]}
+        onDragLeave={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}
         onKeyUp={[Function]}
@@ -47,32 +47,29 @@ exports[`LandingCard matches snapshot 1`] = `
         onTouchEnd={[Function]}
         onTouchMove={[Function]}
         onTouchStart={[Function]}
-        tabIndex="0"
+        tabIndex={0}
         type="button"
       >
         <span
-          className="MuiButton-label-162"
+          className="MuiButton-label"
         >
           Sign in with Blockstack
         </span>
-        <span
-          className="MuiTouchRipple-root-199"
-        />
       </button>
     </div>
   </div>
   <div
-    className="MuiGrid-item-2 MuiGrid-grid-xs-6-35"
+    className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"
   >
     <div
-      className="MuiPaper-root-134 MuiPaper-elevation1-137 MuiPaper-rounded-135"
+      className="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
     >
       <h6
-        className="MuiTypography-root-98 MuiTypography-subtitle2-117"
+        className="MuiTypography-root MuiTypography-subtitle2"
       >
         <svg
           aria-hidden="true"
-          className="MuiSvgIcon-root-190"
+          className="MuiSvgIcon-root"
           focusable="false"
           role="presentation"
           viewBox="0 0 24 24"
@@ -90,16 +87,16 @@ exports[`LandingCard matches snapshot 1`] = `
         Locally in your browser
       </h6>
       <span
-        className="MuiTypography-root-98 MuiTypography-caption-108"
+        className="MuiTypography-root MuiTypography-caption"
       >
         Your data will be stored temporarily and it be removed once you close your browser
       </span>
       <button
-        className="MuiButtonBase-root-187 MuiButton-root-161 MuiButton-contained-172 MuiButton-containedSecondary-174 MuiButton-raised-175 MuiButton-raisedSecondary-177"
+        className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
-        onContextMenu={[Function]}
+        onDragLeave={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}
         onKeyUp={[Function]}
@@ -109,17 +106,14 @@ exports[`LandingCard matches snapshot 1`] = `
         onTouchEnd={[Function]}
         onTouchMove={[Function]}
         onTouchStart={[Function]}
-        tabIndex="0"
+        tabIndex={0}
         type="button"
       >
         <span
-          className="MuiButton-label-162"
+          className="MuiButton-label"
         >
           Take it for a test drive
         </span>
-        <span
-          className="MuiTouchRipple-root-199"
-        />
       </button>
     </div>
   </div>

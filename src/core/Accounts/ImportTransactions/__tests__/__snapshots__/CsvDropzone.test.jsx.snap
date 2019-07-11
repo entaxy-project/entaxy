@@ -8,7 +8,6 @@ exports[`CsvDropzone matches snapshot with a bad file 1`] = `
   onDragEnter={[Function]}
   onDragLeave={[Function]}
   onDragOver={[Function]}
-  onDragStart={[Function]}
   onDrop={[Function]}
   onFocus={[Function]}
   onKeyDown={[Function]}
@@ -28,12 +27,14 @@ exports[`CsvDropzone matches snapshot with a bad file 1`] = `
     type="file"
   />
   <h6
-    className="MuiTypography-root-3 MuiTypography-subtitle2-22 MuiTypography-alignCenter-26"
+    className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-alignCenter"
   >
     <svg
       className="CsvDropzone-menuIcon-2"
+      role="presentation"
       style={
         Object {
+          "height": "1.5rem",
           "width": "1.5rem",
         }
       }
@@ -50,7 +51,7 @@ exports[`CsvDropzone matches snapshot with a bad file 1`] = `
     </svg>
   </h6>
   <h6
-    className="MuiTypography-root-3 MuiTypography-subtitle2-22 MuiTypography-colorError-37 MuiTypography-alignCenter-26"
+    className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorError MuiTypography-alignCenter"
   >
     Some error
   </h6>
@@ -65,7 +66,6 @@ exports[`CsvDropzone matches snapshot with a good file 1`] = `
   onDragEnter={[Function]}
   onDragLeave={[Function]}
   onDragOver={[Function]}
-  onDragStart={[Function]}
   onDrop={[Function]}
   onFocus={[Function]}
   onKeyDown={[Function]}
@@ -85,12 +85,14 @@ exports[`CsvDropzone matches snapshot with a good file 1`] = `
     type="file"
   />
   <h6
-    className="MuiTypography-root-3 MuiTypography-subtitle2-22 MuiTypography-alignCenter-26"
+    className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-alignCenter"
   >
     <svg
       className="CsvDropzone-menuIcon-2"
+      role="presentation"
       style={
         Object {
+          "height": "1.5rem",
           "width": "1.5rem",
         }
       }
@@ -117,7 +119,6 @@ exports[`CsvDropzone matches snapshot without a file 1`] = `
   onDragEnter={[Function]}
   onDragLeave={[Function]}
   onDragOver={[Function]}
-  onDragStart={[Function]}
   onDrop={[Function]}
   onFocus={[Function]}
   onKeyDown={[Function]}
@@ -138,12 +139,12 @@ exports[`CsvDropzone matches snapshot without a file 1`] = `
   />
   <div>
     <h4
-      className="MuiTypography-root-3 MuiTypography-h4-18 MuiTypography-colorTextSecondary-36 MuiTypography-alignCenter-26"
+      className="MuiTypography-root MuiTypography-h4 MuiTypography-colorTextSecondary MuiTypography-alignCenter"
     >
       Drag a CSV file here
     </h4>
     <h6
-      className="MuiTypography-root-3 MuiTypography-subtitle2-22 MuiTypography-colorTextSecondary-36 MuiTypography-alignCenter-26"
+      className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextSecondary MuiTypography-alignCenter"
     >
       or click to select a file to upload.
     </h6>

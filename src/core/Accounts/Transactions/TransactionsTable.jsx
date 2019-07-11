@@ -6,8 +6,10 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import Checkbox from '@material-ui/core/Checkbox'
 import grey from '@material-ui/core/colors/grey'
+import Chip from '@material-ui/core/Chip'
 import { orderBy } from 'lodash'
 import { Column, Table, AutoSizer } from 'react-virtualized'
+import chroma from 'chroma-js'
 import {
   currencyFormatter,
   decimalFormatter,
@@ -20,6 +22,12 @@ const styles = theme => ({
   },
   headerRow: {
     borderBottom: '1px solid #e0e0e0',
+    fontFamily: theme.typography.subtitle2.fontFamily,
+    fontWeight: theme.typography.subtitle2.fontWeight,
+    fontSize: theme.typography.subtitle2.fontSize,
+    color: theme.palette.text.disabled
+  },
+  openingBalance: {
     fontFamily: theme.typography.subtitle2.fontFamily,
     fontWeight: theme.typography.subtitle2.fontWeight,
     fontSize: theme.typography.subtitle2.fontSize,
@@ -41,10 +49,14 @@ const styles = theme => ({
   nativeAmount: {
     color: grey[500],
     display: 'block'
+  },
+  category: {
+    background: 'red'
   }
 })
 
 const mapStateToProps = (state, props) => ({
+  budgetColours: state.settings.budget.colours,
   formatCurrency: currencyFormatter(state.settings.locale, props.account.currency),
   formatDecimal: decimalFormatter(state.settings.locale, props.account.type),
   formatDate: dateFormatter(state.settings.locale)
@@ -162,35 +174,17 @@ export class TransactionsTableComponent extends React.Component {
   rowClassName = ({ index }, filteredTransactions, classes) => {
     return classNames({
       [classes.headerRow]: index < 0,
+      [classes.openingBalance]: index >= 0 && filteredTransactions[index].id === undefined,
       [classes.rowWithError]: (index >= 0 && this.transactionHasErrors(filteredTransactions[index])),
       [classes.row]: index >= 0,
       [classes.oddRow]: index % 2 !== 0
     })
   }
 
-  displayCurrency = ({ amount }) => {
-    const {
-      // classes,
-      // account,
-      // formatCurrency,
-      formatDecimal
-    } = this.props
-    // if (account.type === 'wallet') {
-    //   return (
-    //     <div>
-    //       {formatDecimal(amount)}
-    //       {account.symbol}
-    //       <small className={classes.nativeAmount}>{formatCurrency(nativeAmount)}</small>
-    //     </div>
-    //   )
-    // }
-    return formatDecimal(amount)
-  }
-
   renderCellAmount = ({ cellData }) => (
     {
-      positiveAmount: cellData.amount > 0 ? this.displayCurrency(cellData) : null,
-      negativeAmount: cellData.amount < 0 ? this.displayCurrency(cellData) : null
+      positiveAmount: cellData.amount > 0 ? this.props.formatDecimal(cellData.amount) : null,
+      negativeAmount: cellData.amount < 0 ? this.props.formatDecimal(cellData.amount) : null
     }[cellData.restrictTo]
   )
 
@@ -200,6 +194,7 @@ export class TransactionsTableComponent extends React.Component {
       className,
       children,
       account,
+      budgetColours,
       formatDate,
       Toolbar,
       toolbarProps,
@@ -257,7 +252,7 @@ export class TransactionsTableComponent extends React.Component {
                       />
                     </span>
                   )}
-                  cellRenderer={({ cellData }) => (
+                  cellRenderer={({ cellData }) => cellData !== undefined && (
                     <span
                       className="ReactVirtualized__Table__headerTruncatedText"
                       key="label"
@@ -282,6 +277,23 @@ export class TransactionsTableComponent extends React.Component {
                 dataKey="description"
                 disableSort={true}
                 flexGrow={1}
+              />
+              <Column
+                width={200}
+                label="Category"
+                dataKey="category"
+                cellRenderer={
+                  ({ rowData }) => rowData.category !== undefined && (
+                    <Chip
+                      size="small"
+                      label={rowData.category}
+                      style={{
+                        background: budgetColours[rowData.category],
+                        color: chroma.contrast(budgetColours[rowData.category], 'black') > 5 ? 'black' : 'white'
+                      }}
+                    />
+                  )
+                }
               />
               <Column
                 width={130}
@@ -318,10 +330,11 @@ TransactionsTableComponent.propTypes = {
   classes: PropTypes.object.isRequired,
   className: PropTypes.string,
   children: PropTypes.node,
-  Toolbar: PropTypes.func.isRequired,
+  Toolbar: PropTypes.object.isRequired,
   toolbarProps: PropTypes.object,
   account: PropTypes.object.isRequired,
   transactions: PropTypes.array.isRequired,
+  budgetColours: PropTypes.object.isRequired,
   formatCurrency: PropTypes.func.isRequired,
   formatDecimal: PropTypes.func.isRequired,
   formatDate: PropTypes.func.isRequired,

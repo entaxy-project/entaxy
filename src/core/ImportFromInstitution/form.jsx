@@ -23,8 +23,8 @@ import { showOverlay, hideOverlay } from '../../store/settings/actions'
 
 const styles = theme => ({
   root: {
-    margin: theme.spacing.unit * 2,
-    padding: theme.spacing.unit * 2
+    margin: theme.spacing(2),
+    padding: theme.spacing(2)
   },
   formHeader: {
     padding: 10,
@@ -40,17 +40,17 @@ const styles = theme => ({
     flexDirection: 'column'
   },
   input: {
-    margin: theme.spacing.unit * 2,
+    margin: theme.spacing(2),
     width: 400
   },
   inputTitle: {
-    marginLeft: theme.spacing.unit * 2,
-    marginTop: theme.spacing.unit * 2,
-    marginBottom: -theme.spacing.unit * 2
+    marginLeft: theme.spacing(2),
+    marginTop: theme.spacing(2),
+    marginBottom: -theme.spacing(2)
   },
   inputError: {
     marginTop: -7,
-    marginLeft: theme.spacing.unit * 2
+    marginLeft: theme.spacing(2)
   },
   formActions: {
     display: 'flex',
@@ -59,10 +59,10 @@ const styles = theme => ({
   },
   deleteButton: {
     color: red[500],
-    margin: theme.spacing.unit * 2
+    margin: theme.spacing(2)
   },
   instructions: {
-    padding: theme.spacing.unit * 2
+    padding: theme.spacing(2)
   }
 })
 
@@ -104,11 +104,11 @@ export const ImportFromInstitutionFormComponent = ({
         </IconButton>
       </div>
       <Divider />
-      <Grid container className={classes.input} spacing={16}>
+      <Grid container className={classes.input} spacing={2}>
         <Typography variant="caption" paragraph>
-          Your browser will connect directly to
+          Your browser will connect directly to&nbsp;
           <strong>{institution}</strong>
-          so you&apos;re really importing your own data.
+          &nbsp;so you&apos;re really importing your own data.
         </Typography>
         {instructionsFor(institution)}
       </Grid>
