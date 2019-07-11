@@ -5,11 +5,11 @@ exports[`SettingsForm matches snapshot before after submitting form 1`] = `
   onSubmit={[MockFunction]}
 >
   <div>
-    <h6
-      className="MuiTypography-root MuiTypography-subtitle2"
+    <span
+      className="MuiTypography-root MuiTypography-caption MuiTypography-colorTextSecondary"
     >
       Language / Country
-    </h6>
+    </span>
     <div
       className=" css-2b097c-container"
       onKeyDown={[Function]}
@@ -134,11 +134,11 @@ exports[`SettingsForm matches snapshot before after submitting form 1`] = `
     </div>
   </div>
   <div>
-    <h6
-      className="MuiTypography-root MuiTypography-subtitle2"
+    <span
+      className="MuiTypography-root MuiTypography-caption MuiTypography-colorTextSecondary"
     >
       Display Currency
-    </h6>
+    </span>
     <div
       className=" css-2b097c-container"
       onKeyDown={[Function]}
@@ -291,7 +291,7 @@ exports[`SettingsForm matches snapshot before after submitting form 1`] = `
   />
   <div>
     <div
-      className="SubmitButtonWithProgress-wrapper-57"
+      className="SubmitButtonWithProgress-wrapper-58"
     >
       <button
         className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary Mui-disabled Mui-disabled"
@@ -317,7 +317,7 @@ exports[`SettingsForm matches snapshot before after submitting form 1`] = `
         </span>
       </button>
       <div
-        className="MuiCircularProgress-root SubmitButtonWithProgress-buttonProgress-58 MuiCircularProgress-colorPrimary MuiCircularProgress-indeterminate"
+        className="MuiCircularProgress-root SubmitButtonWithProgress-buttonProgress-59 MuiCircularProgress-colorPrimary MuiCircularProgress-indeterminate"
         role="progressbar"
         style={
           Object {
@@ -351,11 +351,11 @@ exports[`SettingsForm matches snapshot before submitting form 1`] = `
   onSubmit={[MockFunction]}
 >
   <div>
-    <h6
-      className="MuiTypography-root MuiTypography-subtitle2"
+    <span
+      className="MuiTypography-root MuiTypography-caption MuiTypography-colorTextSecondary"
     >
       Language / Country
-    </h6>
+    </span>
     <div
       className=" css-2b097c-container"
       onKeyDown={[Function]}
@@ -480,11 +480,11 @@ exports[`SettingsForm matches snapshot before submitting form 1`] = `
     </div>
   </div>
   <div>
-    <h6
-      className="MuiTypography-root MuiTypography-subtitle2"
+    <span
+      className="MuiTypography-root MuiTypography-caption MuiTypography-colorTextSecondary"
     >
       Display Currency
-    </h6>
+    </span>
     <div
       className=" css-2b097c-container"
       onKeyDown={[Function]}
@@ -637,7 +637,7 @@ exports[`SettingsForm matches snapshot before submitting form 1`] = `
   />
   <div>
     <div
-      className="SubmitButtonWithProgress-wrapper-57"
+      className="SubmitButtonWithProgress-wrapper-58"
     >
       <button
         className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary"

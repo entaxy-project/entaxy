@@ -56,11 +56,11 @@ exports[`Account form matches snapshot for edit account 1`] = `
       onSubmit={[MockFunction]}
     >
       <div>
-        <h6
-          className="MuiTypography-root MuiTypography-subtitle2"
+        <span
+          className="MuiTypography-root MuiTypography-caption MuiTypography-colorTextSecondary"
         >
           Institution
-        </h6>
+        </span>
         <div
           className=" css-2b097c-container"
           onKeyDown={[Function]}
@@ -257,11 +257,11 @@ exports[`Account form matches snapshot for edit account 1`] = `
         </div>
       </div>
       <div>
-        <h6
-          className="MuiTypography-root MuiTypography-subtitle2"
+        <span
+          className="MuiTypography-root MuiTypography-caption MuiTypography-colorTextSecondary"
         >
           Account Currency
-        </h6>
+        </span>
         <div
           className=" css-2b097c-container"
           onKeyDown={[Function]}
@@ -414,7 +414,7 @@ exports[`Account form matches snapshot for edit account 1`] = `
       />
       <div>
         <div
-          className="SubmitButtonWithProgress-wrapper-258"
+          className="SubmitButtonWithProgress-wrapper-259"
         >
           <button
             className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary"
@@ -502,11 +502,11 @@ exports[`Account form matches snapshot for new account 1`] = `
       onSubmit={[MockFunction]}
     >
       <div>
-        <h6
-          className="MuiTypography-root MuiTypography-subtitle2"
+        <span
+          className="MuiTypography-root MuiTypography-caption MuiTypography-colorTextSecondary"
         >
           Institution
-        </h6>
+        </span>
         <div
           className=" css-2b097c-container"
           onKeyDown={[Function]}
@@ -703,11 +703,11 @@ exports[`Account form matches snapshot for new account 1`] = `
         </div>
       </div>
       <div>
-        <h6
-          className="MuiTypography-root MuiTypography-subtitle2"
+        <span
+          className="MuiTypography-root MuiTypography-caption MuiTypography-colorTextSecondary"
         >
           Account Currency
-        </h6>
+        </span>
         <div
           className=" css-2b097c-container"
           onKeyDown={[Function]}
@@ -860,7 +860,7 @@ exports[`Account form matches snapshot for new account 1`] = `
       />
       <div>
         <div
-          className="SubmitButtonWithProgress-wrapper-258"
+          className="SubmitButtonWithProgress-wrapper-259"
         >
           <button
             className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary"

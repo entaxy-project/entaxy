@@ -9,11 +9,9 @@ import FormHelperText from '@material-ui/core/FormHelperText'
 
 const useStyles = makeStyles(theme => ({
 
-  // inputTitle: {
-  //   marginLeft: theme.spacing(2),
-  //   marginTop: theme.spacing(2),
-  //   marginBottom: -theme.spacing(2)
-  // },
+  select: {
+    marginTop: -theme.spacing(1)
+  },
   inputError: {
     marginTop: -theme.spacing(1),
     marginLeft: theme.spacing(2),
@@ -38,11 +36,10 @@ const AutoComplete = ({
   const classes = useStyles()
 
   return (
-    <div>
+    <div className={className}>
       <Typography
-        variant="subtitle2"
-        className={classes.inputTitle}
-        color={error ? 'error' : 'initial'}
+        variant="caption"
+        color={error ? 'error' : 'textSecondary'}
       >
         {label}
       </Typography>
@@ -56,7 +53,6 @@ const AutoComplete = ({
           inputProps={{ 'aria-label': label, required: true }}
           onChange={selection => onChange(name, selection)}
           isClearable
-          className={className}
           styles={styles}
         />
       )}
@@ -70,7 +66,6 @@ const AutoComplete = ({
           inputProps={{ 'aria-label': label, required: true }}
           onChange={selection => onChange(name, selection)}
           isClearable
-          className={className}
           styles={styles}
         />
       )}
@@ -85,7 +80,6 @@ const AutoComplete = ({
           inputProps={{ 'aria-label': label }}
           onChange={selection => onChange(name, selection)}
           isClearable
-          className={className}
           styles={styles}
         />
       )}

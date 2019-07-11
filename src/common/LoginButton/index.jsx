@@ -66,7 +66,6 @@ export class LoginButtonComponent extends React.Component {
       user,
       handleLogout
     } = this.props
-
     return (
       <ClickAwayListener onClickAway={this.handleClose}>
         <div className={classes.root}>
@@ -90,39 +89,41 @@ export class LoginButtonComponent extends React.Component {
           >
             {user.name}
           </Button>
-          <Popper open={open} anchorEl={anchorEl} transition className={classes.popper}>
-            {({ TransitionProps }) => (
-              <Fade {...TransitionProps} timeout={350}>
-                <Paper>
-                  <MenuList role="menu">
+          {anchorEl !== null && (
+            <Popper open={open} anchorEl={anchorEl} transition className={classes.popper}>
+              {({ TransitionProps }) => (
+                <Fade {...TransitionProps} timeout={350}>
+                  <Paper>
+                    <MenuList role="menu">
 
-                    <MenuItem onClick={this.handleClose} component={LinkTo('/settings')}>
-                      <ListItemIcon>
-                        <Settings />
-                      </ListItemIcon>
-                      <ListItemText primary="Settings" />
-                    </MenuItem>
-                    <MenuItem onClick={this.handleClose} component={LinkTo('/budget-categories')}>
-                      <ListItemIcon>
-                        <Settings />
-                      </ListItemIcon>
-                      <ListItemText primary="Budget Categories" />
-                    </MenuItem>
-                    <MenuItem onClick={handleLogout}>
-                      <ListItemIcon>
-                        <Icon
-                          path={mdiLogout}
-                          size={1}
-                          className={classes.menuIcon}
-                        />
-                      </ListItemIcon>
-                      <ListItemText primary="Logout" />
-                    </MenuItem>
-                  </MenuList>
-                </Paper>
-              </Fade>
-            )}
-          </Popper>
+                      <MenuItem onClick={this.handleClose} component={LinkTo('/settings')}>
+                        <ListItemIcon>
+                          <Settings />
+                        </ListItemIcon>
+                        <ListItemText primary="Settings" />
+                      </MenuItem>
+                      <MenuItem onClick={this.handleClose} component={LinkTo('/budget-categories')}>
+                        <ListItemIcon>
+                          <Settings />
+                        </ListItemIcon>
+                        <ListItemText primary="Budget Categories" />
+                      </MenuItem>
+                      <MenuItem onClick={handleLogout}>
+                        <ListItemIcon>
+                          <Icon
+                            path={mdiLogout}
+                            size={1}
+                            className={classes.menuIcon}
+                          />
+                        </ListItemIcon>
+                        <ListItemText primary="Logout" />
+                      </MenuItem>
+                    </MenuList>
+                  </Paper>
+                </Fade>
+              )}
+            </Popper>
+          )}
         </div>
       </ClickAwayListener>
     )

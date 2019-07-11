@@ -3,7 +3,7 @@ import types from './types'
 
 export const initialState = {
   list: [],
-  rules: {}
+  rules: {} // rules have the format { match: category }
 }
 
 export default (state = initialState, action) => {
@@ -42,6 +42,18 @@ export default (state = initialState, action) => {
         ...state,
         rules: { ...state.rules, [action.payload.match]: action.payload.category }
       }
+    case types.DELETE_EXACT_RULE:
+      // eslint-disable-next-line no-case-declarations
+      const r = Object.keys(state.rules).reduce((result, match) => {
+        if (match !== action.payload) {
+          return {
+            ...result,
+            rules: { ...result.rules, [match]: state.rules[match] }
+          }
+        }
+        return result
+      }, { ...state, rules: {} })
+      return r
     case types.APPLY_EXACT_RULE:
       return {
         ...state,

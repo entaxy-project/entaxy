@@ -43,7 +43,8 @@ const TRANSACTION_FIELDS = {
 
 // The base class for all CSV parsers
 export default class CsvParser {
-  constructor() {
+  constructor(transactionRules) {
+    this._transactionRules = transactionRules
     this._csvData = []
     this._csvHeader = []
     this._columnsCount = 0
@@ -181,6 +182,7 @@ export default class CsvParser {
       if (this._noHeaderRow || index > this._firstRowIndex) {
         const amount = this.readAmount(row, columns)
         const description = this.readDescription(row, columns)
+        const category = this._transactionRules[description]
         const createdAt = this.dateFromString(row[columns.createdAt])
         const errors = []
         if (typeof amount !== 'number') {
@@ -191,6 +193,7 @@ export default class CsvParser {
         transactions.push({
           amount,
           description,
+          category,
           createdAt,
           errors
         })

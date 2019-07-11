@@ -15,10 +15,10 @@ import { createTransaction, updateTransaction } from '../../../store/transaction
 
 const styles = theme => ({
   root: {
-    width: 400
   },
   input: {
     marginBottom: theme.spacing(1),
+    marginTop: theme.spacing(1),
     width: '100%'
   }
 })
@@ -106,7 +106,7 @@ export const TransactionDialogComponent = ({
     />
     <AutoComplete
       className={classes.input}
-      label="Budget category"
+      label="Category"
       name="category"
       value={values.category}
       options={budget.categories}
@@ -183,7 +183,7 @@ export default compose(
       }
       return {
         ...transaction,
-        category: {
+        category: transaction.category === undefined ? null : {
           label: transaction.category,
           value: transaction.category,
           colour: budget.colours[transaction.category]
@@ -205,7 +205,7 @@ export default compose(
       setSubmitting(true)
       props.handleSave(props.account, {
         ...values,
-        category: (values.category || {}).value,
+        category: (values.category === null ? undefined : values.category.value),
         createdAt: parse(values.createdAt).getTime()
       })
       resetForm()

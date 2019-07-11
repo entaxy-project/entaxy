@@ -2,11 +2,11 @@
 
 exports[`AutoComplete matches snapshot for async select 1`] = `
 <div>
-  <h6
-    className="MuiTypography-root MuiTypography-subtitle2"
+  <span
+    className="MuiTypography-root MuiTypography-caption MuiTypography-colorTextSecondary"
   >
     Institution
-  </h6>
+  </span>
   <div
     className=" css-2b097c-container"
     onKeyDown={[Function]}
@@ -120,11 +120,11 @@ exports[`AutoComplete matches snapshot for async select 1`] = `
 
 exports[`AutoComplete matches snapshot for creatable select 1`] = `
 <div>
-  <h6
-    className="MuiTypography-root MuiTypography-subtitle2"
+  <span
+    className="MuiTypography-root MuiTypography-caption MuiTypography-colorTextSecondary"
   >
     Institution
-  </h6>
+  </span>
   <div
     className=" css-2b097c-container"
     onKeyDown={[Function]}
@@ -238,11 +238,11 @@ exports[`AutoComplete matches snapshot for creatable select 1`] = `
 
 exports[`AutoComplete matches snapshot for simple select 1`] = `
 <div>
-  <h6
-    className="MuiTypography-root MuiTypography-subtitle2"
+  <span
+    className="MuiTypography-root MuiTypography-caption MuiTypography-colorTextSecondary"
   >
     Institution
-  </h6>
+  </span>
   <div
     className=" css-2b097c-container"
     onKeyDown={[Function]}
@@ -356,11 +356,11 @@ exports[`AutoComplete matches snapshot for simple select 1`] = `
 
 exports[`AutoComplete matches snapshot with error 1`] = `
 <div>
-  <h6
-    className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorError"
+  <span
+    className="MuiTypography-root MuiTypography-caption MuiTypography-colorError"
   >
     Institution
-  </h6>
+  </span>
   <div
     className=" css-2b097c-container"
     onKeyDown={[Function]}
@@ -470,7 +470,7 @@ exports[`AutoComplete matches snapshot with error 1`] = `
     />
   </div>
   <p
-    className="MuiFormHelperText-root makeStyles-inputError-1 Mui-error"
+    className="MuiFormHelperText-root makeStyles-inputError-2 Mui-error"
   >
     Some error
   </p>

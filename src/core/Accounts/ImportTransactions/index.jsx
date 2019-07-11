@@ -33,8 +33,9 @@ const styles = theme => ({
   }
 })
 
-const mapStateToProps = ({ accounts }, props) => ({
-  account: accounts.byId[props.match.params.accountId]
+const mapStateToProps = ({ accounts, transactions }, props) => ({
+  account: accounts.byId[props.match.params.accountId],
+  transactionRules: transactions.rules
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -102,7 +103,8 @@ export class ImportTransactionsComponent extends React.Component {
     } = this.state
     const {
       classes,
-      account
+      account,
+      transactionRules
     } = this.props
     return (
       <Grid container direction="row" justify="center">
@@ -131,6 +133,7 @@ export class ImportTransactionsComponent extends React.Component {
               {!showTransactions && importType === 'CSV' && (
                 <CsvImportForm
                   account={account}
+                  transactionRules={transactionRules}
                   handleParsedData={this.handleParsedData}
                   onCancel={this.handleCancel}
                 />
@@ -155,6 +158,7 @@ export class ImportTransactionsComponent extends React.Component {
 ImportTransactionsComponent.propTypes = {
   classes: PropTypes.object.isRequired,
   account: PropTypes.object.isRequired,
+  transactionRules: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
   saveTransactions: PropTypes.func.isRequired,
   showSnackbarMessage: PropTypes.func.isRequired
