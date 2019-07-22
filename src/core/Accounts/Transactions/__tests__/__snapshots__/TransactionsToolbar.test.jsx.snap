@@ -48,7 +48,7 @@ exports[`TransactionsToolbar matches snapshot with no selected transactions 1`] 
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
-            placeholder="Search…"
+            placeholder="Search description or categories..."
             type="text"
             value=""
           />

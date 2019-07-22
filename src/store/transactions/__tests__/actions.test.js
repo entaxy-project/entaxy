@@ -6,6 +6,7 @@ import { initialState as accountsInitialState } from '../../accounts/reducer'
 import { initialState as transactionsInitialState } from '../reducer'
 import { initialState as settingsInitialState } from '../../settings/reducer'
 import { initialState as exchangeRatesInitialState } from '../../exchangeRates/reducer'
+import { initialState as budgetInitialState } from '../../budget/reducer'
 
 jest.mock('uuid/v4', () => jest.fn(() => 1))
 
@@ -47,7 +48,8 @@ describe('transactions actions', () => {
         accounts: accountsInitialState,
         transactions: transactionsInitialState,
         settings: settingsInitialState,
-        exchangeRates: exchangeRatesInitialState
+        exchangeRates: exchangeRatesInitialState,
+        budget: budgetInitialState
       })
 
       await store.dispatch(actions.createTransaction(account, transaction))
@@ -61,7 +63,14 @@ describe('transactions actions', () => {
           }
         }, {
           type: 'APPLY_EXACT_RULE',
-          payload: transaction.description
+          payload: {
+            match: transaction.description,
+            rules: {}
+          }
+        }, {
+          // NOTE: the transaction is not actually saved on the moch store so we don't see it here
+          type: 'COUNT_RULE_USAGE',
+          payload: []
         }, {
           // NOTE: UPDATE_ACCOUNT is called but account balance is not changed
           // because test library doesn't actually update the store
@@ -82,7 +91,8 @@ describe('transactions actions', () => {
         accounts: accountsInitialState,
         transactions: transactionsInitialState,
         settings: settingsInitialState,
-        exchangeRates: exchangeRatesInitialState
+        exchangeRates: exchangeRatesInitialState,
+        budget: budgetInitialState
       })
       const category = 'Groceries'
       await store.dispatch(actions.createTransaction(
@@ -103,7 +113,14 @@ describe('transactions actions', () => {
           payload: { category, match: transaction.description }
         }, {
           type: 'APPLY_EXACT_RULE',
-          payload: transaction.description
+          payload: {
+            match: transaction.description,
+            rules: {}
+          }
+        }, {
+          // NOTE: the transaction is not actually saved on the moch store so we don't see it here
+          type: 'COUNT_RULE_USAGE',
+          payload: []
         }, {
           // NOTE: UPDATE_ACCOUNT is called but account balance is not changed
           // because test library doesn't actually update the store
@@ -159,7 +176,8 @@ describe('transactions actions', () => {
         accounts: accountsInitialState,
         transactions: { list: [{ ...transaction, id: 1 }], transactionsInitialState },
         settings: settingsInitialState,
-        exchangeRates: exchangeRatesInitialState
+        exchangeRates: exchangeRatesInitialState,
+        budget: budgetInitialState
       })
       const category = 'Groceries'
       expect(transaction.category).toBeUndefined()
@@ -185,7 +203,14 @@ describe('transactions actions', () => {
           payload: { category, match: transaction.description }
         }, {
           type: 'APPLY_EXACT_RULE',
-          payload: transaction.description
+          payload: {
+            match: transaction.description,
+            rules: {}
+          }
+        }, {
+          // NOTE: the transaction is not actually saved on the moch store so we don't see it here
+          type: 'COUNT_RULE_USAGE',
+          payload: [{ ...transaction, id: 1 }]
         }, {
           // NOTE: UPDATE_ACCOUNT is called but account balance is not changed
           // because test library doesn't actually update the store
@@ -207,7 +232,8 @@ describe('transactions actions', () => {
         accounts: accountsInitialState,
         transactions: { list: [{ ...transaction, id: 1, category }], transactionsInitialState },
         settings: settingsInitialState,
-        exchangeRates: exchangeRatesInitialState
+        exchangeRates: exchangeRatesInitialState,
+        budget: budgetInitialState
       })
 
       await store.dispatch(actions.updateTransaction(
@@ -232,7 +258,14 @@ describe('transactions actions', () => {
           payload: transaction.description
         }, {
           type: 'APPLY_EXACT_RULE',
-          payload: transaction.description
+          payload: {
+            match: transaction.description,
+            rules: {}
+          }
+        }, {
+          // NOTE: the transaction is not actually saved on the moch store so we don't see it here
+          type: 'COUNT_RULE_USAGE',
+          payload: [{ ...transaction, id: 1, category }]
         }, {
           // NOTE: UPDATE_ACCOUNT is called but account balance is not changed
           // because test library doesn't actually update the store
@@ -254,7 +287,8 @@ describe('transactions actions', () => {
         accounts: accountsInitialState,
         transactions: { list: [{ ...transaction, id: 1, category: 'Old category' }], transactionsInitialState },
         settings: settingsInitialState,
-        exchangeRates: exchangeRatesInitialState
+        exchangeRates: exchangeRatesInitialState,
+        budget: budgetInitialState
       })
 
       await store.dispatch(actions.updateTransaction(
@@ -279,7 +313,14 @@ describe('transactions actions', () => {
           payload: { category, match: transaction.description }
         }, {
           type: 'APPLY_EXACT_RULE',
-          payload: transaction.description
+          payload: {
+            match: transaction.description,
+            rules: {}
+          }
+        }, {
+          // NOTE: the transaction is not actually saved on the moch store so we don't see it here
+          type: 'COUNT_RULE_USAGE',
+          payload: [{ ...transaction, id: 1, category: 'Old category' }]
         }, {
           // NOTE: UPDATE_ACCOUNT is called but account balance is not changed
           // because test library doesn't actually update the store
@@ -313,6 +354,10 @@ describe('transactions actions', () => {
           type: 'DELETE_TRANSACTIONS',
           payload: [1]
         }, {
+          // NOTE: the transaction is not actually saved on the moch store so we don't see it here
+          type: 'COUNT_RULE_USAGE',
+          payload: [{ ...transaction, id: 1 }]
+        }, {
           payload: account,
           type: 'UPDATE_ACCOUNT'
         }, {
@@ -338,6 +383,10 @@ describe('transactions actions', () => {
         {
           type: 'DELETE_TRANSACTIONS',
           payload: [1]
+        }, {
+          // NOTE: the transaction is not actually saved on the moch store so we don't see it here
+          type: 'COUNT_RULE_USAGE',
+          payload: [{ ...transaction, id: 1 }]
         }
       ])
     })
@@ -370,6 +419,10 @@ describe('transactions actions', () => {
         {
           type: 'ADD_TRANSACTIONS',
           payload
+        }, {
+          // NOTE: the transaction is not actually saved on the moch store so we don't see it here
+          type: 'COUNT_RULE_USAGE',
+          payload: [{ ...transaction, id: 1 }]
         }, {
           payload: account,
           type: 'UPDATE_ACCOUNT'
@@ -404,6 +457,10 @@ describe('transactions actions', () => {
         {
           payload,
           type: 'ADD_TRANSACTIONS'
+        }, {
+          // NOTE: the transaction is not actually saved on the moch store so we don't see it here
+          type: 'COUNT_RULE_USAGE',
+          payload: [{ ...transaction, id: 1 }]
         }
       ])
     })
@@ -430,43 +487,19 @@ describe('transactions actions', () => {
   })
 
   describe('Rules', () => {
-    it('should create an exact rule', async () => {
-      const mockStore = configureMockStore([thunk])
-      const store = mockStore({
-        transactions: transactionsInitialState
-      })
-      const category = 'Groceries'
-      const match = 'Shopping Mart'
-      await store.dispatch(actions.createExactRule(category, match))
-      expect(store.getActions()).toEqual([{
-        type: 'CREATE_EXACT_RULE',
-        payload: { category, match }
-      }])
-    })
-
-    it('should delete an exact rule', async () => {
-      const mockStore = configureMockStore([thunk])
-      const store = mockStore({
-        transactions: transactionsInitialState
-      })
-      const match = 'Shopping Mart'
-      await store.dispatch(actions.deleteExactRule(match))
-      expect(store.getActions()).toEqual([{
-        type: 'DELETE_EXACT_RULE',
-        payload: match
-      }])
-    })
-
     it('should apply an exact rule', async () => {
       const mockStore = configureMockStore([thunk])
       const store = mockStore({
         transactions: transactionsInitialState
       })
       const match = 'Shopping Mart'
-      await store.dispatch(actions.applyExactRule(match))
+      await store.dispatch(actions.applyExactRule({ match, rules: {} }))
       expect(store.getActions()).toEqual([{
         type: 'APPLY_EXACT_RULE',
-        payload: match
+        payload: {
+          match,
+          rules: {}
+        }
       }])
     })
   })

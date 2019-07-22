@@ -22,7 +22,7 @@ describe('CsvImportForm', () => {
         handleParsedData={mockHandleParsedData}
         onCancel={mockOnCancel}
         account={{ id: 1, institution: 'BMO' }}
-        transactionRules={{ }}
+        budgetRules={{ }}
         classes={{ }}
       />
     ))
@@ -41,7 +41,7 @@ describe('CsvImportForm', () => {
           handleParsedData={mockHandleParsedData}
           onCancel={mockOnCancel}
           account={{ id: 1, institution: 'BMO' }}
-          transactionRules={{ }}
+          budgetRules={{ }}
           classes={{ }}
         />
       ))

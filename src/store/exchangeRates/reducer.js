@@ -25,7 +25,6 @@ export default (state = initialState, action) => {
               }
             }), res1)
         }, state)
-
       Object.keys(newState).forEach((currency) => {
         newState[currency].dates = Object.keys(newState[currency])
           .filter(c => c !== 'dates')

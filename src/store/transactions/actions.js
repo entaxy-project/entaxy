@@ -1,30 +1,24 @@
-/* eslint-disable import/no-cycle */
 import uuid from 'uuid/v4'
 import pluralize from 'pluralize'
 import types from './types'
 import { saveState } from '../user/actions'
 import { updateAccount } from '../accounts/actions'
 import { showSnackbar } from '../settings/actions'
+import { fetchExchangeRates } from '../exchangeRates/actions'
+import { createExactRule, deleteExactRule, countRuleUsage } from '../budget/actions'
 
 export const afterTransactionsChanged = account => async (dispatch) => {
   await dispatch(updateAccount(account, { forceUpdateBalance: true, showMessage: false }))
   saveState()
 }
 
-export const createExactRule = (category, match) => (
-  { type: types.CREATE_EXACT_RULE, payload: { category, match } }
-)
-
-export const deleteExactRule = match => (
-  { type: types.DELETE_EXACT_RULE, payload: match }
-)
-
 // If the rule is not found then the category is cleared from matching transactions
-export const applyExactRule = match => (
-  { type: types.APPLY_EXACT_RULE, payload: match }
+export const applyExactRule = ({ match, rules }) => (
+  { type: types.APPLY_EXACT_RULE, payload: { match, rules } }
 )
 
-export const createTransaction = (account, transaction) => async (dispatch) => {
+export const createTransaction = (account, transaction) => async (dispatch, getState) => {
+  await dispatch(fetchExchangeRates([account.currency], transaction.createdAt))
   dispatch({
     type: types.CREATE_TRANSACTION,
     payload: {
@@ -37,7 +31,8 @@ export const createTransaction = (account, transaction) => async (dispatch) => {
   if (transaction.category !== undefined) {
     dispatch(createExactRule(transaction.category, transaction.description))
   }
-  dispatch(applyExactRule(transaction.description))
+  dispatch(applyExactRule({ match: transaction.description, rules: getState().budget.rules }))
+  dispatch(countRuleUsage())
   await dispatch(afterTransactionsChanged(account))
   dispatch(showSnackbar({ text: 'Transaction created', status: 'success' }))
 }
@@ -58,7 +53,8 @@ export const updateTransaction = (account, transaction) => async (dispatch, getS
     } else {
       dispatch(createExactRule(transaction.category, transaction.description))
     }
-    dispatch(applyExactRule(transaction.description))
+    dispatch(applyExactRule({ match: transaction.description, rules: getState().budget.rules }))
+    dispatch(countRuleUsage())
   }
   await dispatch(afterTransactionsChanged(account))
   dispatch(showSnackbar({ text: 'Transaction updated', status: 'success' }))
@@ -68,6 +64,7 @@ export const deleteTransactions = (account, transactionIds, options = { skipAfte
   const { skipAfterChange } = options
   return async (dispatch) => {
     dispatch({ type: types.DELETE_TRANSACTIONS, payload: transactionIds })
+    dispatch(countRuleUsage())
     if (!skipAfterChange) {
       await dispatch(afterTransactionsChanged(account))
       dispatch(showSnackbar({
@@ -96,6 +93,7 @@ export const addTransactions = (account, transactions, options = { skipAfterChan
         createdAt: t.createdAt + 1000 // Plus 1 second
       }))
     })
+    dispatch(countRuleUsage())
     if (!skipAfterChange) {
       await dispatch(afterTransactionsChanged(account))
     }

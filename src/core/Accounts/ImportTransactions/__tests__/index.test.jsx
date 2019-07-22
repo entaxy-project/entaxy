@@ -68,6 +68,7 @@ describe('Import Transactions', () => {
       wrapper = shallow((
         <ImportTransactionsComponent
           account={account}
+          budgetRules={{ }}
           transactionRules={{ }}
           classes={{}}
           history={{ push: mochHistoryPush }}

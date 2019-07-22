@@ -8,6 +8,7 @@ import { initialState as accountsInitialState } from '../../accounts/reducer'
 import { initialState as transactionsInitialState } from '../../transactions/reducer'
 import { initialState as exchangeRatesInitialState } from '../reducer'
 import { mochFetch } from '../../../setupTests'
+import { fiatCurrencies, cryptoCurrencies } from '../../../data/currencies'
 
 beforeEach(() => {
   jest.resetModules()
@@ -101,7 +102,7 @@ describe('exchangeRates actions', () => {
   })
 
   describe('updateCurrencies', () => {
-    it('should remove all existing ExchangeRates', () => {
+    it('should remove all existing ExchangeRates', async () => {
       const mockStore = configureMockStore([thunk])
       const store = mockStore({
         settings: settingsInitialState,
@@ -109,25 +110,23 @@ describe('exchangeRates actions', () => {
         transactions: transactionsInitialState,
         exchangeRates
       })
-      return actions.updateCurrencies(store.dispatch, store.getState())
-        .then(() => {
-          expect(store.getActions()).toEqual([
-            {
-              type: 'DELETE_CURRENCIES',
-              payload: Object.keys(exchangeRates)
-            }
-          ])
-        })
+      await store.dispatch(actions.updateCurrencies())
+      expect(store.getActions()).toEqual([
+        {
+          type: 'DELETE_CURRENCIES',
+          payload: Object.keys(exchangeRates)
+        }
+      ])
     })
 
-    it('should add existing new currency and fetch exchange rates', () => {
+    it('should add existing new currency and fetch exchange rates', async () => {
       const account = {
         id: 1,
         groupId: 'g1',
         name: 'Checking',
         institution: 'TD',
         openingBalance: 1000,
-        currency: 'XYZ'
+        currency: Object.keys(fiatCurrencies)[0]
       }
       mochFetch({
         base: 'USD',
@@ -140,21 +139,19 @@ describe('exchangeRates actions', () => {
         transactions: transactionsInitialState,
         exchangeRates: exchangeRatesInitialState
       })
-      return actions.updateCurrencies(store.dispatch, store.getState())
-        .then(() => {
-          expect(store.getActions()).toEqual([
-            {
-              payload: { text: 'Fetching exchange rates for XYZ...' },
-              type: 'SHOW_SNACKBAR'
-            }, {
-              payload: { '2019-01-02': { [account.currency]: 1.3 } },
-              type: 'UPDATE_EXCHANGE_RATES'
-            }
-          ])
-        })
+      await store.dispatch(actions.updateCurrencies())
+      expect(store.getActions()).toEqual([
+        {
+          payload: { text: `Fetching exchange rates for ${account.currency}...` },
+          type: 'SHOW_SNACKBAR'
+        }, {
+          payload: { '2019-01-02': { [account.currency]: 1.3 } },
+          type: 'UPDATE_EXCHANGE_RATES'
+        }
+      ])
     })
 
-    it('should not change anything', () => {
+    it('should not change anything', async () => {
       const mockStore = configureMockStore([thunk])
       const store = mockStore({
         settings: settingsInitialState,
@@ -162,49 +159,96 @@ describe('exchangeRates actions', () => {
         transactions: transactionsInitialState,
         exchangeRates: exchangeRatesInitialState
       })
-      return actions.updateCurrencies(store.dispatch, store.getState())
-        .then(() => {
-          expect(store.getActions()).toEqual([])
-        })
+      await store.dispatch(actions.updateCurrencies())
+      expect(store.getActions()).toEqual([])
     })
   })
 
   describe('fetchExchangeRates', () => {
+    it('should not update anything if exchange rate was not available', async () => {
+      mochFetch({ base: 'EUR', rates: { } })
+      const mockStore = configureMockStore([thunk])
+      const store = mockStore({
+        settings: settingsInitialState
+      })
+      await store.dispatch(actions.fetchExchangeRates(['CAD']))
+      expect(store.getActions()).toEqual([
+        {
+          payload: { text: 'Fetching exchange rates for CAD...' },
+          type: 'SHOW_SNACKBAR'
+        }
+      ])
+    })
+
+    it('should save fiat exchange rates', async () => {
+      const fiatCurrency = Object.keys(fiatCurrencies)[2]
+      expect(fiatCurrency).not.toEqual(settingsInitialState.currency)
+      mochFetch({
+        base: settingsInitialState.currency,
+        rates: { '2019-01-02': { [fiatCurrency]: 1.3 } }
+      })
+      const mockStore = configureMockStore([thunk])
+      const store = mockStore({
+        settings: settingsInitialState
+      })
+      await store.dispatch(actions.fetchExchangeRates([fiatCurrency]))
+      expect(store.getActions()).toEqual([
+        {
+          payload: { text: `Fetching exchange rates for ${fiatCurrency}...` },
+          type: 'SHOW_SNACKBAR'
+        }, {
+          payload: { '2019-01-02': { [fiatCurrency]: 1.3 } },
+          type: 'UPDATE_EXCHANGE_RATES'
+        }
+      ])
+    })
+
+    it('should save crypto exchange rates', async () => {
+      const cryptoCurrency = Object.keys(cryptoCurrencies)[2]
+      expect(cryptoCurrency).not.toEqual(settingsInitialState.currency)
+      mochFetch({
+        base: settingsInitialState.currency,
+        rates: { '2019-01-02': { [cryptoCurrency]: 1.3 } }
+      })
+      const mockStore = configureMockStore([thunk])
+      const store = mockStore({
+        settings: settingsInitialState
+      })
+      await store.dispatch(actions.fetchExchangeRates([cryptoCurrency]))
+      expect(store.getActions()).toEqual([
+        {
+          payload: { text: `Fetching exchange rates for ${cryptoCurrency}...` },
+          type: 'SHOW_SNACKBAR'
+        }
+        // , {
+        //   payload: { '2019-01-02': { [cryptoCurrency]: 1.3 } },
+        //   type: 'UPDATE_EXCHANGE_RATES'
+        // }
+      ])
+    })
+  })
+
+  describe('fetchFiatExchangeRates', () => {
     it('should return empty array if exchange rate was not available', async () => {
       mochFetch({ base: 'EUR', rates: { } })
-      const rates = await actions.fetchExchangeRates(['CAD'], 'USD', '2019-01-02', '2019-01-02')
-      expect(rates).toEqual([])
+      const result = await actions.fetchFiatExchangeRates(['CAD'], 'USD', today, today)
+      expect(result).toEqual([])
     })
 
     it('should return empty array if an error occurred', async () => {
       mochFetch({ base: 'EUR', rates: { } }, 404)
-      const rates = await actions.fetchExchangeRates(['CAD'], 'USD', '2019-01-02', '2019-01-02')
-      expect(rates).toEqual([])
+      const result = await actions.fetchFiatExchangeRates(['CAD'], 'USD', today, today)
+      expect(result).toEqual([])
     })
 
-    it('should fetch ExchangeRates for one day', async () => {
+    it('should return exchange rates', async () => {
       mochFetch({
         base: 'USD',
         rates: { '2019-01-02': { CAD: 1.3 } }
       })
-      const rates = await actions.fetchExchangeRates(['CAD'], 'USD', '2019-01-02', '2019-01-02')
-      expect(rates).toEqual({
+      const result = await actions.fetchFiatExchangeRates(['CAD'], 'USD', today, today)
+      expect(result).toEqual({
         '2019-01-02': { CAD: 1.3 }
-      })
-    })
-
-    it('should fetch ExchangeRates for date range', async () => {
-      mochFetch({
-        base: 'USD',
-        rates: {
-          '2019-01-01': { CAD: 1.3 },
-          '2019-01-02': { CAD: 1.4 }
-        }
-      })
-      const rates = await actions.fetchExchangeRates(['CAD'], 'USD', '2019-01-01', '2019-02-02')
-      expect(rates).toEqual({
-        '2019-01-01': { CAD: 1.3 },
-        '2019-01-02': { CAD: 1.4 }
       })
     })
   })

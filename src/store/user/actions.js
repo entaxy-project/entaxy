@@ -11,6 +11,8 @@ import { loadTransactions } from '../transactions/actions'
 import { initialState as transactionsInitialState } from '../transactions/reducer'
 import { loadExchangeRates } from '../exchangeRates/actions'
 import { initialState as exchangeRatesInitialState } from '../exchangeRates/reducer'
+import { loadBudget } from '../budget/actions'
+import { initialState as budgetInitialState } from '../budget/reducer'
 
 export const saveLoginData = loginData => ({
   type: types.SAVE_LOGIN_DATA,
@@ -33,10 +35,15 @@ export const loadUserData = () => (dispatch, getState) => {
       pictureUrl: person.avatarUrl()
     }))
     storage.loadState().then((state) => {
-      dispatch(loadSettings(({}).settings))
+      dispatch(loadSettings((state || {}).settings))
       dispatch(loadAccounts((state || {}).accounts))
       dispatch(loadTransactions((state || {}).transactions))
       dispatch(loadExchangeRates((state || {}).exchangeRates))
+      dispatch(loadBudget({
+        ...(state || {}).budget,
+        categories: budgetInitialState.categories,
+        colours: budgetInitialState.colours
+      }))
       dispatch(hideOverlay())
     }).catch((error) => {
       throw error
@@ -76,17 +83,22 @@ export const handleBlockstackLogin = () => (dispatch) => {
     .catch(error => dispatch(userLoginError(error)))
 }
 
-export const resetState = (dispatch) => {
-  dispatch(loadSettings(settingsInitialState))
+export const resetState = () => (dispatch, getState) => {
+  dispatch(loadSettings({
+    ...settingsInitialState,
+    currency: getState().settings.currency,
+    locale: getState().settings.locale
+  }))
   dispatch(loadAccounts(accountsInitialState))
   dispatch(loadTransactions(transactionsInitialState))
   dispatch(loadExchangeRates(exchangeRatesInitialState))
+  dispatch(loadBudget(budgetInitialState))
 }
 
 export const userLogout = () => async (dispatch) => {
   const userSession = new UserSession()
   await userSession.signUserOut()
-  await resetState(dispatch)
+  await dispatch(resetState())
   await dispatch({ type: types.USER_LOGOUT })
 }
 

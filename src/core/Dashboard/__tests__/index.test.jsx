@@ -1,96 +1,121 @@
 import React from 'react'
 import { mount } from 'enzyme'
 import { Provider } from 'react-redux'
-import store from '../../../store'
+import { BrowserRouter } from 'react-router-dom'
+import configureMockStore from 'redux-mock-store'
 import Dashboard from '..'
-import { updateSettings } from '../../../store/settings/actions'
-import { createAccount } from '../../../store/accounts/actions'
-import { initialState as accountsInitialState } from '../../../store/accounts/reducer'
+import { groupByInstitution, initialState as accountsInitialState } from '../../../store/accounts/reducer'
 import { initialState as settingsInitialState } from '../../../store/settings/reducer'
+import { initialState as budgetInitialState } from '../../../store/budget/reducer'
+import { initialState as exchangeRatesInitialState } from '../../../store/exchangeRates/reducer'
 
 jest.mock('../../../common/InstitutionIcon/importLogos', () => [])
-// // Mock call to alphavantage in fetchExchangeRates
-// window.fetch = jest.fn().mockImplementation(() => (
-//   Promise.resolve(new window.Response(
-//     JSON.stringify({
-//       'Realtime Currency Exchange Rate': {
-//         '6. Last Refreshed': '2018-01-01',
-//         '5. Exchange Rate': 1
-//       }
-//     }), {
-//       status: 200,
-//       headers: { 'Content-type': 'application/json' }
-//     }
-//   ))
-// ))
+jest.mock('uuid/v4', () => jest.fn(() => 'xyz'))
 
 const accounts = [{
+  id: 1,
   description: 'Checking',
   institution: 'TD',
   currency: 'CAD',
-  openingBalance: 10
+  openingBalance: 10,
+  currentBalance: { accountCurrency: 1000, localCurrency: 1000 },
+  groupId: 0
 }, {
+  id: 2,
   description: 'Savings',
   institution: 'TD',
   currency: 'EUR',
-  openingBalance: 10
+  openingBalance: 10,
+  currentBalance: { accountCurrency: 1000, localCurrency: 1500 },
+  groupId: 0
 }]
 
 describe('Dashboard', () => {
   it('matches snapshot with no accounts', () => {
+    const mockStore = configureMockStore()
+    const store = mockStore({
+      settings: settingsInitialState,
+      accounts: accountsInitialState,
+      budget: budgetInitialState
+    })
     const wrapper = mount((
-      <Provider store={store}>
-        <Dashboard />
-      </Provider>
+      <BrowserRouter>
+        <Provider store={store}>
+          <Dashboard />
+        </Provider>
+      </BrowserRouter>
     ))
     expect(wrapper.debug()).toMatchSnapshot()
 
     const component = wrapper.findWhere(node => node.name() === 'DashboardComponent')
-    expect(component.props().settings).toEqual(settingsInitialState)
+    expect(component.props().budget).toEqual(budgetInitialState)
     expect(component.props().accounts).toEqual(accountsInitialState)
     expect(component.props().totalBalance).toEqual(0)
     expect(component.props().formatCurrency(10000)).toEqual('$10,000.00')
   })
 
   it('matches snapshot with one account', async () => {
-    accounts[0].id = await store.dispatch(createAccount(accounts[0]))
+    const mockStore = configureMockStore()
+    const state = {
+      settings: { ...settingsInitialState, locale: 'en-UK', currency: 'EUR' },
+      accounts: {
+        ...accountsInitialState,
+        byId: { [accounts[0].id]: accounts[0] }
+      },
+      budget: budgetInitialState,
+      exchangeRates: exchangeRatesInitialState
+    }
+    const store = mockStore({
+      ...state,
+      accounts: { ...state.accounts, byInstitution: groupByInstitution(state.accounts) }
+    })
+
     const wrapper = mount((
-      <Provider store={store}>
-        <Dashboard />
-      </Provider>
+      <BrowserRouter>
+        <Provider store={store}>
+          <Dashboard />
+        </Provider>
+      </BrowserRouter>
     ))
     expect(wrapper.debug()).toMatchSnapshot()
 
     const component = wrapper.findWhere(node => node.name() === 'DashboardComponent')
-    expect(component.props().settings).toEqual({
-      ...settingsInitialState,
-      snackbarMessage: { status: 'success', text: 'Account created' }
-    })
+    expect(component.props().budget).toEqual(budgetInitialState)
     expect(component.props().accounts).toEqual(store.getState().accounts)
-    expect(component.props().totalBalance).toEqual(0)
+    expect(component.props().totalBalance).toEqual(accounts[0].currentBalance.localCurrency)
 
-    expect(store.getState().settings.locale).toBe('en-US')
-    expect(component.props().formatCurrency(10000)).toEqual('$10,000.00')
-
-    await store.dispatch(updateSettings({ locale: 'en-UK', currency: 'EUR' }))
-    expect(component.props().formatCurrency(10000)).toEqual('$10,000.00')
+    expect(component.props().formatCurrency(10000)).toEqual('€10,000.00')
   })
 
   it('matches snapshot with two accounts in a different currency', async () => {
-    accounts[1].id = await store.dispatch(createAccount(accounts[1]))
-    await store.dispatch(updateSettings({ locale: 'en-UK', currency: 'EUR' }))
+    const mockStore = configureMockStore()
+    const state = {
+      settings: { ...settingsInitialState, locale: 'en-UK', currency: 'EUR' },
+      accounts: {
+        ...accountsInitialState,
+        byId: { [accounts[0].id]: accounts[0], [accounts[1].id]: accounts[1] }
+      },
+      budget: budgetInitialState,
+      exchangeRates: exchangeRatesInitialState
+    }
+    const byInstitution = groupByInstitution(state.accounts)
+    const store = mockStore({ ...state, accounts: { ...state.accounts, byInstitution } })
 
     const wrapper = mount((
-      <Provider store={store}>
-        <Dashboard />
-      </Provider>
+      <BrowserRouter>
+        <Provider store={store}>
+          <Dashboard />
+        </Provider>
+      </BrowserRouter>
     ))
     expect(wrapper.debug()).toMatchSnapshot()
 
     const component = wrapper.findWhere(node => node.name() === 'DashboardComponent')
-    expect(component.props().settings).toEqual(store.getState().settings)
+    expect(component.props().budget).toEqual(budgetInitialState)
     expect(component.props().accounts).toEqual(store.getState().accounts)
-    expect(component.props().totalBalance).toEqual(accounts[1].openingBalance)
+    expect(component.props().totalBalance).toEqual(
+      accounts[0].currentBalance.localCurrency + accounts[1].currentBalance.localCurrency
+    )
     expect(component.props().formatCurrency(10000)).toEqual('€10,000.00')
   })
 })

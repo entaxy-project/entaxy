@@ -10,7 +10,7 @@ import Button from '@material-ui/core/Button'
 import red from '@material-ui/core/colors/red'
 import AutoComplete from '../../common/AutoComplete'
 import SubmitButtonWithProgress from '../../common/SubmitButtonWithProgress'
-import currencies, { filteredCurrencies } from '../../data/currencies'
+import { fiatCurrencies, filteredFiatCurrencies } from '../../data/currencies'
 import locales, { filteredLocales } from '../../data/locales'
 import confirm from '../../util/confirm'
 
@@ -81,7 +81,7 @@ export class SettingsFormComponent extends React.Component {
           label="Display Currency"
           name="currency"
           value={values.currency}
-          loadOptions={filteredCurrencies}
+          loadOptions={filteredFiatCurrencies}
           onChange={setFieldValue}
           error={errors.currency && touched.currency}
           helperText={errors.currency}
@@ -126,7 +126,7 @@ export default compose(
           value: settings.locale
         },
         currency: settings.currency === undefined ? '' : {
-          label: currencies[settings.currency],
+          label: fiatCurrencies[settings.currency],
           value: settings.currency
         }
       })

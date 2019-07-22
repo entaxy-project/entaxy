@@ -10,6 +10,7 @@ import DeleteIcon from '@material-ui/icons/Delete'
 import { mdiImport } from '@mdi/js'
 import InputBase from '@material-ui/core/InputBase'
 import SearchIcon from '@material-ui/icons/Search'
+import CancelIcon from '@material-ui/icons/Cancel'
 import { fade } from '@material-ui/core/styles/colorManipulator'
 import confirm from '../../../util/confirm'
 import TableToolbar from '../../../common/TableToolbar'
@@ -24,23 +25,31 @@ const styles = theme => ({
   },
   search: {
     position: 'relative',
-    borderRadius: theme.shape.borderRadius,
+    borderRadius: theme.shape.borderRadius * 2,
     backgroundColor: fade(theme.palette.grey[400], 0.15),
-    '&:hover': {
-      backgroundColor: fade(theme.palette.grey[400], 0.25)
-    },
     marginRight: theme.spacing(2),
     marginLeft: 0,
-    width: '100%'
+    width: '100%',
+    '&:hover': {
+      backgroundColor: fade(theme.palette.grey[400], 0.25)
+    }
   },
   searchIcon: {
-    width: theme.spacing(1) * 9,
+    width: theme.spacing(9),
     height: '100%',
     position: 'absolute',
     pointerEvents: 'none',
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    color: '#bbb'
+  },
+  clearIcon: {
+    position: 'absolute',
+    right: theme.spacing(2),
+    padding: 0,
+    marginTop: theme.spacing(2),
+    color: '#999'
   },
   inputRoot: {
     color: 'inherit',
@@ -48,13 +57,13 @@ const styles = theme => ({
   },
   inputInput: {
     paddingTop: theme.spacing(1) * 1.8,
-    paddingRight: theme.spacing(1),
+    paddingRight: theme.spacing(5),
     paddingBottom: theme.spacing(1),
-    paddingLeft: theme.spacing(1) * 8,
+    paddingLeft: theme.spacing(8),
     transition: theme.transitions.create('width'),
     width: '100%',
     [theme.breakpoints.up('md')]: {
-      width: 200
+      minWidth: 230
     }
   }
 })
@@ -77,6 +86,10 @@ export class TransactionsToolbarComponent extends React.Component {
     } else {
       filterProps.unsetFilter({ attr: 'description' })
     }
+  }
+
+  onClearClick = () => {
+    this.props.filterProps.unsetFilter({ attr: 'description' })
   }
 
   render() {
@@ -107,14 +120,25 @@ export class TransactionsToolbarComponent extends React.Component {
                 <SearchIcon />
               </div>
               <InputBase
-                placeholder="Search…"
+                placeholder="Search description or categories..."
                 onChange={this.onChangeSearch}
                 value={filterProps.filters.description || ''}
                 classes={{
                   root: classes.inputRoot,
                   input: classes.inputInput
                 }}
+
               />
+              {('description' in this.props.filterProps.filters) && (
+                <IconButton
+                  className={classes.clearIcon}
+                  aria-label="Clear"
+                  size="small"
+                  onClick={this.onClearClick}
+                >
+                  <CancelIcon fontSize="inherit" />
+                </IconButton>
+              )}
             </div>
             <Tooltip title="Import transaction">
               <IconButton
