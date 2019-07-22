@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import {
-  PieChart, Pie, ResponsiveContainer, Cell
+  PieChart, Pie, ResponsiveContainer, Cell, Tooltip
 } from 'recharts'
 import {
   red,
@@ -24,6 +24,7 @@ import {
   grey,
   blueGrey
 } from '@material-ui/core/colors'
+import { currencyFormatter } from '../../util/stringFormatter'
 
 const baseColors = [
   green,
@@ -48,7 +49,10 @@ const baseColors = [
 ]
 
 const AccountsChart = () => {
-  const accounts = useSelector(state => state.accounts)
+  const { accounts, formatCurrency } = useSelector(state => ({
+    accounts: state.accounts,
+    formatCurrency: currencyFormatter(state.settings.locale, state.settings.currency)
+  }))
   const data = []
   let institutionCount = 0
   for (const institution of Object.keys(accounts.byInstitution).sort()) {
@@ -76,6 +80,10 @@ const AccountsChart = () => {
         >
           {data.map(entry => <Cell key={`cell-${data.name}`} fill={entry.colour} />)}
         </Pie>
+        <Tooltip
+          formatter={(value, name) => [formatCurrency(value), name]}
+        />
+
       </PieChart>
     </ResponsiveContainer>
   )
