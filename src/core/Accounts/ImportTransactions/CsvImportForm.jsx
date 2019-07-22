@@ -115,7 +115,7 @@ export class CsvImportFormComponent extends React.Component {
       csvHeader: null,
       dateFormat: null
     }
-    this.parser = new CsvParser(this.props.transactionRules)
+    this.parser = new CsvParser(this.props.budgetRules)
   }
 
   handleFileUpload = async (acceptedFiles) => {
@@ -296,7 +296,7 @@ CsvImportFormComponent.propTypes = {
   handleParsedData: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired,
   account: PropTypes.object.isRequired,
-  transactionRules: PropTypes.object.isRequired
+  budgetRules: PropTypes.object.isRequired
 }
 
 export default withStyles(styles)(CsvImportFormComponent)

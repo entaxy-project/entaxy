@@ -52,7 +52,7 @@ export const convertAccountsBalancesToLocalCurrency = (dispatch, getState) => {
 }
 
 export const afterAccountsChanged = () => async (dispatch, getState) => {
-  await updateCurrencies(dispatch, getState())
+  await dispatch(updateCurrencies(dispatch, getState()))
   convertAccountsBalancesToLocalCurrency(dispatch, getState)
   dispatch({ type: types.GROUP_BY_INSTITUTION })
   saveState()

@@ -72,7 +72,6 @@ const ImportedResults = (props) => {
   }
 
   const errorCellRenderer = (data) => {
-    console.log('data', data)
     if (data.cellData.length === 0) {
       return <CheckCircleIcon className={classes.iconCheck} />
     }

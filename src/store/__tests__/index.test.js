@@ -3,6 +3,7 @@ import { initialState as settingsInitialState } from '../settings/reducer'
 import { initialState as accountsInitialState } from '../accounts/reducer'
 import { initialState as transactionsInitialState } from '../transactions/reducer'
 import { initialState as exchangeRatesInitialState } from '../exchangeRates/reducer'
+import { initialState as budgetInitialState } from '../budget/reducer'
 import store from '..'
 
 describe('store', () => {
@@ -12,7 +13,8 @@ describe('store', () => {
       settings: settingsInitialState,
       accounts: accountsInitialState,
       transactions: transactionsInitialState,
-      exchangeRates: exchangeRatesInitialState
+      exchangeRates: exchangeRatesInitialState,
+      budget: budgetInitialState
     })
   })
 })

@@ -56,9 +56,14 @@ const colourStyles = {
   singleValue: (newStyles, { data }) => ({ ...newStyles, ...dot(data.colour) })
 }
 
-const mapStateToProps = ({ settings }) => ({
-  budget: settings.budget
-})
+const mapStateToProps = ({ budget }) => ({ budget })
+// const mapStateToProps = ({ budget }) => ({
+//   budget,
+//   budgetForSelect: budget.tree.map(cat => ({
+//     label: budget.byId[cat.id].label,
+//     options: cat.children.map(subCat => budget.byId[subCat])
+//   }))
+// })
 
 const mapDispatchToProps = (dispatch) => {
   return {

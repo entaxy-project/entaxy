@@ -56,7 +56,7 @@ const styles = theme => ({
 })
 
 const mapStateToProps = (state, props) => ({
-  budgetColours: state.settings.budget.colours,
+  budgetColours: state.budget.colours,
   formatCurrency: currencyFormatter(state.settings.locale, props.account.currency),
   formatDecimal: decimalFormatter(state.settings.locale, props.account.type),
   formatDate: dateFormatter(state.settings.locale)
@@ -126,9 +126,13 @@ export class TransactionsTableComponent extends React.Component {
     return orderBy(filteredTransactions, [sortBy], [sortDirection.toLowerCase()])
   }
 
-  filterByDescription = transaction => (
-    transaction.description.toLowerCase().includes(this.state.filters.description)
-  )
+  filterByDescription = (transaction) => {
+    let res = transaction.description.toLowerCase().includes(this.state.filters.description)
+    if (transaction.category !== undefined) {
+      res = res || transaction.category.toLowerCase().includes(this.state.filters.description)
+    }
+    return res
+  }
 
   filterByErrors = transaction => (
     Object.keys(transaction).includes('errors') && transaction.errors.length > 0
@@ -283,16 +287,19 @@ export class TransactionsTableComponent extends React.Component {
                 label="Category"
                 dataKey="category"
                 cellRenderer={
-                  ({ rowData }) => rowData.category !== undefined && (
-                    <Chip
-                      size="small"
-                      label={rowData.category}
-                      style={{
-                        background: budgetColours[rowData.category],
-                        color: chroma.contrast(budgetColours[rowData.category], 'black') > 5 ? 'black' : 'white'
-                      }}
-                    />
-                  )
+                  ({ rowData }) => {
+                    const colour = rowData.category in budgetColours ? budgetColours[rowData.category] : '#dddddd'
+                    return rowData.category !== undefined && (
+                      <Chip
+                        size="small"
+                        label={rowData.category}
+                        style={{
+                          background: colour,
+                          color: chroma.contrast(colour, 'black') > 5 ? 'black' : 'white'
+                        }}
+                      />
+                    )
+                  }
                 }
               />
               <Column

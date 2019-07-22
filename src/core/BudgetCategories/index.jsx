@@ -37,8 +37,8 @@ const useStyles = makeStyles(theme => ({
 
 const BudgetCategories = () => {
   const classes = useStyles()
-  const settings = useSelector(state => state.settings)
-  const [open, setOpen] = React.useState(settings.budget.categories.reduce(
+  const budget = useSelector(state => state.budget)
+  const [open, setOpen] = React.useState(budget.categories.reduce(
     (result, category) => ({ ...result, [category.label]: true }),
     {}
   ))
@@ -56,7 +56,7 @@ const BudgetCategories = () => {
             aria-labelledby="nested-list-subheader"
             className={classes.list}
           >
-            {settings.budget.categories.map(topCategory => (
+            {budget.categories.map(topCategory => (
               <div key={topCategory.label}>
                 <ListItem button onClick={() => handleClick(topCategory.label)}>
                   <ListItemIcon><FolderIcon /></ListItemIcon>
@@ -71,7 +71,7 @@ const BudgetCategories = () => {
                           <div
                             className={classes.dot}
                             style={{
-                              background: settings.budget.colours[category.label]
+                              background: budget.colours[category.label]
                             }}
                           />
                         </ListItemIcon>

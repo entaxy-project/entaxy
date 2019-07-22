@@ -7,6 +7,7 @@ import { initialState as settingsInitialState } from '../../settings/reducer'
 import { initialState as accountsInitialState } from '../../accounts/reducer'
 import { initialState as transactionsInitialState } from '../../transactions/reducer'
 import { initialState as exchangeRatesInitialState } from '../../exchangeRates/reducer'
+import { initialState as budgetInitialState } from '../../budget/reducer'
 import * as actions from '../actions'
 import types from '../types'
 import { blockstackUserSession, blockstackPerson } from '../../../../mocks/BlockstackMock'
@@ -91,9 +92,11 @@ describe('user actions', () => {
 
   it('resetState should delete all data', async () => {
     const mockStore = configureMockStore([thunk])
-    const store = mockStore({})
+    const store = mockStore({
+      settings: settingsInitialState
+    })
 
-    actions.resetState(store.dispatch)
+    store.dispatch(actions.resetState())
     expect(store.getActions()).toEqual([
       {
         type: 'LOAD_SETTINGS',
@@ -110,6 +113,10 @@ describe('user actions', () => {
       {
         type: 'LOAD_EXCHANGE_RATES',
         payload: exchangeRatesInitialState
+      },
+      {
+        type: 'LOAD_BUDGET',
+        payload: budgetInitialState
       }
     ])
   })
@@ -117,7 +124,7 @@ describe('user actions', () => {
   it('userLogout should sign the user out', async () => {
     await actions.userLogout()(dispatch)
     expect(blockstackUserSession.signUserOut).toHaveBeenCalled()
-    expect(dispatch).toBeCalledTimes(5)
+    expect(dispatch).toBeCalledTimes(2)
     expect(dispatch).toBeCalledWith({ type: types.USER_LOGOUT })
   })
 
@@ -161,6 +168,13 @@ describe('user actions', () => {
             { type: 'LOAD_ACCOUNTS', payload: undefined },
             { type: 'LOAD_TRANSACTIONS', payload: undefined },
             { type: 'LOAD_EXCHANGE_RATES', payload: undefined },
+            {
+              type: 'LOAD_BUDGET',
+              payload: {
+                categories: budgetInitialState.categories,
+                colours: budgetInitialState.colours
+              }
+            },
             { type: 'HIDE_OVERLAY' }
           ])
           done()

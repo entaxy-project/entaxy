@@ -1,36 +1,36 @@
-import currencies, { formatedCurrencies, filteredCurrencies } from '../currencies'
+import {
+  fiatCurrencies,
+  formatedFiatCurrencies,
+  filteredFiatCurrencies
+} from '../currencies'
 
 describe('currencies', () => {
-  describe('formatedCurrencies', () => {
+  describe('formatedFiatCurrencies', () => {
     it('formats for auto-select', () => {
-      expect(formatedCurrencies[0]).toEqual({ label: '(AFN) Afghan Afghani', value: 'AFN' })
+      expect(formatedFiatCurrencies[0]).toEqual({ label: '(AUD) Australian Dollar', value: 'AUD' })
     })
   })
 
-  describe('filteredCurrencies', () => {
+  describe('filteredFiatCurrencies', () => {
     it('filters with no input', async () => {
-      const result = await filteredCurrencies()
-      expect(result).toEqual(Object.keys(currencies).map(key => ({
+      const result = await filteredFiatCurrencies()
+      expect(result).toEqual(Object.keys(fiatCurrencies).sort().map(key => ({
         value: key,
-        label: `(${key}) ${currencies[key]}`
+        label: `(${key}) ${fiatCurrencies[key]}`
       })))
     })
 
     it('filters with some input', async () => {
-      const result = await filteredCurrencies('EU')
+      const result = await filteredFiatCurrencies('EU')
       expect(result).toEqual([
         { label: '(EUR) Euro', value: 'EUR' },
-        { label: '(XEU) European Currency Unit', value: 'XEU' },
-        { label: '(MDL) Moldovan Leu', value: 'MDL' },
-        { label: '(RON) Romanian Leu', value: 'RON' },
-        { label: '(ROL) Romanian Leu (1952–2006)', value: 'ROL' },
-        { label: '(CHE) WIR Euro', value: 'CHE' }
+        { label: '(RON) Romanian Leu', value: 'RON' }
       ])
     })
 
     it('filters with a specific input', async () => {
-      const result = await filteredCurrencies('CAD')
-      expect(result).toEqual([{ label: `(CAD) ${currencies.CAD}`, value: 'CAD' }])
+      const result = await filteredFiatCurrencies('CAD')
+      expect(result).toEqual([{ label: `(CAD) ${fiatCurrencies.CAD}`, value: 'CAD' }])
     })
   })
 })

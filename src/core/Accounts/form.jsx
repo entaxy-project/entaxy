@@ -16,7 +16,7 @@ import Button from '@material-ui/core/Button'
 import red from '@material-ui/core/colors/red'
 import format from 'date-fns/format'
 import parse from 'date-fns/parse'
-import currencies, { filteredCurrencies } from '../../data/currencies'
+import { fiatCurrencies, filteredFiatCurrencies } from '../../data/currencies'
 import AutoComplete from '../../common/AutoComplete'
 import institutions from '../../data/institutions'
 import SubmitButtonWithProgress from '../../common/SubmitButtonWithProgress'
@@ -223,7 +223,7 @@ export class AccountFormComponent extends React.Component {
               label="Account Currency"
               name="currency"
               value={values.currency}
-              loadOptions={filteredCurrencies}
+              loadOptions={filteredFiatCurrencies}
               onChange={setFieldValue}
               error={errors.currency && touched.currency}
               helperText={errors.currency}
@@ -282,7 +282,7 @@ export default compose(
           openingBalance: 0,
           openingBalanceDate: format(Date.now(), 'YYYY-MM-DD'),
           currency: settings.currency === undefined ? null : {
-            label: `(${settings.currency}) ${currencies[settings.currency]}`,
+            label: `(${settings.currency}) ${fiatCurrencies[settings.currency]}`,
             value: settings.currency
           }
         }
@@ -295,7 +295,7 @@ export default compose(
           value: account.institution
         },
         currency: {
-          label: `(${account.currency}) ${currencies[account.currency]}`,
+          label: `(${account.currency}) ${fiatCurrencies[account.currency]}`,
           value: account.currency
         }
       }

@@ -172,6 +172,9 @@ describe('accounts actions', () => {
           type: 'ADD_TRANSACTIONS',
           payload: transactions
         }, {
+          type: 'COUNT_RULE_USAGE',
+          payload: []
+        }, {
           type: types.GROUP_BY_INSTITUTION
         }, {
           type: 'SHOW_SNACKBAR',
@@ -212,6 +215,7 @@ describe('accounts actions', () => {
 
   describe('deleteAccount', () => {
     it('should deleteAccount', async () => {
+      const transaction = { id: 1, accountId: 'a1', amount: 1 }
       const store = mockStore({
         accounts: {
           ...accountsInitialState,
@@ -224,7 +228,7 @@ describe('accounts actions', () => {
             }
           }
         },
-        transactions: { list: [{ id: 1, accountId: 'a1', amount: 1 }] },
+        transactions: { list: [transaction] },
         settings: settingsInitialState,
         exchangeRates: exchangeRatesInitialState
       })
@@ -233,6 +237,9 @@ describe('accounts actions', () => {
         {
           type: 'DELETE_TRANSACTIONS',
           payload: [1]
+        }, {
+          type: 'COUNT_RULE_USAGE',
+          payload: [transaction]
         }, {
           type: types.DELETE_ACCOUNT,
           payload: 'a1'
@@ -265,6 +272,9 @@ describe('accounts actions', () => {
       expect(store.getActions()).toEqual([
         {
           type: 'DELETE_TRANSACTIONS',
+          payload: []
+        }, {
+          type: 'COUNT_RULE_USAGE',
           payload: []
         }, {
           type: types.DELETE_ACCOUNT,
@@ -310,6 +320,9 @@ describe('accounts actions', () => {
             ...importedAccounts[0].transactions[0],
             id: 'xyz'
           }]
+        }, {
+          type: 'COUNT_RULE_USAGE',
+          payload: []
         }, {
           type: types.CREATE_ACCOUNT_GROUP,
           payload: {
@@ -382,11 +395,17 @@ describe('accounts actions', () => {
           type: 'DELETE_TRANSACTIONS',
           payload: ['t1', 't2']
         }, {
+          type: 'COUNT_RULE_USAGE',
+          payload: transactions
+        }, {
           type: types.DELETE_ACCOUNT,
           payload: 'a1'
         }, {
           type: 'DELETE_TRANSACTIONS',
           payload: ['t3']
+        }, {
+          type: 'COUNT_RULE_USAGE',
+          payload: transactions
         }, {
           type: types.DELETE_ACCOUNT,
           payload: 'a2'

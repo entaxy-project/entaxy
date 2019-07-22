@@ -33,9 +33,9 @@ const styles = theme => ({
   }
 })
 
-const mapStateToProps = ({ accounts, transactions }, props) => ({
+const mapStateToProps = ({ accounts, budget }, props) => ({
   account: accounts.byId[props.match.params.accountId],
-  transactionRules: transactions.rules
+  budgetRules: budget.rules
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -65,6 +65,7 @@ export class ImportTransactionsComponent extends React.Component {
       .map(transaction => ({
         amount: transaction.amount,
         description: transaction.description,
+        category: transaction.category,
         createdAt: transaction.createdAt
       }))
     if (transactions.length > 0) {
@@ -104,7 +105,7 @@ export class ImportTransactionsComponent extends React.Component {
     const {
       classes,
       account,
-      transactionRules
+      budgetRules
     } = this.props
     return (
       <Grid container direction="row" justify="center">
@@ -133,7 +134,7 @@ export class ImportTransactionsComponent extends React.Component {
               {!showTransactions && importType === 'CSV' && (
                 <CsvImportForm
                   account={account}
-                  transactionRules={transactionRules}
+                  budgetRules={budgetRules}
                   handleParsedData={this.handleParsedData}
                   onCancel={this.handleCancel}
                 />
@@ -158,7 +159,7 @@ export class ImportTransactionsComponent extends React.Component {
 ImportTransactionsComponent.propTypes = {
   classes: PropTypes.object.isRequired,
   account: PropTypes.object.isRequired,
-  transactionRules: PropTypes.object.isRequired,
+  budgetRules: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
   saveTransactions: PropTypes.func.isRequired,
   showSnackbarMessage: PropTypes.func.isRequired

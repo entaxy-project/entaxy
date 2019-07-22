@@ -1,38 +1,107 @@
+/* eslint-disable quote-props */
 const budgetCategories = {
-  'Mandatory / Regular Expenses': [
-    'Rent / Mortgage (including fees)',
-    'Utilities - Electric / Water / Gas',
-    'Gas (Car)',
-    'Phone (Mobile + Home)',
-    'Groceries',
-    'Regular Fees (bank fees, ...)',
-    'Transportation (subway card...)',
+  'Transport': [
+    'Auto Payment',
+    'Gas & Fuel',
+    'Parking',
+    'Public Transportation',
+    'Service & Parts'
+  ],
+  'Bills & Utilities': [
+    'Home Phone',
     'Internet',
-    'Subscriptions (apps, gym, streaming...)',
-    'Insurance (house, car, life...)',
+    'Mobile Phone'
+  ],
+  'Education': [
+    'Books & Supplies',
     'Student Loan',
-    'Car Loan',
-    'Baby-related',
     'Tuition'
   ],
-  'Irregular Expenses Car Maintenance': [
-    'House Maintenance',
-    'Medical (drugs, procedures...)',
-    'Clothing',
-    'Gifts',
-    'Furniture',
-    'House Items (kitchen, linens...)',
-    'Electronics (laptop, tv, headphones...)',
-    'Alcohol',
-    'Toys, Games',
-    'Vehicule (car, bike ...)',
-    'Beauty Products'
+  'Subscriptions': [
+    'Netflix',
+    'Spotify'
   ],
-  'Miscellaneous Dining Out': [
-    'Gaming',
-    'Music',
-    'Fun Money (cinema, outdoor activities...)',
+  'Insurance': [
+    'Car nsurance',
+    'Life insurance',
+    'Health Insurance',
+    'Home insurance'
+  ],
+  'Food & Dining': [
+    'Groceries',
+    'Restaurants'
+  ],
+  'Shopping': [
+    'Books',
+    'Clothing',
+    'Electronics & Software',
+    'Hobbies',
+    'Sporting Goods'
+  ],
+  'Gifts & Donations': [
+    'Charity',
+    'Gift'
+  ],
+  'Health & Fitness': [
+    'Dentist',
+    'Doctor',
+    'Eyecare',
+    'Pharmacy',
+    'Gym',
+    'Sports'
+  ],
+  'Home': [
+    'Furniture',
+    'Home Improvement',
+    'Home Services',
+    'Home Supplies',
+    'Lawn & Garden',
+    'Mortgage & Rent'
+  ],
+  'Income': [
+    'Bonus',
+    'Interest Income',
+    'Paycheque',
+    'Reimbursement',
+    'Rental Income',
+    'Returned Purchase'
+  ],
+  'Investments': [
+    'Buy',
+    'Deposit',
+    'Dividend & Cap Gains',
+    'Sell',
+    'Withdrawal'
+  ],
+  'Kids': [
+    'Kids Allowance',
+    'Baby Supplies',
+    'Babysitter & Daycare',
+    'Child Support',
+    'Kids Activities',
+    'Kids Toys'
+  ],
+  'Pets': [
+    'Pet Food & Supplies',
+    'Pet Grooming',
+    'Veterinary'
+  ],
+  'Taxes': [
+    'Federal Tax',
+    'Local Tax',
+    'Property Tax',
+    'Sales Tax',
+    'Provincial Tax'
+  ],
+  'Travel': [
+    'Flights',
+    'Hotel',
+    'Rental Car & Taxi',
     'Vacation'
+  ],
+  'Uncategorized': [
+    'Cash & ATM',
+    'Cheque'
   ]
 }
 

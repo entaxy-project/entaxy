@@ -16,9 +16,9 @@ exports[`Taxes matches snapshot 1`] = `
     <WithStyles(ForwardRef(Grid)) item={true} xs={2}>
       <WithStyles(ForwardRef(Paper)) className={[undefined]}>
         <WithStyles(ForwardRef(FormControl)) fullWidth={true} className={[undefined]}>
-          <WithStyles(WithFormControlContext(ForwardRef(InputLabel))) htmlFor=\\"income\\">
+          <WithStyles(ForwardRef(InputLabel)) htmlFor=\\"income\\">
             Your income
-          </WithStyles(WithFormControlContext(ForwardRef(InputLabel)))>
+          </WithStyles(ForwardRef(InputLabel))>
           <WithStyles(ForwardRef(Input)) value={90000} onChange={[Function]} inputComponent={[Function: CurrencyFormat]} className={[undefined]} inputProps={{...}} />
         </WithStyles(ForwardRef(FormControl))>
       </WithStyles(ForwardRef(Paper))>
@@ -27,9 +27,9 @@ exports[`Taxes matches snapshot 1`] = `
           Tax credits
         </WithStyles(ForwardRef(Typography))>
         <WithStyles(ForwardRef(FormControl)) fullWidth={true} className={[undefined]}>
-          <WithStyles(WithFormControlContext(ForwardRef(InputLabel))) htmlFor=\\"rrsp\\">
+          <WithStyles(ForwardRef(InputLabel)) htmlFor=\\"rrsp\\">
             RRSP contribution
-          </WithStyles(WithFormControlContext(ForwardRef(InputLabel)))>
+          </WithStyles(ForwardRef(InputLabel))>
           <WithStyles(ForwardRef(Input)) name=\\"rrsp\\" value={10000} onChange={[Function]} inputComponent={[Function: CurrencyFormat]} className={{...}} inputProps={{...}} />
         </WithStyles(ForwardRef(FormControl))>
       </WithStyles(ForwardRef(Paper))>
