@@ -30,7 +30,7 @@ const styles = theme => ({
   },
   menuIcon: {
     marginRight: '5px',
-    'vertical-align': 'bottom',
+    verticalAlign: 'bottom',
     fill: theme.palette.text.secondary
   }
 })
@@ -101,12 +101,6 @@ export class LoginButtonComponent extends React.Component {
                           <Settings />
                         </ListItemIcon>
                         <ListItemText primary="Settings" />
-                      </MenuItem>
-                      <MenuItem onClick={this.handleClose} component={LinkTo('/budget-categories')}>
-                        <ListItemIcon>
-                          <Settings />
-                        </ListItemIcon>
-                        <ListItemText primary="Budget Categories" />
                       </MenuItem>
                       <MenuItem onClick={handleLogout}>
                         <ListItemIcon>

@@ -13,7 +13,7 @@ describe('Header', () => {
     const component = renderer.create((
       <Provider store={store}>
         <BrowserRouter>
-          <Header>
+          <Header match={{ path: '/dashboard' }}>
             <div>content</div>
           </Header>
         </BrowserRouter>
