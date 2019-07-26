@@ -1,14 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Button from '@material-ui/core/Button'
-import { withStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@material-ui/core/styles'
+import ClickAwayListener from '@material-ui/core/ClickAwayListener'
+import Popper from '@material-ui/core/Popper'
+import MenuItem from '@material-ui/core/MenuItem'
+import MenuList from '@material-ui/core/MenuList'
+import ListItemText from '@material-ui/core/ListItemText'
+import Paper from '@material-ui/core/Paper'
+import Fade from '@material-ui/core/Fade'
 import Logo from '../Logo/index'
 import LoginButton from '../LoginButton'
 import LinkTo from '../LinkTo'
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   root: {
     paddingTop: 70
   },
@@ -18,10 +25,18 @@ const styles = theme => ({
   toolbar: {
     display: 'flex',
     justifyContent: 'space-between'
+  },
+  popper: {
+    zIndex: theme.zIndex.drawer + 1,
+    display: 'flex'
   }
-})
+}))
 
-const Header = ({ classes, children, match }) => {
+const Header = ({ children, match }) => {
+  const classes = useStyles()
+  const [open, setOpen] = useState(false)
+  const [anchorEl, setAnchorEl] = useState(null)
+
   const buttonColourFor = (path) => {
     let paths = path
     if (typeof path === 'string') {
@@ -33,31 +48,69 @@ const Header = ({ classes, children, match }) => {
     return matched ? 'secondary' : 'inherit'
   }
 
+  const handleClick = (event) => {
+    const { currentTarget } = event
+    setAnchorEl(currentTarget)
+    setOpen(!open)
+    console.log('currentTarget', currentTarget)
+  }
+
+  const handleClose = () => {
+    setOpen(false)
+  }
+
   return (
     <div className={classes.root}>
       <AppBar position="fixed" className={classes.header}>
         <Toolbar className={classes.toolbar}>
           <Logo />
-          <div>
-            <Button
-              color={buttonColourFor('/dashboard')}
-              component={LinkTo('/dashboard')}
-            >
-              Dashboard
-            </Button>
-            <Button
-              color={buttonColourFor(['/accounts', '/institutions'])}
-              component={LinkTo('/accounts')}
-            >
-              Accounts
-            </Button>
-            <Button
-              color={buttonColourFor('/budget')}
-              component={LinkTo('/budget')}
-            >
-              Budget
-            </Button>
-          </div>
+          <ClickAwayListener onClickAway={handleClose}>
+            <div>
+              <Button
+                color={buttonColourFor('/dashboard')}
+                component={LinkTo('/dashboard')}
+              >
+                Dashboard
+              </Button>
+              <Button
+                color={buttonColourFor(['/accounts', '/institutions'])}
+                component={LinkTo('/accounts')}
+              >
+                Accounts
+              </Button>
+              <Button
+                color={buttonColourFor('/budget')}
+                aria-owns={open ? 'budget-menu-list-grow' : null}
+                onClick={handleClick}
+              >
+                Budget
+              </Button>
+              {anchorEl !== null && (
+                <Popper
+                  open={open}
+                  anchorEl={anchorEl}
+                  transition
+                  className={classes.popper}
+                  placement="bottom-start"
+                >
+                  {({ TransitionProps }) => (
+                    <Fade {...TransitionProps} timeout={350}>
+                      <Paper>
+                        <MenuList role="menu">
+                          <MenuItem onClick={handleClose} component={LinkTo('/budget')}>
+                            <ListItemText primary="Budget History" />
+                          </MenuItem>
+                          <MenuItem onClick={handleClose} component={LinkTo('/budget-categories')}>
+                            <ListItemText primary="Budget Categories" />
+                          </MenuItem>
+                        </MenuList>
+                      </Paper>
+                    </Fade>
+                  )}
+                </Popper>
+              )}
+            </div>
+          </ClickAwayListener>
           <LoginButton />
         </Toolbar>
       </AppBar>
@@ -67,9 +120,8 @@ const Header = ({ classes, children, match }) => {
 }
 
 Header.propTypes = {
-  classes: PropTypes.object.isRequired,
   children: PropTypes.object.isRequired,
   match: PropTypes.object.isRequired
 }
 
-export default withStyles(styles)(Header)
+export default Header

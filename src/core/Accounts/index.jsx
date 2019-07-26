@@ -14,7 +14,6 @@ import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import TableCell from '@material-ui/core/TableCell'
 import grey from '@material-ui/core/colors/grey'
-import LinkTo from '../../common/LinkTo'
 import { currencyFormatter } from '../../util/stringFormatter'
 import InstitutionIcon from '../../common/InstitutionIcon'
 import AccountsChart from './AccountsChart'
@@ -59,7 +58,7 @@ const styles = theme => ({
     color: grey[600]
   },
   accountWrapper: {
-    paddingLeft: theme.spacing(2)
+    paddingLeft: theme.spacing(4)
   },
   accountName: {
     paddingLeft: 20
@@ -84,11 +83,17 @@ export const AccountsIndexComponent = ({
   classes,
   accounts,
   settings,
-  totalBalance
+  totalBalance,
+  history
 }) => {
   const formatCurrency = (currency, value) => (
     currencyFormatter(settings.locale, currency)(value)
   )
+
+  const handleClick = (account) => {
+    history.push(`/accounts/${account.id}/transactions`)
+  }
+
   const userHasAccounts = Object.keys(accounts.byInstitution).length > 0
   return (
     <Container>
@@ -153,17 +158,9 @@ export const AccountsIndexComponent = ({
                           {accountGroup.accountIds.map((id) => {
                             const account = accounts.byId[id]
                             return (
-                              <TableRow key={id}>
-                                <TableCell>
-                                  <span className={classes.accountWrapper}>
-                                    <Typography
-                                      variant="body2"
-                                      color="primary"
-                                      component={LinkTo(`/accounts/${account.id}/transactions`)}
-                                    >
-                                      {account.name}
-                                    </Typography>
-                                  </span>
+                              <TableRow key={id} hover onClick={() => handleClick(account)}>
+                                <TableCell className={classes.accountWrapper}>
+                                  {account.name}
                                 </TableCell>
                                 <TableCell>
                                   {formatCurrency(account.currency, account.currentBalance.accountCurrency)}
@@ -192,7 +189,8 @@ AccountsIndexComponent.propTypes = {
   classes: PropTypes.object.isRequired,
   accounts: PropTypes.object.isRequired,
   settings: PropTypes.object.isRequired,
-  totalBalance: PropTypes.number.isRequired
+  totalBalance: PropTypes.number.isRequired,
+  history: PropTypes.object.isRequired
 }
 
 export default compose(

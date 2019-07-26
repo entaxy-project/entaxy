@@ -32,15 +32,6 @@ const accounts = {
       institution: 'BMO',
       currency: 'USD', // Different currency
       currentBalance: { accountCurrency: 3000, localCurrency: 3000 }
-    },
-    4: {
-      id: '4',
-      groupId: 0,
-      description: 'BTC',
-      institution: 'Coinbase',
-      currency: 'BTC', // Different currency
-      currentBalance: { accountCurrency: 0.0001, localCurrency: 10 },
-      type: 'wallet'
     }
   },
   byInstitution: {

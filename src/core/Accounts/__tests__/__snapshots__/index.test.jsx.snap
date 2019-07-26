@@ -4,9 +4,9 @@ exports[`AccountsIndex matches snapshot with no accounts 1`] = `
 "<BrowserRouter>
   <Router history={{...}}>
     <Provider store={{...}}>
-      <Connect(WithStyles(AccountsIndexComponent))>
-        <WithStyles(AccountsIndexComponent) accounts={{...}} settings={{...}} totalBalance={0} dispatch={[Function: dispatch]}>
-          <AccountsIndexComponent classes={{...}} accounts={{...}} settings={{...}} totalBalance={0} dispatch={[Function: dispatch]}>
+      <Connect(WithStyles(AccountsIndexComponent)) history={{...}}>
+        <WithStyles(AccountsIndexComponent) history={{...}} accounts={{...}} settings={{...}} totalBalance={0} dispatch={[Function: dispatch]}>
+          <AccountsIndexComponent classes={{...}} history={{...}} accounts={{...}} settings={{...}} totalBalance={0} dispatch={[Function: dispatch]}>
             <WithStyles(ForwardRef(Container))>
               <ForwardRef(Container) classes={{...}}>
                 <div className=\\"MuiContainer-root MuiContainer-maxWidthLg\\">
@@ -32,9 +32,9 @@ exports[`AccountsIndex matches snapshot with one account 1`] = `
 "<BrowserRouter>
   <Router history={{...}}>
     <Provider store={{...}}>
-      <Connect(WithStyles(AccountsIndexComponent))>
-        <WithStyles(AccountsIndexComponent) accounts={{...}} settings={{...}} totalBalance={1000} dispatch={[Function: dispatch]}>
-          <AccountsIndexComponent classes={{...}} accounts={{...}} settings={{...}} totalBalance={1000} dispatch={[Function: dispatch]}>
+      <Connect(WithStyles(AccountsIndexComponent)) history={{...}}>
+        <WithStyles(AccountsIndexComponent) history={{...}} accounts={{...}} settings={{...}} totalBalance={1000} dispatch={[Function: dispatch]}>
+          <AccountsIndexComponent classes={{...}} history={{...}} accounts={{...}} settings={{...}} totalBalance={1000} dispatch={[Function: dispatch]}>
             <WithStyles(ForwardRef(Container))>
               <ForwardRef(Container) classes={{...}}>
                 <div className=\\"MuiContainer-root MuiContainer-maxWidthLg\\">
@@ -207,24 +207,12 @@ exports[`AccountsIndex matches snapshot with one account 1`] = `
                                                                 </tr>
                                                               </ForwardRef(TableRow)>
                                                             </WithStyles(ForwardRef(TableRow))>
-                                                            <WithStyles(ForwardRef(TableRow))>
-                                                              <ForwardRef(TableRow) classes={{...}}>
-                                                                <tr className=\\"MuiTableRow-root\\">
-                                                                  <WithStyles(ForwardRef(TableCell))>
-                                                                    <ForwardRef(TableCell) classes={{...}}>
-                                                                      <td className=\\"MuiTableCell-root MuiTableCell-body\\" aria-sort={{...}} scope={[undefined]}>
-                                                                        <span className=\\"AccountsIndexComponent-accountWrapper-9\\">
-                                                                          <WithStyles(ForwardRef(Typography)) variant=\\"body2\\" color=\\"primary\\" component={{...}}>
-                                                                            <ForwardRef(Typography) classes={{...}} variant=\\"body2\\" color=\\"primary\\" component={{...}} theme={{...}}>
-                                                                              <ForwardRef className=\\"MuiTypography-root MuiTypography-body2 MuiTypography-colorPrimary\\">
-                                                                                <Link to=\\"/accounts/1/transactions\\" className=\\"MuiTypography-root MuiTypography-body2 MuiTypography-colorPrimary\\" innerRef={{...}}>
-                                                                                  <a className=\\"MuiTypography-root MuiTypography-body2 MuiTypography-colorPrimary\\" onClick={[Function: onClick]} href=\\"/accounts/1/transactions\\" />
-                                                                                </Link>
-                                                                              </ForwardRef>
-                                                                            </ForwardRef(Typography)>
-                                                                          </WithStyles(ForwardRef(Typography))>
-                                                                        </span>
-                                                                      </td>
+                                                            <WithStyles(ForwardRef(TableRow)) hover={true} onClick={[Function: onClick]}>
+                                                              <ForwardRef(TableRow) classes={{...}} hover={true} onClick={[Function: onClick]}>
+                                                                <tr className=\\"MuiTableRow-root MuiTableRow-hover\\" onClick={[Function: onClick]}>
+                                                                  <WithStyles(ForwardRef(TableCell)) className=\\"AccountsIndexComponent-accountWrapper-9\\">
+                                                                    <ForwardRef(TableCell) classes={{...}} className=\\"AccountsIndexComponent-accountWrapper-9\\">
+                                                                      <td className=\\"MuiTableCell-root AccountsIndexComponent-accountWrapper-9 MuiTableCell-body\\" aria-sort={{...}} scope={[undefined]} />
                                                                     </ForwardRef(TableCell)>
                                                                   </WithStyles(ForwardRef(TableCell))>
                                                                   <WithStyles(ForwardRef(TableCell))>
@@ -280,9 +268,9 @@ exports[`AccountsIndex matches snapshot with two accounts in a different currenc
 "<BrowserRouter>
   <Router history={{...}}>
     <Provider store={{...}}>
-      <Connect(WithStyles(AccountsIndexComponent))>
-        <WithStyles(AccountsIndexComponent) accounts={{...}} settings={{...}} totalBalance={2500} dispatch={[Function: dispatch]}>
-          <AccountsIndexComponent classes={{...}} accounts={{...}} settings={{...}} totalBalance={2500} dispatch={[Function: dispatch]}>
+      <Connect(WithStyles(AccountsIndexComponent)) history={{...}}>
+        <WithStyles(AccountsIndexComponent) history={{...}} accounts={{...}} settings={{...}} totalBalance={2500} dispatch={[Function: dispatch]}>
+          <AccountsIndexComponent classes={{...}} history={{...}} accounts={{...}} settings={{...}} totalBalance={2500} dispatch={[Function: dispatch]}>
             <WithStyles(ForwardRef(Container))>
               <ForwardRef(Container) classes={{...}}>
                 <div className=\\"MuiContainer-root MuiContainer-maxWidthLg\\">
@@ -455,24 +443,12 @@ exports[`AccountsIndex matches snapshot with two accounts in a different currenc
                                                                 </tr>
                                                               </ForwardRef(TableRow)>
                                                             </WithStyles(ForwardRef(TableRow))>
-                                                            <WithStyles(ForwardRef(TableRow))>
-                                                              <ForwardRef(TableRow) classes={{...}}>
-                                                                <tr className=\\"MuiTableRow-root\\">
-                                                                  <WithStyles(ForwardRef(TableCell))>
-                                                                    <ForwardRef(TableCell) classes={{...}}>
-                                                                      <td className=\\"MuiTableCell-root MuiTableCell-body\\" aria-sort={{...}} scope={[undefined]}>
-                                                                        <span className=\\"AccountsIndexComponent-accountWrapper-9\\">
-                                                                          <WithStyles(ForwardRef(Typography)) variant=\\"body2\\" color=\\"primary\\" component={{...}}>
-                                                                            <ForwardRef(Typography) classes={{...}} variant=\\"body2\\" color=\\"primary\\" component={{...}} theme={{...}}>
-                                                                              <ForwardRef className=\\"MuiTypography-root MuiTypography-body2 MuiTypography-colorPrimary\\">
-                                                                                <Link to=\\"/accounts/1/transactions\\" className=\\"MuiTypography-root MuiTypography-body2 MuiTypography-colorPrimary\\" innerRef={{...}}>
-                                                                                  <a className=\\"MuiTypography-root MuiTypography-body2 MuiTypography-colorPrimary\\" onClick={[Function: onClick]} href=\\"/accounts/1/transactions\\" />
-                                                                                </Link>
-                                                                              </ForwardRef>
-                                                                            </ForwardRef(Typography)>
-                                                                          </WithStyles(ForwardRef(Typography))>
-                                                                        </span>
-                                                                      </td>
+                                                            <WithStyles(ForwardRef(TableRow)) hover={true} onClick={[Function: onClick]}>
+                                                              <ForwardRef(TableRow) classes={{...}} hover={true} onClick={[Function: onClick]}>
+                                                                <tr className=\\"MuiTableRow-root MuiTableRow-hover\\" onClick={[Function: onClick]}>
+                                                                  <WithStyles(ForwardRef(TableCell)) className=\\"AccountsIndexComponent-accountWrapper-9\\">
+                                                                    <ForwardRef(TableCell) classes={{...}} className=\\"AccountsIndexComponent-accountWrapper-9\\">
+                                                                      <td className=\\"MuiTableCell-root AccountsIndexComponent-accountWrapper-9 MuiTableCell-body\\" aria-sort={{...}} scope={[undefined]} />
                                                                     </ForwardRef(TableCell)>
                                                                   </WithStyles(ForwardRef(TableCell))>
                                                                   <WithStyles(ForwardRef(TableCell))>
@@ -492,24 +468,12 @@ exports[`AccountsIndex matches snapshot with two accounts in a different currenc
                                                                 </tr>
                                                               </ForwardRef(TableRow)>
                                                             </WithStyles(ForwardRef(TableRow))>
-                                                            <WithStyles(ForwardRef(TableRow))>
-                                                              <ForwardRef(TableRow) classes={{...}}>
-                                                                <tr className=\\"MuiTableRow-root\\">
-                                                                  <WithStyles(ForwardRef(TableCell))>
-                                                                    <ForwardRef(TableCell) classes={{...}}>
-                                                                      <td className=\\"MuiTableCell-root MuiTableCell-body\\" aria-sort={{...}} scope={[undefined]}>
-                                                                        <span className=\\"AccountsIndexComponent-accountWrapper-9\\">
-                                                                          <WithStyles(ForwardRef(Typography)) variant=\\"body2\\" color=\\"primary\\" component={{...}}>
-                                                                            <ForwardRef(Typography) classes={{...}} variant=\\"body2\\" color=\\"primary\\" component={{...}} theme={{...}}>
-                                                                              <ForwardRef className=\\"MuiTypography-root MuiTypography-body2 MuiTypography-colorPrimary\\">
-                                                                                <Link to=\\"/accounts/2/transactions\\" className=\\"MuiTypography-root MuiTypography-body2 MuiTypography-colorPrimary\\" innerRef={{...}}>
-                                                                                  <a className=\\"MuiTypography-root MuiTypography-body2 MuiTypography-colorPrimary\\" onClick={[Function: onClick]} href=\\"/accounts/2/transactions\\" />
-                                                                                </Link>
-                                                                              </ForwardRef>
-                                                                            </ForwardRef(Typography)>
-                                                                          </WithStyles(ForwardRef(Typography))>
-                                                                        </span>
-                                                                      </td>
+                                                            <WithStyles(ForwardRef(TableRow)) hover={true} onClick={[Function: onClick]}>
+                                                              <ForwardRef(TableRow) classes={{...}} hover={true} onClick={[Function: onClick]}>
+                                                                <tr className=\\"MuiTableRow-root MuiTableRow-hover\\" onClick={[Function: onClick]}>
+                                                                  <WithStyles(ForwardRef(TableCell)) className=\\"AccountsIndexComponent-accountWrapper-9\\">
+                                                                    <ForwardRef(TableCell) classes={{...}} className=\\"AccountsIndexComponent-accountWrapper-9\\">
+                                                                      <td className=\\"MuiTableCell-root AccountsIndexComponent-accountWrapper-9 MuiTableCell-body\\" aria-sort={{...}} scope={[undefined]} />
                                                                     </ForwardRef(TableCell)>
                                                                   </WithStyles(ForwardRef(TableCell))>
                                                                   <WithStyles(ForwardRef(TableCell))>

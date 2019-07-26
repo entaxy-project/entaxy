@@ -30,6 +30,8 @@ const accounts = [{
   groupId: 0
 }]
 
+const mochHistoryPush = jest.fn()
+
 describe('AccountsIndex', () => {
   it('matches snapshot with no accounts', () => {
     const mockStore = configureMockStore()
@@ -41,7 +43,7 @@ describe('AccountsIndex', () => {
     const wrapper = mount((
       <BrowserRouter>
         <Provider store={store}>
-          <AccountsIndex />
+          <AccountsIndex history={{ push: mochHistoryPush }} />
         </Provider>
       </BrowserRouter>
     ))
@@ -71,7 +73,7 @@ describe('AccountsIndex', () => {
     const wrapper = mount((
       <BrowserRouter>
         <Provider store={store}>
-          <AccountsIndex />
+          <AccountsIndex history={{ push: mochHistoryPush }} />
         </Provider>
       </BrowserRouter>
     ))
@@ -99,7 +101,7 @@ describe('AccountsIndex', () => {
     const wrapper = mount((
       <BrowserRouter>
         <Provider store={store}>
-          <AccountsIndex />
+          <AccountsIndex history={{ push: mochHistoryPush }} />
         </Provider>
       </BrowserRouter>
     ))
