@@ -95,7 +95,6 @@ describe('user actions', () => {
     const store = mockStore({
       settings: settingsInitialState
     })
-
     store.dispatch(actions.resetState())
     expect(store.getActions()).toEqual([
       {
@@ -164,7 +163,7 @@ describe('user actions', () => {
                 pictureUrl: 'mocked url'
               }
             },
-            { type: 'LOAD_SETTINGS', payload: undefined },
+            { type: 'LOAD_SETTINGS', payload: { overlayMessage: '' } },
             { type: 'LOAD_ACCOUNTS', payload: undefined },
             { type: 'LOAD_TRANSACTIONS', payload: undefined },
             { type: 'LOAD_EXCHANGE_RATES', payload: undefined },

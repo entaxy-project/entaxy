@@ -5,7 +5,9 @@ import budgetCategories from '../../data/budgetCategories'
 // http://repec.sowi.unibe.ch/stata/palettes/index.html
 const defaultColours = [
   '#1f78b4', '#b2df8a', '#e31a1c',
-  '#ff7f00', '#cab2d6', '#a6cee3', '#33a02c', '#6a3d9a', '#fb9a99', '#fdbf6f', '#ffff99', '#b15928'
+  '#ff7f00', '#cab2d6', '#a6cee3',
+  '#33a02c', '#6a3d9a', '#fb9a99',
+  '#fdbf6f', '#ffff99', '#b15928'
 ]
 
 export const initialState = (() => {

@@ -3,201 +3,199 @@ import { compose } from 'recompose'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
-import List from '@material-ui/core/List'
-import ListSubheader from '@material-ui/core/ListSubheader'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemIcon from '@material-ui/core/ListItemIcon'
-import ListItemText from '@material-ui/core/ListItemText'
+import Container from '@material-ui/core/Container'
+import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
-import Tooltip from '@material-ui/core/Tooltip'
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
-import IconButton from '@material-ui/core/IconButton'
-import AddIcon from '@material-ui/icons/Add'
-import EditIcon from '@material-ui/icons/Edit'
-import SettingsIcon from '@material-ui/icons/Settings'
+import Grid from '@material-ui/core/Grid'
+import DashboardIcon from '@material-ui/icons/Dashboard'
+import Table from '@material-ui/core/Table'
+import TableBody from '@material-ui/core/TableBody'
+import TableHead from '@material-ui/core/TableHead'
+import TableRow from '@material-ui/core/TableRow'
+import TableCell from '@material-ui/core/TableCell'
 import grey from '@material-ui/core/colors/grey'
-import InstitutionIcon from '../../common/InstitutionIcon'
-import { currencyFormatter } from '../../util/stringFormatter'
 import LinkTo from '../../common/LinkTo'
+import { currencyFormatter } from '../../util/stringFormatter'
+import InstitutionIcon from '../../common/InstitutionIcon'
+import AccountsChart from './AccountsChart'
 
 const styles = theme => ({
+  balancePaper: {
+    marginTop: theme.spacing(2),
+    padding: theme.spacing(2),
+    paddingLeft: 150,
+    position: 'relative'
+  },
+  balanceAmount: {
+    fontWeight: 200
+  },
+  balancePaperIcon: {
+    width: 50,
+    height: 50,
+    position: 'absolute',
+    top: -10,
+    left: 20,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    background: 'linear-gradient(60deg, #66bb6a, #43a047)'
+  },
+  balanceIcon: {
+    color: 'white'
+  },
   noAccounts: {
     background: grey[100],
-    margin: '0 20px',
+    margin: '0 20px 20px 25px',
     padding: theme.spacing(1)
   },
-  institutionListRoot: {
-    padding: 0
+  accountsTable: {
+    padding: theme.spacing(2)
   },
-  institutionListItem: {
-    paddingRight: 0
+  institutionWrapper: {
+    display: 'flex'
   },
-  institutionListItemIcon: {
-    marginLeft: 10,
-    minWidth: 30
+  institutionIcon: {
+    marginRight: 16,
+    color: grey[600]
   },
-  institution: {
-    padding: 0,
-    textOverflow: 'ellipsis',
-    overflow: 'hidden',
-    whiteSpace: 'nowrap',
-    maxWidth: 100,
-    fontWeight: 500
+  accountWrapper: {
+    paddingLeft: theme.spacing(2)
   },
-  account: {
-    padding: '0 0 0 40px'
+  accountName: {
+    paddingLeft: 20
   },
-  ListItemText: {
-    margin: '3px 0 3px 0'
-  },
-  smallFont: {
-    fontSize: '95%'
-  },
-  smallButton: {
-    padding: 4,
-    marginRight: -6
-  },
-  smallIcon: {
-    fontSize: 18
-  },
-  smallChipRoot: {
-    fontSize: 9,
-    height: 'auto',
-    marginLeft: 10
-  },
-  smallChipLabel: {
-    padding: '1px 7px'
+  accountsChart: {
+    padding: theme.spacing(2),
+    height: 240,
+    minWidth: 150
   }
 })
 
 const mapStateToProps = state => ({
+  accounts: state.accounts,
   settings: state.settings,
-  accounts: state.accounts
+  totalBalance: Object.values(state.accounts.byInstitution).reduce(
+    (balance, institution) => balance + institution.balance,
+    0
+  )
 })
 
-export const AccountsComponent = ({
+export const AccountsIndexComponent = ({
   classes,
-  settings,
   accounts,
-  accountId
+  settings,
+  totalBalance
 }) => {
+  const formatCurrency = (currency, value) => (
+    currencyFormatter(settings.locale, currency)(value)
+  )
   const userHasAccounts = Object.keys(accounts.byInstitution).length > 0
   return (
-    <List
-      component="nav"
-      dense={true}
-      subheader={(
-        <ListSubheader component="div">
-          Accounts
-          <ListItemSecondaryAction>
-            <Tooltip id="tooltip-icon" title="New account">
-              <IconButton
-                aria-label="New account"
-                className={classes.smallButton}
-                component={LinkTo('/accounts/new')}
-              >
-                <AddIcon />
-              </IconButton>
-            </Tooltip>
-          </ListItemSecondaryAction>
-        </ListSubheader>
-      )}
-    >
+    <Container>
       {!userHasAccounts && (
-        <Typography variant="caption" component="div" className={classes.noAccounts}>
+        <Typography variant="caption" className={classes.noAccounts}>
           You don&apos;t have any accounts yet
         </Typography>
       )}
       {userHasAccounts && (
-        <List dense={true} className={classes.institutionListRoot}>
-          {Object.keys(accounts.byInstitution).sort().map(institution => (
-            Object.values(accounts.byInstitution[institution].groups).map(accountGroup => (
-              <div key={`${institution}-${accountGroup.id}`}>
-                <ListItem>
-                  <ListItemIcon className={classes.institutionListItemIcon}>
-                    <InstitutionIcon institution={institution} size="small" />
-                  </ListItemIcon>
-                  <ListItemText
-                    primary={institution}
-                    className={classes.institutionListItem}
-                    classes={{ primary: classes.institution }}
-                    title={institution}
-                  />
-                  {accountGroup.type === 'api' && (
-                    <ListItemSecondaryAction>
-                      <Tooltip id="tooltip-icon" title="Edit API details">
-                        <IconButton
-                          aria-label="Edit API details"
-                          className={classes.smallButton}
-                          component={LinkTo(`/institutions/${institution}/import/${accountGroup.id}/edit`)}
-                        >
-                          <SettingsIcon className={classes.smallIcon} />
-                        </IconButton>
-                      </Tooltip>
-                    </ListItemSecondaryAction>
-                  )}
-                </ListItem>
-                <List dense={true} className={classes.institutionListRoot}>
-                  {accountGroup.accountIds.map((id) => {
-                    if (accounts.byId[id] === undefined) return undefined
-                    const account = accounts.byId[id]
-                    return (
-                      <ListItem
-                        className={classes.account}
-                        button
-                        key={account.id}
-                        selected={account.id === accountId}
-                        component={LinkTo(`/accounts/${account.id}/transactions`)}
-                      >
-                        <ListItemText
-                          classes={{
-                            root: classes.ListItemText,
-                            primary: classes.smallFont,
-                            secondary: classes.smallFont
-                          }}
-                          primary={account.name}
-                          secondary={
-                            currencyFormatter(settings.locale, account.currency)(account.currentBalance.accountCurrency)
-                          }
-                        />
-                        {accountGroup.type === 'default' && (
-                          <ListItemSecondaryAction>
-                            <Tooltip id="tooltip-icon" title="Edit account">
-                              <IconButton
-                                aria-label="Edit account"
-                                className={classes.smallButton}
-                                component={LinkTo(`/accounts/${id}/edit`)}
-                              >
-                                <EditIcon className={classes.smallIcon} />
-                              </IconButton>
-                            </Tooltip>
-                          </ListItemSecondaryAction>
-                        )}
-                      </ListItem>
-                    )
-                  })}
-                </List>
-              </div>
-            ))
-          ))}
-        </List>
+        <Grid container spacing={3}>
+          <Grid item xs={12}>
+            <Paper className={classes.balancePaper}>
+              <Typography variant="body1" color="textSecondary" align="right">
+                Total
+              </Typography>
+              <Typography variant="h5" align="right" className={classes.balanceAmount}>
+                {formatCurrency(settings.currency, totalBalance)}
+              </Typography>
+              <Paper className={classes.balancePaperIcon}>
+                <DashboardIcon className={classes.balanceIcon} />
+              </Paper>
+            </Paper>
+          </Grid>
+          <Grid item xs={12}>
+            <Grid container spacing={3}>
+              <Grid item xs={4}>
+                <Paper className={classes.accountsChart}>
+                  <AccountsChart totalBalance={totalBalance} />
+                </Paper>
+              </Grid>
+              <Grid item xs={8}>
+                <Paper className={classes.accountsTable}>
+                  <Table>
+                    <TableHead>
+                      <TableRow>
+                        <TableCell>Institution / Account</TableCell>
+                        <TableCell>Account balance</TableCell>
+                        <TableCell align="right">{`Total ${settings.currency}`}</TableCell>
+                      </TableRow>
+                    </TableHead>
+                    {Object.keys(accounts.byInstitution).sort().map(institution => (
+                      Object.values(accounts.byInstitution[institution].groups).map(accountGroup => (
+                        <TableBody key={accountGroup.id}>
+                          <TableRow>
+                            <TableCell>
+                              <span className={classes.institutionWrapper}>
+                                <InstitutionIcon
+                                  institution={institution}
+                                  size="small"
+                                  className={classes.institutionIcon}
+                                />
+                                <Typography variant="subtitle2">{institution}</Typography>
+                              </span>
+                            </TableCell>
+                            <TableCell align="right" />
+                            <TableCell align="right">
+                              <Typography variant="subtitle2">
+                                {formatCurrency(settings.currency, accountGroup.balance)}
+                              </Typography>
+                            </TableCell>
+                          </TableRow>
+                          {accountGroup.accountIds.map((id) => {
+                            const account = accounts.byId[id]
+                            return (
+                              <TableRow key={id}>
+                                <TableCell>
+                                  <span className={classes.accountWrapper}>
+                                    <Typography
+                                      variant="body2"
+                                      color="primary"
+                                      component={LinkTo(`/accounts/${account.id}/transactions`)}
+                                    >
+                                      {account.name}
+                                    </Typography>
+                                  </span>
+                                </TableCell>
+                                <TableCell>
+                                  {formatCurrency(account.currency, account.currentBalance.accountCurrency)}
+                                </TableCell>
+                                <TableCell align="right">
+                                  {formatCurrency(settings.currency, account.currentBalance.localCurrency)}
+                                </TableCell>
+                              </TableRow>
+                            )
+                          })}
+                        </TableBody>
+                      ))
+                    ))}
+                  </Table>
+                </Paper>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
       )}
-    </List>
+    </Container>
   )
 }
 
-AccountsComponent.propTypes = {
+AccountsIndexComponent.propTypes = {
   classes: PropTypes.object.isRequired,
-  settings: PropTypes.object.isRequired,
   accounts: PropTypes.object.isRequired,
-  accountId: PropTypes.string
-}
-
-AccountsComponent.defaultProps = {
-  accountId: null
+  settings: PropTypes.object.isRequired,
+  totalBalance: PropTypes.number.isRequired
 }
 
 export default compose(
   connect(mapStateToProps),
   withStyles(styles)
-)(AccountsComponent)
+)(AccountsIndexComponent)

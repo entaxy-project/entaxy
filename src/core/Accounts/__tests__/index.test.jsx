@@ -1,89 +1,114 @@
 import React from 'react'
-import renderer from 'react-test-renderer'
+import { mount } from 'enzyme'
+import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
-import { AccountsComponent } from '..'
-import { initialState, groupByInstitution } from '../../../store/accounts/reducer'
+import configureMockStore from 'redux-mock-store'
+import AccountsIndex from '..'
+import { groupByInstitution, initialState as accountsInitialState } from '../../../store/accounts/reducer'
 import { initialState as settingsInitialState } from '../../../store/settings/reducer'
+import { initialState as budgetInitialState } from '../../../store/budget/reducer'
+import { initialState as exchangeRatesInitialState } from '../../../store/exchangeRates/reducer'
 
-jest.mock('../../../common/InstitutionIcon', () => 'InstitutionIcon')
+jest.mock('../../../common/InstitutionIcon/importLogos', () => [])
+jest.mock('uuid/v4', () => jest.fn(() => 'xyz'))
 
-const accounts = {
-  byId: {
-    1: {
-      id: '1',
-      groupId: 0,
-      description: 'Checking',
-      institution: 'TD',
-      currency: 'CAD',
-      currentBalance: { accountCurrency: 1000, localCurrency: 1000 }
-    },
-    2: {
-      id: '2',
-      groupId: 0,
-      description: 'Savings',
-      institution: 'TD',
-      currency: 'CAD',
-      currentBalance: { accountCurrency: 2000, localCurrency: 2000 }
-    },
-    3: {
-      id: '3',
-      groupId: 0,
-      description: 'Checking',
-      institution: 'BMO',
-      currency: 'USD', // Different currency
-      currentBalance: { accountCurrency: 3000, localCurrency: 3000 }
+const accounts = [{
+  id: 1,
+  description: 'Checking',
+  institution: 'TD',
+  currency: 'CAD',
+  openingBalance: 10,
+  currentBalance: { accountCurrency: 1000, localCurrency: 1000 },
+  groupId: 0
+}, {
+  id: 2,
+  description: 'Savings',
+  institution: 'TD',
+  currency: 'EUR',
+  openingBalance: 10,
+  currentBalance: { accountCurrency: 1000, localCurrency: 1500 },
+  groupId: 0
+}]
+
+describe('AccountsIndex', () => {
+  it('matches snapshot with no accounts', () => {
+    const mockStore = configureMockStore()
+    const store = mockStore({
+      settings: settingsInitialState,
+      accounts: accountsInitialState,
+      budget: budgetInitialState
+    })
+    const wrapper = mount((
+      <BrowserRouter>
+        <Provider store={store}>
+          <AccountsIndex />
+        </Provider>
+      </BrowserRouter>
+    ))
+    expect(wrapper.debug()).toMatchSnapshot()
+
+    const component = wrapper.findWhere(node => node.name() === 'AccountsIndexComponent')
+    expect(component.props().accounts).toEqual(accountsInitialState)
+    expect(component.props().totalBalance).toEqual(0)
+  })
+
+  it('matches snapshot with one account', async () => {
+    const mockStore = configureMockStore()
+    const state = {
+      settings: { ...settingsInitialState, locale: 'en-UK', currency: 'EUR' },
+      accounts: {
+        ...accountsInitialState,
+        byId: { [accounts[0].id]: accounts[0] }
+      },
+      budget: budgetInitialState,
+      exchangeRates: exchangeRatesInitialState
     }
-  },
-  byInstitution: {}
-}
-accounts.byInstitution = groupByInstitution(accounts)
-
-// Make sure we start with a specific currency
-settingsInitialState.currency = 'XYZ'
-settingsInitialState.locale = 'en-US'
-
-describe('Accounts index (Left Nav)', () => {
-  describe('snapshot', () => {
-    it('matches with no accounts', () => {
-      const component = renderer.create((
-        <BrowserRouter>
-          <AccountsComponent
-            settings={settingsInitialState}
-            accountId={null}
-            accounts={initialState}
-            classes={{ }}
-          />
-        </BrowserRouter>
-      ))
-      expect(component.toJSON()).toMatchSnapshot()
+    const store = mockStore({
+      ...state,
+      accounts: { ...state.accounts, byInstitution: groupByInstitution(state.accounts) }
     })
 
-    it('matches with a few accounts but none selected', () => {
-      const component = renderer.create((
-        <BrowserRouter>
-          <AccountsComponent
-            settings={settingsInitialState}
-            accountId={null}
-            accounts={accounts}
-            classes={{ }}
-          />
-        </BrowserRouter>
-      ))
-      expect(component.toJSON()).toMatchSnapshot()
-    })
+    const wrapper = mount((
+      <BrowserRouter>
+        <Provider store={store}>
+          <AccountsIndex />
+        </Provider>
+      </BrowserRouter>
+    ))
+    expect(wrapper.debug()).toMatchSnapshot()
 
-    it('matches snapshot with a few account with one selected', () => {
-      const component = renderer.create((
-        <BrowserRouter>
-          <AccountsComponent
-            settings={settingsInitialState}
-            accountId="1"
-            accounts={accounts}
-            classes={{ }}
-          />
-        </BrowserRouter>
-      ))
-      expect(component.toJSON()).toMatchSnapshot()
-    })
+    const component = wrapper.findWhere(node => node.name() === 'AccountsIndexComponent')
+    expect(component.props().accounts).toEqual(store.getState().accounts)
+    expect(component.props().totalBalance).toEqual(accounts[0].currentBalance.localCurrency)
+  })
+
+  it('matches snapshot with two accounts in a different currency', async () => {
+    const mockStore = configureMockStore()
+    const state = {
+      settings: { ...settingsInitialState, locale: 'en-UK', currency: 'EUR' },
+      accounts: {
+        ...accountsInitialState,
+        byId: { [accounts[0].id]: accounts[0], [accounts[1].id]: accounts[1] }
+      },
+      budget: budgetInitialState,
+      exchangeRates: exchangeRatesInitialState
+    }
+    const byInstitution = groupByInstitution(state.accounts)
+    const store = mockStore({ ...state, accounts: { ...state.accounts, byInstitution } })
+
+    const wrapper = mount((
+      <BrowserRouter>
+        <Provider store={store}>
+          <AccountsIndex />
+        </Provider>
+      </BrowserRouter>
+    ))
+    expect(wrapper.debug()).toMatchSnapshot()
+
+    const component = wrapper.findWhere(node => node.name() === 'AccountsIndexComponent')
+    expect(component.props().accounts).toEqual(store.getState().accounts)
+    expect(component.props().totalBalance).toEqual(
+      accounts[0].currentBalance.localCurrency + accounts[1].currentBalance.localCurrency
+    )
   })
 })

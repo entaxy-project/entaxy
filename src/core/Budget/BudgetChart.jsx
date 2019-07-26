@@ -37,7 +37,7 @@ const BudgetChart = () => {
 
   const byMonth = {}
   transactions.list.forEach((transaction) => {
-    const dateKey = startOfMonth(transaction.createdAt)
+    const dateKey = startOfMonth(transaction.createdAt).getTime()
     if (transaction.category !== undefined) {
       if (byMonth[dateKey] === undefined) {
         byMonth[dateKey] = categories.reduce((res, cat) => ({ ...res, [cat]: 0 }), {})
@@ -49,7 +49,7 @@ const BudgetChart = () => {
     }
   })
   const data = Object.keys(byMonth).sort((a, b) => a - b).map(date => ({
-    date: format(date, 'MMM YYYY'),
+    date: format(parseInt(date, 10), 'MMM YYYY'),
     ...byMonth[date]
   }))
   const margin = {

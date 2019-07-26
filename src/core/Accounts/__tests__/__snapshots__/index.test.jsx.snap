@@ -1,796 +1,562 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Accounts index (Left Nav) snapshot matches snapshot with a few account with one selected 1`] = `
-<nav
-  className="MuiList-root MuiList-dense MuiList-padding MuiList-subheader"
->
-  <div
-    className="MuiListSubheader-root MuiListSubheader-sticky MuiListSubheader-gutters"
-  >
-    Accounts
-    <div
-      className="MuiListItemSecondaryAction-root"
-    >
-      <a
-        aria-describedby={null}
-        aria-disabled={false}
-        aria-label="New account"
-        className="MuiButtonBase-root MuiIconButton-root"
-        href="/accounts/new"
-        onBlur={[Function]}
-        onClick={[Function]}
-        onDragLeave={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseOver={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        role="button"
-        tabIndex={0}
-        title="New account"
-      >
-        <span
-          className="MuiIconButton-label"
-        >
-          <svg
-            aria-hidden="true"
-            className="MuiSvgIcon-root"
-            focusable="false"
-            role="presentation"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
-            />
-          </svg>
-        </span>
-        <span
-          className="MuiTouchRipple-root"
-        />
-      </a>
-    </div>
-  </div>
-  <ul
-    className="MuiList-root MuiList-dense MuiList-padding"
-  >
-    <div>
-      <li
-        className="MuiListItem-root MuiListItem-dense MuiListItem-gutters"
-        disabled={false}
-      >
-        <div
-          className="MuiListItemIcon-root"
-        >
-          <InstitutionIcon
-            institution="BMO"
-            size="small"
-          />
-        </div>
-        <div
-          className="MuiListItemText-root MuiListItemText-dense"
-          title="BMO"
-        >
-          <span
-            className="MuiTypography-root MuiListItemText-primary MuiTypography-body2"
-          >
-            BMO
-          </span>
-        </div>
-      </li>
-      <ul
-        className="MuiList-root MuiList-dense MuiList-padding"
-      >
-        <li
-          className="MuiListItem-container"
-        >
-          <a
-            aria-disabled={false}
-            className="MuiButtonBase-root MuiListItem-root MuiListItem-dense MuiListItem-gutters MuiListItem-button MuiListItem-secondaryAction"
-            href="/accounts/3/transactions"
-            onBlur={[Function]}
-            onClick={[Function]}
-            onDragLeave={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-            role="button"
-            tabIndex={0}
-          >
-            <div
-              className="MuiListItemText-root MuiListItemText-dense"
-            >
-              <p
-                className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary"
-              >
-                $3,000.00
-              </p>
-            </div>
-            <span
-              className="MuiTouchRipple-root"
-            />
-          </a>
-          <div
-            className="MuiListItemSecondaryAction-root"
-          >
-            <a
-              aria-describedby={null}
-              aria-disabled={false}
-              aria-label="Edit account"
-              className="MuiButtonBase-root MuiIconButton-root"
-              href="/accounts/3/edit"
-              onBlur={[Function]}
-              onClick={[Function]}
-              onDragLeave={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onKeyUp={[Function]}
-              onMouseDown={[Function]}
-              onMouseLeave={[Function]}
-              onMouseOver={[Function]}
-              onMouseUp={[Function]}
-              onTouchEnd={[Function]}
-              onTouchMove={[Function]}
-              onTouchStart={[Function]}
-              role="button"
-              tabIndex={0}
-              title="Edit account"
-            >
-              <span
-                className="MuiIconButton-label"
-              >
-                <svg
-                  aria-hidden="true"
-                  className="MuiSvgIcon-root"
-                  focusable="false"
-                  role="presentation"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
-                  />
-                </svg>
-              </span>
-              <span
-                className="MuiTouchRipple-root"
-              />
-            </a>
-          </div>
-        </li>
-      </ul>
-    </div>
-    <div>
-      <li
-        className="MuiListItem-root MuiListItem-dense MuiListItem-gutters"
-        disabled={false}
-      >
-        <div
-          className="MuiListItemIcon-root"
-        >
-          <InstitutionIcon
-            institution="TD"
-            size="small"
-          />
-        </div>
-        <div
-          className="MuiListItemText-root MuiListItemText-dense"
-          title="TD"
-        >
-          <span
-            className="MuiTypography-root MuiListItemText-primary MuiTypography-body2"
-          >
-            TD
-          </span>
-        </div>
-      </li>
-      <ul
-        className="MuiList-root MuiList-dense MuiList-padding"
-      >
-        <li
-          className="MuiListItem-container"
-        >
-          <a
-            aria-disabled={false}
-            className="MuiButtonBase-root MuiListItem-root MuiListItem-dense MuiListItem-gutters MuiListItem-button MuiListItem-secondaryAction Mui-selected"
-            href="/accounts/1/transactions"
-            onBlur={[Function]}
-            onClick={[Function]}
-            onDragLeave={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-            role="button"
-            tabIndex={0}
-          >
-            <div
-              className="MuiListItemText-root MuiListItemText-dense"
-            >
-              <p
-                className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary"
-              >
-                CA$1,000.00
-              </p>
-            </div>
-            <span
-              className="MuiTouchRipple-root"
-            />
-          </a>
-          <div
-            className="MuiListItemSecondaryAction-root"
-          >
-            <a
-              aria-describedby={null}
-              aria-disabled={false}
-              aria-label="Edit account"
-              className="MuiButtonBase-root MuiIconButton-root"
-              href="/accounts/1/edit"
-              onBlur={[Function]}
-              onClick={[Function]}
-              onDragLeave={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onKeyUp={[Function]}
-              onMouseDown={[Function]}
-              onMouseLeave={[Function]}
-              onMouseOver={[Function]}
-              onMouseUp={[Function]}
-              onTouchEnd={[Function]}
-              onTouchMove={[Function]}
-              onTouchStart={[Function]}
-              role="button"
-              tabIndex={0}
-              title="Edit account"
-            >
-              <span
-                className="MuiIconButton-label"
-              >
-                <svg
-                  aria-hidden="true"
-                  className="MuiSvgIcon-root"
-                  focusable="false"
-                  role="presentation"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
-                  />
-                </svg>
-              </span>
-              <span
-                className="MuiTouchRipple-root"
-              />
-            </a>
-          </div>
-        </li>
-        <li
-          className="MuiListItem-container"
-        >
-          <a
-            aria-disabled={false}
-            className="MuiButtonBase-root MuiListItem-root MuiListItem-dense MuiListItem-gutters MuiListItem-button MuiListItem-secondaryAction"
-            href="/accounts/2/transactions"
-            onBlur={[Function]}
-            onClick={[Function]}
-            onDragLeave={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-            role="button"
-            tabIndex={0}
-          >
-            <div
-              className="MuiListItemText-root MuiListItemText-dense"
-            >
-              <p
-                className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary"
-              >
-                CA$2,000.00
-              </p>
-            </div>
-            <span
-              className="MuiTouchRipple-root"
-            />
-          </a>
-          <div
-            className="MuiListItemSecondaryAction-root"
-          >
-            <a
-              aria-describedby={null}
-              aria-disabled={false}
-              aria-label="Edit account"
-              className="MuiButtonBase-root MuiIconButton-root"
-              href="/accounts/2/edit"
-              onBlur={[Function]}
-              onClick={[Function]}
-              onDragLeave={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onKeyUp={[Function]}
-              onMouseDown={[Function]}
-              onMouseLeave={[Function]}
-              onMouseOver={[Function]}
-              onMouseUp={[Function]}
-              onTouchEnd={[Function]}
-              onTouchMove={[Function]}
-              onTouchStart={[Function]}
-              role="button"
-              tabIndex={0}
-              title="Edit account"
-            >
-              <span
-                className="MuiIconButton-label"
-              >
-                <svg
-                  aria-hidden="true"
-                  className="MuiSvgIcon-root"
-                  focusable="false"
-                  role="presentation"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
-                  />
-                </svg>
-              </span>
-              <span
-                className="MuiTouchRipple-root"
-              />
-            </a>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </ul>
-</nav>
+exports[`AccountsIndex matches snapshot with no accounts 1`] = `
+"<BrowserRouter>
+  <Router history={{...}}>
+    <Provider store={{...}}>
+      <Connect(WithStyles(AccountsIndexComponent))>
+        <WithStyles(AccountsIndexComponent) accounts={{...}} settings={{...}} totalBalance={0} dispatch={[Function: dispatch]}>
+          <AccountsIndexComponent classes={{...}} accounts={{...}} settings={{...}} totalBalance={0} dispatch={[Function: dispatch]}>
+            <WithStyles(ForwardRef(Container))>
+              <ForwardRef(Container) classes={{...}}>
+                <div className=\\"MuiContainer-root MuiContainer-maxWidthLg\\">
+                  <WithStyles(ForwardRef(Typography)) variant=\\"caption\\" className=\\"AccountsIndexComponent-noAccounts-5\\">
+                    <ForwardRef(Typography) classes={{...}} variant=\\"caption\\" className=\\"AccountsIndexComponent-noAccounts-5\\" theme={{...}}>
+                      <span className=\\"MuiTypography-root AccountsIndexComponent-noAccounts-5 MuiTypography-caption\\">
+                        You don&#39;t have any accounts yet
+                      </span>
+                    </ForwardRef(Typography)>
+                  </WithStyles(ForwardRef(Typography))>
+                </div>
+              </ForwardRef(Container)>
+            </WithStyles(ForwardRef(Container))>
+          </AccountsIndexComponent>
+        </WithStyles(AccountsIndexComponent)>
+      </Connect(WithStyles(AccountsIndexComponent))>
+    </Provider>
+  </Router>
+</BrowserRouter>"
 `;
 
-exports[`Accounts index (Left Nav) snapshot matches with a few accounts but none selected 1`] = `
-<nav
-  className="MuiList-root MuiList-dense MuiList-padding MuiList-subheader"
->
-  <div
-    className="MuiListSubheader-root MuiListSubheader-sticky MuiListSubheader-gutters"
-  >
-    Accounts
-    <div
-      className="MuiListItemSecondaryAction-root"
-    >
-      <a
-        aria-describedby={null}
-        aria-disabled={false}
-        aria-label="New account"
-        className="MuiButtonBase-root MuiIconButton-root"
-        href="/accounts/new"
-        onBlur={[Function]}
-        onClick={[Function]}
-        onDragLeave={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseOver={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        role="button"
-        tabIndex={0}
-        title="New account"
-      >
-        <span
-          className="MuiIconButton-label"
-        >
-          <svg
-            aria-hidden="true"
-            className="MuiSvgIcon-root"
-            focusable="false"
-            role="presentation"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
-            />
-          </svg>
-        </span>
-        <span
-          className="MuiTouchRipple-root"
-        />
-      </a>
-    </div>
-  </div>
-  <ul
-    className="MuiList-root MuiList-dense MuiList-padding"
-  >
-    <div>
-      <li
-        className="MuiListItem-root MuiListItem-dense MuiListItem-gutters"
-        disabled={false}
-      >
-        <div
-          className="MuiListItemIcon-root"
-        >
-          <InstitutionIcon
-            institution="BMO"
-            size="small"
-          />
-        </div>
-        <div
-          className="MuiListItemText-root MuiListItemText-dense"
-          title="BMO"
-        >
-          <span
-            className="MuiTypography-root MuiListItemText-primary MuiTypography-body2"
-          >
-            BMO
-          </span>
-        </div>
-      </li>
-      <ul
-        className="MuiList-root MuiList-dense MuiList-padding"
-      >
-        <li
-          className="MuiListItem-container"
-        >
-          <a
-            aria-disabled={false}
-            className="MuiButtonBase-root MuiListItem-root MuiListItem-dense MuiListItem-gutters MuiListItem-button MuiListItem-secondaryAction"
-            href="/accounts/3/transactions"
-            onBlur={[Function]}
-            onClick={[Function]}
-            onDragLeave={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-            role="button"
-            tabIndex={0}
-          >
-            <div
-              className="MuiListItemText-root MuiListItemText-dense"
-            >
-              <p
-                className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary"
-              >
-                $3,000.00
-              </p>
-            </div>
-            <span
-              className="MuiTouchRipple-root"
-            />
-          </a>
-          <div
-            className="MuiListItemSecondaryAction-root"
-          >
-            <a
-              aria-describedby={null}
-              aria-disabled={false}
-              aria-label="Edit account"
-              className="MuiButtonBase-root MuiIconButton-root"
-              href="/accounts/3/edit"
-              onBlur={[Function]}
-              onClick={[Function]}
-              onDragLeave={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onKeyUp={[Function]}
-              onMouseDown={[Function]}
-              onMouseLeave={[Function]}
-              onMouseOver={[Function]}
-              onMouseUp={[Function]}
-              onTouchEnd={[Function]}
-              onTouchMove={[Function]}
-              onTouchStart={[Function]}
-              role="button"
-              tabIndex={0}
-              title="Edit account"
-            >
-              <span
-                className="MuiIconButton-label"
-              >
-                <svg
-                  aria-hidden="true"
-                  className="MuiSvgIcon-root"
-                  focusable="false"
-                  role="presentation"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
-                  />
-                </svg>
-              </span>
-              <span
-                className="MuiTouchRipple-root"
-              />
-            </a>
-          </div>
-        </li>
-      </ul>
-    </div>
-    <div>
-      <li
-        className="MuiListItem-root MuiListItem-dense MuiListItem-gutters"
-        disabled={false}
-      >
-        <div
-          className="MuiListItemIcon-root"
-        >
-          <InstitutionIcon
-            institution="TD"
-            size="small"
-          />
-        </div>
-        <div
-          className="MuiListItemText-root MuiListItemText-dense"
-          title="TD"
-        >
-          <span
-            className="MuiTypography-root MuiListItemText-primary MuiTypography-body2"
-          >
-            TD
-          </span>
-        </div>
-      </li>
-      <ul
-        className="MuiList-root MuiList-dense MuiList-padding"
-      >
-        <li
-          className="MuiListItem-container"
-        >
-          <a
-            aria-disabled={false}
-            className="MuiButtonBase-root MuiListItem-root MuiListItem-dense MuiListItem-gutters MuiListItem-button MuiListItem-secondaryAction"
-            href="/accounts/1/transactions"
-            onBlur={[Function]}
-            onClick={[Function]}
-            onDragLeave={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-            role="button"
-            tabIndex={0}
-          >
-            <div
-              className="MuiListItemText-root MuiListItemText-dense"
-            >
-              <p
-                className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary"
-              >
-                CA$1,000.00
-              </p>
-            </div>
-            <span
-              className="MuiTouchRipple-root"
-            />
-          </a>
-          <div
-            className="MuiListItemSecondaryAction-root"
-          >
-            <a
-              aria-describedby={null}
-              aria-disabled={false}
-              aria-label="Edit account"
-              className="MuiButtonBase-root MuiIconButton-root"
-              href="/accounts/1/edit"
-              onBlur={[Function]}
-              onClick={[Function]}
-              onDragLeave={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onKeyUp={[Function]}
-              onMouseDown={[Function]}
-              onMouseLeave={[Function]}
-              onMouseOver={[Function]}
-              onMouseUp={[Function]}
-              onTouchEnd={[Function]}
-              onTouchMove={[Function]}
-              onTouchStart={[Function]}
-              role="button"
-              tabIndex={0}
-              title="Edit account"
-            >
-              <span
-                className="MuiIconButton-label"
-              >
-                <svg
-                  aria-hidden="true"
-                  className="MuiSvgIcon-root"
-                  focusable="false"
-                  role="presentation"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
-                  />
-                </svg>
-              </span>
-              <span
-                className="MuiTouchRipple-root"
-              />
-            </a>
-          </div>
-        </li>
-        <li
-          className="MuiListItem-container"
-        >
-          <a
-            aria-disabled={false}
-            className="MuiButtonBase-root MuiListItem-root MuiListItem-dense MuiListItem-gutters MuiListItem-button MuiListItem-secondaryAction"
-            href="/accounts/2/transactions"
-            onBlur={[Function]}
-            onClick={[Function]}
-            onDragLeave={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-            role="button"
-            tabIndex={0}
-          >
-            <div
-              className="MuiListItemText-root MuiListItemText-dense"
-            >
-              <p
-                className="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary"
-              >
-                CA$2,000.00
-              </p>
-            </div>
-            <span
-              className="MuiTouchRipple-root"
-            />
-          </a>
-          <div
-            className="MuiListItemSecondaryAction-root"
-          >
-            <a
-              aria-describedby={null}
-              aria-disabled={false}
-              aria-label="Edit account"
-              className="MuiButtonBase-root MuiIconButton-root"
-              href="/accounts/2/edit"
-              onBlur={[Function]}
-              onClick={[Function]}
-              onDragLeave={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onKeyUp={[Function]}
-              onMouseDown={[Function]}
-              onMouseLeave={[Function]}
-              onMouseOver={[Function]}
-              onMouseUp={[Function]}
-              onTouchEnd={[Function]}
-              onTouchMove={[Function]}
-              onTouchStart={[Function]}
-              role="button"
-              tabIndex={0}
-              title="Edit account"
-            >
-              <span
-                className="MuiIconButton-label"
-              >
-                <svg
-                  aria-hidden="true"
-                  className="MuiSvgIcon-root"
-                  focusable="false"
-                  role="presentation"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
-                  />
-                </svg>
-              </span>
-              <span
-                className="MuiTouchRipple-root"
-              />
-            </a>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </ul>
-</nav>
+exports[`AccountsIndex matches snapshot with one account 1`] = `
+"<BrowserRouter>
+  <Router history={{...}}>
+    <Provider store={{...}}>
+      <Connect(WithStyles(AccountsIndexComponent))>
+        <WithStyles(AccountsIndexComponent) accounts={{...}} settings={{...}} totalBalance={1000} dispatch={[Function: dispatch]}>
+          <AccountsIndexComponent classes={{...}} accounts={{...}} settings={{...}} totalBalance={1000} dispatch={[Function: dispatch]}>
+            <WithStyles(ForwardRef(Container))>
+              <ForwardRef(Container) classes={{...}}>
+                <div className=\\"MuiContainer-root MuiContainer-maxWidthLg\\">
+                  <WithStyles(ForwardRef(Grid)) container={true} spacing={3}>
+                    <ForwardRef(Grid) classes={{...}} container={true} spacing={3}>
+                      <div className=\\"MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3\\">
+                        <WithStyles(ForwardRef(Grid)) item={true} xs={12}>
+                          <ForwardRef(Grid) classes={{...}} item={true} xs={12}>
+                            <div className=\\"MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12\\">
+                              <WithStyles(ForwardRef(Paper)) className=\\"AccountsIndexComponent-balancePaper-1\\">
+                                <ForwardRef(Paper) classes={{...}} className=\\"AccountsIndexComponent-balancePaper-1\\">
+                                  <div className=\\"MuiPaper-root MuiPaper-elevation1 AccountsIndexComponent-balancePaper-1 MuiPaper-rounded\\">
+                                    <WithStyles(ForwardRef(Typography)) variant=\\"body1\\" color=\\"textSecondary\\" align=\\"right\\">
+                                      <ForwardRef(Typography) classes={{...}} variant=\\"body1\\" color=\\"textSecondary\\" align=\\"right\\" theme={{...}}>
+                                        <p className=\\"MuiTypography-root MuiTypography-body1 MuiTypography-colorTextSecondary MuiTypography-alignRight\\">
+                                          Total
+                                        </p>
+                                      </ForwardRef(Typography)>
+                                    </WithStyles(ForwardRef(Typography))>
+                                    <WithStyles(ForwardRef(Typography)) variant=\\"h5\\" align=\\"right\\" className=\\"AccountsIndexComponent-balanceAmount-2\\">
+                                      <ForwardRef(Typography) classes={{...}} variant=\\"h5\\" align=\\"right\\" className=\\"AccountsIndexComponent-balanceAmount-2\\" theme={{...}}>
+                                        <h5 className=\\"MuiTypography-root AccountsIndexComponent-balanceAmount-2 MuiTypography-h5 MuiTypography-alignRight\\">
+                                          €1,000.00
+                                        </h5>
+                                      </ForwardRef(Typography)>
+                                    </WithStyles(ForwardRef(Typography))>
+                                    <WithStyles(ForwardRef(Paper)) className=\\"AccountsIndexComponent-balancePaperIcon-3\\">
+                                      <ForwardRef(Paper) classes={{...}} className=\\"AccountsIndexComponent-balancePaperIcon-3\\">
+                                        <div className=\\"MuiPaper-root MuiPaper-elevation1 AccountsIndexComponent-balancePaperIcon-3 MuiPaper-rounded\\">
+                                          <ForwardRef className=\\"AccountsIndexComponent-balanceIcon-4\\">
+                                            <WithStyles(ForwardRef(SvgIcon)) className=\\"AccountsIndexComponent-balanceIcon-4\\">
+                                              <ForwardRef(SvgIcon) classes={{...}} className=\\"AccountsIndexComponent-balanceIcon-4\\">
+                                                <svg className=\\"MuiSvgIcon-root AccountsIndexComponent-balanceIcon-4\\" focusable=\\"false\\" viewBox=\\"0 0 24 24\\" color={[undefined]} aria-hidden=\\"true\\" role=\\"presentation\\">
+                                                  <path d=\\"M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z\\" />
+                                                </svg>
+                                              </ForwardRef(SvgIcon)>
+                                            </WithStyles(ForwardRef(SvgIcon))>
+                                          </ForwardRef>
+                                        </div>
+                                      </ForwardRef(Paper)>
+                                    </WithStyles(ForwardRef(Paper))>
+                                  </div>
+                                </ForwardRef(Paper)>
+                              </WithStyles(ForwardRef(Paper))>
+                            </div>
+                          </ForwardRef(Grid)>
+                        </WithStyles(ForwardRef(Grid))>
+                        <WithStyles(ForwardRef(Grid)) item={true} xs={12}>
+                          <ForwardRef(Grid) classes={{...}} item={true} xs={12}>
+                            <div className=\\"MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12\\">
+                              <WithStyles(ForwardRef(Grid)) container={true} spacing={3}>
+                                <ForwardRef(Grid) classes={{...}} container={true} spacing={3}>
+                                  <div className=\\"MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3\\">
+                                    <WithStyles(ForwardRef(Grid)) item={true} xs={4}>
+                                      <ForwardRef(Grid) classes={{...}} item={true} xs={4}>
+                                        <div className=\\"MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4\\">
+                                          <WithStyles(ForwardRef(Paper)) className=\\"AccountsIndexComponent-accountsChart-11\\">
+                                            <ForwardRef(Paper) classes={{...}} className=\\"AccountsIndexComponent-accountsChart-11\\">
+                                              <div className=\\"MuiPaper-root MuiPaper-elevation1 AccountsIndexComponent-accountsChart-11 MuiPaper-rounded\\">
+                                                <AccountsChart totalBalance={1000}>
+                                                  <ResponsiveContainer height={200} width=\\"100%\\" debounce={0}>
+                                                    <div id={[undefined]} className=\\"recharts-responsive-container\\" style={{...}}>
+                                                      <PieChart layout=\\"centric\\" stackOffset=\\"none\\" barCategoryGap=\\"10%\\" barGap={4} margin={{...}} reverseStackOrder={false} startAngle={0} endAngle={360} cx=\\"50%\\" cy=\\"50%\\" innerRadius={0} outerRadius=\\"80%\\" width={0} height={200} />
+                                                      <ResizeDetector handleWidth={true} handleHeight={true} onResize={[Function]} skipOnMount={false} refreshRate={1000} refreshMode={[undefined]} resizableElementId=\\"\\">
+                                                        <div style={{...}} />
+                                                      </ResizeDetector>
+                                                    </div>
+                                                  </ResponsiveContainer>
+                                                </AccountsChart>
+                                              </div>
+                                            </ForwardRef(Paper)>
+                                          </WithStyles(ForwardRef(Paper))>
+                                        </div>
+                                      </ForwardRef(Grid)>
+                                    </WithStyles(ForwardRef(Grid))>
+                                    <WithStyles(ForwardRef(Grid)) item={true} xs={8}>
+                                      <ForwardRef(Grid) classes={{...}} item={true} xs={8}>
+                                        <div className=\\"MuiGrid-root MuiGrid-item MuiGrid-grid-xs-8\\">
+                                          <WithStyles(ForwardRef(Paper)) className=\\"AccountsIndexComponent-accountsTable-6\\">
+                                            <ForwardRef(Paper) classes={{...}} className=\\"AccountsIndexComponent-accountsTable-6\\">
+                                              <div className=\\"MuiPaper-root MuiPaper-elevation1 AccountsIndexComponent-accountsTable-6 MuiPaper-rounded\\">
+                                                <WithStyles(ForwardRef(Table))>
+                                                  <ForwardRef(Table) classes={{...}}>
+                                                    <table className=\\"MuiTable-root\\">
+                                                      <WithStyles(ForwardRef(TableHead))>
+                                                        <ForwardRef(TableHead) classes={{...}}>
+                                                          <thead className=\\"MuiTableHead-root\\">
+                                                            <WithStyles(ForwardRef(TableRow))>
+                                                              <ForwardRef(TableRow) classes={{...}}>
+                                                                <tr className=\\"MuiTableRow-root MuiTableRow-head\\">
+                                                                  <WithStyles(ForwardRef(TableCell))>
+                                                                    <ForwardRef(TableCell) classes={{...}}>
+                                                                      <th className=\\"MuiTableCell-root MuiTableCell-head\\" aria-sort={{...}} scope=\\"col\\">
+                                                                        Institution / Account
+                                                                      </th>
+                                                                    </ForwardRef(TableCell)>
+                                                                  </WithStyles(ForwardRef(TableCell))>
+                                                                  <WithStyles(ForwardRef(TableCell))>
+                                                                    <ForwardRef(TableCell) classes={{...}}>
+                                                                      <th className=\\"MuiTableCell-root MuiTableCell-head\\" aria-sort={{...}} scope=\\"col\\">
+                                                                        Account balance
+                                                                      </th>
+                                                                    </ForwardRef(TableCell)>
+                                                                  </WithStyles(ForwardRef(TableCell))>
+                                                                  <WithStyles(ForwardRef(TableCell)) align=\\"right\\">
+                                                                    <ForwardRef(TableCell) classes={{...}} align=\\"right\\">
+                                                                      <th className=\\"MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight\\" aria-sort={{...}} scope=\\"col\\">
+                                                                        Total EUR
+                                                                      </th>
+                                                                    </ForwardRef(TableCell)>
+                                                                  </WithStyles(ForwardRef(TableCell))>
+                                                                </tr>
+                                                              </ForwardRef(TableRow)>
+                                                            </WithStyles(ForwardRef(TableRow))>
+                                                          </thead>
+                                                        </ForwardRef(TableHead)>
+                                                      </WithStyles(ForwardRef(TableHead))>
+                                                      <WithStyles(ForwardRef(TableBody))>
+                                                        <ForwardRef(TableBody) classes={{...}}>
+                                                          <tbody className=\\"MuiTableBody-root\\">
+                                                            <WithStyles(ForwardRef(TableRow))>
+                                                              <ForwardRef(TableRow) classes={{...}}>
+                                                                <tr className=\\"MuiTableRow-root\\">
+                                                                  <WithStyles(ForwardRef(TableCell))>
+                                                                    <ForwardRef(TableCell) classes={{...}}>
+                                                                      <td className=\\"MuiTableCell-root MuiTableCell-body\\" aria-sort={{...}} scope={[undefined]}>
+                                                                        <span className=\\"AccountsIndexComponent-institutionWrapper-7\\">
+                                                                          <WithStyles(InstitutionIcon) institution=\\"TD\\" size=\\"small\\" className=\\"AccountsIndexComponent-institutionIcon-8\\">
+                                                                            <InstitutionIcon classes={{...}} institution=\\"TD\\" size=\\"small\\" className=\\"AccountsIndexComponent-institutionIcon-8\\">
+                                                                              <ForwardRef className=\\"InstitutionIcon-small-207 AccountsIndexComponent-institutionIcon-8\\">
+                                                                                <WithStyles(ForwardRef(SvgIcon)) className=\\"InstitutionIcon-small-207 AccountsIndexComponent-institutionIcon-8\\">
+                                                                                  <ForwardRef(SvgIcon) classes={{...}} className=\\"InstitutionIcon-small-207 AccountsIndexComponent-institutionIcon-8\\">
+                                                                                    <svg className=\\"MuiSvgIcon-root InstitutionIcon-small-207 AccountsIndexComponent-institutionIcon-8\\" focusable=\\"false\\" viewBox=\\"0 0 24 24\\" color={[undefined]} aria-hidden=\\"true\\" role=\\"presentation\\">
+                                                                                      <path d=\\"M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z\\" />
+                                                                                    </svg>
+                                                                                  </ForwardRef(SvgIcon)>
+                                                                                </WithStyles(ForwardRef(SvgIcon))>
+                                                                              </ForwardRef>
+                                                                            </InstitutionIcon>
+                                                                          </WithStyles(InstitutionIcon)>
+                                                                          <WithStyles(ForwardRef(Typography)) variant=\\"subtitle2\\">
+                                                                            <ForwardRef(Typography) classes={{...}} variant=\\"subtitle2\\" theme={{...}}>
+                                                                              <h6 className=\\"MuiTypography-root MuiTypography-subtitle2\\">
+                                                                                TD
+                                                                              </h6>
+                                                                            </ForwardRef(Typography)>
+                                                                          </WithStyles(ForwardRef(Typography))>
+                                                                        </span>
+                                                                      </td>
+                                                                    </ForwardRef(TableCell)>
+                                                                  </WithStyles(ForwardRef(TableCell))>
+                                                                  <WithStyles(ForwardRef(TableCell)) align=\\"right\\">
+                                                                    <ForwardRef(TableCell) classes={{...}} align=\\"right\\">
+                                                                      <td className=\\"MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight\\" aria-sort={{...}} scope={[undefined]} />
+                                                                    </ForwardRef(TableCell)>
+                                                                  </WithStyles(ForwardRef(TableCell))>
+                                                                  <WithStyles(ForwardRef(TableCell)) align=\\"right\\">
+                                                                    <ForwardRef(TableCell) classes={{...}} align=\\"right\\">
+                                                                      <td className=\\"MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight\\" aria-sort={{...}} scope={[undefined]}>
+                                                                        <WithStyles(ForwardRef(Typography)) variant=\\"subtitle2\\">
+                                                                          <ForwardRef(Typography) classes={{...}} variant=\\"subtitle2\\" theme={{...}}>
+                                                                            <h6 className=\\"MuiTypography-root MuiTypography-subtitle2\\">
+                                                                              €1,000.00
+                                                                            </h6>
+                                                                          </ForwardRef(Typography)>
+                                                                        </WithStyles(ForwardRef(Typography))>
+                                                                      </td>
+                                                                    </ForwardRef(TableCell)>
+                                                                  </WithStyles(ForwardRef(TableCell))>
+                                                                </tr>
+                                                              </ForwardRef(TableRow)>
+                                                            </WithStyles(ForwardRef(TableRow))>
+                                                            <WithStyles(ForwardRef(TableRow))>
+                                                              <ForwardRef(TableRow) classes={{...}}>
+                                                                <tr className=\\"MuiTableRow-root\\">
+                                                                  <WithStyles(ForwardRef(TableCell))>
+                                                                    <ForwardRef(TableCell) classes={{...}}>
+                                                                      <td className=\\"MuiTableCell-root MuiTableCell-body\\" aria-sort={{...}} scope={[undefined]}>
+                                                                        <span className=\\"AccountsIndexComponent-accountWrapper-9\\">
+                                                                          <WithStyles(ForwardRef(Typography)) variant=\\"body2\\" color=\\"primary\\" component={{...}}>
+                                                                            <ForwardRef(Typography) classes={{...}} variant=\\"body2\\" color=\\"primary\\" component={{...}} theme={{...}}>
+                                                                              <ForwardRef className=\\"MuiTypography-root MuiTypography-body2 MuiTypography-colorPrimary\\">
+                                                                                <Link to=\\"/accounts/1/transactions\\" className=\\"MuiTypography-root MuiTypography-body2 MuiTypography-colorPrimary\\" innerRef={{...}}>
+                                                                                  <a className=\\"MuiTypography-root MuiTypography-body2 MuiTypography-colorPrimary\\" onClick={[Function: onClick]} href=\\"/accounts/1/transactions\\" />
+                                                                                </Link>
+                                                                              </ForwardRef>
+                                                                            </ForwardRef(Typography)>
+                                                                          </WithStyles(ForwardRef(Typography))>
+                                                                        </span>
+                                                                      </td>
+                                                                    </ForwardRef(TableCell)>
+                                                                  </WithStyles(ForwardRef(TableCell))>
+                                                                  <WithStyles(ForwardRef(TableCell))>
+                                                                    <ForwardRef(TableCell) classes={{...}}>
+                                                                      <td className=\\"MuiTableCell-root MuiTableCell-body\\" aria-sort={{...}} scope={[undefined]}>
+                                                                        CA$1,000.00
+                                                                      </td>
+                                                                    </ForwardRef(TableCell)>
+                                                                  </WithStyles(ForwardRef(TableCell))>
+                                                                  <WithStyles(ForwardRef(TableCell)) align=\\"right\\">
+                                                                    <ForwardRef(TableCell) classes={{...}} align=\\"right\\">
+                                                                      <td className=\\"MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight\\" aria-sort={{...}} scope={[undefined]}>
+                                                                        €1,000.00
+                                                                      </td>
+                                                                    </ForwardRef(TableCell)>
+                                                                  </WithStyles(ForwardRef(TableCell))>
+                                                                </tr>
+                                                              </ForwardRef(TableRow)>
+                                                            </WithStyles(ForwardRef(TableRow))>
+                                                          </tbody>
+                                                        </ForwardRef(TableBody)>
+                                                      </WithStyles(ForwardRef(TableBody))>
+                                                    </table>
+                                                  </ForwardRef(Table)>
+                                                </WithStyles(ForwardRef(Table))>
+                                              </div>
+                                            </ForwardRef(Paper)>
+                                          </WithStyles(ForwardRef(Paper))>
+                                        </div>
+                                      </ForwardRef(Grid)>
+                                    </WithStyles(ForwardRef(Grid))>
+                                  </div>
+                                </ForwardRef(Grid)>
+                              </WithStyles(ForwardRef(Grid))>
+                            </div>
+                          </ForwardRef(Grid)>
+                        </WithStyles(ForwardRef(Grid))>
+                      </div>
+                    </ForwardRef(Grid)>
+                  </WithStyles(ForwardRef(Grid))>
+                </div>
+              </ForwardRef(Container)>
+            </WithStyles(ForwardRef(Container))>
+          </AccountsIndexComponent>
+        </WithStyles(AccountsIndexComponent)>
+      </Connect(WithStyles(AccountsIndexComponent))>
+    </Provider>
+  </Router>
+</BrowserRouter>"
 `;
 
-exports[`Accounts index (Left Nav) snapshot matches with no accounts 1`] = `
-<nav
-  className="MuiList-root MuiList-dense MuiList-padding MuiList-subheader"
->
-  <div
-    className="MuiListSubheader-root MuiListSubheader-sticky MuiListSubheader-gutters"
-  >
-    Accounts
-    <div
-      className="MuiListItemSecondaryAction-root"
-    >
-      <a
-        aria-describedby={null}
-        aria-disabled={false}
-        aria-label="New account"
-        className="MuiButtonBase-root MuiIconButton-root"
-        href="/accounts/new"
-        onBlur={[Function]}
-        onClick={[Function]}
-        onDragLeave={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseOver={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        role="button"
-        tabIndex={0}
-        title="New account"
-      >
-        <span
-          className="MuiIconButton-label"
-        >
-          <svg
-            aria-hidden="true"
-            className="MuiSvgIcon-root"
-            focusable="false"
-            role="presentation"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
-            />
-          </svg>
-        </span>
-        <span
-          className="MuiTouchRipple-root"
-        />
-      </a>
-    </div>
-  </div>
-  <div
-    className="MuiTypography-root MuiTypography-caption"
-  >
-    You don't have any accounts yet
-  </div>
-</nav>
+exports[`AccountsIndex matches snapshot with two accounts in a different currency 1`] = `
+"<BrowserRouter>
+  <Router history={{...}}>
+    <Provider store={{...}}>
+      <Connect(WithStyles(AccountsIndexComponent))>
+        <WithStyles(AccountsIndexComponent) accounts={{...}} settings={{...}} totalBalance={2500} dispatch={[Function: dispatch]}>
+          <AccountsIndexComponent classes={{...}} accounts={{...}} settings={{...}} totalBalance={2500} dispatch={[Function: dispatch]}>
+            <WithStyles(ForwardRef(Container))>
+              <ForwardRef(Container) classes={{...}}>
+                <div className=\\"MuiContainer-root MuiContainer-maxWidthLg\\">
+                  <WithStyles(ForwardRef(Grid)) container={true} spacing={3}>
+                    <ForwardRef(Grid) classes={{...}} container={true} spacing={3}>
+                      <div className=\\"MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3\\">
+                        <WithStyles(ForwardRef(Grid)) item={true} xs={12}>
+                          <ForwardRef(Grid) classes={{...}} item={true} xs={12}>
+                            <div className=\\"MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12\\">
+                              <WithStyles(ForwardRef(Paper)) className=\\"AccountsIndexComponent-balancePaper-1\\">
+                                <ForwardRef(Paper) classes={{...}} className=\\"AccountsIndexComponent-balancePaper-1\\">
+                                  <div className=\\"MuiPaper-root MuiPaper-elevation1 AccountsIndexComponent-balancePaper-1 MuiPaper-rounded\\">
+                                    <WithStyles(ForwardRef(Typography)) variant=\\"body1\\" color=\\"textSecondary\\" align=\\"right\\">
+                                      <ForwardRef(Typography) classes={{...}} variant=\\"body1\\" color=\\"textSecondary\\" align=\\"right\\" theme={{...}}>
+                                        <p className=\\"MuiTypography-root MuiTypography-body1 MuiTypography-colorTextSecondary MuiTypography-alignRight\\">
+                                          Total
+                                        </p>
+                                      </ForwardRef(Typography)>
+                                    </WithStyles(ForwardRef(Typography))>
+                                    <WithStyles(ForwardRef(Typography)) variant=\\"h5\\" align=\\"right\\" className=\\"AccountsIndexComponent-balanceAmount-2\\">
+                                      <ForwardRef(Typography) classes={{...}} variant=\\"h5\\" align=\\"right\\" className=\\"AccountsIndexComponent-balanceAmount-2\\" theme={{...}}>
+                                        <h5 className=\\"MuiTypography-root AccountsIndexComponent-balanceAmount-2 MuiTypography-h5 MuiTypography-alignRight\\">
+                                          €2,500.00
+                                        </h5>
+                                      </ForwardRef(Typography)>
+                                    </WithStyles(ForwardRef(Typography))>
+                                    <WithStyles(ForwardRef(Paper)) className=\\"AccountsIndexComponent-balancePaperIcon-3\\">
+                                      <ForwardRef(Paper) classes={{...}} className=\\"AccountsIndexComponent-balancePaperIcon-3\\">
+                                        <div className=\\"MuiPaper-root MuiPaper-elevation1 AccountsIndexComponent-balancePaperIcon-3 MuiPaper-rounded\\">
+                                          <ForwardRef className=\\"AccountsIndexComponent-balanceIcon-4\\">
+                                            <WithStyles(ForwardRef(SvgIcon)) className=\\"AccountsIndexComponent-balanceIcon-4\\">
+                                              <ForwardRef(SvgIcon) classes={{...}} className=\\"AccountsIndexComponent-balanceIcon-4\\">
+                                                <svg className=\\"MuiSvgIcon-root AccountsIndexComponent-balanceIcon-4\\" focusable=\\"false\\" viewBox=\\"0 0 24 24\\" color={[undefined]} aria-hidden=\\"true\\" role=\\"presentation\\">
+                                                  <path d=\\"M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z\\" />
+                                                </svg>
+                                              </ForwardRef(SvgIcon)>
+                                            </WithStyles(ForwardRef(SvgIcon))>
+                                          </ForwardRef>
+                                        </div>
+                                      </ForwardRef(Paper)>
+                                    </WithStyles(ForwardRef(Paper))>
+                                  </div>
+                                </ForwardRef(Paper)>
+                              </WithStyles(ForwardRef(Paper))>
+                            </div>
+                          </ForwardRef(Grid)>
+                        </WithStyles(ForwardRef(Grid))>
+                        <WithStyles(ForwardRef(Grid)) item={true} xs={12}>
+                          <ForwardRef(Grid) classes={{...}} item={true} xs={12}>
+                            <div className=\\"MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12\\">
+                              <WithStyles(ForwardRef(Grid)) container={true} spacing={3}>
+                                <ForwardRef(Grid) classes={{...}} container={true} spacing={3}>
+                                  <div className=\\"MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3\\">
+                                    <WithStyles(ForwardRef(Grid)) item={true} xs={4}>
+                                      <ForwardRef(Grid) classes={{...}} item={true} xs={4}>
+                                        <div className=\\"MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4\\">
+                                          <WithStyles(ForwardRef(Paper)) className=\\"AccountsIndexComponent-accountsChart-11\\">
+                                            <ForwardRef(Paper) classes={{...}} className=\\"AccountsIndexComponent-accountsChart-11\\">
+                                              <div className=\\"MuiPaper-root MuiPaper-elevation1 AccountsIndexComponent-accountsChart-11 MuiPaper-rounded\\">
+                                                <AccountsChart totalBalance={2500}>
+                                                  <ResponsiveContainer height={200} width=\\"100%\\" debounce={0}>
+                                                    <div id={[undefined]} className=\\"recharts-responsive-container\\" style={{...}}>
+                                                      <PieChart layout=\\"centric\\" stackOffset=\\"none\\" barCategoryGap=\\"10%\\" barGap={4} margin={{...}} reverseStackOrder={false} startAngle={0} endAngle={360} cx=\\"50%\\" cy=\\"50%\\" innerRadius={0} outerRadius=\\"80%\\" width={0} height={200} />
+                                                      <ResizeDetector handleWidth={true} handleHeight={true} onResize={[Function]} skipOnMount={false} refreshRate={1000} refreshMode={[undefined]} resizableElementId=\\"\\">
+                                                        <div style={{...}} />
+                                                      </ResizeDetector>
+                                                    </div>
+                                                  </ResponsiveContainer>
+                                                </AccountsChart>
+                                              </div>
+                                            </ForwardRef(Paper)>
+                                          </WithStyles(ForwardRef(Paper))>
+                                        </div>
+                                      </ForwardRef(Grid)>
+                                    </WithStyles(ForwardRef(Grid))>
+                                    <WithStyles(ForwardRef(Grid)) item={true} xs={8}>
+                                      <ForwardRef(Grid) classes={{...}} item={true} xs={8}>
+                                        <div className=\\"MuiGrid-root MuiGrid-item MuiGrid-grid-xs-8\\">
+                                          <WithStyles(ForwardRef(Paper)) className=\\"AccountsIndexComponent-accountsTable-6\\">
+                                            <ForwardRef(Paper) classes={{...}} className=\\"AccountsIndexComponent-accountsTable-6\\">
+                                              <div className=\\"MuiPaper-root MuiPaper-elevation1 AccountsIndexComponent-accountsTable-6 MuiPaper-rounded\\">
+                                                <WithStyles(ForwardRef(Table))>
+                                                  <ForwardRef(Table) classes={{...}}>
+                                                    <table className=\\"MuiTable-root\\">
+                                                      <WithStyles(ForwardRef(TableHead))>
+                                                        <ForwardRef(TableHead) classes={{...}}>
+                                                          <thead className=\\"MuiTableHead-root\\">
+                                                            <WithStyles(ForwardRef(TableRow))>
+                                                              <ForwardRef(TableRow) classes={{...}}>
+                                                                <tr className=\\"MuiTableRow-root MuiTableRow-head\\">
+                                                                  <WithStyles(ForwardRef(TableCell))>
+                                                                    <ForwardRef(TableCell) classes={{...}}>
+                                                                      <th className=\\"MuiTableCell-root MuiTableCell-head\\" aria-sort={{...}} scope=\\"col\\">
+                                                                        Institution / Account
+                                                                      </th>
+                                                                    </ForwardRef(TableCell)>
+                                                                  </WithStyles(ForwardRef(TableCell))>
+                                                                  <WithStyles(ForwardRef(TableCell))>
+                                                                    <ForwardRef(TableCell) classes={{...}}>
+                                                                      <th className=\\"MuiTableCell-root MuiTableCell-head\\" aria-sort={{...}} scope=\\"col\\">
+                                                                        Account balance
+                                                                      </th>
+                                                                    </ForwardRef(TableCell)>
+                                                                  </WithStyles(ForwardRef(TableCell))>
+                                                                  <WithStyles(ForwardRef(TableCell)) align=\\"right\\">
+                                                                    <ForwardRef(TableCell) classes={{...}} align=\\"right\\">
+                                                                      <th className=\\"MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight\\" aria-sort={{...}} scope=\\"col\\">
+                                                                        Total EUR
+                                                                      </th>
+                                                                    </ForwardRef(TableCell)>
+                                                                  </WithStyles(ForwardRef(TableCell))>
+                                                                </tr>
+                                                              </ForwardRef(TableRow)>
+                                                            </WithStyles(ForwardRef(TableRow))>
+                                                          </thead>
+                                                        </ForwardRef(TableHead)>
+                                                      </WithStyles(ForwardRef(TableHead))>
+                                                      <WithStyles(ForwardRef(TableBody))>
+                                                        <ForwardRef(TableBody) classes={{...}}>
+                                                          <tbody className=\\"MuiTableBody-root\\">
+                                                            <WithStyles(ForwardRef(TableRow))>
+                                                              <ForwardRef(TableRow) classes={{...}}>
+                                                                <tr className=\\"MuiTableRow-root\\">
+                                                                  <WithStyles(ForwardRef(TableCell))>
+                                                                    <ForwardRef(TableCell) classes={{...}}>
+                                                                      <td className=\\"MuiTableCell-root MuiTableCell-body\\" aria-sort={{...}} scope={[undefined]}>
+                                                                        <span className=\\"AccountsIndexComponent-institutionWrapper-7\\">
+                                                                          <WithStyles(InstitutionIcon) institution=\\"TD\\" size=\\"small\\" className=\\"AccountsIndexComponent-institutionIcon-8\\">
+                                                                            <InstitutionIcon classes={{...}} institution=\\"TD\\" size=\\"small\\" className=\\"AccountsIndexComponent-institutionIcon-8\\">
+                                                                              <ForwardRef className=\\"InstitutionIcon-small-207 AccountsIndexComponent-institutionIcon-8\\">
+                                                                                <WithStyles(ForwardRef(SvgIcon)) className=\\"InstitutionIcon-small-207 AccountsIndexComponent-institutionIcon-8\\">
+                                                                                  <ForwardRef(SvgIcon) classes={{...}} className=\\"InstitutionIcon-small-207 AccountsIndexComponent-institutionIcon-8\\">
+                                                                                    <svg className=\\"MuiSvgIcon-root InstitutionIcon-small-207 AccountsIndexComponent-institutionIcon-8\\" focusable=\\"false\\" viewBox=\\"0 0 24 24\\" color={[undefined]} aria-hidden=\\"true\\" role=\\"presentation\\">
+                                                                                      <path d=\\"M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z\\" />
+                                                                                    </svg>
+                                                                                  </ForwardRef(SvgIcon)>
+                                                                                </WithStyles(ForwardRef(SvgIcon))>
+                                                                              </ForwardRef>
+                                                                            </InstitutionIcon>
+                                                                          </WithStyles(InstitutionIcon)>
+                                                                          <WithStyles(ForwardRef(Typography)) variant=\\"subtitle2\\">
+                                                                            <ForwardRef(Typography) classes={{...}} variant=\\"subtitle2\\" theme={{...}}>
+                                                                              <h6 className=\\"MuiTypography-root MuiTypography-subtitle2\\">
+                                                                                TD
+                                                                              </h6>
+                                                                            </ForwardRef(Typography)>
+                                                                          </WithStyles(ForwardRef(Typography))>
+                                                                        </span>
+                                                                      </td>
+                                                                    </ForwardRef(TableCell)>
+                                                                  </WithStyles(ForwardRef(TableCell))>
+                                                                  <WithStyles(ForwardRef(TableCell)) align=\\"right\\">
+                                                                    <ForwardRef(TableCell) classes={{...}} align=\\"right\\">
+                                                                      <td className=\\"MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight\\" aria-sort={{...}} scope={[undefined]} />
+                                                                    </ForwardRef(TableCell)>
+                                                                  </WithStyles(ForwardRef(TableCell))>
+                                                                  <WithStyles(ForwardRef(TableCell)) align=\\"right\\">
+                                                                    <ForwardRef(TableCell) classes={{...}} align=\\"right\\">
+                                                                      <td className=\\"MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight\\" aria-sort={{...}} scope={[undefined]}>
+                                                                        <WithStyles(ForwardRef(Typography)) variant=\\"subtitle2\\">
+                                                                          <ForwardRef(Typography) classes={{...}} variant=\\"subtitle2\\" theme={{...}}>
+                                                                            <h6 className=\\"MuiTypography-root MuiTypography-subtitle2\\">
+                                                                              €2,500.00
+                                                                            </h6>
+                                                                          </ForwardRef(Typography)>
+                                                                        </WithStyles(ForwardRef(Typography))>
+                                                                      </td>
+                                                                    </ForwardRef(TableCell)>
+                                                                  </WithStyles(ForwardRef(TableCell))>
+                                                                </tr>
+                                                              </ForwardRef(TableRow)>
+                                                            </WithStyles(ForwardRef(TableRow))>
+                                                            <WithStyles(ForwardRef(TableRow))>
+                                                              <ForwardRef(TableRow) classes={{...}}>
+                                                                <tr className=\\"MuiTableRow-root\\">
+                                                                  <WithStyles(ForwardRef(TableCell))>
+                                                                    <ForwardRef(TableCell) classes={{...}}>
+                                                                      <td className=\\"MuiTableCell-root MuiTableCell-body\\" aria-sort={{...}} scope={[undefined]}>
+                                                                        <span className=\\"AccountsIndexComponent-accountWrapper-9\\">
+                                                                          <WithStyles(ForwardRef(Typography)) variant=\\"body2\\" color=\\"primary\\" component={{...}}>
+                                                                            <ForwardRef(Typography) classes={{...}} variant=\\"body2\\" color=\\"primary\\" component={{...}} theme={{...}}>
+                                                                              <ForwardRef className=\\"MuiTypography-root MuiTypography-body2 MuiTypography-colorPrimary\\">
+                                                                                <Link to=\\"/accounts/1/transactions\\" className=\\"MuiTypography-root MuiTypography-body2 MuiTypography-colorPrimary\\" innerRef={{...}}>
+                                                                                  <a className=\\"MuiTypography-root MuiTypography-body2 MuiTypography-colorPrimary\\" onClick={[Function: onClick]} href=\\"/accounts/1/transactions\\" />
+                                                                                </Link>
+                                                                              </ForwardRef>
+                                                                            </ForwardRef(Typography)>
+                                                                          </WithStyles(ForwardRef(Typography))>
+                                                                        </span>
+                                                                      </td>
+                                                                    </ForwardRef(TableCell)>
+                                                                  </WithStyles(ForwardRef(TableCell))>
+                                                                  <WithStyles(ForwardRef(TableCell))>
+                                                                    <ForwardRef(TableCell) classes={{...}}>
+                                                                      <td className=\\"MuiTableCell-root MuiTableCell-body\\" aria-sort={{...}} scope={[undefined]}>
+                                                                        CA$1,000.00
+                                                                      </td>
+                                                                    </ForwardRef(TableCell)>
+                                                                  </WithStyles(ForwardRef(TableCell))>
+                                                                  <WithStyles(ForwardRef(TableCell)) align=\\"right\\">
+                                                                    <ForwardRef(TableCell) classes={{...}} align=\\"right\\">
+                                                                      <td className=\\"MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight\\" aria-sort={{...}} scope={[undefined]}>
+                                                                        €1,000.00
+                                                                      </td>
+                                                                    </ForwardRef(TableCell)>
+                                                                  </WithStyles(ForwardRef(TableCell))>
+                                                                </tr>
+                                                              </ForwardRef(TableRow)>
+                                                            </WithStyles(ForwardRef(TableRow))>
+                                                            <WithStyles(ForwardRef(TableRow))>
+                                                              <ForwardRef(TableRow) classes={{...}}>
+                                                                <tr className=\\"MuiTableRow-root\\">
+                                                                  <WithStyles(ForwardRef(TableCell))>
+                                                                    <ForwardRef(TableCell) classes={{...}}>
+                                                                      <td className=\\"MuiTableCell-root MuiTableCell-body\\" aria-sort={{...}} scope={[undefined]}>
+                                                                        <span className=\\"AccountsIndexComponent-accountWrapper-9\\">
+                                                                          <WithStyles(ForwardRef(Typography)) variant=\\"body2\\" color=\\"primary\\" component={{...}}>
+                                                                            <ForwardRef(Typography) classes={{...}} variant=\\"body2\\" color=\\"primary\\" component={{...}} theme={{...}}>
+                                                                              <ForwardRef className=\\"MuiTypography-root MuiTypography-body2 MuiTypography-colorPrimary\\">
+                                                                                <Link to=\\"/accounts/2/transactions\\" className=\\"MuiTypography-root MuiTypography-body2 MuiTypography-colorPrimary\\" innerRef={{...}}>
+                                                                                  <a className=\\"MuiTypography-root MuiTypography-body2 MuiTypography-colorPrimary\\" onClick={[Function: onClick]} href=\\"/accounts/2/transactions\\" />
+                                                                                </Link>
+                                                                              </ForwardRef>
+                                                                            </ForwardRef(Typography)>
+                                                                          </WithStyles(ForwardRef(Typography))>
+                                                                        </span>
+                                                                      </td>
+                                                                    </ForwardRef(TableCell)>
+                                                                  </WithStyles(ForwardRef(TableCell))>
+                                                                  <WithStyles(ForwardRef(TableCell))>
+                                                                    <ForwardRef(TableCell) classes={{...}}>
+                                                                      <td className=\\"MuiTableCell-root MuiTableCell-body\\" aria-sort={{...}} scope={[undefined]}>
+                                                                        €1,000.00
+                                                                      </td>
+                                                                    </ForwardRef(TableCell)>
+                                                                  </WithStyles(ForwardRef(TableCell))>
+                                                                  <WithStyles(ForwardRef(TableCell)) align=\\"right\\">
+                                                                    <ForwardRef(TableCell) classes={{...}} align=\\"right\\">
+                                                                      <td className=\\"MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight\\" aria-sort={{...}} scope={[undefined]}>
+                                                                        €1,500.00
+                                                                      </td>
+                                                                    </ForwardRef(TableCell)>
+                                                                  </WithStyles(ForwardRef(TableCell))>
+                                                                </tr>
+                                                              </ForwardRef(TableRow)>
+                                                            </WithStyles(ForwardRef(TableRow))>
+                                                          </tbody>
+                                                        </ForwardRef(TableBody)>
+                                                      </WithStyles(ForwardRef(TableBody))>
+                                                    </table>
+                                                  </ForwardRef(Table)>
+                                                </WithStyles(ForwardRef(Table))>
+                                              </div>
+                                            </ForwardRef(Paper)>
+                                          </WithStyles(ForwardRef(Paper))>
+                                        </div>
+                                      </ForwardRef(Grid)>
+                                    </WithStyles(ForwardRef(Grid))>
+                                  </div>
+                                </ForwardRef(Grid)>
+                              </WithStyles(ForwardRef(Grid))>
+                            </div>
+                          </ForwardRef(Grid)>
+                        </WithStyles(ForwardRef(Grid))>
+                      </div>
+                    </ForwardRef(Grid)>
+                  </WithStyles(ForwardRef(Grid))>
+                </div>
+              </ForwardRef(Container)>
+            </WithStyles(ForwardRef(Container))>
+          </AccountsIndexComponent>
+        </WithStyles(AccountsIndexComponent)>
+      </Connect(WithStyles(AccountsIndexComponent))>
+    </Provider>
+  </Router>
+</BrowserRouter>"
 `;

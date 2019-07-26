@@ -17,33 +17,46 @@ import Settings from './core/Settings'
 import BudgetCategories from './core/BudgetCategories'
 import Dashboard from './core/Dashboard'
 import Transactions from './core/Accounts/Transactions'
+import Accounts from './core/Accounts/index'
 import NewAccount from './core/Accounts/new'
 import EditAccount from './core/Accounts/edit'
 import ImportTransactions from './core/Accounts/ImportTransactions'
 import NewImportFromInstitution from './core/ImportFromInstitution/new'
 import EditImportFromInstitution from './core/ImportFromInstitution/edit'
+import Budget from './core/Budget'
 import Header from './common/Header'
 import SnackbarMessage from './common/SnackbarMessage'
+import LeftDrawer from './core/Accounts/LeftDrawer'
 
 const mapStateToProps = ({ user, settings, accounts }) => {
   return { user, settings, accounts }
 }
 
 export class RoutesComponent extends React.Component {
-  loginRequired = (Component, options) => (props) => {
+  loginRequired = (Component, options = {}) => (props) => {
+    const { accountRequired, accountLeftDrawer } = options
+
     // Check for authentication
     if (this.props.user.isAuthenticatedWith === null) {
       return <Redirect to="/" />
     }
     // Check for at least one account
-    if (options !== undefined) {
-      const { accountRequired } = options
-      if (accountRequired && Object.keys(this.props.accounts.byId).length === 0) {
-        return <Redirect to="/" />
-      }
+    if (accountRequired && Object.keys(this.props.accounts.byId).length === 0) {
+      return <Redirect to="/" />
     }
+
+    if (accountLeftDrawer) {
+      return (
+        <Header {...props}>
+          <LeftDrawer {...props}>
+            <Component {...props} />
+          </LeftDrawer>
+        </Header>
+      )
+    }
+
     return (
-      <Header>
+      <Header {...props}>
         <Component {...props} />
       </Header>
     )
@@ -55,17 +68,37 @@ export class RoutesComponent extends React.Component {
 
   authenticatedDashBoard = this.loginRequired(Dashboard)
 
-  authenticatedNewAccount = this.loginRequired(NewAccount)
+  authenticatedAccounts = this.loginRequired(Accounts)
 
-  authenticatedEditAccount = this.loginRequired(EditAccount, { accountRequired: true })
+  authenticatedNewAccount = this.loginRequired(NewAccount, {
+    accountLeftDrawer: true
+  })
 
-  authenticatedTransactions = this.loginRequired(Transactions, { accountRequired: true })
+  authenticatedEditAccount = this.loginRequired(EditAccount, {
+    accountRequired: true,
+    accountLeftDrawer: true
+  })
 
-  authenticatedImportTransactions = this.loginRequired(ImportTransactions, { accountRequired: true })
+  authenticatedTransactions = this.loginRequired(Transactions, {
+    accountRequired: true,
+    accountLeftDrawer: true
+  })
 
-  authenticatedNewImportFromInstitution = this.loginRequired(NewImportFromInstitution)
+  authenticatedImportTransactions = this.loginRequired(ImportTransactions, {
+    accountRequired: true,
+    accountLeftDrawer: true
+  })
 
-  authenticatedEditImportFromInstitution = this.loginRequired(EditImportFromInstitution, { accountRequired: true })
+  authenticatedNewImportFromInstitution = this.loginRequired(NewImportFromInstitution, {
+    accountLeftDrawer: true
+  })
+
+  authenticatedEditImportFromInstitution = this.loginRequired(EditImportFromInstitution, {
+    accountRequired: true,
+    accountLeftDrawer: true
+  })
+
+  authenticatedBudget = this.loginRequired(Budget)
 
   authenticatedTaxes = this.loginRequired(Taxes)
 
@@ -84,6 +117,8 @@ export class RoutesComponent extends React.Component {
               <Route exact path="/settings" render={this.authenticatedSettings} />
               <Route exact path="/budget-categories" render={this.authenticatedBudgetCategories} />
               <Route exact path="/dashboard" render={this.authenticatedDashBoard} />
+              <Route exact path="/budget" render={this.authenticatedBudget} />
+              <Route exact path="/accounts" render={this.authenticatedAccounts} />
               <Route exact path="/accounts/new" render={this.authenticatedNewAccount} />
               <Route exact path="/accounts/:accountId/edit" render={this.authenticatedEditAccount} />
               <Route exact path="/accounts/:accountId/transactions" render={this.authenticatedTransactions} />
