@@ -28,12 +28,12 @@ describe('budget reducer', () => {
   describe('CREATE_EXACT_RULE', () => {
     it('should create a new rule', () => {
       const type = types.CREATE_EXACT_RULE
-      const payload = { match: 'Shopping Mart', category: 'Groceries' }
+      const payload = { match: 'Shopping Mart', categoryId: 1 }
       expect(budgetReducer(initialState, { type, payload })).toEqual({
         ...initialState,
         rules: {
           [payload.match]: {
-            category: payload.category,
+            categoryId: payload.categoryId,
             count: 0,
             type: 'exact_match'
           }
@@ -43,11 +43,11 @@ describe('budget reducer', () => {
 
     it('should update an existing rule', () => {
       const type = types.CREATE_EXACT_RULE
-      const payload = { match: 'Shopping Mart', category: 'Groceries' }
+      const payload = { match: 'Shopping Mart', categoryId: 1 }
       expect(budgetReducer({ rules: { 'Shopping Mart': 'b' } }, { type, payload })).toEqual({
         rules: {
           [payload.match]: {
-            category: payload.category,
+            categoryId: payload.categoryId,
             count: 0,
             type: 'exact_match'
           }

@@ -278,7 +278,6 @@ export class CsvImportFormComponent extends React.Component {
               variant="contained"
               color="primary"
               disabled={isSubmitting || file === null || error !== null}
-              onClick={this.handleButtonClick}
             >
               Import
             </Button>

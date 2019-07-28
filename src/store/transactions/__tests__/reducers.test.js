@@ -105,9 +105,9 @@ describe('transaction reducer', () => {
       const payload = {
         match: 'Shopping Mart',
         rules: {
-          a: { category: 'b' },
-          [transaction.description]: { category: 'xyz' },
-          other: { category: 'something else' }
+          a: { categoryId: 'b' },
+          [transaction.description]: { categoryId: 'xyz' },
+          other: { categoryId: 'something else' }
         }
       }
       const state = {
@@ -119,7 +119,7 @@ describe('transaction reducer', () => {
       expect(transactionReducer(state, { type, payload })).toEqual({
         ...state,
         list: [
-          { ...transaction, category: 'xyz' },
+          { ...transaction, categoryId: 'xyz' },
           { id: 2, description: 'abc' }
         ]
       })

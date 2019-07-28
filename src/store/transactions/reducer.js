@@ -47,7 +47,7 @@ export default (state = initialState, action) => {
               ...result,
               {
                 ...transaction,
-                category: transaction.description in rules ? rules[transaction.description].category : undefined
+                categoryId: transaction.description in rules ? rules[transaction.description].categoryId : undefined
               }
             ]
           }

@@ -19,22 +19,24 @@ export const applyExactRule = ({ match, rules }) => (
 
 export const createTransaction = (account, transaction) => async (dispatch, getState) => {
   await dispatch(fetchExchangeRates([account.currency], transaction.createdAt))
+  const id = uuid()
   dispatch({
     type: types.CREATE_TRANSACTION,
     payload: {
       ...transaction,
-      id: uuid(),
+      id,
       accountId: account.id,
       createdAt: transaction.createdAt + 1000 // Plus 1 second
     }
   })
-  if (transaction.category !== undefined) {
-    dispatch(createExactRule(transaction.category, transaction.description))
+  if (transaction.categoryId !== undefined) {
+    dispatch(createExactRule(transaction.categoryId, transaction.description))
   }
   dispatch(applyExactRule({ match: transaction.description, rules: getState().budget.rules }))
   dispatch(countRuleUsage())
   await dispatch(afterTransactionsChanged(account))
   dispatch(showSnackbar({ text: 'Transaction created', status: 'success' }))
+  return id
 }
 
 export const updateTransaction = (account, transaction) => async (dispatch, getState) => {
@@ -47,11 +49,11 @@ export const updateTransaction = (account, transaction) => async (dispatch, getS
     }
   })
 
-  if (transaction.category !== oldTransaction.category) {
-    if (transaction.category === undefined) {
+  if (transaction.categoryId !== oldTransaction.categoryId) {
+    if (transaction.categoryId === undefined) {
       dispatch(deleteExactRule(transaction.description))
     } else {
-      dispatch(createExactRule(transaction.category, transaction.description))
+      dispatch(createExactRule(transaction.categoryId, transaction.description))
     }
     dispatch(applyExactRule({ match: transaction.description, rules: getState().budget.rules }))
     dispatch(countRuleUsage())

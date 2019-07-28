@@ -19,7 +19,7 @@ const transaction = {
 const budget = {
   ...budgetInitialState,
   rules: {
-    'Shopping Mart': budgetInitialState.categories[2].options[0].label
+    'Shopping Mart': budgetInitialState.categoryTree[2].options[0].label
   }
 }
 
@@ -34,12 +34,12 @@ describe('budget actions', () => {
   it('should create an exact rule', async () => {
     const mockStore = configureMockStore([thunk])
     const store = mockStore({})
-    const category = 'Groceries'
+    const category = budgetInitialState.categoryTree[2]
     const match = 'Shopping Mart'
-    await store.dispatch(actions.createExactRule(category, match))
+    await store.dispatch(actions.createExactRule(category.id, match))
     expect(store.getActions()).toEqual([{
       type: 'CREATE_EXACT_RULE',
-      payload: { category, match }
+      payload: { categoryId: category.id, match }
     }])
   })
 

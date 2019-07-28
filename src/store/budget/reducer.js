@@ -1,3 +1,4 @@
+import uuid from 'uuid/v4'
 import types from './types'
 import budgetCategories from '../../data/budgetCategories'
 
@@ -10,38 +11,109 @@ const defaultColours = [
   '#fdbf6f', '#ffff99', '#b15928'
 ]
 
-export const initialState = (() => {
-  const colours = {}
-  let count = 0
-  const categories = Object.keys(budgetCategories).sort().map(category => (
-    {
-      label: category,
-      options: budgetCategories[category].map((subCategory) => {
-        const colour = defaultColours[count % defaultColours.length]
-        colours[subCategory] = colour
-        count += 1
-        return { label: subCategory, value: subCategory, colour }
-      })
+const categoryTree = categoriesById => (
+  Object.values(categoriesById).reduce((result, category) => {
+    if ('childIds' in category) {
+      const children = category.childIds.map(subCategoryId => (
+        {
+          id: categoriesById[subCategoryId].id,
+          label: categoriesById[subCategoryId].name,
+          value: categoriesById[subCategoryId].name,
+          colour: categoriesById[subCategoryId].colour
+        }
+      ))
+      return [
+        ...result,
+        { id: category.id, label: category.name, options: children }
+      ]
     }
-  ))
+    return result
+  }, [])
+)
+
+const generateInitialState = () => {
+  let count = 0
+  const categoriesById = Object.keys(budgetCategories).reduce((result, category) => {
+    const parent = {
+      id: uuid(),
+      name: category,
+      childIds: []
+    }
+    const children = budgetCategories[category].reduce((res, subCategory) => {
+      const child = {
+        id: uuid(),
+        name: subCategory,
+        colour: defaultColours[count % defaultColours.length]
+      }
+      count += 1
+      parent.childIds.push(child.id)
+      return { ...res, [child.id]: child }
+    }, {})
+
+    return {
+      ...result,
+      [parent.id]: parent,
+      ...children
+    }
+  }, {})
+
   return {
-    categories,
-    colours,
+    categoriesById,
+    categoryTree: categoryTree(categoriesById),
     rules: {} // rules have the format => match: { category: 'cat 1', type: 'exact_match', count: 0 }
   }
-})()
+}
+export const initialState = generateInitialState()
+
+// export const initialState = (() => {
+//   const colours = {}
+//   let count = 0
+//   const categories = Object.keys(budgetCategories).sort().map(category => (
+//     {
+//       label: category,
+//       options: budgetCategories[category].map((subCategory) => {
+//         const colour = defaultColours[count % defaultColours.length]
+//         colours[subCategory] = colour
+//         count += 1
+//         return { label: subCategory, colour }
+//       })
+//     }
+//   ))
+//   return {
+//     categories,
+//     colours,
+//     rules: {} // rules have the format => match: { category: 'cat 1', type: 'exact_match', count: 0 }
+//   }
+// })()
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case types.LOAD_BUDGET:
       return action.payload || initialState
+    case types.CREATE_CATEGORY:
+      return {
+        ...state,
+        categories: action.payload
+      }
+    // case types.UPDATE_CATEGORY:
+    //   accounts = { ...state.byId, [payload.id]: payload }
+    //   return {
+    //     ...state,
+    //     byId: accounts
+    //   }
+    // case types.DELETE_CATEGORY:
+    //   const { [payload]: _, ...rest } = state.byId
+    //   return {
+    //     ...state,
+    //     byId: rest
+    //   }
     case types.CREATE_EXACT_RULE:
       return {
         ...state,
         rules: {
           ...state.rules,
           [action.payload.match]: {
-            category: action.payload.category,
+            categoryId: action.payload.categoryId,
             type: 'exact_match',
             count: 0
           }

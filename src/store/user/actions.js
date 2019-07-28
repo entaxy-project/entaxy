@@ -42,11 +42,7 @@ export const loadUserData = () => (dispatch, getState) => {
       dispatch(loadAccounts((state || {}).accounts))
       dispatch(loadTransactions((state || {}).transactions))
       dispatch(loadExchangeRates((state || {}).exchangeRates))
-      dispatch(loadBudget({
-        ...(state || {}).budget,
-        categories: budgetInitialState.categories,
-        colours: budgetInitialState.colours
-      }))
+      dispatch(loadBudget((state || {}).budget))
       dispatch(hideOverlay())
     }).catch((error) => {
       throw error
@@ -87,7 +83,7 @@ export const handleBlockstackLogin = () => (dispatch) => {
 }
 
 export const resetState = () => (dispatch, getState) => {
-  const { settings } = getState().settings
+  const { settings } = getState()
   if (settings === undefined) {
     dispatch(loadSettings(settingsInitialState))
   } else {

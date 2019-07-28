@@ -17,19 +17,20 @@ const BudgetChart = () => {
   const {
     settings,
     transactions,
-    categories,
-    colours,
+    budget,
     formatCurrency
   } = useSelector(state => ({
     settings: state.settings,
     transactions: state.transactions,
-    categories: [...new Set(Object.values(state.budget.rules).map(rules => rules.category))],
-    colours: state.budget.colours,
+    budget: state.budget,
     formatCurrency: currencyFormatter(state.settings.locale, state.settings.currency)
 
   }))
 
-  const initialState = categories.reduce(
+  const usedCategories = [...new Set(Object.values(budget.rules).map(rules => (
+    budget.categoriesById[rules.categoryId]
+  )))]
+  const initialState = usedCategories.reduce(
     (res, cat) => ({ ...res, [cat]: 1 }),
     {}
   )
@@ -38,14 +39,15 @@ const BudgetChart = () => {
   const byMonth = {}
   transactions.list.forEach((transaction) => {
     const dateKey = startOfMonth(transaction.createdAt).getTime()
-    if (transaction.category !== undefined) {
+    if (transaction.categoryId !== undefined) {
+      const categoryName = budget.categoriesById[transaction.categoryId].name
       if (byMonth[dateKey] === undefined) {
-        byMonth[dateKey] = categories.reduce((res, cat) => ({ ...res, [cat]: 0 }), {})
+        byMonth[dateKey] = usedCategories.reduce((res, cat) => ({ ...res, [cat.name]: 0 }), {})
       }
-      if (byMonth[dateKey][transaction.category] === undefined) {
-        byMonth[dateKey][transaction.category] = 0
+      if (byMonth[dateKey][categoryName] === undefined) {
+        byMonth[dateKey][categoryName] = 0
       }
-      byMonth[dateKey][transaction.category] += Math.abs(transaction.amount)
+      byMonth[dateKey][categoryName] += Math.abs(transaction.amount)
     }
   })
   const data = Object.keys(byMonth).sort((a, b) => a - b).map(date => ({
@@ -61,17 +63,17 @@ const BudgetChart = () => {
 
   const handleMouseEnter = (obj) => {
     setOpacity(
-      categories.reduce((res, value) => ({
+      usedCategories.reduce((res, category) => ({
         ...res,
-        [value]: value === obj.dataKey ? 1 : 0.3
+        [category.name]: category.name === obj.dataKey ? 1 : 0.3
       }), {})
     )
   }
   const handleMouseLeave = () => {
     setOpacity(
-      categories.reduce((res, value) => ({
+      usedCategories.reduce((res, category) => ({
         ...res,
-        [value]: 1
+        [category.name]: 1
       }), {})
     )
   }
@@ -79,13 +81,13 @@ const BudgetChart = () => {
   return (
     <ResponsiveContainer>
       <LineChart data={data} margin={margin}>
-        { categories.map(category => (
+        { usedCategories.map(category => (
           <Line
             type="monotone"
-            dataKey={category}
-            key={category}
-            stroke={colours[category]}
-            strokeOpacity={opacity[category]}
+            dataKey={category.name}
+            key={category.name}
+            stroke={category.colour}
+            strokeOpacity={opacity[category.name]}
             strokeWidth={2}
           />
         ))}
