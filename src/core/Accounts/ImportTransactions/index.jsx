@@ -88,7 +88,6 @@ export class ImportTransactionsComponent extends React.Component {
 
 
   handleParsedData = (transactions, errors) => {
-    console.log('handleParsedData', transactions)
     return this.setState({
       showTransactions: true,
       transactions: transactions.map(t => Object.assign(t, { id: uuid() })),

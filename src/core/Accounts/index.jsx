@@ -107,11 +107,16 @@ export const AccountsIndexComponent = ({
           <Typography variant="h6">
             You don&apos;t have any accounts yet.
           </Typography>
-          <Button color="secondary" component={LinkTo('/accounts/new')} className={classes.newAccountButton}>
+          <Button
+            variant="contained"
+            color="secondary"
+            component={LinkTo('/accounts/new')}
+            className={classes.newAccountButton}
+          >
             Add an account
           </Button>
           <Typography variant="body1">
-            Here you can keep track of all the accounts you have from any institution.
+            You can keep track of all the accounts you have from any institution.
           </Typography>
         </Paper>
       )}

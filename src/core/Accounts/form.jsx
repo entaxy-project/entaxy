@@ -187,14 +187,11 @@ export class AccountFormComponent extends React.Component {
               helperText={errors.name}
             />
             <TextField
-              className={classes.input}
               type="number"
+              className={classes.input}
               label="Opening balance"
               inputProps={{
                 'aria-label': 'Opening balance',
-                maxLength: 10,
-                min: Number.MIN_SAFE_INTEGER,
-                max: Number.MAX_SAFE_INTEGER,
                 step: 0.01
               }}
               value={values.openingBalance}
@@ -308,7 +305,9 @@ export default compose(
         .required('Please select an institution')
         .nullable(),
       openingBalance: Yup.number()
-        .required('Please enter an opening balance'),
+        .required('Please enter an opening balance')
+        .min(Number.MIN_SAFE_INTEGER)
+        .max(Number.MAX_SAFE_INTEGER),
       openingBalanceDate: Yup.date()
         .required('Please select the date of the opening balance'),
       currency: Yup.object()

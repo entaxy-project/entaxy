@@ -127,10 +127,10 @@ export class TransactionsTableComponent extends React.Component {
   }
 
   filterByDescription = (transaction) => {
-    let res = transaction.description.toLowerCase().includes(this.state.filters.description)
+    let res = transaction.description.toLowerCase().includes(this.state.filters.description.toLowerCase())
     if (transaction.categoryId !== undefined) {
       const category = this.props.budget.categoriesById[transaction.categoryId].name
-      res = res || category.toLowerCase().includes(this.state.filters.description)
+      res = res || category.toLowerCase().includes(this.state.filters.description.toLowerCase())
     }
     return res
   }
