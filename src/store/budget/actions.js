@@ -13,7 +13,11 @@ export const afterCategoriesChanged = () => {
 export const createCategory = (category, parentId) => (dispatch) => {
   dispatch({
     type: types.CREATE_CATEGORY,
-    payload: { category: { ...category, id: uuid(), parentId } }
+    payload: {
+      ...category,
+      id: uuid(),
+      ...(parentId === undefined ? {} : { parentId })
+    }
   })
   afterCategoriesChanged()
 }

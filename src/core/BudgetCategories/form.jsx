@@ -36,7 +36,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = {
-  handleCreate: (category, topCategoryId) => createCategory(category, topCategoryId),
+  handleCreate: (category, groupId) => createCategory(category, groupId),
   handleUpdate: category => updateCategory(category)
 }
 
@@ -126,7 +126,7 @@ export default compose(
       if ('id' in values) {
         props.handleUpdate(values)
       } else {
-        props.handleCreate(values, props.topCategoryId)
+        props.handleCreate(values, props.groupId)
       }
       props.handleCancel()
       setSubmitting(false)

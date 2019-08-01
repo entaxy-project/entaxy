@@ -5,7 +5,7 @@ import budgetCategories from '../../data/budgetCategories'
 
 // https://projects.susielu.com
 // http://repec.sowi.unibe.ch/stata/palettes/index.html
-const defaultColours = [
+export const defaultColours = [
   '#1f78b4', '#b2df8a', '#e31a1c',
   '#ff7f00', '#cab2d6', '#a6cee3',
   '#33a02c', '#6a3d9a', '#fb9a99',
@@ -13,7 +13,7 @@ const defaultColours = [
 ]
 
 
-const categoryTree = (categoriesById) => {
+export const generateCategoryTree = (categoriesById) => {
   const parents = Object.values(categoriesById).reduce((result, parentCategory) => {
     if (!('parentId' in parentCategory)) {
       return {
@@ -38,6 +38,7 @@ const categoryTree = (categoriesById) => {
     }
   })
   return Object.values(parents)
+    .sort((a, b) => ((a.label.toLowerCase() > b.label.toLowerCase()) ? 1 : -1))
 }
 
 const generateInitialState = () => {
@@ -68,7 +69,7 @@ const generateInitialState = () => {
 
   return {
     categoriesById,
-    categoryTree: categoryTree(categoriesById),
+    categoryTree: generateCategoryTree(categoriesById),
     rules: {} // rules have the format => match: { category: 'cat 1', type: 'exact_match', count: 0 }
   }
 }
@@ -80,34 +81,48 @@ export default (state = initialState, { type, payload }) => {
     case types.LOAD_BUDGET:
       return payload || initialState
     case types.CREATE_CATEGORY:
-      const topCategory = state.categoryTree.find((cat => cat.id === payload.category.parentId))
-      const lastColour = topCategory.options[topCategory.options.length - 1].colour
-      const lastColourIndex = defaultColours.indexOf(lastColour)
+      let colour = null
+      if ('parentId' in payload) {
+        // Select the next colour of the category
+        const group = state.categoryTree.find((cat => cat.id === payload.parentId))
+        const lastColour = group.options.length === 0
+          ? defaultColours[defaultColours.length - 1]
+          : group.options[group.options.length - 1].colour
+        const lastColourIndex = defaultColours.indexOf(lastColour)
+        colour = defaultColours[(lastColourIndex + 1) % defaultColours.length]
+      }
       categoriesById = {
         ...state.categoriesById,
-        [payload.category.id]: {
-          ...payload.category,
-          colour: defaultColours[(lastColourIndex + 1) % defaultColours.length]
+        [payload.id]: {
+          ...payload,
+          ...(colour !== null ? { colour } : {})
         }
       }
       return {
         ...state,
         categoriesById,
-        categoryTree: categoryTree(categoriesById)
+        categoryTree: generateCategoryTree(categoriesById)
       }
     case types.UPDATE_CATEGORY:
       categoriesById = { ...state.categoriesById, [payload.id]: payload }
       return {
         ...state,
         categoriesById,
-        categoryTree: categoryTree(categoriesById)
+        categoryTree: generateCategoryTree(categoriesById)
       }
     case types.DELETE_CATEGORY:
       const { [payload]: category, ...rest } = state.categoriesById
+      // Delete all the sub categories
+      categoriesById = Object.values(rest).reduce((res, child) => {
+        if (child.parentId === category.id) {
+          return res
+        }
+        return { ...res, [child.id]: child }
+      }, {})
       return {
         ...state,
-        categoriesById: rest,
-        categoryTree: categoryTree(rest)
+        categoriesById,
+        categoryTree: generateCategoryTree(categoriesById)
       }
     case types.CREATE_EXACT_RULE:
       return {

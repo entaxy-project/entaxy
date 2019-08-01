@@ -27,10 +27,12 @@ import Tooltip from '@material-ui/core/Tooltip'
 import CategoryForm from './form'
 import { currencyFormatter } from '../../util/stringFormatter'
 import { deleteCategory } from '../../store/budget/actions'
+import GroupDialog from './GroupDialog'
 
 const useStyles = makeStyles(theme => ({
   root: {
-    marginTop: theme.spacing(2)
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(6)
   },
   categoryGroup: {
     marginTop: theme.spacing(2)
@@ -53,7 +55,6 @@ const useStyles = makeStyles(theme => ({
     textAlign: 'center'
   },
   inputRoot: {
-    width: 230,
     verticalAlign: 'bottom',
     padding: theme.spacing(2),
     paddingTop: theme.spacing(1) * 0.5,
@@ -67,12 +68,9 @@ const useStyles = makeStyles(theme => ({
     }
   },
   inputInput: {
+    width: 160,
     color: 'inherit',
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('md')]: {
-      minWidth: 230
-    }
+    transition: theme.transitions.create('width')
   },
   filterParentCategory: {
     width: 230,
@@ -98,8 +96,11 @@ const BudgetCategories = () => {
   const [popupCategoryId, setPopupCategoryId] = React.useState(null)
   const [anchorEl, setAnchorEl] = React.useState(null)
   const [editCategory, setEditCategory] = React.useState(null)
+  const [openGroupDialog, setOpenGroupDialog] = React.useState(false)
+  const [selectedGroup, setSelectedGroup] = React.useState(null)
   const popupIsOpen = Boolean(anchorEl)
 
+  // --- Filters ----
   function handleFilterChange(event) {
     if ('persist' in event) event.persist()
     setfilter(oldValues => ({
@@ -125,6 +126,7 @@ const BudgetCategories = () => {
     return filteredTree
   }
 
+  // --- Popuop ---
   const handleClosePopup = () => {
     setAnchorEl(null)
   }
@@ -135,7 +137,13 @@ const BudgetCategories = () => {
     setEditCategory(null)
   }
 
-  const handleClickEditCategory = () => {
+  // --- Category form ---
+  const showNewCategoryForm = (groupId) => {
+    setEditCategory(groupId)
+    setAnchorEl(null)
+  }
+
+  const showEditCategoryForm = () => {
     setEditCategory(popupCategoryId)
     setAnchorEl(null)
   }
@@ -149,13 +157,24 @@ const BudgetCategories = () => {
     handleClosePopup()
   }
 
-  const showNewCategoryForm = (topCategoryId) => {
-    setEditCategory(topCategoryId)
-    setAnchorEl(null)
+  // --- Group dialog ---
+  const handleNewGroup = () => {
+    setSelectedGroup(null)
+    setOpenGroupDialog(true)
   }
 
-  const showGroupForm = () => {
+  const handleEditGroup = (category) => {
+    setSelectedGroup(budget.categoriesById[category.id])
+    setOpenGroupDialog(true)
+  }
 
+  const handleDeleteGroup = (category) => {
+    dispatch(deleteCategory(category.id))
+  }
+
+  const handleCloseGroupDialog = () => {
+    setSelectedGroup(null)
+    setOpenGroupDialog(false)
   }
 
   const renderCategory = (categoryId) => {
@@ -185,19 +204,19 @@ const BudgetCategories = () => {
     )
   }
 
-  const renderNewCategory = (topCategoryId) => {
-    if (editCategory !== null && topCategoryId === editCategory) {
+  const renderNewCategory = (groupId) => {
+    if (editCategory !== null && groupId === editCategory) {
       return (
         <Card>
           <CategoryForm
-            topCategoryId={topCategoryId}
+            groupId={groupId}
             handleCancel={handleCloseForm}
           />
         </Card>
       )
     }
     return (
-      <Button size="small" color="secondary" onClick={() => showNewCategoryForm(topCategoryId)}>
+      <Button size="small" color="secondary" onClick={() => showNewCategoryForm(groupId)}>
         New category
         <AddIcon />
       </Button>
@@ -206,12 +225,17 @@ const BudgetCategories = () => {
 
   return (
     <Container className={classes.root}>
+      <GroupDialog
+        open={openGroupDialog}
+        onCancel={handleCloseGroupDialog}
+        category={selectedGroup}
+      />
       <Grid container justify="space-between">
         <Typography variant="h4">Manage categories</Typography>
         <div>
           <InputBase
             type="search"
-            placeholder="Search"
+            placeholder="Search categories"
             name="category"
             onChange={handleFilterChange}
             value={filter.category}
@@ -249,24 +273,29 @@ const BudgetCategories = () => {
             isClearable
           />
           <Tooltip title="New Group">
-            <IconButton aria-label="New Group" onClick={showGroupForm}>
+            <IconButton aria-label="New Group" onClick={handleNewGroup}>
               <AddIcon />
             </IconButton>
           </Tooltip>
         </div>
       </Grid>
-      {filteredCategories().map(topCategory => (
-        <Grid container spacing={2} key={topCategory.id} className={classes.categoryGroup}>
+      {filteredCategories().map(group => (
+        <Grid container spacing={2} key={group.id} className={classes.categoryGroup}>
           <Grid item xs={12}>
-            <Typography variant="h6" className={classes.groupName}>{topCategory.label}</Typography>
-            <Tooltip title="Edit Group">
-              <IconButton aria-label="Edit Group" onClick={showGroupForm} style={{ padding: 8 }}>
+            <Typography variant="h6" className={classes.groupName}>{group.label}</Typography>
+            <Tooltip title="Change group name">
+              <IconButton aria-label="Change group name" onClick={() => handleEditGroup(group)} style={{ padding: 8 }}>
                 <EditIcon style={{ fontSize: 18 }} />
+              </IconButton>
+            </Tooltip>
+            <Tooltip title="Delete group">
+              <IconButton aria-label="Delete group" onClick={() => handleDeleteGroup(group)} style={{ padding: 8 }}>
+                <DeleteIcon style={{ fontSize: 18 }} />
               </IconButton>
             </Tooltip>
 
           </Grid>
-          {topCategory.options.map(category => (
+          {group.options.map(category => (
             <Grid item lg={3} md={4} sm={6} xs={12} key={category.id}>
               <Card>{renderCategory(category.id)}</Card>
             </Grid>
@@ -277,16 +306,16 @@ const BudgetCategories = () => {
             md={4}
             sm={6}
             xs={12}
-            key={`add-new-${topCategory.id}`}
+            key={`add-new-${group.id}`}
             className={classes.newCategoryButton}
           >
-            {renderNewCategory(topCategory.id)}
+            {renderNewCategory(group.id)}
           </Grid>
         </Grid>
       ))}
       <Menu anchorEl={anchorEl} open={popupIsOpen} onClose={handleClosePopup}>
         <MenuList role="menu">
-          <MenuItem onClick={handleClickEditCategory}>
+          <MenuItem onClick={showEditCategoryForm}>
             <ListItemIcon>
               <EditIcon />
             </ListItemIcon>
