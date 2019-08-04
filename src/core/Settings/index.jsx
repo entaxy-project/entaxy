@@ -33,7 +33,7 @@ const mapDispatchToProps = dispatch => ({
   saveSettings: settings => dispatch(updateSettings(settings)),
   showSnackbarMessage: message => dispatch(showSnackbar(message)),
   deleteAllData: async () => {
-    await dispatch(resetState())
+    dispatch(resetState())
     await saveState()
   }
 })

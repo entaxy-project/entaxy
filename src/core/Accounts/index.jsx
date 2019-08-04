@@ -6,6 +6,7 @@ import { withStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
+import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
 import DashboardIcon from '@material-ui/icons/Dashboard'
 import Table from '@material-ui/core/Table'
@@ -17,6 +18,7 @@ import grey from '@material-ui/core/colors/grey'
 import { currencyFormatter } from '../../util/stringFormatter'
 import InstitutionIcon from '../../common/InstitutionIcon'
 import AccountsChart from './AccountsChart'
+import LinkTo from '../../common/LinkTo'
 
 const styles = theme => ({
   balancePaper: {
@@ -42,11 +44,6 @@ const styles = theme => ({
   balanceIcon: {
     color: 'white'
   },
-  noAccounts: {
-    background: grey[100],
-    margin: '0 20px 20px 25px',
-    padding: theme.spacing(1)
-  },
   accountsTable: {
     padding: theme.spacing(2)
   },
@@ -67,6 +64,14 @@ const styles = theme => ({
     padding: theme.spacing(2),
     height: 240,
     minWidth: 150
+  },
+  noAccountsPaper: {
+    padding: theme.spacing(2),
+    marginTop: theme.spacing(2),
+    textAlign: 'center'
+  },
+  newAccountButton: {
+    margin: theme.spacing(3)
   }
 })
 
@@ -98,9 +103,22 @@ export const AccountsIndexComponent = ({
   return (
     <Container>
       {!userHasAccounts && (
-        <Typography variant="caption" className={classes.noAccounts}>
-          You don&apos;t have any accounts yet
-        </Typography>
+        <Paper className={classes.noAccountsPaper}>
+          <Typography variant="h6">
+            You don&apos;t have any accounts yet.
+          </Typography>
+          <Button
+            variant="contained"
+            color="secondary"
+            component={LinkTo('/accounts/new')}
+            className={classes.newAccountButton}
+          >
+            Add an account
+          </Button>
+          <Typography variant="body1">
+            You can keep track of all the accounts you have from any institution.
+          </Typography>
+        </Paper>
       )}
       {userHasAccounts && (
         <Grid container spacing={3}>

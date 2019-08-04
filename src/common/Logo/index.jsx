@@ -8,7 +8,8 @@ import LinkTo from '../LinkTo'
 
 const styles = {
   logo: {
-    display: 'flex'
+    display: 'flex',
+    minWidth: 135
   },
   image: {
     width: '30px',

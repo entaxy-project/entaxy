@@ -167,13 +167,7 @@ describe('user actions', () => {
             { type: 'LOAD_ACCOUNTS', payload: undefined },
             { type: 'LOAD_TRANSACTIONS', payload: undefined },
             { type: 'LOAD_EXCHANGE_RATES', payload: undefined },
-            {
-              type: 'LOAD_BUDGET',
-              payload: {
-                categories: budgetInitialState.categories,
-                colours: budgetInitialState.colours
-              }
-            },
+            { type: 'LOAD_BUDGET', payload: undefined },
             { type: 'HIDE_OVERLAY' }
           ])
           done()

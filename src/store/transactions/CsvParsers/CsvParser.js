@@ -43,8 +43,8 @@ const TRANSACTION_FIELDS = {
 
 // The base class for all CSV parsers
 export default class CsvParser {
-  constructor(transactionRules) {
-    this._transactionRules = transactionRules
+  constructor(budgetRules) {
+    this._budgetRules = budgetRules
     this._csvData = []
     this._csvHeader = []
     this._columnsCount = 0
@@ -180,23 +180,24 @@ export default class CsvParser {
 
     this._csvData.forEach((row, index) => {
       if (this._noHeaderRow || index > this._firstRowIndex) {
-        const amount = this.readAmount(row, columns)
-        const description = this.readDescription(row, columns)
-        const category = this._transactionRules[description]
-        const createdAt = this.dateFromString(row[columns.createdAt])
-        const errors = []
-        if (typeof amount !== 'number') {
-          errors.push('Could not read the amount')
-        } else if (createdAt === null) {
-          errors.push(`Invalid date. Expecting format '${this._dateFormat}'`)
+        const transaction = {
+          amount: this.readAmount(row, columns),
+          description: this.readDescription(row, columns),
+          createdAt: this.dateFromString(row[columns.createdAt]),
+          errors: []
         }
-        transactions.push({
-          amount,
-          description,
-          category,
-          createdAt,
-          errors
-        })
+        if (
+          transaction.description in this._budgetRules
+          && 'categoryId' in this._budgetRules[transaction.description]
+        ) {
+          transaction.categoryId = this._budgetRules[transaction.description].categoryId
+        }
+        if (typeof transaction.amount !== 'number') {
+          transaction.errors.push('Could not read the amount')
+        } else if (transaction.createdAt === null) {
+          transaction.errors.push(`Invalid date. Expecting format '${this._dateFormat}'`)
+        }
+        transactions.push(transaction)
       }
     })
     return { transactions, errors: this._errors }

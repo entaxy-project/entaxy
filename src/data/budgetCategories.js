@@ -22,7 +22,7 @@ const budgetCategories = {
     'Spotify'
   ],
   'Insurance': [
-    'Car nsurance',
+    'Car insurance',
     'Life insurance',
     'Health Insurance',
     'Home insurance'

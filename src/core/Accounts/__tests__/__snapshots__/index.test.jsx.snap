@@ -10,13 +10,52 @@ exports[`AccountsIndex matches snapshot with no accounts 1`] = `
             <WithStyles(ForwardRef(Container))>
               <ForwardRef(Container) classes={{...}}>
                 <div className=\\"MuiContainer-root MuiContainer-maxWidthLg\\">
-                  <WithStyles(ForwardRef(Typography)) variant=\\"caption\\" className=\\"AccountsIndexComponent-noAccounts-5\\">
-                    <ForwardRef(Typography) classes={{...}} variant=\\"caption\\" className=\\"AccountsIndexComponent-noAccounts-5\\" theme={{...}}>
-                      <span className=\\"MuiTypography-root AccountsIndexComponent-noAccounts-5 MuiTypography-caption\\">
-                        You don&#39;t have any accounts yet
-                      </span>
-                    </ForwardRef(Typography)>
-                  </WithStyles(ForwardRef(Typography))>
+                  <WithStyles(ForwardRef(Paper)) className=\\"AccountsIndexComponent-noAccountsPaper-11\\">
+                    <ForwardRef(Paper) classes={{...}} className=\\"AccountsIndexComponent-noAccountsPaper-11\\">
+                      <div className=\\"MuiPaper-root MuiPaper-elevation1 AccountsIndexComponent-noAccountsPaper-11 MuiPaper-rounded\\">
+                        <WithStyles(ForwardRef(Typography)) variant=\\"h6\\">
+                          <ForwardRef(Typography) classes={{...}} variant=\\"h6\\" theme={{...}}>
+                            <h6 className=\\"MuiTypography-root MuiTypography-h6\\">
+                              You don&#39;t have any accounts yet.
+                            </h6>
+                          </ForwardRef(Typography)>
+                        </WithStyles(ForwardRef(Typography))>
+                        <WithStyles(ForwardRef(Button)) variant=\\"contained\\" color=\\"secondary\\" component={{...}} className=\\"AccountsIndexComponent-newAccountButton-12\\">
+                          <ForwardRef(Button) classes={{...}} variant=\\"contained\\" color=\\"secondary\\" component={{...}} className=\\"AccountsIndexComponent-newAccountButton-12\\">
+                            <WithStyles(ForwardRef(ButtonBase)) className=\\"MuiButton-root AccountsIndexComponent-newAccountButton-12 MuiButton-contained MuiButton-containedSecondary\\" component={{...}} disabled={false} focusRipple={true} focusVisibleClassName=\\"Mui-focusVisible\\" type=\\"button\\">
+                              <ForwardRef(ButtonBase) classes={{...}} className=\\"MuiButton-root AccountsIndexComponent-newAccountButton-12 MuiButton-contained MuiButton-containedSecondary\\" component={{...}} disabled={false} focusRipple={true} focusVisibleClassName=\\"Mui-focusVisible\\" type=\\"button\\">
+                                <ForwardRef className=\\"MuiButtonBase-root MuiButton-root AccountsIndexComponent-newAccountButton-12 MuiButton-contained MuiButton-containedSecondary\\" onBlur={[Function]} onClick={[undefined]} onFocus={[Function]} onKeyDown={[Function]} onKeyUp={[Function]} onMouseDown={[Function]} onMouseLeave={[Function]} onMouseUp={[Function]} onDragLeave={[Function]} onTouchEnd={[Function]} onTouchMove={[Function]} onTouchStart={[Function]} tabIndex={0} role=\\"button\\" aria-disabled={false}>
+                                  <Link to=\\"/accounts/new\\" className=\\"MuiButtonBase-root MuiButton-root AccountsIndexComponent-newAccountButton-12 MuiButton-contained MuiButton-containedSecondary\\" onBlur={[Function]} onClick={[undefined]} onFocus={[Function]} onKeyDown={[Function]} onKeyUp={[Function]} onMouseDown={[Function]} onMouseLeave={[Function]} onMouseUp={[Function]} onDragLeave={[Function]} onTouchEnd={[Function]} onTouchMove={[Function]} onTouchStart={[Function]} tabIndex={0} role=\\"button\\" aria-disabled={false} innerRef={[Function]}>
+                                    <a className=\\"MuiButtonBase-root MuiButton-root AccountsIndexComponent-newAccountButton-12 MuiButton-contained MuiButton-containedSecondary\\" onBlur={[Function]} onClick={[Function: onClick]} onFocus={[Function]} onKeyDown={[Function]} onKeyUp={[Function]} onMouseDown={[Function]} onMouseLeave={[Function]} onMouseUp={[Function]} onDragLeave={[Function]} onTouchEnd={[Function]} onTouchMove={[Function]} onTouchStart={[Function]} tabIndex={0} role=\\"button\\" aria-disabled={false} href=\\"/accounts/new\\">
+                                      <span className=\\"MuiButton-label\\">
+                                        Add an account
+                                      </span>
+                                      <NoSsr>
+                                        <WithStyles(undefined) center={false}>
+                                          <ForwardRef(TouchRipple) classes={{...}} center={false}>
+                                            <span className=\\"MuiTouchRipple-root\\">
+                                              <TransitionGroup component={{...}} exit={true} childFactory={[Function: childFactory]} />
+                                            </span>
+                                          </ForwardRef(TouchRipple)>
+                                        </WithStyles(undefined)>
+                                      </NoSsr>
+                                    </a>
+                                  </Link>
+                                </ForwardRef>
+                              </ForwardRef(ButtonBase)>
+                            </WithStyles(ForwardRef(ButtonBase))>
+                          </ForwardRef(Button)>
+                        </WithStyles(ForwardRef(Button))>
+                        <WithStyles(ForwardRef(Typography)) variant=\\"body1\\">
+                          <ForwardRef(Typography) classes={{...}} variant=\\"body1\\" theme={{...}}>
+                            <p className=\\"MuiTypography-root MuiTypography-body1\\">
+                              You can keep track of all the accounts you have from any institution.
+                            </p>
+                          </ForwardRef(Typography)>
+                        </WithStyles(ForwardRef(Typography))>
+                      </div>
+                    </ForwardRef(Paper)>
+                  </WithStyles(ForwardRef(Paper))>
                 </div>
               </ForwardRef(Container)>
             </WithStyles(ForwardRef(Container))>
@@ -91,9 +130,9 @@ exports[`AccountsIndex matches snapshot with one account 1`] = `
                                     <WithStyles(ForwardRef(Grid)) item={true} xs={4}>
                                       <ForwardRef(Grid) classes={{...}} item={true} xs={4}>
                                         <div className=\\"MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4\\">
-                                          <WithStyles(ForwardRef(Paper)) className=\\"AccountsIndexComponent-accountsChart-11\\">
-                                            <ForwardRef(Paper) classes={{...}} className=\\"AccountsIndexComponent-accountsChart-11\\">
-                                              <div className=\\"MuiPaper-root MuiPaper-elevation1 AccountsIndexComponent-accountsChart-11 MuiPaper-rounded\\">
+                                          <WithStyles(ForwardRef(Paper)) className=\\"AccountsIndexComponent-accountsChart-10\\">
+                                            <ForwardRef(Paper) classes={{...}} className=\\"AccountsIndexComponent-accountsChart-10\\">
+                                              <div className=\\"MuiPaper-root MuiPaper-elevation1 AccountsIndexComponent-accountsChart-10 MuiPaper-rounded\\">
                                                 <AccountsChart totalBalance={1000}>
                                                   <ResponsiveContainer height={200} width=\\"100%\\" debounce={0}>
                                                     <div id={[undefined]} className=\\"recharts-responsive-container\\" style={{...}}>
@@ -113,9 +152,9 @@ exports[`AccountsIndex matches snapshot with one account 1`] = `
                                     <WithStyles(ForwardRef(Grid)) item={true} xs={8}>
                                       <ForwardRef(Grid) classes={{...}} item={true} xs={8}>
                                         <div className=\\"MuiGrid-root MuiGrid-item MuiGrid-grid-xs-8\\">
-                                          <WithStyles(ForwardRef(Paper)) className=\\"AccountsIndexComponent-accountsTable-6\\">
-                                            <ForwardRef(Paper) classes={{...}} className=\\"AccountsIndexComponent-accountsTable-6\\">
-                                              <div className=\\"MuiPaper-root MuiPaper-elevation1 AccountsIndexComponent-accountsTable-6 MuiPaper-rounded\\">
+                                          <WithStyles(ForwardRef(Paper)) className=\\"AccountsIndexComponent-accountsTable-5\\">
+                                            <ForwardRef(Paper) classes={{...}} className=\\"AccountsIndexComponent-accountsTable-5\\">
+                                              <div className=\\"MuiPaper-root MuiPaper-elevation1 AccountsIndexComponent-accountsTable-5 MuiPaper-rounded\\">
                                                 <WithStyles(ForwardRef(Table))>
                                                   <ForwardRef(Table) classes={{...}}>
                                                     <table className=\\"MuiTable-root\\">
@@ -161,13 +200,13 @@ exports[`AccountsIndex matches snapshot with one account 1`] = `
                                                                   <WithStyles(ForwardRef(TableCell))>
                                                                     <ForwardRef(TableCell) classes={{...}}>
                                                                       <td className=\\"MuiTableCell-root MuiTableCell-body\\" aria-sort={{...}} scope={[undefined]}>
-                                                                        <span className=\\"AccountsIndexComponent-institutionWrapper-7\\">
-                                                                          <WithStyles(InstitutionIcon) institution=\\"TD\\" size=\\"small\\" className=\\"AccountsIndexComponent-institutionIcon-8\\">
-                                                                            <InstitutionIcon classes={{...}} institution=\\"TD\\" size=\\"small\\" className=\\"AccountsIndexComponent-institutionIcon-8\\">
-                                                                              <ForwardRef className=\\"InstitutionIcon-small-207 AccountsIndexComponent-institutionIcon-8\\">
-                                                                                <WithStyles(ForwardRef(SvgIcon)) className=\\"InstitutionIcon-small-207 AccountsIndexComponent-institutionIcon-8\\">
-                                                                                  <ForwardRef(SvgIcon) classes={{...}} className=\\"InstitutionIcon-small-207 AccountsIndexComponent-institutionIcon-8\\">
-                                                                                    <svg className=\\"MuiSvgIcon-root InstitutionIcon-small-207 AccountsIndexComponent-institutionIcon-8\\" focusable=\\"false\\" viewBox=\\"0 0 24 24\\" color={[undefined]} aria-hidden=\\"true\\" role=\\"presentation\\">
+                                                                        <span className=\\"AccountsIndexComponent-institutionWrapper-6\\">
+                                                                          <WithStyles(InstitutionIcon) institution=\\"TD\\" size=\\"small\\" className=\\"AccountsIndexComponent-institutionIcon-7\\">
+                                                                            <InstitutionIcon classes={{...}} institution=\\"TD\\" size=\\"small\\" className=\\"AccountsIndexComponent-institutionIcon-7\\">
+                                                                              <ForwardRef className=\\"InstitutionIcon-small-238 AccountsIndexComponent-institutionIcon-7\\">
+                                                                                <WithStyles(ForwardRef(SvgIcon)) className=\\"InstitutionIcon-small-238 AccountsIndexComponent-institutionIcon-7\\">
+                                                                                  <ForwardRef(SvgIcon) classes={{...}} className=\\"InstitutionIcon-small-238 AccountsIndexComponent-institutionIcon-7\\">
+                                                                                    <svg className=\\"MuiSvgIcon-root InstitutionIcon-small-238 AccountsIndexComponent-institutionIcon-7\\" focusable=\\"false\\" viewBox=\\"0 0 24 24\\" color={[undefined]} aria-hidden=\\"true\\" role=\\"presentation\\">
                                                                                       <path d=\\"M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z\\" />
                                                                                     </svg>
                                                                                   </ForwardRef(SvgIcon)>
@@ -210,9 +249,9 @@ exports[`AccountsIndex matches snapshot with one account 1`] = `
                                                             <WithStyles(ForwardRef(TableRow)) hover={true} onClick={[Function: onClick]}>
                                                               <ForwardRef(TableRow) classes={{...}} hover={true} onClick={[Function: onClick]}>
                                                                 <tr className=\\"MuiTableRow-root MuiTableRow-hover\\" onClick={[Function: onClick]}>
-                                                                  <WithStyles(ForwardRef(TableCell)) className=\\"AccountsIndexComponent-accountWrapper-9\\">
-                                                                    <ForwardRef(TableCell) classes={{...}} className=\\"AccountsIndexComponent-accountWrapper-9\\">
-                                                                      <td className=\\"MuiTableCell-root AccountsIndexComponent-accountWrapper-9 MuiTableCell-body\\" aria-sort={{...}} scope={[undefined]} />
+                                                                  <WithStyles(ForwardRef(TableCell)) className=\\"AccountsIndexComponent-accountWrapper-8\\">
+                                                                    <ForwardRef(TableCell) classes={{...}} className=\\"AccountsIndexComponent-accountWrapper-8\\">
+                                                                      <td className=\\"MuiTableCell-root AccountsIndexComponent-accountWrapper-8 MuiTableCell-body\\" aria-sort={{...}} scope={[undefined]} />
                                                                     </ForwardRef(TableCell)>
                                                                   </WithStyles(ForwardRef(TableCell))>
                                                                   <WithStyles(ForwardRef(TableCell))>
@@ -327,9 +366,9 @@ exports[`AccountsIndex matches snapshot with two accounts in a different currenc
                                     <WithStyles(ForwardRef(Grid)) item={true} xs={4}>
                                       <ForwardRef(Grid) classes={{...}} item={true} xs={4}>
                                         <div className=\\"MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4\\">
-                                          <WithStyles(ForwardRef(Paper)) className=\\"AccountsIndexComponent-accountsChart-11\\">
-                                            <ForwardRef(Paper) classes={{...}} className=\\"AccountsIndexComponent-accountsChart-11\\">
-                                              <div className=\\"MuiPaper-root MuiPaper-elevation1 AccountsIndexComponent-accountsChart-11 MuiPaper-rounded\\">
+                                          <WithStyles(ForwardRef(Paper)) className=\\"AccountsIndexComponent-accountsChart-10\\">
+                                            <ForwardRef(Paper) classes={{...}} className=\\"AccountsIndexComponent-accountsChart-10\\">
+                                              <div className=\\"MuiPaper-root MuiPaper-elevation1 AccountsIndexComponent-accountsChart-10 MuiPaper-rounded\\">
                                                 <AccountsChart totalBalance={2500}>
                                                   <ResponsiveContainer height={200} width=\\"100%\\" debounce={0}>
                                                     <div id={[undefined]} className=\\"recharts-responsive-container\\" style={{...}}>
@@ -349,9 +388,9 @@ exports[`AccountsIndex matches snapshot with two accounts in a different currenc
                                     <WithStyles(ForwardRef(Grid)) item={true} xs={8}>
                                       <ForwardRef(Grid) classes={{...}} item={true} xs={8}>
                                         <div className=\\"MuiGrid-root MuiGrid-item MuiGrid-grid-xs-8\\">
-                                          <WithStyles(ForwardRef(Paper)) className=\\"AccountsIndexComponent-accountsTable-6\\">
-                                            <ForwardRef(Paper) classes={{...}} className=\\"AccountsIndexComponent-accountsTable-6\\">
-                                              <div className=\\"MuiPaper-root MuiPaper-elevation1 AccountsIndexComponent-accountsTable-6 MuiPaper-rounded\\">
+                                          <WithStyles(ForwardRef(Paper)) className=\\"AccountsIndexComponent-accountsTable-5\\">
+                                            <ForwardRef(Paper) classes={{...}} className=\\"AccountsIndexComponent-accountsTable-5\\">
+                                              <div className=\\"MuiPaper-root MuiPaper-elevation1 AccountsIndexComponent-accountsTable-5 MuiPaper-rounded\\">
                                                 <WithStyles(ForwardRef(Table))>
                                                   <ForwardRef(Table) classes={{...}}>
                                                     <table className=\\"MuiTable-root\\">
@@ -397,13 +436,13 @@ exports[`AccountsIndex matches snapshot with two accounts in a different currenc
                                                                   <WithStyles(ForwardRef(TableCell))>
                                                                     <ForwardRef(TableCell) classes={{...}}>
                                                                       <td className=\\"MuiTableCell-root MuiTableCell-body\\" aria-sort={{...}} scope={[undefined]}>
-                                                                        <span className=\\"AccountsIndexComponent-institutionWrapper-7\\">
-                                                                          <WithStyles(InstitutionIcon) institution=\\"TD\\" size=\\"small\\" className=\\"AccountsIndexComponent-institutionIcon-8\\">
-                                                                            <InstitutionIcon classes={{...}} institution=\\"TD\\" size=\\"small\\" className=\\"AccountsIndexComponent-institutionIcon-8\\">
-                                                                              <ForwardRef className=\\"InstitutionIcon-small-207 AccountsIndexComponent-institutionIcon-8\\">
-                                                                                <WithStyles(ForwardRef(SvgIcon)) className=\\"InstitutionIcon-small-207 AccountsIndexComponent-institutionIcon-8\\">
-                                                                                  <ForwardRef(SvgIcon) classes={{...}} className=\\"InstitutionIcon-small-207 AccountsIndexComponent-institutionIcon-8\\">
-                                                                                    <svg className=\\"MuiSvgIcon-root InstitutionIcon-small-207 AccountsIndexComponent-institutionIcon-8\\" focusable=\\"false\\" viewBox=\\"0 0 24 24\\" color={[undefined]} aria-hidden=\\"true\\" role=\\"presentation\\">
+                                                                        <span className=\\"AccountsIndexComponent-institutionWrapper-6\\">
+                                                                          <WithStyles(InstitutionIcon) institution=\\"TD\\" size=\\"small\\" className=\\"AccountsIndexComponent-institutionIcon-7\\">
+                                                                            <InstitutionIcon classes={{...}} institution=\\"TD\\" size=\\"small\\" className=\\"AccountsIndexComponent-institutionIcon-7\\">
+                                                                              <ForwardRef className=\\"InstitutionIcon-small-238 AccountsIndexComponent-institutionIcon-7\\">
+                                                                                <WithStyles(ForwardRef(SvgIcon)) className=\\"InstitutionIcon-small-238 AccountsIndexComponent-institutionIcon-7\\">
+                                                                                  <ForwardRef(SvgIcon) classes={{...}} className=\\"InstitutionIcon-small-238 AccountsIndexComponent-institutionIcon-7\\">
+                                                                                    <svg className=\\"MuiSvgIcon-root InstitutionIcon-small-238 AccountsIndexComponent-institutionIcon-7\\" focusable=\\"false\\" viewBox=\\"0 0 24 24\\" color={[undefined]} aria-hidden=\\"true\\" role=\\"presentation\\">
                                                                                       <path d=\\"M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z\\" />
                                                                                     </svg>
                                                                                   </ForwardRef(SvgIcon)>
@@ -446,9 +485,9 @@ exports[`AccountsIndex matches snapshot with two accounts in a different currenc
                                                             <WithStyles(ForwardRef(TableRow)) hover={true} onClick={[Function: onClick]}>
                                                               <ForwardRef(TableRow) classes={{...}} hover={true} onClick={[Function: onClick]}>
                                                                 <tr className=\\"MuiTableRow-root MuiTableRow-hover\\" onClick={[Function: onClick]}>
-                                                                  <WithStyles(ForwardRef(TableCell)) className=\\"AccountsIndexComponent-accountWrapper-9\\">
-                                                                    <ForwardRef(TableCell) classes={{...}} className=\\"AccountsIndexComponent-accountWrapper-9\\">
-                                                                      <td className=\\"MuiTableCell-root AccountsIndexComponent-accountWrapper-9 MuiTableCell-body\\" aria-sort={{...}} scope={[undefined]} />
+                                                                  <WithStyles(ForwardRef(TableCell)) className=\\"AccountsIndexComponent-accountWrapper-8\\">
+                                                                    <ForwardRef(TableCell) classes={{...}} className=\\"AccountsIndexComponent-accountWrapper-8\\">
+                                                                      <td className=\\"MuiTableCell-root AccountsIndexComponent-accountWrapper-8 MuiTableCell-body\\" aria-sort={{...}} scope={[undefined]} />
                                                                     </ForwardRef(TableCell)>
                                                                   </WithStyles(ForwardRef(TableCell))>
                                                                   <WithStyles(ForwardRef(TableCell))>
@@ -471,9 +510,9 @@ exports[`AccountsIndex matches snapshot with two accounts in a different currenc
                                                             <WithStyles(ForwardRef(TableRow)) hover={true} onClick={[Function: onClick]}>
                                                               <ForwardRef(TableRow) classes={{...}} hover={true} onClick={[Function: onClick]}>
                                                                 <tr className=\\"MuiTableRow-root MuiTableRow-hover\\" onClick={[Function: onClick]}>
-                                                                  <WithStyles(ForwardRef(TableCell)) className=\\"AccountsIndexComponent-accountWrapper-9\\">
-                                                                    <ForwardRef(TableCell) classes={{...}} className=\\"AccountsIndexComponent-accountWrapper-9\\">
-                                                                      <td className=\\"MuiTableCell-root AccountsIndexComponent-accountWrapper-9 MuiTableCell-body\\" aria-sort={{...}} scope={[undefined]} />
+                                                                  <WithStyles(ForwardRef(TableCell)) className=\\"AccountsIndexComponent-accountWrapper-8\\">
+                                                                    <ForwardRef(TableCell) classes={{...}} className=\\"AccountsIndexComponent-accountWrapper-8\\">
+                                                                      <td className=\\"MuiTableCell-root AccountsIndexComponent-accountWrapper-8 MuiTableCell-body\\" aria-sort={{...}} scope={[undefined]} />
                                                                     </ForwardRef(TableCell)>
                                                                   </WithStyles(ForwardRef(TableCell))>
                                                                   <WithStyles(ForwardRef(TableCell))>

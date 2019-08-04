@@ -57,13 +57,6 @@ const colourStyles = {
 }
 
 const mapStateToProps = ({ budget }) => ({ budget })
-// const mapStateToProps = ({ budget }) => ({
-//   budget,
-//   budgetForSelect: budget.tree.map(cat => ({
-//     label: budget.byId[cat.id].label,
-//     options: cat.children.map(subCat => budget.byId[subCat])
-//   }))
-// })
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -112,12 +105,12 @@ export const TransactionDialogComponent = ({
     <AutoComplete
       className={classes.input}
       label="Category"
-      name="category"
-      value={values.category}
-      options={budget.categories}
+      name="categoryId"
+      value={values.categoryId}
+      options={budget.categoryTree}
       onChange={setFieldValue}
-      error={errors.category && touched.category}
-      helperText={errors.category}
+      error={errors.categoryId && touched.categoryId}
+      helperText={errors.categoryId}
       styles={colourStyles}
     />
     <TextField
@@ -181,17 +174,18 @@ export default compose(
       if (transaction === null) {
         return {
           description: '',
-          category: null,
+          categoryId: null,
           amount: '',
           createdAt: format(Date.now(), 'YYYY-MM-DD')
         }
       }
       return {
         ...transaction,
-        category: transaction.category === undefined ? null : {
-          label: transaction.category,
-          value: transaction.category,
-          colour: budget.colours[transaction.category]
+        categoryId: transaction.categoryId === undefined ? null : {
+          id: budget.categoriesById[transaction.categoryId].id,
+          label: budget.categoriesById[transaction.categoryId].name,
+          value: budget.categoriesById[transaction.categoryId].name,
+          colour: budget.categoriesById[transaction.categoryId].colour
         },
         createdAt: format(new Date(transaction.createdAt), 'YYYY-MM-DD')
       }
@@ -199,7 +193,7 @@ export default compose(
     validationSchema: Yup.object().shape({
       description: Yup.string()
         .max(256, 'Too Long!'),
-      category: Yup.object()
+      categoryId: Yup.object()
         .nullable(),
       amount: Yup.number()
         .required('Please enter an amount'),
@@ -210,7 +204,7 @@ export default compose(
       setSubmitting(true)
       props.handleSave(props.account, {
         ...values,
-        category: (values.category === null ? undefined : values.category.value),
+        categoryId: (values.categoryId === null ? undefined : values.categoryId.id),
         createdAt: parse(values.createdAt).getTime()
       })
       resetForm()

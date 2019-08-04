@@ -65,7 +65,7 @@ export class ImportTransactionsComponent extends React.Component {
       .map(transaction => ({
         amount: transaction.amount,
         description: transaction.description,
-        category: transaction.category,
+        categoryId: transaction.categoryId,
         createdAt: transaction.createdAt
       }))
     if (transactions.length > 0) {

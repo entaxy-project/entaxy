@@ -52,7 +52,6 @@ const Header = ({ children, match }) => {
     const { currentTarget } = event
     setAnchorEl(currentTarget)
     setOpen(!open)
-    console.log('currentTarget', currentTarget)
   }
 
   const handleClose = () => {
@@ -98,10 +97,10 @@ const Header = ({ children, match }) => {
                       <Paper>
                         <MenuList role="menu">
                           <MenuItem onClick={handleClose} component={LinkTo('/budget')}>
-                            <ListItemText primary="Budget History" />
+                            <ListItemText primary="History" />
                           </MenuItem>
                           <MenuItem onClick={handleClose} component={LinkTo('/budget-categories')}>
-                            <ListItemText primary="Budget Categories" />
+                            <ListItemText primary="Categories" />
                           </MenuItem>
                         </MenuList>
                       </Paper>

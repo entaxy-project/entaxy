@@ -10,20 +10,6 @@ import { convertToLocalCurrency } from '../../exchangeRates/actions'
 
 jest.mock('uuid/v4', () => jest.fn(() => 'xyz'))
 const mockStore = configureMockStore([thunk])
-// Mock call to alphavantage in fetchExchangeRates
-// window.fetch = jest.fn().mockImplementation(() => (
-//   Promise.resolve(new window.Response(
-//     JSON.stringify({
-//       'Realtime Currency Exchange Rate': {
-//         '6. Last Refreshed': '2018-01-01',
-//         '5. Exchange Rate': 1
-//       }
-//     }), {
-//       status: 200,
-//       headers: { 'Content-type': 'application/json' }
-//     }
-//   ))
-// ))
 
 beforeEach(() => {
   jest.resetModules()

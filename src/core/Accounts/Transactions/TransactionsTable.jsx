@@ -56,7 +56,7 @@ const styles = theme => ({
 })
 
 const mapStateToProps = (state, props) => ({
-  budgetColours: state.budget.colours,
+  budget: state.budget,
   formatCurrency: currencyFormatter(state.settings.locale, props.account.currency),
   formatDecimal: decimalFormatter(state.settings.locale, props.account.type),
   formatDate: dateFormatter(state.settings.locale)
@@ -127,9 +127,10 @@ export class TransactionsTableComponent extends React.Component {
   }
 
   filterByDescription = (transaction) => {
-    let res = transaction.description.toLowerCase().includes(this.state.filters.description)
-    if (transaction.category !== undefined) {
-      res = res || transaction.category.toLowerCase().includes(this.state.filters.description)
+    let res = transaction.description.toLowerCase().includes(this.state.filters.description.toLowerCase())
+    if (transaction.categoryId !== undefined) {
+      const category = this.props.budget.categoriesById[transaction.categoryId].name
+      res = res || category.toLowerCase().includes(this.state.filters.description.toLowerCase())
     }
     return res
   }
@@ -198,7 +199,7 @@ export class TransactionsTableComponent extends React.Component {
       className,
       children,
       account,
-      budgetColours,
+      budget,
       formatDate,
       Toolbar,
       toolbarProps,
@@ -285,17 +286,20 @@ export class TransactionsTableComponent extends React.Component {
               <Column
                 width={200}
                 label="Category"
-                dataKey="category"
+                dataKey="categoryId"
                 cellRenderer={
                   ({ rowData }) => {
-                    const colour = rowData.category in budgetColours ? budgetColours[rowData.category] : '#dddddd'
-                    return rowData.category !== undefined && (
+                    if (rowData.categoryId === undefined) return null
+                    const category = budget.categoriesById[rowData.categoryId]
+                    if (category === undefined) return null
+                    if (category.colour === undefined) return null
+                    return (
                       <Chip
                         size="small"
-                        label={rowData.category}
+                        label={category.name}
                         style={{
-                          background: colour,
-                          color: chroma.contrast(colour, 'black') > 5 ? 'black' : 'white'
+                          background: category.colour,
+                          color: chroma.contrast(category.colour, 'black') > 5 ? 'black' : 'white'
                         }}
                       />
                     )
@@ -341,7 +345,7 @@ TransactionsTableComponent.propTypes = {
   toolbarProps: PropTypes.object,
   account: PropTypes.object.isRequired,
   transactions: PropTypes.array.isRequired,
-  budgetColours: PropTypes.object.isRequired,
+  budget: PropTypes.object.isRequired,
   formatCurrency: PropTypes.func.isRequired,
   formatDecimal: PropTypes.func.isRequired,
   formatDate: PropTypes.func.isRequired,

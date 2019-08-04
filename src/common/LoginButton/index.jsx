@@ -23,7 +23,8 @@ import { userLogout } from '../../store/user/actions'
 
 const styles = theme => ({
   root: {
-    display: 'flex'
+    display: 'flex',
+    minWidth: 135
   },
   popper: {
     zIndex: theme.zIndex.drawer + 1
