@@ -24,10 +24,12 @@ import CardHeader from '@material-ui/core/CardHeader'
 import Select from 'react-select'
 import { fade } from '@material-ui/core/styles/colorManipulator'
 import Tooltip from '@material-ui/core/Tooltip'
+import pluralize from 'pluralize'
 import CategoryForm from './form'
 import { currencyFormatter } from '../../util/stringFormatter'
 import { deleteCategory } from '../../store/budget/actions'
 import GroupDialog from './GroupDialog'
+import confirm from '../../util/confirm'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -153,7 +155,17 @@ const BudgetCategories = () => {
   }
 
   const handleDeleteCategory = () => {
-    dispatch(deleteCategory(popupCategoryId))
+    const category = budget.categoriesById[popupCategoryId]
+    let confirmText = 'Are you sure?'
+    const transactionsCount = Object.values(budget.rules).reduce((count, rule) => (
+      rule.categoryId === category.id ? count + rule.count : count
+    ), 0)
+    if (transactionsCount > 0) {
+      confirmText += ` There will be ${pluralize('transaction', transactionsCount, true)} affected.`
+    }
+    confirm(`Delete ${category.name}.`, confirmText).then(async () => {
+      dispatch(deleteCategory(popupCategoryId))
+    })
     handleClosePopup()
   }
 
@@ -169,7 +181,21 @@ const BudgetCategories = () => {
   }
 
   const handleDeleteGroup = (category) => {
-    dispatch(deleteCategory(category.id))
+    let title = `Delete ${category.label} group`
+    const childCategoryIds = category.options.map(item => item.id)
+    if (category.options.length > 0) {
+      title += ` and ${pluralize('categories', category.options.length, true)}.`
+    }
+    let confirmText = 'Are you sure?'
+    const transactionsCount = Object.values(budget.rules).reduce((count, rule) => (
+      rule.categoryId === category.id || childCategoryIds.includes(rule.categoryId) ? count + rule.count : count
+    ), 0)
+    if (transactionsCount > 0) {
+      confirmText += ` There will be ${pluralize('transaction', transactionsCount, true)} affected.`
+    }
+    confirm(title, confirmText).then(async () => {
+      dispatch(deleteCategory(category.id))
+    })
   }
 
   const handleCloseGroupDialog = () => {

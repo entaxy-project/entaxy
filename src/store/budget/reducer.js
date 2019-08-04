@@ -111,18 +111,27 @@ export default (state = initialState, { type, payload }) => {
         categoryTree: generateCategoryTree(categoriesById)
       }
     case types.DELETE_CATEGORY:
+      // Remove the selected category
       const { [payload]: category, ...rest } = state.categoriesById
-      // Delete all the sub categories
+      // Delete all the sub categories (if they exist)
       categoriesById = Object.values(rest).reduce((res, child) => {
         if (child.parentId === category.id) {
           return res
         }
         return { ...res, [child.id]: child }
       }, {})
+      // Delete all related rules
+      const rules = Object.keys(state.rules).reduce((res, match) => {
+        if (state.rules[match].categoryId in categoriesById) {
+          return { ...res, [match]: state.rules[match] }
+        }
+        return res
+      }, {})
       return {
         ...state,
         categoriesById,
-        categoryTree: generateCategoryTree(categoriesById)
+        categoryTree: generateCategoryTree(categoriesById),
+        rules
       }
     case types.CREATE_EXACT_RULE:
       return {

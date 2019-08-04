@@ -1,6 +1,8 @@
 import uuid from 'uuid/v4'
 import types from './types'
 import { saveState } from '../user/actions'
+import { showSnackbar } from '../settings/actions'
+import { updateTransactionFieldIfMatched } from '../transactions/actions'
 
 export const loadBudget = (budget) => {
   return { type: types.LOAD_BUDGET, payload: budget }
@@ -19,16 +21,38 @@ export const createCategory = (category, parentId) => (dispatch) => {
       ...(parentId === undefined ? {} : { parentId })
     }
   })
+  dispatch(showSnackbar({ text: `${parentId === undefined ? 'Group' : 'Category'} created`, status: 'success' }))
   afterCategoriesChanged()
 }
 
 export const updateCategory = category => (dispatch) => {
   dispatch({ type: types.UPDATE_CATEGORY, payload: category })
+  dispatch(showSnackbar({
+    text: `${category.parentId === undefined ? 'Group' : 'Category'} updated`,
+    status: 'success'
+  }))
   afterCategoriesChanged()
 }
 
-export const deleteCategory = categoryId => (dispatch) => {
-  dispatch({ type: types.DELETE_CATEGORY, payload: categoryId })
+export const deleteCategory = categoryId => (dispatch, getState) => {
+  const { budget } = getState()
+  const category = budget.categoriesById[categoryId]
+  let categoryIds = [category.id]
+  if (!('parentId' in category)) {
+    categoryIds = Object.values(budget.categoriesById).reduce((res, cat) => (
+      cat.parentId === category.id ? [...res, cat.id] : res
+    ), categoryIds)
+  }
+  dispatch({ type: types.DELETE_CATEGORY, payload: category.id })
+  dispatch(updateTransactionFieldIfMatched({
+    fieldName: 'categoryId',
+    values: categoryIds,
+    newValue: undefined
+  }))
+  dispatch(showSnackbar({
+    text: `${category.parentId === undefined ? 'Group' : 'Category'} deleted`,
+    status: 'success'
+  }))
   afterCategoriesChanged()
 }
 

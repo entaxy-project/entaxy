@@ -49,6 +49,10 @@ describe('budget actions', () => {
       expect(store.getActions()).toEqual([{
         type: 'CREATE_CATEGORY',
         payload: { name: 'group 1', id: Object.keys(budgetInitialState.categoriesById).length + 1 }
+      },
+      {
+        type: 'SHOW_SNACKBAR',
+        payload: { status: 'success', text: 'Group created' }
       }])
     })
 
@@ -62,6 +66,10 @@ describe('budget actions', () => {
           id: Object.keys(budgetInitialState.categoriesById).length + 2,
           parentId: 1
         }
+      },
+      {
+        type: 'SHOW_SNACKBAR',
+        payload: { status: 'success', text: 'Category created' }
       }])
     })
 
@@ -71,15 +79,73 @@ describe('budget actions', () => {
       expect(store.getActions()).toEqual([{
         type: 'UPDATE_CATEGORY',
         payload: { name: 'group 1', id: 0 }
+      },
+      {
+        type: 'SHOW_SNACKBAR',
+        payload: { status: 'success', text: 'Group updated' }
+      }])
+    })
+
+    it('should update a category', async () => {
+      const store = mockStore({ budget })
+      await store.dispatch(actions.updateCategory({ id: 1, name: 'cat 1', parentId: 0 }))
+      expect(store.getActions()).toEqual([{
+        type: 'UPDATE_CATEGORY',
+        payload: { name: 'cat 1', id: 1, parentId: 0 }
+      },
+      {
+        type: 'SHOW_SNACKBAR',
+        payload: { status: 'success', text: 'Category updated' }
       }])
     })
 
     it('should delete a group', async () => {
       const store = mockStore({ budget })
-      await store.dispatch(actions.deleteCategory(0))
+      const categoryId = 1
+      await store.dispatch(actions.deleteCategory(categoryId))
+      expect(('parentId' in budget.categoriesById[categoryId])).toBe(false)
+      const categoryIds = Object.values(budget.categoriesById).reduce((res, cat) => (
+        cat.parentId === categoryId ? [...res, cat.id] : res
+      ), [categoryId])
+
       expect(store.getActions()).toEqual([{
         type: 'DELETE_CATEGORY',
-        payload: 0
+        payload: categoryId
+      },
+      {
+        type: 'UPATE_TRANSACTION_FIELD_IF_MATCHED',
+        payload: {
+          fieldName: 'categoryId',
+          newValue: undefined,
+          values: categoryIds
+        }
+      },
+      {
+        type: 'SHOW_SNACKBAR',
+        payload: { status: 'success', text: 'Group deleted' }
+      }])
+    })
+
+    it('should delete a category', async () => {
+      const store = mockStore({ budget })
+      const categoryId = 2
+      await store.dispatch(actions.deleteCategory(categoryId))
+      expect(('parentId' in budget.categoriesById[categoryId])).toBe(true)
+      expect(store.getActions()).toEqual([{
+        type: 'DELETE_CATEGORY',
+        payload: categoryId
+      },
+      {
+        type: 'UPATE_TRANSACTION_FIELD_IF_MATCHED',
+        payload: {
+          fieldName: 'categoryId',
+          newValue: undefined,
+          values: [categoryId]
+        }
+      },
+      {
+        type: 'SHOW_SNACKBAR',
+        payload: { status: 'success', text: 'Category deleted' }
       }])
     })
   })

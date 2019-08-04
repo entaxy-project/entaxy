@@ -1,3 +1,4 @@
+/* eslint-disable no-case-declarations */
 import _ from 'lodash'
 import types from './types'
 
@@ -5,40 +6,40 @@ export const initialState = {
   list: []
 }
 
-export default (state = initialState, action) => {
+export default (state = initialState, { type, payload }) => {
   let index = null
 
   const findTransactionById = id => (
     _.findIndex(state.list, transaction => transaction.id === id)
   )
 
-  switch (action.type) {
+  switch (type) {
     case types.LOAD_TRANSACTIONS:
-      return action.payload || initialState
+      return payload || initialState
     case types.CREATE_TRANSACTION:
       return {
         ...state,
-        list: [...state.list, action.payload]
+        list: [...state.list, payload]
       }
     case types.UPDATE_TRANSACTION:
-      index = findTransactionById(action.payload.id)
+      index = findTransactionById(payload.id)
       return {
         ...state,
-        list: [...state.list.slice(0, index), action.payload, ...state.list.slice(index + 1)]
+        list: [...state.list.slice(0, index), payload, ...state.list.slice(index + 1)]
       }
     case types.DELETE_TRANSACTIONS:
       return {
         ...state,
-        list: state.list.filter(transaction => action.payload.indexOf(transaction.id) === -1)
+        list: state.list.filter(transaction => payload.indexOf(transaction.id) === -1)
       }
     case types.ADD_TRANSACTIONS:
       return {
         ...state,
-        list: [...state.list, ...action.payload]
+        list: [...state.list, ...payload]
       }
     case types.APPLY_EXACT_RULE:
       // eslint-disable-next-line no-case-declarations
-      const { match, rules } = action.payload
+      const { match, rules } = payload
       return {
         ...state,
         list: state.list.reduce((result, transaction) => {
@@ -47,12 +48,27 @@ export default (state = initialState, action) => {
               ...result,
               {
                 ...transaction,
-                categoryId: transaction.description in rules ? rules[transaction.description].categoryId : undefined
+                categoryId: transaction.description in rules
+                  ? rules[transaction.description].categoryId
+                  : undefined
               }
             ]
           }
           return [...result, transaction]
         }, [])
+      }
+    case types.UPATE_TRANSACTION_FIELD_IF_MATCHED:
+      return {
+        ...state,
+        list: state.list.reduce((result, transaction) => ([
+          ...result,
+          {
+            ...transaction,
+            categoryId: payload.values.includes(transaction[payload.fieldName])
+              ? payload.newValue
+              : transaction[payload.fieldName]
+          }
+        ]), [])
       }
     default:
       return state

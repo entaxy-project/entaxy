@@ -62,6 +62,10 @@ export const updateTransaction = (account, transaction) => async (dispatch, getS
   dispatch(showSnackbar({ text: 'Transaction updated', status: 'success' }))
 }
 
+export const updateTransactionFieldIfMatched = ({ fieldName, values, newValue }) => (
+  { type: types.UPATE_TRANSACTION_FIELD_IF_MATCHED, payload: { fieldName, values, newValue } }
+)
+
 export const deleteTransactions = (account, transactionIds, options = { skipAfterChange: false }) => {
   const { skipAfterChange } = options
   return async (dispatch) => {

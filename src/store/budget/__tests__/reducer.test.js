@@ -128,7 +128,10 @@ describe('budget reducer', () => {
       const state = {
         categoriesById,
         categoryTree: generateCategoryTree(categoriesById),
-        rules: {}
+        rules: {
+          a: { categoryId: 1 },
+          b: { categoryId: 2 }
+        }
       }
 
       expect(budgetReducer(state, { type, payload: 1 })).toEqual({
@@ -140,7 +143,8 @@ describe('budget reducer', () => {
         categoryTree: generateCategoryTree({
           2: { id: 2, name: 'group 2 ' },
           4: { id: 4, name: 'cat 1', parentId: 2 }
-        })
+        }),
+        rules: { b: { categoryId: 2 } }
       })
     })
 
