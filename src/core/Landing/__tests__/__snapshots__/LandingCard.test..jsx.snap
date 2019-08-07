@@ -4,34 +4,12 @@ exports[`LandingCard matches snapshot 1`] = `
 <div
   className="MuiGrid-root MuiGrid-container"
 >
-  <h5
-    className="MuiTypography-root MuiTypography-h5 MuiTypography-colorSecondary"
-  >
-    Where do you want to store your data?
-  </h5>
   <div
     className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"
   >
     <div
       className="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
     >
-      <h6
-        className="MuiTypography-root MuiTypography-subtitle2"
-      >
-        Anywhere with blockstack
-      </h6>
-      <span
-        className="MuiTypography-root MuiTypography-caption"
-      >
-        Keep your data encrypted and decentralized. Learn more about  
-        <a
-          href="https://blockstack.org/what-is-blockstack"
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          Blockstack
-        </a>
-      </span>
       <button
         className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary"
         disabled={false}
@@ -56,6 +34,20 @@ exports[`LandingCard matches snapshot 1`] = `
           Sign in with Blockstack
         </span>
       </button>
+      <span
+        className="MuiTypography-root MuiTypography-caption MuiTypography-alignCenter"
+      >
+        Keep your data encrypted and decentralized. Learn more about  
+        <span>
+          <a
+            href="https://blockstack.org/what-is-blockstack"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            Blockstack
+          </a>
+        </span>
+      </span>
     </div>
   </div>
   <div
@@ -64,33 +56,6 @@ exports[`LandingCard matches snapshot 1`] = `
     <div
       className="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
     >
-      <h6
-        className="MuiTypography-root MuiTypography-subtitle2"
-      >
-        <svg
-          aria-hidden="true"
-          className="MuiSvgIcon-root"
-          focusable="false"
-          role="presentation"
-          viewBox="0 0 24 24"
-        >
-          <defs>
-            <path
-              d="M0 0h24v24H0V0z"
-              id="a"
-            />
-          </defs>
-          <path
-            d="M20 18c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"
-          />
-        </svg>
-        Locally in your browser
-      </h6>
-      <span
-        className="MuiTypography-root MuiTypography-caption"
-      >
-        Your data will be stored temporarily and it be removed once you close your browser
-      </span>
       <button
         className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary"
         disabled={false}
@@ -112,9 +77,16 @@ exports[`LandingCard matches snapshot 1`] = `
         <span
           className="MuiButton-label"
         >
-          Take it for a test drive
+          Don't sign in yet
         </span>
       </button>
+      <span
+        className="MuiTypography-root MuiTypography-caption"
+      >
+        You can use the app fully but your data will not be stored.
+        <br />
+        Single session
+      </span>
     </div>
   </div>
 </div>
