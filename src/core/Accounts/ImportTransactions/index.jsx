@@ -112,7 +112,7 @@ export class ImportTransactionsComponent extends React.Component {
         <Paper className={classes.root}>
           <div className={classes.importHeader}>
             <Typography variant="h6" align="center">
-              Import transactions from
+              Import transactions from&nbsp;
               {account.institution}
             </Typography>
             <Typography>
@@ -123,7 +123,7 @@ export class ImportTransactionsComponent extends React.Component {
           <Grid container>
             <Grid item xs={3}>
               <List>
-                {['CSV', 'Microsoft Money', 'Intuit Quicken', 'Intuit QuickBooks'].map((text, index) => (
+                {['CSV'].map((text, index) => (
                   <ListItem button key={text} selected={index === 0}>
                     <ListItemText primary={text} />
                   </ListItem>

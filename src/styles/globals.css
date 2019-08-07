@@ -2,6 +2,12 @@
     --color-white: #FFFFFF;
     --color-blue: #1B9CC4;
     --color-cyan: #1FC2B8;
+    --color-gradient1: #1CA0C3;
+    --color-gradient2: #58B9CA;
+    --color-gradient3: #42BCC4;
+    --color-gradient4: #1FBBBA;
+    --color-gradient5: #1DBABB;
+    --color-gradient6: #79CED9;
     --font-roboto: 'Roboto', 'Helvetica Neue', 'Helvetica', sans-serif;
     --font-garden-grove: 'SW Garden Grove', 'Roboto', 'Helvetica Neue', 'Helvetica', sans-serif;
 }
