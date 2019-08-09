@@ -35,10 +35,15 @@ export const loadUserData = () => (dispatch, getState) => {
       pictureUrl: person.avatarUrl()
     }))
     storage.loadState().then((state) => {
-      dispatch(loadSettings({
-        ...(state || {}).settings,
-        overlayMessage: ('settings' in getState() ? getState().settings.overlayMessage : '')
-      }))
+      if (state === null) {
+        dispatch(loadSettings())
+      } else {
+        // don't override existing overlayMessage
+        dispatch(loadSettings({
+          ...(state || {}).settings,
+          overlayMessage: ('settings' in getState() ? getState().settings.overlayMessage : '')
+        }))
+      }
       dispatch(loadAccounts((state || {}).accounts))
       dispatch(loadTransactions((state || {}).transactions))
       dispatch(loadExchangeRates((state || {}).exchangeRates))
@@ -84,16 +89,12 @@ export const handleBlockstackLogin = () => (dispatch) => {
 
 export const resetState = () => (dispatch, getState) => {
   const { settings } = getState()
-  if (settings === undefined) {
-    dispatch(loadSettings(settingsInitialState))
-  } else {
-    // Don't remove the existing currency and locale
-    dispatch(loadSettings({
-      ...settingsInitialState,
-      currency: settings.currency,
-      locale: settings.locale
-    }))
-  }
+  // Preserve the existing currency and locale
+  dispatch(loadSettings({
+    ...settingsInitialState,
+    currency: settings.currency,
+    locale: settings.locale
+  }))
   dispatch(loadAccounts(accountsInitialState))
   dispatch(loadTransactions(transactionsInitialState))
   dispatch(loadExchangeRates(exchangeRatesInitialState))

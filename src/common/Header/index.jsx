@@ -72,12 +72,6 @@ const Header = ({ children, match }) => {
                 Dashboard
               </Button>
               <Button
-                color={buttonColourFor(['/accounts', '/institutions'])}
-                component={LinkTo('/accounts')}
-              >
-                Accounts
-              </Button>
-              <Button
                 color={buttonColourFor('/budget')}
                 aria-owns={open ? 'budget-menu-list-grow' : null}
                 onClick={handleClick}

@@ -29,26 +29,72 @@ describe('user actions', () => {
   })
 
   describe('saveLoginData', () => {
-    it('signed in user should load the profile', (done) => {
+    it('first time signed in user should start with initial state', async () => {
       blockstackUserSession.isUserSignedIn.mockReturnValue(true)
-      const getState = () => ({ user: {} })
+      jest.spyOn(storage, 'loadState').mockImplementation(() => Promise.resolve(null))
 
-      actions.loadUserData()(dispatch, getState).then(() => {
-        expect(dispatch).toHaveBeenCalledWith({
-          type: types.SAVE_LOGIN_DATA,
+      const mockStore = configureMockStore([thunk])
+      const store = mockStore({ user: {} })
+      await store.dispatch(actions.loadUserData())
+      expect(store.getActions()).toEqual([
+        { type: 'SHOW_OVERLAY', payload: 'Loading data from Blockstack...' },
+        {
+          type: 'SAVE_LOGIN_DATA',
           payload: {
             isLoginPending: false,
             isAuthenticatedWith: 'blockstack',
+            username: 'mocked username',
             name: 'mocked name',
-            pictureUrl: 'mocked url',
-            username: 'mocked username'
+            pictureUrl: 'mocked url'
           }
-        })
-        expect(blockstackUserSession.isUserSignedIn).toHaveBeenCalled()
-        done()
-      })
+        },
+        { type: 'LOAD_SETTINGS', payload: undefined },
+        { type: 'LOAD_ACCOUNTS', payload: undefined },
+        { type: 'LOAD_TRANSACTIONS', payload: undefined },
+        { type: 'LOAD_EXCHANGE_RATES', payload: undefined },
+        { type: 'LOAD_BUDGET', payload: undefined },
+        { type: 'HIDE_OVERLAY' }
+      ])
+
+      expect(blockstackUserSession.isUserSignedIn).toHaveBeenCalled()
     })
 
+    it('second time signed in user should start with loaded state', async () => {
+      blockstackUserSession.isUserSignedIn.mockReturnValue(true)
+      const loadedState = {
+        settings: settingsInitialState,
+        exchangeRates: exchangeRatesInitialState,
+        accounts: accountsInitialState,
+        transactions: transactionsInitialState,
+        budget: budgetInitialState
+      }
+      jest.spyOn(storage, 'loadState').mockImplementation(() => Promise.resolve(loadedState))
+
+      const mockStore = configureMockStore([thunk])
+      const store = mockStore({ user: {}, settings: { overlayMessage: 'message' } })
+      await store.dispatch(actions.loadUserData())
+      expect(store.getActions()).toEqual([
+        { type: 'SHOW_OVERLAY', payload: 'Loading data from Blockstack...' },
+        {
+          type: 'SAVE_LOGIN_DATA',
+          payload: {
+            isLoginPending: false,
+            isAuthenticatedWith: 'blockstack',
+            username: 'mocked username',
+            name: 'mocked name',
+            pictureUrl: 'mocked url'
+          }
+        },
+        { type: 'LOAD_SETTINGS', payload: { ...loadedState.settings, overlayMessage: 'message' } },
+        { type: 'LOAD_ACCOUNTS', payload: loadedState.accounts },
+        { type: 'LOAD_TRANSACTIONS', payload: loadedState.transactions },
+        { type: 'LOAD_EXCHANGE_RATES', payload: loadedState.exchangeRates },
+        { type: 'LOAD_BUDGET', payload: loadedState.budget },
+        { type: 'HIDE_OVERLAY' }
+      ])
+
+      expect(blockstackUserSession.isUserSignedIn).toHaveBeenCalled()
+    })
     it('logged out user should not call anything', () => {
       blockstackUserSession.isUserSignedIn.mockReturnValue(false)
       const getState = () => ({ user: { isLoading: false } })

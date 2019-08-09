@@ -5,6 +5,7 @@ import { withStyles } from '@material-ui/core/styles'
 import { withFormik } from 'formik'
 import * as Yup from 'yup'
 import PropTypes from 'prop-types'
+import Grid from '@material-ui/core/Grid'
 import TextField from '@material-ui/core/TextField'
 import format from 'date-fns/format'
 import parse from 'date-fns/parse'
@@ -15,6 +16,7 @@ import { createTransaction, updateTransaction } from '../../../store/transaction
 
 const styles = theme => ({
   root: {
+    minWidth: 600
   },
   input: {
     marginBottom: theme.spacing(1),
@@ -89,61 +91,65 @@ export const TransactionDialogComponent = ({
     onCancel={onCancel}
     className={classes.root}
   >
-    <TextField
-      label="Description"
-      inputProps={{
-        'aria-label': 'Description',
-        maxLength: 256
-      }}
-      className={classes.input}
-      value={values.description}
-      name="description"
-      onChange={handleChange}
-      error={errors.description && touched.description}
-      helperText={errors.description}
-    />
-    <AutoComplete
-      className={classes.input}
-      label="Category"
-      name="categoryId"
-      value={values.categoryId}
-      options={budget.categoryTree}
-      onChange={setFieldValue}
-      error={errors.categoryId && touched.categoryId}
-      helperText={errors.categoryId}
-      styles={colourStyles}
-    />
-    <TextField
-      type="number"
-      label="Amount"
-      inputProps={{
-        'aria-label': 'Amount',
-        maxLength: 10,
-        min: Number.MIN_SAFE_INTEGER,
-        max: Number.MAX_SAFE_INTEGER,
-        step: 0.01
-      }}
-      className={classes.input}
-      value={values.amount}
-      name="amount"
-      onChange={handleChange}
-      error={errors.amount && touched.amount}
-      helperText={errors.amount}
-    />
-    <TextField
-      type="date"
-      label="Date"
-      InputLabelProps={{
-        shrink: true,
-        'aria-label': 'Date'
-      }}
-      name="createdAt"
-      className={classes.input}
-      value={values.createdAt}
-      onChange={handleChange}
-      error={errors.createdAt && touched.createdAt}
-      helperText={errors.createdAt}
-    />
+    <Grid container>
+      <Grid item xs={12}>
+        <TextField
+          label="Description"
+          inputProps={{
+            'aria-label': 'Description',
+            maxLength: 256
+          }}
+          className={classes.input}
+          value={values.description}
+          name="description"
+          onChange={handleChange}
+          error={errors.description && touched.description}
+          helperText={errors.description}
+        />
+        <AutoComplete
+          className={classes.input}
+          label="Category"
+          name="categoryId"
+          value={values.categoryId}
+          options={budget.categoryTree}
+          onChange={setFieldValue}
+          error={errors.categoryId && touched.categoryId}
+          helperText={errors.categoryId}
+          styles={colourStyles}
+        />
+        <TextField
+          type="number"
+          label="Amount"
+          inputProps={{
+            'aria-label': 'Amount',
+            maxLength: 10,
+            min: Number.MIN_SAFE_INTEGER,
+            max: Number.MAX_SAFE_INTEGER,
+            step: 0.01
+          }}
+          className={classes.input}
+          value={values.amount}
+          name="amount"
+          onChange={handleChange}
+          error={errors.amount && touched.amount}
+          helperText={errors.amount}
+        />
+        <TextField
+          type="date"
+          label="Date"
+          InputLabelProps={{
+            shrink: true,
+            'aria-label': 'Date'
+          }}
+          name="createdAt"
+          className={classes.input}
+          value={values.createdAt}
+          onChange={handleChange}
+          error={errors.createdAt && touched.createdAt}
+          helperText={errors.createdAt}
+        />
+      </Grid>
+    </Grid>
   </ModalDialog>
 )
 

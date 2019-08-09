@@ -12,7 +12,7 @@ import CloseIcon from '@material-ui/icons/Close'
 import Typography from '@material-ui/core/Typography'
 
 const styles = () => ({
-  formwrapper: {
+  formWrapper: {
     marginLeft: 15,
     marginRight: 15
   },
@@ -48,7 +48,7 @@ const ModalDialog = ({
     onClose={onCancel}
     className={className}
   >
-    <div className={classes.formwrapper}>
+    <div className={classes.formWrapper}>
       <DialogTitle disableTypography className={classes.formHeader}>
         <Typography variant="h6">{title}</Typography>
         <IconButton aria-label="Close" onClick={onCancel} className={classes.closeButton}>
