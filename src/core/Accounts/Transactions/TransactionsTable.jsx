@@ -166,7 +166,11 @@ export class TransactionsTableComponent extends React.Component {
 
   handleSelectAllClick = (event, filteredTransactions) => {
     if (event.target.checked) {
-      this.setState({ selected: filteredTransactions.map(n => n.id) })
+      this.setState({
+        selected: filteredTransactions.reduce((result, transaction) => {
+          return [...result, ...('id' in transaction ? [transaction.id] : [])]
+        }, [])
+      })
       return
     }
     this.resetSelection()
@@ -186,12 +190,18 @@ export class TransactionsTableComponent extends React.Component {
     })
   }
 
-  renderCellAmount = ({ cellData }) => (
-    {
+  renderCellAmount = ({ cellData, rowData }) => {
+    if (cellData.amount === 0 && rowData.id === undefined) {
+      return {
+        positiveAmount: this.props.formatDecimal(cellData.amount),
+        negativeAmount: null
+      }[cellData.restrictTo]
+    }
+    return {
       positiveAmount: cellData.amount > 0 ? this.props.formatDecimal(cellData.amount) : null,
       negativeAmount: cellData.amount < 0 ? this.props.formatDecimal(cellData.amount) : null
     }[cellData.restrictTo]
-  )
+  }
 
   render() {
     const {
@@ -251,8 +261,8 @@ export class TransactionsTableComponent extends React.Component {
                       key="label"
                     >
                       <Checkbox
-                        indeterminate={selected.length > 0 && selected.length < filteredTransactions.length}
-                        checked={selected.length > 0 && selected.length === filteredTransactions.length}
+                        indeterminate={selected.length > 0 && selected.length < filteredTransactions.length - 1}
+                        checked={selected.length > 0 && selected.length === filteredTransactions.length - 1}
                         onChange={event => this.handleSelectAllClick(event, filteredTransactions)}
                       />
                     </span>

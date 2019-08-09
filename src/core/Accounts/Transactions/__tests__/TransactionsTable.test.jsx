@@ -173,15 +173,60 @@ describe('TransactionsTable', () => {
 
     describe('renderCellAmount', () => {
       it('should render for positive amounts', () => {
-        expect(instance.renderCellAmount({ cellData: { amount: 1, restrictTo: 'positiveAmount' } })).not.toBeNull()
-        expect(instance.renderCellAmount({ cellData: { amount: 0, restrictTo: 'positiveAmount' } })).toBeNull()
-        expect(instance.renderCellAmount({ cellData: { amount: -1, restrictTo: 'positiveAmount' } })).toBeNull()
+        expect(instance.renderCellAmount({
+          cellData: { amount: 1, restrictTo: 'positiveAmount' },
+          rowData: { id: 1 }
+        })).not.toBeNull()
+        expect(instance.renderCellAmount({
+          cellData: { amount: 0, restrictTo: 'positiveAmount' },
+          rowData: { id: 1 }
+        })).toBeNull()
+        expect(instance.renderCellAmount({
+          cellData: { amount: -1, restrictTo: 'positiveAmount' },
+          rowData: { id: 1 }
+        })).toBeNull()
       })
 
       it('should render for negative amounts', () => {
-        expect(instance.renderCellAmount({ cellData: { amount: -11, restrictTo: 'negativeAmount' } })).not.toBeNull()
-        expect(instance.renderCellAmount({ cellData: { amount: 0, restrictTo: 'negativeAmount' } })).toBeNull()
-        expect(instance.renderCellAmount({ cellData: { amount: 1, restrictTo: 'negativeAmount' } })).toBeNull()
+        expect(instance.renderCellAmount({
+          cellData: { amount: -11, restrictTo: 'negativeAmount' },
+          rowData: { id: 1 }
+        })).not.toBeNull()
+        expect(instance.renderCellAmount({
+          cellData: { amount: 0, restrictTo: 'negativeAmount' },
+          rowData: { id: 1 }
+        })).toBeNull()
+        expect(instance.renderCellAmount({
+          cellData: { amount: 1, restrictTo: 'negativeAmount' },
+          rowData: { id: 1 }
+        })).toBeNull()
+      })
+
+      it('should render opening balance amounts', () => {
+        expect(instance.renderCellAmount({
+          cellData: { amount: 1, restrictTo: 'positiveAmount' },
+          rowData: { }
+        })).not.toBeNull()
+        expect(instance.renderCellAmount({
+          cellData: { amount: 0, restrictTo: 'positiveAmount' },
+          rowData: { }
+        })).not.toBeNull()
+        expect(instance.renderCellAmount({
+          cellData: { amount: -1, restrictTo: 'positiveAmount' },
+          rowData: { }
+        })).toBeNull()
+        expect(instance.renderCellAmount({
+          cellData: { amount: 1, restrictTo: 'negativeAmount' },
+          rowData: { }
+        })).toBeNull()
+        expect(instance.renderCellAmount({
+          cellData: { amount: 0, restrictTo: 'negativeAmount' },
+          rowData: { }
+        })).toBeNull()
+        expect(instance.renderCellAmount({
+          cellData: { amount: -1, restrictTo: 'negativeAmount' },
+          rowData: { }
+        })).not.toBeNull()
       })
     })
 
