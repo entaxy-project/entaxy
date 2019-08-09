@@ -190,15 +190,9 @@ export class TransactionsTableComponent extends React.Component {
     })
   }
 
-  renderCellAmount = ({ cellData, rowData }) => {
-    if (cellData.amount === 0 && rowData.id === undefined) {
-      return {
-        positiveAmount: this.props.formatDecimal(cellData.amount),
-        negativeAmount: null
-      }[cellData.restrictTo]
-    }
+  renderCellAmount = ({ cellData }) => {
     return {
-      positiveAmount: cellData.amount > 0 ? this.props.formatDecimal(cellData.amount) : null,
+      positiveAmount: cellData.amount >= 0 ? this.props.formatDecimal(cellData.amount) : null,
       negativeAmount: cellData.amount < 0 ? this.props.formatDecimal(cellData.amount) : null
     }[cellData.restrictTo]
   }

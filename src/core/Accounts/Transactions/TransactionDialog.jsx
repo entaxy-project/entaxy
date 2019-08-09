@@ -6,6 +6,8 @@ import { withFormik } from 'formik'
 import * as Yup from 'yup'
 import PropTypes from 'prop-types'
 import Grid from '@material-ui/core/Grid'
+import FormControlLabel from '@material-ui/core/FormControlLabel'
+import Checkbox from '@material-ui/core/Checkbox'
 import TextField from '@material-ui/core/TextField'
 import format from 'date-fns/format'
 import parse from 'date-fns/parse'
@@ -117,6 +119,17 @@ export const TransactionDialogComponent = ({
           helperText={errors.categoryId}
           styles={colourStyles}
         />
+        <FormControlLabel
+          control={(
+            <Checkbox
+              checked={values.applyCategoryToAllMatchingTransactions}
+              onChange={handleChange}
+              name="applyCategoryToAllMatchingTransactions"
+              value={values.applyCategoryToAllMatchingTransactions}
+            />
+          )}
+          label="Apply to all matching transactions"
+        />
         <TextField
           type="number"
           label="Amount"
@@ -181,12 +194,14 @@ export default compose(
         return {
           description: '',
           categoryId: null,
+          applyCategoryToAllMatchingTransactions: true,
           amount: '',
           createdAt: format(Date.now(), 'YYYY-MM-DD')
         }
       }
       return {
         ...transaction,
+        applyCategoryToAllMatchingTransactions: true,
         categoryId: transaction.categoryId === undefined ? null : {
           id: budget.categoriesById[transaction.categoryId].id,
           label: budget.categoriesById[transaction.categoryId].name,
@@ -208,10 +223,11 @@ export default compose(
     }),
     handleSubmit: (values, { props, setSubmitting, resetForm }) => {
       setSubmitting(true)
+      const { applyCategoryToAllMatchingTransactions, ...rest } = values
       props.handleSave(props.account, {
-        ...values,
-        categoryId: (values.categoryId === null ? undefined : values.categoryId.id),
-        createdAt: parse(values.createdAt).getTime()
+        ...rest,
+        categoryId: (rest.categoryId === null ? undefined : rest.categoryId.id),
+        createdAt: parse(rest.createdAt).getTime()
       })
       resetForm()
       setSubmitting(false)

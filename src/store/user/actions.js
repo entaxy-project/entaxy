@@ -64,7 +64,7 @@ export const loginAs = (loginType) => {
   }
 
   return (dispatch) => {
-    return dispatch(saveLoginData({
+    dispatch(saveLoginData({
       isLoginPending: false,
       isAuthenticatedWith: 'guest',
       username: 'guest',
