@@ -23,6 +23,7 @@ const AutoComplete = ({
   async,
   creatable,
   label,
+  placeholder,
   name,
   value,
   options,
@@ -45,7 +46,7 @@ const AutoComplete = ({
       </Typography>
       { !async && !creatable && (
         <Select
-          placeholder={label}
+          placeholder={placeholder}
           name={name}
           value={value}
           defaultValue={value}
@@ -58,7 +59,7 @@ const AutoComplete = ({
       )}
       { !async && creatable && (
         <CreatableSelect
-          placeholder={label}
+          placeholder={placeholder}
           name={name}
           value={value}
           defaultValue={value}
@@ -71,7 +72,7 @@ const AutoComplete = ({
       )}
       { async && (
         <AsyncSelect
-          placeholder={label}
+          placeholder={placeholder}
           name={name}
           value={value}
           cacheOptions
@@ -95,7 +96,8 @@ const AutoComplete = ({
 AutoComplete.propTypes = {
   async: PropTypes.bool,
   creatable: PropTypes.bool,
-  label: PropTypes.string.isRequired,
+  label: PropTypes.node.isRequired,
+  placeholder: PropTypes.string,
   name: PropTypes.string.isRequired,
   value: PropTypes.object,
   options: PropTypes.array,
@@ -111,6 +113,7 @@ AutoComplete.defaultProps = {
   async: false,
   creatable: false,
   value: null,
+  placeholder: undefined,
   options: undefined,
   loadOptions: undefined,
   className: undefined,

@@ -22,7 +22,7 @@ exports[`AutoComplete matches snapshot for async select 1`] = `
         <div
           className=" css-1wa3eu0-placeholder"
         >
-          Institution
+          Select...
         </div>
         <div
           className="css-1g6gooi"
@@ -140,7 +140,7 @@ exports[`AutoComplete matches snapshot for creatable select 1`] = `
         <div
           className=" css-1wa3eu0-placeholder"
         >
-          Institution
+          Select...
         </div>
         <div
           className="css-1g6gooi"
@@ -258,7 +258,7 @@ exports[`AutoComplete matches snapshot for simple select 1`] = `
         <div
           className=" css-1wa3eu0-placeholder"
         >
-          Institution
+          Select...
         </div>
         <div
           className="css-1g6gooi"
@@ -376,7 +376,7 @@ exports[`AutoComplete matches snapshot with error 1`] = `
         <div
           className=" css-1wa3eu0-placeholder"
         >
-          Institution
+          Select...
         </div>
         <div
           className="css-1g6gooi"

@@ -40,7 +40,7 @@ describe('transactions actions', () => {
   })
 
   describe('createTransaction', () => {
-    it('should create a transaction', async () => {
+    it('should create a transaction without a category', async () => {
       const mockStore = configureMockStore([thunk])
       const store = mockStore({
         accounts: accountsInitialState,
@@ -60,16 +60,6 @@ describe('transactions actions', () => {
             createdAt: transaction.createdAt + 1000
           }
         }, {
-          type: 'APPLY_EXACT_RULE',
-          payload: {
-            match: transaction.description,
-            rules: {}
-          }
-        }, {
-          // NOTE: the transaction is not actually saved on the moch store so we don't see it here
-          type: 'COUNT_RULE_USAGE',
-          payload: []
-        }, {
           // NOTE: UPDATE_ACCOUNT is called but account balance is not changed
           // because test library doesn't actually update the store
           payload: account,
@@ -83,7 +73,7 @@ describe('transactions actions', () => {
       ])
     })
 
-    it('should create a transaction with a category', async () => {
+    it('should create a transaction with a category and create a rule', async () => {
       const mockStore = configureMockStore([thunk])
       const store = mockStore({
         accounts: accountsInitialState,
@@ -95,7 +85,8 @@ describe('transactions actions', () => {
       const categoryId = budgetInitialState.categoryTree[0].options[0].id
       const id = await store.dispatch(actions.createTransaction(
         account,
-        { ...transaction, categoryId }
+        { ...transaction, categoryId },
+        { createAndApplyRule: true }
       ))
       expect(store.getActions()).toEqual([
         {
@@ -132,10 +123,47 @@ describe('transactions actions', () => {
         }
       ])
     })
+
+    it('should create a transaction with a category and not create a rule', async () => {
+      const mockStore = configureMockStore([thunk])
+      const store = mockStore({
+        accounts: accountsInitialState,
+        transactions: transactionsInitialState,
+        settings: settingsInitialState,
+        exchangeRates: exchangeRatesInitialState,
+        budget: budgetInitialState
+      })
+      const categoryId = budgetInitialState.categoryTree[0].options[0].id
+      const id = await store.dispatch(actions.createTransaction(
+        account,
+        { ...transaction, categoryId }
+      ))
+      expect(store.getActions()).toEqual([
+        {
+          type: 'CREATE_TRANSACTION',
+          payload: {
+            ...transaction,
+            id,
+            categoryId,
+            createdAt: transaction.createdAt + 1000
+          }
+        }, {
+          // NOTE: UPDATE_ACCOUNT is called but account balance is not changed
+          // because test library doesn't actually update the store
+          payload: account,
+          type: 'UPDATE_ACCOUNT'
+        }, {
+          type: 'GROUP_BY_INSTITUTION'
+        }, {
+          type: 'SHOW_SNACKBAR',
+          payload: { text: 'Transaction created', status: 'success' }
+        }
+      ])
+    })
   })
 
   describe('updateTransaction', () => {
-    it('should update a transaction', async () => {
+    it('should update a transaction but not change description or category', async () => {
       const mockStore = configureMockStore([thunk])
       const store = mockStore({
         accounts: accountsInitialState,
@@ -168,7 +196,7 @@ describe('transactions actions', () => {
       ])
     })
 
-    it('should update a transaction and add a category', async () => {
+    it('should update a transaction and add a category and create a rule', async () => {
       const mockStore = configureMockStore([thunk])
       const store = mockStore({
         accounts: accountsInitialState,
@@ -185,7 +213,8 @@ describe('transactions actions', () => {
           ...transaction,
           id: 1,
           categoryId
-        }
+        },
+        { createAndApplyRule: true }
       ))
       expect(store.getActions()).toEqual([
         {
@@ -223,7 +252,53 @@ describe('transactions actions', () => {
       ])
     })
 
-    it('should update a transaction and remove a category', async () => {
+    it('should update a transaction and add a category and not create a rule', async () => {
+      const mockStore = configureMockStore([thunk])
+      const store = mockStore({
+        accounts: accountsInitialState,
+        transactions: { list: [{ ...transaction, id: 1 }], transactionsInitialState },
+        settings: settingsInitialState,
+        exchangeRates: exchangeRatesInitialState,
+        budget: budgetInitialState
+      })
+      const categoryId = budgetInitialState.categoryTree[0].options[0].id
+      expect(transaction.category).toBeUndefined()
+      await store.dispatch(actions.updateTransaction(
+        account,
+        {
+          ...transaction,
+          id: 1,
+          categoryId
+        }
+      ))
+      expect(store.getActions()).toEqual([
+        {
+          type: 'UPDATE_TRANSACTION',
+          payload: {
+            ...transaction,
+            id: 1,
+            categoryId,
+            createdAt: transaction.createdAt + 1000
+          }
+        }, {
+          // NOTE: the transaction is not actually saved on the moch store so we don't see it here
+          type: 'COUNT_RULE_USAGE',
+          payload: [{ ...transaction, id: 1 }]
+        }, {
+          // NOTE: UPDATE_ACCOUNT is called but account balance is not changed
+          // because test library doesn't actually update the store
+          payload: account,
+          type: 'UPDATE_ACCOUNT'
+        }, {
+          type: 'GROUP_BY_INSTITUTION'
+        }, {
+          type: 'SHOW_SNACKBAR',
+          payload: { text: 'Transaction updated', status: 'success' }
+        }
+      ])
+    })
+
+    it('should update a transaction and remove a category and create a rule', async () => {
       const mockStore = configureMockStore([thunk])
       const categoryId = budgetInitialState.categoryTree[0].options[0].id
       const store = mockStore({
@@ -240,7 +315,8 @@ describe('transactions actions', () => {
           ...transaction,
           id: 1,
           categoryId: undefined
-        }
+        },
+        { createAndApplyRule: true }
       ))
       expect(store.getActions()).toEqual([
         {
@@ -278,7 +354,109 @@ describe('transactions actions', () => {
       ])
     })
 
-    it('should update a transaction and change a category', async () => {
+    it('should update a transaction and remove a category and not create a rule', async () => {
+      const mockStore = configureMockStore([thunk])
+      const categoryId = budgetInitialState.categoryTree[0].options[0].id
+      const store = mockStore({
+        accounts: accountsInitialState,
+        transactions: { list: [{ ...transaction, id: 1, categoryId }], transactionsInitialState },
+        settings: settingsInitialState,
+        exchangeRates: exchangeRatesInitialState,
+        budget: budgetInitialState
+      })
+
+      await store.dispatch(actions.updateTransaction(
+        account,
+        {
+          ...transaction,
+          id: 1,
+          categoryId: undefined
+        }
+      ))
+      expect(store.getActions()).toEqual([
+        {
+          type: 'UPDATE_TRANSACTION',
+          payload: {
+            ...transaction,
+            id: 1,
+            categoryId: undefined,
+            createdAt: transaction.createdAt + 1000
+          }
+        }, {
+          // NOTE: the transaction is not actually saved on the moch store so we don't see it here
+          type: 'COUNT_RULE_USAGE',
+          payload: [{ ...transaction, id: 1, categoryId }]
+        }, {
+          // NOTE: UPDATE_ACCOUNT is called but account balance is not changed
+          // because test library doesn't actually update the store
+          payload: account,
+          type: 'UPDATE_ACCOUNT'
+        }, {
+          type: 'GROUP_BY_INSTITUTION'
+        }, {
+          type: 'SHOW_SNACKBAR',
+          payload: { text: 'Transaction updated', status: 'success' }
+        }
+      ])
+    })
+
+    it('should update a transaction and change a category and create a rule', async () => {
+      const mockStore = configureMockStore([thunk])
+      const categoryId = budgetInitialState.categoryTree[0].options[0].id
+      const store = mockStore({
+        accounts: accountsInitialState,
+        transactions: { list: [{ ...transaction, id: 1, categoryId: 'Old id' }], transactionsInitialState },
+        settings: settingsInitialState,
+        exchangeRates: exchangeRatesInitialState,
+        budget: budgetInitialState
+      })
+
+      await store.dispatch(actions.updateTransaction(
+        account,
+        {
+          ...transaction,
+          id: 1,
+          categoryId
+        },
+        { createAndApplyRule: true }
+      ))
+      expect(store.getActions()).toEqual([
+        {
+          type: 'UPDATE_TRANSACTION',
+          payload: {
+            ...transaction,
+            id: 1,
+            categoryId,
+            createdAt: transaction.createdAt + 1000
+          }
+        }, {
+          type: 'CREATE_EXACT_RULE',
+          payload: { categoryId, match: transaction.description }
+        }, {
+          type: 'APPLY_EXACT_RULE',
+          payload: {
+            match: transaction.description,
+            rules: {}
+          }
+        }, {
+          // NOTE: the transaction is not actually saved on the moch store so we don't see it here
+          type: 'COUNT_RULE_USAGE',
+          payload: [{ ...transaction, id: 1, categoryId: 'Old id' }]
+        }, {
+          // NOTE: UPDATE_ACCOUNT is called but account balance is not changed
+          // because test library doesn't actually update the store
+          payload: account,
+          type: 'UPDATE_ACCOUNT'
+        }, {
+          type: 'GROUP_BY_INSTITUTION'
+        }, {
+          type: 'SHOW_SNACKBAR',
+          payload: { text: 'Transaction updated', status: 'success' }
+        }
+      ])
+    })
+
+    it('should update a transaction and change a category and not create a rule', async () => {
       const mockStore = configureMockStore([thunk])
       const categoryId = budgetInitialState.categoryTree[0].options[0].id
       const store = mockStore({
@@ -305,15 +483,6 @@ describe('transactions actions', () => {
             id: 1,
             categoryId,
             createdAt: transaction.createdAt + 1000
-          }
-        }, {
-          type: 'CREATE_EXACT_RULE',
-          payload: { categoryId, match: transaction.description }
-        }, {
-          type: 'APPLY_EXACT_RULE',
-          payload: {
-            match: transaction.description,
-            rules: {}
           }
         }, {
           // NOTE: the transaction is not actually saved on the moch store so we don't see it here
