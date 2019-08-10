@@ -14,6 +14,7 @@
         "lint": "eslint src --ext '.js,.jsx' --config .eslintrc",
         "lint:fix": "npm run lint --fix",
         "deploy:staging": "npm run build && aws s3 sync build/ s3://entaxy-staging",
+        "deploy:production": "npm run build && aws s3 sync build/ s3://entaxy-production",
         "deploy:test": "npm run build && aws s3 sync build/ s3://entaxy-test"
     },
     "dependencies": {
@@ -84,6 +85,7 @@
         "enzyme-adapter-react-16": "^1.14.0",
         "eslint-config-airbnb": "^17.1.1",
         "eslint-plugin-jest": "^22.12.0",
+        "http-proxy-middleware": "^0.19.1",
         "husky": "^3.0.1",
         "jest-enzyme": "^7.0.2",
         "lint-staged": "^9.2.0",
@@ -101,5 +103,24 @@
             "react-scripts test --env=jsdom --bail --coverage --findRelatedTests --watchAll=false",
             "git add"
         ]
+    },
+    "jest": {
+        "collectCoverageFrom": [
+            "src/**/*.{js,jsx,mjs}",
+            "!src/registerServiceWorker.js",
+            "!src/setupProxy.js",
+            "!src/store/**/types.js",
+            "!src/store/transactions/selectors.js",
+            "!src/core/Taxes/*",
+            "!src/core/Portfolios/*"
+        ],
+        "coverageThreshold": {
+            "global": {
+                "branches": 50,
+                "functions": 50,
+                "lines": 50,
+                "statements": 50
+            }
+        }
     }
 }

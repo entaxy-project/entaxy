@@ -3,7 +3,7 @@ import { mount } from 'enzyme'
 import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
 import configureMockStore from 'redux-mock-store'
-import AccountsIndex from '..'
+import Dashboard from '../index'
 import { groupByInstitution, initialState as accountsInitialState } from '../../../store/accounts/reducer'
 import { initialState as settingsInitialState } from '../../../store/settings/reducer'
 import { initialState as budgetInitialState } from '../../../store/budget/reducer'
@@ -32,7 +32,7 @@ const accounts = [{
 
 const mochHistoryPush = jest.fn()
 
-describe('AccountsIndex', () => {
+describe('Dashboard', () => {
   it('matches snapshot with no accounts', () => {
     const mockStore = configureMockStore()
     const store = mockStore({
@@ -43,13 +43,13 @@ describe('AccountsIndex', () => {
     const wrapper = mount((
       <BrowserRouter>
         <Provider store={store}>
-          <AccountsIndex history={{ push: mochHistoryPush }} />
+          <Dashboard history={{ push: mochHistoryPush }} />
         </Provider>
       </BrowserRouter>
     ))
     expect(wrapper.debug()).toMatchSnapshot()
 
-    const component = wrapper.findWhere(node => node.name() === 'AccountsIndexComponent')
+    const component = wrapper.findWhere(node => node.name() === 'DashboardComponent')
     expect(component.props().accounts).toEqual(accountsInitialState)
     expect(component.props().totalBalance).toEqual(0)
   })
@@ -73,13 +73,13 @@ describe('AccountsIndex', () => {
     const wrapper = mount((
       <BrowserRouter>
         <Provider store={store}>
-          <AccountsIndex history={{ push: mochHistoryPush }} />
+          <Dashboard history={{ push: mochHistoryPush }} />
         </Provider>
       </BrowserRouter>
     ))
     expect(wrapper.debug()).toMatchSnapshot()
 
-    const component = wrapper.findWhere(node => node.name() === 'AccountsIndexComponent')
+    const component = wrapper.findWhere(node => node.name() === 'DashboardComponent')
     expect(component.props().accounts).toEqual(store.getState().accounts)
     expect(component.props().totalBalance).toEqual(accounts[0].currentBalance.localCurrency)
   })
@@ -101,13 +101,13 @@ describe('AccountsIndex', () => {
     const wrapper = mount((
       <BrowserRouter>
         <Provider store={store}>
-          <AccountsIndex history={{ push: mochHistoryPush }} />
+          <Dashboard history={{ push: mochHistoryPush }} />
         </Provider>
       </BrowserRouter>
     ))
     expect(wrapper.debug()).toMatchSnapshot()
 
-    const component = wrapper.findWhere(node => node.name() === 'AccountsIndexComponent')
+    const component = wrapper.findWhere(node => node.name() === 'DashboardComponent')
     expect(component.props().accounts).toEqual(store.getState().accounts)
     expect(component.props().totalBalance).toEqual(
       accounts[0].currentBalance.localCurrency + accounts[1].currentBalance.localCurrency

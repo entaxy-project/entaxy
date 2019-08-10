@@ -49,7 +49,8 @@ export class TransactionsComponent extends React.Component {
       accountId: account.id,
       description: 'Opening balance',
       amount: account.openingBalance,
-      createdAt: account.openingBalanceDate
+      createdAt: account.openingBalanceDate,
+      type: 'openingBalance'
     }
     return [openingBalanceTransaction, ...transactions].filter(transaction => (
       transaction.accountId === account.id

@@ -57,31 +57,6 @@ exports[`Header matches snapshot 1`] = `
             Dashboard
           </span>
         </a>
-        <a
-          aria-disabled={false}
-          className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-colorInherit"
-          href="/accounts"
-          onBlur={[Function]}
-          onClick={[Function]}
-          onDragLeave={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          role="button"
-          tabIndex={0}
-        >
-          <span
-            className="MuiButton-label"
-          >
-            Accounts
-          </span>
-        </a>
         <button
           aria-owns={null}
           className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-colorInherit"

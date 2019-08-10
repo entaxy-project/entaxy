@@ -76,7 +76,7 @@ exports[`Account form matches snapshot for edit account 1`] = `
               <div
                 className=" css-1wa3eu0-placeholder"
               >
-                Institution
+                Select...
               </div>
               <div
                 className="css-1g6gooi"
@@ -274,7 +274,7 @@ exports[`Account form matches snapshot for edit account 1`] = `
               <div
                 className=" css-1wa3eu0-placeholder"
               >
-                Account Currency
+                Select...
               </div>
               <div
                 className="css-1g6gooi"
@@ -519,7 +519,7 @@ exports[`Account form matches snapshot for new account 1`] = `
               <div
                 className=" css-1wa3eu0-placeholder"
               >
-                Institution
+                Select...
               </div>
               <div
                 className="css-1g6gooi"
@@ -717,7 +717,7 @@ exports[`Account form matches snapshot for new account 1`] = `
               <div
                 className=" css-1wa3eu0-placeholder"
               >
-                Account Currency
+                Select...
               </div>
               <div
                 className="css-1g6gooi"

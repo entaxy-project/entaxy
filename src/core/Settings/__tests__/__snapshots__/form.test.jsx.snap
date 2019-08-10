@@ -25,7 +25,7 @@ exports[`SettingsForm matches snapshot before after submitting form 1`] = `
           <div
             className=" css-1wa3eu0-placeholder"
           >
-            Language / Country
+            Select...
           </div>
           <div
             className="css-1g6gooi"
@@ -154,7 +154,7 @@ exports[`SettingsForm matches snapshot before after submitting form 1`] = `
           <div
             className=" css-1wa3eu0-placeholder"
           >
-            Display Currency
+            Select...
           </div>
           <div
             className="css-1g6gooi"
@@ -371,7 +371,7 @@ exports[`SettingsForm matches snapshot before submitting form 1`] = `
           <div
             className=" css-1wa3eu0-placeholder"
           >
-            Language / Country
+            Select...
           </div>
           <div
             className="css-1g6gooi"
@@ -500,7 +500,7 @@ exports[`SettingsForm matches snapshot before submitting form 1`] = `
           <div
             className=" css-1wa3eu0-placeholder"
           >
-            Display Currency
+            Select...
           </div>
           <div
             className="css-1g6gooi"

@@ -6,7 +6,6 @@ import store from '../../../store'
 import Header from '..'
 
 jest.mock('../../LoginButton', () => 'LoginButton')
-jest.mock('../../../core/Accounts', () => 'Accounts')
 
 describe('Header', () => {
   it('matches snapshot', () => {

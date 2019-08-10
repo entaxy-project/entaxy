@@ -5,21 +5,35 @@ import { withStyles } from '@material-ui/core/styles'
 import { withFormik } from 'formik'
 import * as Yup from 'yup'
 import PropTypes from 'prop-types'
+import Grid from '@material-ui/core/Grid'
+import FormControlLabel from '@material-ui/core/FormControlLabel'
+import Checkbox from '@material-ui/core/Checkbox'
 import TextField from '@material-ui/core/TextField'
+import Button from '@material-ui/core/Button'
 import format from 'date-fns/format'
 import parse from 'date-fns/parse'
 import chroma from 'chroma-js'
 import AutoComplete from '../../../common/AutoComplete'
 import ModalDialog from '../../../common/ModalDialog'
 import { createTransaction, updateTransaction } from '../../../store/transactions/actions'
+import LinkTo from '../../../common/LinkTo'
 
 const styles = theme => ({
   root: {
+    minWidth: 600
   },
   input: {
     marginBottom: theme.spacing(1),
     marginTop: theme.spacing(1),
     width: '100%'
+  },
+  manageCategoriesLink: {
+    color: theme.palette.info.text,
+    float: 'right',
+    paddingTop: 0,
+    paddingBottom: 0,
+    lineHeight: 'normal',
+    textTransform: 'none'
   }
 })
 
@@ -60,11 +74,11 @@ const mapStateToProps = ({ budget }) => ({ budget })
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleSave: (account, transaction) => {
+    handleSave: (account, transaction, options) => {
       if ('id' in transaction) {
-        return dispatch(updateTransaction(account, transaction))
+        return dispatch(updateTransaction(account, transaction, options))
       }
-      return dispatch(createTransaction(account, transaction))
+      return dispatch(createTransaction(account, transaction, options))
     }
   }
 }
@@ -89,61 +103,89 @@ export const TransactionDialogComponent = ({
     onCancel={onCancel}
     className={classes.root}
   >
-    <TextField
-      label="Description"
-      inputProps={{
-        'aria-label': 'Description',
-        maxLength: 256
-      }}
-      className={classes.input}
-      value={values.description}
-      name="description"
-      onChange={handleChange}
-      error={errors.description && touched.description}
-      helperText={errors.description}
-    />
-    <AutoComplete
-      className={classes.input}
-      label="Category"
-      name="categoryId"
-      value={values.categoryId}
-      options={budget.categoryTree}
-      onChange={setFieldValue}
-      error={errors.categoryId && touched.categoryId}
-      helperText={errors.categoryId}
-      styles={colourStyles}
-    />
-    <TextField
-      type="number"
-      label="Amount"
-      inputProps={{
-        'aria-label': 'Amount',
-        maxLength: 10,
-        min: Number.MIN_SAFE_INTEGER,
-        max: Number.MAX_SAFE_INTEGER,
-        step: 0.01
-      }}
-      className={classes.input}
-      value={values.amount}
-      name="amount"
-      onChange={handleChange}
-      error={errors.amount && touched.amount}
-      helperText={errors.amount}
-    />
-    <TextField
-      type="date"
-      label="Date"
-      InputLabelProps={{
-        shrink: true,
-        'aria-label': 'Date'
-      }}
-      name="createdAt"
-      className={classes.input}
-      value={values.createdAt}
-      onChange={handleChange}
-      error={errors.createdAt && touched.createdAt}
-      helperText={errors.createdAt}
-    />
+    <Grid container>
+      <Grid item xs={12}>
+        <TextField
+          label="Description"
+          inputProps={{
+            'aria-label': 'Description',
+            maxLength: 256
+          }}
+          className={classes.input}
+          value={values.description}
+          name="description"
+          onChange={handleChange}
+          error={errors.description && touched.description}
+          helperText={errors.description}
+        />
+        <AutoComplete
+          className={classes.input}
+          label={(
+            <div>
+              Category
+              <Button
+                size="small"
+                color="secondary"
+                component={LinkTo('/budget-categories')}
+                className={classes.manageCategoriesLink}
+              >
+                Manage categories
+              </Button>
+            </div>
+          )}
+          placeholder="Category"
+          name="categoryId"
+          value={values.categoryId}
+          options={budget.categoryTree}
+          onChange={setFieldValue}
+          error={errors.categoryId && touched.categoryId}
+          helperText={errors.categoryId}
+          styles={colourStyles}
+        />
+        <FormControlLabel
+          control={(
+            <Checkbox
+              checked={values.createAndApplyRule}
+              onChange={handleChange}
+              name="createAndApplyRule"
+              value={values.createAndApplyRule}
+            />
+          )}
+          label="Apply category to all transactions with the same description"
+        />
+        <TextField
+          type="number"
+          label="Amount"
+          inputProps={{
+            'aria-label': 'Amount',
+            maxLength: 10,
+            min: Number.MIN_SAFE_INTEGER,
+            max: Number.MAX_SAFE_INTEGER,
+            step: 0.01
+          }}
+          className={classes.input}
+          value={values.amount}
+          name="amount"
+          onChange={handleChange}
+          error={errors.amount && touched.amount}
+          helperText={errors.amount}
+        />
+        <TextField
+          type="date"
+          label="Date"
+          InputLabelProps={{
+            shrink: true,
+            'aria-label': 'Date'
+          }}
+          name="createdAt"
+          className={classes.input}
+          value={values.createdAt}
+          onChange={handleChange}
+          error={errors.createdAt && touched.createdAt}
+          helperText={errors.createdAt}
+        />
+      </Grid>
+    </Grid>
   </ModalDialog>
 )
 
@@ -175,12 +217,14 @@ export default compose(
         return {
           description: '',
           categoryId: null,
+          createAndApplyRule: true,
           amount: '',
           createdAt: format(Date.now(), 'YYYY-MM-DD')
         }
       }
       return {
         ...transaction,
+        createAndApplyRule: true,
         categoryId: transaction.categoryId === undefined ? null : {
           id: budget.categoriesById[transaction.categoryId].id,
           label: budget.categoriesById[transaction.categoryId].name,
@@ -202,11 +246,16 @@ export default compose(
     }),
     handleSubmit: (values, { props, setSubmitting, resetForm }) => {
       setSubmitting(true)
-      props.handleSave(props.account, {
-        ...values,
-        categoryId: (values.categoryId === null ? undefined : values.categoryId.id),
-        createdAt: parse(values.createdAt).getTime()
-      })
+      const { createAndApplyRule, ...rest } = values
+      props.handleSave(
+        props.account,
+        {
+          ...rest,
+          categoryId: (rest.categoryId === null ? undefined : rest.categoryId.id),
+          createdAt: parse(rest.createdAt).getTime()
+        },
+        { createAndApplyRule }
+      )
       resetForm()
       setSubmitting(false)
       props.onCancel()

@@ -174,7 +174,7 @@ describe('TransactionsTable', () => {
     describe('renderCellAmount', () => {
       it('should render for positive amounts', () => {
         expect(instance.renderCellAmount({ cellData: { amount: 1, restrictTo: 'positiveAmount' } })).not.toBeNull()
-        expect(instance.renderCellAmount({ cellData: { amount: 0, restrictTo: 'positiveAmount' } })).toBeNull()
+        expect(instance.renderCellAmount({ cellData: { amount: 0, restrictTo: 'positiveAmount' } })).not.toBeNull()
         expect(instance.renderCellAmount({ cellData: { amount: -1, restrictTo: 'positiveAmount' } })).toBeNull()
       })
 

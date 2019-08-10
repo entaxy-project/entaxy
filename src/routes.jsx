@@ -17,7 +17,6 @@ import Settings from './core/Settings'
 import BudgetCategories from './core/BudgetCategories'
 import Dashboard from './core/Dashboard'
 import Transactions from './core/Accounts/Transactions'
-import Accounts from './core/Accounts/index'
 import NewAccount from './core/Accounts/new'
 import EditAccount from './core/Accounts/edit'
 import ImportTransactions from './core/Accounts/ImportTransactions'
@@ -68,7 +67,6 @@ export class RoutesComponent extends React.Component {
 
   authenticatedDashBoard = this.loginRequired(Dashboard)
 
-  authenticatedAccounts = this.loginRequired(Accounts)
 
   authenticatedNewAccount = this.loginRequired(NewAccount, {
     accountLeftDrawer: true
@@ -118,7 +116,6 @@ export class RoutesComponent extends React.Component {
               <Route exact path="/budget-categories" render={this.authenticatedBudgetCategories} />
               <Route exact path="/dashboard" render={this.authenticatedDashBoard} />
               <Route exact path="/budget" render={this.authenticatedBudget} />
-              <Route exact path="/accounts" render={this.authenticatedAccounts} />
               <Route exact path="/accounts/new" render={this.authenticatedNewAccount} />
               <Route exact path="/accounts/:accountId/edit" render={this.authenticatedEditAccount} />
               <Route exact path="/accounts/:accountId/transactions" render={this.authenticatedTransactions} />
