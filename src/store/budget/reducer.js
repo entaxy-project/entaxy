@@ -21,6 +21,7 @@ export const generateCategoryTree = (categoriesById) => {
         [parentCategory.id]: {
           id: parentCategory.id,
           label: parentCategory.name,
+          isIncome: parentCategory.isIncome,
           options: []
         }
       }
@@ -43,27 +44,28 @@ export const generateCategoryTree = (categoriesById) => {
 
 const generateInitialState = () => {
   let count = 0
-  const categoriesById = Object.keys(budgetCategories).reduce((result, category) => {
-    const parentId = uuid()
-    const parent = {
-      id: parentId,
-      name: category
+  const categoriesById = Object.keys(budgetCategories).reduce((result, groupName) => {
+    const groupId = uuid()
+    const group = {
+      id: groupId,
+      name: groupName,
+      isIncome: groupName === 'Income'
     }
-    const children = budgetCategories[category].reduce((res, subCategory) => {
-      const child = {
+    const categories = budgetCategories[groupName].reduce((res, categoryName) => {
+      const category = {
         id: uuid(),
-        parentId,
-        name: subCategory,
+        parentId: groupId,
+        name: categoryName,
         colour: defaultColours[count % defaultColours.length]
       }
       count += 1
-      return { ...res, [child.id]: child }
+      return { ...res, [category.id]: category }
     }, {})
 
     return {
       ...result,
-      [parent.id]: parent,
-      ...children
+      [group.id]: group,
+      ...categories
     }
   }, {})
 

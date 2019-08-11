@@ -60,11 +60,7 @@ const budgetCategories = {
   ],
   'Income': [
     'Bonus',
-    'Interest Income',
-    'Paycheque',
-    'Reimbursement',
-    'Rental Income',
-    'Returned Purchase'
+    'Paycheque'
   ],
   'Investments': [
     'Buy',
@@ -99,7 +95,7 @@ const budgetCategories = {
     'Rental Car & Taxi',
     'Vacation'
   ],
-  'Uncategorized': [
+  'Misc': [
     'Cash & ATM',
     'Cheque'
   ]

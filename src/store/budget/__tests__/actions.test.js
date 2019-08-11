@@ -4,8 +4,6 @@ import * as actions from '../actions'
 import types from '../types'
 import { initialState as budgetInitialState } from '../reducer'
 
-
-// jest.mock('uuid/v4', () => jest.fn(() => {'xyz'}))
 jest.mock('uuid/v4', () => {
   let value = 0
   return () => {
