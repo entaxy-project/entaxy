@@ -27,7 +27,7 @@ const mapStateToProps = state => ({
   budget: state.budget
 })
 
-export const DashboardComponent = ({
+export const BudgetIndexComponent = ({
   classes,
   budget
 }) => {
@@ -48,7 +48,7 @@ export const DashboardComponent = ({
   )
 }
 
-DashboardComponent.propTypes = {
+BudgetIndexComponent.propTypes = {
   classes: PropTypes.object.isRequired,
   budget: PropTypes.object.isRequired
 }
@@ -56,4 +56,4 @@ DashboardComponent.propTypes = {
 export default compose(
   connect(mapStateToProps),
   withStyles(styles)
-)(DashboardComponent)
+)(BudgetIndexComponent)

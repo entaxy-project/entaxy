@@ -28,10 +28,11 @@ const BudgetChart = () => {
   }))
 
   // Used categories except Income
+  const categorizedTransactions = transactions.list.filter(transaction => transaction.categoryId !== undefined)
   const usedCategories = [
     ...new Set(
-      Object.values(budget.rules)
-        .map(rules => budget.categoriesById[rules.categoryId])
+      categorizedTransactions
+        .map(transaction => budget.categoriesById[transaction.categoryId])
     )
   ].filter(category => !budget.categoriesById[category.parentId].isIncome)
 
@@ -42,20 +43,18 @@ const BudgetChart = () => {
   const [opacity, setOpacity] = useState(initialState)
 
   const byMonth = {}
-  transactions.list.forEach((transaction) => {
+  categorizedTransactions.forEach((transaction) => {
     const dateKey = startOfMonth(transaction.createdAt).getTime()
-    if (transaction.categoryId !== undefined) {
-      const category = budget.categoriesById[transaction.categoryId]
-      const group = budget.categoriesById[category.parentId]
-      if (!group.isIncome) {
-        if (byMonth[dateKey] === undefined) {
-          byMonth[dateKey] = usedCategories.reduce((res, cat) => ({ ...res, [cat.name]: 0 }), {})
-        }
-        if (byMonth[dateKey][category.name] === undefined) {
-          byMonth[dateKey][category.name] = 0
-        }
-        byMonth[dateKey][category.name] += Math.abs(transaction.amount)
+    const category = budget.categoriesById[transaction.categoryId]
+    const group = budget.categoriesById[category.parentId]
+    if (!group.isIncome) {
+      if (byMonth[dateKey] === undefined) {
+        byMonth[dateKey] = usedCategories.reduce((res, cat) => ({ ...res, [cat.name]: 0 }), {})
       }
+      if (byMonth[dateKey][category.name] === undefined) {
+        byMonth[dateKey][category.name] = 0
+      }
+      byMonth[dateKey][category.name] += Math.abs(transaction.amount)
     }
   })
   const data = Object.keys(byMonth).sort((a, b) => a - b).map(date => ({
