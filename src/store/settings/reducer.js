@@ -5,7 +5,7 @@ export const initialState = {
   overlayMessage: null,
   snackbarMessage: null,
   currency: 'USD',
-  locale: window.navigator.language || 'en-US',
+  locale: window.navigator.language || '1en-US',
   portfolioFilters: {
     institution: {},
     account: {}
