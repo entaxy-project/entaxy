@@ -19,6 +19,21 @@ const settings = {
 }
 
 describe('settings actions', () => {
+  describe('snackbar', () => {
+    it('should showSnackbar', () => {
+      expect(actions.showSnackbar('message')).toEqual({
+        type: types.SHOW_SNACKBAR,
+        payload: 'message'
+      })
+    })
+
+    it('should hideSnackbar', () => {
+      expect(actions.hideSnackbar()).toEqual({
+        type: types.HIDE_SNACKBAR
+      })
+    })
+  })
+
   describe('loadSettings', () => {
     it('should load settings', () => {
       expect(actions.loadSettings(settings)).toEqual({

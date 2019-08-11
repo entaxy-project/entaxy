@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BudgetChart matches snapshot with no used categories 1`] = `
+"<Provider store={{...}}>
+  <BudgetChart>
+    <ResponsiveContainer width=\\"100%\\" height=\\"100%\\" debounce={0}>
+      <div id={[undefined]} className=\\"recharts-responsive-container\\" style={{...}}>
+        <LineChart data={{...}} margin={{...}} layout=\\"horizontal\\" stackOffset=\\"none\\" barCategoryGap=\\"10%\\" barGap={4} reverseStackOrder={false} width={0} height={0} />
+        <ResizeDetector handleWidth={true} handleHeight={true} onResize={[Function]} skipOnMount={false} refreshRate={1000} refreshMode={[undefined]} resizableElementId=\\"\\">
+          <div style={{...}} />
+        </ResizeDetector>
+      </div>
+    </ResponsiveContainer>
+  </BudgetChart>
+</Provider>"
+`;

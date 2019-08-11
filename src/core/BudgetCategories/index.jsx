@@ -205,10 +205,12 @@ const BudgetCategories = () => {
 
   const renderCategory = (categoryId) => {
     const category = budget.categoriesById[categoryId]
+    const group = budget.categoriesById[category.parentId]
     if (editCategory !== null && categoryId === editCategory) {
       return (
         <CategoryForm
           category={category}
+          group={group}
           handleCancel={handleCloseForm}
         />
       )
@@ -222,7 +224,10 @@ const BudgetCategories = () => {
           </IconButton>
         )}
         title={category.name}
-        subheader={`Budget limit: ${category.budgetLimit ? formatCurrency(category.budgetLimit) : 'Not set'}`}
+        subheader={
+          !group.isIncome
+          && `Budget limit: ${category.budgetLimit ? formatCurrency(category.budgetLimit) : 'Not set'}`
+        }
         subheaderTypographyProps={{
           variant: 'caption'
         }}
@@ -231,11 +236,12 @@ const BudgetCategories = () => {
   }
 
   const renderNewCategory = (groupId) => {
+    const group = budget.categoriesById[groupId]
     if (editCategory !== null && groupId === editCategory) {
       return (
         <Card>
           <CategoryForm
-            groupId={groupId}
+            group={group}
             handleCancel={handleCloseForm}
           />
         </Card>
@@ -309,17 +315,26 @@ const BudgetCategories = () => {
         <Grid container spacing={2} key={group.id} className={classes.categoryGroup}>
           <Grid item xs={12}>
             <Typography variant="h6" className={classes.groupName}>{group.label}</Typography>
-            <Tooltip title="Change group name">
-              <IconButton aria-label="Change group name" onClick={() => handleEditGroup(group)} style={{ padding: 8 }}>
+            <IconButton
+              disabled={group.isIncome}
+              aria-label="Change group name"
+              onClick={() => handleEditGroup(group)}
+              style={{ padding: 8 }}
+            >
+              <Tooltip title="Change group name">
                 <EditIcon style={{ fontSize: 18 }} />
-              </IconButton>
-            </Tooltip>
-            <Tooltip title="Delete group">
-              <IconButton aria-label="Delete group" onClick={() => handleDeleteGroup(group)} style={{ padding: 8 }}>
+              </Tooltip>
+            </IconButton>
+            <IconButton
+              disabled={group.isIncome}
+              aria-label="Delete group"
+              onClick={() => handleDeleteGroup(group)}
+              style={{ padding: 8 }}
+            >
+              <Tooltip title="Delete group">
                 <DeleteIcon style={{ fontSize: 18 }} />
-              </IconButton>
-            </Tooltip>
-
+              </Tooltip>
+            </IconButton>
           </Grid>
           {group.options.map(category => (
             <Grid item lg={3} md={4} sm={6} xs={12} key={category.id}>

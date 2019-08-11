@@ -48,7 +48,8 @@ const CategoryFormComponent = ({
   errors,
   touched,
   handleChange,
-  handleCancel
+  handleCancel,
+  group
 }) => {
   return (
     <form onSubmit={handleSubmit} className={classes.form}>
@@ -67,20 +68,22 @@ const CategoryFormComponent = ({
         helperText={errors.name}
         autoFocus
       />
-      <TextField
-        className={classes.input}
-        margin="dense"
-        label="Budget limit"
-        inputProps={{
-          'aria-label': 'Budget limit',
-          maxLength: 100
-        }}
-        value={values.budgetLimit}
-        name="budgetLimit"
-        onChange={handleChange}
-        error={errors.budgetLimit && touched.budgetLimit}
-        helperText={errors.budgetLimit}
-      />
+      {!group.isIncome && (
+        <TextField
+          className={classes.input}
+          margin="dense"
+          label="Budget limit"
+          inputProps={{
+            'aria-label': 'Budget limit',
+            maxLength: 100
+          }}
+          value={values.budgetLimit}
+          name="budgetLimit"
+          onChange={handleChange}
+          error={errors.budgetLimit && touched.budgetLimit}
+          helperText={errors.budgetLimit}
+        />
+      )}
       <div className={classes.formActions}>
         <SubmitButtonWithProgress label="Save" isSubmitting={isSubmitting} />
         <div className={classes.buttonWrapper}>
@@ -99,7 +102,8 @@ CategoryFormComponent.propTypes = {
   errors: PropTypes.object.isRequired,
   touched: PropTypes.object.isRequired,
   handleChange: PropTypes.func.isRequired,
-  handleCancel: PropTypes.func.isRequired
+  handleCancel: PropTypes.func.isRequired,
+  group: PropTypes.object.isRequired
 }
 
 export default compose(
@@ -121,12 +125,17 @@ export default compose(
         .max(100, 'Too Long!')
         .required('Please enter a name')
     }),
-    handleSubmit: async (values, { props, setSubmitting }) => {
+    handleSubmit: (values, { props, setSubmitting }) => {
+      console.log('============>handleSubmit')
+      console.log('============>handleSubmit')
+      console.log('============>handleSubmit')
+      console.log('============>handleSubmit')
+      console.log('============>handleSubmit')
       setSubmitting(true)
       if ('id' in values) {
         props.handleUpdate(values)
       } else {
-        props.handleCreate(values, props.groupId)
+        props.handleCreate(values, props.group.id)
       }
       props.handleCancel()
       setSubmitting(false)

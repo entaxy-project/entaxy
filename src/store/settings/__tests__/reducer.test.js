@@ -6,10 +6,6 @@ describe('settings reducer', () => {
     expect(settingsReducer(undefined, {})).toEqual(initialState)
   })
 
-  it('should return initial state', () => {
-    expect(settingsReducer(undefined, {})).toEqual(initialState)
-  })
-
   it('should handle SHOW_OVERLAY', () => {
     const type = types.SHOW_OVERLAY
     const payload = 'Loading ...'
@@ -24,6 +20,23 @@ describe('settings reducer', () => {
     expect(settingsReducer(undefined, { type })).toEqual({
       ...initialState,
       overlayMessage: null
+    })
+  })
+
+  it('should handle SHOW_SNACKBAR', () => {
+    const type = types.SHOW_SNACKBAR
+    const payload = 'Account updated'
+    expect(settingsReducer(undefined, { type, payload })).toEqual({
+      ...initialState,
+      snackbarMessage: payload
+    })
+  })
+
+  it('should handle HIDE_SNACKBAR', () => {
+    const type = types.HIDE_SNACKBAR
+    expect(settingsReducer(undefined, { type })).toEqual({
+      ...initialState,
+      snackbarMessage: null
     })
   })
 

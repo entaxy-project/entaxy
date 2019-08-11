@@ -12,7 +12,7 @@ describe('budget reducer', () => {
   describe('initialState', () => {
     it('should return initial state', () => {
       expect(budgetReducer(undefined, {})).toEqual(initialState)
-      expect(Object.keys(initialState.categoriesById).length).toBe(86)
+      expect(Object.keys(initialState.categoriesById).length).toBe(82)
       const groupsCount = Object.values(initialState.categoriesById).reduce(
         (res, cat) => ('parentId' in cat ? res : res + 1),
         0

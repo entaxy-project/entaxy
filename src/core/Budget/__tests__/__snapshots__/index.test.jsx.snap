@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BudgetIndex matches snapshot with no accounts 1`] = `
+"<Provider store={{...}}>
+  <Connect(WithStyles(BudgetIndexComponent))>
+    <WithStyles(BudgetIndexComponent) budget={{...}} dispatch={[Function: dispatch]}>
+      <BudgetIndexComponent classes={{...}} budget={{...}} dispatch={[Function: dispatch]}>
+        <WithStyles(ForwardRef(Container)) className=\\"BudgetIndexComponent-root-1\\">
+          <ForwardRef(Container) classes={{...}} className=\\"BudgetIndexComponent-root-1\\">
+            <div className=\\"MuiContainer-root BudgetIndexComponent-root-1 MuiContainer-maxWidthLg\\" />
+          </ForwardRef(Container)>
+        </WithStyles(ForwardRef(Container))>
+      </BudgetIndexComponent>
+    </WithStyles(BudgetIndexComponent)>
+  </Connect(WithStyles(BudgetIndexComponent))>
+</Provider>"
+`;
