@@ -203,10 +203,10 @@ exports[`Dashboard matches snapshot with one account 1`] = `
                                                                         <span className=\\"DashboardComponent-institutionWrapper-6\\">
                                                                           <WithStyles(InstitutionIcon) institution=\\"TD\\" size=\\"small\\" className=\\"DashboardComponent-institutionIcon-7\\">
                                                                             <InstitutionIcon classes={{...}} institution=\\"TD\\" size=\\"small\\" className=\\"DashboardComponent-institutionIcon-7\\">
-                                                                              <ForwardRef className=\\"InstitutionIcon-small-238 DashboardComponent-institutionIcon-7\\">
-                                                                                <WithStyles(ForwardRef(SvgIcon)) className=\\"InstitutionIcon-small-238 DashboardComponent-institutionIcon-7\\">
-                                                                                  <ForwardRef(SvgIcon) classes={{...}} className=\\"InstitutionIcon-small-238 DashboardComponent-institutionIcon-7\\">
-                                                                                    <svg className=\\"MuiSvgIcon-root InstitutionIcon-small-238 DashboardComponent-institutionIcon-7\\" focusable=\\"false\\" viewBox=\\"0 0 24 24\\" color={[undefined]} aria-hidden=\\"true\\" role=\\"presentation\\">
+                                                                              <ForwardRef className=\\"InstitutionIcon-small-239 DashboardComponent-institutionIcon-7\\">
+                                                                                <WithStyles(ForwardRef(SvgIcon)) className=\\"InstitutionIcon-small-239 DashboardComponent-institutionIcon-7\\">
+                                                                                  <ForwardRef(SvgIcon) classes={{...}} className=\\"InstitutionIcon-small-239 DashboardComponent-institutionIcon-7\\">
+                                                                                    <svg className=\\"MuiSvgIcon-root InstitutionIcon-small-239 DashboardComponent-institutionIcon-7\\" focusable=\\"false\\" viewBox=\\"0 0 24 24\\" color={[undefined]} aria-hidden=\\"true\\" role=\\"presentation\\">
                                                                                       <path d=\\"M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z\\" />
                                                                                     </svg>
                                                                                   </ForwardRef(SvgIcon)>
@@ -277,6 +277,34 @@ exports[`Dashboard matches snapshot with one account 1`] = `
                                                     </table>
                                                   </ForwardRef(Table)>
                                                 </WithStyles(ForwardRef(Table))>
+                                                <div className=\\"DashboardComponent-newAccountButton2-13\\">
+                                                  <WithStyles(ForwardRef(Button)) color=\\"secondary\\" component={{...}}>
+                                                    <ForwardRef(Button) classes={{...}} color=\\"secondary\\" component={{...}}>
+                                                      <WithStyles(ForwardRef(ButtonBase)) className=\\"MuiButton-root MuiButton-text MuiButton-textSecondary\\" component={{...}} disabled={false} focusRipple={true} focusVisibleClassName=\\"Mui-focusVisible\\" type=\\"button\\">
+                                                        <ForwardRef(ButtonBase) classes={{...}} className=\\"MuiButton-root MuiButton-text MuiButton-textSecondary\\" component={{...}} disabled={false} focusRipple={true} focusVisibleClassName=\\"Mui-focusVisible\\" type=\\"button\\">
+                                                          <ForwardRef className=\\"MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary\\" onBlur={[Function]} onClick={[undefined]} onFocus={[Function]} onKeyDown={[Function]} onKeyUp={[Function]} onMouseDown={[Function]} onMouseLeave={[Function]} onMouseUp={[Function]} onDragLeave={[Function]} onTouchEnd={[Function]} onTouchMove={[Function]} onTouchStart={[Function]} tabIndex={0} role=\\"button\\" aria-disabled={false}>
+                                                            <Link to=\\"/accounts/new\\" className=\\"MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary\\" onBlur={[Function]} onClick={[undefined]} onFocus={[Function]} onKeyDown={[Function]} onKeyUp={[Function]} onMouseDown={[Function]} onMouseLeave={[Function]} onMouseUp={[Function]} onDragLeave={[Function]} onTouchEnd={[Function]} onTouchMove={[Function]} onTouchStart={[Function]} tabIndex={0} role=\\"button\\" aria-disabled={false} innerRef={[Function]}>
+                                                              <a className=\\"MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary\\" onBlur={[Function]} onClick={[Function: onClick]} onFocus={[Function]} onKeyDown={[Function]} onKeyUp={[Function]} onMouseDown={[Function]} onMouseLeave={[Function]} onMouseUp={[Function]} onDragLeave={[Function]} onTouchEnd={[Function]} onTouchMove={[Function]} onTouchStart={[Function]} tabIndex={0} role=\\"button\\" aria-disabled={false} href=\\"/accounts/new\\">
+                                                                <span className=\\"MuiButton-label\\">
+                                                                  New account
+                                                                </span>
+                                                                <NoSsr>
+                                                                  <WithStyles(undefined) center={false}>
+                                                                    <ForwardRef(TouchRipple) classes={{...}} center={false}>
+                                                                      <span className=\\"MuiTouchRipple-root\\">
+                                                                        <TransitionGroup component={{...}} exit={true} childFactory={[Function: childFactory]} />
+                                                                      </span>
+                                                                    </ForwardRef(TouchRipple)>
+                                                                  </WithStyles(undefined)>
+                                                                </NoSsr>
+                                                              </a>
+                                                            </Link>
+                                                          </ForwardRef>
+                                                        </ForwardRef(ButtonBase)>
+                                                      </WithStyles(ForwardRef(ButtonBase))>
+                                                    </ForwardRef(Button)>
+                                                  </WithStyles(ForwardRef(Button))>
+                                                </div>
                                               </div>
                                             </ForwardRef(Paper)>
                                           </WithStyles(ForwardRef(Paper))>
@@ -439,10 +467,10 @@ exports[`Dashboard matches snapshot with two accounts in a different currency 1`
                                                                         <span className=\\"DashboardComponent-institutionWrapper-6\\">
                                                                           <WithStyles(InstitutionIcon) institution=\\"TD\\" size=\\"small\\" className=\\"DashboardComponent-institutionIcon-7\\">
                                                                             <InstitutionIcon classes={{...}} institution=\\"TD\\" size=\\"small\\" className=\\"DashboardComponent-institutionIcon-7\\">
-                                                                              <ForwardRef className=\\"InstitutionIcon-small-238 DashboardComponent-institutionIcon-7\\">
-                                                                                <WithStyles(ForwardRef(SvgIcon)) className=\\"InstitutionIcon-small-238 DashboardComponent-institutionIcon-7\\">
-                                                                                  <ForwardRef(SvgIcon) classes={{...}} className=\\"InstitutionIcon-small-238 DashboardComponent-institutionIcon-7\\">
-                                                                                    <svg className=\\"MuiSvgIcon-root InstitutionIcon-small-238 DashboardComponent-institutionIcon-7\\" focusable=\\"false\\" viewBox=\\"0 0 24 24\\" color={[undefined]} aria-hidden=\\"true\\" role=\\"presentation\\">
+                                                                              <ForwardRef className=\\"InstitutionIcon-small-239 DashboardComponent-institutionIcon-7\\">
+                                                                                <WithStyles(ForwardRef(SvgIcon)) className=\\"InstitutionIcon-small-239 DashboardComponent-institutionIcon-7\\">
+                                                                                  <ForwardRef(SvgIcon) classes={{...}} className=\\"InstitutionIcon-small-239 DashboardComponent-institutionIcon-7\\">
+                                                                                    <svg className=\\"MuiSvgIcon-root InstitutionIcon-small-239 DashboardComponent-institutionIcon-7\\" focusable=\\"false\\" viewBox=\\"0 0 24 24\\" color={[undefined]} aria-hidden=\\"true\\" role=\\"presentation\\">
                                                                                       <path d=\\"M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z\\" />
                                                                                     </svg>
                                                                                   </ForwardRef(SvgIcon)>
@@ -538,6 +566,34 @@ exports[`Dashboard matches snapshot with two accounts in a different currency 1`
                                                     </table>
                                                   </ForwardRef(Table)>
                                                 </WithStyles(ForwardRef(Table))>
+                                                <div className=\\"DashboardComponent-newAccountButton2-13\\">
+                                                  <WithStyles(ForwardRef(Button)) color=\\"secondary\\" component={{...}}>
+                                                    <ForwardRef(Button) classes={{...}} color=\\"secondary\\" component={{...}}>
+                                                      <WithStyles(ForwardRef(ButtonBase)) className=\\"MuiButton-root MuiButton-text MuiButton-textSecondary\\" component={{...}} disabled={false} focusRipple={true} focusVisibleClassName=\\"Mui-focusVisible\\" type=\\"button\\">
+                                                        <ForwardRef(ButtonBase) classes={{...}} className=\\"MuiButton-root MuiButton-text MuiButton-textSecondary\\" component={{...}} disabled={false} focusRipple={true} focusVisibleClassName=\\"Mui-focusVisible\\" type=\\"button\\">
+                                                          <ForwardRef className=\\"MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary\\" onBlur={[Function]} onClick={[undefined]} onFocus={[Function]} onKeyDown={[Function]} onKeyUp={[Function]} onMouseDown={[Function]} onMouseLeave={[Function]} onMouseUp={[Function]} onDragLeave={[Function]} onTouchEnd={[Function]} onTouchMove={[Function]} onTouchStart={[Function]} tabIndex={0} role=\\"button\\" aria-disabled={false}>
+                                                            <Link to=\\"/accounts/new\\" className=\\"MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary\\" onBlur={[Function]} onClick={[undefined]} onFocus={[Function]} onKeyDown={[Function]} onKeyUp={[Function]} onMouseDown={[Function]} onMouseLeave={[Function]} onMouseUp={[Function]} onDragLeave={[Function]} onTouchEnd={[Function]} onTouchMove={[Function]} onTouchStart={[Function]} tabIndex={0} role=\\"button\\" aria-disabled={false} innerRef={[Function]}>
+                                                              <a className=\\"MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary\\" onBlur={[Function]} onClick={[Function: onClick]} onFocus={[Function]} onKeyDown={[Function]} onKeyUp={[Function]} onMouseDown={[Function]} onMouseLeave={[Function]} onMouseUp={[Function]} onDragLeave={[Function]} onTouchEnd={[Function]} onTouchMove={[Function]} onTouchStart={[Function]} tabIndex={0} role=\\"button\\" aria-disabled={false} href=\\"/accounts/new\\">
+                                                                <span className=\\"MuiButton-label\\">
+                                                                  New account
+                                                                </span>
+                                                                <NoSsr>
+                                                                  <WithStyles(undefined) center={false}>
+                                                                    <ForwardRef(TouchRipple) classes={{...}} center={false}>
+                                                                      <span className=\\"MuiTouchRipple-root\\">
+                                                                        <TransitionGroup component={{...}} exit={true} childFactory={[Function: childFactory]} />
+                                                                      </span>
+                                                                    </ForwardRef(TouchRipple)>
+                                                                  </WithStyles(undefined)>
+                                                                </NoSsr>
+                                                              </a>
+                                                            </Link>
+                                                          </ForwardRef>
+                                                        </ForwardRef(ButtonBase)>
+                                                      </WithStyles(ForwardRef(ButtonBase))>
+                                                    </ForwardRef(Button)>
+                                                  </WithStyles(ForwardRef(Button))>
+                                                </div>
                                               </div>
                                             </ForwardRef(Paper)>
                                           </WithStyles(ForwardRef(Paper))>

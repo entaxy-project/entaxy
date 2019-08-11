@@ -9,7 +9,8 @@ export const defaultColours = [
   '#1f78b4', '#b2df8a', '#e31a1c',
   '#ff7f00', '#cab2d6', '#a6cee3',
   '#33a02c', '#6a3d9a', '#fb9a99',
-  '#fdbf6f', '#ffff99', '#b15928'
+  '#fdbf6f', '#b15928', '#e91e63',
+  '#2196f3', '#009688', '#3e2723'
 ]
 
 

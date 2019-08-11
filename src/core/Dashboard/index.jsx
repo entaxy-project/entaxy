@@ -72,6 +72,10 @@ const styles = theme => ({
   },
   newAccountButton: {
     margin: theme.spacing(3)
+  },
+  newAccountButton2: {
+    marginTop: theme.spacing(1),
+    textAlign: 'right'
   }
 })
 
@@ -193,6 +197,14 @@ export const DashboardComponent = ({
                       ))
                     ))}
                   </Table>
+                  <div className={classes.newAccountButton2}>
+                    <Button
+                      color="secondary"
+                      component={LinkTo('/accounts/new')}
+                    >
+                      New account
+                    </Button>
+                  </div>
                 </Paper>
               </Grid>
             </Grid>
