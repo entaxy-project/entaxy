@@ -12,5 +12,5 @@ export const decimalFormatter = (locale, type = undefined) => {
 }
 
 export const dateFormatter = locale => (
-  (new Intl.DateTimeFormat(locale, { day: 'numeric', month: 'short', year: 'numeric' })).format
+  (new Intl.DateTimeFormat(locale, { day: '2-digit', month: 'short', year: 'numeric' })).format
 )

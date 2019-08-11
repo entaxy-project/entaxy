@@ -158,9 +158,6 @@ export const TransactionDialogComponent = ({
           label="Amount"
           inputProps={{
             'aria-label': 'Amount',
-            maxLength: 10,
-            min: Number.MIN_SAFE_INTEGER,
-            max: Number.MAX_SAFE_INTEGER,
             step: 0.01
           }}
           className={classes.input}
@@ -236,11 +233,14 @@ export default compose(
     },
     validationSchema: Yup.object().shape({
       description: Yup.string()
+        .required('Please enter a description for this transaction')
         .max(256, 'Too Long!'),
       categoryId: Yup.object()
         .nullable(),
       amount: Yup.number()
-        .required('Please enter an amount'),
+        .required('Please enter an amount')
+        .min(-999999999.99)
+        .max(999999999.99),
       createdAt: Yup.date()
         .required('Please select the date of this transaction')
     }),
