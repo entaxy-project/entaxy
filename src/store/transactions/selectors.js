@@ -2,8 +2,8 @@ import _ from 'lodash'
 import { createSelector } from 'reselect'
 
 const getTransactions = ({ transactions }) => transactions
-const getExchangeRates = state => state.exchangeRates
-const getPortfolioFilters = state => state.settings.portfolioFilters
+const getExchangeRates = (state) => state.exchangeRates
+const getPortfolioFilters = (state) => state.settings.portfolioFilters
 
 const filteredTransactions = createSelector(
   getTransactions,

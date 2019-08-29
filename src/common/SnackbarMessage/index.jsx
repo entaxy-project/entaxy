@@ -8,7 +8,7 @@ import CheckCircleIcon from '@material-ui/icons/CheckCircle'
 import { green } from '@material-ui/core/colors'
 import { hideSnackbar } from '../../store/settings/actions'
 
-const styles = theme => ({
+const styles = (theme) => ({
   message: {
     display: 'flex',
     alignItems: 'center'
@@ -27,7 +27,7 @@ const mapStateToProps = ({ settings }) => {
   return { settings }
 }
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   handleCloseSnackbar: () => { dispatch(hideSnackbar()) }
 })
 

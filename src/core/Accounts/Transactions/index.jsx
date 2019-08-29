@@ -33,7 +33,7 @@ const mapStateToProps = (state, props) => ({
   transactions: state.transactions.list
 })
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   deleteTransactions: (account, transactionIds) => dispatch(deleteTransactions(account, transactionIds))
 })
 
@@ -52,7 +52,7 @@ export class TransactionsComponent extends React.Component {
       createdAt: account.openingBalanceDate,
       type: 'openingBalance'
     }
-    return [openingBalanceTransaction, ...transactions].filter(transaction => (
+    return [openingBalanceTransaction, ...transactions].filter((transaction) => (
       transaction.accountId === account.id
     ))
   }

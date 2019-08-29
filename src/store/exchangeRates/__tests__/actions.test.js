@@ -1,6 +1,6 @@
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
-import parse from 'date-fns/parse'
+import toDate from 'date-fns/toDate'
 import * as actions from '../actions'
 import types from '../types'
 import { initialState as settingsInitialState } from '../../settings/reducer'
@@ -54,8 +54,8 @@ describe('exchangeRates actions', () => {
         settings: settingsInitialState,
         exchangeRates: {
           CAD: {
-            [parse(today).getTime()]: 1.1,
-            dates: [parse(today).getTime()]
+            [toDate(today).getTime()]: 1.1,
+            dates: [toDate(today).getTime()]
           }
         }
       })
@@ -68,8 +68,8 @@ describe('exchangeRates actions', () => {
         settings: settingsInitialState,
         exchangeRates: {
           CAD: {
-            [parse(today).getTime()]: 1.1,
-            dates: [parse(today).getTime()]
+            [toDate(today).getTime()]: 1.1,
+            dates: [toDate(today).getTime()]
           }
         }
       })
@@ -82,8 +82,8 @@ describe('exchangeRates actions', () => {
         settings: settingsInitialState,
         exchangeRates: {
           CAD: {
-            [parse(today).getTime()]: 1.1,
-            dates: [parse(today).getTime()]
+            [toDate(today).getTime()]: 1.1,
+            dates: [toDate(today).getTime()]
           }
         }
       })

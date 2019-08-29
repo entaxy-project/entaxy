@@ -4,22 +4,24 @@ import { withStyles } from '@material-ui/core/styles'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import uuid from 'uuid/v4'
 import pluralize from 'pluralize'
 import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
 import Divider from '@material-ui/core/Divider'
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemText from '@material-ui/core/ListItemText'
+import Stepper from '@material-ui/core/Stepper'
+import Step from '@material-ui/core/Step'
+import StepLabel from '@material-ui/core/StepLabel'
+import green from '@material-ui/core/colors/green'
 import InstitutionIcon from '../../../common/InstitutionIcon'
 import { addTransactions } from '../../../store/transactions/actions'
 import { showSnackbar } from '../../../store/settings/actions'
-import CsvImportForm from './CsvImportForm'
-import ImportedResults from './ImportedResults'
+import CsvDropzone from './CsvDropzone'
+import CsvColumnSelection from './CsvColumnSelection'
+import ImportedTransactions from './ImportedTransactions'
+import CsvParser from '../../../store/transactions/CsvParsers/CsvParser'
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
     margin: theme.spacing(2),
     padding: theme.spacing(2),
@@ -30,28 +32,40 @@ const styles = theme => ({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between'
+  },
+  stepper: {
+    paddingBottom: 9
+  },
+  activeStep: {
+    color: `${theme.palette.secondary.main} !important`
+  },
+  completedStep: {
+    color: `${green[100]} !important`
   }
 })
+
+const steps = [
+  'Upload CSV file',
+  'Select columns to import',
+  'Review data'
+]
 
 const mapStateToProps = ({ accounts, budget }, props) => ({
   account: accounts.byId[props.match.params.accountId],
   budgetRules: budget.rules
 })
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   saveTransactions: (account, transactions) => dispatch(addTransactions(account, transactions)),
-  showSnackbarMessage: message => dispatch(showSnackbar(message))
+  showSnackbarMessage: (message) => dispatch(showSnackbar(message))
 })
 
-const initialState = {
-  importType: 'CSV',
-  showTransactions: false,
-  transactions: [],
-  errors: {}
-}
 
 export class ImportTransactionsComponent extends React.Component {
-  state = initialState
+  state = {
+    activeStep: 0,
+    parser: new CsvParser(this.props.budgetRules)
+  }
 
   handleSave = async () => {
     const {
@@ -60,9 +74,9 @@ export class ImportTransactionsComponent extends React.Component {
       account,
       history
     } = this.props
-    const transactions = this.state.transactions
-      .filter(transaction => transaction.errors.length === 0)
-      .map(transaction => ({
+    const transactions = this.state.parser.transactions
+      .filter((transaction) => transaction.errors.length === 0)
+      .map((transaction) => ({
         amount: transaction.amount,
         description: transaction.description,
         categoryId: transaction.categoryId,
@@ -78,34 +92,26 @@ export class ImportTransactionsComponent extends React.Component {
     history.push(`/accounts/${account.id}/transactions`)
   }
 
-  handleCancel = () => {
-    this.props.history.push(`/accounts/${this.props.account.id}/transactions`)
+  handleNext = () => {
+    this.setState((prevState) => ({ activeStep: prevState.activeStep + 1 }))
   }
 
-  handleBack = () => {
-    return this.setState({ showTransactions: false })
-  }
-
-
-  handleParsedData = (transactions, errors) => {
-    return this.setState({
-      showTransactions: true,
-      transactions: transactions.map(t => Object.assign(t, { id: uuid() })),
-      errors
-    })
+  handlePrev = () => {
+    if (this.state.activeStep === 1) {
+      this.setState({ activeStep: 0, parser: new CsvParser(this.props.budgetRules) })
+    } else {
+      this.setState((prevState) => ({ activeStep: prevState.activeStep - 1 }))
+    }
   }
 
   render() {
     const {
-      showTransactions,
-      transactions,
-      errors,
-      importType
+      parser,
+      activeStep
     } = this.state
     const {
       classes,
-      account,
-      budgetRules
+      account
     } = this.props
     return (
       <Grid container direction="row" justify="center">
@@ -121,31 +127,40 @@ export class ImportTransactionsComponent extends React.Component {
           </div>
           <Divider />
           <Grid container>
-            <Grid item xs={3}>
-              <List>
-                {['CSV'].map((text, index) => (
-                  <ListItem button key={text} selected={index === 0}>
-                    <ListItemText primary={text} />
-                  </ListItem>
+            <Grid item xs={12}>
+              <Stepper activeStep={activeStep} className={classes.stepper}>
+                {steps.map((step, index) => (
+                  <Step key={step}>
+                    <StepLabel
+                      data-testid={activeStep === index ? 'activeStep' : null}
+                      StepIconProps={{ classes: { active: classes.activeStep, completed: classes.completedStep } }}
+                    >
+                      {step}
+                    </StepLabel>
+                  </Step>
                 ))}
-              </List>
+              </Stepper>
             </Grid>
-            <Grid item xs={9}>
-              {!showTransactions && importType === 'CSV' && (
-                <CsvImportForm
-                  account={account}
-                  budgetRules={budgetRules}
-                  handleParsedData={this.handleParsedData}
-                  onCancel={this.handleCancel}
+            <Grid item xs={12}>
+              {activeStep === 0 && (
+                <CsvDropzone
+                  handleNextStep={this.handleNext}
+                  parser={parser}
                 />
               )}
-              {showTransactions && (
-                <ImportedResults
+              {activeStep === 1 && (
+                <CsvColumnSelection
+                  handlePrevStep={this.handlePrev}
+                  handleNextStep={this.handleNext}
+                  parser={parser}
+                />
+              )}
+              {activeStep === 2 && (
+                <ImportedTransactions
                   account={account}
-                  transactions={transactions}
-                  errors={errors}
+                  parser={parser}
+                  handlePrevStep={this.handlePrev}
                   onSave={this.handleSave}
-                  onBack={this.handleBack}
                 />
               )}
             </Grid>

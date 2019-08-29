@@ -3,7 +3,7 @@
 import crypto from 'crypto'
 import queryString from 'query-string'
 import Big from 'big.js'
-import parse from 'date-fns/parse'
+import parseISO from 'date-fns/parseISO'
 
 const baseUrl = 'https://api.coinbase.com'
 const apiVersion = 'v2'
@@ -60,8 +60,8 @@ export const getPaginatedDataFrom = async (apiKey, apiSecret, url, params) => {
   return response.data
 }
 
-export const normalizeAccounts = accounts => (
-  accounts.map(account => ({
+export const normalizeAccounts = (accounts) => (
+  accounts.map((account) => ({
     type: 'wallet', // TODO check for other types
     sourceId: account.id,
     name: account.name,
@@ -69,16 +69,16 @@ export const normalizeAccounts = accounts => (
     currency: account.currency,
     // symbol: account.currency,
     openingBalance: 0,
-    openingBalanceDate: parse(account.created_at).getTime()
+    openingBalanceDate: parseISO(account.created_at).getTime()
   }))
 )
 
-export const normalizeTransactions = transactions => (
-  transactions.map(transaction => ({
+export const normalizeTransactions = (transactions) => (
+  transactions.map((transaction) => ({
     sourceId: transaction.id,
     description: [transaction.details.title, transaction.details.subtitle].join(' - '),
     amount: parseFloat(Big(transaction.amount.amount)),
-    createdAt: parse(transaction.created_at).getTime()
+    createdAt: parseISO(transaction.created_at).getTime()
   }))
   // localCurrency: parseFloat(Big(transaction.native_amount.amount))
 )
@@ -105,7 +105,7 @@ const importData = async ({ apiKey, apiSecret }) => {
   // end up with a bunch of wallets she never used
   return {
     accountGroup: { apiKey, apiSecret },
-    accounts: accounts.filter(account => account.transactions.length > 0)
+    accounts: accounts.filter((account) => account.transactions.length > 0)
   }
 }
 

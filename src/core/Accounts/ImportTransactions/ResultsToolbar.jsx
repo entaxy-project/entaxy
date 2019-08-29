@@ -1,63 +1,95 @@
-import React from 'react'
-import { withStyles } from '@material-ui/core/styles'
+import React, { useState } from 'react'
+import { makeStyles } from '@material-ui/core/styles'
 import PropTypes from 'prop-types'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Switch from '@material-ui/core/Switch'
+import Button from '@material-ui/core/Button'
 import TableToolbar from '../../../common/TableToolbar'
 
-const styles = {
+const useStyles = makeStyles((theme) => ({
   chekbox: {
     width: 200
+  },
+  smallButton: {
+    height: 30
+  },
+  submitButton: {
+    marginLeft: theme.spacing(2)
   }
-}
+}))
 
-export class ResultsToolbarComponent extends React.Component {
-  onChange = ({ target }) => {
+const ResultsToolbar = ({
+  title,
+  subTitle,
+  selectedTransactions,
+  filterProps,
+  onSave,
+  handlePrevStep
+}) => {
+  const classes = useStyles()
+  const [checked, setChecked] = useState(false)
+
+  const onChange = ({ target }) => {
     if (target.checked) {
-      this.props.filterProps.setFilter({
+      filterProps.setFilter({
         attr: 'errors',
         value: true
       })
     } else {
-      this.props.filterProps.unsetFilter({ attr: 'errors' })
+      filterProps.unsetFilter({ attr: 'errors' })
     }
+    setChecked(target.checked)
   }
 
-  render() {
-    const {
-      classes,
-      title,
-      subTitle,
-      selectedTransactions
-    } = this.props
-    return (
-      <TableToolbar
-        title={title}
-        subTitle={subTitle}
-        selectedItems={selectedTransactions}
+  return (
+    <TableToolbar
+      title={title}
+      subTitle={subTitle}
+      selectedItems={selectedTransactions}
+    >
+      <FormControlLabel
+        label="Show only errors"
+        className={classes.chekbox}
+        control={(
+          <Switch
+            checked={checked}
+            onChange={onChange}
+            value="showOnlyErrors"
+            inputProps={{ 'data-testid': 'showOnlyErrors', checked }}
+            data-testid="showOnlyErrorsSwitch"
+          />
+        )}
+      />
+      <Button
+        size="small"
+        onClick={handlePrevStep}
+        className={classes.smallButton}
+        data-testid="backButton"
       >
-        <FormControlLabel
-          label="Show only errors"
-          className={classes.chekbox}
-          control={(
-            <Switch
-              checked={Object.keys(this.props.filterProps.filters).includes('errors')}
-              onChange={this.onChange}
-              value="showOnlyErrors"
-            />
-          )}
-        />
-      </TableToolbar>
-    )
-  }
+        Back
+      </Button>
+      <Button
+        onClick={onSave}
+        type="submit"
+        size="small"
+        variant="contained"
+        color="secondary"
+        className={[classes.smallButton, classes.submitButton].join(' ')}
+        data-testid="saveButton"
+      >
+        Save
+      </Button>
+    </TableToolbar>
+  )
 }
 
-ResultsToolbarComponent.propTypes = {
-  classes: PropTypes.object.isRequired,
+ResultsToolbar.propTypes = {
   title: PropTypes.string.isRequired,
   subTitle: PropTypes.node.isRequired,
   selectedTransactions: PropTypes.array.isRequired,
-  filterProps: PropTypes.object.isRequired
+  filterProps: PropTypes.object.isRequired,
+  onSave: PropTypes.func.isRequired,
+  handlePrevStep: PropTypes.func.isRequired
 }
 
-export default withStyles(styles)(ResultsToolbarComponent)
+export default ResultsToolbar

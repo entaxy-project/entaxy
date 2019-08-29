@@ -58,8 +58,8 @@ export const fetchExchangeRates = (srcCurrencies, startDate = Date.now(), endDat
     const dstCurrency = getState().settings.currency
     let newExchangeRates
     const currenciesToAdd = {
-      fiat: srcCurrencies.filter(c => fiatCurrencies[c] !== undefined),
-      crypto: srcCurrencies.filter(c => cryptoCurrencies[c] !== undefined)
+      fiat: srcCurrencies.filter((c) => fiatCurrencies[c] !== undefined),
+      crypto: srcCurrencies.filter((c) => cryptoCurrencies[c] !== undefined)
     }
     if (currenciesToAdd.fiat.length > 0) {
       dispatch(showSnackbar({ text: `Fetching exchange rates for ${currenciesToAdd.fiat}...` }))
@@ -87,12 +87,12 @@ export const fetchExchangeRates = (srcCurrencies, startDate = Date.now(), endDat
 export const updateCurrencies = () => async (dispatch, getState) => {
   const { exchangeRates, accounts, settings } = getState()
   const existingCurrencies = Object.keys(exchangeRates || {})
-  let accountCurrencies = new Set(Object.values(accounts.byId).map(account => account.currency))
+  let accountCurrencies = new Set(Object.values(accounts.byId).map((account) => account.currency))
   accountCurrencies.delete(settings.currency) // No need for exchange rates for the local currency
   accountCurrencies = Array.from(accountCurrencies)
 
-  const currenciesToRemove = existingCurrencies.filter(x => !accountCurrencies.includes(x))
-  const currenciesToAdd = accountCurrencies.filter(x => !existingCurrencies.includes(x))
+  const currenciesToRemove = existingCurrencies.filter((x) => !accountCurrencies.includes(x))
+  const currenciesToAdd = accountCurrencies.filter((x) => !existingCurrencies.includes(x))
 
   if (currenciesToAdd.length > 0) {
     await dispatch(fetchExchangeRates(currenciesToAdd))

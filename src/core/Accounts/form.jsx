@@ -23,7 +23,7 @@ import SubmitButtonWithProgress from '../../common/SubmitButtonWithProgress'
 import DescriptionCard from '../../common/DescriptionCard'
 import LinkTo from '../../common/LinkTo'
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
     margin: theme.spacing(2),
     padding: theme.spacing(2)
@@ -131,7 +131,7 @@ export class AccountFormComponent extends React.Component {
 
   formatedInstitutions = () => {
     const allInstitutions = new Set(this.props.accountInstitutions.concat(Object.keys(institutions)))
-    return Array.from(allInstitutions).sort().map(key => ({ value: key, label: key }))
+    return Array.from(allInstitutions).sort().map((key) => ({ value: key, label: key }))
   }
 
   render() {
@@ -179,7 +179,7 @@ export class AccountFormComponent extends React.Component {
               label="Account name"
               inputProps={{
                 'aria-label': 'Account name',
-                maxLength: 100
+                maxLength: 50
               }}
               value={values.name}
               name="name"
@@ -278,7 +278,7 @@ export default compose(
           name: '',
           institution: null,
           openingBalance: 0,
-          openingBalanceDate: format(Date.now(), 'YYYY-MM-DD'),
+          openingBalanceDate: format(Date.now(), 'yyyy-MM-dd'),
           currency: settings.currency === undefined ? null : {
             label: `(${settings.currency}) ${fiatCurrencies[settings.currency]}`,
             value: settings.currency
@@ -287,7 +287,7 @@ export default compose(
       }
       return {
         ...account,
-        openingBalanceDate: format(new Date(account.openingBalanceDate), 'YYYY-MM-DD'),
+        openingBalanceDate: format(new Date(account.openingBalanceDate), 'yyyy-MM-dd'),
         institution: {
           label: account.institution,
           value: account.institution
@@ -301,9 +301,13 @@ export default compose(
     validationSchema: (props) => {
       return Yup.lazy((values) => {
         const accountNames = Object.values(props.accounts.byId).filter(
-          account => account.institution === values.institution.value
-        ).map(account => account.name)
-        console.log(accountNames, values)
+          (account) => {
+            if (props.account) {
+              return account.institution === values.institution.value && account.name !== props.account.name
+            }
+            return account.institution === values.institution.value
+          }
+        ).map((account) => account.name)
         return Yup.object().shape({
           name: Yup.string()
             .max(50, 'Too Long!')
@@ -329,7 +333,7 @@ export default compose(
       await props.handleSave({
         ...values,
         institution: values.institution.value,
-        openingBalanceDate: parse(values.openingBalanceDate).getTime(),
+        openingBalanceDate: parse(values.openingBalanceDate, 'yyyy-M-d', new Date()).getTime(),
         currency: values.currency.value
       })
       setSubmitting(false)

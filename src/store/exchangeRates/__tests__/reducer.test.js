@@ -26,7 +26,9 @@ describe('exchangeRate reducer', () => {
 
   it('should handle UPDATE_EXCHANGE_RATES', () => {
     const type = types.UPDATE_EXCHANGE_RATES
-    const dates = [parse('2018-11-30').getTime(), parse('2018-12-1').getTime()]
+    const dates = [
+      parse('2018-11-30', 'yyyy-M-d', new Date()).getTime(),
+      parse('2018-12-1', 'yyyy-M-d', new Date()).getTime()]
     const state = {
       VET: {
         [dates[0]]: 1,
@@ -50,7 +52,7 @@ describe('exchangeRate reducer', () => {
 
   it('should handle UPDATE_EXCHANGE_RATES for new value', () => {
     const type = types.UPDATE_EXCHANGE_RATES
-    const dates = [parse('2018-11-30').getTime()]
+    const dates = [parse('2018-11-30', 'yyyy-M-d', new Date()).getTime()]
     const payload = {
       '2018-11-30': {
         VET: 1.1
@@ -67,7 +69,7 @@ describe('exchangeRate reducer', () => {
 
   it('should handle DELETE_CURRENCIES for new value', () => {
     const type = types.DELETE_CURRENCIES
-    const dates = [parse('2018-11-30').getTime()]
+    const dates = [parse('2018-11-30', 'yyyy-M-d', new Date()).getTime()]
     const state = {
       VET: {
         [dates[0]]: 1,

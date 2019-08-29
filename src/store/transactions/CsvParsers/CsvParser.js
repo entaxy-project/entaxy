@@ -9,7 +9,7 @@ export const DATE_FORMATS = {
     const [, month, day, year] = (/(\d{1,2})\/(\d{1,2})\/(\d{4})/gi).exec(string)
     return [year, month, day]
   },
-  yyyyymmdd: (string) => {
+  yyyymmdd: (string) => {
     const [, year, month, day] = (/(\d{4})(\d{2})(\d{2})/gi).exec(string)
     return [year, month, day]
   }
@@ -44,15 +44,33 @@ const TRANSACTION_FIELDS = {
 // The base class for all CSV parsers
 export default class CsvParser {
   constructor(budgetRules) {
+    this._file = null
     this._budgetRules = budgetRules
     this._csvData = []
     this._csvHeader = []
     this._columnsCount = 0
     this._firstRowIndex = 0
-    this._noHeaderRow = false
+    this._hasHeaderRow = true
     this._dateFormat = Object.keys(DATE_FORMATS)[0]
+    this._transactions = []
     this._errors = { base: [], transactions: {} }
     this._currentRow = 0
+  }
+
+  get dontImport() {
+    return DONT_IMPORT
+  }
+
+  get file() {
+    return this._file
+  }
+
+  get transactions() {
+    return this._transactions
+  }
+
+  get errors() {
+    return this._errors
   }
 
   get csvData() {
@@ -72,10 +90,14 @@ export default class CsvParser {
   }
 
   isFieldSelected(transactionField) {
-    return this._csvHeader.findIndex(column => column.transactionField === transactionField) !== -1
+    return this._csvHeader.findIndex((column) => column.transactionField === transactionField) !== -1
   }
 
   mapColumnToTransactionField({ columnIndex, transactionField }) {
+    const existingIndex = this._csvHeader.findIndex((column) => column.transactionField === transactionField)
+    if (existingIndex > -1) {
+      this._csvHeader[existingIndex].transactionField = DONT_IMPORT
+    }
     this._csvHeader[columnIndex].transactionField = transactionField
   }
 
@@ -91,12 +113,16 @@ export default class CsvParser {
     this._dateFormat = newDateFormat
   }
 
-  get noHeaderRow() {
-    return this._noHeaderRow
+  get hasHeaderRow() {
+    return this._hasHeaderRow
   }
 
-  set noHeaderRow(value) {
-    this._noHeaderRow = value
+  set hasHeaderRow(value) {
+    this._hasHeaderRow = value
+  }
+
+  get columnsCount() {
+    return this._columnsCount
   }
 
   // Look through the first few rows and find the most common number of columns
@@ -120,14 +146,14 @@ export default class CsvParser {
 
   // Find the first row that has the same number of columns as most of the other rows
   findFirstRow() {
-    this._firstRowIndex = this._csvData.findIndex(row => row.length === this._columnsCount)
+    this._firstRowIndex = this._csvData.findIndex((row) => row.length === this._columnsCount)
   }
 
   mapHeaderToTransactionFields() {
     let rowCount = -1
     this._csvHeader = this._csvData[this._firstRowIndex].reduce((res, columnHeader) => {
       rowCount += 1
-      const transactionField = Object.keys(TRANSACTION_FIELDS).find(field => (
+      const transactionField = Object.keys(TRANSACTION_FIELDS).find((field) => (
         TRANSACTION_FIELDS[field].regex.test(columnHeader)
       ))
       return [
@@ -160,6 +186,7 @@ export default class CsvParser {
           })
 
           this.mapHeaderToTransactionFields()
+
           this.detectDateFormat()
           return resolve()
         }
@@ -172,19 +199,20 @@ export default class CsvParser {
   }
 
   mapToTransactions() {
-    const transactions = []
+    this._transactions = []
     const columns = this._csvHeader.reduce((res, column, index) => {
       if (column.transactionField === DONT_IMPORT) return res
       return { ...res, [column.transactionField]: index }
     }, {})
 
     this._csvData.forEach((row, index) => {
-      if (this._noHeaderRow || index > this._firstRowIndex) {
+      if (!this._hasHeaderRow || index > this._firstRowIndex) {
         const transaction = {
           amount: this.readAmount(row, columns),
           description: this.readDescription(row, columns),
           createdAt: this.dateFromString(row[columns.createdAt]),
-          errors: []
+          errors: [],
+          line: index + 1
         }
         if (
           transaction.description in this._budgetRules
@@ -197,10 +225,9 @@ export default class CsvParser {
         } else if (transaction.createdAt === null) {
           transaction.errors.push(`Invalid date. Expecting format '${this._dateFormat}'`)
         }
-        transactions.push(transaction)
+        this._transactions.push(transaction)
       }
     })
-    return { transactions, errors: this._errors }
   }
 
   readAmount(row, columns) {
@@ -237,13 +264,13 @@ export default class CsvParser {
     }
     try {
       const [year, month, day] = DATE_FORMATS[this._dateFormat](string)
-      return parse(`${year}-${month}-${day}`).getTime()
+      return parse(`${year}-${month}-${day}`, 'yyyy-M-d', new Date()).getTime()
     } catch (error) {
       return null
     }
   }
 
-  // Adds an error either to the base which  relative to the file in general
+  // Adds an error either to the base which is relative to the file in general
   // or to a specific transaction
   addError(error, type) {
     if (type === 'base') {
@@ -261,7 +288,7 @@ export default class CsvParser {
     return Object.keys(DATE_FORMATS).find((dateFormat) => {
       try {
         const [year, month, day] = DATE_FORMATS[dateFormat](string)
-        parse(`${year}-${month}-${day}`)
+        parse(`${year}-${month}-${day}`, 'yyyy-M-d', new Date())
       } catch (error) {
         return false
       }
@@ -271,7 +298,7 @@ export default class CsvParser {
 
   detectDateFormat() {
     // Do we have a date column yet?
-    const createdAtIndex = this._csvHeader.findIndex(column => column.transactionField === 'createdAt')
+    const createdAtIndex = this._csvHeader.findIndex((column) => column.transactionField === 'createdAt')
 
     // We don't have a date column yet so test all the columns of each row
     if (createdAtIndex === -1) {

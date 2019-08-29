@@ -1,4 +1,4 @@
-import parse from 'date-fns/parse'
+import parseISO from 'date-fns/parseISO'
 import Big from 'big.js'
 import {
   normalizeAccounts,
@@ -30,7 +30,7 @@ describe('Coinbase API importer', () => {
       name: accounts[0].name,
       currency: accounts[0].currency,
       openingBalance: 0,
-      openingBalanceDate: parse(accounts[0].created_at).getTime()
+      openingBalanceDate: parseISO(accounts[0].created_at).getTime()
     }])
   })
 
@@ -40,7 +40,7 @@ describe('Coinbase API importer', () => {
       amount: parseFloat(Big(transactions[0].amount.amount)),
       sourceId: transactions[0].id,
       description: [transactions[0].details.title, transactions[0].details.subtitle].join(' - '),
-      createdAt: parse(transactions[0].created_at).getTime()
+      createdAt: parseISO(transactions[0].created_at).getTime()
     }])
   })
 })

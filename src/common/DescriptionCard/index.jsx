@@ -6,7 +6,7 @@ import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
 import InfolIcon from '@material-ui/icons/Info'
 
-const styles = theme => ({
+const styles = (theme) => ({
   card: {
     backgroundColor: theme.palette.info.background
   },

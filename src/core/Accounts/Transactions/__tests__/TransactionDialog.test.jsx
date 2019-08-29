@@ -30,7 +30,7 @@ describe('ConfirmDialog', () => {
               open={true}
               onCancel={mockHandleCancel}
               account={{ id: 1 }}
-              transaction={{ id: 1 }}
+              transaction={{ id: 1, createdAt: new Date('2019-01-01') }}
             />
           </ThemeProvider>
         </Provider>

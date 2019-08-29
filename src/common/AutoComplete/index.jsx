@@ -7,7 +7,7 @@ import CreatableSelect from 'react-select/creatable'
 import Typography from '@material-ui/core/Typography'
 import FormHelperText from '@material-ui/core/FormHelperText'
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
 
   select: {
     marginTop: -theme.spacing(1)
@@ -52,7 +52,7 @@ const AutoComplete = ({
           defaultValue={value}
           options={options}
           inputProps={{ 'aria-label': label, required: true }}
-          onChange={selection => onChange(name, selection)}
+          onChange={(selection) => onChange(name, selection)}
           isClearable
           styles={styles}
         />
@@ -65,7 +65,7 @@ const AutoComplete = ({
           defaultValue={value}
           options={options}
           inputProps={{ 'aria-label': label, required: true }}
-          onChange={selection => onChange(name, selection)}
+          onChange={(selection) => onChange(name, selection)}
           isClearable
           styles={styles}
         />
@@ -79,7 +79,7 @@ const AutoComplete = ({
           defaultOptions
           loadOptions={loadOptions}
           inputProps={{ 'aria-label': label }}
-          onChange={selection => onChange(name, selection)}
+          onChange={(selection) => onChange(name, selection)}
           isClearable
           styles={styles}
         />

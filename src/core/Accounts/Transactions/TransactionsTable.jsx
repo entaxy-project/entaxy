@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-prop-types */
 import React from 'react'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
@@ -16,7 +17,7 @@ import {
   dateFormatter
 } from '../../../util/stringFormatter'
 
-const styles = theme => ({
+const styles = (theme) => ({
   tableWrapper: {
     flex: '1 1 auto'
   },
@@ -85,7 +86,7 @@ export class TransactionsTableComponent extends React.Component {
   }
 
   setFilter = ({ attr, value }) => {
-    this.setState(prevState => ({
+    this.setState((prevState) => ({
       filters: {
         ...prevState.filters,
         [attr]: value
@@ -109,7 +110,7 @@ export class TransactionsTableComponent extends React.Component {
   filterAndSortTransactions = () => {
     const { sortBy, sortDirection, filters } = this.state
     const filteredTransactions = this.props.transactions
-      .filter(transaction => (
+      .filter((transaction) => (
         Object.keys(filters).reduce((result, attr) => {
           if (attr === 'description') {
             return result && this.filterByDescription(transaction)
@@ -135,13 +136,13 @@ export class TransactionsTableComponent extends React.Component {
     return res
   }
 
-  filterByErrors = transaction => (
+  filterByErrors = (transaction) => (
     Object.keys(transaction).includes('errors') && transaction.errors.length > 0
   )
 
   resetSelection = () => this.setState({ selected: [] })
 
-  isSelected = id => this.state.selected.indexOf(id) !== -1
+  isSelected = (id) => this.state.selected.indexOf(id) !== -1
 
   handleCheckboxClick = (event, transactionId) => {
     const { selected } = this.state
@@ -176,7 +177,7 @@ export class TransactionsTableComponent extends React.Component {
     this.resetSelection()
   }
 
-  transactionHasErrors = transaction => (
+  transactionHasErrors = (transaction) => (
     transaction.errors !== undefined && transaction.errors.length > 0
   )
 
@@ -216,7 +217,6 @@ export class TransactionsTableComponent extends React.Component {
     } = this.state
     const filteredTransactions = this.filterAndSortTransactions()
     const rowHeight = account.type === 'wallet' ? 42 : 30
-
     return (
       <div className={`${[classes.tableWrapper, className].join(' ')}`}>
         <Toolbar
@@ -233,11 +233,11 @@ export class TransactionsTableComponent extends React.Component {
         <AutoSizer>
           {({ width, height }) => (
             <Table
-              width={width}
-              height={height}
+              width={width || 100}
+              height={height || 100}
               headerHeight={25}
               rowHeight={rowHeight}
-              rowClassName={index => this.rowClassName(index, filteredTransactions, classes)}
+              rowClassName={(index) => this.rowClassName(index, filteredTransactions, classes)}
               rowCount={filteredTransactions.length}
               rowGetter={({ index }) => filteredTransactions[index]}
               sort={this.handleSort}
@@ -257,7 +257,7 @@ export class TransactionsTableComponent extends React.Component {
                       <Checkbox
                         indeterminate={selected.length > 0 && selected.length < filteredTransactions.length - 1}
                         checked={selected.length > 0 && selected.length === filteredTransactions.length - 1}
-                        onChange={event => this.handleSelectAllClick(event, filteredTransactions)}
+                        onChange={(event) => this.handleSelectAllClick(event, filteredTransactions)}
                       />
                     </span>
                   )}
@@ -268,7 +268,7 @@ export class TransactionsTableComponent extends React.Component {
                     >
                       <Checkbox
                         checked={this.isSelected(cellData)}
-                        onChange={event => this.handleCheckboxClick(event, cellData)}
+                        onChange={(event) => this.handleCheckboxClick(event, cellData)}
                       />
                     </span>
                   )}
@@ -345,7 +345,7 @@ TransactionsTableComponent.propTypes = {
   classes: PropTypes.object.isRequired,
   className: PropTypes.string,
   children: PropTypes.node,
-  Toolbar: PropTypes.object.isRequired,
+  Toolbar: PropTypes.any.isRequired,
   toolbarProps: PropTypes.object,
   account: PropTypes.object.isRequired,
   transactions: PropTypes.array.isRequired,

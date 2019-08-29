@@ -19,7 +19,7 @@ const BudgetChart = () => {
     transactions,
     budget,
     formatCurrency
-  } = useSelector(state => ({
+  } = useSelector((state) => ({
     settings: state.settings,
     transactions: state.transactions,
     budget: state.budget,
@@ -28,13 +28,13 @@ const BudgetChart = () => {
   }))
 
   // Used categories except Income
-  const categorizedTransactions = transactions.list.filter(transaction => transaction.categoryId !== undefined)
+  const categorizedTransactions = transactions.list.filter((transaction) => transaction.categoryId !== undefined)
   const usedCategories = [
     ...new Set(
       categorizedTransactions
-        .map(transaction => budget.categoriesById[transaction.categoryId])
+        .map((transaction) => budget.categoriesById[transaction.categoryId])
     )
-  ].filter(category => !budget.categoriesById[category.parentId].isIncome)
+  ].filter((category) => !budget.categoriesById[category.parentId].isIncome)
 
   const initialState = usedCategories.reduce(
     (res, cat) => ({ ...res, [cat]: 1 }),
@@ -57,7 +57,7 @@ const BudgetChart = () => {
       byMonth[dateKey][category.name] += Math.abs(transaction.amount)
     }
   })
-  const data = Object.keys(byMonth).sort((a, b) => a - b).map(date => ({
+  const data = Object.keys(byMonth).sort((a, b) => a - b).map((date) => ({
     date: format(parseInt(date, 10), 'MMM YYYY'),
     ...byMonth[date]
   }))
@@ -88,7 +88,7 @@ const BudgetChart = () => {
   return (
     <ResponsiveContainer>
       <LineChart data={data} margin={margin}>
-        { usedCategories.map(category => (
+        { usedCategories.map((category) => (
           <Line
             type="monotone"
             dataKey={category.name}

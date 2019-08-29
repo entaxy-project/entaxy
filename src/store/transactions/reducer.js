@@ -9,8 +9,8 @@ export const initialState = {
 export default (state = initialState, { type, payload }) => {
   let index = null
 
-  const findTransactionById = id => (
-    _.findIndex(state.list, transaction => transaction.id === id)
+  const findTransactionById = (id) => (
+    _.findIndex(state.list, (transaction) => transaction.id === id)
   )
 
   switch (type) {
@@ -30,7 +30,7 @@ export default (state = initialState, { type, payload }) => {
     case types.DELETE_TRANSACTIONS:
       return {
         ...state,
-        list: state.list.filter(transaction => payload.indexOf(transaction.id) === -1)
+        list: state.list.filter((transaction) => payload.indexOf(transaction.id) === -1)
       }
     case types.ADD_TRANSACTIONS:
       return {

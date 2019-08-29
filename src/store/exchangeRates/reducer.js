@@ -21,13 +21,13 @@ export default (state = initialState, action) => {
               ...res2,
               [currency]: {
                 ...res2[currency],
-                [parse(date).getTime()]: action.payload[date][currency]
+                [parse(date, 'yyyy-M-d', new Date()).getTime()]: action.payload[date][currency]
               }
             }), res1)
         }, state)
       Object.keys(newState).forEach((currency) => {
         newState[currency].dates = Object.keys(newState[currency])
-          .filter(c => c !== 'dates')
+          .filter((c) => c !== 'dates')
           .sort((a, b) => b - a)
       })
       return newState

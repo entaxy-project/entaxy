@@ -15,7 +15,7 @@ import Logo from '../Logo/index'
 import LoginButton from '../LoginButton'
 import LinkTo from '../LinkTo'
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     paddingTop: 70
   },

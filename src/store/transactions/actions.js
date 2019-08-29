@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import uuid from 'uuid/v4'
 import pluralize from 'pluralize'
 import types from './types'
@@ -7,7 +8,7 @@ import { showSnackbar } from '../settings/actions'
 import { fetchExchangeRates } from '../exchangeRates/actions'
 import { createExactRule, deleteExactRule, countRuleUsage } from '../budget/actions'
 
-export const afterTransactionsChanged = account => async (dispatch) => {
+export const afterTransactionsChanged = (account) => async (dispatch) => {
   await dispatch(updateAccount(account, { forceUpdateBalance: true, showMessage: false }))
   saveState()
 }
@@ -40,7 +41,7 @@ export const createTransaction = (account, transaction, options = {}) => async (
 }
 
 export const updateTransaction = (account, transaction, options = {}) => async (dispatch, getState) => {
-  const oldTransaction = getState().transactions.list.find(t => t.id === transaction.id)
+  const oldTransaction = getState().transactions.list.find((t) => t.id === transaction.id)
   dispatch({
     type: types.UPDATE_TRANSACTION,
     payload: {
@@ -95,7 +96,7 @@ export const addTransactions = (account, transactions, options = { skipAfterChan
   return async (dispatch) => {
     dispatch({
       type: types.ADD_TRANSACTIONS,
-      payload: transactions.map(t => Object.assign(t, {
+      payload: transactions.map((t) => Object.assign((t), {
         id: uuid(),
         accountId: account.id,
         createdAt: t.createdAt + 1000 // Plus 1 second
@@ -109,5 +110,5 @@ export const addTransactions = (account, transactions, options = { skipAfterChan
 }
 
 export const getAccountTransactions = ({ transactions }, accountId) => {
-  return transactions.list.filter(transaction => transaction.accountId === accountId)
+  return transactions.list.filter((transaction) => transaction.accountId === accountId)
 }

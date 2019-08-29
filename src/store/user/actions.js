@@ -14,7 +14,7 @@ import { initialState as exchangeRatesInitialState } from '../exchangeRates/redu
 import { loadBudget } from '../budget/actions'
 import { initialState as budgetInitialState } from '../budget/reducer'
 
-export const saveLoginData = loginData => ({
+export const saveLoginData = (loginData) => ({
   type: types.SAVE_LOGIN_DATA,
   payload: loginData
 })
@@ -74,7 +74,7 @@ export const loginAs = (loginType) => {
   }
 }
 
-export const userLoginError = error => ({
+export const userLoginError = (error) => ({
   type: types.USER_LOGIN_ERROR,
   payload: error
 })
@@ -84,7 +84,7 @@ export const handleBlockstackLogin = () => (dispatch) => {
   const userSession = new UserSession()
   return userSession.handlePendingSignIn()
     .then(() => dispatch(loadUserData()))
-    .catch(error => dispatch(userLoginError(error)))
+    .catch((error) => dispatch(userLoginError(error)))
 }
 
 export const resetState = () => (dispatch, getState) => {

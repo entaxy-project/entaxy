@@ -18,7 +18,7 @@ import level41Image from './4.1.png'
 import level50Image from './5.0.png'
 import level51Image from './5.1.png'
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     padding: '20px'

@@ -9,7 +9,7 @@ import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
 import BudgetChart from './BudgetChart'
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
     padding: theme.spacing(2)
   },
@@ -23,7 +23,7 @@ const styles = theme => ({
   }
 })
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   budget: state.budget
 })
 

@@ -1,12 +1,20 @@
 import React from 'react'
-import { shallow, mount } from 'enzyme'
+import {
+  render,
+  cleanup,
+  fireEvent,
+  waitForElement
+} from '@testing-library/react'
+import '@testing-library/jest-dom/extend-expect'
 import { MemoryRouter, Route } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import store from '../../../../store'
+import ImportTransactions from '..'
 import { createAccount } from '../../../../store/accounts/actions'
-import ImportTransactions, { ImportTransactionsComponent } from '..'
+import ThemeProvider from '../../../ThemeProvider'
 
 jest.mock('../../../../common/InstitutionIcon/importLogos', () => [])
+
 // Mock call to alphavantage in fetchExchangeRates
 window.fetch = jest.fn().mockImplementation(() => (
   Promise.resolve(new window.Response(
@@ -24,6 +32,7 @@ window.fetch = jest.fn().mockImplementation(() => (
 
 const account = {
   institution: 'TD',
+  name: 'checking',
   groupId: '0',
   description: 'Checking',
   currency: 'CAD',
@@ -34,100 +43,77 @@ const account = {
   }
 }
 
+beforeEach(async () => {
+  // Add one account to the store
+  account.id = await store.dispatch(createAccount(account))
+})
+
+afterEach(() => {
+  cleanup()
+  jest.clearAllMocks()
+})
+
 describe('Import Transactions', () => {
-  beforeEach(async () => {
-    jest.clearAllMocks()
-    // Add one account to the store
-    account.id = await store.dispatch(createAccount(account))
-  })
-
-  const mockSaveTransactions = jest.fn()
-
   it('finds the right account from the url', () => {
-    const wrapper = mount((
+    const { getByText } = render(
       <Provider store={store}>
-        <MemoryRouter initialEntries={[`/accounts/${account.id}/import/CSV`]} initialIndex={0}>
-          <Route
-            component={props => <ImportTransactions {...props} />}
-            path="/accounts/:accountId/import/:importType"
-          />
-        </MemoryRouter>
+        <ThemeProvider>
+          <MemoryRouter initialEntries={[`/accounts/${account.id}/import/CSV`]} initialIndex={0}>
+            <Route
+              component={(props) => <ImportTransactions {...props} />}
+              path="/accounts/:accountId/import/:importType"
+            />
+          </MemoryRouter>
+        </ThemeProvider>
       </Provider>
-    ))
-    const instance = wrapper.find('ImportTransactionsComponent').instance()
-    expect(instance.props.account).toEqual(account)
+    )
+    expect(getByText(`Import transactions from ${account.institution}`)).toBeInTheDocument()
   })
 
-  describe('Component methods', () => {
-    const mochHistoryPush = jest.fn()
-    const mochShowSnackbar = jest.fn()
-    let wrapper
-    let instance
-
-    beforeEach(() => {
-      wrapper = shallow((
-        <ImportTransactionsComponent
-          account={account}
-          budgetRules={{ }}
-          transactionRules={{ }}
-          classes={{}}
-          history={{ push: mochHistoryPush }}
-          showSnackbarMessage={mochShowSnackbar}
-          match={{ params: { accountId: account.id } }}
-          saveTransactions={mockSaveTransactions}
-        />
-      ))
-      instance = wrapper.instance()
-    })
-
-    describe('handleSave', () => {
-      it('should save transactions', async () => {
-        const transactions = [{
-          amount: 0,
-          description: 'description',
-          createdAt: Date.now()
-        }]
-        const importedTransactions = transactions.map(t => Object.assign({}, t, { errors: [] }))
-        expect(instance.setState({ transactions: importedTransactions }))
-        await instance.handleSave({ name: 'new account' })
-        expect(mockSaveTransactions).toHaveBeenCalledWith(account, transactions)
-        expect(mochShowSnackbar).toHaveBeenCalledWith({ status: 'success', text: '1 transaction imported' })
-        expect(mochHistoryPush).toHaveBeenCalledWith(`/accounts/${account.id}/transactions`)
-      })
-
-      it('should not save if there are no transactions without errors', async () => {
-        expect(instance.state.transactions).toEqual([])
-        await instance.handleSave({ name: 'new account' })
-        expect(mockSaveTransactions).not.toHaveBeenCalledWith(account, [])
-        expect(mochHistoryPush).toHaveBeenCalledWith(`/accounts/${account.id}/transactions`)
-      })
-    })
-
-    it('cancels the import', () => {
-      instance.handleCancel()
-      expect(mochHistoryPush).toHaveBeenCalledWith(`/accounts/${account.id}/transactions`)
-    })
-
-    it('should go back to the begining of the import', () => {
-      instance.setState({ showTransactions: true })
-      instance.handleBack()
-      expect(instance.state.showTransactions).toBeFalsy()
-    })
-
-    it('handles the parsed data (before saving)', () => {
-      expect(instance.state).toEqual({
-        importType: 'CSV',
-        errors: {},
-        transactions: [],
-        showTransactions: false
-      })
-      instance.handleParsedData(['transactions'], { errors: ['some errors'] })
-      expect(instance.state).toEqual({
-        importType: 'CSV',
-        errors: { errors: ['some errors'] },
-        transactions: ['transactions'],
-        showTransactions: true
-      })
-    })
+  it('should run through all steps', async () => {
+    const csvData = [
+      'First Bank Card,Transaction Type,Date Posted, Transaction Amount,Description',
+      '\'500766**********\',DEBIT,20180628,-650.0,[SO]2211#8503-567 ',
+      '\'500766**********\',CREDIT,20180629,2595.11,[DN]THE WORKING GRO PAY/PAY  '
+    ]
+    const file = new File([csvData.join('\n')], 'test.csv', { type: 'text/csv' })
+    const { getByText, getByTestId, queryByTestId } = render(
+      <Provider store={store}>
+        <ThemeProvider>
+          <MemoryRouter initialEntries={[`/accounts/${account.id}/import/CSV`]} initialIndex={0}>
+            <Route
+              component={(props) => <ImportTransactions {...props} />}
+              path="/accounts/:accountId/import/:importType"
+            />
+          </MemoryRouter>
+        </ThemeProvider>
+      </Provider>
+    )
+    expect(getByTestId('activeStep').children[1].children[0].innerHTML).toEqual('Upload CSV file')
+    // Go to step 2
+    fireEvent.change(getByTestId('dopzone-input'), { target: { files: [file] } })
+    await waitForElement(() => getByText('Filename:'))
+    expect(getByTestId('activeStep').children[1].children[0].innerHTML).toEqual('Select columns to import')
+    // Back to step 1
+    fireEvent.click(getByTestId('backButton'))
+    expect(getByTestId('activeStep').children[1].children[0].innerHTML).toEqual('Upload CSV file')
+    // Go to step 2
+    fireEvent.change(getByTestId('dopzone-input'), { target: { files: [file] } })
+    await waitForElement(() => getByText('Filename:'))
+    expect(getByTestId('activeStep').children[1].children[0].innerHTML).toEqual('Select columns to import')
+    // Go to step 3
+    fireEvent.click(getByTestId('nextButton'))
+    expect(getByTestId('activeStep').children[1].children[0].innerHTML).toEqual('Review data')
+    // Back to step 2
+    fireEvent.click(getByTestId('backButton'))
+    expect(getByTestId('activeStep').children[1].children[0].innerHTML).toEqual('Select columns to import')
+    // Go to step 3
+    fireEvent.click(getByTestId('nextButton'))
+    expect(getByTestId('activeStep').children[1].children[0].innerHTML).toEqual('Review data')
+    // Save
+    fireEvent.click(getByTestId('saveButton'))
+    await waitForElement(() => queryByTestId('activeStep'))
+    expect(store.getState().transactions.list.length).toBe(csvData.length - 1)
+    expect(queryByTestId('activeStep')).not.toBeInTheDocument()
   })
 })

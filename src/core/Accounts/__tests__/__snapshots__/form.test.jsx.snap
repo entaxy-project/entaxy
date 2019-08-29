@@ -79,7 +79,7 @@ exports[`Account form matches snapshot for edit account 1`] = `
                 Select...
               </div>
               <div
-                className="css-1g6gooi"
+                className="css-w8afj7-Input"
               >
                 <div
                   className=""
@@ -137,7 +137,7 @@ exports[`Account form matches snapshot for edit account 1`] = `
               </div>
             </div>
             <div
-              className=" css-1wy0on6"
+              className=" css-1g48xl4-IndicatorsContainer"
             >
               <span
                 className=" css-1okebmr-indicatorSeparator"
@@ -150,7 +150,7 @@ exports[`Account form matches snapshot for edit account 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  className="css-19bqh2r"
+                  className="css-tj5bde-Svg"
                   focusable="false"
                   height={20}
                   viewBox="0 0 20 20"
@@ -188,7 +188,7 @@ exports[`Account form matches snapshot for edit account 1`] = `
             aria-label="Account name"
             className="MuiInputBase-input MuiInput-input"
             disabled={false}
-            maxLength={100}
+            maxLength={50}
             name="name"
             onBlur={[Function]}
             onChange={[Function]}
@@ -277,7 +277,7 @@ exports[`Account form matches snapshot for edit account 1`] = `
                 Select...
               </div>
               <div
-                className="css-1g6gooi"
+                className="css-w8afj7-Input"
               >
                 <div
                   className=""
@@ -335,20 +335,20 @@ exports[`Account form matches snapshot for edit account 1`] = `
               </div>
             </div>
             <div
-              className=" css-1wy0on6"
+              className=" css-1g48xl4-IndicatorsContainer"
             >
               <div
                 aria-hidden="true"
                 className=" css-at12u2-loadingIndicator"
               >
                 <span
-                  className="css-d0ptw1"
+                  className="css-155jui9-LoadingDot"
                 />
                 <span
-                  className="css-3utax6"
+                  className="css-1jmiv6o-LoadingDot"
                 />
                 <span
-                  className="css-1qyc6ze"
+                  className="css-fb4kmi-LoadingDot"
                 />
               </div>
               <span
@@ -362,7 +362,7 @@ exports[`Account form matches snapshot for edit account 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  className="css-19bqh2r"
+                  className="css-tj5bde-Svg"
                   focusable="false"
                   height={20}
                   viewBox="0 0 20 20"
@@ -411,7 +411,7 @@ exports[`Account form matches snapshot for edit account 1`] = `
       />
       <div>
         <div
-          className="SubmitButtonWithProgress-wrapper-259"
+          className="SubmitButtonWithProgress-wrapper-261"
         >
           <button
             className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary"
@@ -522,7 +522,7 @@ exports[`Account form matches snapshot for new account 1`] = `
                 Select...
               </div>
               <div
-                className="css-1g6gooi"
+                className="css-w8afj7-Input"
               >
                 <div
                   className=""
@@ -580,7 +580,7 @@ exports[`Account form matches snapshot for new account 1`] = `
               </div>
             </div>
             <div
-              className=" css-1wy0on6"
+              className=" css-1g48xl4-IndicatorsContainer"
             >
               <span
                 className=" css-1okebmr-indicatorSeparator"
@@ -593,7 +593,7 @@ exports[`Account form matches snapshot for new account 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  className="css-19bqh2r"
+                  className="css-tj5bde-Svg"
                   focusable="false"
                   height={20}
                   viewBox="0 0 20 20"
@@ -631,7 +631,7 @@ exports[`Account form matches snapshot for new account 1`] = `
             aria-label="Account name"
             className="MuiInputBase-input MuiInput-input"
             disabled={false}
-            maxLength={100}
+            maxLength={50}
             name="name"
             onBlur={[Function]}
             onChange={[Function]}
@@ -720,7 +720,7 @@ exports[`Account form matches snapshot for new account 1`] = `
                 Select...
               </div>
               <div
-                className="css-1g6gooi"
+                className="css-w8afj7-Input"
               >
                 <div
                   className=""
@@ -778,20 +778,20 @@ exports[`Account form matches snapshot for new account 1`] = `
               </div>
             </div>
             <div
-              className=" css-1wy0on6"
+              className=" css-1g48xl4-IndicatorsContainer"
             >
               <div
                 aria-hidden="true"
                 className=" css-at12u2-loadingIndicator"
               >
                 <span
-                  className="css-d0ptw1"
+                  className="css-155jui9-LoadingDot"
                 />
                 <span
-                  className="css-3utax6"
+                  className="css-1jmiv6o-LoadingDot"
                 />
                 <span
-                  className="css-1qyc6ze"
+                  className="css-fb4kmi-LoadingDot"
                 />
               </div>
               <span
@@ -805,7 +805,7 @@ exports[`Account form matches snapshot for new account 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  className="css-19bqh2r"
+                  className="css-tj5bde-Svg"
                   focusable="false"
                   height={20}
                   viewBox="0 0 20 20"
@@ -854,7 +854,7 @@ exports[`Account form matches snapshot for new account 1`] = `
       />
       <div>
         <div
-          className="SubmitButtonWithProgress-wrapper-259"
+          className="SubmitButtonWithProgress-wrapper-261"
         >
           <button
             className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary"

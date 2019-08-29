@@ -18,7 +18,7 @@ import ModalDialog from '../../../common/ModalDialog'
 import { createTransaction, updateTransaction } from '../../../store/transactions/actions'
 import LinkTo from '../../../common/LinkTo'
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
     minWidth: 600
   },
@@ -52,7 +52,7 @@ const dot = (color = '#ccc') => ({
 })
 
 const colourStyles = {
-  control: newStyles => ({ ...newStyles, backgroundColor: 'white' }),
+  control: (newStyles) => ({ ...newStyles, backgroundColor: 'white' }),
   option: (newStyles, { data, isDisabled, isSelected }) => {
     const color = chroma(data.colour)
     return {
@@ -65,8 +65,8 @@ const colourStyles = {
       }
     }
   },
-  input: newStyles => ({ ...newStyles, ...dot() }),
-  placeholder: newStyles => ({ ...newStyles, ...dot() }),
+  input: (newStyles) => ({ ...newStyles, ...dot() }),
+  placeholder: (newStyles) => ({ ...newStyles, ...dot() }),
   singleValue: (newStyles, { data }) => ({ ...newStyles, ...dot(data.colour) })
 }
 
@@ -109,7 +109,7 @@ export const TransactionDialogComponent = ({
           label="Description"
           inputProps={{
             'aria-label': 'Description',
-            maxLength: 256
+            maxLength: 150
           }}
           className={classes.input}
           value={values.description}
@@ -216,7 +216,7 @@ export default compose(
           categoryId: null,
           createAndApplyRule: true,
           amount: '',
-          createdAt: format(Date.now(), 'YYYY-MM-DD')
+          createdAt: format(Date.now(), 'yyyy-MM-dd')
         }
       }
       return {
@@ -228,13 +228,13 @@ export default compose(
           value: budget.categoriesById[transaction.categoryId].name,
           colour: budget.categoriesById[transaction.categoryId].colour
         },
-        createdAt: format(new Date(transaction.createdAt), 'YYYY-MM-DD')
+        createdAt: format(new Date(transaction.createdAt), 'yyyy-MM-dd')
       }
     },
     validationSchema: Yup.object().shape({
       description: Yup.string()
         .required('Please enter a description for this transaction')
-        .max(256, 'Too Long!'),
+        .max(150, 'Too Long!'),
       categoryId: Yup.object()
         .nullable(),
       amount: Yup.number()
@@ -252,7 +252,7 @@ export default compose(
         {
           ...rest,
           categoryId: (rest.categoryId === null ? undefined : rest.categoryId.id),
-          createdAt: parse(rest.createdAt).getTime()
+          createdAt: parse(rest.createdAt, 'yyyy-M-d', new Date()).getTime()
         },
         { createAndApplyRule }
       )

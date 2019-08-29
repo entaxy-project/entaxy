@@ -23,7 +23,7 @@ describe('BudgetCAtegoriesIndex', () => {
     ))
     expect(wrapper.debug()).toMatchSnapshot()
 
-    const groupNames = budgetInitialState.categoryTree.map(cat => cat.label)
-    expect(wrapper.find('h6').map(node => node.text())).toEqual(groupNames)
+    const groupNames = budgetInitialState.categoryTree.map((cat) => cat.label)
+    expect(wrapper.find('h6').map((node) => node.text())).toEqual(groupNames)
   })
 })

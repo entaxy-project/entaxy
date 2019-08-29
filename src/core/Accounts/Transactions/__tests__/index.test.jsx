@@ -14,18 +14,20 @@ describe('Transactions', () => {
     id: 1,
     name: 'Checking',
     institution: 'TD',
-    currency: 'CAD'
+    currency: 'CAD',
+    openingBalance: 0,
+    openingBalanceDate: Date.parse('2019/01/01')
   }
   const transactions = [{
     id: 1,
     accountId: 1,
     amount: 10,
-    createAt: Date.now()
+    createdAt: Date.now()
   }, {
     id: 2,
     accountId: 1,
     amount: -5,
-    createAt: Date.now() + 10
+    createdAt: Date.now() + 10
   }]
   const mochDeleteTransactions = jest.fn()
   const mochHandleSort = jest.fn()

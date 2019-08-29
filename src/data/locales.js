@@ -567,7 +567,7 @@ const locales = {
 }
 
 export const formatedLocales = Object.keys(locales)
-  .map(key => ({
+  .map((key) => ({
     value: key,
     label: locales[key]
   }))
@@ -575,7 +575,7 @@ export const formatedLocales = Object.keys(locales)
 export const filteredLocales = (inputValue) => {
   return new Promise((resolve) => {
     if (inputValue) {
-      resolve(formatedLocales.filter(locale => locale.label.toLowerCase().includes(inputValue.toLowerCase())))
+      resolve(formatedLocales.filter((locale) => locale.label.toLowerCase().includes(inputValue.toLowerCase())))
     }
     resolve(formatedLocales)
   })

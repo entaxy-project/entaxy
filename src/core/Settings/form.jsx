@@ -14,7 +14,7 @@ import { fiatCurrencies, filteredFiatCurrencies } from '../../data/currencies'
 import locales, { filteredLocales } from '../../data/locales'
 import confirm from '../../util/confirm'
 
-const styles = theme => ({
+const styles = (theme) => ({
   form: {
     display: 'flex',
     flexDirection: 'column'

@@ -5,7 +5,7 @@ import * as Yup from 'yup'
 import Typography from '@material-ui/core/Typography'
 import DescriptionCard from '../../common/DescriptionCard'
 
-export const initialValues = institution => ({
+export const initialValues = (institution) => ({
   Coinbase: {
     apiKey: '',
     apiSecret: ''
@@ -15,7 +15,7 @@ export const initialValues = institution => ({
   }
 }[institution])
 
-export const validationScheme = institution => ({
+export const validationScheme = (institution) => ({
   Coinbase: (
     Yup.object().shape({
       apiKey: Yup.string()
@@ -35,7 +35,7 @@ export const validationScheme = institution => ({
   )
 }[institution])
 
-export const instructionsFor = institution => ({
+export const instructionsFor = (institution) => ({
   Coinbase: (
     <div>
       <Typography variant="caption" paragraph>

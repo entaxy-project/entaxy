@@ -1,5 +1,5 @@
 {
-    "extends": "airbnb",
+    "extends": ["airbnb", "airbnb/hooks"],
     "parser": "babel-eslint",
     "plugins": [
         "import",
@@ -74,6 +74,9 @@
                     "invalidHref"
                 ]
             }
-        ]
+        ],
+        "react/jsx-curly-newline": "error",
+        "react/jsx-props-no-spreading": "off",
+        "react/state-in-constructor": "off"
     }
 }

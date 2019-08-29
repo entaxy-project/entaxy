@@ -7,7 +7,7 @@ export const loadState = () => {
   const userSession = new UserSession()
   if (userSession.isUserSignedIn()) {
     return userSession.getFile(filename)
-      .then(data => JSON.parse(data))
+      .then((data) => JSON.parse(data))
       .catch((error) => {
         console.log(`Error loading file ${filename}:`, error)
         return {}

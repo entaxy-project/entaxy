@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import uuid from 'uuid/v4'
 import types from './types'
 import { saveState } from '../user/actions'
@@ -25,7 +26,7 @@ export const createCategory = (category, parentId) => (dispatch) => {
   afterCategoriesChanged()
 }
 
-export const updateCategory = category => (dispatch) => {
+export const updateCategory = (category) => (dispatch) => {
   dispatch({ type: types.UPDATE_CATEGORY, payload: category })
   dispatch(showSnackbar({
     text: `${category.parentId === undefined ? 'Group' : 'Category'} updated`,
@@ -34,7 +35,7 @@ export const updateCategory = category => (dispatch) => {
   afterCategoriesChanged()
 }
 
-export const deleteCategory = categoryId => (dispatch, getState) => {
+export const deleteCategory = (categoryId) => (dispatch, getState) => {
   const { budget } = getState()
   const category = budget.categoriesById[categoryId]
   let categoryIds = [category.id]
@@ -60,7 +61,7 @@ export const createExactRule = (categoryId, match) => (
   { type: types.CREATE_EXACT_RULE, payload: { categoryId, match } }
 )
 
-export const deleteExactRule = match => (
+export const deleteExactRule = (match) => (
   { type: types.DELETE_EXACT_RULE, payload: match }
 )
 

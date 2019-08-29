@@ -14,7 +14,7 @@ describe('currencies', () => {
   describe('filteredFiatCurrencies', () => {
     it('filters with no input', async () => {
       const result = await filteredFiatCurrencies()
-      expect(result).toEqual(Object.keys(fiatCurrencies).sort().map(key => ({
+      expect(result).toEqual(Object.keys(fiatCurrencies).sort().map((key) => ({
         value: key,
         label: `(${key}) ${fiatCurrencies[key]}`
       })))

@@ -10,7 +10,7 @@ describe('currencies', () => {
   describe('filteredLocales', () => {
     it('filters with no input', async () => {
       const result = await filteredLocales()
-      expect(result).toEqual(Object.keys(locales).map(key => ({
+      expect(result).toEqual(Object.keys(locales).map((key) => ({
         value: key,
         label: locales[key]
       })))

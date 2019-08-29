@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography'
 import { withStyles } from '@material-ui/core/styles'
 import { lighten } from '@material-ui/core/styles/colorManipulator'
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
     paddingRight: theme.spacing(1),
     paddingLeft: '8px',
@@ -20,6 +20,7 @@ const styles = theme => ({
     flex: '1 1 100%'
   },
   actions: {
+    display: 'flex',
     color: theme.palette.text.secondary
   },
   title: {
