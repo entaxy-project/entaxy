@@ -180,7 +180,7 @@ const CsvColumnSelection = ({ handlePrevStep, handleNextStep, parser }) => {
         </Grid>
       </Grid>
       <Grid container>
-        <Grid item xs={12}>
+        <Grid item xs={12} zeroMinWidth>
           <Table size="small">
             <TableHead>
               <TableRow>
