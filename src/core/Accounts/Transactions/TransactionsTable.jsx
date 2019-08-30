@@ -314,6 +314,8 @@ export class TransactionsTableComponent extends React.Component {
                 width={130}
                 label="In"
                 dataKey="amount"
+                headerStyle={{ textAlign: 'right' }}
+                style={{ textAlign: 'right' }}
                 cellDataGetter={({ rowData }) => ({
                   amount: rowData.amount,
                   nativeAmount: rowData.nativeAmount,
@@ -325,6 +327,8 @@ export class TransactionsTableComponent extends React.Component {
                 width={130}
                 label="Out"
                 dataKey="amount"
+                headerStyle={{ textAlign: 'right' }}
+                style={{ textAlign: 'right' }}
                 cellDataGetter={({ rowData }) => ({
                   amount: rowData.amount,
                   nativeAmount: rowData.nativeAmount,

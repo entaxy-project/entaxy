@@ -198,6 +198,7 @@ export class AccountFormComponent extends React.Component {
               value={values.openingBalance}
               name="openingBalance"
               onChange={handleChange}
+              onFocus={(event) => event.target.select()}
               error={errors.openingBalance && touched.openingBalance}
               helperText={errors.openingBalance}
             />
@@ -298,34 +299,24 @@ export default compose(
         }
       }
     },
-    validationSchema: (props) => {
-      return Yup.lazy((values) => {
-        const accountNames = Object.values(props.accounts.byId).filter(
-          (account) => {
-            if (props.account) {
-              return account.institution === values.institution.value && account.name !== props.account.name
-            }
-            return account.institution === values.institution.value
-          }
-        ).map((account) => account.name)
-        return Yup.object().shape({
-          name: Yup.string()
-            .max(50, 'Too Long!')
-            .required('Please enter a name for this account')
-            .notOneOf(accountNames, `There's already an account with this name in ${values.institution.value}`),
-          institution: Yup.object()
-            .required('Please select an institution')
-            .nullable(accountNames),
-          openingBalance: Yup.number()
-            .required('Please enter an opening balance')
-            .min(-999999999.99)
-            .max(999999999.99),
-          openingBalanceDate: Yup.date()
-            .required('Please select the date of the opening balance'),
-          currency: Yup.object()
-            .required('Please select the currency of this account')
-            .nullable()
-        })
+    validationSchema: () => {
+      return Yup.object().shape({
+        name: Yup.string()
+          .max(50, 'Too Long!')
+          .required('Please enter a name for this account'),
+        institution: Yup.object()
+          .required('Please select an institution')
+          .nullable(),
+        openingBalance: Yup.number()
+          .required('Please enter an opening balance')
+          .min(-9999999.99)
+          .max(9999999.99),
+        openingBalanceDate: Yup.date()
+          .required('Please select the date of the opening balance')
+          .max(new Date(), 'The opening balance cannot be in the future'),
+        currency: Yup.object()
+          .required('Please select the currency of this account')
+          .nullable()
       })
     },
     handleSubmit: async (values, { props, setSubmitting }) => {

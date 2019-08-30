@@ -470,7 +470,7 @@ exports[`AutoComplete matches snapshot with error 1`] = `
     />
   </div>
   <p
-    className="MuiFormHelperText-root makeStyles-inputError-2 Mui-error"
+    className="MuiFormHelperText-root Mui-error"
   >
     Some error
   </p>

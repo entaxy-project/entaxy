@@ -330,6 +330,7 @@ exports[`TransactionsTable matches snapshot with no transactions 1`] = `
               "WebkitFlex": "0 1 130px",
               "flex": "0 1 130px",
               "msFlex": "0 1 130px",
+              "textAlign": "right",
             }
           }
           tabIndex={0}
@@ -353,6 +354,7 @@ exports[`TransactionsTable matches snapshot with no transactions 1`] = `
               "WebkitFlex": "0 1 130px",
               "flex": "0 1 130px",
               "msFlex": "0 1 130px",
+              "textAlign": "right",
             }
           }
           tabIndex={0}
@@ -721,6 +723,7 @@ exports[`TransactionsTable matches snapshot with some transactions 1`] = `
               "WebkitFlex": "0 1 130px",
               "flex": "0 1 130px",
               "msFlex": "0 1 130px",
+              "textAlign": "right",
             }
           }
           tabIndex={0}
@@ -744,6 +747,7 @@ exports[`TransactionsTable matches snapshot with some transactions 1`] = `
               "WebkitFlex": "0 1 130px",
               "flex": "0 1 130px",
               "msFlex": "0 1 130px",
+              "textAlign": "right",
             }
           }
           tabIndex={0}
@@ -930,6 +934,7 @@ exports[`TransactionsTable matches snapshot with some transactions 1`] = `
                   "flex": "0 1 130px",
                   "msFlex": "0 1 130px",
                   "overflow": "hidden",
+                  "textAlign": "right",
                 }
               }
               title={null}
@@ -945,6 +950,7 @@ exports[`TransactionsTable matches snapshot with some transactions 1`] = `
                   "flex": "0 1 130px",
                   "msFlex": "0 1 130px",
                   "overflow": "hidden",
+                  "textAlign": "right",
                 }
               }
               title={null}
@@ -1088,6 +1094,7 @@ exports[`TransactionsTable matches snapshot with some transactions 1`] = `
                   "flex": "0 1 130px",
                   "msFlex": "0 1 130px",
                   "overflow": "hidden",
+                  "textAlign": "right",
                 }
               }
               title={null}
@@ -1103,6 +1110,7 @@ exports[`TransactionsTable matches snapshot with some transactions 1`] = `
                   "flex": "0 1 130px",
                   "msFlex": "0 1 130px",
                   "overflow": "hidden",
+                  "textAlign": "right",
                 }
               }
               title={null}
@@ -1246,6 +1254,7 @@ exports[`TransactionsTable matches snapshot with some transactions 1`] = `
                   "flex": "0 1 130px",
                   "msFlex": "0 1 130px",
                   "overflow": "hidden",
+                  "textAlign": "right",
                 }
               }
               title={null}
@@ -1261,6 +1270,7 @@ exports[`TransactionsTable matches snapshot with some transactions 1`] = `
                   "flex": "0 1 130px",
                   "msFlex": "0 1 130px",
                   "overflow": "hidden",
+                  "textAlign": "right",
                 }
               }
               title={null}

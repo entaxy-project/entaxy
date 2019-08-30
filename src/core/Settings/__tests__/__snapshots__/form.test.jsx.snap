@@ -291,7 +291,7 @@ exports[`SettingsForm matches snapshot before after submitting form 1`] = `
   />
   <div>
     <div
-      className="SubmitButtonWithProgress-wrapper-59"
+      className="SubmitButtonWithProgress-wrapper-57"
     >
       <button
         className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary Mui-disabled Mui-disabled"
@@ -317,7 +317,7 @@ exports[`SettingsForm matches snapshot before after submitting form 1`] = `
         </span>
       </button>
       <div
-        className="MuiCircularProgress-root SubmitButtonWithProgress-buttonProgress-60 MuiCircularProgress-colorPrimary MuiCircularProgress-indeterminate"
+        className="MuiCircularProgress-root SubmitButtonWithProgress-buttonProgress-58 MuiCircularProgress-colorPrimary MuiCircularProgress-indeterminate"
         role="progressbar"
         style={
           Object {
@@ -637,7 +637,7 @@ exports[`SettingsForm matches snapshot before submitting form 1`] = `
   />
   <div>
     <div
-      className="SubmitButtonWithProgress-wrapper-59"
+      className="SubmitButtonWithProgress-wrapper-57"
     >
       <button
         className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary"

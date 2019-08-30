@@ -66,9 +66,7 @@ const useStyles = makeStyles((theme) => ({
   },
   headerRow: {
     background: grey[200],
-    fontWeight: 700,
-    position: 'sticky',
-    top: 190
+    fontWeight: 700
   },
   dontImportCell: {
     color: theme.palette.action.disabled

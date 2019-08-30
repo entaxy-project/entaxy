@@ -348,6 +348,7 @@ exports[`Transactions matches snapshot with no transactions 1`] = `
                 "WebkitFlex": "0 1 130px",
                 "flex": "0 1 130px",
                 "msFlex": "0 1 130px",
+                "textAlign": "right",
               }
             }
             tabIndex={0}
@@ -371,6 +372,7 @@ exports[`Transactions matches snapshot with no transactions 1`] = `
                 "WebkitFlex": "0 1 130px",
                 "flex": "0 1 130px",
                 "msFlex": "0 1 130px",
+                "textAlign": "right",
               }
             }
             tabIndex={0}
@@ -526,6 +528,7 @@ exports[`Transactions matches snapshot with no transactions 1`] = `
                     "flex": "0 1 130px",
                     "msFlex": "0 1 130px",
                     "overflow": "hidden",
+                    "textAlign": "right",
                   }
                 }
                 title="0.00"
@@ -543,6 +546,7 @@ exports[`Transactions matches snapshot with no transactions 1`] = `
                     "flex": "0 1 130px",
                     "msFlex": "0 1 130px",
                     "overflow": "hidden",
+                    "textAlign": "right",
                   }
                 }
                 title={null}
@@ -919,6 +923,7 @@ exports[`Transactions matches snapshot with one transaction in a fiat account 1`
                 "WebkitFlex": "0 1 130px",
                 "flex": "0 1 130px",
                 "msFlex": "0 1 130px",
+                "textAlign": "right",
               }
             }
             tabIndex={0}
@@ -942,6 +947,7 @@ exports[`Transactions matches snapshot with one transaction in a fiat account 1`
                 "WebkitFlex": "0 1 130px",
                 "flex": "0 1 130px",
                 "msFlex": "0 1 130px",
+                "textAlign": "right",
               }
             }
             tabIndex={0}
@@ -1144,6 +1150,7 @@ exports[`Transactions matches snapshot with one transaction in a fiat account 1`
                     "flex": "0 1 130px",
                     "msFlex": "0 1 130px",
                     "overflow": "hidden",
+                    "textAlign": "right",
                   }
                 }
                 title={null}
@@ -1159,6 +1166,7 @@ exports[`Transactions matches snapshot with one transaction in a fiat account 1`
                     "flex": "0 1 130px",
                     "msFlex": "0 1 130px",
                     "overflow": "hidden",
+                    "textAlign": "right",
                   }
                 }
                 title="-5.00"
@@ -1358,6 +1366,7 @@ exports[`Transactions matches snapshot with one transaction in a fiat account 1`
                     "flex": "0 1 130px",
                     "msFlex": "0 1 130px",
                     "overflow": "hidden",
+                    "textAlign": "right",
                   }
                 }
                 title="10.00"
@@ -1375,6 +1384,7 @@ exports[`Transactions matches snapshot with one transaction in a fiat account 1`
                     "flex": "0 1 130px",
                     "msFlex": "0 1 130px",
                     "overflow": "hidden",
+                    "textAlign": "right",
                   }
                 }
                 title={null}
@@ -1525,6 +1535,7 @@ exports[`Transactions matches snapshot with one transaction in a fiat account 1`
                     "flex": "0 1 130px",
                     "msFlex": "0 1 130px",
                     "overflow": "hidden",
+                    "textAlign": "right",
                   }
                 }
                 title="0.00"
@@ -1542,6 +1553,7 @@ exports[`Transactions matches snapshot with one transaction in a fiat account 1`
                     "flex": "0 1 130px",
                     "msFlex": "0 1 130px",
                     "overflow": "hidden",
+                    "textAlign": "right",
                   }
                 }
                 title={null}
