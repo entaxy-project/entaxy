@@ -1,5 +1,6 @@
 import budgetReducer, { initialState, defaultColours, generateCategoryTree } from '../reducer'
 import types from '../types'
+import budgetCategories from '../../../data/budgetCategories'
 
 const budget = {
   ...initialState,
@@ -11,8 +12,9 @@ const budget = {
 describe('budget reducer', () => {
   describe('initialState', () => {
     it('should return initial state', () => {
+      const categoriesCount = Object.values(budgetCategories).reduce((count, group) => count + group.length + 1, 0)
       expect(budgetReducer(undefined, {})).toEqual(initialState)
-      expect(Object.keys(initialState.categoriesById).length).toBe(82)
+      expect(Object.keys(initialState.categoriesById).length).toBe(categoriesCount)
       const groupsCount = Object.values(initialState.categoriesById).reduce(
         (res, cat) => ('parentId' in cat ? res : res + 1),
         0
@@ -74,7 +76,7 @@ describe('budget reducer', () => {
       const type = types.CREATE_CATEGORY
 
       const group = initialState.categoryTree[0]
-      expect(group.label).toBe('Bills & Utilities')
+      expect(group.label).toBe(Object.keys(budgetCategories).sort()[0])
       expect(group.options.length).toBeGreaterThan(0)
 
       const lastColour = group.options.length === 0

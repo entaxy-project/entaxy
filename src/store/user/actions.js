@@ -60,7 +60,8 @@ export const loginAs = (loginType) => {
   if (loginType === 'blockstack') {
     // Open the blockstack browser for sign in
     const userSession = new UserSession()
-    return userSession.redirectToSignIn(`${window.location.origin}/handle-login`)
+    userSession.redirectToSignIn(`${window.location.origin}/handle-login`)
+    return { type: '' }
   }
 
   return (dispatch) => {

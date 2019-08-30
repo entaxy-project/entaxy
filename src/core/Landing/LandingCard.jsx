@@ -104,6 +104,7 @@ export class LandingCardComponent extends React.Component {
               color="secondary"
               className={classes.signinButton}
               onClick={() => this.login('blockstack')}
+              data-testid="signinWithBlockstackButton"
             >
               Sign in with Blockstack
             </Button>
@@ -124,6 +125,7 @@ export class LandingCardComponent extends React.Component {
               color="secondary"
               className={classes.signinButton}
               onClick={() => this.login('guest')}
+              data-testid="signinAsGuestButton"
             >
               Don&apos;t sign in yet
             </Button>

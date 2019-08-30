@@ -1,16 +1,22 @@
 /* eslint-disable quote-props */
 const budgetCategories = {
   'Transport': [
-    'Auto Payment',
+    'Car Payments',
     'Gas & Fuel',
     'Parking',
-    'Public Transportation',
-    'Service & Parts'
+    'Public Transport',
+    'Services & Parts'
+  ],
+  'Banking': [
+    'Cash Withdrawal',
+    'Banking Fee'
   ],
   'Bills & Utilities': [
-    'Home Phone',
+    'Electricity',
+    'Water',
+    'Natural Gas',
     'Internet',
-    'Mobile Phone'
+    'Mobile'
   ],
   'Education': [
     'Books & Supplies',
@@ -22,82 +28,76 @@ const budgetCategories = {
     'Spotify'
   ],
   'Insurance': [
-    'Car insurance',
-    'Life insurance',
+    'Car Insurance',
+    'Life Insurance',
     'Health Insurance',
-    'Home insurance'
+    'Home Insurance'
   ],
   'Food & Dining': [
     'Groceries',
-    'Restaurants'
+    'Restaurants',
+    'Drinks'
   ],
   'Shopping': [
-    'Books',
     'Clothing',
-    'Electronics & Software',
-    'Hobbies',
-    'Sporting Goods'
+    'Electronics & Software'
   ],
   'Gifts & Donations': [
     'Charity',
     'Gift'
   ],
-  'Health & Fitness': [
+  'Health': [
     'Dentist',
     'Doctor',
     'Eyecare',
-    'Pharmacy',
+    'Medication'
+  ],
+  'Fitness': [
+    'Sporting Goods',
     'Gym',
     'Sports'
   ],
   'Home': [
     'Furniture',
     'Home Improvement',
-    'Home Services',
-    'Home Supplies',
-    'Lawn & Garden',
-    'Mortgage & Rent'
+    'Home Maintenance',
+    'Landscaping',
+    'Mortgage',
+    'Rent'
   ],
   'Income': [
     'Bonus',
-    'Paycheque'
+    'Paycheque',
+    'Dividends',
+    'Capital Gains',
+    'Interest'
   ],
   'Investments': [
-    'Buy',
-    'Deposit',
-    'Dividend & Cap Gains',
-    'Sell',
-    'Withdrawal'
+    'Buy Assets'
   ],
   'Kids': [
-    'Kids Allowance',
+    'Daycare',
     'Baby Supplies',
-    'Babysitter & Daycare',
-    'Child Support',
+    'Babysitter',
     'Kids Activities',
     'Kids Toys'
   ],
   'Pets': [
-    'Pet Food & Supplies',
-    'Pet Grooming',
+    'Pet Food',
+    'Pet Supplies',
     'Veterinary'
   ],
   'Taxes': [
-    'Federal Tax',
-    'Local Tax',
     'Property Tax',
-    'Sales Tax',
-    'Provincial Tax'
+    'Income Tax'
   ],
-  'Travel': [
+  'Vacation': [
     'Flights',
     'Hotel',
-    'Rental Car & Taxi',
-    'Vacation'
+    'Rental Car & Taxi'
   ],
-  'Misc': [
-    'Cash & ATM',
-    'Cheque'
+  'Uncategorized': [
+    'Hobbies'
   ]
 }
 
