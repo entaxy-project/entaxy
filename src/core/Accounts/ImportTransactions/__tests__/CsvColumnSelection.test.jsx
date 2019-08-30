@@ -33,9 +33,9 @@ describe('CsvColumnSelection', () => {
       </ThemeProvider>
     )
 
-    expect(getByText('Filename:')).toBeDefined()
-    expect(getByText('test.csv')).toBeDefined()
-    expect(getByText(`(${csvData.length} lines)`)).toBeDefined()
+    expect(getByText('Filename:')).toBeInTheDocument()
+    expect(getByText('test.csv')).toBeInTheDocument()
+    expect(getByText(`(${csvData.length} lines)`)).toBeInTheDocument()
   })
 
   it('should change header row existance', async () => {

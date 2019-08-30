@@ -62,18 +62,24 @@ const useStyles = makeStyles((theme) => ({
   },
   backgroundImageLevel2: {
     position: 'absolute',
-    left: theme.spacing(1) * -1,
-    marginTop: theme.spacing(5)
+    left: theme.spacing(4),
+    marginTop: theme.spacing(8),
+    zIndex: 1
   },
   titleLevel2: {
+    whiteSpace: 'noWrap',
     fontSize: 36,
     fontWeight: 'bold',
     marginTop: 43,
-    marginLeft: 250,
+    left: theme.spacing(1) * -1,
+    paddingLeft: 250,
+    paddingRight: theme.spacing(2),
     color: 'white',
-    position: 'absolute'
+    position: 'absolute',
+    background: 'var(--color-gradient6)'
   },
   tagLineLevel2: {
+    whiteSpace: 'noWrap',
     fontSize: 30,
     fontWeight: 'bold',
     marginTop: 43,
@@ -131,7 +137,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: 'var(--color-gradient2)'
   },
   rightLevel4: {
-    minHeight: 550
+    minHeight: 600
   },
   backgroundImageLevel4: {
     position: 'absolute',
@@ -139,6 +145,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(5)
   },
   titleLeftLevel4: {
+    color: 'white',
     fontSize: 36,
     fontWeight: 'bold',
     marginTop: theme.spacing(3),
@@ -148,26 +155,44 @@ const useStyles = makeStyles((theme) => ({
     position: 'absolute',
     background: `url(${level41Image}) no-repeat left center`
   },
-  titleRightLevel4: {
-    fontSize: 36,
+  tagLineLevel4: {
+    whiteSpace: 'noWrap',
+    fontSize: 30,
     fontWeight: 'bold',
-    marginTop: 45,
-    marginLeft: 325,
-    paddingLeft: 5,
-    paddingRight: 150,
-    color: 'white',
-    position: 'absolute',
-    background: 'var(--color-gradient6)',
-    minWidth: 420
+    marginTop: 43,
+    marginRight: theme.spacing(8),
+    color: 'var(--color-gradient2)'
   },
   screenshotLevel4: {
     position: 'absolute',
     width: '60%',
     right: theme.spacing(16),
-    marginTop: theme.spacing(14),
+    marginTop: theme.spacing(4),
     padding: 5
   },
   // --- Level 5
+  titleLevel5: {
+    fontSize: 36,
+    fontWeight: 'bold',
+    marginTop: theme.spacing(5),
+    marginLeft: theme.spacing(2) * -1,
+    paddingLeft: '15%',
+    position: 'absolute',
+    width: '100%',
+    lineHeight: '53px'
+  },
+  tagLineLevel5: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    marginTop: theme.spacing(3) * -1,
+    right: theme.spacing(2) * -1,
+    color: 'white',
+    width: 500,
+    position: 'absolute',
+    background: 'var(--color-gradient2)',
+    padding: `5px ${theme.spacing(10)}px 5px ${theme.spacing(2)}px`
+  },
+
   rightLevel5: {
     justifyContent: 'space-evenly',
     backgroundRepeat: 'no-repeat',
@@ -175,14 +200,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: '286px',
     backgroundColor: 'var(--color-gradient1)',
     minHeight: 550
-  },
-  titleLevel5: {
-    fontSize: 36,
-    fontWeight: 'bold',
-    marginTop: theme.spacing(4),
-    marginLeft: theme.spacing(4),
-    color: 'white',
-    minWidth: 360
   },
   screenshotLevel5: {
     position: 'absolute',
@@ -217,14 +234,14 @@ const Landing = ({ history }) => {
       <Grid item xs={6} className={classes.rightLevel1} />
       {/* --- Level 2 --- */}
       <Grid item xs={6} className={classes.leftLevel2}>
-        <img src={level21Image} className={classes.backgroundImageLevel2} alt="Your Accounts backgoround" />
         <Typography variant="h5" className={classes.titleLevel2}>
-          Your Accounts
+          All your accounts
         </Typography>
+        <img src={level21Image} className={classes.backgroundImageLevel2} alt="Your Accounts backgoround" />
       </Grid>
       <Grid item xs={6} className={classes.rightLevel2}>
         <Typography variant="h5" align="right" className={classes.tagLineLevel2}>
-          all in one place
+          in one place
         </Typography>
         <Paper className={classes.screenshotLevel2}>
           <img src={level20Image} width="100%" alt="Your Accounts" />
@@ -233,7 +250,7 @@ const Landing = ({ history }) => {
       {/* --- Level 3 --- */}
       <Grid item xs={6}>
         <Typography variant="h5" className={classes.titleLevel3}>
-          Your Transactions
+          Your financial data
         </Typography>
         <Paper className={classes.screenshotLevel3}>
           <img src={level30Image} width="100%" alt="Your Transactions" />
@@ -249,25 +266,28 @@ const Landing = ({ history }) => {
         <Typography variant="h5" className={classes.titleLeftLevel4}>
           Budget
         </Typography>
-        <Typography variant="h5" align="right" className={classes.titleRightLevel4}>
-          the way you like
-        </Typography>
       </Grid>
       <Grid item xs={6} className={classes.rightLevel4}>
+        <Typography variant="h5" align="right" className={classes.tagLineLevel4}>
+        in a way that works for you
+        </Typography>
         <Paper className={classes.screenshotLevel4}>
           <img src={level40Image} width="100%" alt="Budget the way you like" />
         </Paper>
       </Grid>
       {/* --- Level 5 --- */}
-      <Grid item xs={6} className={classes.leftLevel5}>
+      <Grid item xs={6}>
+        <Typography variant="h5" className={classes.titleLevel5}>
+          Visualize your data
+        </Typography>
         <Paper className={classes.screenshotLevel5}>
           <img src={level50Image} width="100%" alt="Learn from your data" />
         </Paper>
         <img src={level51Image} width="100%" alt="Woman drawing" className={classes.backgroundImageLevel5} />
       </Grid>
       <Grid item xs={6} className={classes.rightLevel5}>
-        <Typography variant="h5" className={classes.titleLevel5}>
-          Learn from your data
+        <Typography variant="h5" className={classes.tagLineLevel5}>
+          and learn from it
         </Typography>
       </Grid>
     </Grid>

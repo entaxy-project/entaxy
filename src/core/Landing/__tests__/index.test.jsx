@@ -1,17 +1,28 @@
 import React from 'react'
-import renderer from 'react-test-renderer'
+import { render, cleanup } from '@testing-library/react'
+import '@testing-library/jest-dom/extend-expect'
+import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
 import Landing from '..'
+import store from '../../../store'
 
-jest.mock('../LandingCard', () => 'LandingCard')
+afterEach(() => {
+  cleanup()
+  jest.clearAllMocks()
+})
 
-describe('LandingCard', () => {
-  it('matches snapshot', () => {
-    const component = renderer.create((
-      <BrowserRouter>
-        <Landing classes={{}} history={{}} />
-      </BrowserRouter>
-    ))
-    expect(component.toJSON()).toMatchSnapshot()
+describe('Landing page', () => {
+  it('renders correctly', async () => {
+    const props = {
+      history: {}
+    }
+    const { getByText } = render(
+      <Provider store={store}>
+        <BrowserRouter>
+          <Landing {...props} />
+        </BrowserRouter>
+      </Provider>
+    )
+    expect(getByText('Insight into your finances, without sacrificing your data')).toBeInTheDocument()
   })
 })
