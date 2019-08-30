@@ -9,6 +9,7 @@ import InputAdornment from '@material-ui/core/InputAdornment'
 import Typography from '@material-ui/core/Typography'
 import SearchIcon from '@material-ui/icons/Search'
 import AddIcon from '@material-ui/icons/Add'
+import InfoIcon from '@material-ui/icons/Info'
 import EditIcon from '@material-ui/icons/Edit'
 import DeleteIcon from '@material-ui/icons/Delete'
 import MoreVertIcon from '@material-ui/icons/MoreVert'
@@ -79,6 +80,11 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(2),
     display: 'inline-block'
+  },
+  infoIcon: {
+    color: theme.palette.info.text,
+    fontSize: 18,
+    verticalAlign: 'text-bottom'
   }
 }))
 
@@ -316,26 +322,35 @@ const BudgetCategories = () => {
         <Grid container spacing={2} key={group.id} className={classes.categoryGroup}>
           <Grid item xs={12}>
             <Typography variant="h6" className={classes.groupName}>{group.label}</Typography>
-            <IconButton
-              disabled={group.isIncome}
-              aria-label="Change group name"
-              onClick={() => handleEditGroup(group)}
-              style={{ padding: 8 }}
-            >
-              <Tooltip title="Change group name">
-                <EditIcon style={{ fontSize: 18 }} />
+            {group.isIncome && (
+              <Tooltip title="The Income group cannot be edited or removed">
+                <InfoIcon className={classes.infoIcon} />
               </Tooltip>
-            </IconButton>
-            <IconButton
-              disabled={group.isIncome}
-              aria-label="Delete group"
-              onClick={() => handleDeleteGroup(group)}
-              style={{ padding: 8 }}
-            >
-              <Tooltip title="Delete group">
-                <DeleteIcon style={{ fontSize: 18 }} />
-              </Tooltip>
-            </IconButton>
+            )}
+            {!group.isIncome && (
+              <>
+                <IconButton
+                  disabled={group.isIncome}
+                  aria-label="Change group name"
+                  onClick={() => handleEditGroup(group)}
+                  style={{ padding: 8 }}
+                >
+                  <Tooltip title="Change group name">
+                    <EditIcon style={{ fontSize: 18 }} />
+                  </Tooltip>
+                </IconButton>
+                <IconButton
+                  disabled={group.isIncome}
+                  aria-label="Delete group"
+                  onClick={() => handleDeleteGroup(group)}
+                  style={{ padding: 8 }}
+                >
+                  <Tooltip title="Delete group">
+                    <DeleteIcon style={{ fontSize: 18 }} />
+                  </Tooltip>
+                </IconButton>
+              </>
+            )}
           </Grid>
           {group.options.map((category) => (
             <Grid item lg={3} md={4} sm={6} xs={12} key={category.id}>

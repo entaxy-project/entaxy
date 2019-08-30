@@ -54,11 +54,11 @@ const BudgetChart = () => {
       if (byMonth[dateKey][category.name] === undefined) {
         byMonth[dateKey][category.name] = 0
       }
-      byMonth[dateKey][category.name] += Math.abs(transaction.amount)
+      byMonth[dateKey][category.name] += transaction.amount
     }
   })
   const data = Object.keys(byMonth).sort((a, b) => a - b).map((date) => ({
-    date: format(parseInt(date, 10), 'MMM YYYY'),
+    date: format(parseInt(date, 10), 'MMM yyyy'),
     ...byMonth[date]
   }))
   const margin = {

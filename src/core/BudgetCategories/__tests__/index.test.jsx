@@ -1,29 +1,35 @@
 import React from 'react'
-import { mount } from 'enzyme'
+import {
+  render,
+  cleanup
+} from '@testing-library/react'
+import '@testing-library/jest-dom/extend-expect'
 import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
-import configureMockStore from 'redux-mock-store'
+import ThemeProvider from '../../ThemeProvider'
 import BudgetCategories from '..'
-import { initialState as settingsInitialState } from '../../../store/settings/reducer'
-import { initialState as budgetInitialState } from '../../../store/budget/reducer'
+import store from '../../../store'
 
-describe('BudgetCAtegoriesIndex', () => {
-  it('matches snapshot with no accounts', () => {
-    const mockStore = configureMockStore()
-    const store = mockStore({
-      settings: settingsInitialState,
-      budget: budgetInitialState
-    })
-    const wrapper = mount((
-      <BrowserRouter>
-        <Provider store={store}>
-          <BudgetCategories />
-        </Provider>
-      </BrowserRouter>
-    ))
-    expect(wrapper.debug()).toMatchSnapshot()
+afterEach(() => {
+  cleanup()
+  jest.clearAllMocks()
+})
 
-    const groupNames = budgetInitialState.categoryTree.map((cat) => cat.label)
-    expect(wrapper.find('h6').map((node) => node.text())).toEqual(groupNames)
+describe('CsvDropzone', () => {
+  it('renders correctly', () => {
+    const props = {
+    }
+    const { getByText } = render(
+      <Provider store={store}>
+        <ThemeProvider>
+          <BrowserRouter>
+            <BudgetCategories {...props} />
+          </BrowserRouter>
+        </ThemeProvider>
+      </Provider>
+    )
+    expect(getByText('Manage categories')).toBeInTheDocument()
+    //     const groupNames = budgetInitialState.categoryTree.map((cat) => cat.label)
+    //     expect(wrapper.find('h6').map((node) => node.text())).toEqual(groupNames)
   })
 })
