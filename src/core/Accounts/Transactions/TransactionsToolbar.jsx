@@ -16,7 +16,7 @@ import confirm from '../../../util/confirm'
 import TableToolbar from '../../../common/TableToolbar'
 import LinkTo from '../../../common/LinkTo'
 
-const styles = theme => ({
+const styles = (theme) => ({
   importButton: {
     fill: theme.palette.text.secondary
   },

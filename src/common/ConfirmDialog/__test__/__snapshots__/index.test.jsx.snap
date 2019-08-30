@@ -5,10 +5,10 @@ exports[`ConfirmDialog matches snapshot 1`] = `
   <ConfirmDialog proceed={[Function: mockConstructor]} cancel={[Function: bound cancel]} dismiss={[Function: mockConstructor]} show={true} title=\\"Title\\" description=\\"Description\\">
     <WithStyles(ForwardRef(Dialog)) disableBackdropClick={true} disableEscapeKeyDown={true} maxWidth=\\"xs\\" aria-labelledby=\\"confirmation-dialog-title\\" open={true}>
       <ForwardRef(Dialog) classes={{...}} disableBackdropClick={true} disableEscapeKeyDown={true} maxWidth=\\"xs\\" aria-labelledby=\\"confirmation-dialog-title\\" open={true}>
-        <ForwardRef(Modal) className=\\"MuiDialog-root\\" BackdropComponent={{...}} BackdropProps={{...}} closeAfterTransition={true} disableBackdropClick={true} disableEscapeKeyDown={true} onEscapeKeyDown={[undefined]} onClose={[undefined]} open={true} role=\\"dialog\\" aria-labelledby=\\"confirmation-dialog-title\\">
-          <ForwardRef(Portal) container={[undefined]} disablePortal={false} onRendered={[Function]}>
+        <ForwardRef(Modal) className=\\"MuiDialog-root\\" BackdropComponent={{...}} BackdropProps={{...}} closeAfterTransition={true} disableBackdropClick={true} disableEscapeKeyDown={true} onEscapeKeyDown={[undefined]} onClose={[undefined]} open={true} aria-labelledby=\\"confirmation-dialog-title\\">
+          <ForwardRef(Portal) container={[undefined]} disablePortal={false}>
             <Portal containerInfo={{...}}>
-              <div onKeyDown={[Function: handleKeyDown]} role=\\"dialog\\" className=\\"MuiDialog-root\\" aria-labelledby=\\"confirmation-dialog-title\\" style={{...}}>
+              <div onKeyDown={[Function: handleKeyDown]} role=\\"presentation\\" className=\\"MuiDialog-root\\" aria-labelledby=\\"confirmation-dialog-title\\" style={{...}}>
                 <WithStyles(ForwardRef(Backdrop)) open={true} onClick={[Function: handleBackdropClick]} transitionDuration={{...}}>
                   <ForwardRef(Backdrop) classes={{...}} open={true} onClick={[Function: handleBackdropClick]} transitionDuration={{...}}>
                     <ForwardRef(Fade) in={true} timeout={{...}} onClick={[Function: handleBackdropClick]}>
@@ -22,15 +22,15 @@ exports[`ConfirmDialog matches snapshot 1`] = `
                   <div tabIndex={0} data-test=\\"sentinelStart\\" />
                   <ForwardRef(Fade) appear={true} in={true} timeout={{...}} onEnter={[Function: chainedFunction]} onEntering={[undefined]} onEntered={[undefined]} onExit={[undefined]} onExiting={[undefined]} onExited={[Function: chainedFunction]} role=\\"document\\" tabIndex=\\"-1\\">
                     <Transition appear={true} in={true} onEnter={[Function: handleEnter]} onExit={[Function: handleExit]} timeout={{...}} onEntering={[Function: noop]} onEntered={[Function: noop]} onExiting={[Function: noop]} onExited={[Function: chainedFunction]} role=\\"document\\" tabIndex=\\"-1\\" mountOnEnter={false} unmountOnExit={false} enter={true} exit={true}>
-                      <div className=\\"MuiDialog-container MuiDialog-scrollPaper\\" onClick={[Function: handleBackdropClick]} onMouseDown={[Function: handleMouseDown]} role=\\"document\\" style={{...}} tabIndex=\\"-1\\">
-                        <WithStyles(ForwardRef(Paper)) elevation={24} className=\\"MuiDialog-paper MuiDialog-paperScrollPaper MuiDialog-paperWidthXs\\">
-                          <ForwardRef(Paper) classes={{...}} elevation={24} className=\\"MuiDialog-paper MuiDialog-paperScrollPaper MuiDialog-paperWidthXs\\">
-                            <div className=\\"MuiPaper-root MuiPaper-elevation24 MuiDialog-paper MuiDialog-paperScrollPaper MuiDialog-paperWidthXs MuiPaper-rounded\\">
+                      <div className=\\"MuiDialog-container MuiDialog-scrollPaper\\" onClick={[Function: handleBackdropClick]} onMouseDown={[Function: handleMouseDown]} style={{...}} role=\\"document\\" tabIndex=\\"-1\\">
+                        <WithStyles(ForwardRef(Paper)) elevation={24} role=\\"dialog\\" className=\\"MuiDialog-paper MuiDialog-paperScrollPaper MuiDialog-paperWidthXs\\">
+                          <ForwardRef(Paper) classes={{...}} elevation={24} role=\\"dialog\\" className=\\"MuiDialog-paper MuiDialog-paperScrollPaper MuiDialog-paperWidthXs\\">
+                            <div className=\\"MuiPaper-root MuiPaper-elevation24 MuiDialog-paper MuiDialog-paperScrollPaper MuiDialog-paperWidthXs MuiPaper-rounded\\" role=\\"dialog\\">
                               <WithStyles(ForwardRef(DialogTitle)) id=\\"confirmation-dialog-title\\">
                                 <ForwardRef(DialogTitle) classes={{...}} id=\\"confirmation-dialog-title\\">
                                   <div className=\\"MuiDialogTitle-root\\" id=\\"confirmation-dialog-title\\">
                                     <WithStyles(ForwardRef(Typography)) component=\\"h2\\" variant=\\"h6\\">
-                                      <ForwardRef(Typography) classes={{...}} component=\\"h2\\" variant=\\"h6\\" theme={{...}}>
+                                      <ForwardRef(Typography) classes={{...}} component=\\"h2\\" variant=\\"h6\\">
                                         <h2 className=\\"MuiTypography-root MuiTypography-h6\\">
                                           Title
                                         </h2>

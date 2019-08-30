@@ -3,7 +3,7 @@ import _ from 'lodash'
 import types from './types'
 import { saveState } from '../user/actions'
 
-export const showOverlay = message => ({
+export const showOverlay = (message) => ({
   type: types.SHOW_OVERLAY,
   payload: message
 })
@@ -11,7 +11,7 @@ export const showOverlay = message => ({
 export const hideOverlay = () => ({ type: types.HIDE_OVERLAY })
 
 
-export const showSnackbar = message => ({
+export const showSnackbar = (message) => ({
   type: types.SHOW_SNACKBAR,
   payload: message
 })
@@ -20,7 +20,7 @@ export const hideSnackbar = () => {
   return { type: types.HIDE_SNACKBAR }
 }
 
-export const loadSettings = settings => (
+export const loadSettings = (settings) => (
   { type: types.LOAD_SETTINGS, payload: settings }
 )
 

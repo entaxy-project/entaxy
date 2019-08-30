@@ -22,7 +22,7 @@ import InstitutionIcon from '../../common/InstitutionIcon'
 import { currencyFormatter } from '../../util/stringFormatter'
 import LinkTo from '../../common/LinkTo'
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
     marginLeft: 200
   },
@@ -79,7 +79,7 @@ const styles = theme => ({
   }
 })
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   settings: state.settings,
   accounts: state.accounts
 })
@@ -128,8 +128,8 @@ export const LeftDrawerComponent = ({
           )}
           {userHasAccounts && (
             <List dense={true} className={classes.institutionListRoot}>
-              {Object.keys(accounts.byInstitution).sort().map(institution => (
-                Object.values(accounts.byInstitution[institution].groups).map(accountGroup => (
+              {Object.keys(accounts.byInstitution).sort().map((institution) => (
+                Object.values(accounts.byInstitution[institution].groups).map((accountGroup) => (
                   <div key={`${institution}-${accountGroup.id}`}>
                     <ListItem>
                       <ListItemIcon className={classes.institutionListItemIcon}>

@@ -43,7 +43,7 @@ export const cryptoCurrencies = {
 
 export const formatedFiatCurrencies = Object.keys(fiatCurrencies)
   .sort()
-  .map(key => ({
+  .map((key) => ({
     value: key,
     label: `(${key}) ${fiatCurrencies[key]}`
   }))
@@ -52,7 +52,7 @@ export const filteredFiatCurrencies = (inputValue) => {
   return new Promise((resolve) => {
     if (inputValue) {
       resolve(formatedFiatCurrencies.filter(
-        currency => currency.label.toLowerCase().includes(inputValue.toLowerCase())
+        (currency) => currency.label.toLowerCase().includes(inputValue.toLowerCase())
       ))
     }
     resolve(formatedFiatCurrencies)

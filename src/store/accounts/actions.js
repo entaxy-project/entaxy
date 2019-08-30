@@ -14,7 +14,7 @@ import {
   convertToLocalCurrency
 } from '../exchangeRates/actions'
 
-export const loadAccounts = accounts => ({
+export const loadAccounts = (accounts) => ({
   type: types.LOAD_ACCOUNTS, payload: accounts
 })
 
@@ -109,7 +109,7 @@ export const updateAccount = (account, options = { forceUpdateBalance: false, sh
 export const deleteAccount = (account, options = { skipAfterChange: false }) => {
   const { skipAfterChange } = options
   return async (dispatch, getState) => {
-    const transactionIds = getAccountTransactions(getState(), account.id).map(transaction => transaction.id)
+    const transactionIds = getAccountTransactions(getState(), account.id).map((transaction) => transaction.id)
 
     dispatch(deleteTransactions(account, transactionIds, { skipAfterChange: true }))
     dispatch({ type: types.DELETE_ACCOUNT, payload: account.id })
@@ -150,7 +150,7 @@ export const updateAccountGroup = (institution, accountGroup, importedAccounts) 
     importedAccounts.map((importedAccount) => {
       // Find existing account
       const account = Object.values(getState().accounts.byId)
-        .find(acc => acc.sourceId === importedAccount.sourceId)
+        .find((acc) => acc.sourceId === importedAccount.sourceId)
 
       if (account) {
         existingAccounts.push(account)

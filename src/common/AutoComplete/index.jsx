@@ -1,23 +1,10 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
 import PropTypes from 'prop-types'
 import Select from 'react-select'
 import AsyncSelect from 'react-select/async'
 import CreatableSelect from 'react-select/creatable'
 import Typography from '@material-ui/core/Typography'
 import FormHelperText from '@material-ui/core/FormHelperText'
-
-const useStyles = makeStyles(theme => ({
-
-  select: {
-    marginTop: -theme.spacing(1)
-  },
-  inputError: {
-    marginTop: -theme.spacing(1),
-    marginLeft: theme.spacing(2),
-    marginBottom: theme.spacing(2)
-  }
-}))
 
 const AutoComplete = ({
   async,
@@ -34,8 +21,6 @@ const AutoComplete = ({
   className,
   styles
 }) => {
-  const classes = useStyles()
-
   return (
     <div className={className}>
       <Typography
@@ -52,7 +37,7 @@ const AutoComplete = ({
           defaultValue={value}
           options={options}
           inputProps={{ 'aria-label': label, required: true }}
-          onChange={selection => onChange(name, selection)}
+          onChange={(selection) => onChange(name, selection)}
           isClearable
           styles={styles}
         />
@@ -65,7 +50,7 @@ const AutoComplete = ({
           defaultValue={value}
           options={options}
           inputProps={{ 'aria-label': label, required: true }}
-          onChange={selection => onChange(name, selection)}
+          onChange={(selection) => onChange(name, selection)}
           isClearable
           styles={styles}
         />
@@ -79,13 +64,13 @@ const AutoComplete = ({
           defaultOptions
           loadOptions={loadOptions}
           inputProps={{ 'aria-label': label }}
-          onChange={selection => onChange(name, selection)}
+          onChange={(selection) => onChange(name, selection)}
           isClearable
           styles={styles}
         />
       )}
       {error && (
-        <FormHelperText error className={classes.inputError}>
+        <FormHelperText error>
           {helperText}
         </FormHelperText>
       )}

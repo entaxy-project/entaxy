@@ -53,7 +53,7 @@ exports[`TransactionsTable matches snapshot with no transactions 1`] = `
               </svg>
             </div>
             <input
-              className="MuiInputBase-input withRouter(TransactionsToolbarComponent)-inputInput-5 MuiInputBase-inputTypeSearch MuiInputBase-inputAdornedStart"
+              className="MuiInputBase-input withRouter(TransactionsToolbarComponent)-inputInput-5 MuiInputBase-inputAdornedStart MuiInputBase-inputTypeSearch"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
@@ -101,7 +101,7 @@ exports[`TransactionsTable matches snapshot with no transactions 1`] = `
               viewBox="0 0 24 24"
             >
               <path
-                d="M14,12L10,8V11H2V13H10V16M20,18V6C20,4.89 19.1,4 18,4H6C4.9,4 4,4.9 4,6V9H6V6H18V18H6V15H4V18C4,19.1 4.9,20 6,20H18C19.1,20 20,19.1 20,18Z"
+                d="M14,12L10,8V11H2V13H10V16M20,18V6C20,4.89 19.1,4 18,4H6A2,2 0 0,0 4,6V9H6V6H18V18H6V15H4V18A2,2 0 0,0 6,20H18A2,2 0 0,0 20,18Z"
                 style={Object {}}
               />
             </svg>
@@ -178,7 +178,7 @@ exports[`TransactionsTable matches snapshot with no transactions 1`] = `
             "height": 25,
             "overflow": "hidden",
             "paddingRight": 0,
-            "width": 0,
+            "width": 100,
           }
         }
       >
@@ -198,7 +198,7 @@ exports[`TransactionsTable matches snapshot with no transactions 1`] = `
           >
             <span
               aria-disabled={false}
-              className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-102 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+              className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-105 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
               onBlur={[Function]}
               onDragLeave={[Function]}
               onFocus={[Function]}
@@ -228,7 +228,7 @@ exports[`TransactionsTable matches snapshot with no transactions 1`] = `
                 </svg>
                 <input
                   checked={false}
-                  className="PrivateSwitchBase-input-105"
+                  className="PrivateSwitchBase-input-108"
                   data-indeterminate={false}
                   onChange={[Function]}
                   type="checkbox"
@@ -330,6 +330,7 @@ exports[`TransactionsTable matches snapshot with no transactions 1`] = `
               "WebkitFlex": "0 1 130px",
               "flex": "0 1 130px",
               "msFlex": "0 1 130px",
+              "textAlign": "right",
             }
           }
           tabIndex={0}
@@ -353,6 +354,7 @@ exports[`TransactionsTable matches snapshot with no transactions 1`] = `
               "WebkitFlex": "0 1 130px",
               "flex": "0 1 130px",
               "msFlex": "0 1 130px",
+              "textAlign": "right",
             }
           }
           tabIndex={0}
@@ -376,11 +378,11 @@ exports[`TransactionsTable matches snapshot with no transactions 1`] = `
             "WebkitOverflowScrolling": "touch",
             "boxSizing": "border-box",
             "direction": "ltr",
-            "height": -25,
+            "height": 75,
             "overflowX": "hidden",
-            "overflowY": "auto",
+            "overflowY": "hidden",
             "position": "relative",
-            "width": 0,
+            "width": 100,
             "willChange": "transform",
           }
         }
@@ -444,7 +446,7 @@ exports[`TransactionsTable matches snapshot with some transactions 1`] = `
               </svg>
             </div>
             <input
-              className="MuiInputBase-input withRouter(TransactionsToolbarComponent)-inputInput-5 MuiInputBase-inputTypeSearch MuiInputBase-inputAdornedStart"
+              className="MuiInputBase-input withRouter(TransactionsToolbarComponent)-inputInput-5 MuiInputBase-inputAdornedStart MuiInputBase-inputTypeSearch"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
@@ -492,7 +494,7 @@ exports[`TransactionsTable matches snapshot with some transactions 1`] = `
               viewBox="0 0 24 24"
             >
               <path
-                d="M14,12L10,8V11H2V13H10V16M20,18V6C20,4.89 19.1,4 18,4H6C4.9,4 4,4.9 4,6V9H6V6H18V18H6V15H4V18C4,19.1 4.9,20 6,20H18C19.1,20 20,19.1 20,18Z"
+                d="M14,12L10,8V11H2V13H10V16M20,18V6C20,4.89 19.1,4 18,4H6A2,2 0 0,0 4,6V9H6V6H18V18H6V15H4V18A2,2 0 0,0 6,20H18A2,2 0 0,0 20,18Z"
                 style={Object {}}
               />
             </svg>
@@ -569,7 +571,7 @@ exports[`TransactionsTable matches snapshot with some transactions 1`] = `
             "height": 25,
             "overflow": "hidden",
             "paddingRight": 0,
-            "width": 0,
+            "width": 100,
           }
         }
       >
@@ -589,7 +591,7 @@ exports[`TransactionsTable matches snapshot with some transactions 1`] = `
           >
             <span
               aria-disabled={false}
-              className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-102 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+              className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-105 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
               onBlur={[Function]}
               onDragLeave={[Function]}
               onFocus={[Function]}
@@ -619,7 +621,7 @@ exports[`TransactionsTable matches snapshot with some transactions 1`] = `
                 </svg>
                 <input
                   checked={false}
-                  className="PrivateSwitchBase-input-105"
+                  className="PrivateSwitchBase-input-108"
                   data-indeterminate={false}
                   onChange={[Function]}
                   type="checkbox"
@@ -721,6 +723,7 @@ exports[`TransactionsTable matches snapshot with some transactions 1`] = `
               "WebkitFlex": "0 1 130px",
               "flex": "0 1 130px",
               "msFlex": "0 1 130px",
+              "textAlign": "right",
             }
           }
           tabIndex={0}
@@ -744,6 +747,7 @@ exports[`TransactionsTable matches snapshot with some transactions 1`] = `
               "WebkitFlex": "0 1 130px",
               "flex": "0 1 130px",
               "msFlex": "0 1 130px",
+              "textAlign": "right",
             }
           }
           tabIndex={0}
@@ -767,16 +771,513 @@ exports[`TransactionsTable matches snapshot with some transactions 1`] = `
             "WebkitOverflowScrolling": "touch",
             "boxSizing": "border-box",
             "direction": "ltr",
-            "height": -25,
+            "height": 75,
             "overflowX": "hidden",
             "overflowY": "auto",
             "position": "relative",
-            "width": 0,
+            "width": 100,
             "willChange": "transform",
           }
         }
         tabIndex={0}
-      />
+      >
+        <div
+          className="ReactVirtualized__Grid__innerScrollContainer"
+          role="rowgroup"
+          style={
+            Object {
+              "height": 90,
+              "maxHeight": 90,
+              "maxWidth": 100,
+              "overflow": "hidden",
+              "pointerEvents": "",
+              "position": "relative",
+              "width": "auto",
+            }
+          }
+        >
+          <div
+            aria-rowindex={1}
+            className="ReactVirtualized__Table__row"
+            role="row"
+            style={
+              Object {
+                "height": 30,
+                "left": 0,
+                "overflow": "hidden",
+                "paddingRight": 0,
+                "position": "absolute",
+                "top": 0,
+                "width": 100,
+              }
+            }
+          >
+            <div
+              aria-colindex={1}
+              className="ReactVirtualized__Table__rowColumn"
+              onClick={[Function]}
+              role="gridcell"
+              style={
+                Object {
+                  "WebkitFlex": "0 1 40px",
+                  "flex": "0 1 40px",
+                  "msFlex": "0 1 40px",
+                  "overflow": "hidden",
+                }
+              }
+              title={null}
+            >
+              <span
+                className="ReactVirtualized__Table__headerTruncatedText"
+              >
+                <span
+                  aria-disabled={false}
+                  className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-105 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+                  onBlur={[Function]}
+                  onDragLeave={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchMove={[Function]}
+                  onTouchStart={[Function]}
+                  tabIndex={null}
+                >
+                  <span
+                    className="MuiIconButton-label"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="MuiSvgIcon-root"
+                      focusable="false"
+                      role="presentation"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+                      />
+                    </svg>
+                    <input
+                      checked={false}
+                      className="PrivateSwitchBase-input-108"
+                      data-indeterminate={false}
+                      onChange={[Function]}
+                      type="checkbox"
+                    />
+                  </span>
+                  <span
+                    className="MuiTouchRipple-root"
+                  />
+                </span>
+              </span>
+            </div>
+            <div
+              aria-colindex={2}
+              className="ReactVirtualized__Table__rowColumn"
+              onClick={[Function]}
+              role="gridcell"
+              style={
+                Object {
+                  "WebkitFlex": "0 1 120px",
+                  "flex": "0 1 120px",
+                  "msFlex": "0 1 120px",
+                  "overflow": "hidden",
+                }
+              }
+              title="() => {}"
+            >
+              () =&gt; {}
+            </div>
+            <div
+              aria-colindex={3}
+              className="ReactVirtualized__Table__rowColumn"
+              onClick={[Function]}
+              role="gridcell"
+              style={
+                Object {
+                  "WebkitFlex": "1 1 200px",
+                  "flex": "1 1 200px",
+                  "msFlex": "1 1 200px",
+                  "overflow": "hidden",
+                }
+              }
+              title="Transaction 3"
+            >
+              Transaction 3
+            </div>
+            <div
+              aria-colindex={4}
+              className="ReactVirtualized__Table__rowColumn"
+              onClick={[Function]}
+              role="gridcell"
+              style={
+                Object {
+                  "WebkitFlex": "0 1 200px",
+                  "flex": "0 1 200px",
+                  "msFlex": "0 1 200px",
+                  "overflow": "hidden",
+                }
+              }
+              title={null}
+            />
+            <div
+              aria-colindex={5}
+              className="ReactVirtualized__Table__rowColumn"
+              onClick={[Function]}
+              role="gridcell"
+              style={
+                Object {
+                  "WebkitFlex": "0 1 130px",
+                  "flex": "0 1 130px",
+                  "msFlex": "0 1 130px",
+                  "overflow": "hidden",
+                  "textAlign": "right",
+                }
+              }
+              title={null}
+            />
+            <div
+              aria-colindex={6}
+              className="ReactVirtualized__Table__rowColumn"
+              onClick={[Function]}
+              role="gridcell"
+              style={
+                Object {
+                  "WebkitFlex": "0 1 130px",
+                  "flex": "0 1 130px",
+                  "msFlex": "0 1 130px",
+                  "overflow": "hidden",
+                  "textAlign": "right",
+                }
+              }
+              title={null}
+            />
+          </div>
+          <div
+            aria-rowindex={2}
+            className="ReactVirtualized__Table__row undefined"
+            role="row"
+            style={
+              Object {
+                "height": 30,
+                "left": 0,
+                "overflow": "hidden",
+                "paddingRight": 0,
+                "position": "absolute",
+                "top": 30,
+                "width": 100,
+              }
+            }
+          >
+            <div
+              aria-colindex={1}
+              className="ReactVirtualized__Table__rowColumn"
+              onClick={[Function]}
+              role="gridcell"
+              style={
+                Object {
+                  "WebkitFlex": "0 1 40px",
+                  "flex": "0 1 40px",
+                  "msFlex": "0 1 40px",
+                  "overflow": "hidden",
+                }
+              }
+              title={null}
+            >
+              <span
+                className="ReactVirtualized__Table__headerTruncatedText"
+              >
+                <span
+                  aria-disabled={false}
+                  className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-105 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+                  onBlur={[Function]}
+                  onDragLeave={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchMove={[Function]}
+                  onTouchStart={[Function]}
+                  tabIndex={null}
+                >
+                  <span
+                    className="MuiIconButton-label"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="MuiSvgIcon-root"
+                      focusable="false"
+                      role="presentation"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+                      />
+                    </svg>
+                    <input
+                      checked={false}
+                      className="PrivateSwitchBase-input-108"
+                      data-indeterminate={false}
+                      onChange={[Function]}
+                      type="checkbox"
+                    />
+                  </span>
+                  <span
+                    className="MuiTouchRipple-root"
+                  />
+                </span>
+              </span>
+            </div>
+            <div
+              aria-colindex={2}
+              className="ReactVirtualized__Table__rowColumn"
+              onClick={[Function]}
+              role="gridcell"
+              style={
+                Object {
+                  "WebkitFlex": "0 1 120px",
+                  "flex": "0 1 120px",
+                  "msFlex": "0 1 120px",
+                  "overflow": "hidden",
+                }
+              }
+              title="() => {}"
+            >
+              () =&gt; {}
+            </div>
+            <div
+              aria-colindex={3}
+              className="ReactVirtualized__Table__rowColumn"
+              onClick={[Function]}
+              role="gridcell"
+              style={
+                Object {
+                  "WebkitFlex": "1 1 200px",
+                  "flex": "1 1 200px",
+                  "msFlex": "1 1 200px",
+                  "overflow": "hidden",
+                }
+              }
+              title="Transaction 2"
+            >
+              Transaction 2
+            </div>
+            <div
+              aria-colindex={4}
+              className="ReactVirtualized__Table__rowColumn"
+              onClick={[Function]}
+              role="gridcell"
+              style={
+                Object {
+                  "WebkitFlex": "0 1 200px",
+                  "flex": "0 1 200px",
+                  "msFlex": "0 1 200px",
+                  "overflow": "hidden",
+                }
+              }
+              title={null}
+            />
+            <div
+              aria-colindex={5}
+              className="ReactVirtualized__Table__rowColumn"
+              onClick={[Function]}
+              role="gridcell"
+              style={
+                Object {
+                  "WebkitFlex": "0 1 130px",
+                  "flex": "0 1 130px",
+                  "msFlex": "0 1 130px",
+                  "overflow": "hidden",
+                  "textAlign": "right",
+                }
+              }
+              title={null}
+            />
+            <div
+              aria-colindex={6}
+              className="ReactVirtualized__Table__rowColumn"
+              onClick={[Function]}
+              role="gridcell"
+              style={
+                Object {
+                  "WebkitFlex": "0 1 130px",
+                  "flex": "0 1 130px",
+                  "msFlex": "0 1 130px",
+                  "overflow": "hidden",
+                  "textAlign": "right",
+                }
+              }
+              title={null}
+            />
+          </div>
+          <div
+            aria-rowindex={3}
+            className="ReactVirtualized__Table__row"
+            role="row"
+            style={
+              Object {
+                "height": 30,
+                "left": 0,
+                "overflow": "hidden",
+                "paddingRight": 0,
+                "position": "absolute",
+                "top": 60,
+                "width": 100,
+              }
+            }
+          >
+            <div
+              aria-colindex={1}
+              className="ReactVirtualized__Table__rowColumn"
+              onClick={[Function]}
+              role="gridcell"
+              style={
+                Object {
+                  "WebkitFlex": "0 1 40px",
+                  "flex": "0 1 40px",
+                  "msFlex": "0 1 40px",
+                  "overflow": "hidden",
+                }
+              }
+              title={null}
+            >
+              <span
+                className="ReactVirtualized__Table__headerTruncatedText"
+              >
+                <span
+                  aria-disabled={false}
+                  className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-105 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+                  onBlur={[Function]}
+                  onDragLeave={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchMove={[Function]}
+                  onTouchStart={[Function]}
+                  tabIndex={null}
+                >
+                  <span
+                    className="MuiIconButton-label"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="MuiSvgIcon-root"
+                      focusable="false"
+                      role="presentation"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+                      />
+                    </svg>
+                    <input
+                      checked={false}
+                      className="PrivateSwitchBase-input-108"
+                      data-indeterminate={false}
+                      onChange={[Function]}
+                      type="checkbox"
+                    />
+                  </span>
+                  <span
+                    className="MuiTouchRipple-root"
+                  />
+                </span>
+              </span>
+            </div>
+            <div
+              aria-colindex={2}
+              className="ReactVirtualized__Table__rowColumn"
+              onClick={[Function]}
+              role="gridcell"
+              style={
+                Object {
+                  "WebkitFlex": "0 1 120px",
+                  "flex": "0 1 120px",
+                  "msFlex": "0 1 120px",
+                  "overflow": "hidden",
+                }
+              }
+              title="() => {}"
+            >
+              () =&gt; {}
+            </div>
+            <div
+              aria-colindex={3}
+              className="ReactVirtualized__Table__rowColumn"
+              onClick={[Function]}
+              role="gridcell"
+              style={
+                Object {
+                  "WebkitFlex": "1 1 200px",
+                  "flex": "1 1 200px",
+                  "msFlex": "1 1 200px",
+                  "overflow": "hidden",
+                }
+              }
+              title="Transaction 1"
+            >
+              Transaction 1
+            </div>
+            <div
+              aria-colindex={4}
+              className="ReactVirtualized__Table__rowColumn"
+              onClick={[Function]}
+              role="gridcell"
+              style={
+                Object {
+                  "WebkitFlex": "0 1 200px",
+                  "flex": "0 1 200px",
+                  "msFlex": "0 1 200px",
+                  "overflow": "hidden",
+                }
+              }
+              title={null}
+            />
+            <div
+              aria-colindex={5}
+              className="ReactVirtualized__Table__rowColumn"
+              onClick={[Function]}
+              role="gridcell"
+              style={
+                Object {
+                  "WebkitFlex": "0 1 130px",
+                  "flex": "0 1 130px",
+                  "msFlex": "0 1 130px",
+                  "overflow": "hidden",
+                  "textAlign": "right",
+                }
+              }
+              title={null}
+            />
+            <div
+              aria-colindex={6}
+              className="ReactVirtualized__Table__rowColumn"
+              onClick={[Function]}
+              role="gridcell"
+              style={
+                Object {
+                  "WebkitFlex": "0 1 130px",
+                  "flex": "0 1 130px",
+                  "msFlex": "0 1 130px",
+                  "overflow": "hidden",
+                  "textAlign": "right",
+                }
+              }
+              title={null}
+            />
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

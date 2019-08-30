@@ -87,7 +87,7 @@ export default (state = initialState, { type, payload }) => {
       let colour = null
       if ('parentId' in payload) {
         // Select the next colour of the category
-        const group = state.categoryTree.find((cat => cat.id === payload.parentId))
+        const group = state.categoryTree.find(((cat) => cat.id === payload.parentId))
         const lastColour = group.options.length === 0
           ? defaultColours[defaultColours.length - 1]
           : group.options[group.options.length - 1].colour
@@ -172,7 +172,8 @@ export default (state = initialState, { type, payload }) => {
       ), state)
 
       // count the transactions
-      for (const transaction of payload) {
+      let transaction
+      for (transaction of payload) {
         if (transaction.description in newState.rules) {
           newState.rules[transaction.description].count += 1
         }

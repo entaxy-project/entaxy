@@ -16,7 +16,7 @@ import { loginAs } from '../../store/user/actions'
 import blockstackLogo from './blockstack-bug-rounded.svg'
 import LinkTo from '../../common/LinkTo'
 
-const styles = theme => ({
+const styles = (theme) => ({
   loggedOutContainer: {
     padding: theme.spacing(1),
     marginRight: theme.spacing(2),

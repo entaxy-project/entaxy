@@ -51,7 +51,7 @@ export class TaxesComponent extends React.Component {
     }
   }
 
-  handleChange = name => (event) => {
+  handleChange = (name) => (event) => {
     let income = name === 'income' ? parseFloat(event.target.value) : this.state.income
     if (Number.isNaN(income)) { income = 0 }
     let rrsp = name === 'rrsp' ? parseFloat(event.target.value) : this.state.rrsp

@@ -28,7 +28,7 @@ const IncomeLines = ({
         top: spring(top)
       }}
     >
-      {style => (
+      {(style) => (
         <g key="IncomeLines">
           <Line
             key="IncomeLine-vertical"

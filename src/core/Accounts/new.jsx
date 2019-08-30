@@ -5,7 +5,7 @@ import AccountForm from './form'
 import { createAccount } from '../../store/accounts/actions'
 
 const mapDispatchToProps = {
-  createAccount: account => createAccount(account)
+  createAccount: (account) => createAccount(account)
 }
 
 export class NewAccountComponent extends React.Component {

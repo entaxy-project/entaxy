@@ -23,8 +23,8 @@ const margin = {
   right: 0
 }
 
-const x = d => d.income
-const y = d => d.tax
+const x = (d) => d.income
+const y = (d) => d.tax
 
 const TaxChart = ({
   parentWidth,

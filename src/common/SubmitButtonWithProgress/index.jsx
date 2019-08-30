@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import green from '@material-ui/core/colors/green'
 
-const styles = theme => ({
+const styles = (theme) => ({
   wrapper: {
     margin: theme.spacing(1),
     position: 'relative'

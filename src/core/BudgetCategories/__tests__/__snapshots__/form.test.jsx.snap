@@ -10,8 +10,8 @@ exports[`CategoryForm matches snapshot for existing category 1`] = `
             <form onSubmit={[Function]} className=\\"WithFormik(CategoryFormComponent)-form-1\\">
               <WithStyles(ForwardRef(TextField)) className=\\"WithFormik(CategoryFormComponent)-input-2\\" margin=\\"dense\\" label=\\"Category name\\" inputProps={{...}} value=\\"Home Phone\\" name=\\"name\\" onChange={[Function]} error={[undefined]} helperText={[undefined]} autoFocus={true}>
                 <ForwardRef(TextField) classes={{...}} className=\\"WithFormik(CategoryFormComponent)-input-2\\" margin=\\"dense\\" label=\\"Category name\\" inputProps={{...}} value=\\"Home Phone\\" name=\\"name\\" onChange={[Function]} error={[undefined]} helperText={[undefined]} autoFocus={true}>
-                  <WithStyles(ForwardRef(FormControl)) className=\\"MuiTextField-root WithFormik(CategoryFormComponent)-input-2\\" error={[undefined]} fullWidth={[undefined]} required={false} variant=\\"standard\\" margin=\\"dense\\">
-                    <ForwardRef(FormControl) classes={{...}} className=\\"MuiTextField-root WithFormik(CategoryFormComponent)-input-2\\" error={[undefined]} fullWidth={[undefined]} required={false} variant=\\"standard\\" margin=\\"dense\\">
+                  <WithStyles(ForwardRef(FormControl)) className=\\"MuiTextField-root WithFormik(CategoryFormComponent)-input-2\\" error={[undefined]} fullWidth={[undefined]} hiddenLabel={[undefined]} required={false} variant=\\"standard\\" margin=\\"dense\\">
+                    <ForwardRef(FormControl) classes={{...}} className=\\"MuiTextField-root WithFormik(CategoryFormComponent)-input-2\\" error={[undefined]} fullWidth={[undefined]} hiddenLabel={[undefined]} required={false} variant=\\"standard\\" margin=\\"dense\\">
                       <div className=\\"MuiFormControl-root MuiTextField-root WithFormik(CategoryFormComponent)-input-2 MuiFormControl-marginDense\\">
                         <WithStyles(ForwardRef(InputLabel)) htmlFor={[undefined]}>
                           <ForwardRef(InputLabel) classes={{...}} htmlFor={[undefined]}>
@@ -42,8 +42,8 @@ exports[`CategoryForm matches snapshot for existing category 1`] = `
               </WithStyles(ForwardRef(TextField))>
               <WithStyles(ForwardRef(TextField)) className=\\"WithFormik(CategoryFormComponent)-input-2\\" margin=\\"dense\\" label=\\"Budget limit\\" inputProps={{...}} value={[undefined]} name=\\"budgetLimit\\" onChange={[Function]} error={[undefined]} helperText={[undefined]}>
                 <ForwardRef(TextField) classes={{...}} className=\\"WithFormik(CategoryFormComponent)-input-2\\" margin=\\"dense\\" label=\\"Budget limit\\" inputProps={{...}} value={[undefined]} name=\\"budgetLimit\\" onChange={[Function]} error={[undefined]} helperText={[undefined]}>
-                  <WithStyles(ForwardRef(FormControl)) className=\\"MuiTextField-root WithFormik(CategoryFormComponent)-input-2\\" error={[undefined]} fullWidth={[undefined]} required={false} variant=\\"standard\\" margin=\\"dense\\">
-                    <ForwardRef(FormControl) classes={{...}} className=\\"MuiTextField-root WithFormik(CategoryFormComponent)-input-2\\" error={[undefined]} fullWidth={[undefined]} required={false} variant=\\"standard\\" margin=\\"dense\\">
+                  <WithStyles(ForwardRef(FormControl)) className=\\"MuiTextField-root WithFormik(CategoryFormComponent)-input-2\\" error={[undefined]} fullWidth={[undefined]} hiddenLabel={[undefined]} required={false} variant=\\"standard\\" margin=\\"dense\\">
+                    <ForwardRef(FormControl) classes={{...}} className=\\"MuiTextField-root WithFormik(CategoryFormComponent)-input-2\\" error={[undefined]} fullWidth={[undefined]} hiddenLabel={[undefined]} required={false} variant=\\"standard\\" margin=\\"dense\\">
                       <div className=\\"MuiFormControl-root MuiTextField-root WithFormik(CategoryFormComponent)-input-2 MuiFormControl-marginDense\\">
                         <WithStyles(ForwardRef(InputLabel)) htmlFor={[undefined]}>
                           <ForwardRef(InputLabel) classes={{...}} htmlFor={[undefined]}>
@@ -75,7 +75,7 @@ exports[`CategoryForm matches snapshot for existing category 1`] = `
               <div className=\\"WithFormik(CategoryFormComponent)-formActions-3\\">
                 <WithStyles(SubmitButtonWithProgress) label=\\"Save\\" isSubmitting={false}>
                   <SubmitButtonWithProgress classes={{...}} label=\\"Save\\" isSubmitting={false}>
-                    <div className=\\"SubmitButtonWithProgress-wrapper-58\\">
+                    <div className=\\"SubmitButtonWithProgress-wrapper-59\\">
                       <WithStyles(ForwardRef(Button)) type=\\"submit\\" color=\\"secondary\\" disabled={false}>
                         <ForwardRef(Button) classes={{...}} type=\\"submit\\" color=\\"secondary\\" disabled={false}>
                           <WithStyles(ForwardRef(ButtonBase)) className=\\"MuiButton-root MuiButton-text MuiButton-textSecondary\\" component=\\"button\\" disabled={false} focusRipple={true} focusVisibleClassName=\\"Mui-focusVisible\\" type=\\"submit\\">
@@ -145,8 +145,8 @@ exports[`CategoryForm matches snapshot for new category 1`] = `
             <form onSubmit={[Function]} className=\\"WithFormik(CategoryFormComponent)-form-1\\">
               <WithStyles(ForwardRef(TextField)) className=\\"WithFormik(CategoryFormComponent)-input-2\\" margin=\\"dense\\" label=\\"Category name\\" inputProps={{...}} value=\\"\\" name=\\"name\\" onChange={[Function]} error={[undefined]} helperText={[undefined]} autoFocus={true}>
                 <ForwardRef(TextField) classes={{...}} className=\\"WithFormik(CategoryFormComponent)-input-2\\" margin=\\"dense\\" label=\\"Category name\\" inputProps={{...}} value=\\"\\" name=\\"name\\" onChange={[Function]} error={[undefined]} helperText={[undefined]} autoFocus={true}>
-                  <WithStyles(ForwardRef(FormControl)) className=\\"MuiTextField-root WithFormik(CategoryFormComponent)-input-2\\" error={[undefined]} fullWidth={[undefined]} required={false} variant=\\"standard\\" margin=\\"dense\\">
-                    <ForwardRef(FormControl) classes={{...}} className=\\"MuiTextField-root WithFormik(CategoryFormComponent)-input-2\\" error={[undefined]} fullWidth={[undefined]} required={false} variant=\\"standard\\" margin=\\"dense\\">
+                  <WithStyles(ForwardRef(FormControl)) className=\\"MuiTextField-root WithFormik(CategoryFormComponent)-input-2\\" error={[undefined]} fullWidth={[undefined]} hiddenLabel={[undefined]} required={false} variant=\\"standard\\" margin=\\"dense\\">
+                    <ForwardRef(FormControl) classes={{...}} className=\\"MuiTextField-root WithFormik(CategoryFormComponent)-input-2\\" error={[undefined]} fullWidth={[undefined]} hiddenLabel={[undefined]} required={false} variant=\\"standard\\" margin=\\"dense\\">
                       <div className=\\"MuiFormControl-root MuiTextField-root WithFormik(CategoryFormComponent)-input-2 MuiFormControl-marginDense\\">
                         <WithStyles(ForwardRef(InputLabel)) htmlFor={[undefined]}>
                           <ForwardRef(InputLabel) classes={{...}} htmlFor={[undefined]}>
@@ -177,8 +177,8 @@ exports[`CategoryForm matches snapshot for new category 1`] = `
               </WithStyles(ForwardRef(TextField))>
               <WithStyles(ForwardRef(TextField)) className=\\"WithFormik(CategoryFormComponent)-input-2\\" margin=\\"dense\\" label=\\"Budget limit\\" inputProps={{...}} value={0} name=\\"budgetLimit\\" onChange={[Function]} error={[undefined]} helperText={[undefined]}>
                 <ForwardRef(TextField) classes={{...}} className=\\"WithFormik(CategoryFormComponent)-input-2\\" margin=\\"dense\\" label=\\"Budget limit\\" inputProps={{...}} value={0} name=\\"budgetLimit\\" onChange={[Function]} error={[undefined]} helperText={[undefined]}>
-                  <WithStyles(ForwardRef(FormControl)) className=\\"MuiTextField-root WithFormik(CategoryFormComponent)-input-2\\" error={[undefined]} fullWidth={[undefined]} required={false} variant=\\"standard\\" margin=\\"dense\\">
-                    <ForwardRef(FormControl) classes={{...}} className=\\"MuiTextField-root WithFormik(CategoryFormComponent)-input-2\\" error={[undefined]} fullWidth={[undefined]} required={false} variant=\\"standard\\" margin=\\"dense\\">
+                  <WithStyles(ForwardRef(FormControl)) className=\\"MuiTextField-root WithFormik(CategoryFormComponent)-input-2\\" error={[undefined]} fullWidth={[undefined]} hiddenLabel={[undefined]} required={false} variant=\\"standard\\" margin=\\"dense\\">
+                    <ForwardRef(FormControl) classes={{...}} className=\\"MuiTextField-root WithFormik(CategoryFormComponent)-input-2\\" error={[undefined]} fullWidth={[undefined]} hiddenLabel={[undefined]} required={false} variant=\\"standard\\" margin=\\"dense\\">
                       <div className=\\"MuiFormControl-root MuiTextField-root WithFormik(CategoryFormComponent)-input-2 MuiFormControl-marginDense\\">
                         <WithStyles(ForwardRef(InputLabel)) htmlFor={[undefined]}>
                           <ForwardRef(InputLabel) classes={{...}} htmlFor={[undefined]}>
@@ -210,7 +210,7 @@ exports[`CategoryForm matches snapshot for new category 1`] = `
               <div className=\\"WithFormik(CategoryFormComponent)-formActions-3\\">
                 <WithStyles(SubmitButtonWithProgress) label=\\"Save\\" isSubmitting={false}>
                   <SubmitButtonWithProgress classes={{...}} label=\\"Save\\" isSubmitting={false}>
-                    <div className=\\"SubmitButtonWithProgress-wrapper-58\\">
+                    <div className=\\"SubmitButtonWithProgress-wrapper-59\\">
                       <WithStyles(ForwardRef(Button)) type=\\"submit\\" color=\\"secondary\\" disabled={false}>
                         <ForwardRef(Button) classes={{...}} type=\\"submit\\" color=\\"secondary\\" disabled={false}>
                           <WithStyles(ForwardRef(ButtonBase)) className=\\"MuiButton-root MuiButton-text MuiButton-textSecondary\\" component=\\"button\\" disabled={false} focusRipple={true} focusVisibleClassName=\\"Mui-focusVisible\\" type=\\"submit\\">

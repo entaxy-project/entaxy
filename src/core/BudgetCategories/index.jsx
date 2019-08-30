@@ -9,6 +9,7 @@ import InputAdornment from '@material-ui/core/InputAdornment'
 import Typography from '@material-ui/core/Typography'
 import SearchIcon from '@material-ui/icons/Search'
 import AddIcon from '@material-ui/icons/Add'
+import InfoIcon from '@material-ui/icons/Info'
 import EditIcon from '@material-ui/icons/Edit'
 import DeleteIcon from '@material-ui/icons/Delete'
 import MoreVertIcon from '@material-ui/icons/MoreVert'
@@ -31,7 +32,7 @@ import { deleteCategory } from '../../store/budget/actions'
 import GroupDialog from './GroupDialog'
 import confirm from '../../util/confirm'
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     marginTop: theme.spacing(2),
     marginBottom: theme.spacing(6)
@@ -79,13 +80,18 @@ const useStyles = makeStyles(theme => ({
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(2),
     display: 'inline-block'
+  },
+  infoIcon: {
+    color: theme.palette.info.text,
+    fontSize: 18,
+    verticalAlign: 'text-bottom'
   }
 }))
 
 
 const BudgetCategories = () => {
   const classes = useStyles()
-  const { budget, formatCurrency } = useSelector(state => ({
+  const { budget, formatCurrency } = useSelector((state) => ({
     budget: state.budget,
     formatCurrency: currencyFormatter(state.settings.locale, state.settings.currency)
   }))
@@ -105,7 +111,7 @@ const BudgetCategories = () => {
   // --- Filters ----
   function handleFilterChange(event) {
     if ('persist' in event) event.persist()
-    setfilter(oldValues => ({
+    setfilter((oldValues) => ({
       ...oldValues,
       [event.target.name]: event.target.value
     }))
@@ -120,7 +126,7 @@ const BudgetCategories = () => {
     }, [])
     if (filter.category !== '') {
       filteredTree.forEach((parentCategory, index) => {
-        filteredTree[index].options = parentCategory.options.filter(category => (
+        filteredTree[index].options = parentCategory.options.filter((category) => (
           category.label.toLowerCase().includes(filter.category.toLowerCase())
         ))
       })
@@ -182,7 +188,7 @@ const BudgetCategories = () => {
 
   const handleDeleteGroup = (category) => {
     let title = `Delete ${category.label} group`
-    const childCategoryIds = category.options.map(item => item.id)
+    const childCategoryIds = category.options.map((item) => item.id)
     if (category.options.length > 0) {
       title += ` and ${pluralize('categories', category.options.length, true)}.`
     }
@@ -219,7 +225,7 @@ const BudgetCategories = () => {
       <CardHeader
         avatar={<div className={classes.circle} style={{ background: category.colour }} />}
         action={(
-          <IconButton aria-label="settings" onClick={event => handleOpenPopup(event, category.id)}>
+          <IconButton aria-label="settings" onClick={(event) => handleOpenPopup(event, category.id)}>
             <MoreVertIcon />
           </IconButton>
         )}
@@ -284,14 +290,15 @@ const BudgetCategories = () => {
           <Select
             placeholder="All groups"
             name="parentCategoryId"
-            value={filter.parentCategoryId in budget.categoriesById
-              ? {
-                label: budget.categoriesById[filter.parentCategoryId].name,
-                value: filter.parentCategoryId
-              }
-              : null
+            value={
+              filter.parentCategoryId in budget.categoriesById
+                ? {
+                  label: budget.categoriesById[filter.parentCategoryId].name,
+                  value: filter.parentCategoryId
+                }
+                : null
             }
-            options={budget.categoryTree.map(cat => ({ label: cat.label, value: cat.id }))}
+            options={budget.categoryTree.map((cat) => ({ label: cat.label, value: cat.id }))}
             inputProps={{ 'aria-label': 'All categories' }}
             onChange={(value) => {
               handleFilterChange({
@@ -311,32 +318,41 @@ const BudgetCategories = () => {
           </Tooltip>
         </div>
       </Grid>
-      {filteredCategories().map(group => (
+      {filteredCategories().map((group) => (
         <Grid container spacing={2} key={group.id} className={classes.categoryGroup}>
           <Grid item xs={12}>
             <Typography variant="h6" className={classes.groupName}>{group.label}</Typography>
-            <IconButton
-              disabled={group.isIncome}
-              aria-label="Change group name"
-              onClick={() => handleEditGroup(group)}
-              style={{ padding: 8 }}
-            >
-              <Tooltip title="Change group name">
-                <EditIcon style={{ fontSize: 18 }} />
+            {group.isIncome && (
+              <Tooltip title="The Income group cannot be edited or removed">
+                <InfoIcon className={classes.infoIcon} />
               </Tooltip>
-            </IconButton>
-            <IconButton
-              disabled={group.isIncome}
-              aria-label="Delete group"
-              onClick={() => handleDeleteGroup(group)}
-              style={{ padding: 8 }}
-            >
-              <Tooltip title="Delete group">
-                <DeleteIcon style={{ fontSize: 18 }} />
-              </Tooltip>
-            </IconButton>
+            )}
+            {!group.isIncome && (
+              <>
+                <IconButton
+                  disabled={group.isIncome}
+                  aria-label="Change group name"
+                  onClick={() => handleEditGroup(group)}
+                  style={{ padding: 8 }}
+                >
+                  <Tooltip title="Change group name">
+                    <EditIcon style={{ fontSize: 18 }} />
+                  </Tooltip>
+                </IconButton>
+                <IconButton
+                  disabled={group.isIncome}
+                  aria-label="Delete group"
+                  onClick={() => handleDeleteGroup(group)}
+                  style={{ padding: 8 }}
+                >
+                  <Tooltip title="Delete group">
+                    <DeleteIcon style={{ fontSize: 18 }} />
+                  </Tooltip>
+                </IconButton>
+              </>
+            )}
           </Grid>
-          {group.options.map(category => (
+          {group.options.map((category) => (
             <Grid item lg={3} md={4} sm={6} xs={12} key={category.id}>
               <Card>{renderCategory(category.id)}</Card>
             </Grid>

@@ -7,8 +7,8 @@ import { updateAccount, deleteAccount } from '../../store/accounts/actions'
 import confirm from '../../util/confirm'
 
 const mapDispatchToProps = {
-  handleUpdate: account => updateAccount(account),
-  handleDelete: account => deleteAccount(account)
+  handleUpdate: (account) => updateAccount(account),
+  handleDelete: (account) => deleteAccount(account)
 }
 
 export class EditAccountComponent extends React.Component {

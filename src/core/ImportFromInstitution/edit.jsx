@@ -9,7 +9,7 @@ const mapDispatchToProps = {
   updateAccountGroup: (institution, accountGroup, accounts) => (
     updateAccountGroup(institution, accountGroup, accounts)
   ),
-  deleteAccountGroup: accountGroup => deleteAccountGroup(accountGroup)
+  deleteAccountGroup: (accountGroup) => deleteAccountGroup(accountGroup)
 }
 
 export class EditImportFromInstitutionComponent extends React.Component {

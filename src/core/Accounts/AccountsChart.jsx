@@ -49,16 +49,19 @@ const baseColors = [
 ]
 
 const AccountsChart = () => {
-  const { accounts, formatCurrency } = useSelector(state => ({
+  const { accounts, formatCurrency } = useSelector((state) => ({
     accounts: state.accounts,
     formatCurrency: currencyFormatter(state.settings.locale, state.settings.currency)
   }))
   const data = []
   let institutionCount = 0
-  for (const institution of Object.keys(accounts.byInstitution).sort()) {
+  let institution
+  for (institution of Object.keys(accounts.byInstitution).sort()) {
     let accountCount = 0
-    for (const group of Object.values(accounts.byInstitution[institution].groups)) {
-      for (const accountId of group.accountIds) {
+    let group
+    for (group of Object.values(accounts.byInstitution[institution].groups)) {
+      let accountId
+      for (accountId of group.accountIds) {
         data.push({
           name: accounts.byId[accountId].name,
           value: accounts.byId[accountId].currentBalance.localCurrency || 0,
@@ -78,7 +81,7 @@ const AccountsChart = () => {
           nameKey="name"
           dataKey="value"
         >
-          {data.map(entry => <Cell key={`cell-${data.name}`} fill={entry.colour} />)}
+          {data.map((entry) => <Cell key={`cell-${data.name}`} fill={entry.colour} />)}
         </Pie>
         <Tooltip
           formatter={(value, name) => [formatCurrency(value), name]}

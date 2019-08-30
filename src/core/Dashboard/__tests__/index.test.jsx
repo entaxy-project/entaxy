@@ -49,7 +49,7 @@ describe('Dashboard', () => {
     ))
     expect(wrapper.debug()).toMatchSnapshot()
 
-    const component = wrapper.findWhere(node => node.name() === 'DashboardComponent')
+    const component = wrapper.findWhere((node) => node.name() === 'DashboardComponent')
     expect(component.props().accounts).toEqual(accountsInitialState)
     expect(component.props().totalBalance).toEqual(0)
   })
@@ -79,7 +79,7 @@ describe('Dashboard', () => {
     ))
     expect(wrapper.debug()).toMatchSnapshot()
 
-    const component = wrapper.findWhere(node => node.name() === 'DashboardComponent')
+    const component = wrapper.findWhere((node) => node.name() === 'DashboardComponent')
     expect(component.props().accounts).toEqual(store.getState().accounts)
     expect(component.props().totalBalance).toEqual(accounts[0].currentBalance.localCurrency)
   })
@@ -107,7 +107,7 @@ describe('Dashboard', () => {
     ))
     expect(wrapper.debug()).toMatchSnapshot()
 
-    const component = wrapper.findWhere(node => node.name() === 'DashboardComponent')
+    const component = wrapper.findWhere((node) => node.name() === 'DashboardComponent')
     expect(component.props().accounts).toEqual(store.getState().accounts)
     expect(component.props().totalBalance).toEqual(
       accounts[0].currentBalance.localCurrency + accounts[1].currentBalance.localCurrency

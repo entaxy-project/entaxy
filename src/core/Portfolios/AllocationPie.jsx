@@ -34,10 +34,10 @@ const AllocationPie = ({ data }) => {
       <Group top={(height / 2) - margin.top} left={width / 2}>
         <Pie
           data={data}
-          pieValue={d => d.percentage}
+          pieValue={(d) => d.percentage}
           outerRadius={radius - 60}
           innerRadius={0}
-          fillOpacity={d => 1 / (d.index + 2)}
+          fillOpacity={(d) => 1 / (d.index + 2)}
           padAngle={0}
           centroid={(centroid, arc) => {
             const [x, y] = centroid

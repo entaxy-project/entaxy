@@ -13,7 +13,7 @@ import { updateSettings, showSnackbar } from '../../store/settings/actions'
 import { resetState, saveState } from '../../store/user/actions'
 import SettingsForm from './form'
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
     margin: theme.spacing(2),
     padding: theme.spacing(2)
@@ -29,9 +29,9 @@ const styles = theme => ({
   }
 })
 
-const mapDispatchToProps = dispatch => ({
-  saveSettings: settings => dispatch(updateSettings(settings)),
-  showSnackbarMessage: message => dispatch(showSnackbar(message)),
+const mapDispatchToProps = (dispatch) => ({
+  saveSettings: (settings) => dispatch(updateSettings(settings)),
+  showSnackbarMessage: (message) => dispatch(showSnackbar(message)),
   deleteAllData: async () => {
     dispatch(resetState())
     await saveState()

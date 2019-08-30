@@ -20,7 +20,7 @@ import InstitutionIcon from '../../common/InstitutionIcon'
 import AccountsChart from '../Accounts/AccountsChart'
 import LinkTo from '../../common/LinkTo'
 
-const styles = theme => ({
+const styles = (theme) => ({
   balancePaper: {
     marginTop: theme.spacing(2),
     padding: theme.spacing(2),
@@ -79,7 +79,7 @@ const styles = theme => ({
   }
 })
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   accounts: state.accounts,
   settings: state.settings,
   totalBalance: Object.values(state.accounts.byInstitution).reduce(
@@ -156,8 +156,8 @@ export const DashboardComponent = ({
                         <TableCell align="right">{`Total ${settings.currency}`}</TableCell>
                       </TableRow>
                     </TableHead>
-                    {Object.keys(accounts.byInstitution).sort().map(institution => (
-                      Object.values(accounts.byInstitution[institution].groups).map(accountGroup => (
+                    {Object.keys(accounts.byInstitution).sort().map((institution) => (
+                      Object.values(accounts.byInstitution[institution].groups).map((accountGroup) => (
                         <TableBody key={accountGroup.id}>
                           <TableRow>
                             <TableCell>

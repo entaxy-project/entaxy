@@ -145,7 +145,7 @@ describe('TransactionsTable', () => {
           sortBy: 'createdAt',
           sortDirection: 'ASC',
           filters: {
-            createdAt: t => t.createdAt > transactions[0].createdAt
+            createdAt: (t) => t.createdAt > transactions[0].createdAt
           }
         })
         expect(instance.filterAndSortTransactions()).toEqual([transactions[1], transactions[2]])
@@ -246,7 +246,7 @@ describe('TransactionsTable', () => {
       it('selects all transactions', () => {
         expect(wrapper.state('selected')).toEqual([])
         instance.handleSelectAllClick({ target: { checked: true } }, transactions)
-        expect(wrapper.state('selected')).toEqual(transactions.map(n => n.id))
+        expect(wrapper.state('selected')).toEqual(transactions.map((n) => n.id))
       })
 
       it('check selection', () => {

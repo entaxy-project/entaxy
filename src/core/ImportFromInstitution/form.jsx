@@ -21,7 +21,7 @@ import InstitutionFormFields, {
 import importFromCoinbase from './importers/coinbase'
 import { showOverlay, hideOverlay } from '../../store/settings/actions'
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
     margin: theme.spacing(2),
     padding: theme.spacing(2)
@@ -182,7 +182,7 @@ export default compose(
       setSubmitting(true)
       props.showOverlay(`Importing data from ${props.institution} ...`)
       const importData = {
-        Coinbase: formValues => importFromCoinbase(formValues)
+        Coinbase: (formValues) => importFromCoinbase(formValues)
       }[props.institution]
 
       importData(values)

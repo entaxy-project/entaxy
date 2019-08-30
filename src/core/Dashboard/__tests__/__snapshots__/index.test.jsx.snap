@@ -14,7 +14,7 @@ exports[`Dashboard matches snapshot with no accounts 1`] = `
                     <ForwardRef(Paper) classes={{...}} className=\\"DashboardComponent-noAccountsPaper-11\\">
                       <div className=\\"MuiPaper-root MuiPaper-elevation1 DashboardComponent-noAccountsPaper-11 MuiPaper-rounded\\">
                         <WithStyles(ForwardRef(Typography)) variant=\\"h6\\">
-                          <ForwardRef(Typography) classes={{...}} variant=\\"h6\\" theme={{...}}>
+                          <ForwardRef(Typography) classes={{...}} variant=\\"h6\\">
                             <h6 className=\\"MuiTypography-root MuiTypography-h6\\">
                               You don&#39;t have any accounts yet.
                             </h6>
@@ -47,7 +47,7 @@ exports[`Dashboard matches snapshot with no accounts 1`] = `
                           </ForwardRef(Button)>
                         </WithStyles(ForwardRef(Button))>
                         <WithStyles(ForwardRef(Typography)) variant=\\"body1\\">
-                          <ForwardRef(Typography) classes={{...}} variant=\\"body1\\" theme={{...}}>
+                          <ForwardRef(Typography) classes={{...}} variant=\\"body1\\">
                             <p className=\\"MuiTypography-root MuiTypography-body1\\">
                               You can keep track of all the accounts you have from any institution.
                             </p>
@@ -87,14 +87,14 @@ exports[`Dashboard matches snapshot with one account 1`] = `
                                 <ForwardRef(Paper) classes={{...}} className=\\"DashboardComponent-balancePaper-1\\">
                                   <div className=\\"MuiPaper-root MuiPaper-elevation1 DashboardComponent-balancePaper-1 MuiPaper-rounded\\">
                                     <WithStyles(ForwardRef(Typography)) variant=\\"body1\\" color=\\"textSecondary\\" align=\\"right\\">
-                                      <ForwardRef(Typography) classes={{...}} variant=\\"body1\\" color=\\"textSecondary\\" align=\\"right\\" theme={{...}}>
+                                      <ForwardRef(Typography) classes={{...}} variant=\\"body1\\" color=\\"textSecondary\\" align=\\"right\\">
                                         <p className=\\"MuiTypography-root MuiTypography-body1 MuiTypography-colorTextSecondary MuiTypography-alignRight\\">
                                           Total
                                         </p>
                                       </ForwardRef(Typography)>
                                     </WithStyles(ForwardRef(Typography))>
                                     <WithStyles(ForwardRef(Typography)) variant=\\"h5\\" align=\\"right\\" className=\\"DashboardComponent-balanceAmount-2\\">
-                                      <ForwardRef(Typography) classes={{...}} variant=\\"h5\\" align=\\"right\\" className=\\"DashboardComponent-balanceAmount-2\\" theme={{...}}>
+                                      <ForwardRef(Typography) classes={{...}} variant=\\"h5\\" align=\\"right\\" className=\\"DashboardComponent-balanceAmount-2\\">
                                         <h5 className=\\"MuiTypography-root DashboardComponent-balanceAmount-2 MuiTypography-h5 MuiTypography-alignRight\\">
                                           €1,000.00
                                         </h5>
@@ -215,7 +215,7 @@ exports[`Dashboard matches snapshot with one account 1`] = `
                                                                             </InstitutionIcon>
                                                                           </WithStyles(InstitutionIcon)>
                                                                           <WithStyles(ForwardRef(Typography)) variant=\\"subtitle2\\">
-                                                                            <ForwardRef(Typography) classes={{...}} variant=\\"subtitle2\\" theme={{...}}>
+                                                                            <ForwardRef(Typography) classes={{...}} variant=\\"subtitle2\\">
                                                                               <h6 className=\\"MuiTypography-root MuiTypography-subtitle2\\">
                                                                                 TD
                                                                               </h6>
@@ -234,7 +234,7 @@ exports[`Dashboard matches snapshot with one account 1`] = `
                                                                     <ForwardRef(TableCell) classes={{...}} align=\\"right\\">
                                                                       <td className=\\"MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight\\" aria-sort={{...}} scope={[undefined]}>
                                                                         <WithStyles(ForwardRef(Typography)) variant=\\"subtitle2\\">
-                                                                          <ForwardRef(Typography) classes={{...}} variant=\\"subtitle2\\" theme={{...}}>
+                                                                          <ForwardRef(Typography) classes={{...}} variant=\\"subtitle2\\">
                                                                             <h6 className=\\"MuiTypography-root MuiTypography-subtitle2\\">
                                                                               €1,000.00
                                                                             </h6>
@@ -351,14 +351,14 @@ exports[`Dashboard matches snapshot with two accounts in a different currency 1`
                                 <ForwardRef(Paper) classes={{...}} className=\\"DashboardComponent-balancePaper-1\\">
                                   <div className=\\"MuiPaper-root MuiPaper-elevation1 DashboardComponent-balancePaper-1 MuiPaper-rounded\\">
                                     <WithStyles(ForwardRef(Typography)) variant=\\"body1\\" color=\\"textSecondary\\" align=\\"right\\">
-                                      <ForwardRef(Typography) classes={{...}} variant=\\"body1\\" color=\\"textSecondary\\" align=\\"right\\" theme={{...}}>
+                                      <ForwardRef(Typography) classes={{...}} variant=\\"body1\\" color=\\"textSecondary\\" align=\\"right\\">
                                         <p className=\\"MuiTypography-root MuiTypography-body1 MuiTypography-colorTextSecondary MuiTypography-alignRight\\">
                                           Total
                                         </p>
                                       </ForwardRef(Typography)>
                                     </WithStyles(ForwardRef(Typography))>
                                     <WithStyles(ForwardRef(Typography)) variant=\\"h5\\" align=\\"right\\" className=\\"DashboardComponent-balanceAmount-2\\">
-                                      <ForwardRef(Typography) classes={{...}} variant=\\"h5\\" align=\\"right\\" className=\\"DashboardComponent-balanceAmount-2\\" theme={{...}}>
+                                      <ForwardRef(Typography) classes={{...}} variant=\\"h5\\" align=\\"right\\" className=\\"DashboardComponent-balanceAmount-2\\">
                                         <h5 className=\\"MuiTypography-root DashboardComponent-balanceAmount-2 MuiTypography-h5 MuiTypography-alignRight\\">
                                           €2,500.00
                                         </h5>
@@ -479,7 +479,7 @@ exports[`Dashboard matches snapshot with two accounts in a different currency 1`
                                                                             </InstitutionIcon>
                                                                           </WithStyles(InstitutionIcon)>
                                                                           <WithStyles(ForwardRef(Typography)) variant=\\"subtitle2\\">
-                                                                            <ForwardRef(Typography) classes={{...}} variant=\\"subtitle2\\" theme={{...}}>
+                                                                            <ForwardRef(Typography) classes={{...}} variant=\\"subtitle2\\">
                                                                               <h6 className=\\"MuiTypography-root MuiTypography-subtitle2\\">
                                                                                 TD
                                                                               </h6>
@@ -498,7 +498,7 @@ exports[`Dashboard matches snapshot with two accounts in a different currency 1`
                                                                     <ForwardRef(TableCell) classes={{...}} align=\\"right\\">
                                                                       <td className=\\"MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight\\" aria-sort={{...}} scope={[undefined]}>
                                                                         <WithStyles(ForwardRef(Typography)) variant=\\"subtitle2\\">
-                                                                          <ForwardRef(Typography) classes={{...}} variant=\\"subtitle2\\" theme={{...}}>
+                                                                          <ForwardRef(Typography) classes={{...}} variant=\\"subtitle2\\">
                                                                             <h6 className=\\"MuiTypography-root MuiTypography-subtitle2\\">
                                                                               €2,500.00
                                                                             </h6>

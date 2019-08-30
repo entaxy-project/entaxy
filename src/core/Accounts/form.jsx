@@ -23,7 +23,7 @@ import SubmitButtonWithProgress from '../../common/SubmitButtonWithProgress'
 import DescriptionCard from '../../common/DescriptionCard'
 import LinkTo from '../../common/LinkTo'
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
     margin: theme.spacing(2),
     padding: theme.spacing(2)
@@ -131,7 +131,7 @@ export class AccountFormComponent extends React.Component {
 
   formatedInstitutions = () => {
     const allInstitutions = new Set(this.props.accountInstitutions.concat(Object.keys(institutions)))
-    return Array.from(allInstitutions).sort().map(key => ({ value: key, label: key }))
+    return Array.from(allInstitutions).sort().map((key) => ({ value: key, label: key }))
   }
 
   render() {
@@ -179,7 +179,7 @@ export class AccountFormComponent extends React.Component {
               label="Account name"
               inputProps={{
                 'aria-label': 'Account name',
-                maxLength: 100
+                maxLength: 50
               }}
               value={values.name}
               name="name"
@@ -198,6 +198,7 @@ export class AccountFormComponent extends React.Component {
               value={values.openingBalance}
               name="openingBalance"
               onChange={handleChange}
+              onFocus={(event) => event.target.select()}
               error={errors.openingBalance && touched.openingBalance}
               helperText={errors.openingBalance}
             />
@@ -278,7 +279,7 @@ export default compose(
           name: '',
           institution: null,
           openingBalance: 0,
-          openingBalanceDate: format(Date.now(), 'YYYY-MM-DD'),
+          openingBalanceDate: format(Date.now(), 'yyyy-MM-dd'),
           currency: settings.currency === undefined ? null : {
             label: `(${settings.currency}) ${fiatCurrencies[settings.currency]}`,
             value: settings.currency
@@ -287,7 +288,7 @@ export default compose(
       }
       return {
         ...account,
-        openingBalanceDate: format(new Date(account.openingBalanceDate), 'YYYY-MM-DD'),
+        openingBalanceDate: format(new Date(account.openingBalanceDate), 'yyyy-MM-dd'),
         institution: {
           label: account.institution,
           value: account.institution
@@ -298,30 +299,24 @@ export default compose(
         }
       }
     },
-    validationSchema: (props) => {
-      return Yup.lazy((values) => {
-        const accountNames = Object.values(props.accounts.byId).filter(
-          account => account.institution === values.institution.value
-        ).map(account => account.name)
-        console.log(accountNames, values)
-        return Yup.object().shape({
-          name: Yup.string()
-            .max(50, 'Too Long!')
-            .required('Please enter a name for this account')
-            .notOneOf(accountNames, `There's already an account with this name in ${values.institution.value}`),
-          institution: Yup.object()
-            .required('Please select an institution')
-            .nullable(accountNames),
-          openingBalance: Yup.number()
-            .required('Please enter an opening balance')
-            .min(-999999999.99)
-            .max(999999999.99),
-          openingBalanceDate: Yup.date()
-            .required('Please select the date of the opening balance'),
-          currency: Yup.object()
-            .required('Please select the currency of this account')
-            .nullable()
-        })
+    validationSchema: () => {
+      return Yup.object().shape({
+        name: Yup.string()
+          .max(50, 'Too Long!')
+          .required('Please enter a name for this account'),
+        institution: Yup.object()
+          .required('Please select an institution')
+          .nullable(),
+        openingBalance: Yup.number()
+          .required('Please enter an opening balance')
+          .min(-9999999.99)
+          .max(9999999.99),
+        openingBalanceDate: Yup.date()
+          .required('Please select the date of the opening balance')
+          .max(new Date(), 'The opening balance cannot be in the future'),
+        currency: Yup.object()
+          .required('Please select the currency of this account')
+          .nullable()
       })
     },
     handleSubmit: async (values, { props, setSubmitting }) => {
@@ -329,7 +324,7 @@ export default compose(
       await props.handleSave({
         ...values,
         institution: values.institution.value,
-        openingBalanceDate: parse(values.openingBalanceDate).getTime(),
+        openingBalanceDate: parse(values.openingBalanceDate, 'yyyy-M-d', new Date()).getTime(),
         currency: values.currency.value
       })
       setSubmitting(false)

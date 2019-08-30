@@ -28,7 +28,7 @@ exports[`SettingsForm matches snapshot before after submitting form 1`] = `
             Select...
           </div>
           <div
-            className="css-1g6gooi"
+            className="css-w8afj7-Input"
           >
             <div
               className=""
@@ -86,20 +86,20 @@ exports[`SettingsForm matches snapshot before after submitting form 1`] = `
           </div>
         </div>
         <div
-          className=" css-1wy0on6"
+          className=" css-1g48xl4-IndicatorsContainer"
         >
           <div
             aria-hidden="true"
             className=" css-at12u2-loadingIndicator"
           >
             <span
-              className="css-d0ptw1"
+              className="css-155jui9-LoadingDot"
             />
             <span
-              className="css-3utax6"
+              className="css-1jmiv6o-LoadingDot"
             />
             <span
-              className="css-1qyc6ze"
+              className="css-fb4kmi-LoadingDot"
             />
           </div>
           <span
@@ -113,7 +113,7 @@ exports[`SettingsForm matches snapshot before after submitting form 1`] = `
           >
             <svg
               aria-hidden="true"
-              className="css-19bqh2r"
+              className="css-tj5bde-Svg"
               focusable="false"
               height={20}
               viewBox="0 0 20 20"
@@ -157,7 +157,7 @@ exports[`SettingsForm matches snapshot before after submitting form 1`] = `
             Select...
           </div>
           <div
-            className="css-1g6gooi"
+            className="css-w8afj7-Input"
           >
             <div
               className=""
@@ -215,20 +215,20 @@ exports[`SettingsForm matches snapshot before after submitting form 1`] = `
           </div>
         </div>
         <div
-          className=" css-1wy0on6"
+          className=" css-1g48xl4-IndicatorsContainer"
         >
           <div
             aria-hidden="true"
             className=" css-at12u2-loadingIndicator"
           >
             <span
-              className="css-d0ptw1"
+              className="css-155jui9-LoadingDot"
             />
             <span
-              className="css-3utax6"
+              className="css-1jmiv6o-LoadingDot"
             />
             <span
-              className="css-1qyc6ze"
+              className="css-fb4kmi-LoadingDot"
             />
           </div>
           <span
@@ -242,7 +242,7 @@ exports[`SettingsForm matches snapshot before after submitting form 1`] = `
           >
             <svg
               aria-hidden="true"
-              className="css-19bqh2r"
+              className="css-tj5bde-Svg"
               focusable="false"
               height={20}
               viewBox="0 0 20 20"
@@ -291,7 +291,7 @@ exports[`SettingsForm matches snapshot before after submitting form 1`] = `
   />
   <div>
     <div
-      className="SubmitButtonWithProgress-wrapper-58"
+      className="SubmitButtonWithProgress-wrapper-57"
     >
       <button
         className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary Mui-disabled Mui-disabled"
@@ -317,7 +317,7 @@ exports[`SettingsForm matches snapshot before after submitting form 1`] = `
         </span>
       </button>
       <div
-        className="MuiCircularProgress-root SubmitButtonWithProgress-buttonProgress-59 MuiCircularProgress-colorPrimary MuiCircularProgress-indeterminate"
+        className="MuiCircularProgress-root SubmitButtonWithProgress-buttonProgress-58 MuiCircularProgress-colorPrimary MuiCircularProgress-indeterminate"
         role="progressbar"
         style={
           Object {
@@ -374,7 +374,7 @@ exports[`SettingsForm matches snapshot before submitting form 1`] = `
             Select...
           </div>
           <div
-            className="css-1g6gooi"
+            className="css-w8afj7-Input"
           >
             <div
               className=""
@@ -432,20 +432,20 @@ exports[`SettingsForm matches snapshot before submitting form 1`] = `
           </div>
         </div>
         <div
-          className=" css-1wy0on6"
+          className=" css-1g48xl4-IndicatorsContainer"
         >
           <div
             aria-hidden="true"
             className=" css-at12u2-loadingIndicator"
           >
             <span
-              className="css-d0ptw1"
+              className="css-155jui9-LoadingDot"
             />
             <span
-              className="css-3utax6"
+              className="css-1jmiv6o-LoadingDot"
             />
             <span
-              className="css-1qyc6ze"
+              className="css-fb4kmi-LoadingDot"
             />
           </div>
           <span
@@ -459,7 +459,7 @@ exports[`SettingsForm matches snapshot before submitting form 1`] = `
           >
             <svg
               aria-hidden="true"
-              className="css-19bqh2r"
+              className="css-tj5bde-Svg"
               focusable="false"
               height={20}
               viewBox="0 0 20 20"
@@ -503,7 +503,7 @@ exports[`SettingsForm matches snapshot before submitting form 1`] = `
             Select...
           </div>
           <div
-            className="css-1g6gooi"
+            className="css-w8afj7-Input"
           >
             <div
               className=""
@@ -561,20 +561,20 @@ exports[`SettingsForm matches snapshot before submitting form 1`] = `
           </div>
         </div>
         <div
-          className=" css-1wy0on6"
+          className=" css-1g48xl4-IndicatorsContainer"
         >
           <div
             aria-hidden="true"
             className=" css-at12u2-loadingIndicator"
           >
             <span
-              className="css-d0ptw1"
+              className="css-155jui9-LoadingDot"
             />
             <span
-              className="css-3utax6"
+              className="css-1jmiv6o-LoadingDot"
             />
             <span
-              className="css-1qyc6ze"
+              className="css-fb4kmi-LoadingDot"
             />
           </div>
           <span
@@ -588,7 +588,7 @@ exports[`SettingsForm matches snapshot before submitting form 1`] = `
           >
             <svg
               aria-hidden="true"
-              className="css-19bqh2r"
+              className="css-tj5bde-Svg"
               focusable="false"
               height={20}
               viewBox="0 0 20 20"
@@ -637,7 +637,7 @@ exports[`SettingsForm matches snapshot before submitting form 1`] = `
   />
   <div>
     <div
-      className="SubmitButtonWithProgress-wrapper-58"
+      className="SubmitButtonWithProgress-wrapper-57"
     >
       <button
         className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary"

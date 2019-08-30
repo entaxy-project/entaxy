@@ -44,7 +44,7 @@ const TaxCreditLines = ({
         width: spring(barWidth)
       }}
     >
-      {style => (
+      {(style) => (
         <g key="TaxCredits">
           <Line
             key="TaxCredit-vertical"

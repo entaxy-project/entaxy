@@ -10,7 +10,7 @@ import Button from '@material-ui/core/Button'
 import SubmitButtonWithProgress from '../../common/SubmitButtonWithProgress'
 import { createCategory, updateCategory } from '../../store/budget/actions'
 
-const styles = theme => ({
+const styles = (theme) => ({
   form: {
     display: 'flex',
     flexDirection: 'column',
@@ -31,13 +31,13 @@ const styles = theme => ({
   }
 })
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   budget: state.budget
 })
 
 const mapDispatchToProps = {
   handleCreate: (category, groupId) => createCategory(category, groupId),
-  handleUpdate: category => updateCategory(category)
+  handleUpdate: (category) => updateCategory(category)
 }
 
 const CategoryFormComponent = ({

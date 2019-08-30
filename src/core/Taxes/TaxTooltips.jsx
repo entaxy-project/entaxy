@@ -17,7 +17,7 @@ const TaxTooltips = ({
         top: spring(top)
       }}
     >
-      {style => (
+      {(style) => (
         <Tooltip
           style={{
             top: style.top,

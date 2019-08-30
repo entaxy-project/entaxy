@@ -21,7 +21,7 @@ import Tooltip from '@material-ui/core/Tooltip'
 import LinkTo from '../LinkTo'
 import { userLogout } from '../../store/user/actions'
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
     display: 'flex',
     minWidth: 135
@@ -38,7 +38,7 @@ const styles = theme => ({
 
 const mapStateToProps = ({ user }) => ({ user })
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   handleLogout: () => { dispatch(userLogout()) }
 })
 
@@ -50,7 +50,7 @@ export class LoginButtonComponent extends React.Component {
 
   handleClick = (event) => {
     const { currentTarget } = event
-    this.setState(state => ({
+    this.setState((state) => ({
       anchorEl: currentTarget,
       open: !state.open
     }))

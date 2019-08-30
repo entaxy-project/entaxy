@@ -9,7 +9,7 @@ import TextField from '@material-ui/core/TextField'
 import ModalDialog from '../../common/ModalDialog'
 import { createCategory, updateCategory } from '../../store/budget/actions'
 
-const styles = theme => ({
+const styles = (theme) => ({
   input: {
     marginBottom: theme.spacing(1),
     marginTop: theme.spacing(1),

@@ -14,7 +14,7 @@ import { fiatCurrencies, filteredFiatCurrencies } from '../../data/currencies'
 import locales, { filteredLocales } from '../../data/locales'
 import confirm from '../../util/confirm'
 
-const styles = theme => ({
+const styles = (theme) => ({
   form: {
     display: 'flex',
     flexDirection: 'column'
@@ -61,7 +61,7 @@ export class SettingsFormComponent extends React.Component {
       setFieldValue,
       isSubmitting
     } = this.props
-
+    console.log(filteredFiatCurrencies)
     return (
       <form onSubmit={handleSubmit} className={classes.form}>
         <AutoComplete
@@ -126,7 +126,7 @@ export default compose(
           value: settings.locale
         },
         currency: settings.currency === undefined ? '' : {
-          label: fiatCurrencies[settings.currency],
+          label: `(${settings.currency}) ${fiatCurrencies[settings.currency]}`,
           value: settings.currency
         }
       })
