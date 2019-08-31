@@ -51,7 +51,11 @@ const useStyles = makeStyles((theme) => ({
   titleLevel1: {
     font: 'bold 48px var(--font-garden-grove)',
     marginTop: theme.spacing(5),
-    marginBottom: theme.spacing(10)
+    marginBottom: theme.spacing(6)
+  },
+  producthuntWidget: {
+    marginTop: theme.spacing(1),
+    textAlign: 'center'
   },
   // --- Level 2
   leftLevel2: {
@@ -230,6 +234,21 @@ const Landing = ({ history }) => {
           Insight into your finances, without sacrificing your data
         </div>
         <LandingCard history={history} />
+        <a
+          // eslint-disable-next-line max-len
+          href="https://www.producthunt.com/posts/entaxy?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-entaxy"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={classes.producthuntWidget}
+        >
+          <img
+          // eslint-disable-next-line max-len
+            src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=123751&theme=light" alt="Entaxy - Insight into your finances, without sacrificing your data | Product Hunt Embed"
+            style={{ width: '250px', height: '54px' }}
+            width="250px"
+            height="54px"
+          />
+        </a>
       </Grid>
       <Grid item xs={6} className={classes.rightLevel1} />
       {/* --- Level 2 --- */}
