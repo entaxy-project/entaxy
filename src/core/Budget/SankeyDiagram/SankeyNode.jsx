@@ -3,10 +3,13 @@ import PropTypes from 'prop-types'
 
 const SankeyNode = ({
   node,
-  fill
+  fill,
+  handleMouseOver,
+  handleMouseOut
 }) => {
   const width = node.x1 - node.x0
-  const height = node.y1 - node.y0
+  const height = node.y1 - node.y0 < 0 ? 0 : node.y1 - node.y0
+  // console.log('height', height)
   const alignLeft = node.data.parentId === undefined || node.isIncome
   return (
     <>
@@ -18,6 +21,10 @@ const SankeyNode = ({
         width={width}
         height={height}
         fill={fill}
+        onMouseOver={handleMouseOver}
+        onFocus={handleMouseOver}
+        onMouseOut={handleMouseOut}
+        onBlur={handleMouseOut}
       >
         <title>{node.name}</title>
       </rect>
@@ -26,6 +33,7 @@ const SankeyNode = ({
         y={node.y0 + ((height) / 2)}
         dy=".35em"
         textAnchor={alignLeft ? 'start' : 'end'}
+        fontSize="12px"
       >
         {node.name}
       </text>
@@ -35,7 +43,9 @@ const SankeyNode = ({
 
 SankeyNode.propTypes = {
   node: PropTypes.object.isRequired,
-  fill: PropTypes.string.isRequired
+  fill: PropTypes.string.isRequired,
+  handleMouseOver: PropTypes.func.isRequired,
+  handleMouseOut: PropTypes.func.isRequired
 }
 
 export default SankeyNode

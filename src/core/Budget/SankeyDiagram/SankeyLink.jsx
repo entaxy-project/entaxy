@@ -2,7 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { sankeyLinkHorizontal } from 'd3-sankey'
 
-const SankeyLink = ({ link, stroke }) => (
+const SankeyLink = ({
+  link,
+  stroke,
+  handleMouseOver,
+  handleMouseOut
+}) => (
   <path
     data-type="link"
     id={`link-${link.index}`}
@@ -13,12 +18,18 @@ const SankeyLink = ({ link, stroke }) => (
       stroke,
       strokeWidth: Math.max(1, link.width)
     }}
+    onMouseOver={handleMouseOver}
+    onFocus={handleMouseOver}
+    onMouseOut={handleMouseOut}
+    onBlur={handleMouseOut}
   />
 )
 
 SankeyLink.propTypes = {
-  link: PropTypes.string.isRequired,
-  stroke: PropTypes.string.isRequired
+  link: PropTypes.object.isRequired,
+  stroke: PropTypes.string.isRequired,
+  handleMouseOver: PropTypes.func.isRequired,
+  handleMouseOut: PropTypes.func.isRequired
 }
 
 export default SankeyLink
