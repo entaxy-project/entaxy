@@ -42,14 +42,22 @@ const SankeyTooltip = ({
         <svg
           x={style.x}
           y={style.y}
-          width={style.width}
-          height={style.height}
+          width={style.width + 10}
+          height={style.height + 10}
         >
+          <defs>
+            <filter id="shadow">
+              <feDropShadow floodOpacity="0.3" />
+            </filter>
+          </defs>
           <rect
             width={style.width}
             height={style.height}
-            stroke="black"
+            stroke="#eee"
             fill="white"
+            rx={4}
+            ry={4}
+            filter="url(#shadow)"
           />
           <text className={classes.title} x={10} y={20}>
             {data.name}

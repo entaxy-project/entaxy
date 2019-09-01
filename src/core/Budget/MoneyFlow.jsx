@@ -5,6 +5,11 @@ import Container from '@material-ui/core/Container'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
+import FormControl from '@material-ui/core/FormControl'
+import InputLabel from '@material-ui/core/InputLabel'
+import Select from '@material-ui/core/Select'
+import MenuItem from '@material-ui/core/MenuItem'
+import { startOfMonth, endOfMonth } from 'date-fns'
 import SankeyDiagram from './SankeyDiagram'
 
 const useStyles = makeStyles((theme) => ({
@@ -16,8 +21,27 @@ const useStyles = makeStyles((theme) => ({
     height: 400,
     minWidth: 200
   },
+  pageHeader: {
+    padding: theme.spacing(1),
+    display: 'flex',
+    justifyContent: 'space-between'
+  },
   chartTitle: {
-    padding: theme.spacing(1)
+    marginTop: theme.spacing(2)
+  },
+  filters: {
+    display: 'flex',
+    justifyContent: 'flex-end'
+  },
+  filterLabel: {
+    paddingTop: 20,
+    paddingLeft: theme.spacing(2),
+    paddingRight: theme.spacing(2),
+    color: theme.palette.grey[700]
+  },
+  filterMonthSelect: {
+    minWidth: 100,
+    marginRight: theme.spacing(1)
   }
 }))
 
@@ -25,20 +49,39 @@ const MoneyFlow = () => {
   const classes = useStyles()
   const [recWidth, setRecWidth] = useState(0)
   const [recHeight, setRecHeight] = useState(0)
-  const { budget, transactions } = useSelector((state) => ({
-    transactions: state.transactions.list,
-    budget: state.budget
+  const { budget, transactions, dateFormatter } = useSelector((state) => ({
+    transactions: state.transactions.list.sort((a, b) => a.createdAt - b.createdAt),
+    budget: state.budget,
+    dateFormatter: (new Intl.DateTimeFormat(state.settings.locale, { month: 'long' })).format
   }))
   const userHasBudget = Object.keys(budget.rules).length > 0
+  const start = new Date(transactions[0].createdAt)
+  const end = new Date(transactions[transactions.length - 1].createdAt)
+  const yearsList = Array.from(
+    Array(end.getFullYear() - start.getFullYear() + 1).keys(),
+    (n) => start.getFullYear() + n
+  )
+  const monthsList = Array.from(Array(12).keys(), (n) => n + 1).map(
+    (month) => dateFormatter(new Date(`${month}/01/1970`).getTime())
+  )
+  const initialValues = {
+    fromYear: yearsList[0],
+    fromMonth: monthsList[start.getMonth()],
+    toYear: yearsList[yearsList.length - 1],
+    toMonth: monthsList[end.getMonth()]
+  }
+  initialValues.fromDate = startOfMonth(new Date(`${initialValues.fromMonth}/01/${initialValues.fromYear}`))
+  initialValues.toDate = endOfMonth(new Date(`${initialValues.toMonth}/01/${initialValues.toYear}`))
+
+  const [values, setValues] = useState(initialValues)
 
   const graphData = useMemo(() => {
-    console.log('generateSankeyGraphData')
     const incomeGroupId = budget.categoryTree.find((group) => group.isIncome).id
-
     const usedCategories = Object.values(transactions
       .filter((transaction) => {
         return transaction.categoryId !== undefined
-        // Todo: filter by date
+          && transaction.createdAt >= values.fromDate.getTime()
+          && transaction.createdAt <= values.toDate.getTime()
       })
       .reduce((result, transaction) => {
         const category = budget.categoriesById[transaction.categoryId]
@@ -113,7 +156,7 @@ const MoneyFlow = () => {
           ]
         }
       }, { nodes: [], links: [] })
-  }, [budget, transactions])
+  }, [budget, transactions, values])
 
   const svgRef = useCallback((node) => {
     const measureSVG = () => {
@@ -130,13 +173,83 @@ const MoneyFlow = () => {
     }
   }, [])
 
+  function handleChange(event) {
+    setValues((oldValues) => {
+      const newValues = {
+        ...oldValues,
+        [event.target.name]: event.target.value
+      }
+      newValues.fromDate = startOfMonth(new Date(`${newValues.fromMonth}/01/${newValues.fromYear}`))
+      newValues.toDate = endOfMonth(new Date(`${newValues.toMonth}/01/${newValues.toYear}`))
+      return newValues
+    })
+  }
+  console.log(values)
   return (
     <Container className={classes.root}>
       <Grid container spacing={3}>
-        <Grid item xs={12}>
+        <Grid item xs={12} className={classes.pageHeader}>
           <Typography variant="h5" className={classes.chartTitle}>
             Money flow
           </Typography>
+          <div className={classes.filters}>
+            <Typography className={classes.filterLabel}>
+              From
+            </Typography>
+            <FormControl className={classes.filterMonthSelect}>
+              <InputLabel shrink htmlFor="fromMonth-label-placeholder">Month</InputLabel>
+              <Select
+                value={values.fromMonth}
+                onChange={handleChange}
+                inputProps={{ name: 'fromMonth', id: 'fromMonth' }}
+              >
+                {monthsList.map((month) => (
+                  <MenuItem key={month} value={month}>{month}</MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+            <FormControl>
+              <InputLabel shrink htmlFor="fromYear-label-placeholder">Year</InputLabel>
+              <Select
+                value={values.fromYear}
+                onChange={handleChange}
+                inputProps={{ name: 'fromYear', id: 'fromYear' }}
+              >
+                {yearsList.map((year) => (
+                  <MenuItem key={year} value={year}>{year}</MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+            <Typography className={classes.filterLabel}>
+              To
+            </Typography>
+            <FormControl className={classes.filterMonthSelect}>
+              <InputLabel shrink htmlFor="toMonth-label-placeholder">Month</InputLabel>
+              <Select
+                value={values.toMonth}
+                onChange={handleChange}
+                inputProps={{ name: 'toMonth', id: 'toMonth' }}
+              >
+                {monthsList.map((month) => (
+                  <MenuItem key={month} value={month}>{month}</MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+            <FormControl>
+              <InputLabel shrink htmlFor="toYear-label-placeholder">Year</InputLabel>
+              <Select
+                value={values.toYear}
+                onChange={handleChange}
+                inputProps={{ name: 'toYear', id: 'toYear' }}
+              >
+                {yearsList.map((year) => (
+                  <MenuItem key={year} value={year}>{year}</MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </div>
+        </Grid>
+        <Grid item xs={12}>
           <Paper className={classes.budgetChart}>
             {!userHasBudget && (
               <Typography>
