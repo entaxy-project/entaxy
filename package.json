@@ -13,9 +13,10 @@
         "eject": "react-scripts eject",
         "lint": "eslint src --ext '.js,.jsx' --config .eslintrc",
         "lint:fix": "npm run lint --fix",
-        "deploy:staging": "npm run build && aws s3 sync build/ s3://entaxy-staging",
-        "deploy:production": "npm run build && aws s3 sync build/ s3://entaxy-production",
-        "deploy:test": "npm run build && aws s3 sync build/ s3://entaxy-test"
+        "deploy:test": "npm run build && aws s3 sync build/ s3://entaxy-test --delete",
+        "deploy:staging": "npm run build && aws s3 sync build/ s3://entaxy-staging --delete",
+        "deploy:production": "npm run build && aws s3 sync build/ s3://entaxy-production --delete",
+        "postdeploy:production": "aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_ID --paths '/*' "
     },
     "dependencies": {
         "@material-ui/core": "^4.3.2",
