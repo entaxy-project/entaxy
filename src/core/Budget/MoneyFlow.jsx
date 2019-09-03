@@ -1,6 +1,6 @@
-import React, { useState, useMemo, useCallback } from 'react'
+import React, { useState, useMemo } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import Container from '@material-ui/core/Container'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
@@ -11,6 +11,7 @@ import Select from '@material-ui/core/Select'
 import MenuItem from '@material-ui/core/MenuItem'
 import { startOfMonth, endOfMonth } from 'date-fns'
 import SankeyDiagram from './SankeyDiagram'
+import { showSnackbar } from '../../store/settings/actions'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -47,16 +48,16 @@ const useStyles = makeStyles((theme) => ({
 
 const MoneyFlow = () => {
   const classes = useStyles()
-  const [recWidth, setRecWidth] = useState(0)
-  const [recHeight, setRecHeight] = useState(0)
+  const dispatch = useDispatch()
   const { budget, transactions, dateFormatter } = useSelector((state) => ({
     transactions: state.transactions.list.sort((a, b) => a.createdAt - b.createdAt),
     budget: state.budget,
     dateFormatter: (new Intl.DateTimeFormat(state.settings.locale, { month: 'long' })).format
   }))
   const userHasBudget = Object.keys(budget.rules).length > 0
-  const start = new Date(transactions[0].createdAt)
-  const end = new Date(transactions[transactions.length - 1].createdAt)
+
+  const start = transactions.length > 0 ? new Date(transactions[0].createdAt) : new Date()
+  const end = transactions.length > 0 ? new Date(transactions[transactions.length - 1].createdAt) : new Date()
   const yearsList = Array.from(
     Array(end.getFullYear() - start.getFullYear() + 1).keys(),
     (n) => start.getFullYear() + n
@@ -77,34 +78,40 @@ const MoneyFlow = () => {
 
   const graphData = useMemo(() => {
     const incomeGroupId = budget.categoryTree.find((group) => group.isIncome).id
-    const usedCategories = Object.values(transactions
-      .filter((transaction) => {
-        return transaction.categoryId !== undefined
-          && transaction.createdAt >= values.fromDate.getTime()
-          && transaction.createdAt <= values.toDate.getTime()
-      })
-      .reduce((result, transaction) => {
-        const category = budget.categoriesById[transaction.categoryId]
-        const group = budget.categoriesById[category.parentId]
-        const index = Object.keys(result).length
-        return {
-          ...result,
-          [category.id]: {
-            ...category,
-            index: (result[category.id] === undefined ? index : result[category.id].index),
-            total: result[category.id] === undefined
-              ? transaction.amount
-              : result[category.id].total + transaction.amount
-          },
-          [group.id]: {
-            ...group,
-            index: (result[group.id] === undefined ? index + 1 : result[group.id].index),
-            total: result[group.id] === undefined
-              ? transaction.amount
-              : result[group.id].total + transaction.amount
-          }
+
+    const filteredTransactions = transactions.filter(
+      (transaction) => transaction.categoryId !== undefined
+        && transaction.createdAt >= values.fromDate.getTime()
+        && transaction.createdAt <= values.toDate.getTime()
+    )
+    const usedCategories = Object.values(filteredTransactions.reduce((result, transaction) => {
+      const category = budget.categoriesById[transaction.categoryId]
+      const group = budget.categoriesById[category.parentId]
+      const index = Object.keys(result).length
+      return {
+        ...result,
+        [category.id]: {
+          ...category,
+          index: (result[category.id] === undefined ? index : result[category.id].index),
+          total: result[category.id] === undefined
+            ? transaction.amount
+            : result[category.id].total + transaction.amount
+        },
+        [group.id]: {
+          ...group,
+          index: (result[group.id] === undefined ? index + 1 : result[group.id].index),
+          total: result[group.id] === undefined
+            ? transaction.amount
+            : result[group.id].total + transaction.amount
         }
-      }, {}))
+      }
+    }, {
+      [incomeGroupId]: {
+        ...budget.categoriesById[incomeGroupId],
+        index: 0,
+        total: 0
+      }
+    }))
 
     const incomeCategories = usedCategories.filter(
       (category) => category.parentId === incomeGroupId
@@ -112,7 +119,6 @@ const MoneyFlow = () => {
     const incomeGroup = usedCategories.find(
       (category) => category.id === incomeGroupId
     )
-
     return usedCategories
       .sort((a, b) => a.index > b.index)
       .reduce((data, category) => {
@@ -158,20 +164,6 @@ const MoneyFlow = () => {
       }, { nodes: [], links: [] })
   }, [budget, transactions, values])
 
-  const svgRef = useCallback((node) => {
-    const measureSVG = () => {
-      const { width, height } = node.getBoundingClientRect()
-      setRecWidth(width)
-      setRecHeight(height)
-    }
-
-    if (node !== null) {
-      measureSVG()
-      window.addEventListener('resize', measureSVG)
-    } else {
-      window.removeEventListener('resize', measureSVG)
-    }
-  }, [])
 
   function handleChange(event) {
     setValues((oldValues) => {
@@ -181,10 +173,18 @@ const MoneyFlow = () => {
       }
       newValues.fromDate = startOfMonth(new Date(`${newValues.fromMonth}/01/${newValues.fromYear}`))
       newValues.toDate = endOfMonth(new Date(`${newValues.toMonth}/01/${newValues.toYear}`))
-      return newValues
+      if (newValues.fromDate.getTime() < newValues.toDate.getTime()
+        || `${newValues.fromMonth}/${newValues.fromYear}` === `${newValues.toMonth}/${newValues.toYear}`) {
+        return newValues
+      }
+      dispatch(showSnackbar({
+        text: 'The start date needs to come before the end date',
+        status: 'error'
+      }))
+      return oldValues
     })
   }
-  console.log(values)
+
   return (
     <Container className={classes.root}>
       <Grid container spacing={3}>
@@ -251,17 +251,13 @@ const MoneyFlow = () => {
         </Grid>
         <Grid item xs={12}>
           <Paper className={classes.budgetChart}>
-            {!userHasBudget && (
+            {(!userHasBudget || graphData.links.length === 0) && (
               <Typography>
                 Not enough data to generate chart
               </Typography>
             )}
-            {userHasBudget && (
-              <svg width="100%" height="100%" ref={svgRef}>
-                {graphData && (
-                  <SankeyDiagram data={graphData} width={recWidth} height={recHeight} />
-                )}
-              </svg>
+            {userHasBudget && graphData.links.length > 0 && (
+              <SankeyDiagram data={graphData} />
             )}
           </Paper>
         </Grid>

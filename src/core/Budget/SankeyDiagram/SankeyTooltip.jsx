@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
 import { useSelector } from 'react-redux'
@@ -11,31 +11,55 @@ const useStyles = makeStyles(() => ({
   }
 }))
 
+const WIDTH = 200
+const HEIGHT = 50
+
 const SankeyTooltip = ({
-  x,
-  y,
-  width,
-  height,
-  data
+  node,
+  containerWidth
 }) => {
   const classes = useStyles()
   const formatCurrency = useSelector(
     (state) => currencyFormatter(state.settings.locale, state.settings.currency)
   )
+  const [position, setPosition] = useState({
+    x: 0,
+    y: 0,
+    width: 0,
+    height: 0
+  })
+
+  useEffect(() => {
+    if (node) {
+      const newPosition = {
+        x: node.x + 20,
+        y: node.y + (node.height / 2),
+        width: WIDTH,
+        height: HEIGHT
+      }
+      // Show the tooltip on the left side of the node instead
+      if (newPosition.x + newPosition.width > containerWidth) {
+        newPosition.x -= newPosition.width + 25
+      }
+      setPosition(newPosition)
+    } else {
+      setPosition((prevState) => ({ ...prevState, width: 0, height: 0 }))
+    }
+  }, [node, containerWidth])
 
   return (
     <Motion
       defaultStyle={{
-        x,
-        y,
-        width,
-        height
+        x: position.x,
+        y: position.y,
+        width: position.width,
+        height: position.height
       }}
       style={{
-        x: spring(x),
-        y: spring(y),
-        width: spring(width),
-        height: spring(height)
+        x: spring(position.x),
+        y: spring(position.y),
+        width: spring(position.width),
+        height: spring(position.height)
       }}
     >
       {(style) => (
@@ -59,12 +83,16 @@ const SankeyTooltip = ({
             ry={4}
             filter="url(#shadow)"
           />
-          <text className={classes.title} x={10} y={20}>
-            {data.name}
-          </text>
-          <text className={classes.amount} x={10} y={40}>
-            {formatCurrency(Math.abs(data.total))}
-          </text>
+          {node && (
+            <>
+              <text className={classes.title} x={10} y={20} data-testid="tooltipTitle">
+                {node.data.name}
+              </text>
+              <text className={classes.amount} x={10} y={40} data-testid="tooltipTotal">
+                {formatCurrency(Math.abs(node.data.total))}
+              </text>
+            </>
+          )}
         </svg>
       )}
     </Motion>
@@ -72,11 +100,12 @@ const SankeyTooltip = ({
 }
 
 SankeyTooltip.propTypes = {
-  x: PropTypes.number.isRequired,
-  y: PropTypes.number.isRequired,
-  width: PropTypes.number.isRequired,
-  height: PropTypes.number.isRequired,
-  data: PropTypes.object.isRequired
+  node: PropTypes.object,
+  containerWidth: PropTypes.number.isRequired
+}
+
+SankeyTooltip.defaultProps = {
+  node: null
 }
 
 export default SankeyTooltip

@@ -9,13 +9,13 @@ const SankeyNode = ({
 }) => {
   const width = node.x1 - node.x0
   const height = node.y1 - node.y0 < 0 ? 0 : node.y1 - node.y0
-  // console.log('height', height)
   const alignLeft = node.data.parentId === undefined || node.isIncome
   return (
     <>
       <rect
         data-type="node"
         id={`node-${node.index}`}
+        data-testid={node.data.id}
         x={node.x0}
         y={node.y0}
         width={width}

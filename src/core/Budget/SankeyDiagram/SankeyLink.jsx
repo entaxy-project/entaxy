@@ -11,6 +11,7 @@ const SankeyLink = ({
   <path
     data-type="link"
     id={`link-${link.index}`}
+    data-testid={link.index}
     d={sankeyLinkHorizontal()(link)}
     style={{
       fill: 'none',
