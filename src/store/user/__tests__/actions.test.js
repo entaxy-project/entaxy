@@ -201,10 +201,10 @@ describe('user actions', () => {
             },
             { type: 'SHOW_OVERLAY', payload: 'Loading data from Blockstack...' },
             { type: 'LOAD_SETTINGS', payload: { snackbarMessage: null } },
-            { type: 'LOAD_ACCOUNTS', payload: {} },
-            { type: 'LOAD_TRANSACTIONS', payload: {} },
-            { type: 'LOAD_EXCHANGE_RATES', payload: {} },
-            { type: 'LOAD_BUDGET', payload: {} },
+            { type: 'LOAD_ACCOUNTS', payload: undefined },
+            { type: 'LOAD_TRANSACTIONS', payload: undefined },
+            { type: 'LOAD_EXCHANGE_RATES', payload: undefined },
+            { type: 'LOAD_BUDGET', payload: undefined },
             { type: 'HIDE_OVERLAY' }
           ])
           done()

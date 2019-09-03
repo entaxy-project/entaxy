@@ -30,7 +30,7 @@ export const loadAllItems = (newState) => (dispatch) => {
     'transactions',
     'exchangeRates',
     'budget'
-  ].map((itemName) => dispatch(loadItem(itemName, newState[itemName] || {})))
+  ].map((itemName) => dispatch(loadItem(itemName, newState[itemName])))
 }
 
 
@@ -48,7 +48,9 @@ export const loadState = () => async (dispatch, getState) => {
       break
     // no default
   }
-  if (newState === undefined) newState = { settings: settingsInitialState }
+  if (newState === undefined || newState === null) {
+    newState = { settings: settingsInitialState }
+  }
   dispatch(loadAllItems({
     ...newState,
     settings: {
