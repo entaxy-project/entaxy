@@ -42,7 +42,6 @@ describe('CsvDropzone', () => {
     fireEvent.change(input, { target: { files: [file] } })
     expect(getByText('Drag a CSV file here')).toBeInTheDocument()
     await waitForElement(() => getByText('Reading file ...'))
-    expect(mockHandleNextStep).toHaveBeenCalled()
   })
 
   it('should handleFileUpload with a bad file', async () => {
@@ -56,6 +55,5 @@ describe('CsvDropzone', () => {
     fireEvent.change(input, { target: { files: [file] } })
     expect(getByText('Drag a CSV file here')).toBeInTheDocument()
     await waitForElement(() => getByText('The file you uploaded is not a CSV file'))
-    expect(mockHandleNextStep).not.toHaveBeenCalled()
   })
 })
