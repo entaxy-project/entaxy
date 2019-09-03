@@ -30,10 +30,10 @@ exports[`Routes snapshot matches with no accounts 1`] = `
           className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"
         >
           <div
-            className="MuiPaper-root MuiPaper-elevation1 LandingCardComponent-loggedOutContainer-131 MuiPaper-rounded"
+            className="MuiPaper-root MuiPaper-elevation1 LandingCardComponent-loggedOutContainer-132 MuiPaper-rounded"
           >
             <button
-              className="MuiButtonBase-root MuiButton-root LandingCardComponent-signinButton-133 MuiButton-contained MuiButton-containedSecondary"
+              className="MuiButtonBase-root MuiButton-root LandingCardComponent-signinButton-134 MuiButton-contained MuiButton-containedSecondary"
               data-testid="signinWithBlockstackButton"
               disabled={false}
               onBlur={[Function]}
@@ -58,11 +58,11 @@ exports[`Routes snapshot matches with no accounts 1`] = `
               </span>
             </button>
             <span
-              className="MuiTypography-root LandingCardComponent-signingDescription-132 MuiTypography-caption MuiTypography-alignCenter"
+              className="MuiTypography-root LandingCardComponent-signingDescription-133 MuiTypography-caption MuiTypography-alignCenter"
             >
               Keep your data encrypted and decentralized. Learn more about  
               <span
-                className="LandingCardComponent-blockstackTitle-134"
+                className="LandingCardComponent-blockstackTitle-135"
               >
                 <a
                   href="https://blockstack.org/what-is-blockstack"
@@ -79,10 +79,10 @@ exports[`Routes snapshot matches with no accounts 1`] = `
           className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"
         >
           <div
-            className="MuiPaper-root MuiPaper-elevation1 LandingCardComponent-loggedOutContainer-131 MuiPaper-rounded"
+            className="MuiPaper-root MuiPaper-elevation1 LandingCardComponent-loggedOutContainer-132 MuiPaper-rounded"
           >
             <button
-              className="MuiButtonBase-root MuiButton-root LandingCardComponent-signinButton-133 MuiButton-contained MuiButton-containedSecondary"
+              className="MuiButtonBase-root MuiButton-root LandingCardComponent-signinButton-134 MuiButton-contained MuiButton-containedSecondary"
               data-testid="signinAsGuestButton"
               disabled={false}
               onBlur={[Function]}
@@ -107,7 +107,7 @@ exports[`Routes snapshot matches with no accounts 1`] = `
               </span>
             </button>
             <span
-              className="MuiTypography-root LandingCardComponent-signingDescription-132 MuiTypography-caption"
+              className="MuiTypography-root LandingCardComponent-signingDescription-133 MuiTypography-caption"
             >
               You can use the app fully but your data will not be stored.
               <br />
@@ -116,34 +116,53 @@ exports[`Routes snapshot matches with no accounts 1`] = `
           </div>
         </div>
       </div>
+      <a
+        className="makeStyles-producthuntWidget-7"
+        href="https://www.producthunt.com/posts/entaxy?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-entaxy"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <img
+          alt="Entaxy - Insight into your finances, without sacrificing your data | Product Hunt Embed"
+          height="54px"
+          src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=123751&theme=light"
+          style={
+            Object {
+              "height": "54px",
+              "width": "250px",
+            }
+          }
+          width="250px"
+        />
+      </a>
     </div>
     <div
       className="MuiGrid-root makeStyles-rightLevel1-3 MuiGrid-item MuiGrid-grid-xs-6"
     />
     <div
-      className="MuiGrid-root makeStyles-leftLevel2-7 MuiGrid-item MuiGrid-grid-xs-6"
+      className="MuiGrid-root makeStyles-leftLevel2-8 MuiGrid-item MuiGrid-grid-xs-6"
     >
       <h5
-        className="MuiTypography-root makeStyles-titleLevel2-10 MuiTypography-h5"
+        className="MuiTypography-root makeStyles-titleLevel2-11 MuiTypography-h5"
       >
         All your accounts
       </h5>
       <img
         alt="Your Accounts backgoround"
-        className="makeStyles-backgroundImageLevel2-9"
+        className="makeStyles-backgroundImageLevel2-10"
         src="2.1.png"
       />
     </div>
     <div
-      className="MuiGrid-root makeStyles-rightLevel2-8 MuiGrid-item MuiGrid-grid-xs-6"
+      className="MuiGrid-root makeStyles-rightLevel2-9 MuiGrid-item MuiGrid-grid-xs-6"
     >
       <h5
-        className="MuiTypography-root makeStyles-tagLineLevel2-11 MuiTypography-h5 MuiTypography-alignRight"
+        className="MuiTypography-root makeStyles-tagLineLevel2-12 MuiTypography-h5 MuiTypography-alignRight"
       >
         in one place
       </h5>
       <div
-        className="MuiPaper-root MuiPaper-elevation1 makeStyles-screenshotLevel2-12 MuiPaper-rounded"
+        className="MuiPaper-root MuiPaper-elevation1 makeStyles-screenshotLevel2-13 MuiPaper-rounded"
       >
         <img
           alt="Your Accounts"
@@ -156,12 +175,12 @@ exports[`Routes snapshot matches with no accounts 1`] = `
       className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"
     >
       <h5
-        className="MuiTypography-root makeStyles-titleLevel3-14 MuiTypography-h5"
+        className="MuiTypography-root makeStyles-titleLevel3-15 MuiTypography-h5"
       >
         Your financial data
       </h5>
       <div
-        className="MuiPaper-root MuiPaper-elevation1 makeStyles-screenshotLevel3-16 MuiPaper-rounded"
+        className="MuiPaper-root MuiPaper-elevation1 makeStyles-screenshotLevel3-17 MuiPaper-rounded"
       >
         <img
           alt="Your Transactions"
@@ -171,33 +190,33 @@ exports[`Routes snapshot matches with no accounts 1`] = `
       </div>
     </div>
     <div
-      className="MuiGrid-root makeStyles-rightLevel3-13 MuiGrid-item MuiGrid-grid-xs-6"
+      className="MuiGrid-root makeStyles-rightLevel3-14 MuiGrid-item MuiGrid-grid-xs-6"
     >
       <h5
-        className="MuiTypography-root makeStyles-tagLineLevel3-15 MuiTypography-h5 MuiTypography-alignRight"
+        className="MuiTypography-root makeStyles-tagLineLevel3-16 MuiTypography-h5 MuiTypography-alignRight"
       >
         owned by you
       </h5>
     </div>
     <div
-      className="MuiGrid-root makeStyles-leftLevel4-17 MuiGrid-item MuiGrid-grid-xs-6"
+      className="MuiGrid-root makeStyles-leftLevel4-18 MuiGrid-item MuiGrid-grid-xs-6"
     >
       <h5
-        className="MuiTypography-root makeStyles-titleLeftLevel4-20 MuiTypography-h5"
+        className="MuiTypography-root makeStyles-titleLeftLevel4-21 MuiTypography-h5"
       >
         Budget
       </h5>
     </div>
     <div
-      className="MuiGrid-root makeStyles-rightLevel4-18 MuiGrid-item MuiGrid-grid-xs-6"
+      className="MuiGrid-root makeStyles-rightLevel4-19 MuiGrid-item MuiGrid-grid-xs-6"
     >
       <h5
-        className="MuiTypography-root makeStyles-tagLineLevel4-21 MuiTypography-h5 MuiTypography-alignRight"
+        className="MuiTypography-root makeStyles-tagLineLevel4-22 MuiTypography-h5 MuiTypography-alignRight"
       >
         in a way that works for you
       </h5>
       <div
-        className="MuiPaper-root MuiPaper-elevation1 makeStyles-screenshotLevel4-22 MuiPaper-rounded"
+        className="MuiPaper-root MuiPaper-elevation1 makeStyles-screenshotLevel4-23 MuiPaper-rounded"
       >
         <img
           alt="Budget the way you like"
@@ -210,12 +229,12 @@ exports[`Routes snapshot matches with no accounts 1`] = `
       className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"
     >
       <h5
-        className="MuiTypography-root makeStyles-titleLevel5-23 MuiTypography-h5"
+        className="MuiTypography-root makeStyles-titleLevel5-24 MuiTypography-h5"
       >
         Visualize your data
       </h5>
       <div
-        className="MuiPaper-root MuiPaper-elevation1 makeStyles-screenshotLevel5-26 MuiPaper-rounded"
+        className="MuiPaper-root MuiPaper-elevation1 makeStyles-screenshotLevel5-27 MuiPaper-rounded"
       >
         <img
           alt="Learn from your data"
@@ -225,16 +244,16 @@ exports[`Routes snapshot matches with no accounts 1`] = `
       </div>
       <img
         alt="Woman drawing"
-        className="makeStyles-backgroundImageLevel5-27"
+        className="makeStyles-backgroundImageLevel5-28"
         src="5.1.png"
         width="100%"
       />
     </div>
     <div
-      className="MuiGrid-root makeStyles-rightLevel5-25 MuiGrid-item MuiGrid-grid-xs-6"
+      className="MuiGrid-root makeStyles-rightLevel5-26 MuiGrid-item MuiGrid-grid-xs-6"
     >
       <h5
-        className="MuiTypography-root makeStyles-tagLineLevel5-24 MuiTypography-h5"
+        className="MuiTypography-root makeStyles-tagLineLevel5-25 MuiTypography-h5"
       >
         and learn from it
       </h5>

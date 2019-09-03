@@ -14,7 +14,6 @@ import LoadingOverlay from './common/LoadingOverlay'
 import Taxes from './core/Taxes'
 import Portfolios from './core/Portfolios'
 import Settings from './core/Settings'
-import BudgetCategories from './core/BudgetCategories'
 import Dashboard from './core/Dashboard'
 import Transactions from './core/Accounts/Transactions'
 import NewAccount from './core/Accounts/new'
@@ -23,6 +22,8 @@ import ImportTransactions from './core/Accounts/ImportTransactions'
 import NewImportFromInstitution from './core/ImportFromInstitution/new'
 import EditImportFromInstitution from './core/ImportFromInstitution/edit'
 import Budget from './core/Budget'
+import BudgetCategories from './core/BudgetCategories'
+import MoneyFlow from './core/Budget/MoneyFlow'
 import Header from './common/Header'
 import SnackbarMessage from './common/SnackbarMessage'
 import LeftDrawer from './core/Accounts/LeftDrawer'
@@ -98,6 +99,8 @@ export class RoutesComponent extends React.Component {
 
   authenticatedBudget = this.loginRequired(Budget)
 
+  authenticatedMoneyFlow = this.loginRequired(MoneyFlow)
+
   authenticatedTaxes = this.loginRequired(Taxes)
 
   authenticatedPortfolios = this.loginRequired(Portfolios)
@@ -116,6 +119,7 @@ export class RoutesComponent extends React.Component {
               <Route exact path="/budget-categories" render={this.authenticatedBudgetCategories} />
               <Route exact path="/dashboard" render={this.authenticatedDashBoard} />
               <Route exact path="/budget" render={this.authenticatedBudget} />
+              <Route exact path="/money-flow" render={this.authenticatedMoneyFlow} />
               <Route exact path="/accounts/new" render={this.authenticatedNewAccount} />
               <Route exact path="/accounts/:accountId/edit" render={this.authenticatedEditAccount} />
               <Route exact path="/accounts/:accountId/transactions" render={this.authenticatedTransactions} />

@@ -5,7 +5,8 @@ import { connect } from 'react-redux'
 import { withStyles } from '@material-ui/core/styles'
 import Snackbar from '@material-ui/core/Snackbar'
 import CheckCircleIcon from '@material-ui/icons/CheckCircle'
-import { green } from '@material-ui/core/colors'
+import ErrorIcon from '@material-ui/icons/Error'
+import { green, red } from '@material-ui/core/colors'
 import { hideSnackbar } from '../../store/settings/actions'
 
 const styles = (theme) => ({
@@ -20,6 +21,9 @@ const styles = (theme) => ({
   },
   success: {
     color: green[600]
+  },
+  error: {
+    color: red[400]
   }
 })
 
@@ -42,6 +46,9 @@ const SnackbarMessage = ({ classes, settings, handleCloseSnackbar }) => (
       <span id="message-id" className={classes.message}>
         {settings.snackbarMessage && settings.snackbarMessage.status === 'success' && (
           <CheckCircleIcon className={[classes.icon, classes.success].join(' ')} />
+        )}
+        {settings.snackbarMessage && settings.snackbarMessage.status === 'error' && (
+          <ErrorIcon className={[classes.icon, classes.error].join(' ')} />
         )}
         {settings.snackbarMessage && settings.snackbarMessage.text}
       </span>

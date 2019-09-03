@@ -1,5 +1,5 @@
 /* eslint-disable react/no-multi-comp */
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
 import CheckCircleIcon from '@material-ui/icons/CheckCircle'
@@ -78,8 +78,8 @@ const ImportedTransactions = ({
   handlePrevStep
 }) => {
   const classes = useStyles()
-  const [anchorEl, setAnchorEl] = React.useState(null)
-  const [popupRowData, setPopupRowData] = React.useState(null)
+  const [anchorEl, setAnchorEl] = useState(null)
+  const [popupRowData, setPopupRowData] = useState(null)
 
   const open = Boolean(anchorEl)
   const id = open ? 'simple-popover' : undefined

@@ -90,6 +90,9 @@ const Header = ({ children, match }) => {
                     <Fade {...TransitionProps} timeout={350}>
                       <Paper>
                         <MenuList role="menu">
+                          <MenuItem onClick={handleClose} component={LinkTo('/money-flow')}>
+                            <ListItemText primary="Money flow" />
+                          </MenuItem>
                           <MenuItem onClick={handleClose} component={LinkTo('/budget')}>
                             <ListItemText primary="History" />
                           </MenuItem>

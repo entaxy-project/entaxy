@@ -24,7 +24,6 @@ const BudgetChart = () => {
     transactions: state.transactions,
     budget: state.budget,
     formatCurrency: currencyFormatter(state.settings.locale, state.settings.currency)
-
   }))
 
   // Used categories except Income
@@ -36,11 +35,10 @@ const BudgetChart = () => {
     )
   ].filter((category) => !budget.categoriesById[category.parentId].isIncome)
 
-  const initialState = usedCategories.reduce(
+  const [opacity, setOpacity] = useState(usedCategories.reduce(
     (res, cat) => ({ ...res, [cat]: 1 }),
     {}
-  )
-  const [opacity, setOpacity] = useState(initialState)
+  ))
 
   const byMonth = {}
   categorizedTransactions.forEach((transaction) => {
