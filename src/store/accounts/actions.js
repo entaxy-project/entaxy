@@ -2,7 +2,7 @@
 import uuid from 'uuid/v4'
 import Big from 'big.js'
 import types from './types'
-import { saveState } from '../user/actions'
+import { saveState } from '../storage'
 import { showSnackbar } from '../settings/actions'
 import {
   addTransactions,
@@ -55,7 +55,7 @@ export const afterAccountsChanged = () => async (dispatch, getState) => {
   await dispatch(updateCurrencies(dispatch, getState()))
   convertAccountsBalancesToLocalCurrency(dispatch, getState)
   dispatch({ type: types.GROUP_BY_INSTITUTION })
-  saveState()
+  dispatch(saveState())
 }
 
 export const openingBalanceChanged = (oldAccount, newAccount) => (

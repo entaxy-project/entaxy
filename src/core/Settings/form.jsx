@@ -61,7 +61,6 @@ export class SettingsFormComponent extends React.Component {
       setFieldValue,
       isSubmitting
     } = this.props
-    console.log(filteredFiatCurrencies)
     return (
       <form onSubmit={handleSubmit} className={classes.form}>
         <AutoComplete

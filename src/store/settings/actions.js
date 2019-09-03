@@ -1,7 +1,7 @@
 /* eslint-disable import/no-cycle */
 import _ from 'lodash'
 import types from './types'
-import { saveState } from '../user/actions'
+import { saveState } from '../storage'
 
 export const showOverlay = (message) => ({
   type: types.SHOW_OVERLAY,
@@ -20,14 +20,10 @@ export const hideSnackbar = () => {
   return { type: types.HIDE_SNACKBAR }
 }
 
-export const loadSettings = (settings) => (
-  { type: types.LOAD_SETTINGS, payload: settings }
-)
-
 export const updateSettings = (settings) => {
   return async (dispatch) => {
     await dispatch({ type: types.UPDATE_SETTINGS, payload: settings })
-    await saveState()
+    await dispatch(saveState())
   }
 }
 

@@ -126,11 +126,6 @@ export default compose(
         .required('Please enter a name')
     }),
     handleSubmit: (values, { props, setSubmitting }) => {
-      console.log('============>handleSubmit')
-      console.log('============>handleSubmit')
-      console.log('============>handleSubmit')
-      console.log('============>handleSubmit')
-      console.log('============>handleSubmit')
       setSubmitting(true)
       if ('id' in values) {
         props.handleUpdate(values)

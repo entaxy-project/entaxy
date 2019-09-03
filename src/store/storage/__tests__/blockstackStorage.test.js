@@ -1,6 +1,6 @@
 import { UserSession } from 'blockstack'
 import { loadState, saveState } from '../blockstackStorage'
-import { blockstackUserSession } from '../../../mocks/BlockstackMock'
+import { blockstackUserSession } from '../../../../mocks/BlockstackMock'
 
 jest.mock('blockstack')
 UserSession.mockImplementation(() => blockstackUserSession)
@@ -43,12 +43,6 @@ describe('saveState', () => {
 
     saveState(state)
     expect(blockstackUserSession.isUserSignedIn).toHaveBeenCalled()
-    expect(blockstackUserSession.putFile).toHaveBeenCalledWith('entaxy.json', JSON.stringify({
-      ...state,
-      settings: {
-        ...state.settings,
-        snackbarMessage: null
-      }
-    }))
+    expect(blockstackUserSession.putFile).toHaveBeenCalledWith('entaxy.json', JSON.stringify(state))
   })
 })
