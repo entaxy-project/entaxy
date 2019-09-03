@@ -19,13 +19,7 @@ export const loadState = () => {
 export const saveState = (state) => {
   const userSession = new UserSession()
   if (userSession.isUserSignedIn()) {
-    return userSession.putFile(filename, JSON.stringify({
-      ...state,
-      settings: {
-        ...state.settings,
-        snackbarMessage: null
-      }
-    }))
+    return userSession.putFile(filename, JSON.stringify(state))
   }
   return undefined
 }

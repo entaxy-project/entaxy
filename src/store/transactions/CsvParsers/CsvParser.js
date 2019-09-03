@@ -333,7 +333,6 @@ export default class CsvParser {
       // Select the best match
       this._dateFormat = bestDateFormat
       // Set the Date column
-      console.log(this, dateColumnIndex)
       if (dateColumnIndex > -1 && dateColumnIndex < this._csvHeader.length) {
         this._csvHeader[dateColumnIndex].transactionField = 'createdAt'
       }

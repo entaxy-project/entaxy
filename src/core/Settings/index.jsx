@@ -10,7 +10,7 @@ import IconButton from '@material-ui/core/IconButton'
 import CloseIcon from '@material-ui/icons/Close'
 import Divider from '@material-ui/core/Divider'
 import { updateSettings, showSnackbar } from '../../store/settings/actions'
-import { resetState, saveState } from '../../store/user/actions'
+import { resetState, saveState } from '../../store/storage'
 import SettingsForm from './form'
 
 const styles = (theme) => ({
@@ -34,7 +34,7 @@ const mapDispatchToProps = (dispatch) => ({
   showSnackbarMessage: (message) => dispatch(showSnackbar(message)),
   deleteAllData: async () => {
     dispatch(resetState())
-    await saveState()
+    await dispatch(saveState())
   }
 })
 

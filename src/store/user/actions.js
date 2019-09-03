@@ -1,32 +1,18 @@
 /* eslint-disable import/no-cycle */
 import { UserSession, Person } from 'blockstack'
 import types from './types'
-import store from '../index'
-import * as storage from '../blockstackStorage'
-import { showOverlay, hideOverlay, loadSettings } from '../settings/actions'
-import { initialState as settingsInitialState } from '../settings/reducer'
-import { loadAccounts } from '../accounts/actions'
-import { initialState as accountsInitialState } from '../accounts/reducer'
-import { loadTransactions } from '../transactions/actions'
-import { initialState as transactionsInitialState } from '../transactions/reducer'
-import { loadExchangeRates } from '../exchangeRates/actions'
-import { initialState as exchangeRatesInitialState } from '../exchangeRates/reducer'
-import { loadBudget } from '../budget/actions'
-import { initialState as budgetInitialState } from '../budget/reducer'
+import * as storage from '../storage'
 
 export const saveLoginData = (loginData) => ({
   type: types.SAVE_LOGIN_DATA,
   payload: loginData
 })
 
-export const loadUserData = () => (dispatch, getState) => {
+export const loadUserDataFromBlockstack = () => (dispatch, getState) => {
   const userSession = new UserSession()
   if (!getState().user.isLoading && userSession.isUserSignedIn()) {
-    dispatch(showOverlay('Loading data from Blockstack...'))
-
     const { username, profile } = userSession.loadUserData()
     const person = new Person(profile)
-
     dispatch(saveLoginData({
       isLoginPending: false,
       isAuthenticatedWith: 'blockstack',
@@ -34,24 +20,7 @@ export const loadUserData = () => (dispatch, getState) => {
       name: person.name(),
       pictureUrl: person.avatarUrl()
     }))
-    storage.loadState().then((state) => {
-      if (state === null) {
-        dispatch(loadSettings())
-      } else {
-        // don't override existing overlayMessage
-        dispatch(loadSettings({
-          ...(state || {}).settings,
-          overlayMessage: ('settings' in getState() ? getState().settings.overlayMessage : '')
-        }))
-      }
-      dispatch(loadAccounts((state || {}).accounts))
-      dispatch(loadTransactions((state || {}).transactions))
-      dispatch(loadExchangeRates((state || {}).exchangeRates))
-      dispatch(loadBudget((state || {}).budget))
-      dispatch(hideOverlay())
-    }).catch((error) => {
-      throw error
-    })
+    dispatch(storage.loadState())
   }
   return Promise.resolve()
 }
@@ -72,6 +41,7 @@ export const loginAs = (loginType) => {
       name: 'Guest user',
       pictureUrl: null
     }))
+    dispatch(storage.loadState())
   }
 }
 
@@ -84,29 +54,13 @@ export const userLoginError = (error) => ({
 export const handleBlockstackLogin = () => (dispatch) => {
   const userSession = new UserSession()
   return userSession.handlePendingSignIn()
-    .then(() => dispatch(loadUserData()))
+    .then(() => dispatch(loadUserDataFromBlockstack()))
     .catch((error) => dispatch(userLoginError(error)))
-}
-
-export const resetState = () => (dispatch, getState) => {
-  const { settings } = getState()
-  // Preserve the existing currency and locale
-  dispatch(loadSettings({
-    ...settingsInitialState,
-    currency: settings.currency,
-    locale: settings.locale
-  }))
-  dispatch(loadAccounts(accountsInitialState))
-  dispatch(loadTransactions(transactionsInitialState))
-  dispatch(loadExchangeRates(exchangeRatesInitialState))
-  dispatch(loadBudget(budgetInitialState))
 }
 
 export const userLogout = () => async (dispatch) => {
   const userSession = new UserSession()
   await userSession.signUserOut()
-  await dispatch(resetState())
+  await dispatch(storage.resetState())
   await dispatch({ type: types.USER_LOGOUT })
 }
-
-export const saveState = () => storage.saveState(store.getState())

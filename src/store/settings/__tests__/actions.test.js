@@ -9,15 +9,6 @@ beforeEach(() => {
   jest.clearAllMocks()
 })
 
-const settings = {
-  locale: 'en-US',
-  currency: 'USD',
-  portfolioFilters: {
-    institution: { TD: true, BMO: true },
-    account: { Checking: true, Savings: true }
-  }
-}
-
 describe('settings actions', () => {
   describe('snackbar', () => {
     it('should showSnackbar', () => {
@@ -30,15 +21,6 @@ describe('settings actions', () => {
     it('should hideSnackbar', () => {
       expect(actions.hideSnackbar()).toEqual({
         type: types.HIDE_SNACKBAR
-      })
-    })
-  })
-
-  describe('loadSettings', () => {
-    it('should load settings', () => {
-      expect(actions.loadSettings(settings)).toEqual({
-        type: types.LOAD_SETTINGS,
-        payload: settings
       })
     })
   })
