@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer'
 import { shallow } from 'enzyme'
 import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
-import store from '../../../../store'
+import { store } from '../../../../store'
 import ThemeProvider from '../../../ThemeProvider'
 import { TransactionsComponent } from '..'
 
@@ -22,12 +22,12 @@ describe('Transactions', () => {
     id: 1,
     accountId: 1,
     amount: 10,
-    createdAt: Date.now()
+    createdAt: Date.parse('2019/01/02')
   }, {
     id: 2,
     accountId: 1,
     amount: -5,
-    createdAt: Date.now() + 10
+    createdAt: Date.parse('2019/01/03')
   }]
   const mochDeleteTransactions = jest.fn()
   const mochHandleSort = jest.fn()

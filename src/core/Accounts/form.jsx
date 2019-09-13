@@ -17,6 +17,7 @@ import red from '@material-ui/core/colors/red'
 import format from 'date-fns/format'
 import parse from 'date-fns/parse'
 import { fiatCurrencies, filteredFiatCurrencies } from '../../data/currencies'
+import { accountTypes } from '../../store/accounts/reducer'
 import AutoComplete from '../../common/AutoComplete'
 import institutions from '../../data/institutions'
 import SubmitButtonWithProgress from '../../common/SubmitButtonWithProgress'
@@ -38,12 +39,11 @@ const styles = (theme) => ({
     marginTop: -10
   },
   form: {
-    display: 'flex',
-    flexDirection: 'column'
+    width: 560
   },
   input: {
     margin: theme.spacing(2),
-    width: 320
+    width: 250
   },
   inputError: {
     marginTop: -7,
@@ -149,7 +149,7 @@ export class AccountFormComponent extends React.Component {
       account
     } = this.props
     return (
-      <Grid container direction="row" justify="center">
+      <Grid container justify="center">
         <Paper className={classes.root}>
           <div className={classes.formHeader}>
             <Typography variant="h6">
@@ -161,72 +161,89 @@ export class AccountFormComponent extends React.Component {
           </div>
           <Divider />
           <form onSubmit={handleSubmit} className={classes.form}>
-            <AutoComplete
-              creatable
-              className={classes.input}
-              label="Institution"
-              name="institution"
-              value={values.institution}
-              options={this.formatedInstitutions()}
-              onChange={this.handleInstitutionChange}
-              error={errors.institution && touched.institution}
-              helperText={errors.institution}
-              autoFocus
-            />
-            {this.institutionOptions(values.institution)}
-            <TextField
-              className={classes.input}
-              label="Account name"
-              inputProps={{
-                'aria-label': 'Account name',
-                maxLength: 50
-              }}
-              value={values.name}
-              name="name"
-              onChange={handleChange}
-              error={errors.name && touched.name}
-              helperText={errors.name}
-            />
-            <TextField
-              type="number"
-              className={classes.input}
-              label="Opening balance"
-              inputProps={{
-                'aria-label': 'Opening balance',
-                step: 0.01
-              }}
-              value={values.openingBalance}
-              name="openingBalance"
-              onChange={handleChange}
-              onFocus={(event) => event.target.select()}
-              error={errors.openingBalance && touched.openingBalance}
-              helperText={errors.openingBalance}
-            />
-            <TextField
-              type="date"
-              label="Opening Balance Date"
-              InputLabelProps={{
-                shrink: true,
-                'aria-label': 'Opening Balance Date'
-              }}
-              name="openingBalanceDate"
-              className={classes.input}
-              value={values.openingBalanceDate}
-              onChange={handleChange}
-              error={errors.openingBalanceDate && touched.openingBalanceDate}
-              helperText={errors.openingBalanceDate}
-            />
-            <AutoComplete
-              async
-              className={classes.input}
-              label="Account Currency"
-              name="currency"
-              value={values.currency}
-              loadOptions={filteredFiatCurrencies}
-              onChange={setFieldValue}
-              error={errors.currency && touched.currency}
-              helperText={errors.currency}
-            />
+            <Grid container justify="center">
+              <Grid item xs={6}>
+                <AutoComplete
+                  className={classes.input}
+                  label="Account type"
+                  name="accountType"
+                  value={values.accountType}
+                  options={accountTypes}
+                  onChange={setFieldValue}
+                  error={errors.accountType && touched.accountType}
+                  helperText={errors.accountType}
+                  autoFocus
+                />
+                <AutoComplete
+                  creatable
+                  className={classes.input}
+                  label="Institution"
+                  name="institution"
+                  value={values.institution}
+                  options={this.formatedInstitutions()}
+                  onChange={this.handleInstitutionChange}
+                  error={errors.institution && touched.institution}
+                  helperText={errors.institution}
+                />
+                {this.institutionOptions(values.institution)}
+                <TextField
+                  className={classes.input}
+                  label="Account name"
+                  inputProps={{
+                    'aria-label': 'Account name',
+                    maxLength: 50
+                  }}
+                  value={values.name}
+                  name="name"
+                  onChange={handleChange}
+                  error={errors.name && touched.name}
+                  helperText={errors.name}
+                />
+              </Grid>
+              <Grid item xs={6}>
+                <TextField
+                  type="number"
+                  className={classes.input}
+                  label="Opening balance"
+                  inputProps={{
+                    'aria-label': 'Opening balance',
+                    step: 0.01
+                  }}
+                  value={values.openingBalance}
+                  name="openingBalance"
+                  onChange={handleChange}
+                  onFocus={(event) => event.target.select()}
+                  error={errors.openingBalance && touched.openingBalance}
+                  helperText={errors.openingBalance}
+                />
+                <TextField
+                  type="date"
+                  label="Opening balance date"
+                  InputLabelProps={{
+                    shrink: true,
+                    'aria-label': 'Opening balance date'
+                  }}
+                  name="openingBalanceDate"
+                  className={classes.input}
+                  value={values.openingBalanceDate}
+                  onChange={handleChange}
+                  error={errors.openingBalanceDate && touched.openingBalanceDate}
+                  helperText={errors.openingBalanceDate}
+                />
+                <AutoComplete
+                  async
+                  className={classes.input}
+                  label="Account currency"
+                  name="currency"
+                  value={values.currency}
+                  loadOptions={filteredFiatCurrencies}
+                  onChange={setFieldValue}
+                  error={errors.currency && touched.currency}
+                  helperText={errors.currency}
+                />
+              </Grid>
+            </Grid>
+
             {handleDelete && (
               <Button
                 size="small"
@@ -276,8 +293,9 @@ export default compose(
     mapPropsToValues: ({ account, settings }) => {
       if (account === undefined) {
         return {
-          name: '',
           institution: null,
+          name: '',
+          accountType: accountTypes[0],
           openingBalance: 0,
           openingBalanceDate: format(Date.now(), 'yyyy-MM-dd'),
           currency: settings.currency === undefined ? null : {
@@ -293,6 +311,10 @@ export default compose(
           label: account.institution,
           value: account.institution
         },
+        accountType: {
+          label: account.accountType,
+          value: account.accountType
+        },
         currency: {
           label: `(${account.currency}) ${fiatCurrencies[account.currency]}`,
           value: account.currency
@@ -301,11 +323,14 @@ export default compose(
     },
     validationSchema: () => {
       return Yup.object().shape({
+        institution: Yup.object()
+          .required('Please select an institution')
+          .nullable(),
         name: Yup.string()
           .max(50, 'Too Long!')
           .required('Please enter a name for this account'),
-        institution: Yup.object()
-          .required('Please select an institution')
+        accountType: Yup.object()
+          .required('Please select an account type')
           .nullable(),
         openingBalance: Yup.number()
           .required('Please enter an opening balance')
@@ -324,6 +349,7 @@ export default compose(
       await props.handleSave({
         ...values,
         institution: values.institution.value,
+        accountType: values.accountType.value,
         openingBalanceDate: parse(values.openingBalanceDate, 'yyyy-M-d', new Date()).getTime(),
         currency: values.currency.value
       })

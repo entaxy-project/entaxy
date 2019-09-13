@@ -23,3 +23,11 @@ export const saveState = (state) => {
   }
   return undefined
 }
+
+export const blockstackStorage = () => {
+  const userSession = new UserSession()
+  return {
+    getItem: (key) => userSession.getFile(key),
+    setItem: (key, value) => userSession.putFile(key, value)
+  }
+}

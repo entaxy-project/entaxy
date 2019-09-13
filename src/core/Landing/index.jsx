@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
     flexFlow: 'column nowrap'
   },
   rightLevel1: {
-    minHeight: 650,
+    minHeight: 500,
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
     backgroundSize: '100%',
@@ -40,8 +40,7 @@ const useStyles = makeStyles((theme) => ({
   },
   logoLevel1: {
     font: 'bold 24px var(--font-garden-grove)',
-    color: 'black',
-    marginBottom: theme.spacing(2)
+    color: 'black'
   },
   taglineLevel1: {
     font: 'italic 11px var(--font-garden-grove)',
@@ -49,9 +48,7 @@ const useStyles = makeStyles((theme) => ({
     'padding-top': '3px'
   },
   titleLevel1: {
-    font: 'bold 48px var(--font-garden-grove)',
-    marginTop: theme.spacing(5),
-    marginBottom: theme.spacing(6)
+    font: 'bold 48px var(--font-garden-grove)'
   },
   producthuntWidget: {
     marginTop: theme.spacing(1),
@@ -234,21 +231,6 @@ const Landing = ({ history }) => {
           Insight into your finances, without sacrificing your data
         </div>
         <LandingCard history={history} />
-        <a
-          // eslint-disable-next-line max-len
-          href="https://www.producthunt.com/posts/entaxy?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-entaxy"
-          target="_blank"
-          rel="noopener noreferrer"
-          className={classes.producthuntWidget}
-        >
-          <img
-          // eslint-disable-next-line max-len
-            src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=123751&theme=light" alt="Entaxy - Insight into your finances, without sacrificing your data | Product Hunt Embed"
-            style={{ width: '250px', height: '54px' }}
-            width="250px"
-            height="54px"
-          />
-        </a>
       </Grid>
       <Grid item xs={6} className={classes.rightLevel1} />
       {/* --- Level 2 --- */}

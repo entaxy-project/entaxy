@@ -10,7 +10,7 @@ import IconButton from '@material-ui/core/IconButton'
 import CloseIcon from '@material-ui/icons/Close'
 import Divider from '@material-ui/core/Divider'
 import { updateSettings, showSnackbar } from '../../store/settings/actions'
-import { resetState, saveState } from '../../store/storage'
+import { resetState } from '../../store'
 import SettingsForm from './form'
 
 const styles = (theme) => ({
@@ -32,10 +32,7 @@ const styles = (theme) => ({
 const mapDispatchToProps = (dispatch) => ({
   saveSettings: (settings) => dispatch(updateSettings(settings)),
   showSnackbarMessage: (message) => dispatch(showSnackbar(message)),
-  deleteAllData: async () => {
-    dispatch(resetState())
-    await dispatch(saveState())
-  }
+  deleteAllData: () => dispatch(resetState())
 })
 
 export class SettingsComponent extends React.Component {
@@ -45,7 +42,7 @@ export class SettingsComponent extends React.Component {
     this.props.history.push('/dashboard')
   }
 
-  handleResetData = async () => {
+  handleResetData = () => {
     this.props.deleteAllData()
     this.props.history.push('/dashboard')
   }

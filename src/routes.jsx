@@ -8,9 +8,10 @@ import {
   Route,
   Redirect
 } from 'react-router-dom'
-import HandleLogin from './common/HandleLogin'
-import Landing from './core/Landing'
+import { PersistGate } from 'redux-persist/integration/react'
+import { persistor, handleBlockstackLogin } from './store'
 import LoadingOverlay from './common/LoadingOverlay'
+import Landing from './core/Landing'
 import Taxes from './core/Taxes'
 import Portfolios from './core/Portfolios'
 import Settings from './core/Settings'
@@ -29,15 +30,14 @@ import SnackbarMessage from './common/SnackbarMessage'
 import LeftDrawer from './core/Accounts/LeftDrawer'
 
 const mapStateToProps = ({ user, settings, accounts }) => {
-  return { user, settings, accounts }
+  return { isAuthenticatedWith: user.isAuthenticatedWith, settings, accounts }
 }
 
 export class RoutesComponent extends React.Component {
   loginRequired = (Component, options = {}) => (props) => {
     const { accountRequired, accountLeftDrawer } = options
-
     // Check for authentication
-    if (this.props.user.isAuthenticatedWith === null) {
+    if (this.props.isAuthenticatedWith === null) {
       return <Redirect to="/" />
     }
     // Check for at least one account
@@ -107,12 +107,18 @@ export class RoutesComponent extends React.Component {
 
   render() {
     return (
-      <div>
-        <BrowserRouter basename={process.env.PUBLIC_URL}>
-          {!this.props.settings.overlayMessage && (
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
+        {!persistor && (
+          <Switch>
+            <Route exact path="/" component={Landing} />
+            <Route exact path="/handle-login" render={handleBlockstackLogin} />
+            <Redirect to="/" />
+          </Switch>
+        )}
+        {persistor && (
+          <PersistGate loading={<LoadingOverlay />} persistor={persistor}>
             <Switch>
               <Route exact path="/" component={Landing} />
-              <Route exact path="/handle-login" component={HandleLogin} />
               <Route exact path="/taxes" component={this.authenticatedTaxes} />
               <Route exact path="/portfolio" component={this.authenticatedPortfolios} />
               <Route exact path="/settings" render={this.authenticatedSettings} />
@@ -140,19 +146,22 @@ export class RoutesComponent extends React.Component {
               />
               <Redirect to="/" />
             </Switch>
-          )}
-        </BrowserRouter>
+          </PersistGate>
+        )}
         <SnackbarMessage />
-        <LoadingOverlay />
-      </div>
+      </BrowserRouter>
     )
   }
 }
 
 RoutesComponent.propTypes = {
-  user: PropTypes.object.isRequired,
+  isAuthenticatedWith: PropTypes.string,
   settings: PropTypes.object.isRequired,
   accounts: PropTypes.object.isRequired
+}
+
+RoutesComponent.defaultProps = {
+  isAuthenticatedWith: null
 }
 
 export default connect(mapStateToProps)(RoutesComponent)

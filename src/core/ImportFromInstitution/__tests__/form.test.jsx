@@ -2,7 +2,7 @@ import React from 'react'
 import renderer from 'react-test-renderer'
 // import { shallow } from 'enzyme'
 import { Provider } from 'react-redux'
-import store from '../../../store'
+import { store } from '../../../store'
 import ThemeProvider from '../../ThemeProvider'
 import ImportFromInstitutionForm from '../form'
 

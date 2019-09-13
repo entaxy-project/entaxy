@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer'
 import { shallow } from 'enzyme'
 import { Provider } from 'react-redux'
 import { BrowserRouter, Redirect } from 'react-router-dom'
-import store from '../store'
+import { store } from '../store'
 import ThemeProvider from '../core/ThemeProvider'
 import { initialState as userInitialState } from '../store/user/reducer'
 import { initialState as settingsInitialState } from '../store/settings/reducer'
@@ -36,10 +36,9 @@ describe('Routes', () => {
     })
   })
 
-  describe('Component methods', () => {
-    let wrapper
+  describe('loginRequired', () => {
     it('Should redirect if user is not authenticated', () => {
-      wrapper = shallow((
+      const wrapper = shallow((
         <RoutesComponent
           user={userInitialState}
           settings={settingsInitialState}
@@ -54,9 +53,9 @@ describe('Routes', () => {
     })
 
     it('Should render component with no options', () => {
-      wrapper = shallow((
+      const wrapper = shallow((
         <RoutesComponent
-          user={{ isAuthenticatedWith: true }}
+          isAuthenticatedWith="blockstack"
           settings={settingsInitialState}
           accounts={accountsInitialState}
           classes={{ }}
@@ -64,16 +63,16 @@ describe('Routes', () => {
       ))
       const instance = wrapper.instance()
 
-      expect(instance.props.user.isAuthenticatedWith).toBeTruthy()
+      expect(instance.props.isAuthenticatedWith).toBeTruthy()
       expect(instance.loginRequired(FakeComponent)()).toEqual((
         <Header><FakeComponent /></Header>
       ))
     })
 
     it('Should redirect if there are no accounts', () => {
-      wrapper = shallow((
+      const wrapper = shallow((
         <RoutesComponent
-          user={{ isAuthenticatedWith: true }}
+          isAuthenticatedWith="blockstack"
           settings={settingsInitialState}
           accounts={accountsInitialState}
           classes={{ }}
@@ -81,16 +80,16 @@ describe('Routes', () => {
       ))
       const instance = wrapper.instance()
 
-      expect(instance.props.user.isAuthenticatedWith).toBeTruthy()
+      expect(instance.props.isAuthenticatedWith).toBeTruthy()
       expect(instance.loginRequired(FakeComponent, { accountRequired: true })()).toEqual((
         <Redirect to="/" />
       ))
     })
 
     it('Should render component when accounts required', () => {
-      wrapper = shallow((
+      const wrapper = shallow((
         <RoutesComponent
-          user={{ isAuthenticatedWith: true }}
+          isAuthenticatedWith="blockstack"
           settings={settingsInitialState}
           accounts={{ byId: [{ id: 1 }] }}
           classes={{ }}
@@ -98,7 +97,7 @@ describe('Routes', () => {
       ))
       const instance = wrapper.instance()
 
-      expect(instance.props.user.isAuthenticatedWith).toBeTruthy()
+      expect(instance.props.isAuthenticatedWith).toBeTruthy()
       expect(instance.loginRequired(FakeComponent, { accountRequired: true })()).toEqual((
         <Header><FakeComponent /></Header>
       ))

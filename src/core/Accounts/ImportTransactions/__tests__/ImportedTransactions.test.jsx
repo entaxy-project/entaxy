@@ -4,7 +4,7 @@ import '@testing-library/jest-dom/extend-expect'
 import { Provider } from 'react-redux'
 import ImportedTransactions from '../ImportedTransactions'
 import CsvParser from '../../../../store/transactions/CsvParsers/CsvParser'
-import store from '../../../../store'
+import { store } from '../../../../store'
 import ThemeProvider from '../../../ThemeProvider'
 
 const mockHandlePrevStep = jest.fn()

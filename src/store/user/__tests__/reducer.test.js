@@ -6,10 +6,26 @@ describe('user reducer', () => {
     expect(userReducer(undefined, {})).toEqual(initialState)
   })
 
-  it('should handle SAVE_LOGIN_DATA with authenticated user', () => {
-    const type = types.SAVE_LOGIN_DATA
+  it('should handle SHOW_OVERLAY', () => {
+    const type = types.SHOW_OVERLAY
+    const payload = 'Loading ...'
+    expect(userReducer(undefined, { type, payload })).toEqual({
+      ...initialState,
+      overlayMessage: payload
+    })
+  })
+
+  it('should handle HIDE_OVERLAY', () => {
+    const type = types.HIDE_OVERLAY
+    expect(userReducer(undefined, { type })).toEqual({
+      ...initialState,
+      overlayMessage: null
+    })
+  })
+
+  it('should handle UPDATE_LOGIN_DATA with authenticated user', () => {
+    const type = types.UPDATE_LOGIN_DATA
     const payload = {
-      isLoginPending: false,
       isAuthenticatedWith: 'blockstack',
       username: 'test-username',
       name: 'Test Name',

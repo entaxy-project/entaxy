@@ -12,7 +12,7 @@ import grey from '@material-ui/core/colors/grey'
 import Card from '@material-ui/core/Card'
 import CardHeader from '@material-ui/core/CardHeader'
 import CardActions from '@material-ui/core/CardActions'
-import { loginAs } from '../../store/user/actions'
+import { loginAs } from '../../store'
 import blockstackLogo from './blockstack-bug-rounded.svg'
 import LinkTo from '../../common/LinkTo'
 
@@ -51,15 +51,9 @@ const mapStateToProps = ({ user }) => {
   return { user }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    handleLogin: (loginType) => { dispatch(loginAs(loginType)) }
-  }
-}
-
 export class LandingCardComponent extends React.Component {
   login = (loginType) => {
-    this.props.handleLogin(loginType)
+    loginAs(loginType)
     this.props.history.push('/dashboard')
   }
 
@@ -67,36 +61,30 @@ export class LandingCardComponent extends React.Component {
     const { classes, user } = this.props
     if (user.isAuthenticatedWith) {
       return (
-        <Grid item xs={12}>
-          <Typography variant="subtitle2">
-            You are logged in as
-          </Typography>
-          <Card className={classes.card}>
-            <CardHeader
-              avatar={(
-                <Avatar
-                  src={user.pictureUrl}
-                  alt={user.name}
-                />
-              )}
-              title={user.name}
-            />
-            <CardActions>
-              <Button
-                size="small"
-                color="secondary"
-                component={LinkTo('/dashboard')}
-              >
-                Continue to your Dashboard
-              </Button>
-            </CardActions>
-          </Card>
+        <Grid container>
+          <Grid item xs={12}>
+            <Card>
+              <CardHeader
+                avatar={<Avatar src={user.pictureUrl} alt={user.name} />}
+                title={user.name}
+              />
+              <CardActions>
+                <Button
+                  size="small"
+                  color="secondary"
+                  component={LinkTo('/dashboard')}
+                >
+                  Continue to your Dashboard
+                </Button>
+              </CardActions>
+            </Card>
+          </Grid>
         </Grid>
       )
     }
 
     return (
-      <Grid container className={classes.cards}>
+      <Grid container>
         <Grid item xs={6}>
           <Paper elevation={1} className={classes.loggedOutContainer}>
             <Button
@@ -144,11 +132,10 @@ export class LandingCardComponent extends React.Component {
 LandingCardComponent.propTypes = {
   classes: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
-  handleLogin: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired
 }
 
 export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
+  connect(mapStateToProps),
   withStyles(styles)
 )(LandingCardComponent)

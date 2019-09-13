@@ -7,7 +7,7 @@ import {
 import '@testing-library/jest-dom/extend-expect'
 import { Provider } from 'react-redux'
 import SankeyDiagram from '..'
-import store from '../../../../store'
+import { store } from '../../../../store'
 
 afterEach(() => {
   cleanup()

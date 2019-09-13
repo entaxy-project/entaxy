@@ -8,7 +8,7 @@ import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
 import ThemeProvider from '../../ThemeProvider'
 import BudgetCategories from '..'
-import store from '../../../store'
+import { store } from '../../../store'
 
 afterEach(() => {
   cleanup()

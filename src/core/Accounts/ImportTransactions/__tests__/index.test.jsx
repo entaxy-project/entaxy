@@ -8,7 +8,7 @@ import {
 import '@testing-library/jest-dom/extend-expect'
 import { MemoryRouter, Route } from 'react-router-dom'
 import { Provider } from 'react-redux'
-import store from '../../../../store'
+import { store } from '../../../../store'
 import ImportTransactions from '..'
 import { createAccount } from '../../../../store/accounts/actions'
 import ThemeProvider from '../../../ThemeProvider'

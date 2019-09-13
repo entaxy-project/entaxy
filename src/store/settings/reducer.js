@@ -2,7 +2,6 @@ import _ from 'lodash'
 import types from './types'
 
 export const initialState = {
-  overlayMessage: null,
   snackbarMessage: null,
   currency: 'USD',
   locale: window.navigator.language || '1en-US',

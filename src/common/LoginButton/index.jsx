@@ -8,6 +8,7 @@ import Avatar from '@material-ui/core/Avatar'
 import Popper from '@material-ui/core/Popper'
 import MenuItem from '@material-ui/core/MenuItem'
 import MenuList from '@material-ui/core/MenuList'
+import Divider from '@material-ui/core/Divider'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import Settings from '@material-ui/icons/Settings'
@@ -19,7 +20,8 @@ import Fade from '@material-ui/core/Fade'
 import ClickAwayListener from '@material-ui/core/ClickAwayListener'
 import Tooltip from '@material-ui/core/Tooltip'
 import LinkTo from '../LinkTo'
-import { userLogout } from '../../store/user/actions'
+import { userLogout } from '../../store'
+import packageJson from '../../../package.json'
 
 const styles = (theme) => ({
   root: {
@@ -37,10 +39,6 @@ const styles = (theme) => ({
 })
 
 const mapStateToProps = ({ user }) => ({ user })
-
-const mapDispatchToProps = (dispatch) => ({
-  handleLogout: () => { dispatch(userLogout()) }
-})
 
 export class LoginButtonComponent extends React.Component {
   state = {
@@ -64,8 +62,7 @@ export class LoginButtonComponent extends React.Component {
     const { anchorEl, open } = this.state
     const {
       classes,
-      user,
-      handleLogout
+      user
     } = this.props
     return (
       <ClickAwayListener onClickAway={this.handleClose}>
@@ -103,7 +100,7 @@ export class LoginButtonComponent extends React.Component {
                         </ListItemIcon>
                         <ListItemText primary="Settings" />
                       </MenuItem>
-                      <MenuItem onClick={handleLogout}>
+                      <MenuItem onClick={userLogout}>
                         <ListItemIcon>
                           <Icon
                             path={mdiLogout}
@@ -113,6 +110,14 @@ export class LoginButtonComponent extends React.Component {
                         </ListItemIcon>
                         <ListItemText primary="Logout" />
                       </MenuItem>
+                      <Divider />
+                      <MenuItem disabled={true}>
+                        <small>
+                          Version&nbsp;
+                          {packageJson.version}
+                        </small>
+                      </MenuItem>
+
                     </MenuList>
                   </Paper>
                 </Fade>
@@ -128,7 +133,6 @@ export class LoginButtonComponent extends React.Component {
 LoginButtonComponent.propTypes = {
   classes: PropTypes.object,
   user: PropTypes.object.isRequired,
-  handleLogout: PropTypes.func.isRequired,
   history: PropTypes.object
 }
 
@@ -138,6 +142,6 @@ LoginButtonComponent.defaultProps = {
 }
 
 export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
+  connect(mapStateToProps),
   withStyles(styles)
 )(LoginButtonComponent)

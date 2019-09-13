@@ -1103,9 +1103,9 @@ exports[`Transactions matches snapshot with one transaction in a fiat account 1`
                     "overflow": "hidden",
                   }
                 }
-                title="Sep 03, 2019"
+                title="Jan 03, 2019"
               >
-                Sep 03, 2019
+                Jan 03, 2019
               </div>
               <div
                 aria-colindex={3}
@@ -1319,9 +1319,9 @@ exports[`Transactions matches snapshot with one transaction in a fiat account 1`
                     "overflow": "hidden",
                   }
                 }
-                title="Sep 03, 2019"
+                title="Jan 02, 2019"
               >
-                Sep 03, 2019
+                Jan 02, 2019
               </div>
               <div
                 aria-colindex={3}

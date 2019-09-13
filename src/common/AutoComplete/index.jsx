@@ -38,7 +38,6 @@ const AutoComplete = ({
           options={options}
           inputProps={{ 'aria-label': label, required: true }}
           onChange={(selection) => onChange(name, selection)}
-          isClearable
           styles={styles}
         />
       )}
