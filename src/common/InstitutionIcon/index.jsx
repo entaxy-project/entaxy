@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import AccountBalanceIcon from '@material-ui/icons/AccountBalance'
+import Icon from '@mdi/react'
+import { mdiAccountCash } from '@mdi/js'
 import importLogos from './importLogos'
 
 const styles = () => ({
@@ -27,6 +29,17 @@ const InstitutionIcon = ({
       <img
         src={`${importLogos[institution]}`}
         alt={institution}
+        className={`${[classes[size], className].join(' ')}`}
+      />
+    )
+  }
+  if (institution === 'Cash') {
+    return (
+      <Icon
+        path={mdiAccountCash}
+        title="User Profile"
+        size={1}
+        color="rgba(0, 0, 0, 0.54)"
         className={`${[classes[size], className].join(' ')}`}
       />
     )

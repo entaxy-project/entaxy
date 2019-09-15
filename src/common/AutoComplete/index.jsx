@@ -9,6 +9,7 @@ import FormHelperText from '@material-ui/core/FormHelperText'
 const AutoComplete = ({
   async,
   creatable,
+  isClearable,
   label,
   placeholder,
   name,
@@ -39,6 +40,7 @@ const AutoComplete = ({
           inputProps={{ 'aria-label': label, required: true }}
           onChange={(selection) => onChange(name, selection)}
           styles={styles}
+          isClearable={isClearable}
         />
       )}
       { !async && creatable && (
@@ -50,7 +52,7 @@ const AutoComplete = ({
           options={options}
           inputProps={{ 'aria-label': label, required: true }}
           onChange={(selection) => onChange(name, selection)}
-          isClearable
+          isClearable={isClearable}
           styles={styles}
         />
       )}
@@ -64,7 +66,7 @@ const AutoComplete = ({
           loadOptions={loadOptions}
           inputProps={{ 'aria-label': label }}
           onChange={(selection) => onChange(name, selection)}
-          isClearable
+          isClearable={isClearable}
           styles={styles}
         />
       )}
@@ -80,6 +82,7 @@ const AutoComplete = ({
 AutoComplete.propTypes = {
   async: PropTypes.bool,
   creatable: PropTypes.bool,
+  isClearable: PropTypes.bool,
   label: PropTypes.node.isRequired,
   placeholder: PropTypes.string,
   name: PropTypes.string.isRequired,
@@ -96,6 +99,7 @@ AutoComplete.propTypes = {
 AutoComplete.defaultProps = {
   async: false,
   creatable: false,
+  isClearable: true,
   value: null,
   placeholder: undefined,
   options: undefined,

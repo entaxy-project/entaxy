@@ -184,7 +184,7 @@ export class TransactionsTableComponent extends React.Component {
   rowClassName = ({ index }, filteredTransactions, classes) => {
     return classNames({
       [classes.headerRow]: index < 0,
-      [classes.openingBalance]: index >= 0 && filteredTransactions[index].id === undefined,
+      [classes.openingBalance]: index >= 0 && filteredTransactions[index].type === 'openingBalance',
       [classes.rowWithError]: (index >= 0 && this.transactionHasErrors(filteredTransactions[index])),
       [classes.row]: index >= 0,
       [classes.oddRow]: index % 2 !== 0

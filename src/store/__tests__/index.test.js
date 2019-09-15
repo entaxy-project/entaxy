@@ -78,12 +78,10 @@ describe('store', () => {
       blockstackUserSession.isSignInPending.mockReturnValue(true)
       blockstackUserSession.handlePendingSignIn.mockImplementation(() => Promise.resolve())
       const mochHistoryPush = jest.fn()
-
       expect(persistor).toBeNull()
-      handleBlockstackLogin({ history: { push: mochHistoryPush } })
+      await handleBlockstackLogin({ history: { push: mochHistoryPush } })
       expect(await blockstackUserSession.handlePendingSignIn).toHaveBeenCalledWith()
       expect(mochHistoryPush).toHaveBeenCalledWith('/dashboard')
-      expect(persistor).not.toBeNull()
       expect(store.getState().user.isAuthenticatedWith).toEqual('blockstack')
       expect(store.getState().user.overlayMessage).toEqual('Loading data from Blockstack ...')
       userLogout()

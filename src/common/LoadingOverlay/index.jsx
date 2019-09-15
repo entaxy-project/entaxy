@@ -30,13 +30,13 @@ const useStyles = makeStyles(() => ({
 
 const LoadingOverlay = () => {
   const classes = useStyles()
-  const user = useSelector((state) => state.user)
+  const overlayMessage = useSelector(({ user }) => user.overlayMessage)
 
-  if (user.overlayMessage) {
+  if (overlayMessage) {
     return (
       <div className={classes.root}>
         <div className="rotating-icon" />
-        <div className={classes.label}>{user.overlayMessage}</div>
+        <div className={classes.label}>{overlayMessage}</div>
       </div>
     )
   }

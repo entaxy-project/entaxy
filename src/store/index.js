@@ -38,8 +38,6 @@ if (module.hot) {
 
 // eslint-disable-next-line import/no-mutable-exports
 export let persistor = null
-// const appConfig = new AppConfig()
-// const userSession = new UserSession({ appConfig })
 
 export const resetState = () => (dispatch, getState) => {
   const { settings } = getState()
@@ -80,6 +78,7 @@ const setPersistor = ({ storageType }) => {
       break
     // no default
   }
+
   if (persistConfig.storage === undefined) {
     store.replaceReducer(rootReducer)
     persistor = null
@@ -92,7 +91,6 @@ const setPersistor = ({ storageType }) => {
 export const loginAs = (loginType) => {
   const appConfig = new AppConfig()
   const userSession = new UserSession({ appConfig })
-
   if (loginType === 'blockstack') {
     if (userSession.isUserSignedIn()) {
       const { username, profile } = userSession.loadUserData()
@@ -125,13 +123,14 @@ export const handleBlockstackLogin = ({ history }) => {
   const appConfig = new AppConfig()
   const userSession = new UserSession({ appConfig })
   if (userSession.isSignInPending()) {
-    userSession.handlePendingSignIn()
+    return userSession.handlePendingSignIn()
       .then(() => {
         loginAs('blockstack')
         history.push('/dashboard')
       })
       .catch((error) => store.dispatch(userLoginError(error)))
   }
+  return Promise.resolve()
 }
 
 export const userLogout = () => {
@@ -143,5 +142,5 @@ export const userLogout = () => {
   }
   store.dispatch({ type: types.USER_LOGOUT })
   setPersistor({ storageType: null })
-  resetState()
+  store.dispatch(resetState())
 }

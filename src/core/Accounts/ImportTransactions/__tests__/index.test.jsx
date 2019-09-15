@@ -67,7 +67,7 @@ describe('Import Transactions', () => {
         </ThemeProvider>
       </Provider>
     )
-    expect(getByText(`Import transactions from ${account.institution}`)).toBeInTheDocument()
+    expect(getByText(`Import transactions for ${account.institution} - ${account.name}`)).toBeInTheDocument()
   })
 
   it('should run through all steps', async () => {
@@ -77,7 +77,12 @@ describe('Import Transactions', () => {
       '\'500766**********\',CREDIT,20180629,2595.11,[DN]THE WORKING GRO PAY/PAY  '
     ]
     const file = new File([csvData.join('\n')], 'test.csv', { type: 'text/csv' })
-    const { getByText, getByTestId, queryByTestId } = render(
+    const {
+      getByText,
+      queryByText,
+      getByTestId,
+      queryByTestId
+    } = render(
       <Provider store={store}>
         <ThemeProvider>
           <MemoryRouter initialEntries={[`/accounts/${account.id}/import/CSV`]} initialIndex={0}>
@@ -90,25 +95,33 @@ describe('Import Transactions', () => {
       </Provider>
     )
     expect(getByTestId('activeStep').children[1].children[0].innerHTML).toEqual('Upload CSV file')
+    expect(queryByText('test.csv')).not.toBeInTheDocument()
     // Go to step 2
     fireEvent.change(getByTestId('dopzone-input'), { target: { files: [file] } })
-    await waitForElement(() => getByText('Filename:'))
+    await waitForElement(() => getByText('This file has a header row'))
+    expect(getByText('test.csv')).toBeInTheDocument()
     expect(getByTestId('activeStep').children[1].children[0].innerHTML).toEqual('Select columns to import')
     // Back to step 1
     fireEvent.click(getByTestId('backButton'))
+    expect(queryByText('test.csv')).not.toBeInTheDocument()
     expect(getByTestId('activeStep').children[1].children[0].innerHTML).toEqual('Upload CSV file')
     // Go to step 2
     fireEvent.change(getByTestId('dopzone-input'), { target: { files: [file] } })
-    await waitForElement(() => getByText('Filename:'))
+    await waitForElement(() => getByText('This file has a header row'))
+    expect(getByText('test.csv')).toBeInTheDocument()
     expect(getByTestId('activeStep').children[1].children[0].innerHTML).toEqual('Select columns to import')
     // Go to step 3
     fireEvent.click(getByTestId('nextButton'))
+    expect(getByText('test.csv')).toBeInTheDocument()
+    expect(getByText(`Imported ${csvData.length - 1} transactions`)).toBeInTheDocument()
     expect(getByTestId('activeStep').children[1].children[0].innerHTML).toEqual('Review data')
     // Back to step 2
     fireEvent.click(getByTestId('backButton'))
+    expect(getByText('test.csv')).toBeInTheDocument()
     expect(getByTestId('activeStep').children[1].children[0].innerHTML).toEqual('Select columns to import')
     // Go to step 3
     fireEvent.click(getByTestId('nextButton'))
+    expect(getByText('test.csv')).toBeInTheDocument()
     expect(getByTestId('activeStep').children[1].children[0].innerHTML).toEqual('Review data')
     // Save
     fireEvent.click(getByTestId('saveButton'))

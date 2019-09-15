@@ -180,7 +180,7 @@ exports[`Dashboard matches snapshot with one account 1`] = `
                                                                   </WithStyles(ForwardRef(TableCell))>
                                                                   <WithStyles(ForwardRef(TableCell)) align=\\"right\\">
                                                                     <ForwardRef(TableCell) classes={{...}} align=\\"right\\">
-                                                                      <th className=\\"MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight\\" aria-sort={{...}} scope=\\"col\\">
+                                                                      <th className=\\"MuiTableCell-root MuiTableCell-alignRight MuiTableCell-head\\" aria-sort={{...}} scope=\\"col\\">
                                                                         Total EUR
                                                                       </th>
                                                                     </ForwardRef(TableCell)>
@@ -203,10 +203,10 @@ exports[`Dashboard matches snapshot with one account 1`] = `
                                                                         <span className=\\"DashboardComponent-institutionWrapper-6\\">
                                                                           <WithStyles(InstitutionIcon) institution=\\"TD\\" size=\\"small\\" className=\\"DashboardComponent-institutionIcon-7\\">
                                                                             <InstitutionIcon classes={{...}} institution=\\"TD\\" size=\\"small\\" className=\\"DashboardComponent-institutionIcon-7\\">
-                                                                              <ForwardRef className=\\"InstitutionIcon-small-239 DashboardComponent-institutionIcon-7\\">
-                                                                                <WithStyles(ForwardRef(SvgIcon)) className=\\"InstitutionIcon-small-239 DashboardComponent-institutionIcon-7\\">
-                                                                                  <ForwardRef(SvgIcon) classes={{...}} className=\\"InstitutionIcon-small-239 DashboardComponent-institutionIcon-7\\">
-                                                                                    <svg className=\\"MuiSvgIcon-root InstitutionIcon-small-239 DashboardComponent-institutionIcon-7\\" focusable=\\"false\\" viewBox=\\"0 0 24 24\\" color={[undefined]} aria-hidden=\\"true\\" role=\\"presentation\\">
+                                                                              <ForwardRef className=\\"InstitutionIcon-small-241 DashboardComponent-institutionIcon-7\\">
+                                                                                <WithStyles(ForwardRef(SvgIcon)) className=\\"InstitutionIcon-small-241 DashboardComponent-institutionIcon-7\\">
+                                                                                  <ForwardRef(SvgIcon) classes={{...}} className=\\"InstitutionIcon-small-241 DashboardComponent-institutionIcon-7\\">
+                                                                                    <svg className=\\"MuiSvgIcon-root InstitutionIcon-small-241 DashboardComponent-institutionIcon-7\\" focusable=\\"false\\" viewBox=\\"0 0 24 24\\" color={[undefined]} aria-hidden=\\"true\\" role=\\"presentation\\">
                                                                                       <path d=\\"M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z\\" />
                                                                                     </svg>
                                                                                   </ForwardRef(SvgIcon)>
@@ -227,12 +227,12 @@ exports[`Dashboard matches snapshot with one account 1`] = `
                                                                   </WithStyles(ForwardRef(TableCell))>
                                                                   <WithStyles(ForwardRef(TableCell)) align=\\"right\\">
                                                                     <ForwardRef(TableCell) classes={{...}} align=\\"right\\">
-                                                                      <td className=\\"MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight\\" aria-sort={{...}} scope={[undefined]} />
+                                                                      <td className=\\"MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body\\" aria-sort={{...}} scope={[undefined]} />
                                                                     </ForwardRef(TableCell)>
                                                                   </WithStyles(ForwardRef(TableCell))>
                                                                   <WithStyles(ForwardRef(TableCell)) align=\\"right\\">
                                                                     <ForwardRef(TableCell) classes={{...}} align=\\"right\\">
-                                                                      <td className=\\"MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight\\" aria-sort={{...}} scope={[undefined]}>
+                                                                      <td className=\\"MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body\\" aria-sort={{...}} scope={[undefined]}>
                                                                         <WithStyles(ForwardRef(Typography)) variant=\\"subtitle2\\">
                                                                           <ForwardRef(Typography) classes={{...}} variant=\\"subtitle2\\">
                                                                             <h6 className=\\"MuiTypography-root MuiTypography-subtitle2\\">
@@ -263,7 +263,7 @@ exports[`Dashboard matches snapshot with one account 1`] = `
                                                                   </WithStyles(ForwardRef(TableCell))>
                                                                   <WithStyles(ForwardRef(TableCell)) align=\\"right\\">
                                                                     <ForwardRef(TableCell) classes={{...}} align=\\"right\\">
-                                                                      <td className=\\"MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight\\" aria-sort={{...}} scope={[undefined]}>
+                                                                      <td className=\\"MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body\\" aria-sort={{...}} scope={[undefined]}>
                                                                         €1,000.00
                                                                       </td>
                                                                     </ForwardRef(TableCell)>
@@ -444,7 +444,7 @@ exports[`Dashboard matches snapshot with two accounts in a different currency 1`
                                                                   </WithStyles(ForwardRef(TableCell))>
                                                                   <WithStyles(ForwardRef(TableCell)) align=\\"right\\">
                                                                     <ForwardRef(TableCell) classes={{...}} align=\\"right\\">
-                                                                      <th className=\\"MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight\\" aria-sort={{...}} scope=\\"col\\">
+                                                                      <th className=\\"MuiTableCell-root MuiTableCell-alignRight MuiTableCell-head\\" aria-sort={{...}} scope=\\"col\\">
                                                                         Total EUR
                                                                       </th>
                                                                     </ForwardRef(TableCell)>
@@ -467,10 +467,10 @@ exports[`Dashboard matches snapshot with two accounts in a different currency 1`
                                                                         <span className=\\"DashboardComponent-institutionWrapper-6\\">
                                                                           <WithStyles(InstitutionIcon) institution=\\"TD\\" size=\\"small\\" className=\\"DashboardComponent-institutionIcon-7\\">
                                                                             <InstitutionIcon classes={{...}} institution=\\"TD\\" size=\\"small\\" className=\\"DashboardComponent-institutionIcon-7\\">
-                                                                              <ForwardRef className=\\"InstitutionIcon-small-239 DashboardComponent-institutionIcon-7\\">
-                                                                                <WithStyles(ForwardRef(SvgIcon)) className=\\"InstitutionIcon-small-239 DashboardComponent-institutionIcon-7\\">
-                                                                                  <ForwardRef(SvgIcon) classes={{...}} className=\\"InstitutionIcon-small-239 DashboardComponent-institutionIcon-7\\">
-                                                                                    <svg className=\\"MuiSvgIcon-root InstitutionIcon-small-239 DashboardComponent-institutionIcon-7\\" focusable=\\"false\\" viewBox=\\"0 0 24 24\\" color={[undefined]} aria-hidden=\\"true\\" role=\\"presentation\\">
+                                                                              <ForwardRef className=\\"InstitutionIcon-small-241 DashboardComponent-institutionIcon-7\\">
+                                                                                <WithStyles(ForwardRef(SvgIcon)) className=\\"InstitutionIcon-small-241 DashboardComponent-institutionIcon-7\\">
+                                                                                  <ForwardRef(SvgIcon) classes={{...}} className=\\"InstitutionIcon-small-241 DashboardComponent-institutionIcon-7\\">
+                                                                                    <svg className=\\"MuiSvgIcon-root InstitutionIcon-small-241 DashboardComponent-institutionIcon-7\\" focusable=\\"false\\" viewBox=\\"0 0 24 24\\" color={[undefined]} aria-hidden=\\"true\\" role=\\"presentation\\">
                                                                                       <path d=\\"M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z\\" />
                                                                                     </svg>
                                                                                   </ForwardRef(SvgIcon)>
@@ -491,12 +491,12 @@ exports[`Dashboard matches snapshot with two accounts in a different currency 1`
                                                                   </WithStyles(ForwardRef(TableCell))>
                                                                   <WithStyles(ForwardRef(TableCell)) align=\\"right\\">
                                                                     <ForwardRef(TableCell) classes={{...}} align=\\"right\\">
-                                                                      <td className=\\"MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight\\" aria-sort={{...}} scope={[undefined]} />
+                                                                      <td className=\\"MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body\\" aria-sort={{...}} scope={[undefined]} />
                                                                     </ForwardRef(TableCell)>
                                                                   </WithStyles(ForwardRef(TableCell))>
                                                                   <WithStyles(ForwardRef(TableCell)) align=\\"right\\">
                                                                     <ForwardRef(TableCell) classes={{...}} align=\\"right\\">
-                                                                      <td className=\\"MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight\\" aria-sort={{...}} scope={[undefined]}>
+                                                                      <td className=\\"MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body\\" aria-sort={{...}} scope={[undefined]}>
                                                                         <WithStyles(ForwardRef(Typography)) variant=\\"subtitle2\\">
                                                                           <ForwardRef(Typography) classes={{...}} variant=\\"subtitle2\\">
                                                                             <h6 className=\\"MuiTypography-root MuiTypography-subtitle2\\">
@@ -527,7 +527,7 @@ exports[`Dashboard matches snapshot with two accounts in a different currency 1`
                                                                   </WithStyles(ForwardRef(TableCell))>
                                                                   <WithStyles(ForwardRef(TableCell)) align=\\"right\\">
                                                                     <ForwardRef(TableCell) classes={{...}} align=\\"right\\">
-                                                                      <td className=\\"MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight\\" aria-sort={{...}} scope={[undefined]}>
+                                                                      <td className=\\"MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body\\" aria-sort={{...}} scope={[undefined]}>
                                                                         €1,000.00
                                                                       </td>
                                                                     </ForwardRef(TableCell)>
@@ -552,7 +552,7 @@ exports[`Dashboard matches snapshot with two accounts in a different currency 1`
                                                                   </WithStyles(ForwardRef(TableCell))>
                                                                   <WithStyles(ForwardRef(TableCell)) align=\\"right\\">
                                                                     <ForwardRef(TableCell) classes={{...}} align=\\"right\\">
-                                                                      <td className=\\"MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight\\" aria-sort={{...}} scope={[undefined]}>
+                                                                      <td className=\\"MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body\\" aria-sort={{...}} scope={[undefined]}>
                                                                         €1,500.00
                                                                       </td>
                                                                     </ForwardRef(TableCell)>

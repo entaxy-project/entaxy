@@ -28,11 +28,11 @@ const TRANSACTION_FIELDS = {
     regex: /Amount/gi
   },
   income: {
-    label: 'Income',
+    label: 'In',
     regex: /Credit/gi
   },
   expense: {
-    label: 'Expense',
+    label: 'Out',
     regex: /Debit/gi
   },
   createdAt: {
@@ -43,18 +43,19 @@ const TRANSACTION_FIELDS = {
 
 // The base class for all CSV parsers
 export default class CsvParser {
-  constructor(budgetRules) {
+  constructor(params = {}) {
     this._file = null
-    this._budgetRules = budgetRules
     this._csvData = []
     this._csvHeader = []
     this._columnsCount = 0
     this._firstRowIndex = 0
-    this._hasHeaderRow = true
-    this._dateFormat = Object.keys(DATE_FORMATS)[0]
     this._transactions = []
     this._errors = { base: [], transactions: {} }
     this._currentRow = 0
+    this._hasHeaderRow = true
+    this._dateFormat = Object.keys(DATE_FORMATS)[0]
+    this._budgetRules = params.budgetRules || {}
+    this._invertAmount = params.invertAmount || false
   }
 
   get dontImport() {
@@ -125,6 +126,14 @@ export default class CsvParser {
     return this._columnsCount
   }
 
+  get invertAmount() {
+    return this._invertAmount
+  }
+
+  set invertAmount(value) {
+    this._invertAmount = value
+  }
+
   // Look through the first few rows and find the most common number of columns
   countColumns() {
     // crete a hash with {numColums: numRows}
@@ -151,11 +160,15 @@ export default class CsvParser {
 
   mapHeaderToTransactionFields() {
     let rowCount = -1
+    const selectedFields = []
     this._csvHeader = this._csvData[this._firstRowIndex].reduce((res, columnHeader) => {
       rowCount += 1
-      const transactionField = Object.keys(TRANSACTION_FIELDS).find((field) => (
-        TRANSACTION_FIELDS[field].regex.test(columnHeader)
-      ))
+      const transactionField = Object.keys(TRANSACTION_FIELDS).find(
+        (field) => TRANSACTION_FIELDS[field].regex.test(columnHeader) && !selectedFields.includes(field)
+      )
+      if (transactionField !== undefined) {
+        selectedFields.push(transactionField)
+      }
       return [
         ...res,
         {
@@ -233,11 +246,11 @@ export default class CsvParser {
   readAmount(row, columns) {
     let amount
     if (Object.keys(columns).includes('amount')) {
-      amount = row[columns.amount]
+      amount = this._invertAmount ? -row[columns.amount] : row[columns.amount]
     } else if (Object.keys(columns).includes('income') && row[columns.income] !== null) {
-      amount = row[columns.income]
+      amount = this._invertAmount ? -row[columns.income] : row[columns.income]
     } else if (Object.keys(columns).includes('expense') && row[columns.expense] !== null) {
-      amount = -row[columns.expense]
+      amount = this._invertAmount ? row[columns.expense] : -row[columns.expense]
     }
     return amount
   }

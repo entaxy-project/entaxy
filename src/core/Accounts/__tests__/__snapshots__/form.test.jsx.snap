@@ -80,9 +80,9 @@ exports[`Account form matches snapshot for edit account 1`] = `
                   className=" css-1hwfws3"
                 >
                   <div
-                    className=" css-1wa3eu0-placeholder"
+                    className=" css-1uccc91-singleValue"
                   >
-                    Select...
+                    Bank
                   </div>
                   <div
                     className="css-w8afj7-Input"
@@ -172,7 +172,7 @@ exports[`Account form matches snapshot for edit account 1`] = `
               <input
                 name="accountType"
                 type="hidden"
-                value=""
+                value="bank"
               />
             </div>
           </div>
@@ -509,34 +509,35 @@ exports[`Account form matches snapshot for edit account 1`] = `
           </div>
         </div>
       </div>
-      <button
-        className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-sizeSmall"
-        disabled={false}
-        onBlur={[Function]}
-        onClick={[Function]}
-        onDragLeave={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        tabIndex={0}
-        type="button"
-      >
-        <span
-          className="MuiButton-label"
-        >
-          Delete this account
-        </span>
-      </button>
       <hr
         className="MuiDivider-root"
       />
       <div>
+        <button
+          className="MuiButtonBase-root MuiButton-root MuiButton-text"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiButton-label"
+          >
+            Delete this account
+          </span>
+        </button>
+        <div />
         <div
           className="SubmitButtonWithProgress-wrapper-259"
         >
@@ -650,9 +651,9 @@ exports[`Account form matches snapshot for new account 1`] = `
                   className=" css-1hwfws3"
                 >
                   <div
-                    className=" css-1wa3eu0-placeholder"
+                    className=" css-1uccc91-singleValue"
                   >
-                    Select...
+                    Bank
                   </div>
                   <div
                     className="css-w8afj7-Input"
@@ -742,7 +743,7 @@ exports[`Account form matches snapshot for new account 1`] = `
               <input
                 name="accountType"
                 type="hidden"
-                value=""
+                value="bank"
               />
             </div>
           </div>
@@ -1079,34 +1080,35 @@ exports[`Account form matches snapshot for new account 1`] = `
           </div>
         </div>
       </div>
-      <button
-        className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-sizeSmall"
-        disabled={false}
-        onBlur={[Function]}
-        onClick={[Function]}
-        onDragLeave={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        tabIndex={0}
-        type="button"
-      >
-        <span
-          className="MuiButton-label"
-        >
-          Delete this account
-        </span>
-      </button>
       <hr
         className="MuiDivider-root"
       />
       <div>
+        <button
+          className="MuiButtonBase-root MuiButton-root MuiButton-text"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiButton-label"
+          >
+            Delete this account
+          </span>
+        </button>
+        <div />
         <div
           className="SubmitButtonWithProgress-wrapper-259"
         >

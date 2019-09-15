@@ -215,6 +215,13 @@ exports[`TransactionsTable matches snapshot with no transactions 1`] = `
               <span
                 className="MuiIconButton-label"
               >
+                <input
+                  checked={false}
+                  className="PrivateSwitchBase-input-108"
+                  data-indeterminate={false}
+                  onChange={[Function]}
+                  type="checkbox"
+                />
                 <svg
                   aria-hidden="true"
                   className="MuiSvgIcon-root"
@@ -226,13 +233,6 @@ exports[`TransactionsTable matches snapshot with no transactions 1`] = `
                     d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
                   />
                 </svg>
-                <input
-                  checked={false}
-                  className="PrivateSwitchBase-input-108"
-                  data-indeterminate={false}
-                  onChange={[Function]}
-                  type="checkbox"
-                />
               </span>
               <span
                 className="MuiTouchRipple-root"
@@ -608,6 +608,13 @@ exports[`TransactionsTable matches snapshot with some transactions 1`] = `
               <span
                 className="MuiIconButton-label"
               >
+                <input
+                  checked={false}
+                  className="PrivateSwitchBase-input-108"
+                  data-indeterminate={false}
+                  onChange={[Function]}
+                  type="checkbox"
+                />
                 <svg
                   aria-hidden="true"
                   className="MuiSvgIcon-root"
@@ -619,13 +626,6 @@ exports[`TransactionsTable matches snapshot with some transactions 1`] = `
                     d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
                   />
                 </svg>
-                <input
-                  checked={false}
-                  className="PrivateSwitchBase-input-108"
-                  data-indeterminate={false}
-                  onChange={[Function]}
-                  type="checkbox"
-                />
               </span>
               <span
                 className="MuiTouchRipple-root"
@@ -849,6 +849,13 @@ exports[`TransactionsTable matches snapshot with some transactions 1`] = `
                   <span
                     className="MuiIconButton-label"
                   >
+                    <input
+                      checked={false}
+                      className="PrivateSwitchBase-input-108"
+                      data-indeterminate={false}
+                      onChange={[Function]}
+                      type="checkbox"
+                    />
                     <svg
                       aria-hidden="true"
                       className="MuiSvgIcon-root"
@@ -860,13 +867,6 @@ exports[`TransactionsTable matches snapshot with some transactions 1`] = `
                         d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
                       />
                     </svg>
-                    <input
-                      checked={false}
-                      className="PrivateSwitchBase-input-108"
-                      data-indeterminate={false}
-                      onChange={[Function]}
-                      type="checkbox"
-                    />
                   </span>
                   <span
                     className="MuiTouchRipple-root"
@@ -1009,6 +1009,13 @@ exports[`TransactionsTable matches snapshot with some transactions 1`] = `
                   <span
                     className="MuiIconButton-label"
                   >
+                    <input
+                      checked={false}
+                      className="PrivateSwitchBase-input-108"
+                      data-indeterminate={false}
+                      onChange={[Function]}
+                      type="checkbox"
+                    />
                     <svg
                       aria-hidden="true"
                       className="MuiSvgIcon-root"
@@ -1020,13 +1027,6 @@ exports[`TransactionsTable matches snapshot with some transactions 1`] = `
                         d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
                       />
                     </svg>
-                    <input
-                      checked={false}
-                      className="PrivateSwitchBase-input-108"
-                      data-indeterminate={false}
-                      onChange={[Function]}
-                      type="checkbox"
-                    />
                   </span>
                   <span
                     className="MuiTouchRipple-root"
@@ -1169,6 +1169,13 @@ exports[`TransactionsTable matches snapshot with some transactions 1`] = `
                   <span
                     className="MuiIconButton-label"
                   >
+                    <input
+                      checked={false}
+                      className="PrivateSwitchBase-input-108"
+                      data-indeterminate={false}
+                      onChange={[Function]}
+                      type="checkbox"
+                    />
                     <svg
                       aria-hidden="true"
                       className="MuiSvgIcon-root"
@@ -1180,13 +1187,6 @@ exports[`TransactionsTable matches snapshot with some transactions 1`] = `
                         d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
                       />
                     </svg>
-                    <input
-                      checked={false}
-                      className="PrivateSwitchBase-input-108"
-                      data-indeterminate={false}
-                      onChange={[Function]}
-                      type="checkbox"
-                    />
                   </span>
                   <span
                     className="MuiTouchRipple-root"

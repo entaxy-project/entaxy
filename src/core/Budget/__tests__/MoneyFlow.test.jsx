@@ -119,6 +119,10 @@ describe('MoneyFlow', () => {
         ]
       }
     })
+    const getBoundingClientRectSpy = jest.fn(() => ({ width: 100 }))
+    global.document.getElementById = jest.fn(() => ({
+      getBoundingClientRect: getBoundingClientRectSpy
+    }))
     const { getByText, queryByText, queryAllByText } = render(
       <Provider store={store}>
         <MoneyFlow />

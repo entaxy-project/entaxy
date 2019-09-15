@@ -16,6 +16,7 @@ import IconButton from '@material-ui/core/IconButton'
 import CloseIcon from '@material-ui/icons/Close'
 import green from '@material-ui/core/colors/green'
 import red from '@material-ui/core/colors/red'
+import pluralize from 'pluralize'
 import { Column } from 'react-virtualized'
 import ResultsToolbar from './ResultsToolbar'
 import TransactionsTable from '../Transactions/TransactionsTable'
@@ -105,15 +106,16 @@ const ImportedTransactions = ({
     if (transactionsWithErrors.length > 0) {
       subTitle = (
         <div>
-          <ErrorIcon className={classes.iconError} />
-          {transactionsWithErrors.length}
-          &nbsp;transactions have errors and will not be imported
+          {pluralize('transaction', transactionsWithErrors.length, true)} have errors and will not be imported
+          <br />
+          Click on the <ErrorIcon className={classes.iconError} />
+          icon next to each transaction to see more details
         </div>
       )
     }
 
     return {
-      title: `Found ${parser.transactions.length} transactions`,
+      title: 'Check the imported amounts and dates before saving',
       subTitle,
       onSave,
       handlePrevStep
@@ -156,8 +158,7 @@ const ImportedTransactions = ({
           <Grid container>
             <Grid item xs={12} className={classes.popoverHeader}>
               <Typography variant="h6">
-                A problem was found with the transaction on line&nbsp;
-                {popupRowData.line}
+                A problem was found with the transaction on line {popupRowData.line}
                 <Typography variant="caption" paragraph>
                   <ErrorIcon className={classes.iconErrorInPopup} />
                   {popupRowData.errors.join(', ')}
@@ -228,7 +229,7 @@ const ImportedTransactions = ({
           cellRenderer={errorCellRenderer}
         />
         <Column
-          width={20}
+          width={40}
           disableSort={true}
           dataKey="line"
         />
