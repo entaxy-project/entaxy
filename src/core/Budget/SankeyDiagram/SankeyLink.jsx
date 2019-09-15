@@ -17,7 +17,7 @@ const SankeyLink = ({
       fill: 'none',
       strokeOpacity: '.3',
       stroke,
-      strokeWidth: Math.max(1, link.width)
+      strokeWidth: Math.max(1, link.width || 0)
     }}
     onMouseOver={handleMouseOver}
     onFocus={handleMouseOver}

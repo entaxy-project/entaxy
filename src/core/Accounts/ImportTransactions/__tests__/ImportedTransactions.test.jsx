@@ -4,7 +4,7 @@ import '@testing-library/jest-dom/extend-expect'
 import { Provider } from 'react-redux'
 import ImportedTransactions from '../ImportedTransactions'
 import CsvParser from '../../../../store/transactions/CsvParsers/CsvParser'
-import store from '../../../../store'
+import { store } from '../../../../store'
 import ThemeProvider from '../../../ThemeProvider'
 
 const mockHandlePrevStep = jest.fn()
@@ -37,7 +37,7 @@ describe('ImportedTransactions', () => {
     }
     await props.parser.parse(file)
     props.parser.mapToTransactions()
-    const { getByText } = render(
+    render(
       <Provider store={store}>
         <ThemeProvider>
           <ImportedTransactions {...props} />
@@ -45,7 +45,6 @@ describe('ImportedTransactions', () => {
       </Provider>
     )
     expect(props.parser.transactions.length).toBe(csvData.length - 1)
-    expect(getByText(`Found ${props.parser.transactions.length} transactions`)).toBeDefined()
     expect(props.parser.errors).toEqual({ base: [], transactions: {} })
   })
 
@@ -72,7 +71,6 @@ describe('ImportedTransactions', () => {
         </ThemeProvider>
       </Provider>
     )
-    expect(getByText(`Found ${props.parser.transactions.length} transactions`)).toBeDefined()
     expect(props.parser.transactions[2].errors).toEqual(['Could not read the amount'])
     expect(queryByTestId('closeIconButton')).not.toBeInTheDocument()
 

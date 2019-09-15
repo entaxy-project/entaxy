@@ -2,7 +2,6 @@ import _ from 'lodash'
 import types from './types'
 
 export const initialState = {
-  overlayMessage: null,
   snackbarMessage: null,
   currency: 'USD',
   locale: window.navigator.language || '1en-US',
@@ -14,10 +13,6 @@ export const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case types.SHOW_OVERLAY:
-      return { ...state, overlayMessage: action.payload }
-    case types.HIDE_OVERLAY:
-      return { ...state, overlayMessage: null }
     case types.SHOW_SNACKBAR:
       return { ...state, snackbarMessage: action.payload }
     case types.HIDE_SNACKBAR:

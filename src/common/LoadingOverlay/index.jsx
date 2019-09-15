@@ -1,10 +1,9 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { withStyles } from '@material-ui/core/styles'
+import { useSelector } from 'react-redux'
+import { makeStyles } from '@material-ui/core/styles'
 import './rotating-icon.css'
 
-const styles = {
+const useStyles = makeStyles(() => ({
   root: {
     top: 0,
     left: 0,
@@ -27,13 +26,12 @@ const styles = {
     'font-family': 'SW Garden Grove',
     'font-size': '24px'
   }
-}
+}))
 
-const mapStateToProps = ({ settings }) => {
-  return { overlayMessage: settings.overlayMessage }
-}
+const LoadingOverlay = () => {
+  const classes = useStyles()
+  const overlayMessage = useSelector(({ user }) => user.overlayMessage)
 
-const LoadingOverlay = ({ classes, overlayMessage }) => {
   if (overlayMessage) {
     return (
       <div className={classes.root}>
@@ -45,13 +43,4 @@ const LoadingOverlay = ({ classes, overlayMessage }) => {
   return null
 }
 
-LoadingOverlay.propTypes = {
-  classes: PropTypes.object.isRequired,
-  overlayMessage: PropTypes.string
-}
-
-LoadingOverlay.defaultProps = {
-  overlayMessage: null
-}
-
-export default connect(mapStateToProps)(withStyles(styles)(LoadingOverlay))
+export default LoadingOverlay

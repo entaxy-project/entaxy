@@ -1,16 +1,11 @@
 /* eslint-disable import/no-cycle */
 import uuid from 'uuid/v4'
 import types from './types'
-import { saveState } from '../storage'
 import { showSnackbar } from '../settings/actions'
 import { updateTransactionFieldIfMatched } from '../transactions/actions'
 
 export const loadBudget = (budget) => {
   return { type: types.LOAD_BUDGET, payload: budget }
-}
-
-export const afterCategoriesChanged = () => (dispatch) => {
-  dispatch(saveState())
 }
 
 export const createCategory = (category, parentId) => (dispatch) => {
@@ -23,7 +18,6 @@ export const createCategory = (category, parentId) => (dispatch) => {
     }
   })
   dispatch(showSnackbar({ text: `${parentId === undefined ? 'Group' : 'Category'} created`, status: 'success' }))
-  dispatch(afterCategoriesChanged())
 }
 
 export const updateCategory = (category) => (dispatch) => {
@@ -32,7 +26,6 @@ export const updateCategory = (category) => (dispatch) => {
     text: `${category.parentId === undefined ? 'Group' : 'Category'} updated`,
     status: 'success'
   }))
-  dispatch(afterCategoriesChanged())
 }
 
 export const deleteCategory = (categoryId) => (dispatch, getState) => {
@@ -54,7 +47,6 @@ export const deleteCategory = (categoryId) => (dispatch, getState) => {
     text: `${category.parentId === undefined ? 'Group' : 'Category'} deleted`,
     status: 'success'
   }))
-  dispatch(afterCategoriesChanged())
 }
 
 export const createExactRule = (categoryId, match) => (

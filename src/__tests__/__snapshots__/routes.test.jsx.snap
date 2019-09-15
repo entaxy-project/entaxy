@@ -1,263 +1,242 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Routes snapshot matches with no accounts 1`] = `
-<div>
+<div
+  className="MuiGrid-root makeStyles-root-1 MuiGrid-container"
+>
   <div
-    className="MuiGrid-root makeStyles-root-1 MuiGrid-container"
+    className="MuiGrid-root makeStyles-leftLevel1-2 MuiGrid-item MuiGrid-grid-xs-6"
   >
     <div
-      className="MuiGrid-root makeStyles-leftLevel1-2 MuiGrid-item MuiGrid-grid-xs-6"
+      className="makeStyles-logoLevel1-4"
     >
+      Entaxy
       <div
-        className="makeStyles-logoLevel1-4"
+        className="makeStyles-taglineLevel1-5"
       >
-        Entaxy
-        <div
-          className="makeStyles-taglineLevel1-5"
-        >
-          Order from chaos
-        </div>
+        Order from chaos
       </div>
-      <div
-        className="makeStyles-titleLevel1-6"
-      >
-        Insight into your finances, without sacrificing your data
-      </div>
-      <div
-        className="MuiGrid-root MuiGrid-container"
-      >
-        <div
-          className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"
-        >
-          <div
-            className="MuiPaper-root MuiPaper-elevation1 LandingCardComponent-loggedOutContainer-132 MuiPaper-rounded"
-          >
-            <button
-              className="MuiButtonBase-root MuiButton-root LandingCardComponent-signinButton-134 MuiButton-contained MuiButton-containedSecondary"
-              data-testid="signinWithBlockstackButton"
-              disabled={false}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onDragLeave={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onKeyUp={[Function]}
-              onMouseDown={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              onTouchEnd={[Function]}
-              onTouchMove={[Function]}
-              onTouchStart={[Function]}
-              tabIndex={0}
-              type="button"
-            >
-              <span
-                className="MuiButton-label"
-              >
-                Sign in with Blockstack
-              </span>
-            </button>
-            <span
-              className="MuiTypography-root LandingCardComponent-signingDescription-133 MuiTypography-caption MuiTypography-alignCenter"
-            >
-              Keep your data encrypted and decentralized. Learn more about  
-              <span
-                className="LandingCardComponent-blockstackTitle-135"
-              >
-                <a
-                  href="https://blockstack.org/what-is-blockstack"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  Blockstack
-                </a>
-              </span>
-            </span>
-          </div>
-        </div>
-        <div
-          className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"
-        >
-          <div
-            className="MuiPaper-root MuiPaper-elevation1 LandingCardComponent-loggedOutContainer-132 MuiPaper-rounded"
-          >
-            <button
-              className="MuiButtonBase-root MuiButton-root LandingCardComponent-signinButton-134 MuiButton-contained MuiButton-containedSecondary"
-              data-testid="signinAsGuestButton"
-              disabled={false}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onDragLeave={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onKeyUp={[Function]}
-              onMouseDown={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              onTouchEnd={[Function]}
-              onTouchMove={[Function]}
-              onTouchStart={[Function]}
-              tabIndex={0}
-              type="button"
-            >
-              <span
-                className="MuiButton-label"
-              >
-                Don't sign in yet
-              </span>
-            </button>
-            <span
-              className="MuiTypography-root LandingCardComponent-signingDescription-133 MuiTypography-caption"
-            >
-              You can use the app fully but your data will not be stored.
-              <br />
-              Single session
-            </span>
-          </div>
-        </div>
-      </div>
-      <a
-        className="makeStyles-producthuntWidget-7"
-        href="https://www.producthunt.com/posts/entaxy?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-entaxy"
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        <img
-          alt="Entaxy - Insight into your finances, without sacrificing your data | Product Hunt Embed"
-          height="54px"
-          src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=123751&theme=light"
-          style={
-            Object {
-              "height": "54px",
-              "width": "250px",
-            }
-          }
-          width="250px"
-        />
-      </a>
     </div>
     <div
-      className="MuiGrid-root makeStyles-rightLevel1-3 MuiGrid-item MuiGrid-grid-xs-6"
+      className="makeStyles-titleLevel1-6"
+    >
+      Insight into your finances, without sacrificing your data
+    </div>
+    <div
+      className="MuiGrid-root MuiGrid-container"
+    >
+      <div
+        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"
+      >
+        <div
+          className="MuiPaper-root MuiPaper-elevation1 LandingCardComponent-loggedOutContainer-132 MuiPaper-rounded"
+        >
+          <button
+            className="MuiButtonBase-root MuiButton-root LandingCardComponent-signinButton-134 MuiButton-contained MuiButton-containedSecondary"
+            data-testid="signinWithBlockstackButton"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="button"
+          >
+            <span
+              className="MuiButton-label"
+            >
+              Sign in with Blockstack
+            </span>
+          </button>
+          <span
+            className="MuiTypography-root LandingCardComponent-signingDescription-133 MuiTypography-caption MuiTypography-alignCenter"
+          >
+            Keep your data encrypted and decentralized. Learn more about  
+            <span
+              className="LandingCardComponent-blockstackTitle-135"
+            >
+              <a
+                href="https://blockstack.org/what-is-blockstack"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Blockstack
+              </a>
+            </span>
+          </span>
+        </div>
+      </div>
+      <div
+        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"
+      >
+        <div
+          className="MuiPaper-root MuiPaper-elevation1 LandingCardComponent-loggedOutContainer-132 MuiPaper-rounded"
+        >
+          <button
+            className="MuiButtonBase-root MuiButton-root LandingCardComponent-signinButton-134 MuiButton-contained MuiButton-containedSecondary"
+            data-testid="signinAsGuestButton"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="button"
+          >
+            <span
+              className="MuiButton-label"
+            >
+              Don't sign in yet
+            </span>
+          </button>
+          <span
+            className="MuiTypography-root LandingCardComponent-signingDescription-133 MuiTypography-caption"
+          >
+            You can use the app fully but your data will not be stored.
+            <br />
+            Single session
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="MuiGrid-root makeStyles-rightLevel1-3 MuiGrid-item MuiGrid-grid-xs-6"
+  />
+  <div
+    className="MuiGrid-root makeStyles-leftLevel2-8 MuiGrid-item MuiGrid-grid-xs-6"
+  >
+    <h5
+      className="MuiTypography-root makeStyles-titleLevel2-11 MuiTypography-h5"
+    >
+      All your accounts
+    </h5>
+    <img
+      alt="Your Accounts backgoround"
+      className="makeStyles-backgroundImageLevel2-10"
+      src="2.1.png"
     />
-    <div
-      className="MuiGrid-root makeStyles-leftLevel2-8 MuiGrid-item MuiGrid-grid-xs-6"
+  </div>
+  <div
+    className="MuiGrid-root makeStyles-rightLevel2-9 MuiGrid-item MuiGrid-grid-xs-6"
+  >
+    <h5
+      className="MuiTypography-root makeStyles-tagLineLevel2-12 MuiTypography-h5 MuiTypography-alignRight"
     >
-      <h5
-        className="MuiTypography-root makeStyles-titleLevel2-11 MuiTypography-h5"
-      >
-        All your accounts
-      </h5>
+      in one place
+    </h5>
+    <div
+      className="MuiPaper-root MuiPaper-elevation1 makeStyles-screenshotLevel2-13 MuiPaper-rounded"
+    >
       <img
-        alt="Your Accounts backgoround"
-        className="makeStyles-backgroundImageLevel2-10"
-        src="2.1.png"
-      />
-    </div>
-    <div
-      className="MuiGrid-root makeStyles-rightLevel2-9 MuiGrid-item MuiGrid-grid-xs-6"
-    >
-      <h5
-        className="MuiTypography-root makeStyles-tagLineLevel2-12 MuiTypography-h5 MuiTypography-alignRight"
-      >
-        in one place
-      </h5>
-      <div
-        className="MuiPaper-root MuiPaper-elevation1 makeStyles-screenshotLevel2-13 MuiPaper-rounded"
-      >
-        <img
-          alt="Your Accounts"
-          src="2.0.png"
-          width="100%"
-        />
-      </div>
-    </div>
-    <div
-      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"
-    >
-      <h5
-        className="MuiTypography-root makeStyles-titleLevel3-15 MuiTypography-h5"
-      >
-        Your financial data
-      </h5>
-      <div
-        className="MuiPaper-root MuiPaper-elevation1 makeStyles-screenshotLevel3-17 MuiPaper-rounded"
-      >
-        <img
-          alt="Your Transactions"
-          src="3.0.png"
-          width="100%"
-        />
-      </div>
-    </div>
-    <div
-      className="MuiGrid-root makeStyles-rightLevel3-14 MuiGrid-item MuiGrid-grid-xs-6"
-    >
-      <h5
-        className="MuiTypography-root makeStyles-tagLineLevel3-16 MuiTypography-h5 MuiTypography-alignRight"
-      >
-        owned by you
-      </h5>
-    </div>
-    <div
-      className="MuiGrid-root makeStyles-leftLevel4-18 MuiGrid-item MuiGrid-grid-xs-6"
-    >
-      <h5
-        className="MuiTypography-root makeStyles-titleLeftLevel4-21 MuiTypography-h5"
-      >
-        Budget
-      </h5>
-    </div>
-    <div
-      className="MuiGrid-root makeStyles-rightLevel4-19 MuiGrid-item MuiGrid-grid-xs-6"
-    >
-      <h5
-        className="MuiTypography-root makeStyles-tagLineLevel4-22 MuiTypography-h5 MuiTypography-alignRight"
-      >
-        in a way that works for you
-      </h5>
-      <div
-        className="MuiPaper-root MuiPaper-elevation1 makeStyles-screenshotLevel4-23 MuiPaper-rounded"
-      >
-        <img
-          alt="Budget the way you like"
-          src="4.0.png"
-          width="100%"
-        />
-      </div>
-    </div>
-    <div
-      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"
-    >
-      <h5
-        className="MuiTypography-root makeStyles-titleLevel5-24 MuiTypography-h5"
-      >
-        Visualize your data
-      </h5>
-      <div
-        className="MuiPaper-root MuiPaper-elevation1 makeStyles-screenshotLevel5-27 MuiPaper-rounded"
-      >
-        <img
-          alt="Learn from your data"
-          src="5.0.png"
-          width="100%"
-        />
-      </div>
-      <img
-        alt="Woman drawing"
-        className="makeStyles-backgroundImageLevel5-28"
-        src="5.1.png"
+        alt="Your Accounts"
+        src="2.0.png"
         width="100%"
       />
     </div>
-    <div
-      className="MuiGrid-root makeStyles-rightLevel5-26 MuiGrid-item MuiGrid-grid-xs-6"
+  </div>
+  <div
+    className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"
+  >
+    <h5
+      className="MuiTypography-root makeStyles-titleLevel3-15 MuiTypography-h5"
     >
-      <h5
-        className="MuiTypography-root makeStyles-tagLineLevel5-25 MuiTypography-h5"
-      >
-        and learn from it
-      </h5>
+      Your financial data
+    </h5>
+    <div
+      className="MuiPaper-root MuiPaper-elevation1 makeStyles-screenshotLevel3-17 MuiPaper-rounded"
+    >
+      <img
+        alt="Your Transactions"
+        src="3.0.png"
+        width="100%"
+      />
     </div>
+  </div>
+  <div
+    className="MuiGrid-root makeStyles-rightLevel3-14 MuiGrid-item MuiGrid-grid-xs-6"
+  >
+    <h5
+      className="MuiTypography-root makeStyles-tagLineLevel3-16 MuiTypography-h5 MuiTypography-alignRight"
+    >
+      owned by you
+    </h5>
+  </div>
+  <div
+    className="MuiGrid-root makeStyles-leftLevel4-18 MuiGrid-item MuiGrid-grid-xs-6"
+  >
+    <h5
+      className="MuiTypography-root makeStyles-titleLeftLevel4-21 MuiTypography-h5"
+    >
+      Budget
+    </h5>
+  </div>
+  <div
+    className="MuiGrid-root makeStyles-rightLevel4-19 MuiGrid-item MuiGrid-grid-xs-6"
+  >
+    <h5
+      className="MuiTypography-root makeStyles-tagLineLevel4-22 MuiTypography-h5 MuiTypography-alignRight"
+    >
+      in a way that works for you
+    </h5>
+    <div
+      className="MuiPaper-root MuiPaper-elevation1 makeStyles-screenshotLevel4-23 MuiPaper-rounded"
+    >
+      <img
+        alt="Budget the way you like"
+        src="4.0.png"
+        width="100%"
+      />
+    </div>
+  </div>
+  <div
+    className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"
+  >
+    <h5
+      className="MuiTypography-root makeStyles-titleLevel5-24 MuiTypography-h5"
+    >
+      Visualize your data
+    </h5>
+    <div
+      className="MuiPaper-root MuiPaper-elevation1 makeStyles-screenshotLevel5-27 MuiPaper-rounded"
+    >
+      <img
+        alt="Learn from your data"
+        src="5.0.png"
+        width="100%"
+      />
+    </div>
+    <img
+      alt="Woman drawing"
+      className="makeStyles-backgroundImageLevel5-28"
+      src="5.1.png"
+      width="100%"
+    />
+  </div>
+  <div
+    className="MuiGrid-root makeStyles-rightLevel5-26 MuiGrid-item MuiGrid-grid-xs-6"
+  >
+    <h5
+      className="MuiTypography-root makeStyles-tagLineLevel5-25 MuiTypography-h5"
+    >
+      and learn from it
+    </h5>
   </div>
 </div>
 `;

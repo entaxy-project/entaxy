@@ -89,7 +89,6 @@ describe('LandingCard', () => {
         </BrowserRouter>
       </Provider>
     )
-    expect(getByText('You are logged in as')).toBeInTheDocument()
     expect(getByText('Tester')).toBeInTheDocument()
   })
 })

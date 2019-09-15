@@ -2,7 +2,6 @@
 import uuid from 'uuid/v4'
 import pluralize from 'pluralize'
 import types from './types'
-import { saveState } from '../storage'
 import { updateAccount } from '../accounts/actions'
 import { showSnackbar } from '../settings/actions'
 import { fetchExchangeRates } from '../exchangeRates/actions'
@@ -10,7 +9,6 @@ import { createExactRule, deleteExactRule, countRuleUsage } from '../budget/acti
 
 export const afterTransactionsChanged = (account) => async (dispatch) => {
   await dispatch(updateAccount(account, { forceUpdateBalance: true, showMessage: false }))
-  dispatch(saveState())
 }
 
 // If the rule is not found then the category is cleared from matching transactions

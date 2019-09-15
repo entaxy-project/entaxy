@@ -1,15 +1,6 @@
 /* eslint-disable import/no-cycle */
 import _ from 'lodash'
 import types from './types'
-import { saveState } from '../storage'
-
-export const showOverlay = (message) => ({
-  type: types.SHOW_OVERLAY,
-  payload: message
-})
-
-export const hideOverlay = () => ({ type: types.HIDE_OVERLAY })
-
 
 export const showSnackbar = (message) => ({
   type: types.SHOW_SNACKBAR,
@@ -23,7 +14,6 @@ export const hideSnackbar = () => {
 export const updateSettings = (settings) => {
   return async (dispatch) => {
     await dispatch({ type: types.UPDATE_SETTINGS, payload: settings })
-    await dispatch(saveState())
   }
 }
 
@@ -42,7 +32,6 @@ export const deletePortfolioFilters = (filterName, options) => {
 export const updatePortfolioFilterValue = (filterName, option, value) => {
   return async (dispatch) => {
     await dispatch({ type: types.UPDATE_PORTFOLIO_FILTER_VALUE, payload: { filterName, option, value } })
-    await saveState()
   }
 }
 

@@ -84,12 +84,16 @@ const ResultsToolbar = ({
 }
 
 ResultsToolbar.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   subTitle: PropTypes.node.isRequired,
   selectedTransactions: PropTypes.array.isRequired,
   filterProps: PropTypes.object.isRequired,
   onSave: PropTypes.func.isRequired,
   handlePrevStep: PropTypes.func.isRequired
+}
+
+ResultsToolbar.defaultProps = {
+  title: ''
 }
 
 export default ResultsToolbar

@@ -22,7 +22,7 @@ describe('CsvColumnSelection', () => {
   it('renders correctly', async () => {
     const file = new File([csvData.join('\n')], 'test.csv', { type: 'text/csv' })
     const props = {
-      parser: new CsvParser(),
+      parser: new CsvParser({}),
       handlePrevStep: mockHandlePrevStep,
       handleNextStep: mockHandleNextStep
     }
@@ -33,15 +33,13 @@ describe('CsvColumnSelection', () => {
       </ThemeProvider>
     )
 
-    expect(getByText('Filename:')).toBeInTheDocument()
-    expect(getByText('test.csv')).toBeInTheDocument()
-    expect(getByText(`(${csvData.length} lines)`)).toBeInTheDocument()
+    expect(getByText('This file has a header row')).toBeInTheDocument()
   })
 
   it('should change header row existance', async () => {
     const file = new File([csvData.join('\n')], 'test.csv', { type: 'text/csv' })
     const props = {
-      parser: new CsvParser(),
+      parser: new CsvParser({}),
       handlePrevStep: mockHandlePrevStep,
       handleNextStep: mockHandleNextStep
     }
@@ -67,10 +65,46 @@ describe('CsvColumnSelection', () => {
     expect(getByTestId('headerRow')).toBeInTheDocument()
   })
 
-  it('should change the date format', async () => {
+  it('should change invert amount', async () => {
     const file = new File([csvData.join('\n')], 'test.csv', { type: 'text/csv' })
     const props = {
-      parser: new CsvParser(),
+      parser: new CsvParser({}),
+      handlePrevStep: mockHandlePrevStep,
+      handleNextStep: mockHandleNextStep
+    }
+    await props.parser.parse(file)
+    const { getByLabelText } = render(
+      <ThemeProvider>
+        <CsvColumnSelection {...props} />
+      </ThemeProvider>
+    )
+    const checkbox = getByLabelText('Invert amount')
+    expect(props.parser.invertAmount).toBe(false)
+    expect(checkbox.checked).toBe(false)
+
+    fireEvent.click(checkbox)
+    expect(props.parser.invertAmount).toBe(true)
+    expect(checkbox.checked).toBe(true)
+
+    fireEvent.click(checkbox)
+    expect(props.parser.invertAmount).toBe(false)
+    expect(checkbox.checked).toBe(false)
+  })
+
+  it('should change the date format', async () => {
+    // https://github.com/mui-org/material-ui/issues/15726
+    global.document.createRange = () => ({
+      setStart: () => {},
+      setEnd: () => {},
+      commonAncestorContainer: {
+        nodeName: 'BODY',
+        ownerDocument: document
+      }
+    })
+
+    const file = new File([csvData.join('\n')], 'test.csv', { type: 'text/csv' })
+    const props = {
+      parser: new CsvParser({}),
       handlePrevStep: mockHandlePrevStep,
       handleNextStep: mockHandleNextStep
     }
@@ -93,7 +127,7 @@ describe('CsvColumnSelection', () => {
   it('should change the selected columns', async () => {
     const file = new File([csvData.join('\n')], 'test.csv', { type: 'text/csv' })
     const props = {
-      parser: new CsvParser(),
+      parser: new CsvParser({}),
       handlePrevStep: mockHandlePrevStep,
       handleNextStep: mockHandleNextStep
     }

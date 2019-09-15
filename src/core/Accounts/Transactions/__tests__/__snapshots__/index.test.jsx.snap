@@ -233,6 +233,13 @@ exports[`Transactions matches snapshot with no transactions 1`] = `
                 <span
                   className="MuiIconButton-label"
                 >
+                  <input
+                    checked={false}
+                    className="PrivateSwitchBase-input-116"
+                    data-indeterminate={false}
+                    onChange={[Function]}
+                    type="checkbox"
+                  />
                   <svg
                     aria-hidden="true"
                     className="MuiSvgIcon-root"
@@ -244,13 +251,6 @@ exports[`Transactions matches snapshot with no transactions 1`] = `
                       d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
                     />
                   </svg>
-                  <input
-                    checked={false}
-                    className="PrivateSwitchBase-input-116"
-                    data-indeterminate={false}
-                    onChange={[Function]}
-                    type="checkbox"
-                  />
                 </span>
                 <span
                   className="MuiTouchRipple-root"
@@ -808,6 +808,13 @@ exports[`Transactions matches snapshot with one transaction in a fiat account 1`
                 <span
                   className="MuiIconButton-label"
                 >
+                  <input
+                    checked={false}
+                    className="PrivateSwitchBase-input-116"
+                    data-indeterminate={false}
+                    onChange={[Function]}
+                    type="checkbox"
+                  />
                   <svg
                     aria-hidden="true"
                     className="MuiSvgIcon-root"
@@ -819,13 +826,6 @@ exports[`Transactions matches snapshot with one transaction in a fiat account 1`
                       d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
                     />
                   </svg>
-                  <input
-                    checked={false}
-                    className="PrivateSwitchBase-input-116"
-                    data-indeterminate={false}
-                    onChange={[Function]}
-                    type="checkbox"
-                  />
                 </span>
                 <span
                   className="MuiTouchRipple-root"
@@ -1065,6 +1065,13 @@ exports[`Transactions matches snapshot with one transaction in a fiat account 1`
                     <span
                       className="MuiIconButton-label"
                     >
+                      <input
+                        checked={false}
+                        className="PrivateSwitchBase-input-116"
+                        data-indeterminate={false}
+                        onChange={[Function]}
+                        type="checkbox"
+                      />
                       <svg
                         aria-hidden="true"
                         className="MuiSvgIcon-root"
@@ -1076,13 +1083,6 @@ exports[`Transactions matches snapshot with one transaction in a fiat account 1`
                           d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
                         />
                       </svg>
-                      <input
-                        checked={false}
-                        className="PrivateSwitchBase-input-116"
-                        data-indeterminate={false}
-                        onChange={[Function]}
-                        type="checkbox"
-                      />
                     </span>
                     <span
                       className="MuiTouchRipple-root"
@@ -1103,9 +1103,9 @@ exports[`Transactions matches snapshot with one transaction in a fiat account 1`
                     "overflow": "hidden",
                   }
                 }
-                title="Sep 03, 2019"
+                title="Jan 03, 2019"
               >
-                Sep 03, 2019
+                Jan 03, 2019
               </div>
               <div
                 aria-colindex={3}
@@ -1221,7 +1221,7 @@ exports[`Transactions matches snapshot with one transaction in a fiat account 1`
                       viewBox="0 0 24 24"
                     >
                       <path
-                        d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
+                        d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 00-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
                       />
                     </svg>
                   </span>
@@ -1281,6 +1281,13 @@ exports[`Transactions matches snapshot with one transaction in a fiat account 1`
                     <span
                       className="MuiIconButton-label"
                     >
+                      <input
+                        checked={false}
+                        className="PrivateSwitchBase-input-116"
+                        data-indeterminate={false}
+                        onChange={[Function]}
+                        type="checkbox"
+                      />
                       <svg
                         aria-hidden="true"
                         className="MuiSvgIcon-root"
@@ -1292,13 +1299,6 @@ exports[`Transactions matches snapshot with one transaction in a fiat account 1`
                           d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
                         />
                       </svg>
-                      <input
-                        checked={false}
-                        className="PrivateSwitchBase-input-116"
-                        data-indeterminate={false}
-                        onChange={[Function]}
-                        type="checkbox"
-                      />
                     </span>
                     <span
                       className="MuiTouchRipple-root"
@@ -1319,9 +1319,9 @@ exports[`Transactions matches snapshot with one transaction in a fiat account 1`
                     "overflow": "hidden",
                   }
                 }
-                title="Sep 03, 2019"
+                title="Jan 02, 2019"
               >
-                Sep 03, 2019
+                Jan 02, 2019
               </div>
               <div
                 aria-colindex={3}
@@ -1437,7 +1437,7 @@ exports[`Transactions matches snapshot with one transaction in a fiat account 1`
                       viewBox="0 0 24 24"
                     >
                       <path
-                        d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
+                        d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 00-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
                       />
                     </svg>
                   </span>

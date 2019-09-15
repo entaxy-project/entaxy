@@ -1,6 +1,12 @@
 /* eslint-disable no-case-declarations */
 import types from './types'
 
+export const accountTypes = {
+  bank: 'Bank',
+  cash: 'Cash',
+  credit: 'Credit card'
+}
+
 export const initialState = {
   byId: {}, // {id1: {id: id1, name: 'account1', institution: 'TD'}, id2: {...}}
   byInstitution: {} // {TD: {accountIds: [id1, id2], balance: 100, apiKey: XYZ}, BMO: {...}}

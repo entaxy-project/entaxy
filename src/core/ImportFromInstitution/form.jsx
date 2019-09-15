@@ -19,7 +19,6 @@ import InstitutionFormFields, {
   instructionsFor
 } from './formFields'
 import importFromCoinbase from './importers/coinbase'
-import { showOverlay, hideOverlay } from '../../store/settings/actions'
 
 const styles = (theme) => ({
   root: {
@@ -65,11 +64,6 @@ const styles = (theme) => ({
     padding: theme.spacing(2)
   }
 })
-
-const mapDispatchToProps = {
-  showOverlay,
-  hideOverlay
-}
 
 const mapStateToProps = (state, ownProps) => {
   const institutionData = state.accounts.byInstitution[ownProps.institution]
@@ -167,7 +161,7 @@ ImportFromInstitutionFormComponent.defaultProps = {
 }
 
 export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
+  connect(mapStateToProps),
   withStyles(styles),
   withFormik({
     enableReinitialize: true,
@@ -180,7 +174,6 @@ export default compose(
     validationSchema: ({ institution }) => validationScheme(institution),
     handleSubmit: (values, { props, setSubmitting, setErrors }) => {
       setSubmitting(true)
-      props.showOverlay(`Importing data from ${props.institution} ...`)
       const importData = {
         Coinbase: (formValues) => importFromCoinbase(formValues)
       }[props.institution]
@@ -189,11 +182,9 @@ export default compose(
         .then(({ accountGroup, accounts }) => {
           props.handleSave(accountGroup, accounts)
           setSubmitting(false)
-          props.hideOverlay()
         }).catch((errorMessage) => {
           setErrors({ global: `Sorry, something went wrong.${errorMessage}` })
           setSubmitting(false)
-          props.hideOverlay()
         })
     }
   })
