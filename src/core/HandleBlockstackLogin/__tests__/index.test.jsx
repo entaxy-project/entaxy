@@ -21,7 +21,6 @@ afterEach(() => {
 
 describe('handleBlockstackLogin', () => {
   it('redirects to landing if signin not pending', () => {
-    blockstackUserSession.isSignInPending.mockReturnValue(false)
     render(
       <HandleBlockstackLogin {...{ history: { push: mochHistoryPush } }} />
     )
@@ -32,7 +31,7 @@ describe('handleBlockstackLogin', () => {
 
   it('logs in with blockstack', async () => {
     blockstackUserSession.isSignInPending.mockReturnValue(true)
-    blockstackUserSession.handlePendingSignIn.mockImplementation(() => Promise.resolve())
+    blockstackUserSession.isUserSignedIn.mockReturnValue(true)
     render(
       <HandleBlockstackLogin {...{ history: { push: mochHistoryPush } }} />
     )

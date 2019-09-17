@@ -11,9 +11,12 @@ import { Router } from 'react-router-dom'
 import { createMemoryHistory } from 'history'
 import { Provider } from 'react-redux'
 import { UserSession, Person } from 'blockstack'
-import { store, persistor, loginAs } from '../store'
+import {
+  store,
+  persistor,
+  loginAs
+} from '../store'
 import Routes from '../routes'
-// import Header from '../common/Header'
 import { blockstackUserSession, blockstackPerson } from '../../mocks/BlockstackMock'
 
 jest.mock('blockstack')
@@ -59,21 +62,18 @@ function renderWithRouter(
 describe('Routes', () => {
   describe('Logged out routes', () => {
     it('renders home page if not logged in', () => {
-      blockstackUserSession.isSignInPending.mockReturnValue(false)
-      blockstackUserSession.isUserSignedIn.mockReturnValue(false)
-      const { history, getByText } = renderWithRouter((
+      const { history, getByText, queryByText } = renderWithRouter((
         <Provider store={store}>
           <Routes />
         </Provider>
       ))
       expect(getByText('Insight into your finances, without sacrificing your data')).toBeInTheDocument()
       expect(history.entries.map((e) => e.pathname)).toEqual(['/'])
+      expect(queryByText((_, element) => element.tagName.toLowerCase() === 'header')).not.toBeInTheDocument()
     })
 
     it('renders handleBlockstackLogin component', async () => {
-      blockstackUserSession.handlePendingSignIn.mockImplementation(() => Promise.resolve())
       blockstackUserSession.isSignInPending.mockReturnValue(true)
-      blockstackUserSession.isUserSignedIn.mockReturnValue(false)
       const { getByText, history, historyPushSpy } = renderWithRouter((
         <Provider store={store}>
           <Routes />
@@ -86,8 +86,6 @@ describe('Routes', () => {
     })
 
     it('redirects to home page if not logged in', () => {
-      blockstackUserSession.isSignInPending.mockReturnValue(false)
-      blockstackUserSession.isUserSignedIn.mockReturnValue(false)
       const { history, getByText } = renderWithRouter((
         <Provider store={store}>
           <Routes />
@@ -100,9 +98,7 @@ describe('Routes', () => {
 
   describe('Logged in routes', () => {
     it('logs in as guest and logs out', async () => {
-      blockstackUserSession.isSignInPending.mockReturnValue(false)
-      blockstackUserSession.isUserSignedIn.mockReturnValue(false)
-      const { getByText, getByTestId } = renderWithRouter((
+      const { getByText, queryByText, getByTestId } = renderWithRouter((
         <Provider store={store}>
           <Routes />
         </Provider>
@@ -114,19 +110,19 @@ describe('Routes', () => {
       fireEvent.click(getByTestId('signinAsGuestButton'))
       expect(getByText('Loading data from local storage ...')).toBeInTheDocument()
       await waitForElement(() => getByText('Add an account'))
+      expect(getByText('You don\'t have any accounts yet.')).toBeInTheDocument()
+      expect(getByText((_, element) => element.tagName.toLowerCase() === 'header')).toBeInTheDocument()
       expect(persistor).not.toBeNull()
 
       // Logout
       fireEvent.click(getByTestId('userNavButton'))
       fireEvent.click(getByTestId('logoutButton'))
       await waitForElement(() => getByText('Insight into your finances, without sacrificing your data'))
+      expect(queryByText((_, element) => element.tagName.toLowerCase() === 'header')).not.toBeInTheDocument()
       expect(persistor).toBeNull()
     })
 
     it('logs in as blockstack and logs out', async () => {
-      blockstackUserSession.isSignInPending.mockReturnValue(false)
-      blockstackUserSession.isUserSignedIn.mockReturnValue(false)
-
       const { getByText, getByTestId } = renderWithRouter((
         <Provider store={store}>
           <Routes />
@@ -140,6 +136,7 @@ describe('Routes', () => {
       fireEvent.click(getByTestId('signinWithBlockstackButton'))
       await waitForElement(() => getByText('Loading data from Blockstack ...'))
       await waitForElement(() => getByText('Add an account'))
+      expect(getByText('You don\'t have any accounts yet.')).toBeInTheDocument()
       expect(persistor).not.toBeNull()
 
       // Logout
@@ -150,17 +147,35 @@ describe('Routes', () => {
       expect(persistor).toBeNull()
     })
 
-    it.skip('it renders new account', async () => {
+    it('it renders new account', async () => {
       loginAs('guest')
-      blockstackUserSession.isSignInPending.mockReturnValue(false)
-      blockstackUserSession.isUserSignedIn.mockReturnValue(false)
-      const { getByText } = renderWithRouter((
+      const { getByText, getByTestId } = renderWithRouter((
         <Provider store={store}>
           <Routes />
         </Provider>
-      ), { route: '/dashboard' })
-      await wait()
-      getByText('Add an account')
+      ), { route: '/accounts/new' })
+      expect(getByText('Loading data from local storage ...')).toBeInTheDocument()
+      await waitForElement(() => getByText('New account'))
+      expect(getByText('New account')).toBeInTheDocument()
+      expect(getByText((_, element) => element.tagName.toLowerCase() === 'header')).toBeInTheDocument()
+      // Logout
+      fireEvent.click(getByTestId('userNavButton'))
+      fireEvent.click(getByTestId('logoutButton'))
+    })
+
+    it('it redirects to dashboard if editing non existing account', async () => {
+      loginAs('guest')
+      const { getByText, getByTestId } = renderWithRouter((
+        <Provider store={store}>
+          <Routes />
+        </Provider>
+      ), { route: '/accounts/bogus/edit' })
+      expect(getByText('Loading data from local storage ...')).toBeInTheDocument()
+      await waitForElement(() => getByText('Add an account'))
+      expect(getByText('You don\'t have any accounts yet.')).toBeInTheDocument()
+      // Logout
+      fireEvent.click(getByTestId('userNavButton'))
+      fireEvent.click(getByTestId('logoutButton'))
     })
   })
 })

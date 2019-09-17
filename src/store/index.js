@@ -104,6 +104,7 @@ export const loginAs = (loginType) => {
         pictureUrl: person.avatarUrl()
       }))
     } else if (!userSession.isSignInPending()) {
+      console.log('aaa')
       // Open the blockstack browser for sign in
       userSession.redirectToSignIn(`${window.location.origin}/handle-login`)
     }
