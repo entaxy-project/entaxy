@@ -105,8 +105,8 @@ export const updateAccount = (account, options = { forceUpdateBalance: false, sh
 
 // --- DELETE ---
 export const deleteAccount = (account, options = { skipAfterChange: false }) => {
-  const { skipAfterChange } = options
   return async (dispatch, getState) => {
+    const { skipAfterChange } = options
     const transactionIds = getAccountTransactions(getState(), account.id).map((transaction) => transaction.id)
 
     dispatch(deleteTransactions(account, transactionIds, { skipAfterChange: true }))

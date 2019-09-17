@@ -9,8 +9,7 @@ import {
   store,
   persistor,
   loginAs,
-  userLogout,
-  handleBlockstackLogin
+  userLogout
 } from '..'
 import { blockstackUserSession, blockstackPerson } from '../../../mocks/BlockstackMock'
 
@@ -69,44 +68,6 @@ describe('store', () => {
       expect(store.getState().user.overlayMessage).toEqual('Loading data from local storage ...')
       userLogout()
       expect(store.getState().user).toEqual(userInitialState)
-      expect(persistor).toBeNull()
-    })
-  })
-
-  describe('handleBlockstackLogin', () => {
-    it('logs in with blockstack', async () => {
-      blockstackUserSession.isSignInPending.mockReturnValue(true)
-      blockstackUserSession.handlePendingSignIn.mockImplementation(() => Promise.resolve())
-      const mochHistoryPush = jest.fn()
-      expect(persistor).toBeNull()
-      await handleBlockstackLogin({ history: { push: mochHistoryPush } })
-      expect(await blockstackUserSession.handlePendingSignIn).toHaveBeenCalledWith()
-      expect(mochHistoryPush).toHaveBeenCalledWith('/dashboard')
-      expect(store.getState().user.isAuthenticatedWith).toEqual('blockstack')
-      expect(store.getState().user.overlayMessage).toEqual('Loading data from Blockstack ...')
-      userLogout()
-    })
-
-    it('does nothing if signin is not pending', () => {
-      blockstackUserSession.isSignInPending.mockReturnValue(false)
-      const mochHistoryPush = jest.fn()
-
-      expect(persistor).toBeNull()
-      handleBlockstackLogin({ history: { push: mochHistoryPush } })
-      expect(blockstackUserSession.handlePendingSignIn).not.toHaveBeenCalled()
-      expect(mochHistoryPush).not.toHaveBeenCalled()
-      expect(persistor).toBeNull()
-    })
-
-    it('does nothing if an error occurs', async () => {
-      blockstackUserSession.isSignInPending.mockReturnValue(true)
-      blockstackUserSession.handlePendingSignIn.mockImplementation(() => Promise.reject(new Error('reason')))
-      const mochHistoryPush = jest.fn()
-
-      expect(persistor).toBeNull()
-      handleBlockstackLogin({ history: { push: mochHistoryPush } })
-      expect(await blockstackUserSession.handlePendingSignIn).toHaveBeenCalledWith()
-      expect(mochHistoryPush).not.toHaveBeenCalled()
       expect(persistor).toBeNull()
     })
   })

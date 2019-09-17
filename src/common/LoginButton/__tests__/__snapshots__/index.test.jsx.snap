@@ -20,6 +20,7 @@ exports[`LoginButton matches snapshot with user logged in as guest 1`] = `
   <button
     aria-owns={null}
     className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-colorInherit"
+    data-testid="userNavButton"
     disabled={false}
     onBlur={[Function]}
     onClick={[Function]}
@@ -61,6 +62,7 @@ exports[`LoginButton matches snapshot with user logged in with blockstack 1`] = 
   <button
     aria-owns={null}
     className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-colorInherit"
+    data-testid="userNavButton"
     disabled={false}
     onBlur={[Function]}
     onClick={[Function]}

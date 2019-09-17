@@ -62,12 +62,14 @@ const AccountsChart = () => {
     for (group of Object.values(accounts.byInstitution[institution].groups)) {
       let accountId
       for (accountId of group.accountIds) {
-        data.push({
-          name: accounts.byId[accountId].name,
-          value: accounts.byId[accountId].currentBalance.localCurrency || 0,
-          colour: baseColors[institutionCount][500 - (100 * accountCount)]
-        })
-        accountCount += 1
+        if (accounts.byId[accountId] !== undefined) {
+          data.push({
+            name: accounts.byId[accountId].name,
+            value: accounts.byId[accountId].currentBalance.localCurrency || 0,
+            colour: baseColors[institutionCount][500 - (100 * accountCount)]
+          })
+          accountCount += 1
+        }
       }
     }
     institutionCount += 1

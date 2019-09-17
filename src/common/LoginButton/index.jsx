@@ -84,6 +84,7 @@ export class LoginButtonComponent extends React.Component {
             color="inherit"
             aria-owns={open ? 'menu-list-grow' : null}
             onClick={this.handleClick}
+            data-testid="userNavButton"
           >
             {user.name}
           </Button>
@@ -100,7 +101,7 @@ export class LoginButtonComponent extends React.Component {
                         </ListItemIcon>
                         <ListItemText primary="Settings" />
                       </MenuItem>
-                      <MenuItem onClick={userLogout}>
+                      <MenuItem onClick={userLogout} data-testid="logoutButton">
                         <ListItemIcon>
                           <Icon
                             path={mdiLogout}

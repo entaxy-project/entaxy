@@ -1,15 +1,15 @@
+/* eslint-disable react/display-name */
+/* eslint-disable react/no-multi-comp */
 /* eslint-disable react/sort-comp */
 import React from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
+import { useSelector } from 'react-redux'
 import {
-  BrowserRouter,
   Switch,
   Route,
   Redirect
 } from 'react-router-dom'
 import { PersistGate } from 'redux-persist/integration/react'
-import { persistor, handleBlockstackLogin } from './store'
+import { persistor } from './store'
 import LoadingOverlay from './common/LoadingOverlay'
 import Landing from './core/Landing'
 import Taxes from './core/Taxes'
@@ -28,21 +28,20 @@ import MoneyFlow from './core/Budget/MoneyFlow'
 import Header from './common/Header'
 import SnackbarMessage from './common/SnackbarMessage'
 import LeftDrawer from './core/Accounts/LeftDrawer'
+import HandleBlockstackLogin from './core/HandleBlockstackLogin'
 
-const mapStateToProps = ({ user, settings, accounts }) => {
-  return { isAuthenticatedWith: user.isAuthenticatedWith, settings, accounts }
-}
+export const Routes = () => {
+  const {
+    hasAccounts
+  } = useSelector(({ accounts }) => ({
+    hasAccounts: Object.keys(accounts.byId).length > 0
+  }))
 
-export class RoutesComponent extends React.Component {
-  loginRequired = (Component, options = {}) => (props) => {
+  const wrapComponent = (Component, options = {}) => (props) => {
     const { accountRequired, accountLeftDrawer } = options
-    // Check for authentication
-    if (this.props.isAuthenticatedWith === null) {
-      return <Redirect to="/" />
-    }
     // Check for at least one account
-    if (accountRequired && Object.keys(this.props.accounts.byId).length === 0) {
-      return <Redirect to="/" />
+    if (accountRequired && !hasAccounts) {
+      return <Redirect to="/dashboard" />
     }
 
     if (accountLeftDrawer) {
@@ -62,106 +61,87 @@ export class RoutesComponent extends React.Component {
     )
   }
 
-  authenticatedSettings = this.loginRequired(Settings)
+  const wrappedSettings = wrapComponent(Settings)
+  const wrappedBudgetCategories = wrapComponent(BudgetCategories)
+  const wrappedDashBoard = wrapComponent(Dashboard)
 
-  authenticatedBudgetCategories = this.loginRequired(BudgetCategories)
-
-  authenticatedDashBoard = this.loginRequired(Dashboard)
-
-
-  authenticatedNewAccount = this.loginRequired(NewAccount, {
+  const wrappedNewAccount = wrapComponent(NewAccount, {
     accountLeftDrawer: true
   })
 
-  authenticatedEditAccount = this.loginRequired(EditAccount, {
+  const wrappedEditAccount = wrapComponent(EditAccount, {
     accountRequired: true,
     accountLeftDrawer: true
   })
 
-  authenticatedTransactions = this.loginRequired(Transactions, {
+  const wrappedTransactions = wrapComponent(Transactions, {
     accountRequired: true,
     accountLeftDrawer: true
   })
 
-  authenticatedImportTransactions = this.loginRequired(ImportTransactions, {
+  const wrappedImportTransactions = wrapComponent(ImportTransactions, {
     accountRequired: true,
     accountLeftDrawer: true
   })
 
-  authenticatedNewImportFromInstitution = this.loginRequired(NewImportFromInstitution, {
+  const wrappedNewImportFromInstitution = wrapComponent(NewImportFromInstitution, {
     accountLeftDrawer: true
   })
 
-  authenticatedEditImportFromInstitution = this.loginRequired(EditImportFromInstitution, {
+  const wrappedEditImportFromInstitution = wrapComponent(EditImportFromInstitution, {
     accountRequired: true,
     accountLeftDrawer: true
   })
 
-  authenticatedBudget = this.loginRequired(Budget)
-
-  authenticatedMoneyFlow = this.loginRequired(MoneyFlow)
-
-  authenticatedTaxes = this.loginRequired(Taxes)
-
-  authenticatedPortfolios = this.loginRequired(Portfolios)
-
-  render() {
-    return (
-      <BrowserRouter basename={process.env.PUBLIC_URL}>
-        {!persistor && (
+  const wrappedBudget = wrapComponent(Budget)
+  const wrappedMoneyFlow = wrapComponent(MoneyFlow)
+  const wrappedTaxes = wrapComponent(Taxes)
+  const wrappedPortfolios = wrapComponent(Portfolios)
+  return (
+    <>
+      {!persistor && (
+        <Switch>
+          <Route exact path="/" component={Landing} />
+          <Route exact path="/handle-login" component={HandleBlockstackLogin} />
+          <Redirect to="/" />
+        </Switch>
+      )}
+      {persistor && (
+        <PersistGate loading={<LoadingOverlay />} persistor={persistor}>
           <Switch>
             <Route exact path="/" component={Landing} />
-            <Route exact path="/handle-login" render={handleBlockstackLogin} />
+            <Route exact path="/taxes" component={wrappedTaxes} />
+            <Route exact path="/portfolio" component={wrappedPortfolios} />
+            <Route exact path="/settings" render={wrappedSettings} />
+            <Route exact path="/budget-categories" render={wrappedBudgetCategories} />
+            <Route exact path="/dashboard" render={wrappedDashBoard} />
+            <Route exact path="/budget" render={wrappedBudget} />
+            <Route exact path="/money-flow" render={wrappedMoneyFlow} />
+            <Route exact path="/accounts/new" render={wrappedNewAccount} />
+            <Route exact path="/accounts/:accountId/edit" render={wrappedEditAccount} />
+            <Route exact path="/accounts/:accountId/transactions" render={wrappedTransactions} />
+            <Route
+              exact
+              path="/accounts/:accountId/import"
+              render={wrappedImportTransactions}
+            />
+            <Route
+              exact
+              path="/institutions/:institution/import/new"
+              render={wrappedNewImportFromInstitution}
+            />
+            <Route
+              exact
+              path="/institutions/:institution/import/:groupId/edit"
+              render={wrappedEditImportFromInstitution}
+            />
             <Redirect to="/" />
           </Switch>
-        )}
-        {persistor && (
-          <PersistGate loading={<LoadingOverlay />} persistor={persistor}>
-            <Switch>
-              <Route exact path="/" component={Landing} />
-              <Route exact path="/taxes" component={this.authenticatedTaxes} />
-              <Route exact path="/portfolio" component={this.authenticatedPortfolios} />
-              <Route exact path="/settings" render={this.authenticatedSettings} />
-              <Route exact path="/budget-categories" render={this.authenticatedBudgetCategories} />
-              <Route exact path="/dashboard" render={this.authenticatedDashBoard} />
-              <Route exact path="/budget" render={this.authenticatedBudget} />
-              <Route exact path="/money-flow" render={this.authenticatedMoneyFlow} />
-              <Route exact path="/accounts/new" render={this.authenticatedNewAccount} />
-              <Route exact path="/accounts/:accountId/edit" render={this.authenticatedEditAccount} />
-              <Route exact path="/accounts/:accountId/transactions" render={this.authenticatedTransactions} />
-              <Route
-                exact
-                path="/accounts/:accountId/import"
-                render={this.authenticatedImportTransactions}
-              />
-              <Route
-                exact
-                path="/institutions/:institution/import/new"
-                render={this.authenticatedNewImportFromInstitution}
-              />
-              <Route
-                exact
-                path="/institutions/:institution/import/:groupId/edit"
-                render={this.authenticatedEditImportFromInstitution}
-              />
-              <Redirect to="/" />
-            </Switch>
-          </PersistGate>
-        )}
-        <SnackbarMessage />
-      </BrowserRouter>
-    )
-  }
+        </PersistGate>
+      )}
+      <SnackbarMessage />
+    </>
+  )
 }
 
-RoutesComponent.propTypes = {
-  isAuthenticatedWith: PropTypes.string,
-  settings: PropTypes.object.isRequired,
-  accounts: PropTypes.object.isRequired
-}
-
-RoutesComponent.defaultProps = {
-  isAuthenticatedWith: null
-}
-
-export default connect(mapStateToProps)(RoutesComponent)
+export default Routes

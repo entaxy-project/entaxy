@@ -16,7 +16,8 @@
         "deploy:test": "npm run build && aws s3 sync build/ s3://entaxy-test --delete",
         "deploy:staging": "npm run build && aws s3 sync build/ s3://entaxy-staging --delete",
         "deploy:production": "npm run build && aws s3 sync build/ s3://entaxy-production --delete",
-        "postdeploy:production": "aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_ID --paths '/*' "
+        "postdeploy:production": "aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_ID --paths '/*' ",
+        "debug": "echo 'chrome://inspect' && npx react-scripts --inspect-brk test --env=jsdom --runInBand --watch"
     },
     "dependencies": {
         "@material-ui/core": "^4.4.2",
@@ -97,6 +98,7 @@
         "eslint-plugin-jsx-a11y": "^6.2.3",
         "eslint-plugin-react": "^7.14.3",
         "eslint-plugin-react-hooks": "^2.0.1",
+        "history": "^4.10.1",
         "http-proxy-middleware": "^0.20.0",
         "husky": "^3.0.5",
         "jest-enzyme": "^7.1.1",
