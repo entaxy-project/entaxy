@@ -4,7 +4,7 @@ import '@testing-library/jest-dom/extend-expect'
 import ResultsToolbar from '../ResultsToolbar'
 
 const account = { id: 1, name: 'Checking', institution: 'TD' }
-const mockOnSave = jest.fn()
+const mockHandleNextStep = jest.fn()
 const mockHandlePrevStep = jest.fn()
 const mochaSetFilter = jest.fn()
 const mochaUnsetFilter = jest.fn()
@@ -22,7 +22,7 @@ describe('ResultsToolbar', () => {
       account,
       selectedTransactions: [],
       filterProps: { filters: {} },
-      onSave: mockOnSave,
+      handleNextStep: mockHandleNextStep,
       handlePrevStep: mockHandlePrevStep
     }
     const { getByText } = render(<ResultsToolbar {...props} />)
@@ -41,7 +41,7 @@ describe('ResultsToolbar', () => {
         setFilter: mochaSetFilter,
         unsetFilter: mochaUnsetFilter
       },
-      onSave: mockOnSave,
+      handleNextStep: mockHandleNextStep,
       handlePrevStep: mockHandlePrevStep
     }
     const { getByTestId } = render(<ResultsToolbar {...props} />)
@@ -64,12 +64,12 @@ describe('ResultsToolbar', () => {
       account,
       selectedTransactions: [],
       filterProps: { filters: {} },
-      onSave: mockOnSave,
+      handleNextStep: mockHandleNextStep,
       handlePrevStep: mockHandlePrevStep
     }
     const { getByTestId } = render(<ResultsToolbar {...props} />)
     fireEvent.click(getByTestId('saveButton'))
-    expect(mockOnSave).toHaveBeenCalled()
+    expect(mockHandleNextStep).toHaveBeenCalled()
   })
 
   it('should handle back', async () => {
@@ -79,7 +79,7 @@ describe('ResultsToolbar', () => {
       account,
       selectedTransactions: [],
       filterProps: { filters: {} },
-      onSave: mockOnSave,
+      handleNextStep: mockHandleNextStep,
       handlePrevStep: mockHandlePrevStep
     }
     const { getByTestId } = render(<ResultsToolbar {...props} />)

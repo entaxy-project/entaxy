@@ -18,7 +18,6 @@ import Select from '@material-ui/core/Select'
 import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
 import Tooltip from '@material-ui/core/Tooltip'
-import green from '@material-ui/core/colors/green'
 import grey from '@material-ui/core/colors/grey'
 
 const useStyles = makeStyles((theme) => ({
@@ -42,20 +41,6 @@ const useStyles = makeStyles((theme) => ({
   submitButton: {
     marginLeft: theme.spacing(2)
   },
-  buttonSuccess: {
-    backgroundColor: green[500],
-    '&:hover': {
-      backgroundColor: green[700]
-    }
-  },
-  buttonProgress: {
-    color: green[500],
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    marginTop: -12,
-    marginLeft: -12
-  },
   tableHeaderForm: {
     position: 'sticky',
     top: 138,
@@ -74,7 +59,12 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-const CsvColumnSelection = ({ handlePrevStep, handleNextStep, parser }) => {
+const CsvColumnSelection = ({
+  parser,
+  handlePrevStep,
+  handleNextStep,
+  setDuplicateTransactions
+}) => {
   const classes = useStyles()
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [hasHeaderRow, setHasHeaderRow] = useState(parser.hasHeaderRow)
@@ -112,6 +102,7 @@ const CsvColumnSelection = ({ handlePrevStep, handleNextStep, parser }) => {
     event.preventDefault()
     setIsSubmitting(true)
     parser.mapToTransactions()
+    setDuplicateTransactions()
     handleNextStep()
   }
   return (
@@ -277,7 +268,8 @@ const CsvColumnSelection = ({ handlePrevStep, handleNextStep, parser }) => {
 CsvColumnSelection.propTypes = {
   parser: PropTypes.object.isRequired,
   handlePrevStep: PropTypes.func.isRequired,
-  handleNextStep: PropTypes.func.isRequired
+  handleNextStep: PropTypes.func.isRequired,
+  setDuplicateTransactions: PropTypes.func.isRequired
 }
 
 export default CsvColumnSelection

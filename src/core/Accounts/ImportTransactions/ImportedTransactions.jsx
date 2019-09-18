@@ -3,23 +3,16 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
 import CheckCircleIcon from '@material-ui/icons/CheckCircle'
+import WarningIcon from '@material-ui/icons/Warning'
 import ErrorIcon from '@material-ui/icons/Error'
 import Popover from '@material-ui/core/Popover'
-import Table from '@material-ui/core/Table'
-import TableHead from '@material-ui/core/TableHead'
-import TableBody from '@material-ui/core/TableBody'
-import TableRow from '@material-ui/core/TableRow'
-import TableCell from '@material-ui/core/TableCell'
-import Typography from '@material-ui/core/Typography'
-import Grid from '@material-ui/core/Grid'
-import IconButton from '@material-ui/core/IconButton'
-import CloseIcon from '@material-ui/icons/Close'
-import green from '@material-ui/core/colors/green'
-import red from '@material-ui/core/colors/red'
 import pluralize from 'pluralize'
 import { Column } from 'react-virtualized'
 import ResultsToolbar from './ResultsToolbar'
+import ErrorPopupContent from './ErrorPopupContent'
+import DuplicatePopupContent from './DuplicatePopupContent'
 import TransactionsTable from '../Transactions/TransactionsTable'
+import { filterByErrors, filterByDuplicates } from '../../../store/transactions/actions'
 
 const useStyles = makeStyles((theme) => ({
   tableWrapper: {
@@ -32,13 +25,19 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: '10px'
   },
   iconCheck: {
-    color: green[500],
+    color: theme.palette.success.icon,
     marginRight: '8px',
     'vertical-align': 'text-bottom',
     fontSize: 18
   },
   iconError: {
-    color: red[800],
+    color: theme.palette.danger.icon,
+    marginRight: '8px',
+    verticalAlign: 'text-bottom',
+    fontSize: 18
+  },
+  iconWarning: {
+    color: theme.palette.warning.icon,
     marginRight: '8px',
     verticalAlign: 'text-bottom',
     fontSize: 18
@@ -56,11 +55,8 @@ const useStyles = makeStyles((theme) => ({
   closeButton: {
     height: 50
   },
-  iconErrorInPopup: {
-    color: red[800],
-    marginRight: '8px',
-    verticalAlign: 'text-bottom',
-    fontSize: 18
+  smallIcon: {
+    fontSize: 14
   },
   clickable: {
     cursor: 'pointer'
@@ -70,13 +66,11 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-const DONT_IMPORT = 'Don\'t import'
-
 const ImportedTransactions = ({
   account,
   parser,
-  onSave,
-  handlePrevStep
+  handlePrevStep,
+  handleNextStep
 }) => {
   const classes = useStyles()
   const [anchorEl, setAnchorEl] = useState(null)
@@ -95,37 +89,58 @@ const ImportedTransactions = ({
     setPopupRowData(null)
   }
 
-  const filterByErrors = (transaction) => (
-    Object.keys(transaction).includes('errors') && transaction.errors.length > 0
-  )
-
   const toolbarProps = () => {
     const transactionsWithErrors = parser.transactions.filter(filterByErrors)
-    let subTitle = 'No errors'
+    const transactionsWithDuplicates = parser.transactions.filter(filterByDuplicates)
+    const importCount = parser.transactions.length - transactionsWithErrors.length - transactionsWithDuplicates.length
 
-    if (transactionsWithErrors.length > 0) {
-      subTitle = (
-        <div>
-          {pluralize('transaction', transactionsWithErrors.length, true)} have errors and will not be imported
-          <br />
-          Click on the <ErrorIcon className={classes.iconError} />
-          icon next to each transaction to see more details
-        </div>
-      )
-    }
+    const errorText = transactionsWithErrors.length > 0 ? (
+      <>
+        Found <ErrorIcon className={classes.iconError} />
+        {pluralize('error', transactionsWithErrors.length, true)}
+        <br />
+      </>
+    ) : null
+    const duplicateText = transactionsWithDuplicates.length > 0 ? (
+      <>
+        Found <WarningIcon className={classes.iconWarning} />
+        {pluralize('duplicate transaction', transactionsWithDuplicates.length, true)}
+        <br />
+      </>
+    ) : null
+
+    const subTitle = errorText || duplicateText ? (
+      <>
+        {errorText}
+        {duplicateText}
+        {importCount === 0 ? 'No transactions ' : `Only ${pluralize('transaction', importCount, true)} `}
+        will  be imported
+      </>
+    ) : 'No errors'
 
     return {
-      title: 'Check the imported amounts and dates before saving',
       subTitle,
-      onSave,
+      handleNextStep,
       handlePrevStep
     }
   }
 
   const errorCellRenderer = (data) => {
     if (data.cellData.length === 0) {
+      if (data.rowData.duplicate !== undefined) {
+        return (
+          <WarningIcon
+            aria-owns={id}
+            aria-haspopup="true"
+            data-testid="errorIconButton"
+            onClick={(event) => handleOpenPopup(event, data.rowData)}
+            className={[classes.iconWarning, classes.clickable].join(' ')}
+          />
+        )
+      }
       return <CheckCircleIcon className={classes.iconCheck} />
     }
+
     return (
       <ErrorIcon
         aria-owns={id}
@@ -154,64 +169,19 @@ const ImportedTransactions = ({
           horizontal: 'left'
         }}
       >
-        {popupRowData && (
-          <Grid container>
-            <Grid item xs={12} className={classes.popoverHeader}>
-              <Typography variant="h6">
-                A problem was found with the transaction on line {popupRowData.line}
-                <Typography variant="caption" paragraph>
-                  <ErrorIcon className={classes.iconErrorInPopup} />
-                  {popupRowData.errors.join(', ')}
-                </Typography>
-              </Typography>
-              <IconButton
-                aria-label="Close"
-                className={classes.closeButton}
-                onClick={handleClosePopup}
-                data-testid="closeIconButton"
-              >
-                <CloseIcon />
-              </IconButton>
-            </Grid>
-            <Grid item xs={12}>
-              <Table size="small">
-                <TableHead>
-                  <TableRow>
-                    <TableCell>Line #</TableCell>
-                    {parser.csvHeader.map((column, index) => {
-                      if (column.transactionField === DONT_IMPORT) {
-                        return (
-                          <TableCell key={`header-${index + popupRowData.line}`} className={classes.dontImportCell}>
-                            Don&apos;t Import
-                          </TableCell>
-                        )
-                      }
-                      return (
-                        <TableCell key={column.transactionField}>
-                          {parser.transactionFields[column.transactionField].label}
-                        </TableCell>
-                      )
-                    })}
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  <TableRow>
-                    <TableCell>{popupRowData.line}</TableCell>
-                    {parser.csvHeader.map((column, index) => {
-                      return (
-                        <TableCell
-                          key={`cell-${index + popupRowData.line}`}
-                          className={column.transactionField === DONT_IMPORT ? classes.dontImportCell : null}
-                        >
-                          {parser.csvData[popupRowData.line - 1][index]}
-                        </TableCell>
-                      )
-                    })}
-                  </TableRow>
-                </TableBody>
-              </Table>
-            </Grid>
-          </Grid>
+        {popupRowData && popupRowData.errors.length > 0 && (
+          <ErrorPopupContent
+            parser={parser}
+            popupRowData={popupRowData}
+            handleClosePopup={handleClosePopup}
+          />
+        )}
+        {popupRowData && popupRowData.duplicate !== undefined && (
+          <DuplicatePopupContent
+            account={account}
+            popupRowData={popupRowData}
+            handleClosePopup={handleClosePopup}
+          />
         )}
       </Popover>
       <TransactionsTable
@@ -241,8 +211,8 @@ const ImportedTransactions = ({
 ImportedTransactions.propTypes = {
   account: PropTypes.object.isRequired,
   parser: PropTypes.object.isRequired,
-  onSave: PropTypes.func.isRequired,
-  handlePrevStep: PropTypes.func.isRequired
+  handlePrevStep: PropTypes.func.isRequired,
+  handleNextStep: PropTypes.func.isRequired
 }
 
 export default ImportedTransactions

@@ -18,6 +18,7 @@ import {
 } from '../store'
 import Routes from '../routes'
 import { blockstackUserSession, blockstackPerson } from '../../mocks/BlockstackMock'
+import ThemeProvider from '../core/ThemeProvider'
 
 jest.mock('blockstack')
 UserSession.mockImplementation(() => blockstackUserSession)
@@ -53,7 +54,11 @@ function renderWithRouter(
 ) {
   const historyPushSpy = jest.spyOn(history, 'push')
   return {
-    ...render(<Router history={history}>{children}</Router>),
+    ...render(
+      <ThemeProvider>
+        <Router history={history}>{children}</Router>
+      </ThemeProvider>
+    ),
     history,
     historyPushSpy
   }

@@ -16,6 +16,7 @@ import {
   decimalFormatter,
   dateFormatter
 } from '../../../util/stringFormatter'
+import { filterByErrors, filterByDuplicates } from '../../../store/transactions/actions'
 
 const styles = (theme) => ({
   tableWrapper: {
@@ -46,6 +47,10 @@ const styles = (theme) => ({
   rowWithError: {
     backgroundColor: theme.palette.danger.background,
     color: theme.palette.danger.text
+  },
+  rowWithDuplicate: {
+    backgroundColor: theme.palette.warning.background,
+    color: theme.palette.warning.text
   },
   nativeAmount: {
     color: grey[500],
@@ -116,7 +121,10 @@ export class TransactionsTableComponent extends React.Component {
             return result && this.filterByDescription(transaction)
           }
           if (attr === 'errors') {
-            return result && this.filterByErrors(transaction)
+            return result && filterByErrors(transaction)
+          }
+          if (attr === 'duplicates') {
+            return result && filterByDuplicates(transaction)
           }
           if (typeof filters[attr] === 'function') {
             return result && filters[attr](transaction)
@@ -135,10 +143,6 @@ export class TransactionsTableComponent extends React.Component {
     }
     return res
   }
-
-  filterByErrors = (transaction) => (
-    Object.keys(transaction).includes('errors') && transaction.errors.length > 0
-  )
 
   resetSelection = () => this.setState({ selected: [] })
 
@@ -186,6 +190,7 @@ export class TransactionsTableComponent extends React.Component {
       [classes.headerRow]: index < 0,
       [classes.openingBalance]: index >= 0 && filteredTransactions[index].type === 'openingBalance',
       [classes.rowWithError]: (index >= 0 && this.transactionHasErrors(filteredTransactions[index])),
+      [classes.rowWithDuplicate]: (index >= 0 && filteredTransactions[index].duplicate !== undefined),
       [classes.row]: index >= 0,
       [classes.oddRow]: index % 2 !== 0
     })

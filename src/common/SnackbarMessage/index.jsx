@@ -6,7 +6,6 @@ import { withStyles } from '@material-ui/core/styles'
 import Snackbar from '@material-ui/core/Snackbar'
 import CheckCircleIcon from '@material-ui/icons/CheckCircle'
 import ErrorIcon from '@material-ui/icons/Error'
-import { green, red } from '@material-ui/core/colors'
 import { hideSnackbar } from '../../store/settings/actions'
 
 const styles = (theme) => ({
@@ -20,10 +19,10 @@ const styles = (theme) => ({
     marginRight: theme.spacing(2)
   },
   success: {
-    color: green[600]
+    color: theme.palette.success.icon
   },
   error: {
-    color: red[400]
+    color: theme.palette.danger.icon
   }
 })
 
