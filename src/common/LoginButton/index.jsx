@@ -1,8 +1,6 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { compose } from 'recompose'
-import { connect } from 'react-redux'
-import { withStyles } from '@material-ui/core/styles'
+import React, { useState, useRef } from 'react'
+import { useSelector } from 'react-redux'
+import { makeStyles } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
 import Avatar from '@material-ui/core/Avatar'
 import Popper from '@material-ui/core/Popper'
@@ -23,7 +21,8 @@ import LinkTo from '../LinkTo'
 import { userLogout } from '../../store'
 import packageJson from '../../../package.json'
 
-const styles = (theme) => ({
+
+const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     minWidth: 135
@@ -36,112 +35,86 @@ const styles = (theme) => ({
     verticalAlign: 'bottom',
     fill: theme.palette.text.secondary
   }
-})
+}))
 
-const mapStateToProps = ({ user }) => ({ user })
+const LoginButton = () => {
+  const classes = useStyles()
+  const user = useSelector((state) => state.user)
+  const [open, setOpen] = useState(false)
+  const anchorRef = useRef(null)
 
-export class LoginButtonComponent extends React.Component {
-  state = {
-    anchorEl: null,
-    open: false
+  const handleToggle = () => {
+    setOpen((prevOpen) => !prevOpen)
   }
 
-  handleClick = (event) => {
-    const { currentTarget } = event
-    this.setState((state) => ({
-      anchorEl: currentTarget,
-      open: !state.open
-    }))
+  const handleClose = (event) => {
+    if (anchorRef.current && anchorRef.current.contains(event.target)) {
+      return
+    }
+    setOpen(false)
   }
-
-  handleClose = () => {
-    this.setState({ open: false })
-  }
-
-  render() {
-    const { anchorEl, open } = this.state
-    const {
-      classes,
-      user
-    } = this.props
-    return (
-      <ClickAwayListener onClickAway={this.handleClose}>
-        <div className={classes.root}>
-          { user.isAuthenticatedWith === 'blockstack' && (
-            <Tooltip id="tooltip-icon" title={user.username}>
-              <Avatar
-                src={user.pictureUrl}
-                alt={user.name}
-              />
-            </Tooltip>
-          )}
-          { user.isAuthenticatedWith === 'guest' && (
-            <Avatar alt={user.name}>
-              <AccountBoxIcon fontSize="small" />
-            </Avatar>
-          )}
-          <Button
-            color="inherit"
-            aria-owns={open ? 'menu-list-grow' : null}
-            onClick={this.handleClick}
-          >
-            {user.name}
-          </Button>
-          {anchorEl !== null && (
-            <Popper open={open} anchorEl={anchorEl} transition className={classes.popper}>
-              {({ TransitionProps }) => (
-                <Fade {...TransitionProps} timeout={350}>
-                  <Paper>
-                    <MenuList role="menu">
-
-                      <MenuItem onClick={this.handleClose} component={LinkTo('/settings')}>
-                        <ListItemIcon>
-                          <Settings />
-                        </ListItemIcon>
-                        <ListItemText primary="Settings" />
-                      </MenuItem>
-                      <MenuItem onClick={userLogout}>
-                        <ListItemIcon>
-                          <Icon
-                            path={mdiLogout}
-                            size={1}
-                            className={classes.menuIcon}
-                          />
-                        </ListItemIcon>
-                        <ListItemText primary="Logout" />
-                      </MenuItem>
-                      <Divider />
-                      <MenuItem disabled={true}>
-                        <small>
-                          Version&nbsp;
-                          {packageJson.version}
-                        </small>
-                      </MenuItem>
-
-                    </MenuList>
-                  </Paper>
-                </Fade>
-              )}
-            </Popper>
-          )}
-        </div>
-      </ClickAwayListener>
-    )
-  }
+  if (!user.isAuthenticatedWith) return null
+  return (
+    <div className={classes.root}>
+      { user.isAuthenticatedWith === 'blockstack' && (
+        <Tooltip id="tooltip-icon" title={user.username}>
+          <Avatar
+            src={user.pictureUrl}
+            alt={user.name}
+          />
+        </Tooltip>
+      )}
+      { user.isAuthenticatedWith === 'guest' && (
+        <Avatar alt={user.name}>
+          <AccountBoxIcon fontSize="small" />
+        </Avatar>
+      )}
+      <Button
+        ref={anchorRef}
+        color="inherit"
+        aria-owns={open ? 'menu-list-grow' : null}
+        onClick={handleToggle}
+        data-testid="userNavButton"
+      >
+        {user.name}
+      </Button>
+      <Popper open={open} anchorEl={anchorRef.current} transition className={classes.popper}>
+        {({ TransitionProps }) => (
+          <Fade {...TransitionProps} timeout={350}>
+            <Paper>
+              <ClickAwayListener onClickAway={handleClose}>
+                <MenuList role="menu">
+                  <MenuItem onClick={handleToggle} component={LinkTo('/settings')}>
+                    <ListItemIcon>
+                      <Settings />
+                    </ListItemIcon>
+                    <ListItemText primary="Settings" />
+                  </MenuItem>
+                  <MenuItem onClick={userLogout} data-testid="logoutButton">
+                    <ListItemIcon>
+                      <Icon
+                        path={mdiLogout}
+                        size={1}
+                        className={classes.menuIcon}
+                      />
+                    </ListItemIcon>
+                    <ListItemText primary="Logout" />
+                  </MenuItem>
+                  <Divider />
+                  <MenuItem disabled={true}>
+                    <small>
+                      Version&nbsp;
+                      {packageJson.version}
+                    </small>
+                  </MenuItem>
+                </MenuList>
+              </ClickAwayListener>
+            </Paper>
+          </Fade>
+        )}
+      </Popper>
+    </div>
+  )
 }
 
-LoginButtonComponent.propTypes = {
-  classes: PropTypes.object,
-  user: PropTypes.object.isRequired,
-  history: PropTypes.object
-}
-
-LoginButtonComponent.defaultProps = {
-  classes: null,
-  history: null
-}
-
-export default compose(
-  connect(mapStateToProps),
-  withStyles(styles)
-)(LoginButtonComponent)
+export default LoginButton

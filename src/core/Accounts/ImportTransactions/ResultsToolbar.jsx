@@ -4,59 +4,76 @@ import PropTypes from 'prop-types'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Switch from '@material-ui/core/Switch'
 import Button from '@material-ui/core/Button'
+import SaveIcon from '@material-ui/icons/Save'
 import TableToolbar from '../../../common/TableToolbar'
 
 const useStyles = makeStyles((theme) => ({
   chekbox: {
-    width: 200
+    width: 220
   },
   smallButton: {
-    height: 30
+    height: 30,
+    paddingLeft: theme.spacing(2),
+    paddingRight: theme.spacing(2)
   },
   submitButton: {
     marginLeft: theme.spacing(2)
+  },
+  saveIcon: {
+    marginRight: theme.spacing(1),
+    fontSize: 18
   }
 }))
 
 const ResultsToolbar = ({
   title,
   subTitle,
-  selectedTransactions,
   filterProps,
-  onSave,
+  handleNextStep,
   handlePrevStep
 }) => {
   const classes = useStyles()
-  const [checked, setChecked] = useState(false)
+  const [checked, setChecked] = useState({ showOnlyErrors: false, showOnlyDuplicates: false })
 
   const onChange = ({ target }) => {
+    const attr = target.value === 'showOnlyErrors' ? 'errors' : 'duplicates'
     if (target.checked) {
-      filterProps.setFilter({
-        attr: 'errors',
-        value: true
-      })
+      filterProps.setFilter({ attr, value: true })
     } else {
-      filterProps.unsetFilter({ attr: 'errors' })
+      filterProps.unsetFilter({ attr })
     }
-    setChecked(target.checked)
+    setChecked((prevValue) => ({ ...prevValue, [target.value]: target.checked }))
   }
 
   return (
     <TableToolbar
       title={title}
       subTitle={subTitle}
-      selectedItems={selectedTransactions}
+      selectedItems={[]}
     >
       <FormControlLabel
         label="Show only errors"
         className={classes.chekbox}
         control={(
           <Switch
-            checked={checked}
+            checked={checked.showOnlyErrors}
             onChange={onChange}
             value="showOnlyErrors"
-            inputProps={{ 'data-testid': 'showOnlyErrors', checked }}
+            inputProps={{ 'data-testid': 'showOnlyErrors', checked: checked.showOnlyErrors }}
             data-testid="showOnlyErrorsSwitch"
+          />
+        )}
+      />
+      <FormControlLabel
+        label="Show only duplicates"
+        className={classes.chekbox}
+        control={(
+          <Switch
+            checked={checked.showOnlyDuplicates}
+            onChange={onChange}
+            value="showOnlyDuplicates"
+            inputProps={{ 'data-testid': 'showOnlyDuplicates', checked: checked.showOnlyDuplicates }}
+            data-testid="showOnlyDuplicatesSwitch"
           />
         )}
       />
@@ -69,7 +86,7 @@ const ResultsToolbar = ({
         Back
       </Button>
       <Button
-        onClick={onSave}
+        onClick={handleNextStep}
         type="submit"
         size="small"
         variant="contained"
@@ -77,6 +94,7 @@ const ResultsToolbar = ({
         className={[classes.smallButton, classes.submitButton].join(' ')}
         data-testid="saveButton"
       >
+        <SaveIcon className={classes.saveIcon} />
         Save
       </Button>
     </TableToolbar>
@@ -86,9 +104,8 @@ const ResultsToolbar = ({
 ResultsToolbar.propTypes = {
   title: PropTypes.string,
   subTitle: PropTypes.node.isRequired,
-  selectedTransactions: PropTypes.array.isRequired,
   filterProps: PropTypes.object.isRequired,
-  onSave: PropTypes.func.isRequired,
+  handleNextStep: PropTypes.func.isRequired,
   handlePrevStep: PropTypes.func.isRequired
 }
 

@@ -7,7 +7,7 @@ import { createMigrate, persistReducer, persistStore } from 'redux-persist'
 import localforage from 'localforage'
 import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2'
 import { AppConfig, UserSession, Person } from 'blockstack'
-import { blockstackStorage } from './blockstackStorage'
+import blockstackStorage from './blockstackStorage'
 import rootReducer from './rootReducer'
 import migrations from './migrations'
 import { initialState as settingsInitialState } from './settings/reducer'
@@ -15,7 +15,7 @@ import { initialState as accountsInitialState } from './accounts/reducer'
 import { initialState as transactionsInitialState } from './transactions/reducer'
 import { initialState as exchangeRatesInitialState } from './exchangeRates/reducer'
 import { initialState as budgetInitialState } from './budget/reducer'
-import { updateLoginData, userLoginError } from './user/actions'
+import { updateLoginData } from './user/actions'
 import types from './user/types'
 
 
@@ -65,7 +65,7 @@ const setPersistor = ({ storageType }) => {
     key: 'entaxy',
     blacklist: ['user'],
     version: Object.keys(migrations).length - 1,
-    migrate: createMigrate(migrations, { debug: true }),
+    migrate: createMigrate(migrations),
     stateReconciler: autoMergeLevel2
   }
 
@@ -117,20 +117,6 @@ export const loginAs = (loginType) => {
     }))
     setPersistor({ storageType: 'local' })
   }
-}
-
-export const handleBlockstackLogin = ({ history }) => {
-  const appConfig = new AppConfig()
-  const userSession = new UserSession({ appConfig })
-  if (userSession.isSignInPending()) {
-    return userSession.handlePendingSignIn()
-      .then(() => {
-        loginAs('blockstack')
-        history.push('/dashboard')
-      })
-      .catch((error) => store.dispatch(userLoginError(error)))
-  }
-  return Promise.resolve()
 }
 
 export const userLogout = () => {

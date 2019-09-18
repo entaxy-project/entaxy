@@ -104,6 +104,7 @@ export const DashboardComponent = ({
   }
 
   const userHasAccounts = Object.keys(accounts.byInstitution).length > 0
+
   return (
     <Container>
       {!userHasAccounts && (
@@ -179,6 +180,7 @@ export const DashboardComponent = ({
                           </TableRow>
                           {accountGroup.accountIds.map((id) => {
                             const account = accounts.byId[id]
+                            if (account === undefined) return null
                             return (
                               <TableRow key={id} hover onClick={() => handleClick(account)}>
                                 <TableCell className={classes.accountWrapper}>

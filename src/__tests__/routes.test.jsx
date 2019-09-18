@@ -1,106 +1,186 @@
 import React from 'react'
-import renderer from 'react-test-renderer'
-import { shallow } from 'enzyme'
+import {
+  render,
+  cleanup,
+  fireEvent,
+  waitForElement,
+  wait
+} from '@testing-library/react'
+import '@testing-library/jest-dom/extend-expect'
+import { Router } from 'react-router-dom'
+import { createMemoryHistory } from 'history'
 import { Provider } from 'react-redux'
-import { BrowserRouter, Redirect } from 'react-router-dom'
-import { store } from '../store'
+import { UserSession, Person } from 'blockstack'
+import {
+  store,
+  persistor,
+  loginAs
+} from '../store'
+import Routes from '../routes'
+import { blockstackUserSession, blockstackPerson } from '../../mocks/BlockstackMock'
 import ThemeProvider from '../core/ThemeProvider'
-import { initialState as userInitialState } from '../store/user/reducer'
-import { initialState as settingsInitialState } from '../store/settings/reducer'
-import { initialState as accountsInitialState } from '../store/accounts/reducer'
-import { RoutesComponent } from '../routes'
-import Header from '../common/Header'
+
+jest.mock('blockstack')
+UserSession.mockImplementation(() => blockstackUserSession)
+Person.mockImplementation(() => blockstackPerson)
 
 jest.mock('../common/InstitutionIcon', () => 'InstitutionIcon')
 
-const FakeComponent = () => (<div />)
+beforeEach(() => {
+  jest.resetModules()
+  jest.clearAllMocks()
+})
+
+afterEach(() => {
+  cleanup()
+})
+
+// https://github.com/mui-org/material-ui/issues/15726
+global.document.createRange = () => ({
+  setStart: () => {},
+  setEnd: () => {},
+  commonAncestorContainer: {
+    nodeName: 'BODY',
+    ownerDocument: document
+  }
+})
+
+function renderWithRouter(
+  children,
+  {
+    route = '/',
+    history = createMemoryHistory({ initialEntries: [route] })
+  } = {}
+) {
+  const historyPushSpy = jest.spyOn(history, 'push')
+  return {
+    ...render(
+      <ThemeProvider>
+        <Router history={history}>{children}</Router>
+      </ThemeProvider>
+    ),
+    history,
+    historyPushSpy
+  }
+}
 
 describe('Routes', () => {
-  describe('snapshot', () => {
-    it('matches with no accounts', () => {
-      const component = renderer.create((
+  describe('Logged out routes', () => {
+    it('renders home page if not logged in', () => {
+      const { history, getByText, queryByText } = renderWithRouter((
         <Provider store={store}>
-          <ThemeProvider>
-            <BrowserRouter>
-              <RoutesComponent
-                user={userInitialState}
-                settings={settingsInitialState}
-                accounts={accountsInitialState}
-                classes={{ }}
-              />
-            </BrowserRouter>
-          </ThemeProvider>
+          <Routes />
         </Provider>
       ))
-      expect(component.toJSON()).toMatchSnapshot()
+      expect(getByText('Insight into your finances, without sacrificing your data')).toBeInTheDocument()
+      expect(history.entries.map((e) => e.pathname)).toEqual(['/'])
+      expect(queryByText((_, element) => element.tagName.toLowerCase() === 'header')).not.toBeInTheDocument()
+    })
+
+    it('renders handleBlockstackLogin component', async () => {
+      blockstackUserSession.isSignInPending.mockReturnValue(true)
+      const { getByText, history, historyPushSpy } = renderWithRouter((
+        <Provider store={store}>
+          <Routes />
+        </Provider>
+      ), { route: '/handle-login' })
+      expect(blockstackUserSession.handlePendingSignIn).toHaveBeenCalled()
+      await wait(() => expect(historyPushSpy).toHaveBeenCalled())
+      expect(getByText('Insight into your finances, without sacrificing your data')).toBeInTheDocument()
+      expect(history.entries.map((e) => e.pathname)).toEqual(['/handle-login', '/'])
+    })
+
+    it('redirects to home page if not logged in', () => {
+      const { history, getByText } = renderWithRouter((
+        <Provider store={store}>
+          <Routes />
+        </Provider>
+      ), { route: '/dashboard' })
+      expect(getByText('Insight into your finances, without sacrificing your data')).toBeInTheDocument()
+      expect(history.entries.map((e) => e.pathname)).toEqual(['/'])
     })
   })
 
-  describe('loginRequired', () => {
-    it('Should redirect if user is not authenticated', () => {
-      const wrapper = shallow((
-        <RoutesComponent
-          user={userInitialState}
-          settings={settingsInitialState}
-          accounts={accountsInitialState}
-          classes={{ }}
-        />
+  describe('Logged in routes', () => {
+    it('logs in as guest and logs out', async () => {
+      const { getByText, queryByText, getByTestId } = renderWithRouter((
+        <Provider store={store}>
+          <Routes />
+        </Provider>
       ))
-      const instance = wrapper.instance()
+      expect(getByText('Insight into your finances, without sacrificing your data')).toBeInTheDocument()
+      expect(getByText('Sign in with Blockstack')).toBeInTheDocument()
 
-      expect(instance.props.user.isAuthenticatedWith).toBeNull()
-      expect(instance.loginRequired(FakeComponent)()).toEqual(<Redirect to="/" />)
+      // Login with blockstack
+      fireEvent.click(getByTestId('signinAsGuestButton'))
+      expect(getByText('Loading data from local storage ...')).toBeInTheDocument()
+      await waitForElement(() => getByText('Add an account'))
+      expect(getByText('You don\'t have any accounts yet.')).toBeInTheDocument()
+      expect(getByText((_, element) => element.tagName.toLowerCase() === 'header')).toBeInTheDocument()
+      expect(persistor).not.toBeNull()
+
+      // Logout
+      fireEvent.click(getByTestId('userNavButton'))
+      fireEvent.click(getByTestId('logoutButton'))
+      await waitForElement(() => getByText('Insight into your finances, without sacrificing your data'))
+      expect(queryByText((_, element) => element.tagName.toLowerCase() === 'header')).not.toBeInTheDocument()
+      expect(persistor).toBeNull()
     })
 
-    it('Should render component with no options', () => {
-      const wrapper = shallow((
-        <RoutesComponent
-          isAuthenticatedWith="blockstack"
-          settings={settingsInitialState}
-          accounts={accountsInitialState}
-          classes={{ }}
-        />
+    it('logs in as blockstack and logs out', async () => {
+      const { getByText, getByTestId } = renderWithRouter((
+        <Provider store={store}>
+          <Routes />
+        </Provider>
       ))
-      const instance = wrapper.instance()
+      expect(getByText('Insight into your finances, without sacrificing your data')).toBeInTheDocument()
+      expect(getByText('Sign in with Blockstack')).toBeInTheDocument()
 
-      expect(instance.props.isAuthenticatedWith).toBeTruthy()
-      expect(instance.loginRequired(FakeComponent)()).toEqual((
-        <Header><FakeComponent /></Header>
-      ))
+      // Login with blockstack
+      blockstackUserSession.isUserSignedIn.mockReturnValue(true)
+      fireEvent.click(getByTestId('signinWithBlockstackButton'))
+      await waitForElement(() => getByText('Loading data from Blockstack ...'))
+      await waitForElement(() => getByText('Add an account'))
+      expect(getByText('You don\'t have any accounts yet.')).toBeInTheDocument()
+      expect(persistor).not.toBeNull()
+
+      // Logout
+      blockstackUserSession.isUserSignedIn.mockReturnValue(false)
+      fireEvent.click(getByTestId('userNavButton'))
+      fireEvent.click(getByTestId('logoutButton'))
+      await waitForElement(() => getByText('Insight into your finances, without sacrificing your data'))
+      expect(persistor).toBeNull()
     })
 
-    it('Should redirect if there are no accounts', () => {
-      const wrapper = shallow((
-        <RoutesComponent
-          isAuthenticatedWith="blockstack"
-          settings={settingsInitialState}
-          accounts={accountsInitialState}
-          classes={{ }}
-        />
-      ))
-      const instance = wrapper.instance()
-
-      expect(instance.props.isAuthenticatedWith).toBeTruthy()
-      expect(instance.loginRequired(FakeComponent, { accountRequired: true })()).toEqual((
-        <Redirect to="/" />
-      ))
+    it('it renders new account', async () => {
+      loginAs('guest')
+      const { getByText, getByTestId } = renderWithRouter((
+        <Provider store={store}>
+          <Routes />
+        </Provider>
+      ), { route: '/accounts/new' })
+      expect(getByText('Loading data from local storage ...')).toBeInTheDocument()
+      await waitForElement(() => getByText('New account'))
+      expect(getByText('New account')).toBeInTheDocument()
+      expect(getByText((_, element) => element.tagName.toLowerCase() === 'header')).toBeInTheDocument()
+      // Logout
+      fireEvent.click(getByTestId('userNavButton'))
+      fireEvent.click(getByTestId('logoutButton'))
     })
 
-    it('Should render component when accounts required', () => {
-      const wrapper = shallow((
-        <RoutesComponent
-          isAuthenticatedWith="blockstack"
-          settings={settingsInitialState}
-          accounts={{ byId: [{ id: 1 }] }}
-          classes={{ }}
-        />
-      ))
-      const instance = wrapper.instance()
-
-      expect(instance.props.isAuthenticatedWith).toBeTruthy()
-      expect(instance.loginRequired(FakeComponent, { accountRequired: true })()).toEqual((
-        <Header><FakeComponent /></Header>
-      ))
+    it('it redirects to dashboard if editing non existing account', async () => {
+      loginAs('guest')
+      const { getByText, getByTestId } = renderWithRouter((
+        <Provider store={store}>
+          <Routes />
+        </Provider>
+      ), { route: '/accounts/bogus/edit' })
+      expect(getByText('Loading data from local storage ...')).toBeInTheDocument()
+      await waitForElement(() => getByText('Add an account'))
+      expect(getByText('You don\'t have any accounts yet.')).toBeInTheDocument()
+      // Logout
+      fireEvent.click(getByTestId('userNavButton'))
+      fireEvent.click(getByTestId('logoutButton'))
     })
   })
 })

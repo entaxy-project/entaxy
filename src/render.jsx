@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { UserSession } from 'blockstack'
 import { store, loginAs } from './store'
@@ -16,7 +17,9 @@ export default (target = document) => {
   ReactDOM.render(
     <Provider store={store}>
       <ThemeProvider>
-        <Routes />
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
+          <Routes />
+        </BrowserRouter>
       </ThemeProvider>
     </Provider>,
     target.getElementById('root')

@@ -1,62 +1,58 @@
 import React from 'react'
-import renderer from 'react-test-renderer'
-import { shallow } from 'enzyme'
-import { LoginButtonComponent } from '..'
+import { render } from '@testing-library/react'
+import '@testing-library/jest-dom/extend-expect'
+import { Provider } from 'react-redux'
+import configureMockStore from 'redux-mock-store'
+import LoginButton from '..'
 
 describe('LoginButton', () => {
-  const mochHandleLogin = jest.fn()
-  const mochHandleLogout = jest.fn()
-
-  beforeEach(() => {
-    jest.clearAllMocks()
+  it('renders nothing if user is not logged in', () => {
+    const user = {
+      isAuthenticatedWith: null
+    }
+    const mockStore = configureMockStore()
+    const store = mockStore({ user })
+    const { container } = render(
+      <Provider store={store}>
+        <LoginButton />
+      </Provider>
+    )
+    expect(container).toBeEmpty()
   })
 
-  it('matches snapshot with user logged in with blockstack', () => {
-    const component = renderer.create((
-      <LoginButtonComponent
-        user={{ isAuthenticatedWith: 'blockstack', name: 'Test name', username: 'Test' }}
-        handleLogin={mochHandleLogin}
-        handleLogout={mochHandleLogout}
-        classes={{ }}
-      />
-    ))
-    expect(component.toJSON()).toMatchSnapshot()
+  it('renders user logged in with blockstack', () => {
+    const user = {
+      isAuthenticatedWith: 'blockstack',
+      name: 'test user',
+      username: 'testuser',
+      pictureUrl: 'http://someimage/'
+    }
+    const mockStore = configureMockStore()
+    const store = mockStore({ user })
+    const { getByText } = render(
+      <Provider store={store}>
+        <LoginButton />
+      </Provider>
+    )
+    expect(getByText(user.name)).toBeInTheDocument()
+    expect(getByText((_, elem) => elem.src === user.pictureUrl)).toBeInTheDocument()
   })
 
-  it('matches snapshot with user logged in as guest', () => {
-    const component = renderer.create((
-      <LoginButtonComponent
-        user={{ isAuthenticatedWith: 'guest', name: 'Test name', username: 'Test' }}
-        handleLogin={mochHandleLogin}
-        handleLogout={mochHandleLogout}
-        classes={{ }}
-      />
-    ))
-    expect(component.toJSON()).toMatchSnapshot()
-  })
-
-  describe('Component methods', () => {
-    const wrapper = shallow((
-      <LoginButtonComponent
-        user={{ isAuthenticatedWith: 'blockstack', name: 'Test name', username: 'Test' }}
-        handleLogin={mochHandleLogin}
-        handleLogout={mochHandleLogout}
-        classes={{ }}
-      />
-    ))
-    const instance = wrapper.instance()
-
-    it('handles button click', async () => {
-      wrapper.setState({ anchorEl: null, open: true })
-      await instance.handleClick({ currentTarget: <div>something</div> })
-      expect(wrapper.state('anchorEl')).toEqual(<div>something</div>)
-      expect(wrapper.state('open')).toBe(false)
-    })
-
-    it('closes popup', async () => {
-      wrapper.setState({ open: true, anchorEl: <div>something</div> })
-      await instance.handleClose()
-      expect(wrapper.state('open')).toBe(false)
-    })
+  it('renders user logged in as guest', () => {
+    const user = {
+      isAuthenticatedWith: 'guest',
+      name: 'test user',
+      username: 'testuser',
+      pictureUrl: 'http://someimage/'
+    }
+    const mockStore = configureMockStore()
+    const store = mockStore({ user })
+    const { getByText, queryByText } = render(
+      <Provider store={store}>
+        <LoginButton />
+      </Provider>
+    )
+    expect(getByText(user.name)).toBeInTheDocument()
+    expect(queryByText((_, elem) => elem.src === user.pictureUrl)).not.toBeInTheDocument()
   })
 })

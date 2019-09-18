@@ -334,7 +334,7 @@ export default compose(
           .required('Please select an account type')
           .nullable(),
         institution: Yup.object().when('accountType', {
-          is: (accountType) => accountType.value === 'Cash',
+          is: (accountType) => accountType.value === 'cash',
           then: Yup.object()
             .nullable(),
           otherwise: Yup.object()

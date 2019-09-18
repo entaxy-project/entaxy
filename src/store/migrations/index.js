@@ -1,5 +1,6 @@
 const migrations = {
   0: (state) => {
+    if (!state.accounts) return state
     // Add accountType to accounts
     return {
       ...state,

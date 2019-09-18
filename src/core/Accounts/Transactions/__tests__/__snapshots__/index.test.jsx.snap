@@ -21,10 +21,10 @@ exports[`Transactions matches snapshot with no transactions 1`] = `
     className="TransactionsTableComponent-tableWrapper-1 "
   >
     <div
-      className="MuiToolbar-root MuiToolbar-regular TableToolbar-root-14 MuiToolbar-gutters"
+      className="MuiToolbar-root MuiToolbar-regular TableToolbar-root-15 MuiToolbar-gutters"
     >
       <div
-        className="TableToolbar-title-18"
+        className="TableToolbar-title-19"
       >
         <div>
           <h6
@@ -40,19 +40,19 @@ exports[`Transactions matches snapshot with no transactions 1`] = `
         </div>
       </div>
       <div
-        className="TableToolbar-spacer-16"
+        className="TableToolbar-spacer-17"
       />
       <div
-        className="TableToolbar-actions-17"
+        className="TableToolbar-actions-18"
       >
         <div
-          className="withRouter(TransactionsToolbarComponent)-buttons-10"
+          className="withRouter(TransactionsToolbarComponent)-buttons-11"
         >
           <div
-            className="withRouter(TransactionsToolbarComponent)-search-11"
+            className="withRouter(TransactionsToolbarComponent)-search-12"
           >
             <div
-              className="MuiInputBase-root withRouter(TransactionsToolbarComponent)-inputRoot-12 MuiInputBase-adornedStart"
+              className="MuiInputBase-root withRouter(TransactionsToolbarComponent)-inputRoot-13 MuiInputBase-adornedStart"
               onClick={[Function]}
             >
               <div
@@ -71,7 +71,7 @@ exports[`Transactions matches snapshot with no transactions 1`] = `
                 </svg>
               </div>
               <input
-                className="MuiInputBase-input withRouter(TransactionsToolbarComponent)-inputInput-13 MuiInputBase-inputAdornedStart MuiInputBase-inputTypeSearch"
+                className="MuiInputBase-input withRouter(TransactionsToolbarComponent)-inputInput-14 MuiInputBase-inputAdornedStart MuiInputBase-inputTypeSearch"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
@@ -108,7 +108,7 @@ exports[`Transactions matches snapshot with no transactions 1`] = `
               className="MuiIconButton-label"
             >
               <svg
-                className="withRouter(TransactionsToolbarComponent)-importButton-9"
+                className="withRouter(TransactionsToolbarComponent)-importButton-10"
                 role="presentation"
                 style={
                   Object {
@@ -216,7 +216,7 @@ exports[`Transactions matches snapshot with no transactions 1`] = `
             >
               <span
                 aria-disabled={false}
-                className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-113 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+                className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-114 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
                 onBlur={[Function]}
                 onDragLeave={[Function]}
                 onFocus={[Function]}
@@ -235,7 +235,7 @@ exports[`Transactions matches snapshot with no transactions 1`] = `
                 >
                   <input
                     checked={false}
-                    className="PrivateSwitchBase-input-116"
+                    className="PrivateSwitchBase-input-117"
                     data-indeterminate={false}
                     onChange={[Function]}
                     type="checkbox"
@@ -596,10 +596,10 @@ exports[`Transactions matches snapshot with one transaction in a fiat account 1`
     className="TransactionsTableComponent-tableWrapper-1 "
   >
     <div
-      className="MuiToolbar-root MuiToolbar-regular TableToolbar-root-14 MuiToolbar-gutters"
+      className="MuiToolbar-root MuiToolbar-regular TableToolbar-root-15 MuiToolbar-gutters"
     >
       <div
-        className="TableToolbar-title-18"
+        className="TableToolbar-title-19"
       >
         <div>
           <h6
@@ -615,19 +615,19 @@ exports[`Transactions matches snapshot with one transaction in a fiat account 1`
         </div>
       </div>
       <div
-        className="TableToolbar-spacer-16"
+        className="TableToolbar-spacer-17"
       />
       <div
-        className="TableToolbar-actions-17"
+        className="TableToolbar-actions-18"
       >
         <div
-          className="withRouter(TransactionsToolbarComponent)-buttons-10"
+          className="withRouter(TransactionsToolbarComponent)-buttons-11"
         >
           <div
-            className="withRouter(TransactionsToolbarComponent)-search-11"
+            className="withRouter(TransactionsToolbarComponent)-search-12"
           >
             <div
-              className="MuiInputBase-root withRouter(TransactionsToolbarComponent)-inputRoot-12 MuiInputBase-adornedStart"
+              className="MuiInputBase-root withRouter(TransactionsToolbarComponent)-inputRoot-13 MuiInputBase-adornedStart"
               onClick={[Function]}
             >
               <div
@@ -646,7 +646,7 @@ exports[`Transactions matches snapshot with one transaction in a fiat account 1`
                 </svg>
               </div>
               <input
-                className="MuiInputBase-input withRouter(TransactionsToolbarComponent)-inputInput-13 MuiInputBase-inputAdornedStart MuiInputBase-inputTypeSearch"
+                className="MuiInputBase-input withRouter(TransactionsToolbarComponent)-inputInput-14 MuiInputBase-inputAdornedStart MuiInputBase-inputTypeSearch"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
@@ -683,7 +683,7 @@ exports[`Transactions matches snapshot with one transaction in a fiat account 1`
               className="MuiIconButton-label"
             >
               <svg
-                className="withRouter(TransactionsToolbarComponent)-importButton-9"
+                className="withRouter(TransactionsToolbarComponent)-importButton-10"
                 role="presentation"
                 style={
                   Object {
@@ -791,7 +791,7 @@ exports[`Transactions matches snapshot with one transaction in a fiat account 1`
             >
               <span
                 aria-disabled={false}
-                className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-113 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+                className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-114 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
                 onBlur={[Function]}
                 onDragLeave={[Function]}
                 onFocus={[Function]}
@@ -810,7 +810,7 @@ exports[`Transactions matches snapshot with one transaction in a fiat account 1`
                 >
                   <input
                     checked={false}
-                    className="PrivateSwitchBase-input-116"
+                    className="PrivateSwitchBase-input-117"
                     data-indeterminate={false}
                     onChange={[Function]}
                     type="checkbox"
@@ -1048,7 +1048,7 @@ exports[`Transactions matches snapshot with one transaction in a fiat account 1`
                 >
                   <span
                     aria-disabled={false}
-                    className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-113 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+                    className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-114 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
                     onBlur={[Function]}
                     onDragLeave={[Function]}
                     onFocus={[Function]}
@@ -1067,7 +1067,7 @@ exports[`Transactions matches snapshot with one transaction in a fiat account 1`
                     >
                       <input
                         checked={false}
-                        className="PrivateSwitchBase-input-116"
+                        className="PrivateSwitchBase-input-117"
                         data-indeterminate={false}
                         onChange={[Function]}
                         type="checkbox"
@@ -1264,7 +1264,7 @@ exports[`Transactions matches snapshot with one transaction in a fiat account 1`
                 >
                   <span
                     aria-disabled={false}
-                    className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-113 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+                    className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-114 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
                     onBlur={[Function]}
                     onDragLeave={[Function]}
                     onFocus={[Function]}
@@ -1283,7 +1283,7 @@ exports[`Transactions matches snapshot with one transaction in a fiat account 1`
                     >
                       <input
                         checked={false}
-                        className="PrivateSwitchBase-input-116"
+                        className="PrivateSwitchBase-input-117"
                         data-indeterminate={false}
                         onChange={[Function]}
                         type="checkbox"

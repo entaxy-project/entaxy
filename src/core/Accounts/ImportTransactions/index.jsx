@@ -11,9 +11,8 @@ import Divider from '@material-ui/core/Divider'
 import Stepper from '@material-ui/core/Stepper'
 import Step from '@material-ui/core/Step'
 import StepLabel from '@material-ui/core/StepLabel'
-import green from '@material-ui/core/colors/green'
 import InstitutionIcon from '../../../common/InstitutionIcon'
-import { addTransactions } from '../../../store/transactions/actions'
+import { addTransactions, getAccountTransactions } from '../../../store/transactions/actions'
 import { showSnackbar } from '../../../store/settings/actions'
 import CsvDropzone from './CsvDropzone'
 import CsvColumnSelection from './CsvColumnSelection'
@@ -39,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
     color: `${theme.palette.secondary.main} !important`
   },
   completedStep: {
-    color: `${green[100]} !important`
+    color: `${theme.palette.success.background} !important`
   }
 }))
 
@@ -52,9 +51,10 @@ const steps = [
 export const ImportTransactionsComponent = ({ history, match }) => {
   const classes = useStyles()
   const dispatch = useDispatch()
-  const { account, budgetRules } = useSelector(({ accounts, budget }) => ({
-    account: accounts.byId[match.params.accountId],
-    budgetRules: budget.rules
+  const { account, transactions, budgetRules } = useSelector((state) => ({
+    account: state.accounts.byId[match.params.accountId],
+    transactions: getAccountTransactions(state, match.params.accountId),
+    budgetRules: state.budget.rules
   }))
 
   const [activeStep, setActiveStep] = useState(0)
@@ -62,19 +62,39 @@ export const ImportTransactionsComponent = ({ history, match }) => {
     budgetRules,
     invertAmount: account.accountType === 'credit'
   }))
+
+  const setDuplicateTransactions = () => (
+    parser.transactions.forEach((newTransaction, index) => {
+      if (newTransaction.errors.length === 0) {
+        const duplicate = transactions.find((transaction) => {
+          // Note: transactions only have date (no time) associated so they are save them d 1 second
+          // ahead so thart the opening balance is always the first transactions of the day
+          return transaction.createdAt === newTransaction.createdAt + 1000
+            && transaction.description === newTransaction.description
+            && transaction.amount === newTransaction.amount
+        })
+        if (duplicate !== undefined) {
+          parser.transactions[index].duplicate = duplicate
+        }
+      }
+    })
+  )
+
   const handleSave = async () => {
-    const transactions = parser.transactions
-      .filter((transaction) => transaction.errors.length === 0)
+    const newTransaction = parser.transactions
+      .filter((transaction) => (
+        transaction.errors.length === 0 && transaction.duplicate === undefined
+      ))
       .map((transaction) => ({
         amount: transaction.amount,
         description: transaction.description,
         categoryId: transaction.categoryId,
         createdAt: transaction.createdAt
       }))
-    if (transactions.length > 0) {
-      await dispatch(addTransactions(account, transactions))
+    if (newTransaction.length > 0) {
+      await dispatch(addTransactions(account, newTransaction))
       dispatch(showSnackbar({
-        text: `${pluralize('transaction', transactions.length, true)} imported`,
+        text: `${pluralize('transaction', newTransaction.length, true)} imported`,
         status: 'success'
       }))
     }
@@ -114,26 +134,28 @@ export const ImportTransactionsComponent = ({ history, match }) => {
             <Stepper activeStep={activeStep} className={classes.stepper}>
               {steps.map((step, index) => {
                 let optionalText = null
-                if (activeStep > index) {
-                  switch (index) {
-                    case 0:
-                      optionalText = (
-                        <>
-                          {parser.file.name}
-                          <small>{` (${parser.csvData.length} lines)`}</small>
-                        </>
-                      )
-                      break
-                    case 1:
-                      optionalText = <small>Imported {parser.transactions.length} transactions</small>
-                      break
-                    // no default
-                  }
+                switch (index) {
+                  case 0:
+                    if (parser.file) {
+                      optionalText = parser.file.name
+                    }
+                    break
+                  case 1:
+                    if (parser.file) {
+                      optionalText = `Read ${pluralize('lines', parser.csvData.length, true)} from CSV`
+                    }
+                    break
+                  case 2:
+                    if (activeStep >= index) {
+                      optionalText = `Loaded ${parser.transactions.length} transactions`
+                    }
+                    break
+                  // no default
                 }
                 return (
                   <Step key={step}>
                     <StepLabel
-                      optional={optionalText}
+                      optional={<small>{optionalText}</small>}
                       data-testid={activeStep === index ? 'activeStep' : null}
                       StepIconProps={{ classes: { active: classes.activeStep, completed: classes.completedStep } }}
                     >
@@ -155,15 +177,16 @@ export const ImportTransactionsComponent = ({ history, match }) => {
               <CsvColumnSelection
                 handlePrevStep={handlePrev}
                 handleNextStep={handleNext}
+                setDuplicateTransactions={setDuplicateTransactions}
                 parser={parser}
               />
             )}
             {activeStep === 2 && (
               <ImportedTransactions
                 account={account}
-                parser={parser}
                 handlePrevStep={handlePrev}
-                onSave={handleSave}
+                handleNextStep={handleSave}
+                parser={parser}
               />
             )}
           </Grid>

@@ -92,6 +92,8 @@ export const loadTransactions = (transactions) => {
 export const addTransactions = (account, transactions, options = { skipAfterChange: false }) => {
   const { skipAfterChange } = options
   return async (dispatch) => {
+    // Note: transactions only have date (no time) associated so they are save them d 1 second
+    // ahead so thart the opening balance is always the first transactions of the day
     dispatch({
       type: types.ADD_TRANSACTIONS,
       payload: transactions.map((t) => Object.assign((t), {
@@ -110,3 +112,11 @@ export const addTransactions = (account, transactions, options = { skipAfterChan
 export const getAccountTransactions = ({ transactions }, accountId) => {
   return transactions.list.filter((transaction) => transaction.accountId === accountId)
 }
+
+export const filterByErrors = (transaction) => (
+  Object.keys(transaction).includes('errors') && transaction.errors.length > 0
+)
+
+export const filterByDuplicates = (transaction) => (
+  Object.keys(transaction).includes('duplicate')
+)

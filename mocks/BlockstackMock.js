@@ -1,8 +1,8 @@
 export const blockstackUserSession = {
-  isUserSignedIn: jest.fn().mockImplementation(() => true),
-  isSignInPending: jest.fn(),
+  isUserSignedIn: jest.fn(() => false),
+  isSignInPending: jest.fn(() => false),
   signUserOut: jest.fn(),
-  handlePendingSignIn: jest.fn(),
+  handlePendingSignIn: jest.fn(() => Promise.resolve()),
   loadUserData: () => {
     return {
       profile: {},
@@ -10,8 +10,8 @@ export const blockstackUserSession = {
     }
   },
   redirectToSignIn: jest.fn(),
-  putFile: jest.fn(),
-  getFile: jest.fn().mockImplementation(() => Promise.resolve('{}'))
+  putFile: jest.fn(() => Promise.resolve()),
+  getFile: jest.fn(() => Promise.resolve('{}'))
 }
 
 export const blockstackPerson = {

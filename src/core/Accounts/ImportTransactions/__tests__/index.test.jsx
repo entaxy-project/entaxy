@@ -109,11 +109,14 @@ describe('Import Transactions', () => {
     fireEvent.change(getByTestId('dopzone-input'), { target: { files: [file] } })
     await waitForElement(() => getByText('This file has a header row'))
     expect(getByText('test.csv')).toBeInTheDocument()
+    expect(getByText(`Read ${csvData.length} lines from CSV`)).toBeInTheDocument()
+    expect(queryByText(`Loaded ${csvData.length - 1} transactions`)).not.toBeInTheDocument()
     expect(getByTestId('activeStep').children[1].children[0].innerHTML).toEqual('Select columns to import')
     // Go to step 3
     fireEvent.click(getByTestId('nextButton'))
     expect(getByText('test.csv')).toBeInTheDocument()
-    expect(getByText(`Imported ${csvData.length - 1} transactions`)).toBeInTheDocument()
+    expect(getByText(`Read ${csvData.length} lines from CSV`)).toBeInTheDocument()
+    expect(getByText(`Loaded ${csvData.length - 1} transactions`)).toBeInTheDocument()
     expect(getByTestId('activeStep').children[1].children[0].innerHTML).toEqual('Review data')
     // Back to step 2
     fireEvent.click(getByTestId('backButton'))
