@@ -4,6 +4,7 @@ import types from './types'
 export const accountTypes = {
   bank: 'Bank',
   cash: 'Cash',
+  // wallet: 'Wallet',
   credit: 'Credit card'
 }
 

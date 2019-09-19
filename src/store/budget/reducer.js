@@ -1,18 +1,10 @@
 /* eslint-disable no-case-declarations */
 import uuid from 'uuid/v4'
+import * as d3 from 'd3'
 import types from './types'
 import budgetCategories from '../../data/budgetCategories'
 
-// https://projects.susielu.com
-// http://repec.sowi.unibe.ch/stata/palettes/index.html
-export const defaultColours = [
-  '#1f78b4', '#b2df8a', '#e31a1c',
-  '#ff7f00', '#cab2d6', '#a6cee3',
-  '#33a02c', '#6a3d9a', '#fb9a99',
-  '#fdbf6f', '#b15928', '#e91e63',
-  '#2196f3', '#009688', '#3e2723'
-]
-
+export const colorScale = d3.scaleOrdinal(d3.schemeSet3)
 
 export const generateCategoryTree = (categoriesById) => {
   const parents = Object.values(categoriesById).reduce((result, parentCategory) => {
@@ -57,7 +49,7 @@ const generateInitialState = () => {
         id: uuid(),
         parentId: groupId,
         name: categoryName,
-        colour: defaultColours[count % defaultColours.length]
+        colour: colorScale(count)
       }
       count += 1
       return { ...res, [category.id]: category }
@@ -88,11 +80,7 @@ export default (state = initialState, { type, payload }) => {
       if ('parentId' in payload) {
         // Select the next colour of the category
         const group = state.categoryTree.find(((cat) => cat.id === payload.parentId))
-        const lastColour = group.options.length === 0
-          ? defaultColours[defaultColours.length - 1]
-          : group.options[group.options.length - 1].colour
-        const lastColourIndex = defaultColours.indexOf(lastColour)
-        colour = defaultColours[(lastColourIndex + 1) % defaultColours.length]
+        colour = colorScale(group.options.length)
       }
       categoriesById = {
         ...state.categoriesById,
@@ -188,6 +176,17 @@ export default (state = initialState, { type, payload }) => {
         }
         return result
       }, { ...newState, rules: {} })
+    case types.RESET_COLOURS:
+      categoriesById = Object.keys(state.categoriesById).reduce((result, id, index) => ({
+        ...result,
+        [id]: { ...state.categoriesById[id], colour: colorScale(index) }
+      }), {})
+      return {
+        ...state,
+        categoriesById,
+        categoryTree: generateCategoryTree(categoriesById)
+      }
+
     default:
       return state
   }

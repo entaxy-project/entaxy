@@ -16,11 +16,13 @@ import {
   persistor,
   loginAs
 } from '../store'
+
 import Routes from '../routes'
 import { blockstackUserSession, blockstackPerson } from '../../mocks/BlockstackMock'
 import ThemeProvider from '../core/ThemeProvider'
 
 jest.mock('blockstack')
+
 UserSession.mockImplementation(() => blockstackUserSession)
 Person.mockImplementation(() => blockstackPerson)
 
@@ -63,6 +65,9 @@ function renderWithRouter(
     historyPushSpy
   }
 }
+
+const historyReloadSpy = jest.spyOn(window.location, 'reload')
+historyReloadSpy.mockImplementation(jest.fn())
 
 describe('Routes', () => {
   describe('Logged out routes', () => {

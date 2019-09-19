@@ -80,8 +80,16 @@ const setPersistor = ({ storageType }) => {
   }
 
   if (persistConfig.storage === undefined) {
-    store.replaceReducer(rootReducer)
+    persistor.pause()
     persistor = null
+
+    // Note: forcing reload to prevent the persistor from
+    // re-dispatching all previously performed actions
+    // could not find a solution for this so I'm just forcing a reload
+    if (process.env.NODE_ENV === 'test') {
+      store.replaceReducer(rootReducer)
+    }
+    // window.location.reload()
   } else {
     store.replaceReducer(persistReducer(persistConfig, rootReducer))
     persistor = persistStore(store)

@@ -28,7 +28,7 @@ import Tooltip from '@material-ui/core/Tooltip'
 import pluralize from 'pluralize'
 import CategoryForm from './form'
 import { currencyFormatter } from '../../util/stringFormatter'
-import { deleteCategory } from '../../store/budget/actions'
+import { deleteCategory, resetColours } from '../../store/budget/actions'
 import GroupDialog from './GroupDialog'
 import confirm from '../../util/confirm'
 
@@ -368,6 +368,10 @@ const BudgetCategories = () => {
           >
             {renderNewCategory(group.id)}
           </Grid>
+          <Button size="small" color="secondary" onClick={() => dispatch(resetColours())}>
+            &nbsp;
+          </Button>
+
         </Grid>
       ))}
       <Menu anchorEl={anchorEl} open={popupIsOpen} onClose={handleClosePopup}>

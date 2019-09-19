@@ -62,7 +62,7 @@ export const getPaginatedDataFrom = async (apiKey, apiSecret, url, params) => {
 
 export const normalizeAccounts = (accounts) => (
   accounts.map((account) => ({
-    type: 'wallet', // TODO check for other types
+    accountType: 'wallet',
     sourceId: account.id,
     name: account.name,
     // currency: account.native_balance.currency,
