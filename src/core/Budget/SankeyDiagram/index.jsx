@@ -95,6 +95,7 @@ const SankeyDiagram = ({ data }) => {
         <SankeyTooltip
           node={selectedNode}
           containerWidth={rectWidth}
+          containerHeight={rectHeight}
         />
       </g>
     </svg>

@@ -1,4 +1,4 @@
-import budgetReducer, { initialState, defaultColours, generateCategoryTree } from '../reducer'
+import budgetReducer, { initialState, colorScale, generateCategoryTree } from '../reducer'
 import types from '../types'
 import budgetCategories from '../../../data/budgetCategories'
 
@@ -64,7 +64,7 @@ describe('budget reducer', () => {
       const payload = { id: 1, name: 'cat 1', parentId: group.id }
       const categoriesById = {
         1: group,
-        [payload.id]: { ...payload, colour: defaultColours[0] }
+        [payload.id]: { ...payload, colour: colorScale(0) }
       }
       expect(budgetReducer(simpleInitialState, { type, payload })).toEqual({
         categoriesById,
@@ -78,17 +78,12 @@ describe('budget reducer', () => {
       const group = initialState.categoryTree[0]
       expect(group.label).toBe(Object.keys(budgetCategories).sort()[0])
       expect(group.options.length).toBeGreaterThan(0)
-
-      const lastColour = group.options.length === 0
-        ? defaultColours[defaultColours.length - 1]
-        : group.options[group.options.length - 1].colour
-      const lastColourIndex = defaultColours.indexOf(lastColour)
       const payload = { id: 1, name: 'cat 1', parentId: group.id }
       const categoriesById = {
         ...initialState.categoriesById,
         [payload.id]: {
           ...payload,
-          colour: defaultColours[(lastColourIndex + 1) % defaultColours.length]
+          colour: colorScale(group.options.length)
         }
       }
       expect(budgetReducer(undefined, { type, payload })).toEqual({

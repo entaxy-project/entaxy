@@ -9,16 +9,9 @@ import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
 import DashboardIcon from '@material-ui/icons/Dashboard'
-import Table from '@material-ui/core/Table'
-import TableBody from '@material-ui/core/TableBody'
-import TableHead from '@material-ui/core/TableHead'
-import TableRow from '@material-ui/core/TableRow'
-import TableCell from '@material-ui/core/TableCell'
-import grey from '@material-ui/core/colors/grey'
 import { currencyFormatter } from '../../util/stringFormatter'
-import InstitutionIcon from '../../common/InstitutionIcon'
-import AccountsChart from '../Accounts/AccountsChart'
 import LinkTo from '../../common/LinkTo'
+import AccountsTable from './AccountsTable'
 
 const styles = (theme) => ({
   balancePaper: {
@@ -44,27 +37,6 @@ const styles = (theme) => ({
   balanceIcon: {
     color: 'white'
   },
-  accountsTable: {
-    padding: theme.spacing(2)
-  },
-  institutionWrapper: {
-    display: 'flex'
-  },
-  institutionIcon: {
-    marginRight: 16,
-    color: grey[600]
-  },
-  accountWrapper: {
-    paddingLeft: theme.spacing(4)
-  },
-  accountName: {
-    paddingLeft: 20
-  },
-  accountsChart: {
-    padding: theme.spacing(2),
-    height: 240,
-    minWidth: 150
-  },
   noAccountsPaper: {
     padding: theme.spacing(2),
     marginTop: theme.spacing(2),
@@ -72,10 +44,6 @@ const styles = (theme) => ({
   },
   newAccountButton: {
     margin: theme.spacing(3)
-  },
-  newAccountButton2: {
-    marginTop: theme.spacing(1),
-    textAlign: 'right'
   }
 })
 
@@ -92,16 +60,11 @@ export const DashboardComponent = ({
   classes,
   accounts,
   settings,
-  totalBalance,
-  history
+  totalBalance
 }) => {
   const formatCurrency = (currency, value) => (
     currencyFormatter(settings.locale, currency)(value)
   )
-
-  const handleClick = (account) => {
-    history.push(`/accounts/${account.id}/transactions`)
-  }
 
   const userHasAccounts = Object.keys(accounts.byInstitution).length > 0
 
@@ -142,72 +105,12 @@ export const DashboardComponent = ({
           </Grid>
           <Grid item xs={12}>
             <Grid container spacing={3}>
+              <Grid item xs={4} />
               <Grid item xs={4}>
-                <Paper className={classes.accountsChart}>
-                  <AccountsChart totalBalance={totalBalance} />
-                </Paper>
+                <AccountsTable filter="Assets" />
               </Grid>
-              <Grid item xs={8}>
-                <Paper className={classes.accountsTable}>
-                  <Table>
-                    <TableHead>
-                      <TableRow>
-                        <TableCell>Institution / Account</TableCell>
-                        <TableCell>Account balance</TableCell>
-                        <TableCell align="right">{`Total ${settings.currency}`}</TableCell>
-                      </TableRow>
-                    </TableHead>
-                    {Object.keys(accounts.byInstitution).sort().map((institution) => (
-                      Object.values(accounts.byInstitution[institution].groups).map((accountGroup) => (
-                        <TableBody key={accountGroup.id}>
-                          <TableRow>
-                            <TableCell>
-                              <span className={classes.institutionWrapper}>
-                                <InstitutionIcon
-                                  institution={institution}
-                                  size="small"
-                                  className={classes.institutionIcon}
-                                />
-                                <Typography variant="subtitle2">{institution}</Typography>
-                              </span>
-                            </TableCell>
-                            <TableCell align="right" />
-                            <TableCell align="right">
-                              <Typography variant="subtitle2">
-                                {formatCurrency(settings.currency, accountGroup.balance)}
-                              </Typography>
-                            </TableCell>
-                          </TableRow>
-                          {accountGroup.accountIds.map((id) => {
-                            const account = accounts.byId[id]
-                            if (account === undefined) return null
-                            return (
-                              <TableRow key={id} hover onClick={() => handleClick(account)}>
-                                <TableCell className={classes.accountWrapper}>
-                                  {account.name}
-                                </TableCell>
-                                <TableCell>
-                                  {formatCurrency(account.currency, account.currentBalance.accountCurrency)}
-                                </TableCell>
-                                <TableCell align="right">
-                                  {formatCurrency(settings.currency, account.currentBalance.localCurrency)}
-                                </TableCell>
-                              </TableRow>
-                            )
-                          })}
-                        </TableBody>
-                      ))
-                    ))}
-                  </Table>
-                  <div className={classes.newAccountButton2}>
-                    <Button
-                      color="secondary"
-                      component={LinkTo('/accounts/new')}
-                    >
-                      New account
-                    </Button>
-                  </div>
-                </Paper>
+              <Grid item xs={4}>
+                <AccountsTable filter="Liabilities" />
               </Grid>
             </Grid>
           </Grid>
@@ -221,8 +124,7 @@ DashboardComponent.propTypes = {
   classes: PropTypes.object.isRequired,
   accounts: PropTypes.object.isRequired,
   settings: PropTypes.object.isRequired,
-  totalBalance: PropTypes.number.isRequired,
-  history: PropTypes.object.isRequired
+  totalBalance: PropTypes.number.isRequired
 }
 
 export default compose(

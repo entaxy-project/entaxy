@@ -8,6 +8,10 @@ export const loadBudget = (budget) => {
   return { type: types.LOAD_BUDGET, payload: budget }
 }
 
+export const resetColours = () => {
+  return { type: types.RESET_COLOURS }
+}
+
 export const createCategory = (category, parentId) => (dispatch) => {
   dispatch({
     type: types.CREATE_CATEGORY,

@@ -16,7 +16,8 @@ const HEIGHT = 50
 
 const SankeyTooltip = ({
   node,
-  containerWidth
+  containerWidth,
+  containerHeight
 }) => {
   const classes = useStyles()
   const formatCurrency = useSelector(
@@ -41,11 +42,15 @@ const SankeyTooltip = ({
       if (newPosition.x + newPosition.width > containerWidth) {
         newPosition.x -= newPosition.width + 25
       }
+      if (newPosition.y + newPosition.height > containerHeight) {
+        newPosition.y = containerHeight - newPosition.height - 25
+      }
+
       setPosition(newPosition)
     } else {
       setPosition((prevState) => ({ ...prevState, width: 0, height: 0 }))
     }
-  }, [node, containerWidth])
+  }, [node, containerWidth, containerHeight])
 
   return (
     <Motion
@@ -101,7 +106,8 @@ const SankeyTooltip = ({
 
 SankeyTooltip.propTypes = {
   node: PropTypes.object,
-  containerWidth: PropTypes.number.isRequired
+  containerWidth: PropTypes.number.isRequired,
+  containerHeight: PropTypes.number.isRequired
 }
 
 SankeyTooltip.defaultProps = {

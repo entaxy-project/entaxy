@@ -25,7 +25,7 @@ describe('Coinbase API importer', () => {
   it('should normalizeAccounts', () => {
     expect(normalizeAccounts([])).toEqual([])
     expect(normalizeAccounts(accounts)).toEqual([{
-      type: 'wallet',
+      accountType: 'wallet',
       sourceId: accounts[0].id,
       name: accounts[0].name,
       currency: accounts[0].currency,
