@@ -32,7 +32,7 @@ describe('New Account', () => {
   describe('Component methods', () => {
     const account = {
       id: '1',
-      description: 'Checking',
+      name: 'Checking',
       institution: 'TD',
       currency: 'CAD'
     }

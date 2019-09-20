@@ -18,6 +18,7 @@ import AccountsChart from './AccountsChart'
 import InstitutionIcon from '../../common/InstitutionIcon'
 import LinkTo from '../../common/LinkTo'
 import { currencyFormatter } from '../../util/stringFormatter'
+import { assetAccounts, liabilityAccounts } from '../../store/accounts/reducer'
 
 const useStyles = makeStyles((theme) => ({
   accountsTable: {
@@ -68,7 +69,7 @@ const AccountsTable = ({ history, filter }) => {
     history.push(`/accounts/${account.id}/transactions`)
   }
 
-  const accountTypes = filter === 'Liabilities' ? ['credit'] : ['bank', 'cash']
+  const accountTypes = Object.keys(filter === 'Liabilities' ? liabilityAccounts : assetAccounts)
 
   const data = { table: [], chart: [] }
   let count = 0

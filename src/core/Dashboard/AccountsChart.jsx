@@ -18,6 +18,7 @@ const AccountsChart = ({ data }) => {
           dataKey="value"
           isAnimationActive={false}
           innerRadius="40%"
+          paddingAngle={1}
         >
           {data.map((entry) => <Cell key={`cell-${data.name}`} fill={entry.colour} />)}
         </Pie>
