@@ -160,7 +160,7 @@ exports[`Dashboard matches snapshot with one account 1`] = `
                                                         </div>
                                                       </ForwardRef(Grid)>
                                                     </WithStyles(ForwardRef(Grid))>
-                                                    <div className=\\"makeStyles-newAccountButton-221\\">
+                                                    <div className=\\"makeStyles-newAccountButton-222\\">
                                                       <WithStyles(ForwardRef(Button)) color=\\"secondary\\" component={{...}}>
                                                         <ForwardRef(Button) classes={{...}} color=\\"secondary\\" component={{...}}>
                                                           <WithStyles(ForwardRef(ButtonBase)) className=\\"MuiButton-root MuiButton-text MuiButton-textSecondary\\" component={{...}} disabled={false} focusRipple={true} focusVisibleClassName=\\"Mui-focusVisible\\" type=\\"button\\">
@@ -224,7 +224,7 @@ exports[`Dashboard matches snapshot with one account 1`] = `
                                                         </div>
                                                       </ForwardRef(Grid)>
                                                     </WithStyles(ForwardRef(Grid))>
-                                                    <div className=\\"makeStyles-newAccountButton-221\\">
+                                                    <div className=\\"makeStyles-newAccountButton-222\\">
                                                       <WithStyles(ForwardRef(Button)) color=\\"secondary\\" component={{...}}>
                                                         <ForwardRef(Button) classes={{...}} color=\\"secondary\\" component={{...}}>
                                                           <WithStyles(ForwardRef(ButtonBase)) className=\\"MuiButton-root MuiButton-text MuiButton-textSecondary\\" component={{...}} disabled={false} focusRipple={true} focusVisibleClassName=\\"Mui-focusVisible\\" type=\\"button\\">
@@ -373,7 +373,7 @@ exports[`Dashboard matches snapshot with two accounts in a different currency 1`
                                                         </div>
                                                       </ForwardRef(Grid)>
                                                     </WithStyles(ForwardRef(Grid))>
-                                                    <div className=\\"makeStyles-newAccountButton-221\\">
+                                                    <div className=\\"makeStyles-newAccountButton-222\\">
                                                       <WithStyles(ForwardRef(Button)) color=\\"secondary\\" component={{...}}>
                                                         <ForwardRef(Button) classes={{...}} color=\\"secondary\\" component={{...}}>
                                                           <WithStyles(ForwardRef(ButtonBase)) className=\\"MuiButton-root MuiButton-text MuiButton-textSecondary\\" component={{...}} disabled={false} focusRipple={true} focusVisibleClassName=\\"Mui-focusVisible\\" type=\\"button\\">
@@ -437,7 +437,7 @@ exports[`Dashboard matches snapshot with two accounts in a different currency 1`
                                                         </div>
                                                       </ForwardRef(Grid)>
                                                     </WithStyles(ForwardRef(Grid))>
-                                                    <div className=\\"makeStyles-newAccountButton-221\\">
+                                                    <div className=\\"makeStyles-newAccountButton-222\\">
                                                       <WithStyles(ForwardRef(Button)) color=\\"secondary\\" component={{...}}>
                                                         <ForwardRef(Button) classes={{...}} color=\\"secondary\\" component={{...}}>
                                                           <WithStyles(ForwardRef(ButtonBase)) className=\\"MuiButton-root MuiButton-text MuiButton-textSecondary\\" component={{...}} disabled={false} focusRipple={true} focusVisibleClassName=\\"Mui-focusVisible\\" type=\\"button\\">

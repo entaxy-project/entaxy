@@ -28,6 +28,9 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'space-between'
   },
+  institutionRow: {
+    background: '#fafafa'
+  },
   institutionWrapper: {
     display: 'flex'
   },
@@ -122,7 +125,7 @@ const AccountsTable = ({ history, filter }) => {
           {Object.keys(data.table).sort().map((institution) => (
             Object.values(data.table[institution].groups).map((accountGroup) => (
               <TableBody key={accountGroup.id}>
-                <TableRow>
+                <TableRow className={classes.institutionRow}>
                   <TableCell>
                     <span className={classes.institutionWrapper}>
                       <InstitutionIcon

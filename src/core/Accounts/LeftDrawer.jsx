@@ -28,21 +28,26 @@ const styles = (theme) => ({
   },
   drawerPaper: {
     width: 200,
-    marginTop: 70
+    marginTop: 70,
+    height: 'calc(100% - 70px)'
   },
   noAccounts: {
     background: grey[100],
     margin: '0 20px',
     padding: theme.spacing(1)
   },
+  listSubheader: {
+    background: '#f1f1f1',
+    marginBottom: theme.spacing(1)
+  },
   institutionListRoot: {
     padding: 0
   },
   institutionListItem: {
+    paddingLeft: theme.spacing(1),
     paddingRight: 0
   },
   institutionListItemIcon: {
-    marginLeft: 10,
     minWidth: 30
   },
   institution: {
@@ -50,17 +55,29 @@ const styles = (theme) => ({
     textOverflow: 'ellipsis',
     overflow: 'hidden',
     whiteSpace: 'nowrap',
-    maxWidth: 100,
-    fontWeight: 500
+    maxWidth: 120,
+    fontWeight: 500,
+    display: 'inline-block',
+    verticalAlign: 'bottom'
   },
   account: {
-    padding: '0 0 0 40px'
+    padding: `0 0 0 ${theme.spacing(4)}px`
+  },
+  accountName: {
+    fontSize: '95%',
+    textOverflow: 'ellipsis',
+    overflow: 'hidden',
+    whiteSpace: 'nowrap',
+    maxWidth: 110,
+    display: 'inline-block',
+    verticalAlign: 'middle'
   },
   ListItemText: {
     margin: '3px 0 3px 0'
   },
   smallFont: {
-    fontSize: '95%'
+    fontSize: '95%',
+    textOverflow: 'ellipsis'
   },
   smallButton: {
     padding: 4,
@@ -105,7 +122,7 @@ export const LeftDrawerComponent = ({
           component="nav"
           dense={true}
           subheader={(
-            <ListSubheader component="div">
+            <ListSubheader component="div" className={classes.listSubheader}>
               Accounts
               <ListItemSecondaryAction>
                 <Tooltip id="tooltip-icon" title="New account">
@@ -170,7 +187,7 @@ export const LeftDrawerComponent = ({
                             <ListItemText
                               classes={{
                                 root: classes.ListItemText,
-                                primary: classes.smallFont,
+                                primary: classes.accountName,
                                 secondary: classes.smallFont
                               }}
                               primary={account.name}
@@ -178,6 +195,7 @@ export const LeftDrawerComponent = ({
                                 // eslint-disable-next-line max-len
                                 currencyFormatter(settings.locale, account.currency)(account.currentBalance.accountCurrency)
                               }
+                              title={account.name}
                             />
                             {accountGroup.type === 'default' && (
                               <ListItemSecondaryAction>
