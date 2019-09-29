@@ -25,11 +25,6 @@ export default (state = initialState, action) => {
               }
             }), res1)
         }, state)
-      Object.keys(newState).forEach((currency) => {
-        newState[currency].dates = Object.keys(newState[currency])
-          .filter((c) => c !== 'dates')
-          .sort((a, b) => b - a)
-      })
       return newState
     case types.DELETE_CURRENCIES:
       return omit(state, action.payload)

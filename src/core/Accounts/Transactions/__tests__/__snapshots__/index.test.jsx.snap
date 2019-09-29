@@ -1169,10 +1169,8 @@ exports[`Transactions matches snapshot with one transaction in a fiat account 1`
                     "textAlign": "right",
                   }
                 }
-                title="-5.00"
-              >
-                -5.00
-              </div>
+                title={null}
+              />
               <div
                 aria-colindex={7}
                 className="ReactVirtualized__Table__rowColumn"
@@ -1369,10 +1367,8 @@ exports[`Transactions matches snapshot with one transaction in a fiat account 1`
                     "textAlign": "right",
                   }
                 }
-                title="10.00"
-              >
-                10.00
-              </div>
+                title={null}
+              />
               <div
                 aria-colindex={6}
                 className="ReactVirtualized__Table__rowColumn"

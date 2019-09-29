@@ -28,24 +28,18 @@ describe('exchangeRate reducer', () => {
     const type = types.UPDATE_EXCHANGE_RATES
     const dates = [
       parse('2018-11-30', 'yyyy-M-d', new Date()).getTime(),
-      parse('2018-12-1', 'yyyy-M-d', new Date()).getTime()]
+      parse('2018-12-1', 'yyyy-M-d', new Date()).getTime()
+    ]
     const state = {
-      VET: {
-        [dates[0]]: 1,
-        dates: [String(dates[0])]
-      }
+      VET: { [dates[0]]: 1 },
+      CAD: { [dates[0]]: 1.2 }
     }
-    const payload = {
-      '2018-12-1': {
-        VET: 1.1
-      }
-    }
-
+    const payload = { '2018-12-1': { VET: 1.1 } }
     expect(exchangeRatesReducer(state, { type, payload })).toEqual({
+      ...state,
       VET: {
-        [dates[0]]: 1,
-        [dates[1]]: 1.1,
-        dates: [String(dates[1]), String(dates[0])]
+        ...state.VET,
+        [dates[1]]: 1.1
       }
     })
   })
@@ -53,17 +47,9 @@ describe('exchangeRate reducer', () => {
   it('should handle UPDATE_EXCHANGE_RATES for new value', () => {
     const type = types.UPDATE_EXCHANGE_RATES
     const dates = [parse('2018-11-30', 'yyyy-M-d', new Date()).getTime()]
-    const payload = {
-      '2018-11-30': {
-        VET: 1.1
-      }
-    }
-
+    const payload = { '2018-11-30': { VET: 1.1 } }
     expect(exchangeRatesReducer(undefined, { type, payload })).toEqual({
-      VET: {
-        [dates[0]]: 1.1,
-        dates: [String(dates[0])]
-      }
+      VET: { [dates[0]]: 1.1 }
     })
   })
 

@@ -165,7 +165,7 @@ export const incomeTaxData = (countryBrackets, region, income) => {
   const data = []
   const bracket = { federal: 0, regional: 0 }
   for (let currIncome = 0; currIncome <= max; currIncome += step) {
-    // Add the exact bracket ammount for federal tax
+    // Add the exact bracket amount for federal tax
     if (currIncome >= countryBrackets.federal[bracket.federal].amountUpTo) {
       data.push({
         income: countryBrackets.federal[bracket.federal].amountUpTo,
@@ -173,7 +173,7 @@ export const incomeTaxData = (countryBrackets, region, income) => {
       })
       bracket.federal += 1
     }
-    // Add the exact bracket ammount for regional tax (if it exists)
+    // Add the exact bracket amount for regional tax (if it exists)
     if (hasRegion(countryBrackets, region)) {
       if (currIncome >= countryBrackets.regional[region][bracket.regional].amountUpTo) {
         data.push({

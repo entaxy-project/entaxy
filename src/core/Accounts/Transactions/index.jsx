@@ -48,7 +48,10 @@ export class TransactionsComponent extends React.Component {
     const openingBalanceTransaction = {
       accountId: account.id,
       description: 'Opening balance',
-      amount: account.openingBalance,
+      amount: {
+        accountCurrency: account.openingBalance,
+        localCurrency: null
+      },
       createdAt: account.openingBalanceDate,
       type: 'openingBalance'
     }

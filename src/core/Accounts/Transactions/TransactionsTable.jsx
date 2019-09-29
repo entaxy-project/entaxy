@@ -198,8 +198,12 @@ export class TransactionsTableComponent extends React.Component {
 
   renderCellAmount = ({ cellData }) => {
     return {
-      positiveAmount: cellData.amount >= 0 ? this.props.formatDecimal(cellData.amount) : null,
-      negativeAmount: cellData.amount < 0 ? this.props.formatDecimal(cellData.amount) : null
+      positiveAmount: cellData.amount >= 0
+        ? this.props.formatDecimal(cellData.amount)
+        : null,
+      negativeAmount: cellData.amount < 0
+        ? this.props.formatDecimal(cellData.amount)
+        : null
     }[cellData.restrictTo]
   }
 
@@ -322,7 +326,7 @@ export class TransactionsTableComponent extends React.Component {
                 headerStyle={{ textAlign: 'right' }}
                 style={{ textAlign: 'right' }}
                 cellDataGetter={({ rowData }) => ({
-                  amount: rowData.amount,
+                  amount: rowData.amount.accountCurrency,
                   nativeAmount: rowData.nativeAmount,
                   restrictTo: 'positiveAmount'
                 })}
@@ -335,7 +339,7 @@ export class TransactionsTableComponent extends React.Component {
                 headerStyle={{ textAlign: 'right' }}
                 style={{ textAlign: 'right' }}
                 cellDataGetter={({ rowData }) => ({
-                  amount: rowData.amount,
+                  amount: rowData.amount.accountCurrency,
                   nativeAmount: rowData.nativeAmount,
                   restrictTo: 'negativeAmount'
                 })}

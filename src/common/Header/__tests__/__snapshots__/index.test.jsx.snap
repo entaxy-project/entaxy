@@ -8,82 +8,107 @@ exports[`Header matches snapshot 1`] = `
     className="MuiPaper-root MuiPaper-elevation4 MuiAppBar-root MuiAppBar-positionFixed makeStyles-header-2 MuiAppBar-colorPrimary mui-fixed"
   >
     <div
-      className="MuiToolbar-root MuiToolbar-regular makeStyles-toolbar-3 MuiToolbar-gutters"
+      className="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
     >
       <div
-        className="Logo-logo-45"
+        className="MuiGrid-root MuiGrid-container"
       >
-        <a
-          href="/"
-          onClick={[Function]}
+        <div
+          className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-3"
         >
-          <img
-            alt="Entaxy logo"
-            className="Logo-image-46"
-            src="logo.png"
-          />
-        </a>
-        <a
-          className="MuiTypography-root Logo-title-47 MuiTypography-h6 MuiTypography-colorInherit"
-          href="/"
-          onClick={[Function]}
-        >
-          Entaxy
-        </a>
-      </div>
-      <div>
-        <a
-          aria-disabled={false}
-          className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary"
-          href="/dashboard"
-          onBlur={[Function]}
-          onClick={[Function]}
-          onDragLeave={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          role="button"
-          tabIndex={0}
-        >
-          <span
-            className="MuiButton-label"
+          <div
+            className="Logo-logo-148"
           >
-            Dashboard
-          </span>
-        </a>
-        <button
-          aria-owns={null}
-          className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-colorInherit"
-          disabled={false}
-          onBlur={[Function]}
-          onClick={[Function]}
-          onDragLeave={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          tabIndex={0}
-          type="button"
+            <a
+              href="/"
+              onClick={[Function]}
+            >
+              <img
+                alt="Entaxy logo"
+                className="Logo-image-149"
+                src="logo.png"
+              />
+            </a>
+            <a
+              className="MuiTypography-root Logo-title-150 MuiTypography-h6 MuiTypography-colorInherit"
+              href="/"
+              onClick={[Function]}
+            >
+              Entaxy
+            </a>
+          </div>
+        </div>
+        <div
+          className="MuiGrid-root makeStyles-menu-3 MuiGrid-item MuiGrid-grid-xs-6"
         >
-          <span
-            className="MuiButton-label"
+          <a
+            aria-disabled={false}
+            className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary"
+            href="/dashboard"
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            role="button"
+            tabIndex={0}
           >
-            Budget
-          </span>
-        </button>
+            <span
+              className="MuiButton-label"
+            >
+              Dashboard
+            </span>
+          </a>
+          <button
+            aria-owns={null}
+            className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-colorInherit"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="button"
+          >
+            <span
+              className="MuiButton-label"
+            >
+              Budget
+              <svg
+                aria-hidden="true"
+                className="MuiSvgIcon-root"
+                focusable="false"
+                role="presentation"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M7 10l5 5 5-5z"
+                />
+              </svg>
+            </span>
+          </button>
+        </div>
+        <div
+          className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-3"
+        >
+          <LoginButton />
+        </div>
       </div>
-      <LoginButton />
     </div>
   </header>
   <div>

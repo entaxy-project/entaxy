@@ -13,7 +13,6 @@ import { persistor } from './store'
 import LoadingOverlay from './common/LoadingOverlay'
 import Landing from './core/Landing'
 import Taxes from './core/Taxes'
-import Portfolios from './core/Portfolios'
 import Settings from './core/Settings'
 import Dashboard from './core/Dashboard'
 import Transactions from './core/Accounts/Transactions'
@@ -96,7 +95,6 @@ export const Routes = () => {
   const wrappedBudget = wrapComponent(Budget)
   const wrappedMoneyFlow = wrapComponent(MoneyFlow)
   const wrappedTaxes = wrapComponent(Taxes)
-  const wrappedPortfolios = wrapComponent(Portfolios)
   return (
     <>
       {!persistor && (
@@ -111,7 +109,6 @@ export const Routes = () => {
           <Switch>
             <Route exact path="/" component={Landing} />
             <Route exact path="/taxes" component={wrappedTaxes} />
-            <Route exact path="/portfolio" component={wrappedPortfolios} />
             <Route exact path="/settings" render={wrappedSettings} />
             <Route exact path="/budget-categories" render={wrappedBudgetCategories} />
             <Route exact path="/dashboard" render={wrappedDashBoard} />

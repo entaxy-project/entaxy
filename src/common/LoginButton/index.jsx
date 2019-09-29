@@ -17,6 +17,7 @@ import Paper from '@material-ui/core/Paper'
 import Fade from '@material-ui/core/Fade'
 import ClickAwayListener from '@material-ui/core/ClickAwayListener'
 import Tooltip from '@material-ui/core/Tooltip'
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown'
 import LinkTo from '../LinkTo'
 import { userLogout } from '../../store'
 import packageJson from '../../../package.json'
@@ -25,7 +26,8 @@ import packageJson from '../../../package.json'
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
-    minWidth: 135
+    minWidth: 135,
+    float: 'right'
   },
   popper: {
     zIndex: theme.zIndex.drawer + 1
@@ -77,6 +79,7 @@ const LoginButton = () => {
         data-testid="userNavButton"
       >
         {user.name}
+        <ArrowDropDownIcon />
       </Button>
       <Popper open={open} anchorEl={anchorRef.current} transition className={classes.popper}>
         {({ TransitionProps }) => (

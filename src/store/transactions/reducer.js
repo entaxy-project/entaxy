@@ -1,5 +1,4 @@
 /* eslint-disable no-case-declarations */
-import _ from 'lodash'
 import types from './types'
 
 export const initialState = {
@@ -7,12 +6,6 @@ export const initialState = {
 }
 
 export default (state = initialState, { type, payload }) => {
-  let index = null
-
-  const findTransactionById = (id) => (
-    _.findIndex(state.list, (transaction) => transaction.id === id)
-  )
-
   switch (type) {
     case types.LOAD_TRANSACTIONS:
       return payload || initialState
@@ -22,10 +15,25 @@ export default (state = initialState, { type, payload }) => {
         list: [...state.list, payload]
       }
     case types.UPDATE_TRANSACTION:
-      index = findTransactionById(payload.id)
       return {
         ...state,
-        list: [...state.list.slice(0, index), payload, ...state.list.slice(index + 1)]
+        list: state.list.map((transaction) => {
+          if (transaction.id === payload.id) {
+            return { ...transaction, ...payload }
+          }
+          return transaction
+        })
+      }
+    case types.UPDATE_TRANSACTIONS:
+      // payload has the format { id1: transaction1,  id2: transaction2, ... }
+      return {
+        ...state,
+        list: state.list.map((transaction) => {
+          if (transaction.id.toString() in payload) {
+            return { ...transaction, ...payload[transaction.id] }
+          }
+          return transaction
+        })
       }
     case types.DELETE_TRANSACTIONS:
       return {

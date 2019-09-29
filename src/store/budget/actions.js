@@ -1,7 +1,7 @@
 /* eslint-disable import/no-cycle */
 import uuid from 'uuid/v4'
 import types from './types'
-import { showSnackbar } from '../settings/actions'
+import { showSnackbar } from '../user/actions'
 import { updateTransactionFieldIfMatched } from '../transactions/actions'
 
 export const loadBudget = (budget) => {

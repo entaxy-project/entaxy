@@ -15,27 +15,12 @@ import ThemeProvider from '../../../ThemeProvider'
 
 jest.mock('../../../../common/InstitutionIcon/importLogos', () => [])
 
-// Mock call to alphavantage in fetchExchangeRates
-window.fetch = jest.fn().mockImplementation(() => (
-  Promise.resolve(new window.Response(
-    JSON.stringify({
-      'Realtime Currency Exchange Rate': {
-        '6. Last Refreshed': '2018-01-01',
-        '5. Exchange Rate': 1
-      }
-    }), {
-      status: 200,
-      headers: { 'Content-type': 'application/json' }
-    }
-  ))
-))
-
 const account = {
   institution: 'TD',
   name: 'checking',
   groupId: '0',
   description: 'Checking',
-  currency: 'CAD',
+  currency: store.getState().settings.currency,
   openingBalance: 10,
   currentBalance: {
     accountCurrency: 10,

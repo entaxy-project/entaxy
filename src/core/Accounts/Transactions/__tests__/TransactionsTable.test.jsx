@@ -8,9 +8,24 @@ import TransactionsToolbar from '../TransactionsToolbar'
 describe('TransactionsTable', () => {
   const account = { id: 1, name: 'Checking', institution: 'TD' }
   const transactions = [
-    { id: 1, description: 'Transaction 1', createdAt: Date.now() },
-    { id: 2, description: 'Transaction 2', createdAt: Date.now() + 10 },
-    { id: 3, description: 'Transaction 3', createdAt: Date.now() + 20 }
+    {
+      id: 1,
+      amount: { localCurrency: 1 },
+      description: 'Transaction 1',
+      createdAt: Date.now()
+    },
+    {
+      id: 2,
+      amount: { localCurrency: 1 },
+      description: 'Transaction 2',
+      createdAt: Date.now() + 10
+    },
+    {
+      id: 3,
+      amount: { localCurrency: 1 },
+      description: 'Transaction 3',
+      createdAt: Date.now() + 20
+    }
   ]
   const mochHandleNew = jest.fn()
   const mochHandleDelete = jest.fn()

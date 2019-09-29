@@ -2,14 +2,14 @@ import budgetReducer, { initialState, colorScale, generateCategoryTree } from '.
 import types from '../types'
 import budgetCategories from '../../../data/budgetCategories'
 
-const budget = {
-  ...initialState,
-  rules: {
-    'Shoppint Mart': 'Groceries'
-  }
-}
 
 describe('budget reducer', () => {
+  const budget = {
+    ...initialState,
+    rules: {
+      'Shoppint Mart': 'Groceries'
+    }
+  }
   describe('initialState', () => {
     it('should return initial state', () => {
       const categoriesCount = Object.values(budgetCategories).reduce((count, group) => count + group.length + 1, 0)

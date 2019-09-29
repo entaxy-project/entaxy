@@ -13,7 +13,7 @@ import Step from '@material-ui/core/Step'
 import StepLabel from '@material-ui/core/StepLabel'
 import InstitutionIcon from '../../../common/InstitutionIcon'
 import { addTransactions, getAccountTransactions } from '../../../store/transactions/actions'
-import { showSnackbar } from '../../../store/settings/actions'
+import { showSnackbar } from '../../../store/user/actions'
 import CsvDropzone from './CsvDropzone'
 import CsvColumnSelection from './CsvColumnSelection'
 import ImportedTransactions from './ImportedTransactions'
@@ -53,7 +53,7 @@ export const ImportTransactionsComponent = ({ history, match }) => {
   const dispatch = useDispatch()
   const { account, transactions, budgetRules } = useSelector((state) => ({
     account: state.accounts.byId[match.params.accountId],
-    transactions: getAccountTransactions(state, match.params.accountId),
+    transactions: dispatch(getAccountTransactions(match.params.accountId)),
     budgetRules: state.budget.rules
   }))
 
@@ -81,20 +81,23 @@ export const ImportTransactionsComponent = ({ history, match }) => {
   )
 
   const handleSave = async () => {
-    const newTransaction = parser.transactions
+    const newTransactions = parser.transactions
       .filter((transaction) => (
         transaction.errors.length === 0 && transaction.duplicate === undefined
       ))
       .map((transaction) => ({
-        amount: transaction.amount,
+        amount: {
+          accountCurrency: transaction.amount,
+          localCurrency: null
+        },
         description: transaction.description,
         categoryId: transaction.categoryId,
         createdAt: transaction.createdAt
       }))
-    if (newTransaction.length > 0) {
-      await dispatch(addTransactions(account, newTransaction))
+    if (newTransactions.length > 0) {
+      await dispatch(addTransactions(account, newTransactions))
       dispatch(showSnackbar({
-        text: `${pluralize('transaction', newTransaction.length, true)} imported`,
+        text: `${pluralize('transaction', newTransactions.length, true)} imported`,
         status: 'success'
       }))
     }

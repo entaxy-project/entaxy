@@ -12,7 +12,6 @@ import AutoComplete from '../../common/AutoComplete'
 import SubmitButtonWithProgress from '../../common/SubmitButtonWithProgress'
 import { fiatCurrencies, filteredFiatCurrencies } from '../../data/currencies'
 import locales, { filteredLocales } from '../../data/locales'
-import confirm from '../../util/confirm'
 
 const styles = (theme) => ({
   form: {
@@ -44,65 +43,59 @@ const styles = (theme) => ({
 
 const mapStateToProps = ({ settings }) => ({ settings })
 
-export class SettingsFormComponent extends React.Component {
-  handleResetData = () => {
-    confirm('Delete all your data? This cannot be undone.', 'Are you sure?').then(() => {
-      this.props.handleDeleteAllData()
-    })
-  }
-
-  render() {
-    const {
-      classes,
-      handleSubmit,
-      values,
-      errors,
-      touched,
-      setFieldValue,
-      isSubmitting
-    } = this.props
-    return (
-      <form onSubmit={handleSubmit} className={classes.form}>
-        <AutoComplete
-          async
-          className={classes.input}
-          label="Language / Country"
-          name="locale"
-          value={values.locale}
-          loadOptions={filteredLocales}
-          onChange={setFieldValue}
-          error={errors.locale && touched.locale}
-          helperText={errors.locale}
-        />
-        <AutoComplete
-          async
-          className={classes.input}
-          label="Display Currency"
-          name="currency"
-          value={values.currency}
-          loadOptions={filteredFiatCurrencies}
-          onChange={setFieldValue}
-          error={errors.currency && touched.currency}
-          helperText={errors.currency}
-        />
-        <Button
-          size="small"
-          onClick={this.handleResetData}
-          className={classes.deleteButton}
-          disabled={isSubmitting}
-        >
-          Reset - delete all my data
-        </Button>
-        <Divider />
-        <div className={classes.formActions}>
-          <SubmitButtonWithProgress label="Save" isSubmitting={isSubmitting} />
-        </div>
-      </form>
-    )
-  }
+const SettingsForm = ({
+  classes,
+  handleSubmit,
+  values,
+  errors,
+  touched,
+  setFieldValue,
+  isSubmitting,
+  handleDeleteAllData
+}) => {
+  return (
+    <form onSubmit={handleSubmit} className={classes.form}>
+      <AutoComplete
+        async
+        className={classes.input}
+        label="Language / Country"
+        name="locale"
+        value={values.locale}
+        loadOptions={filteredLocales}
+        onChange={setFieldValue}
+        error={errors.locale && touched.locale}
+        helperText={errors.locale}
+        data-testid="localeDropdown"
+      />
+      <AutoComplete
+        async
+        className={classes.input}
+        label="Display Currency"
+        name="currency"
+        value={values.currency}
+        loadOptions={filteredFiatCurrencies}
+        onChange={setFieldValue}
+        error={errors.currency && touched.currency}
+        helperText={errors.currency}
+        data-testid="currencyDropdown"
+      />
+      <Button
+        size="small"
+        onClick={handleDeleteAllData}
+        className={classes.deleteButton}
+        disabled={isSubmitting}
+      >
+        Reset - delete all my data
+      </Button>
+      <Divider />
+      <div className={classes.formActions}>
+        <SubmitButtonWithProgress label="Save" isSubmitting={isSubmitting} />
+      </div>
+    </form>
+  )
 }
 
-SettingsFormComponent.propTypes = {
+SettingsForm.propTypes = {
   classes: PropTypes.object.isRequired,
   handleDeleteAllData: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
@@ -148,4 +141,4 @@ export default compose(
       setSubmitting(false)
     }
   })
-)(SettingsFormComponent)
+)(SettingsForm)
