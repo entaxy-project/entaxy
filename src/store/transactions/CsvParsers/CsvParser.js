@@ -221,7 +221,10 @@ export default class CsvParser {
     this._csvData.forEach((row, index) => {
       if (!this._hasHeaderRow || index > this._firstRowIndex) {
         const transaction = {
-          amount: this.readAmount(row, columns),
+          amount: {
+            accountCurrency: this.readAmount(row, columns),
+            localCurrency: null
+          },
           description: this.readDescription(row, columns),
           createdAt: this.dateFromString(row[columns.createdAt]),
           errors: [],
@@ -233,7 +236,7 @@ export default class CsvParser {
         ) {
           transaction.categoryId = this._budgetRules[transaction.description].categoryId
         }
-        if (typeof transaction.amount !== 'number') {
+        if (typeof transaction.amount.accountCurrency !== 'number') {
           transaction.errors.push('Could not read the amount')
         } else if (transaction.createdAt === null) {
           transaction.errors.push(`Invalid date. Expecting format '${this._dateFormat}'`)

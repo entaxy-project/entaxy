@@ -11,7 +11,7 @@ import Select from '@material-ui/core/Select'
 import MenuItem from '@material-ui/core/MenuItem'
 import { startOfMonth, endOfMonth } from 'date-fns'
 import SankeyDiagram from './SankeyDiagram'
-import { showSnackbar } from '../../store/settings/actions'
+import { showSnackbar } from '../../store/user/actions'
 
 const useStyles = makeStyles((theme) => ({
   root: {

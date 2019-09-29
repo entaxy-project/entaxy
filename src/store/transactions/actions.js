@@ -3,84 +3,137 @@ import uuid from 'uuid/v4'
 import pluralize from 'pluralize'
 import types from './types'
 import { updateAccount } from '../accounts/actions'
-import { showSnackbar } from '../settings/actions'
-import { fetchExchangeRates } from '../exchangeRates/actions'
+import { showSnackbar } from '../user/actions'
+import { updateCurrencies, convertToCurrency } from '../exchangeRates/actions'
 import { createExactRule, deleteExactRule, countRuleUsage } from '../budget/actions'
-
-export const afterTransactionsChanged = (account) => async (dispatch) => {
-  await dispatch(updateAccount(account, { forceUpdateBalance: true, showMessage: false }))
-}
 
 // If the rule is not found then the category is cleared from matching transactions
 export const applyExactRule = ({ match, rules }) => (
   { type: types.APPLY_EXACT_RULE, payload: { match, rules } }
 )
 
-export const createTransaction = (account, transaction, options = {}) => async (dispatch, getState) => {
-  await dispatch(fetchExchangeRates([account.currency], transaction.createdAt))
-  const id = uuid()
-  dispatch({
-    type: types.CREATE_TRANSACTION,
-    payload: {
-      ...transaction,
-      id,
-      accountId: account.id,
-      createdAt: transaction.createdAt + 1000 // Plus 1 second
-    }
-  })
-  if (transaction.categoryId !== undefined && options.createAndApplyRule) {
-    dispatch(createExactRule(transaction.categoryId, transaction.description))
-    dispatch(applyExactRule({ match: transaction.description, rules: getState().budget.rules }))
-    dispatch(countRuleUsage())
-  }
-  await dispatch(afterTransactionsChanged(account))
-  dispatch(showSnackbar({ text: 'Transaction created', status: 'success' }))
-  return id
-}
+export const createTransaction = (account, transaction, { createAndApplyRule = false } = {}) => (
+  async (dispatch, getState) => {
+    const { budget } = getState()
+    const id = uuid()
+    let localCurrency = dispatch(convertToCurrency(
+      transaction.amount.accountCurrency,
+      account.currency,
+      transaction.createdAt
+    ))
 
-export const updateTransaction = (account, transaction, options = {}) => async (dispatch, getState) => {
-  const oldTransaction = getState().transactions.list.find((t) => t.id === transaction.id)
-  dispatch({
-    type: types.UPDATE_TRANSACTION,
-    payload: {
-      ...transaction,
-      createdAt: transaction.createdAt + 1000 // Plus 1 second
+    // If we couldn't convert to local currency it's because we don't have the exchange rate
+    if (!localCurrency) {
+      await dispatch(updateCurrencies({ [account.currency]: transaction.createdAt }))
+      localCurrency = dispatch(convertToCurrency(
+        transaction.amount.accountCurrency,
+        account.currency,
+        transaction.createdAt
+      ))
     }
-  })
 
-  if (transaction.categoryId !== oldTransaction.categoryId || transaction.description !== oldTransaction.description) {
-    if (options.createAndApplyRule) {
-      if (transaction.categoryId === undefined) {
-        dispatch(deleteExactRule(transaction.description))
-      } else {
-        dispatch(createExactRule(transaction.categoryId, transaction.description))
+    dispatch({
+      type: types.CREATE_TRANSACTION,
+      payload: {
+        ...transaction,
+        id,
+        amount: {
+          accountCurrency: transaction.amount.accountCurrency,
+          localCurrency
+        },
+        accountId: account.id,
+        createdAt: transaction.createdAt + 1000 // Plus 1 second
       }
-      dispatch(applyExactRule({ match: transaction.description, rules: getState().budget.rules }))
+    })
+    if (transaction.categoryId !== undefined && createAndApplyRule) {
+      dispatch(createExactRule(transaction.categoryId, transaction.description))
+      dispatch(applyExactRule({ match: transaction.description, rules: budget.rules }))
+      dispatch(countRuleUsage())
     }
-    dispatch(countRuleUsage())
+
+    await dispatch(updateAccount(account, { onlyUpdateBalance: true }))
+    dispatch(showSnackbar({ text: 'Transaction created', status: 'success' }))
+    return id
   }
-  await dispatch(afterTransactionsChanged(account))
-  dispatch(showSnackbar({ text: 'Transaction updated', status: 'success' }))
-}
+)
+
+export const updateTransaction = (account, transaction, { createAndApplyRule = false } = {}) => (
+  async (dispatch, getState) => {
+    const { transactions, budget } = getState()
+    const oldTransaction = transactions.list.find((t) => t.id === transaction.id)
+    let { localCurrency } = transaction.amount
+    const amountChanged = transaction.amount.accountCurrency !== oldTransaction.amount.accountCurrency
+    const createdAtChanged = transaction.createdAt !== oldTransaction.createdAt
+    const categoryChanged = transaction.categoryId !== oldTransaction.categoryId
+    const descriptionChanged = transaction.description !== oldTransaction.description
+    if (amountChanged || createdAtChanged) {
+      localCurrency = dispatch(convertToCurrency(
+        transaction.amount.accountCurrency,
+        account.currency,
+        transaction.createdAt
+      ))
+
+      // If we couldn't convert to local currency it's because we don't have the exchange rate
+      if (!localCurrency) {
+        await dispatch(updateCurrencies({ [account.currency]: transaction.createdAt }))
+        localCurrency = dispatch(convertToCurrency(
+          transaction.amount.accountCurrency,
+          account.currency,
+          transaction.createdAt
+        ))
+      }
+    }
+    dispatch({
+      type: types.UPDATE_TRANSACTION,
+      payload: {
+        ...transaction,
+        amount: {
+          accountCurrency: transaction.amount.accountCurrency,
+          localCurrency
+        },
+        createdAt: createdAtChanged ? transaction.createdAt + 1000 : transaction.createdAt // plus 1 second
+      }
+    })
+    if (categoryChanged || descriptionChanged) {
+      if (createAndApplyRule) {
+        if (transaction.categoryId === undefined) {
+          dispatch(deleteExactRule(transaction.description))
+        } else {
+          dispatch(createExactRule(transaction.categoryId, transaction.description))
+        }
+        dispatch(applyExactRule({ match: transaction.description, rules: budget.rules }))
+      }
+      dispatch(countRuleUsage())
+    }
+    if (amountChanged || createdAtChanged) {
+      await dispatch(updateAccount(account, { onlyUpdateBalance: true }))
+    }
+    dispatch(showSnackbar({ text: 'Transaction updated', status: 'success' }))
+  }
+)
+
+// changes has the format { id1: transaction1,  id2: transaction2, ... }
+export const updateTransactions = (changes) => (
+  { type: types.UPDATE_TRANSACTIONS, payload: changes }
+)
 
 export const updateTransactionFieldIfMatched = ({ fieldName, values, newValue }) => (
   { type: types.UPATE_TRANSACTION_FIELD_IF_MATCHED, payload: { fieldName, values, newValue } }
 )
 
-export const deleteTransactions = (account, transactionIds, options = { skipAfterChange: false }) => {
-  const { skipAfterChange } = options
-  return async (dispatch) => {
+export const deleteTransactions = (account, transactionIds, { skipAfterChange = false } = {}) => (
+  async (dispatch) => {
     dispatch({ type: types.DELETE_TRANSACTIONS, payload: transactionIds })
     dispatch(countRuleUsage())
     if (!skipAfterChange) {
-      await dispatch(afterTransactionsChanged(account))
+      await dispatch(updateAccount(account, { onlyUpdateBalance: true }))
       dispatch(showSnackbar({
         text: `${pluralize('transaction', transactionIds.length, true)} deleted`,
         status: 'success'
       }))
     }
   }
-}
+)
 
 // Load all the transactions from storage
 // Replaces existing transactions
@@ -89,29 +142,46 @@ export const loadTransactions = (transactions) => {
 }
 
 // Add new transactions to the existing ones
-export const addTransactions = (account, transactions, options = { skipAfterChange: false }) => {
-  const { skipAfterChange } = options
-  return async (dispatch) => {
-    // Note: transactions only have date (no time) associated so they are save them d 1 second
+export const addTransactions = (account, transactions, { updateAccountAndExchangeRates = true } = {}) => (
+  async (dispatch, getState) => {
+    if (updateAccountAndExchangeRates) {
+      const { settings, exchangeRates } = getState()
+      if (account.currency !== settings.currency) {
+        const oldestTransactionDate = transactions.sort((a, b) => a.createdAt - b.createdAt)[0].createdAt
+        const oldestExchangeRateDate = Object.keys(exchangeRates[account.currency]).sort((a, b) => a - b)[0]
+        if (oldestTransactionDate < oldestExchangeRateDate) {
+          await dispatch(updateCurrencies({ [account.currency]: oldestTransactionDate }))
+        }
+      }
+    }
+    // Note: transactions only have date (no time) associated so we save them 1 second
     // ahead so thart the opening balance is always the first transactions of the day
     dispatch({
       type: types.ADD_TRANSACTIONS,
-      payload: transactions.map((t) => Object.assign((t), {
+      payload: transactions.map((transaction) => Object.assign((transaction), {
         id: uuid(),
         accountId: account.id,
-        createdAt: t.createdAt + 1000 // Plus 1 second
+        createdAt: transaction.createdAt + 1000, // Plus 1 second
+        amount: {
+          ...transaction.amount,
+          localCurrency: dispatch(convertToCurrency(
+            transaction.amount.accountCurrency,
+            account.currency,
+            transaction.createdAt
+          ))
+        }
       }))
     })
     dispatch(countRuleUsage())
-    if (!skipAfterChange) {
-      await dispatch(afterTransactionsChanged(account))
+    if (updateAccountAndExchangeRates) {
+      await dispatch(updateAccount(account, { onlyUpdateBalance: true }))
     }
   }
-}
+)
 
-export const getAccountTransactions = ({ transactions }, accountId) => {
-  return transactions.list.filter((transaction) => transaction.accountId === accountId)
-}
+export const getAccountTransactions = (accountId) => (_, getState) => (
+  getState().transactions.list.filter((transaction) => transaction.accountId === accountId)
+)
 
 export const filterByErrors = (transaction) => (
   Object.keys(transaction).includes('errors') && transaction.errors.length > 0

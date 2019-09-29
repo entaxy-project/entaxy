@@ -176,7 +176,6 @@ export class AccountFormComponent extends React.Component {
                   onChange={setFieldValue}
                   error={errors.accountType && touched.accountType}
                   helperText={errors.accountType}
-                  isClearable={false}
                   autoFocus
                 />
                 {values.accountType.value !== 'cash' && (

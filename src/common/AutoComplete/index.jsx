@@ -9,18 +9,14 @@ import FormHelperText from '@material-ui/core/FormHelperText'
 const AutoComplete = ({
   async,
   creatable,
-  isClearable,
   label,
-  placeholder,
-  name,
-  value,
   options,
   loadOptions,
   onChange,
   error,
   helperText,
   className,
-  styles
+  ...rest
 }) => {
   return (
     <div className={className}>
@@ -32,42 +28,27 @@ const AutoComplete = ({
       </Typography>
       { !async && !creatable && (
         <Select
-          placeholder={placeholder}
-          name={name}
-          value={value}
-          defaultValue={value}
+          defaultValue={rest.value}
           options={options}
-          inputProps={{ 'aria-label': label, required: true }}
-          onChange={(selection) => onChange(name, selection)}
-          styles={styles}
-          isClearable={isClearable}
+          onChange={(selection) => onChange(rest.name, selection)}
+          {...rest}
         />
       )}
       { !async && creatable && (
         <CreatableSelect
-          placeholder={placeholder}
-          name={name}
-          value={value}
-          defaultValue={value}
+          defaultValue={rest.value}
           options={options}
-          inputProps={{ 'aria-label': label, required: true }}
-          onChange={(selection) => onChange(name, selection)}
-          isClearable={isClearable}
-          styles={styles}
+          onChange={(selection) => onChange(rest.name, selection)}
+          {...rest}
         />
       )}
       { async && (
         <AsyncSelect
-          placeholder={placeholder}
-          name={name}
-          value={value}
           cacheOptions
           defaultOptions
           loadOptions={loadOptions}
-          inputProps={{ 'aria-label': label }}
-          onChange={(selection) => onChange(name, selection)}
-          isClearable={isClearable}
-          styles={styles}
+          onChange={(selection) => onChange(rest.name, selection)}
+          {...rest}
         />
       )}
       {error && (
@@ -82,11 +63,7 @@ const AutoComplete = ({
 AutoComplete.propTypes = {
   async: PropTypes.bool,
   creatable: PropTypes.bool,
-  isClearable: PropTypes.bool,
   label: PropTypes.node.isRequired,
-  placeholder: PropTypes.string,
-  name: PropTypes.string.isRequired,
-  value: PropTypes.object,
   options: PropTypes.array,
   loadOptions: PropTypes.func,
   onChange: PropTypes.func.isRequired,
@@ -99,9 +76,6 @@ AutoComplete.propTypes = {
 AutoComplete.defaultProps = {
   async: false,
   creatable: false,
-  isClearable: true,
-  value: null,
-  placeholder: undefined,
   options: undefined,
   loadOptions: undefined,
   className: undefined,

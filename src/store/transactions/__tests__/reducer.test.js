@@ -60,12 +60,45 @@ describe('transaction reducer', () => {
       const type = types.UPDATE_TRANSACTION
       const state = {
         ...initialState,
-        list: [{
-          ...transaction, id: 1, shares: '2', bookValue: '2'
-        }]
+        list: [
+          { ...transaction, id: 1, description: 'old name 1' },
+          { ...transaction, id: 2, description: 'old name 2' }
+        ]
       }
-      const payload = { ...transaction, id: 1 }
-      expect(transactionReducer(state, { type, payload })).toEqual({ ...state, list: [payload] })
+      const payload = { id: 1, description: 'new name 1' }
+      expect(transactionReducer(state, { type, payload })).toEqual({
+        ...state,
+        list: [
+          { ...transaction, id: 1, description: 'new name 1' },
+          { ...transaction, id: 2, description: 'old name 2' }
+        ]
+      })
+    })
+  })
+
+  describe('UPDATE_TRANSACTIONS', () => {
+    it('should handle UPDATE_TRANSACTIONS', () => {
+      const type = types.UPDATE_TRANSACTIONS
+      const state = {
+        ...initialState,
+        list: [
+          { ...transaction, id: 1, description: 'old name 1' },
+          { ...transaction, id: 2, description: 'old name 2' },
+          { ...transaction, id: 3, description: 'old name 3' }
+        ]
+      }
+      const payload = {
+        1: { description: 'new name 1' },
+        2: { description: 'new name 2' }
+      }
+      expect(transactionReducer(state, { type, payload })).toEqual({
+        ...state,
+        list: [
+          { ...transaction, id: 1, description: 'new name 1' },
+          { ...transaction, id: 2, description: 'new name 2' },
+          { ...transaction, id: 3, description: 'old name 3' }
+        ]
+      })
     })
   })
 

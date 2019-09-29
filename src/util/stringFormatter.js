@@ -3,7 +3,7 @@ export const currencyFormatter = (locale, currency) => (
 )
 
 export const decimalFormatter = (locale, type = undefined) => {
-  const options = { style: 'decimal', minimumFractionDigits: 2 }
+  const options = { style: 'decimal', minimumFractionDigits: 2, maximumFractionDigits: 2 }
   if (type === 'wallet') {
     options.minimumFractionDigits = 8
     options.maximumFractionDigits = 8

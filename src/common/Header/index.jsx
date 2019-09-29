@@ -9,8 +9,10 @@ import Popper from '@material-ui/core/Popper'
 import MenuItem from '@material-ui/core/MenuItem'
 import MenuList from '@material-ui/core/MenuList'
 import ListItemText from '@material-ui/core/ListItemText'
+import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
 import Fade from '@material-ui/core/Fade'
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown'
 import Logo from '../Logo/index'
 import LoginButton from '../LoginButton'
 import LinkTo from '../LinkTo'
@@ -22,9 +24,8 @@ const useStyles = makeStyles((theme) => ({
   header: {
     zIndex: theme.zIndex.drawer + 1
   },
-  toolbar: {
-    display: 'flex',
-    justifyContent: 'space-between'
+  menu: {
+    textAlign: 'center'
   },
   popper: {
     zIndex: theme.zIndex.drawer + 1,
@@ -61,53 +62,62 @@ const Header = ({ children, match }) => {
   return (
     <div className={classes.root}>
       <AppBar position="fixed" className={classes.header}>
-        <Toolbar className={classes.toolbar}>
-          <Logo />
-          <ClickAwayListener onClickAway={handleClose}>
-            <div>
-              <Button
-                color={buttonColourFor('/dashboard')}
-                component={LinkTo('/dashboard')}
-              >
-                Dashboard
-              </Button>
-              <Button
-                color={buttonColourFor('/budget')}
-                aria-owns={open ? 'budget-menu-list-grow' : null}
-                onClick={handleClick}
-              >
-                Budget
-              </Button>
-              {anchorEl !== null && (
-                <Popper
-                  open={open}
-                  anchorEl={anchorEl}
-                  transition
-                  className={classes.popper}
-                  placement="bottom-start"
-                >
-                  {({ TransitionProps }) => (
-                    <Fade {...TransitionProps} timeout={350}>
-                      <Paper>
-                        <MenuList role="menu">
-                          <MenuItem onClick={handleClose} component={LinkTo('/money-flow')}>
-                            <ListItemText primary="Money flow" />
-                          </MenuItem>
-                          <MenuItem onClick={handleClose} component={LinkTo('/budget')}>
-                            <ListItemText primary="History" />
-                          </MenuItem>
-                          <MenuItem onClick={handleClose} component={LinkTo('/budget-categories')}>
-                            <ListItemText primary="Categories" />
-                          </MenuItem>
-                        </MenuList>
-                      </Paper>
-                    </Fade>
+        <Toolbar>
+          <Grid container>
+            <Grid item xs={3}>
+              <Logo />
+            </Grid>
+            <Grid item xs={6} className={classes.menu}>
+              <ClickAwayListener onClickAway={handleClose}>
+                <>
+                  <Button
+                    color={buttonColourFor('/dashboard')}
+                    component={LinkTo('/dashboard')}
+                  >
+                    Dashboard
+                  </Button>
+                  <Button
+                    color={buttonColourFor('/budget')}
+                    aria-owns={open ? 'budget-menu-list-grow' : null}
+                    onClick={handleClick}
+                  >
+                    Budget
+                    <ArrowDropDownIcon />
+                  </Button>
+                  {anchorEl !== null && (
+                    <Popper
+                      open={open}
+                      anchorEl={anchorEl}
+                      transition
+                      className={classes.popper}
+                      placement="bottom-start"
+                    >
+                      {({ TransitionProps }) => (
+                        <Fade {...TransitionProps} timeout={350}>
+                          <Paper>
+                            <MenuList role="menu">
+                              <MenuItem onClick={handleClose} component={LinkTo('/money-flow')}>
+                                <ListItemText primary="Money flow" />
+                              </MenuItem>
+                              <MenuItem onClick={handleClose} component={LinkTo('/budget')}>
+                                <ListItemText primary="History" />
+                              </MenuItem>
+                              <MenuItem onClick={handleClose} component={LinkTo('/budget-categories')}>
+                                <ListItemText primary="Categories" />
+                              </MenuItem>
+                            </MenuList>
+                          </Paper>
+                        </Fade>
+                      )}
+                    </Popper>
                   )}
-                </Popper>
-              )}
-            </div>
-          </ClickAwayListener>
-          <LoginButton />
+                </>
+              </ClickAwayListener>
+            </Grid>
+            <Grid item xs={3}>
+              <LoginButton />
+            </Grid>
+          </Grid>
         </Toolbar>
       </AppBar>
       { children }

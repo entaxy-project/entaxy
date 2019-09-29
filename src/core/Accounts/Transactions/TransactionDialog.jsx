@@ -141,6 +141,7 @@ export const TransactionDialogComponent = ({
           error={errors.categoryId && touched.categoryId}
           helperText={errors.categoryId}
           styles={colourStyles}
+          isClearable={true}
         />
         <FormControlLabel
           control={(
@@ -158,7 +159,10 @@ export const TransactionDialogComponent = ({
           label="Amount"
           inputProps={{
             'aria-label': 'Amount',
-            step: 0.01
+            step: 0.01,
+            min: -999999999.99,
+            max: 999999999.99
+
           }}
           className={classes.input}
           value={values.amount}
@@ -221,6 +225,7 @@ export default compose(
       }
       return {
         ...transaction,
+        amount: transaction.amount.accountCurrency,
         createAndApplyRule: true,
         categoryId: transaction.categoryId === undefined ? null : {
           id: budget.categoriesById[transaction.categoryId].id,
@@ -251,6 +256,10 @@ export default compose(
         props.account,
         {
           ...rest,
+          amount: {
+            accountCurrency: rest.amount,
+            localCurrency: null
+          },
           categoryId: (rest.categoryId === null ? undefined : rest.categoryId.id),
           createdAt: parse(rest.createdAt, 'yyyy-M-d', new Date()).getTime()
         },

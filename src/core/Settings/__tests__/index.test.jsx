@@ -1,56 +1,85 @@
+/* eslint-disable react/display-name */
 import React from 'react'
-import renderer from 'react-test-renderer'
-import { shallow } from 'enzyme'
-import { SettingsComponent } from '..'
+import { render, fireEvent, wait } from '@testing-library/react'
+import '@testing-library/jest-dom/extend-expect'
+import { Provider } from 'react-redux'
+import { Router } from 'react-router-dom'
+import { createMemoryHistory } from 'history'
+import configureMockStore from 'redux-mock-store'
+import thunk from 'redux-thunk'
+import { initialState as settingsInitialState } from '../../../store/settings/reducer'
+import Settings from '..'
+import locales from '../../../data/locales'
 
-jest.mock('../form', () => 'SettingsForm')
-const mochSaveSettings = jest.fn()
-const mochDeleteAllData = jest.fn()
-const mochShowSnackbar = jest.fn()
+function renderWithRouter(store) {
+  const history = createMemoryHistory()
+  const historyPushSpy = jest.spyOn(history, 'push')
+  return {
+    ...render(
+      <Provider store={store}>
+        <Router history={history}>
+          <Settings history={history} />
+        </Router>
+      </Provider>
+    ),
+    history,
+    historyPushSpy
+  }
+}
 
 describe('Settings', () => {
-  it('matches snapshot with no accounts and no selected accountId', () => {
-    const component = renderer.create((
-      <SettingsComponent
-        history={{}}
-        classes={{}}
-        deleteAllData={mochDeleteAllData}
-        saveSettings={mochSaveSettings}
-        showSnackbarMessage={mochShowSnackbar}
-      />
-    ))
-    expect(component.toJSON()).toMatchSnapshot()
+  it('renders correctly', async () => {
+    const mockStore = configureMockStore()
+    const store = mockStore({ settings: settingsInitialState })
+    const { getByText } = renderWithRouter(store)
+    expect(getByText('Settings')).toBeInTheDocument()
+    fireEvent.click(getByText(locales[store.getState().settings.locale]))
   })
 
-  describe('Component methods', () => {
-    const mochHistoryPush = jest.fn()
-    const wrapper = shallow((
-      <SettingsComponent
-        history={{ push: mochHistoryPush }}
-        classes={{}}
-        deleteAllData={mochDeleteAllData}
-        saveSettings={mochSaveSettings}
-        showSnackbarMessage={mochShowSnackbar}
-      />
-    ))
-    const instance = wrapper.instance()
+  it('closes the form', async () => {
+    const mockStore = configureMockStore([thunk])
+    const store = mockStore({ settings: settingsInitialState })
+    const { historyPushSpy, getByText } = renderWithRouter(store)
+    fireEvent.click(getByText((_, elem) => elem.type === 'button' && elem.getAttribute('aria-label') === 'Close'))
+    await wait(() => expect(historyPushSpy).toHaveBeenCalledWith('/dashboard'))
+    expect(store.getActions()).toEqual([])
+  })
 
-    it('saves settings and shows the snackbar', async () => {
-      await instance.handleSave()
-      expect(mochSaveSettings).toHaveBeenCalled()
-      expect(mochShowSnackbar).toHaveBeenCalledWith({ status: 'success', text: 'Your settings have been saved' })
-      expect(mochHistoryPush).toHaveBeenCalledWith('/dashboard')
-    })
+  it('saves the form', async () => {
+    const mockStore = configureMockStore([thunk])
+    const store = mockStore({ settings: settingsInitialState })
+    const { historyPushSpy, getByText } = renderWithRouter(store)
+    fireEvent.click(getByText((_, elem) => elem.type === 'submit'))
+    await wait(() => expect(historyPushSpy).toHaveBeenCalledWith('/dashboard'))
+    expect(store.getActions()).toEqual([
+      {
+        type: 'UPDATE_SETTINGS',
+        payload: settingsInitialState
+      }, {
+        type: 'SHOW_SNACKBAR',
+        payload: {
+          status: 'success',
+          text: 'Your settings have been saved'
+        }
+      }
+    ])
+  })
 
-    it('deletes all data', async () => {
-      await instance.handleResetData()
-      expect(mochDeleteAllData).toHaveBeenCalled()
-      expect(mochHistoryPush).toHaveBeenCalledWith('/dashboard')
-    })
-
-    it('cancels and returns to dashboard', async () => {
-      instance.handleCancel()
-      expect(mochHistoryPush).toHaveBeenCalledWith('/dashboard')
-    })
+  it('resets the user data', async () => {
+    const mockStore = configureMockStore([thunk])
+    const store = mockStore({ settings: settingsInitialState })
+    const { historyPushSpy, getByText } = renderWithRouter(store)
+    fireEvent.click(getByText('Reset - delete all my data'))
+    getByText('Delete all your data? This cannot be undone.')
+    fireEvent.click(getByText('Ok'))
+    await wait(() => expect(historyPushSpy).toHaveBeenCalledWith('/dashboard'))
+    expect(store.getActions().map((action) => action.type)).toEqual([
+      'LOAD_SETTINGS',
+      'LOAD_ACCOUNTS',
+      'LOAD_TRANSACTIONS',
+      'LOAD_EXCHANGE_RATES',
+      'LOAD_BUDGET',
+      'SHOW_SNACKBAR'
+    ])
   })
 })

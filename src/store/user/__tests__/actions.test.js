@@ -39,16 +39,29 @@ describe('user actions', () => {
     })
   })
 
-  it('should showOverlayr', () => {
+  it('should showOverlay', () => {
     expect(actions.showOverlay('Test message')).toEqual({
       type: types.SHOW_OVERLAY,
       payload: 'Test message'
     })
   })
 
-  it('should showOverlayr', () => {
+  it('should hideOverlay', () => {
     expect(actions.hideOverlay()).toEqual({
       type: types.HIDE_OVERLAY
+    })
+  })
+
+  it('should showSnackbar', () => {
+    expect(actions.showSnackbar('message')).toEqual({
+      type: types.SHOW_SNACKBAR,
+      payload: 'message'
+    })
+  })
+
+  it('should hideSnackbar', () => {
+    expect(actions.hideSnackbar()).toEqual({
+      type: types.HIDE_SNACKBAR
     })
   })
 })
