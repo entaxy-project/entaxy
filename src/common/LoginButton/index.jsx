@@ -62,7 +62,14 @@ const LoginButton = () => {
         </Tooltip>
       )}
       { user.isAuthenticatedWith === 'guest' && (
+<<<<<<< HEAD
         <Avatar alt={user.name} src={user.pictureUrl} />
+=======
+        <Avatar
+          src={user.pictureUrl}
+          alt={user.name}
+        />
+>>>>>>> initial updates
       )}
       <Button
         ref={anchorRef}

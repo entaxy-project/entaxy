@@ -12,23 +12,19 @@ import grey from '@material-ui/core/colors/grey'
 import Card from '@material-ui/core/Card'
 import CardHeader from '@material-ui/core/CardHeader'
 import CardActions from '@material-ui/core/CardActions'
-import { loginAs } from '../../store'
+import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew'
+import { loginAs, userLogout } from '../../store'
 import blockstackLogo from './blockstack-bug-rounded.svg'
 import LinkTo from '../../common/LinkTo'
 
 const styles = (theme) => ({
   loggedOutContainer: {
     padding: theme.spacing(1),
-    marginRight: theme.spacing(2),
     background: grey[200]
   },
-  signingDescription: {
-    textAlign: 'center',
-    display: 'inline-block',
-    padding: theme.spacing(2)
-  },
   signinButton: {
-    width: '100%'
+    width: '100%',
+    marginBottom: theme.spacing(3)
   },
   blockstackTitle: {
     backgroundRepeat: 'no-repeat',
@@ -44,6 +40,14 @@ const styles = (theme) => ({
     fontSize: 19,
     marginBottom: -4,
     marginRight: 10
+  },
+  logoutIcon: {
+    fontSize: 16,
+    marginRight: theme.spacing(1)
+  },
+  logoutButton: {
+    marginLeft: 'auto',
+    whiteSpace: 'nowrap'
   }
 })
 
@@ -61,8 +65,8 @@ export class LandingCardComponent extends React.Component {
     const { classes, user } = this.props
     if (user.isAuthenticatedWith) {
       return (
-        <Grid container>
-          <Grid item xs={12}>
+        <Grid container justify="center">
+          <Grid item xs={12} sm={8} md={6} lg={4}>
             <Card>
               <CardHeader
                 avatar={<Avatar src={user.pictureUrl} alt={user.name} />}
@@ -76,6 +80,15 @@ export class LandingCardComponent extends React.Component {
                 >
                   Continue to your Dashboard
                 </Button>
+                <Button
+                  size="small"
+                  color="secondary"
+                  onClick={userLogout}
+                  className={classes.logoutButton}
+                >
+                  <PowerSettingsNewIcon className={classes.logoutIcon} />
+                  Sign out
+                </Button>
               </CardActions>
             </Card>
           </Grid>
@@ -84,8 +97,8 @@ export class LandingCardComponent extends React.Component {
     }
 
     return (
-      <Grid container>
-        <Grid item xs={6}>
+      <Grid container spacing={2} justify="center">
+        <Grid item xs={12} md={4}>
           <Paper elevation={1} className={classes.loggedOutContainer}>
             <Button
               variant="contained"
@@ -96,7 +109,7 @@ export class LandingCardComponent extends React.Component {
             >
               Sign in with Blockstack
             </Button>
-            <Typography variant="caption" align="center" className={classes.signingDescription}>
+            <Typography variant="caption" paragraph align="center">
               Keep your data encrypted and decentralized. Learn more about &nbsp;
               <span className={classes.blockstackTitle}>
                 <a href="https://blockstack.org/what-is-blockstack" target="_blank" rel="noopener noreferrer">
@@ -106,7 +119,7 @@ export class LandingCardComponent extends React.Component {
             </Typography>
           </Paper>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={12} md={4}>
           <Paper elevation={1} className={classes.loggedOutContainer}>
             <Button
               variant="contained"
@@ -115,12 +128,10 @@ export class LandingCardComponent extends React.Component {
               onClick={() => this.login('guest')}
               data-testid="signinAsGuestButton"
             >
-              Don&apos;t sign in yet
+              Sign in as guest user
             </Button>
-            <Typography variant="caption" className={classes.signingDescription}>
-              You can use the app fully but your data will not be stored.
-              <br />
-              Single session
+            <Typography variant="caption" paragraph align="center">
+              Your data will be stored on this browser only. Great for exploring the app.
             </Typography>
           </Paper>
         </Grid>

@@ -95,7 +95,7 @@ describe('Routes', () => {
       expect(history.entries.map((e) => e.pathname)).toEqual(['/handle-login', '/'])
     })
 
-    it('redirects to home page if not logged in', () => {
+    it.only('redirects to home page if not logged in', () => {
       const { history, getByText } = renderWithRouter((
         <Provider store={store}>
           <Routes />

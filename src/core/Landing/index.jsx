@@ -3,8 +3,13 @@ import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
-import Paper from '@material-ui/core/Paper'
+import Divider from '@material-ui/core/Divider'
+import TableRow from '@material-ui/core/TableRow'
+import TableCell from '@material-ui/core/TableCell'
 import grey from '@material-ui/core/colors/grey'
+import logoImg from '../../common/Logo/logo.png'
+import womanImg from './woman2.png'
+
 import LandingCard from './LandingCard'
 import landingImage from './landing.png'
 import level20Image from './2.0.png'
@@ -21,40 +26,51 @@ import level51Image from './5.1.png'
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
-    padding: '20px'
+    padding: '20px',
+    flexGrow: 1
   },
   // --- Level 1
-  leftLevel1: {
+  level1: {
     justifyContent: 'space-evenly',
     background: grey[100],
-    padding: '2% 5% 2% 8%',
+    padding: theme.spacing(4),
     display: 'flex',
     flexFlow: 'column nowrap'
   },
-  rightLevel1: {
-    minHeight: 500,
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center',
-    backgroundSize: '100%',
-    backgroundImage: `url(${landingImage}), linear-gradient(to bottom, var(--color-blue), var(--color-cyan))`
-  },
   logoLevel1: {
     font: 'bold 24px var(--font-garden-grove)',
-    color: 'black'
+    color: 'black',
+    background: `url(${logoImg}) no-repeat left center`,
+    backgroundSize: 30,
+    paddingLeft: 40
   },
   taglineLevel1: {
     font: 'italic 11px var(--font-garden-grove)',
     color: grey[500],
-    'padding-top': '3px'
+    paddingTop: 3
   },
   titleLevel1: {
-    font: 'bold 48px var(--font-garden-grove)'
+    font: 'bold 46px var(--font-garden-grove)',
+    marginTop: theme.spacing(4),
+    marginBottom: theme.spacing(4),
+    textAlign: 'center',
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 24
+    }
   },
-  producthuntWidget: {
-    marginTop: theme.spacing(1),
-    textAlign: 'center'
+  titleDividerLevel1: {
+    width: '20%',
+    margin: `${theme.spacing(2)}px auto`,
+    [theme.breakpoints.down('sm')]: {
+      width: '50%'
+    }
   },
+
   // --- Level 2
+  womanImage: {
+    margin: 'auto',
+    width: '80%'
+  },
   leftLevel2: {
     backgroundColor: 'var(--color-gradient2)'
   },
@@ -89,8 +105,9 @@ const useStyles = makeStyles((theme) => ({
   },
   screenshotLevel2: {
     position: 'absolute',
-    width: '60%',
+    // width: '60%',
     right: theme.spacing(8),
+    left: theme.spacing(8),
     marginTop: theme.spacing(6),
     padding: 5
   },
@@ -222,33 +239,56 @@ const Landing = ({ history }) => {
   return (
     <Grid container spacing={0} className={classes.root}>
       {/* --- Level 1 --- */}
-      <Grid item xs={6} className={classes.leftLevel1}>
+      <Grid item xs={12} className={classes.level1}>
         <div className={classes.logoLevel1}>
           Entaxy
           <div className={classes.taglineLevel1}>Order from chaos</div>
         </div>
         <div className={classes.titleLevel1}>
-          Insight into your finances, without sacrificing your data
+          Your Personal Finances Simple & Private
+          <Typography variant="body1" align="center">
+            <Divider className={classes.titleDividerLevel1} />
+            Insight into your finances without sacrificing your data
+          </Typography>
         </div>
         <LandingCard history={history} />
       </Grid>
-      <Grid item xs={6} className={classes.rightLevel1} />
-      {/* --- Level 2 --- */}
-      <Grid item xs={6} className={classes.leftLevel2}>
-        <Typography variant="h5" className={classes.titleLevel2}>
-          All your accounts
-        </Typography>
-        <img src={level21Image} className={classes.backgroundImageLevel2} alt="Your Accounts backgoround" />
+      <Grid container justify="center">
+        <Grid item xs={12} md={4} align="center">
+          <img src={womanImg} alt="Woman working on computer" className={classes.womanImage}/>
+        </Grid>
+        <Grid item xs={12} md={4} align="center">
+          <Typography variant="h5" align="center">
+            Account management
+          </Typography>
+          <Typography variant="h5" align="center">
+            Budgeting
+          </Typography>
+          <Typography variant="h5" align="center">
+            Multiple currencies
+          </Typography>
+          <Typography variant="body1" align="center">
+            Entaxy runs exclusively on your devide
+          </Typography>
+        </Grid>
       </Grid>
-      <Grid item xs={6} className={classes.rightLevel2}>
-        <Typography variant="h5" align="right" className={classes.tagLineLevel2}>
-          in one place
-        </Typography>
-        <Paper className={classes.screenshotLevel2}>
-          <img src={level20Image} width="100%" alt="Your Accounts" />
-        </Paper>
-      </Grid>
-      {/* --- Level 3 --- */}
+      {/* --- Level 2 ---
+      <div style={{ position: 'relative' }}>
+        <Grid item xs={6} className={classes.leftLevel2}>
+          <Typography variant="h5" className={classes.titleLevel2}>
+            All your accounts
+          </Typography>
+          <img src={level21Image} className={classes.backgroundImageLevel2} alt="Your Accounts backgoround" />
+        </Grid>
+        <Grid item xs={6} className={classes.rightLevel2}>
+          <Typography variant="h5" align="right" className={classes.tagLineLevel2}>
+            in one place
+          </Typography>
+          <Paper className={classes.screenshotLevel2}>
+            <img src={level20Image} width="100%" alt="Your Accounts" />
+          </Paper>
+        </Grid>
+      {/* --- Level 3 ---
       <Grid item xs={6}>
         <Typography variant="h5" className={classes.titleLevel3}>
           Your financial data
@@ -262,7 +302,7 @@ const Landing = ({ history }) => {
           owned by you
         </Typography>
       </Grid>
-      {/* --- Level 4 --- */}
+      {/* --- Level 4 ---
       <Grid item xs={6} className={classes.leftLevel4}>
         <Typography variant="h5" className={classes.titleLeftLevel4}>
           Budget
@@ -276,7 +316,7 @@ const Landing = ({ history }) => {
           <img src={level40Image} width="100%" alt="Budget the way you like" />
         </Paper>
       </Grid>
-      {/* --- Level 5 --- */}
+      {/* --- Level 5 ---
       <Grid item xs={6}>
         <Typography variant="h5" className={classes.titleLevel5}>
           Visualize your data
@@ -291,6 +331,7 @@ const Landing = ({ history }) => {
           and learn from it
         </Typography>
       </Grid>
+      */}
     </Grid>
   )
 }
