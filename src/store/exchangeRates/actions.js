@@ -119,7 +119,7 @@ export const getLastWeekday = (startDate = startOfYesterday()) => {
 // }
 export const getAccountCurrenciesMap = (accounts, settings, exchangeRates, { excludeAccountId } = {}) => (
   accounts.reduce((result, account) => {
-    if (account.id === excludeAccountId) return null
+    if (account.id === excludeAccountId) return result
     if (account.currency === settings.currency) return result
     if (account.currency in result) return result
 
@@ -156,7 +156,7 @@ export const getAccountCurrenciesMap = (accounts, settings, exchangeRates, { exc
 )
 
 // This is called only when accounts change
-export const updateCurrencies = (forceStarDates = {}, excludeAccountId = {}) => async (dispatch, getState) => {
+export const updateCurrencies = ({ forceStarDates = {}, excludeAccountId } = {}) => async (dispatch, getState) => {
   const {
     accounts,
     transactions,
