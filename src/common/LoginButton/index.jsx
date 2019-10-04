@@ -10,9 +10,7 @@ import Divider from '@material-ui/core/Divider'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import Settings from '@material-ui/icons/Settings'
-import Icon from '@mdi/react'
-import { mdiLogout } from '@mdi/js'
-import AccountBoxIcon from '@material-ui/icons/AccountBox'
+import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew'
 import Paper from '@material-ui/core/Paper'
 import Fade from '@material-ui/core/Fade'
 import ClickAwayListener from '@material-ui/core/ClickAwayListener'
@@ -60,16 +58,11 @@ const LoginButton = () => {
     <div className={classes.root}>
       { user.isAuthenticatedWith === 'blockstack' && (
         <Tooltip id="tooltip-icon" title={user.username}>
-          <Avatar
-            src={user.pictureUrl}
-            alt={user.name}
-          />
+          <Avatar src={user.pictureUrl} alt={user.name} />
         </Tooltip>
       )}
       { user.isAuthenticatedWith === 'guest' && (
-        <Avatar alt={user.name}>
-          <AccountBoxIcon fontSize="small" />
-        </Avatar>
+        <Avatar alt={user.name} src={user.pictureUrl} />
       )}
       <Button
         ref={anchorRef}
@@ -95,13 +88,9 @@ const LoginButton = () => {
                   </MenuItem>
                   <MenuItem onClick={userLogout} data-testid="logoutButton">
                     <ListItemIcon>
-                      <Icon
-                        path={mdiLogout}
-                        size={1}
-                        className={classes.menuIcon}
-                      />
+                      <PowerSettingsNewIcon />
                     </ListItemIcon>
-                    <ListItemText primary="Logout" />
+                    <ListItemText primary="Sign out" />
                   </MenuItem>
                   <Divider />
                   <MenuItem disabled={true}>
