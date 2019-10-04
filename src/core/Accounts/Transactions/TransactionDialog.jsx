@@ -252,7 +252,6 @@ export default compose(
     handleSubmit: (values, { props, setSubmitting, resetForm }) => {
       setSubmitting(true)
       const { createAndApplyRule, ...rest } = values
-      console.log('handleSubmit', values)
       props.handleSave(
         props.account,
         {
