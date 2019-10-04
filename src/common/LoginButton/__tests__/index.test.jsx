@@ -53,6 +53,6 @@ describe('LoginButton', () => {
       </Provider>
     )
     expect(getByText(user.name)).toBeInTheDocument()
-    expect(queryByText((_, elem) => elem.src === user.pictureUrl)).not.toBeInTheDocument()
+    expect(queryByText((_, elem) => elem.src === user.pictureUrl)).toBeInTheDocument()
   })
 })
