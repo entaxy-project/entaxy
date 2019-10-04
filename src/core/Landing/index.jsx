@@ -257,18 +257,18 @@ const Landing = ({ history }) => {
         <Grid item xs={12} md={4} align="center">
           <img src={womanImg} alt="Woman working on computer" className={classes.womanImage}/>
         </Grid>
-        <Grid item xs={12} md={4} align="center">
-          <Typography variant="h5" align="center">
-            Account management
+        <Grid item xs={12} md={4}>
+          <Typography variant="h5">
+            Manage all your Accounts
           </Typography>
-          <Typography variant="h5" align="center">
-            Budgeting
+          <Typography variant="h5">
+            Import transactions via CSV
           </Typography>
-          <Typography variant="h5" align="center">
+          <Typography variant="h5">
             Multiple currencies
           </Typography>
-          <Typography variant="body1" align="center">
-            Entaxy runs exclusively on your devide
+          <Typography variant="h5">
+            Budgeting
           </Typography>
         </Grid>
       </Grid>
