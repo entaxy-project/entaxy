@@ -52,7 +52,7 @@ const ErrorPopupContent = ({
           <Typography variant="caption" paragraph>
             {popupRowData.errors.join(', ')}
             <br />
-            The CSV data is shown bellow
+            The CSV data is shown below
           </Typography>
         </Typography>
         <IconButton
