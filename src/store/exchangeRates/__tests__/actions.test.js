@@ -311,9 +311,11 @@ describe('exchangeRates actions', () => {
       ))
       window.fetch = mockSpy
       await store.dispatch(actions.updateCurrencies({
-        [accountCurrencies[0]]: subDays(lastWeekday, 100).getTime(),
-        [accountCurrencies[1]]: subDays(lastWeekday, 100).getTime(),
-        [accountCurrencies[2]]: subDays(lastWeekday, 15).getTime()
+        forceStarDates: {
+          [accountCurrencies[0]]: subDays(lastWeekday, 100).getTime(),
+          [accountCurrencies[1]]: subDays(lastWeekday, 100).getTime(),
+          [accountCurrencies[2]]: subDays(lastWeekday, 15).getTime()
+        }
       }))
       expect(store.getActions()).toEqual([
         {

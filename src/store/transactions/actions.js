@@ -24,7 +24,9 @@ export const createTransaction = (account, transaction, { createAndApplyRule = f
 
     // If we couldn't convert to local currency it's because we don't have the exchange rate
     if (!localCurrency) {
-      await dispatch(updateCurrencies({ [account.currency]: transaction.createdAt }))
+      await dispatch(updateCurrencies({
+        forceStarDates: { [account.currency]: transaction.createdAt }
+      }))
       localCurrency = dispatch(convertToCurrency(
         transaction.amount.accountCurrency,
         account.currency,
@@ -59,7 +61,7 @@ export const createTransaction = (account, transaction, { createAndApplyRule = f
 
 export const updateTransaction = (account, transaction, { createAndApplyRule = false } = {}) => (
   async (dispatch, getState) => {
-    const { transactions, budget } = getState()
+    const { transactions } = getState()
     const oldTransaction = transactions.list.find((t) => t.id === transaction.id)
     let { localCurrency } = transaction.amount
     const amountChanged = transaction.amount.accountCurrency !== oldTransaction.amount.accountCurrency
@@ -75,7 +77,9 @@ export const updateTransaction = (account, transaction, { createAndApplyRule = f
 
       // If we couldn't convert to local currency it's because we don't have the exchange rate
       if (!localCurrency) {
-        await dispatch(updateCurrencies({ [account.currency]: transaction.createdAt }))
+        await dispatch(updateCurrencies({
+          forceStarDates: { [account.currency]: transaction.createdAt }
+        }))
         localCurrency = dispatch(convertToCurrency(
           transaction.amount.accountCurrency,
           account.currency,
@@ -101,7 +105,7 @@ export const updateTransaction = (account, transaction, { createAndApplyRule = f
         } else {
           dispatch(createExactRule(transaction.categoryId, transaction.description))
         }
-        dispatch(applyExactRule({ match: transaction.description, rules: budget.rules }))
+        dispatch(applyExactRule({ match: transaction.description, rules: getState().budget.rules }))
       }
       dispatch(countRuleUsage())
     }
@@ -150,7 +154,9 @@ export const addTransactions = (account, transactions, { updateAccountAndExchang
         const oldestTransactionDate = transactions.sort((a, b) => a.createdAt - b.createdAt)[0].createdAt
         const oldestExchangeRateDate = Object.keys(exchangeRates[account.currency]).sort((a, b) => a - b)[0]
         if (oldestTransactionDate < oldestExchangeRateDate) {
-          await dispatch(updateCurrencies({ [account.currency]: oldestTransactionDate }))
+          await dispatch(updateCurrencies({
+            forceStarDates: { [account.currency]: oldestTransactionDate }
+          }))
         }
       }
     }

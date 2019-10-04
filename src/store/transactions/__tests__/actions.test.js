@@ -470,12 +470,18 @@ describe('transactions actions', () => {
     it('should update a transaction and remove a category and create a rule', async () => {
       const categoryId = budgetInitialState.categoryTree[0].options[0].id
       const byId = { [account.id]: account }
+      const existingRules = {
+        description: budgetInitialState.categoryTree[0].options[0]
+      }
       const store = mockStore({
         accounts: { byId, byInstitution: groupByInstitution({ byId, byInstitution: {} }) },
         transactions: { list: [{ ...transaction, id: 1, categoryId }], transactionsInitialState },
         settings: settingsInitialState,
         exchangeRates: exchangeRatesInitialState,
-        budget: budgetInitialState
+        budget: {
+          ...budgetInitialState,
+          rules: existingRules
+        }
       })
 
       await store.dispatch(actions.updateTransaction(
@@ -502,7 +508,7 @@ describe('transactions actions', () => {
           type: 'APPLY_EXACT_RULE',
           payload: {
             match: transaction.description,
-            rules: {}
+            rules: existingRules // This should have the new rule but the mock store doesn't save anything
           }
         }, {
           // NOTE: the transaction is not actually saved on the mock store so we don't see it here

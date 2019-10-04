@@ -122,7 +122,7 @@ export const loginAs = (loginType) => {
       isAuthenticatedWith: 'guest',
       username: 'guest',
       name: 'Guest user',
-      pictureUrl: null
+      pictureUrl: avatarImg
     }))
     setPersistor({ storageType: 'local' })
   }

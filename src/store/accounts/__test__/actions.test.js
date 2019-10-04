@@ -121,20 +121,39 @@ describe('accounts actions', () => {
         }
       }
       const transactions = [
-        { id: 1, accountId: 1, amount: { accountCurrency: 1, localCurrency: 1 } },
-        { id: 2, accountId: 1, amount: { accountCurrency: 2, localCurrency: 2 } },
-        { id: 3, accountId: 2, amount: { accountCurrency: 3, localCurrency: 3 } },
-        { id: 4, accountId: 2, amount: { accountCurrency: 4, localCurrency: 4 } }
+        {
+          id: 1,
+          accountId: 1,
+          amount: { accountCurrency: 1, localCurrency: 1 },
+          createdAt: subDays(startOfYesterday(), 1)
+        }, {
+          id: 2,
+          accountId: 1,
+          amount: { accountCurrency: 2, localCurrency: 2 },
+          createdAt: subDays(startOfYesterday(), 2)
+        }, {
+          id: 3,
+          accountId: 2,
+          amount: { accountCurrency: 3, localCurrency: 3 },
+          createdAt: subDays(startOfYesterday(), 3)
+        }, {
+          id: 4,
+          accountId: 2,
+          amount: { accountCurrency: 4, localCurrency: 4 },
+          createdAt: subDays(startOfYesterday(), 4)
+        }
       ]
       const store = mockStore({
         settings: settingsInitialState,
         accounts: { byId, byInstitution: groupByInstitution({ byId, byInstitution: {} }) },
         transactions: { list: transactions },
-        exchangeRates: generateExchangeRates({
-          currencies: [byId[1].currency],
-          startAt: subDays(startOfYesterday(), 10),
-          endAt: startOfYesterday()
-        })
+        exchangeRates: {
+          EUR: {
+            [startOfYesterday().getTime()]: 1.4, // account
+            [subDays(startOfYesterday(), 3).getTime()]: 3,
+            [subDays(startOfYesterday(), 4).getTime()]: 4
+          }
+        }
       })
 
       store.dispatch(actions.convertAccountsAndTransactionsToLocalCurrency())
@@ -143,13 +162,24 @@ describe('accounts actions', () => {
         payload: byId[1]
       }, {
         type: types.UPDATE_ACCOUNT,
-        payload: { ...byId[2], currentBalance: { ...byId[2].currentBalance, localCurrency: null } }
+        payload: {
+          ...byId[2],
+          currentBalance: {
+            ...byId[2].currentBalance,
+            localCurrency: byId[2].currentBalance.accountCurrency / 1.4
+          }
+        }
       }, {
         type: 'UPDATE_TRANSACTIONS',
         payload: transactions.reduce((result, transaction) => ({
           ...result,
           [transaction.id]: {
-            amount: { ...transaction.amount, localCurrency: null }
+            amount: {
+              ...transaction.amount,
+              localCurrency: [3, 4].includes(transaction.id)
+                ? transaction.amount.accountCurrency / transaction.id
+                : transaction.amount.accountCurrency
+            }
           }
         }), {})
       }])
@@ -350,37 +380,68 @@ describe('accounts actions', () => {
     })
 
     it('should updateAccount currency', async () => {
-      const byId = { a1: { ...account, id: 'a1' } }
-      const transaction = { id: 1, accountId: 'a1', amount: { accountCurrency: 1 } }
+      const byId = { a1: { ...account, id: 'a1', openingBalanceDate: Date.now() } }
+      const transactions = {
+        1: {
+          id: 1,
+          accountId: 'a1',
+          amount: { accountCurrency: 1 },
+          createdAt: Date.now()
+        },
+        2: {
+          id: 2,
+          accountId: 'a1',
+          amount: { accountCurrency: 2 },
+          createdAt: subDays(byId.a1.openingBalanceDate, 20).getTime()
+        }
+      }
+      const newCurrency = 'EUR'
       const store = mockStore({
         accounts: { byId, byInstitution: groupByInstitution({ byId, byInstitution: {} }) },
-        transactions: { ...transactionsInitialState, list: [transaction] },
+        transactions: { ...transactionsInitialState, list: Object.values(transactions) },
         settings: settingsInitialState,
         exchangeRates: exchangeRatesInitialState
       })
       expect(account.currency).toEqual(store.getState().settings.currency)
-      await store.dispatch(actions.updateAccount({ ...byId.a1, currency: 'EUR' }))
-      expect(store.getActions()).toEqual([
-        {
-          type: types.UPDATE_ACCOUNT,
-          payload: {
-            ...account,
-            id: 'a1',
-            currency: 'EUR',
-            currentBalance: { ...account.currentBalance, localCurrency: null }
-          }
-        }, {
-          type: 'UPDATE_TRANSACTIONS',
-          payload: {
-            1: { amount: { ...transaction.amount, localCurrency: null } }
-          }
-        }, {
-          type: types.GROUP_BY_INSTITUTION
-        }, {
-          type: 'SHOW_SNACKBAR',
-          payload: { text: 'Account updated', status: 'success' }
+      expect(account.currency).not.toEqual(newCurrency)
+
+      const fetchMockParams = {
+        base: store.getState().settings.currency,
+        symbols: [newCurrency],
+        startAt: subDays(transactions[2].createdAt, 10), // Should request the 10 previous days
+        endAt: startOfYesterday()
+      }
+      const fetchResponse = generateFiatExchangeRatesResponse(fetchMockParams)
+      const mockSpy = mockFetch(fetchResponse)
+
+      await store.dispatch(actions.updateAccount({ ...byId.a1, currency: newCurrency }))
+
+      expect(store.getActions()).toEqual([{
+        type: 'SHOW_SNACKBAR',
+        payload: { text: `Fetching exchange rates for ${newCurrency}...` }
+      }, {
+        payload: fetchResponse.rates,
+        type: 'UPDATE_EXCHANGE_RATES'
+      }, {
+        type: types.UPDATE_ACCOUNT,
+        payload: {
+          ...byId.a1,
+          currency: newCurrency,
+          currentBalance: { ...account.currentBalance, localCurrency: null }
         }
-      ])
+      }, {
+        type: 'UPDATE_TRANSACTIONS',
+        payload: {
+          1: { amount: { ...transactions[1].amount, localCurrency: 1 } },
+          2: { amount: { ...transactions[2].amount, localCurrency: 2 } }
+        }
+      }, {
+        type: types.GROUP_BY_INSTITUTION
+      }, {
+        type: 'SHOW_SNACKBAR',
+        payload: { text: 'Account updated', status: 'success' }
+      }])
+      expectExchangeratesApiToHaveBeenCalledWith({ mockSpy, ...fetchMockParams })
     })
 
     it('should update description', async () => {

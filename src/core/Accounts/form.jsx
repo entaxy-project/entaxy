@@ -86,7 +86,6 @@ export class AccountFormComponent extends React.Component {
     if (institutions[value].importTypes.includes('API')) {
       return (
         <DescriptionCard
-          info
           className={classes.input}
           actions={(
             <Grid align="center">
@@ -107,15 +106,19 @@ export class AccountFormComponent extends React.Component {
             </Grid>
           )}
         >
-          <Typography variant="caption" paragraph>
+          <Typography variant="caption" align="center" paragraph>
             You can import&nbsp;
             <strong>all your accounts</strong>
             &nbsp;in one go from&nbsp;
             <strong>{institutions[value].name}</strong>
             &nbsp;by using their API.
           </Typography>
-          <Typography variant="caption" align="center">
+          <Typography variant="caption" align="center" paragraph>
             This is also the easiest way to keep your transactions up to date.
+          </Typography>
+          <Typography variant="caption" align="center" paragraph gutterBottom={false}>
+            NOTE: this browser will connect directly to coinbase.
+            Your transactions will not go through any third party server.
           </Typography>
         </DescriptionCard>
       )

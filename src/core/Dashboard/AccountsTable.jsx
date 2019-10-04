@@ -39,10 +39,10 @@ const useStyles = makeStyles((theme) => ({
     color: grey[600]
   },
   accountWrapper: {
-    paddingLeft: theme.spacing(4)
-  },
-  accountName: {
-    paddingLeft: 20
+    paddingLeft: theme.spacing(4),
+    overflowX: 'auto',
+    maxWidth: 0,
+    textOverflow: 'ellipsis'
   },
   accountsChart: {
     padding: theme.spacing(2),
@@ -126,15 +126,15 @@ const AccountsTable = ({ history, filter }) => {
             Object.values(data.table[institution].groups).map((accountGroup) => (
               <TableBody key={accountGroup.id}>
                 <TableRow className={classes.institutionRow}>
-                  <TableCell>
-                    <span className={classes.institutionWrapper}>
-                      <InstitutionIcon
-                        institution={institution}
-                        size="small"
-                        className={classes.institutionIcon}
-                      />
-                      <Typography variant="subtitle2">{institution}</Typography>
-                    </span>
+                  <TableCell className={classes.institutionWrapper}>
+                    <InstitutionIcon
+                      institution={institution}
+                      size="small"
+                      className={classes.institutionIcon}
+                    />
+                    <Typography variant="subtitle2">
+                      {institution}
+                    </Typography>
                   </TableCell>
                   <TableCell align="right">
                     <Typography variant="subtitle2">
@@ -147,7 +147,7 @@ const AccountsTable = ({ history, filter }) => {
                   if (account === undefined) return null
                   return (
                     <TableRow key={id} hover onClick={() => handleClick(account)}>
-                      <TableCell className={classes.accountWrapper}>
+                      <TableCell className={classes.accountWrapper} title={account.name}>
                         {account.name}
                       </TableCell>
                       <TableCell align="right">

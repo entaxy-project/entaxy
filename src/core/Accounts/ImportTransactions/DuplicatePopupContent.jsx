@@ -59,7 +59,7 @@ const DuplicatePopupContent = ({
           subTitle={(
             <div className={classes.popoverHeader}>
               <Typography variant="caption" paragraph>
-                The existing transaction is shown bellow
+                The existing transaction is shown below
               </Typography>
               <IconButton
                 aria-label="Close"

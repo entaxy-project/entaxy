@@ -70,7 +70,7 @@ export const convertAccountsAndTransactionsToLocalCurrency = (forceAccounts = nu
             ...transaction.amount,
             localCurrency: dispatch(convertToCurrency(
               transaction.amount.accountCurrency,
-              transaction.currency,
+              getState().accounts.byId[transaction.accountId].currency,
               transaction.createdAt
             ))
           }
@@ -100,7 +100,9 @@ export const createAccount = (account, transactions = []) => (
     // If we couldn't convert to local currency it's because we don't have the exchange rate
     // But skip this step if we have transactions to add - it will be done later by the caller
     if (!currentBalance.localCurrency && transactions.length === 0) {
-      await dispatch(updateCurrencies({ [account.currency]: account.openingBalanceDate }))
+      await dispatch(updateCurrencies({
+        forceStarDates: { [account.currency]: account.openingBalanceDate }
+      }))
       currentBalance = dispatch(calculateBalance(account, transactions))
     }
     const newAccount = {
@@ -130,9 +132,12 @@ export const updateAccount = (account, { onlyUpdateBalance = false } = {}) => (
     const currencyChanged = oldAccount.currency !== account.currency
     const payload = account
     if (currencyChanged) {
-      dispatch(updateCurrencies({
+      const oldestTransactionDate = getState().transactions.list.sort(
+        (a, b) => a.createdAt - b.createdAt
+      )[0].createdAt
+      await dispatch(updateCurrencies({
         excludeAccountId: account.id, // delete the old currency if needed
-        forceStarDates: { [account.currency]: account.openingBalanceDate }
+        forceStarDates: { [account.currency]: Math.min(account.openingBalanceDate, oldestTransactionDate) }
       }))
       dispatch(convertAccountsAndTransactionsToLocalCurrency([account]))
     } else {
