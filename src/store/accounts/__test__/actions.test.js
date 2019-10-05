@@ -379,7 +379,110 @@ describe('accounts actions', () => {
       ])
     })
 
-    it('should updateAccount currency', async () => {
+    it('should updateAccount currency without transactions', async () => {
+      const byId = { a1: { ...account, id: 'a1', openingBalanceDate: Date.now() } }
+      const newCurrency = 'EUR'
+      const store = mockStore({
+        accounts: { byId, byInstitution: groupByInstitution({ byId, byInstitution: {} }) },
+        transactions: transactionsInitialState,
+        settings: settingsInitialState,
+        exchangeRates: exchangeRatesInitialState
+      })
+      expect(account.currency).toEqual(store.getState().settings.currency)
+      expect(account.currency).not.toEqual(newCurrency)
+
+      const fetchMockParams = {
+        base: store.getState().settings.currency,
+        symbols: [newCurrency],
+        startAt: subDays(byId.a1.openingBalanceDate, 10), // Should request the 10 previous days
+        endAt: startOfYesterday()
+      }
+      const fetchResponse = generateFiatExchangeRatesResponse(fetchMockParams)
+      const mockSpy = mockFetch(fetchResponse)
+
+      await store.dispatch(actions.updateAccount({ ...byId.a1, currency: newCurrency }))
+
+      expect(store.getActions()).toEqual([{
+        type: 'SHOW_SNACKBAR',
+        payload: { text: `Fetching exchange rates for ${newCurrency}...` }
+      }, {
+        payload: fetchResponse.rates,
+        type: 'UPDATE_EXCHANGE_RATES'
+      }, {
+        type: types.UPDATE_ACCOUNT,
+        payload: {
+          ...byId.a1,
+          currency: newCurrency,
+          currentBalance: { ...account.currentBalance, localCurrency: null }
+        }
+      }, {
+        type: 'UPDATE_TRANSACTIONS',
+        payload: {}
+      }, {
+        type: types.GROUP_BY_INSTITUTION
+      }, {
+        type: 'SHOW_SNACKBAR',
+        payload: { text: 'Account updated', status: 'success' }
+      }])
+      expectExchangeratesApiToHaveBeenCalledWith({ mockSpy, ...fetchMockParams })
+    })
+
+    it('should updateAccount currency and openingBalance', async () => {
+      const byId = { a1: { ...account, id: 'a1', openingBalanceDate: Date.now() } }
+      const newCurrency = 'EUR'
+      const newOpeningBalance = 10
+      const store = mockStore({
+        accounts: { byId, byInstitution: groupByInstitution({ byId, byInstitution: {} }) },
+        transactions: transactionsInitialState,
+        settings: settingsInitialState,
+        exchangeRates: exchangeRatesInitialState
+      })
+      expect(account.currency).toEqual(store.getState().settings.currency)
+      expect(account.currency).not.toEqual(newCurrency)
+      expect(account.openingBalance).not.toEqual(newOpeningBalance)
+
+      const fetchMockParams = {
+        base: store.getState().settings.currency,
+        symbols: [newCurrency],
+        startAt: subDays(byId.a1.openingBalanceDate, 10), // Should request the 10 previous days
+        endAt: startOfYesterday()
+      }
+      const fetchResponse = generateFiatExchangeRatesResponse(fetchMockParams)
+      const mockSpy = mockFetch(fetchResponse)
+
+      await store.dispatch(actions.updateAccount({
+        ...byId.a1,
+        currency: newCurrency,
+        openingBalance: newOpeningBalance
+      }))
+
+      expect(store.getActions()).toEqual([{
+        type: 'SHOW_SNACKBAR',
+        payload: { text: `Fetching exchange rates for ${newCurrency}...` }
+      }, {
+        payload: fetchResponse.rates,
+        type: 'UPDATE_EXCHANGE_RATES'
+      }, {
+        type: types.UPDATE_ACCOUNT,
+        payload: {
+          ...byId.a1,
+          currency: newCurrency,
+          openingBalance: newOpeningBalance,
+          currentBalance: { accountCurrency: newOpeningBalance, localCurrency: null }
+        }
+      }, {
+        type: 'UPDATE_TRANSACTIONS',
+        payload: {}
+      }, {
+        type: types.GROUP_BY_INSTITUTION
+      }, {
+        type: 'SHOW_SNACKBAR',
+        payload: { text: 'Account updated', status: 'success' }
+      }])
+      expectExchangeratesApiToHaveBeenCalledWith({ mockSpy, ...fetchMockParams })
+    })
+
+    it('should updateAccount currency with transactions', async () => {
       const byId = { a1: { ...account, id: 'a1', openingBalanceDate: Date.now() } }
       const transactions = {
         1: {

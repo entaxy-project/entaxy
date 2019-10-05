@@ -132,13 +132,20 @@ export const updateAccount = (account, { onlyUpdateBalance = false } = {}) => (
     const currencyChanged = oldAccount.currency !== account.currency
     const payload = account
     if (currencyChanged) {
-      const oldestTransactionDate = getState().transactions.list.sort(
-        (a, b) => a.createdAt - b.createdAt
-      )[0].createdAt
+      let oldestDate = account.openingBalanceDate
+      if (getState().transactions.list.length > 0) {
+        const oldestTransactionDate = getState().transactions.list.sort(
+          (a, b) => a.createdAt - b.createdAt
+        )[0].createdAt
+        oldestDate = Math.min(account.openingBalanceDate, oldestTransactionDate)
+      }
       await dispatch(updateCurrencies({
         excludeAccountId: account.id, // delete the old currency if needed
-        forceStarDates: { [account.currency]: Math.min(account.openingBalanceDate, oldestTransactionDate) }
+        forceStarDates: { [account.currency]: oldestDate }
       }))
+      if (openingBalanceChanged(oldAccount, account)) {
+        payload.currentBalance = dispatch(calculateBalance(account))
+      }
       dispatch(convertAccountsAndTransactionsToLocalCurrency([account]))
     } else {
       if (onlyUpdateBalance || openingBalanceChanged(oldAccount, account)) {
