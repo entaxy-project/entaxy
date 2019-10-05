@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TaxChart matches snapshot 1`] = `
-"<n parentWidth={100} parentHeight={100} country=\\"Canada\\" year={2017} region=\\"Ontario\\" income={10000} rrsp={0} taxBeforeCredits={10000} debounceTime={300}>
+"<WrappedComponent parentWidth={100} parentHeight={100} country=\\"Canada\\" year={2017} region=\\"Ontario\\" income={10000} rrsp={0} taxBeforeCredits={10000} debounceTime={300}>
   <div style={{...}} />
-</n>"
+</WrappedComponent>"
 `;

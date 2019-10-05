@@ -311,6 +311,7 @@ exports[`Account form matches snapshot for edit account 1`] = `
                 disabled={false}
                 maxLength={50}
                 name="name"
+                onAnimationStart={[Function]}
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
@@ -342,6 +343,7 @@ exports[`Account form matches snapshot for edit account 1`] = `
                 className="MuiInputBase-input MuiInput-input"
                 disabled={false}
                 name="openingBalance"
+                onAnimationStart={[Function]}
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
@@ -370,6 +372,7 @@ exports[`Account form matches snapshot for edit account 1`] = `
                 className="MuiInputBase-input MuiInput-input"
                 disabled={false}
                 name="openingBalanceDate"
+                onAnimationStart={[Function]}
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
@@ -467,13 +470,13 @@ exports[`Account form matches snapshot for edit account 1`] = `
                     className=" css-at12u2-loadingIndicator"
                   >
                     <span
-                      className="css-155jui9-LoadingDot"
+                      className="css-1ojr9sz-LoadingDot"
                     />
                     <span
-                      className="css-1jmiv6o-LoadingDot"
+                      className="css-12a6fd1-LoadingDot"
                     />
                     <span
-                      className="css-fb4kmi-LoadingDot"
+                      className="css-19d8ryt-LoadingDot"
                     />
                   </div>
                   <span
@@ -514,7 +517,7 @@ exports[`Account form matches snapshot for edit account 1`] = `
       />
       <div>
         <button
-          className="MuiButtonBase-root MuiButton-root MuiButton-text"
+          className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-text"
           disabled={false}
           onBlur={[Function]}
           onClick={[Function]}
@@ -539,7 +542,7 @@ exports[`Account form matches snapshot for edit account 1`] = `
         </button>
         <div />
         <div
-          className="SubmitButtonWithProgress-wrapper-259"
+          className="SubmitButtonWithProgress-wrapper-272"
         >
           <button
             className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary"
@@ -882,6 +885,7 @@ exports[`Account form matches snapshot for new account 1`] = `
                 disabled={false}
                 maxLength={50}
                 name="name"
+                onAnimationStart={[Function]}
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
@@ -913,6 +917,7 @@ exports[`Account form matches snapshot for new account 1`] = `
                 className="MuiInputBase-input MuiInput-input"
                 disabled={false}
                 name="openingBalance"
+                onAnimationStart={[Function]}
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
@@ -941,6 +946,7 @@ exports[`Account form matches snapshot for new account 1`] = `
                 className="MuiInputBase-input MuiInput-input"
                 disabled={false}
                 name="openingBalanceDate"
+                onAnimationStart={[Function]}
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
@@ -1038,13 +1044,13 @@ exports[`Account form matches snapshot for new account 1`] = `
                     className=" css-at12u2-loadingIndicator"
                   >
                     <span
-                      className="css-155jui9-LoadingDot"
+                      className="css-1ojr9sz-LoadingDot"
                     />
                     <span
-                      className="css-1jmiv6o-LoadingDot"
+                      className="css-12a6fd1-LoadingDot"
                     />
                     <span
-                      className="css-fb4kmi-LoadingDot"
+                      className="css-19d8ryt-LoadingDot"
                     />
                   </div>
                   <span
@@ -1085,7 +1091,7 @@ exports[`Account form matches snapshot for new account 1`] = `
       />
       <div>
         <button
-          className="MuiButtonBase-root MuiButton-root MuiButton-text"
+          className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-text"
           disabled={false}
           onBlur={[Function]}
           onClick={[Function]}
@@ -1110,7 +1116,7 @@ exports[`Account form matches snapshot for new account 1`] = `
         </button>
         <div />
         <div
-          className="SubmitButtonWithProgress-wrapper-259"
+          className="SubmitButtonWithProgress-wrapper-272"
         >
           <button
             className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary"

@@ -68,7 +68,7 @@ exports[`Header matches snapshot 1`] = `
           </a>
           <button
             aria-owns={null}
-            className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-colorInherit"
+            className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-text MuiButton-colorInherit"
             disabled={false}
             onBlur={[Function]}
             onClick={[Function]}
