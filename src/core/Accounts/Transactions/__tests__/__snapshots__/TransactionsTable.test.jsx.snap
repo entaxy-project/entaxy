@@ -54,6 +54,7 @@ exports[`TransactionsTable matches snapshot with no transactions 1`] = `
             </div>
             <input
               className="MuiInputBase-input withRouter(TransactionsToolbarComponent)-inputInput-5 MuiInputBase-inputAdornedStart MuiInputBase-inputTypeSearch"
+              onAnimationStart={[Function]}
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
@@ -198,7 +199,7 @@ exports[`TransactionsTable matches snapshot with no transactions 1`] = `
           >
             <span
               aria-disabled={false}
-              className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-105 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+              className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-107 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
               onBlur={[Function]}
               onDragLeave={[Function]}
               onFocus={[Function]}
@@ -217,7 +218,7 @@ exports[`TransactionsTable matches snapshot with no transactions 1`] = `
               >
                 <input
                   checked={false}
-                  className="PrivateSwitchBase-input-108"
+                  className="PrivateSwitchBase-input-110"
                   data-indeterminate={false}
                   onChange={[Function]}
                   type="checkbox"
@@ -447,6 +448,7 @@ exports[`TransactionsTable matches snapshot with some transactions 1`] = `
             </div>
             <input
               className="MuiInputBase-input withRouter(TransactionsToolbarComponent)-inputInput-5 MuiInputBase-inputAdornedStart MuiInputBase-inputTypeSearch"
+              onAnimationStart={[Function]}
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
@@ -591,7 +593,7 @@ exports[`TransactionsTable matches snapshot with some transactions 1`] = `
           >
             <span
               aria-disabled={false}
-              className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-105 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+              className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-107 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
               onBlur={[Function]}
               onDragLeave={[Function]}
               onFocus={[Function]}
@@ -610,7 +612,7 @@ exports[`TransactionsTable matches snapshot with some transactions 1`] = `
               >
                 <input
                   checked={false}
-                  className="PrivateSwitchBase-input-108"
+                  className="PrivateSwitchBase-input-110"
                   data-indeterminate={false}
                   onChange={[Function]}
                   type="checkbox"
@@ -832,7 +834,7 @@ exports[`TransactionsTable matches snapshot with some transactions 1`] = `
               >
                 <span
                   aria-disabled={false}
-                  className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-105 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+                  className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-107 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
                   onBlur={[Function]}
                   onDragLeave={[Function]}
                   onFocus={[Function]}
@@ -851,7 +853,7 @@ exports[`TransactionsTable matches snapshot with some transactions 1`] = `
                   >
                     <input
                       checked={false}
-                      className="PrivateSwitchBase-input-108"
+                      className="PrivateSwitchBase-input-110"
                       data-indeterminate={false}
                       onChange={[Function]}
                       type="checkbox"
@@ -992,7 +994,7 @@ exports[`TransactionsTable matches snapshot with some transactions 1`] = `
               >
                 <span
                   aria-disabled={false}
-                  className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-105 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+                  className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-107 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
                   onBlur={[Function]}
                   onDragLeave={[Function]}
                   onFocus={[Function]}
@@ -1011,7 +1013,7 @@ exports[`TransactionsTable matches snapshot with some transactions 1`] = `
                   >
                     <input
                       checked={false}
-                      className="PrivateSwitchBase-input-108"
+                      className="PrivateSwitchBase-input-110"
                       data-indeterminate={false}
                       onChange={[Function]}
                       type="checkbox"
@@ -1152,7 +1154,7 @@ exports[`TransactionsTable matches snapshot with some transactions 1`] = `
               >
                 <span
                   aria-disabled={false}
-                  className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-105 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+                  className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-107 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
                   onBlur={[Function]}
                   onDragLeave={[Function]}
                   onFocus={[Function]}
@@ -1171,7 +1173,7 @@ exports[`TransactionsTable matches snapshot with some transactions 1`] = `
                   >
                     <input
                       checked={false}
-                      className="PrivateSwitchBase-input-108"
+                      className="PrivateSwitchBase-input-110"
                       data-indeterminate={false}
                       onChange={[Function]}
                       type="checkbox"

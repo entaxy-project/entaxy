@@ -22,24 +22,26 @@ exports[`Dashboard matches snapshot with no accounts 1`] = `
                         </WithStyles(ForwardRef(Typography))>
                         <WithStyles(ForwardRef(Button)) variant=\\"contained\\" color=\\"secondary\\" component={{...}} className=\\"DashboardComponent-newAccountButton-6\\">
                           <ForwardRef(Button) classes={{...}} variant=\\"contained\\" color=\\"secondary\\" component={{...}} className=\\"DashboardComponent-newAccountButton-6\\">
-                            <WithStyles(ForwardRef(ButtonBase)) className=\\"MuiButton-root DashboardComponent-newAccountButton-6 MuiButton-contained MuiButton-containedSecondary\\" component={{...}} disabled={false} focusRipple={true} focusVisibleClassName=\\"Mui-focusVisible\\" type=\\"button\\">
-                              <ForwardRef(ButtonBase) classes={{...}} className=\\"MuiButton-root DashboardComponent-newAccountButton-6 MuiButton-contained MuiButton-containedSecondary\\" component={{...}} disabled={false} focusRipple={true} focusVisibleClassName=\\"Mui-focusVisible\\" type=\\"button\\">
-                                <ForwardRef className=\\"MuiButtonBase-root MuiButton-root DashboardComponent-newAccountButton-6 MuiButton-contained MuiButton-containedSecondary\\" onBlur={[Function]} onClick={[undefined]} onFocus={[Function]} onKeyDown={[Function]} onKeyUp={[Function]} onMouseDown={[Function]} onMouseLeave={[Function]} onMouseUp={[Function]} onDragLeave={[Function]} onTouchEnd={[Function]} onTouchMove={[Function]} onTouchStart={[Function]} tabIndex={0} role=\\"button\\" aria-disabled={false}>
-                                  <Link to=\\"/accounts/new\\" className=\\"MuiButtonBase-root MuiButton-root DashboardComponent-newAccountButton-6 MuiButton-contained MuiButton-containedSecondary\\" onBlur={[Function]} onClick={[undefined]} onFocus={[Function]} onKeyDown={[Function]} onKeyUp={[Function]} onMouseDown={[Function]} onMouseLeave={[Function]} onMouseUp={[Function]} onDragLeave={[Function]} onTouchEnd={[Function]} onTouchMove={[Function]} onTouchStart={[Function]} tabIndex={0} role=\\"button\\" aria-disabled={false} innerRef={[Function]}>
-                                    <a className=\\"MuiButtonBase-root MuiButton-root DashboardComponent-newAccountButton-6 MuiButton-contained MuiButton-containedSecondary\\" onBlur={[Function]} onClick={[Function: onClick]} onFocus={[Function]} onKeyDown={[Function]} onKeyUp={[Function]} onMouseDown={[Function]} onMouseLeave={[Function]} onMouseUp={[Function]} onDragLeave={[Function]} onTouchEnd={[Function]} onTouchMove={[Function]} onTouchStart={[Function]} tabIndex={0} role=\\"button\\" aria-disabled={false} href=\\"/accounts/new\\">
-                                      <span className=\\"MuiButton-label\\">
-                                        Add an account
-                                      </span>
-                                      <NoSsr>
-                                        <WithStyles(undefined) center={false}>
-                                          <ForwardRef(TouchRipple) classes={{...}} center={false}>
-                                            <span className=\\"MuiTouchRipple-root\\">
-                                              <TransitionGroup component={{...}} exit={true} childFactory={[Function: childFactory]} />
-                                            </span>
-                                          </ForwardRef(TouchRipple)>
-                                        </WithStyles(undefined)>
-                                      </NoSsr>
-                                    </a>
+                            <WithStyles(ForwardRef(ButtonBase)) className=\\"MuiButton-root MuiButton-contained MuiButton-containedSecondary DashboardComponent-newAccountButton-6\\" component={{...}} disabled={false} focusRipple={true} focusVisibleClassName=\\"Mui-focusVisible\\" type=\\"button\\">
+                              <ForwardRef(ButtonBase) classes={{...}} className=\\"MuiButton-root MuiButton-contained MuiButton-containedSecondary DashboardComponent-newAccountButton-6\\" component={{...}} disabled={false} focusRipple={true} focusVisibleClassName=\\"Mui-focusVisible\\" type=\\"button\\">
+                                <ForwardRef className=\\"MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary DashboardComponent-newAccountButton-6\\" onBlur={[Function]} onClick={[undefined]} onFocus={[Function]} onKeyDown={[Function]} onKeyUp={[Function]} onMouseDown={[Function]} onMouseLeave={[Function]} onMouseUp={[Function]} onDragLeave={[Function]} onTouchEnd={[Function]} onTouchMove={[Function]} onTouchStart={[Function]} tabIndex={0} role=\\"button\\" aria-disabled={false}>
+                                  <Link to=\\"/accounts/new\\" className=\\"MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary DashboardComponent-newAccountButton-6\\" onBlur={[Function]} onClick={[undefined]} onFocus={[Function]} onKeyDown={[Function]} onKeyUp={[Function]} onMouseDown={[Function]} onMouseLeave={[Function]} onMouseUp={[Function]} onDragLeave={[Function]} onTouchEnd={[Function]} onTouchMove={[Function]} onTouchStart={[Function]} tabIndex={0} role=\\"button\\" aria-disabled={false} innerRef={[Function]}>
+                                    <LinkAnchor className=\\"MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary DashboardComponent-newAccountButton-6\\" onBlur={[Function]} onClick={[undefined]} onFocus={[Function]} onKeyDown={[Function]} onKeyUp={[Function]} onMouseDown={[Function]} onMouseLeave={[Function]} onMouseUp={[Function]} onDragLeave={[Function]} onTouchEnd={[Function]} onTouchMove={[Function]} onTouchStart={[Function]} tabIndex={0} role=\\"button\\" aria-disabled={false} href=\\"/accounts/new\\" navigate={[Function: navigate]}>
+                                      <a className=\\"MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary DashboardComponent-newAccountButton-6\\" onBlur={[Function]} onFocus={[Function]} onKeyDown={[Function]} onKeyUp={[Function]} onMouseDown={[Function]} onMouseLeave={[Function]} onMouseUp={[Function]} onDragLeave={[Function]} onTouchEnd={[Function]} onTouchMove={[Function]} onTouchStart={[Function]} tabIndex={0} role=\\"button\\" aria-disabled={false} href=\\"/accounts/new\\" onClick={[Function: onClick]}>
+                                        <span className=\\"MuiButton-label\\">
+                                          Add an account
+                                        </span>
+                                        <NoSsr>
+                                          <WithStyles(undefined) center={false}>
+                                            <ForwardRef(TouchRipple) classes={{...}} center={false}>
+                                              <span className=\\"MuiTouchRipple-root\\">
+                                                <TransitionGroup component={{...}} exit={true} childFactory={[Function: childFactory]} />
+                                              </span>
+                                            </ForwardRef(TouchRipple)>
+                                          </WithStyles(undefined)>
+                                        </NoSsr>
+                                      </a>
+                                    </LinkAnchor>
                                   </Link>
                                 </ForwardRef>
                               </ForwardRef(ButtonBase)>
@@ -137,12 +139,12 @@ exports[`Dashboard matches snapshot with one account 1`] = `
                                         <div className=\\"MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4\\">
                                           <withRouter(AccountsTable) filter=\\"Assets\\">
                                             <AccountsTable filter=\\"Assets\\" history={{...}} location={{...}} match={{...}} staticContext={[undefined]}>
-                                              <WithStyles(ForwardRef(Paper)) className=\\"makeStyles-accountsTable-213\\">
-                                                <ForwardRef(Paper) classes={{...}} className=\\"makeStyles-accountsTable-213\\">
-                                                  <div className=\\"MuiPaper-root MuiPaper-elevation1 makeStyles-accountsTable-213 MuiPaper-rounded\\">
-                                                    <WithStyles(ForwardRef(Grid)) container={true} className=\\"makeStyles-header-214\\">
-                                                      <ForwardRef(Grid) classes={{...}} container={true} className=\\"makeStyles-header-214\\">
-                                                        <div className=\\"MuiGrid-root makeStyles-header-214 MuiGrid-container\\">
+                                              <WithStyles(ForwardRef(Paper)) className=\\"makeStyles-accountsTable-224\\">
+                                                <ForwardRef(Paper) classes={{...}} className=\\"makeStyles-accountsTable-224\\">
+                                                  <div className=\\"MuiPaper-root MuiPaper-elevation1 makeStyles-accountsTable-224 MuiPaper-rounded\\">
+                                                    <WithStyles(ForwardRef(Grid)) container={true} className=\\"makeStyles-header-225\\">
+                                                      <ForwardRef(Grid) classes={{...}} container={true} className=\\"makeStyles-header-225\\">
+                                                        <div className=\\"MuiGrid-root makeStyles-header-225 MuiGrid-container\\">
                                                           <WithStyles(ForwardRef(Typography)) variant=\\"subtitle2\\">
                                                             <ForwardRef(Typography) classes={{...}} variant=\\"subtitle2\\">
                                                               <h6 className=\\"MuiTypography-root MuiTypography-subtitle2\\">
@@ -160,27 +162,29 @@ exports[`Dashboard matches snapshot with one account 1`] = `
                                                         </div>
                                                       </ForwardRef(Grid)>
                                                     </WithStyles(ForwardRef(Grid))>
-                                                    <div className=\\"makeStyles-newAccountButton-221\\">
+                                                    <div className=\\"makeStyles-newAccountButton-232\\">
                                                       <WithStyles(ForwardRef(Button)) color=\\"secondary\\" component={{...}}>
                                                         <ForwardRef(Button) classes={{...}} color=\\"secondary\\" component={{...}}>
                                                           <WithStyles(ForwardRef(ButtonBase)) className=\\"MuiButton-root MuiButton-text MuiButton-textSecondary\\" component={{...}} disabled={false} focusRipple={true} focusVisibleClassName=\\"Mui-focusVisible\\" type=\\"button\\">
                                                             <ForwardRef(ButtonBase) classes={{...}} className=\\"MuiButton-root MuiButton-text MuiButton-textSecondary\\" component={{...}} disabled={false} focusRipple={true} focusVisibleClassName=\\"Mui-focusVisible\\" type=\\"button\\">
                                                               <ForwardRef className=\\"MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary\\" onBlur={[Function]} onClick={[undefined]} onFocus={[Function]} onKeyDown={[Function]} onKeyUp={[Function]} onMouseDown={[Function]} onMouseLeave={[Function]} onMouseUp={[Function]} onDragLeave={[Function]} onTouchEnd={[Function]} onTouchMove={[Function]} onTouchStart={[Function]} tabIndex={0} role=\\"button\\" aria-disabled={false}>
                                                                 <Link to=\\"/accounts/new\\" className=\\"MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary\\" onBlur={[Function]} onClick={[undefined]} onFocus={[Function]} onKeyDown={[Function]} onKeyUp={[Function]} onMouseDown={[Function]} onMouseLeave={[Function]} onMouseUp={[Function]} onDragLeave={[Function]} onTouchEnd={[Function]} onTouchMove={[Function]} onTouchStart={[Function]} tabIndex={0} role=\\"button\\" aria-disabled={false} innerRef={[Function]}>
-                                                                  <a className=\\"MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary\\" onBlur={[Function]} onClick={[Function: onClick]} onFocus={[Function]} onKeyDown={[Function]} onKeyUp={[Function]} onMouseDown={[Function]} onMouseLeave={[Function]} onMouseUp={[Function]} onDragLeave={[Function]} onTouchEnd={[Function]} onTouchMove={[Function]} onTouchStart={[Function]} tabIndex={0} role=\\"button\\" aria-disabled={false} href=\\"/accounts/new\\">
-                                                                    <span className=\\"MuiButton-label\\">
-                                                                      New account
-                                                                    </span>
-                                                                    <NoSsr>
-                                                                      <WithStyles(undefined) center={false}>
-                                                                        <ForwardRef(TouchRipple) classes={{...}} center={false}>
-                                                                          <span className=\\"MuiTouchRipple-root\\">
-                                                                            <TransitionGroup component={{...}} exit={true} childFactory={[Function: childFactory]} />
-                                                                          </span>
-                                                                        </ForwardRef(TouchRipple)>
-                                                                      </WithStyles(undefined)>
-                                                                    </NoSsr>
-                                                                  </a>
+                                                                  <LinkAnchor className=\\"MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary\\" onBlur={[Function]} onClick={[undefined]} onFocus={[Function]} onKeyDown={[Function]} onKeyUp={[Function]} onMouseDown={[Function]} onMouseLeave={[Function]} onMouseUp={[Function]} onDragLeave={[Function]} onTouchEnd={[Function]} onTouchMove={[Function]} onTouchStart={[Function]} tabIndex={0} role=\\"button\\" aria-disabled={false} href=\\"/accounts/new\\" navigate={[Function: navigate]}>
+                                                                    <a className=\\"MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary\\" onBlur={[Function]} onFocus={[Function]} onKeyDown={[Function]} onKeyUp={[Function]} onMouseDown={[Function]} onMouseLeave={[Function]} onMouseUp={[Function]} onDragLeave={[Function]} onTouchEnd={[Function]} onTouchMove={[Function]} onTouchStart={[Function]} tabIndex={0} role=\\"button\\" aria-disabled={false} href=\\"/accounts/new\\" onClick={[Function: onClick]}>
+                                                                      <span className=\\"MuiButton-label\\">
+                                                                        New account
+                                                                      </span>
+                                                                      <NoSsr>
+                                                                        <WithStyles(undefined) center={false}>
+                                                                          <ForwardRef(TouchRipple) classes={{...}} center={false}>
+                                                                            <span className=\\"MuiTouchRipple-root\\">
+                                                                              <TransitionGroup component={{...}} exit={true} childFactory={[Function: childFactory]} />
+                                                                            </span>
+                                                                          </ForwardRef(TouchRipple)>
+                                                                        </WithStyles(undefined)>
+                                                                      </NoSsr>
+                                                                    </a>
+                                                                  </LinkAnchor>
                                                                 </Link>
                                                               </ForwardRef>
                                                             </ForwardRef(ButtonBase)>
@@ -201,12 +205,12 @@ exports[`Dashboard matches snapshot with one account 1`] = `
                                         <div className=\\"MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4\\">
                                           <withRouter(AccountsTable) filter=\\"Liabilities\\">
                                             <AccountsTable filter=\\"Liabilities\\" history={{...}} location={{...}} match={{...}} staticContext={[undefined]}>
-                                              <WithStyles(ForwardRef(Paper)) className=\\"makeStyles-accountsTable-213\\">
-                                                <ForwardRef(Paper) classes={{...}} className=\\"makeStyles-accountsTable-213\\">
-                                                  <div className=\\"MuiPaper-root MuiPaper-elevation1 makeStyles-accountsTable-213 MuiPaper-rounded\\">
-                                                    <WithStyles(ForwardRef(Grid)) container={true} className=\\"makeStyles-header-214\\">
-                                                      <ForwardRef(Grid) classes={{...}} container={true} className=\\"makeStyles-header-214\\">
-                                                        <div className=\\"MuiGrid-root makeStyles-header-214 MuiGrid-container\\">
+                                              <WithStyles(ForwardRef(Paper)) className=\\"makeStyles-accountsTable-224\\">
+                                                <ForwardRef(Paper) classes={{...}} className=\\"makeStyles-accountsTable-224\\">
+                                                  <div className=\\"MuiPaper-root MuiPaper-elevation1 makeStyles-accountsTable-224 MuiPaper-rounded\\">
+                                                    <WithStyles(ForwardRef(Grid)) container={true} className=\\"makeStyles-header-225\\">
+                                                      <ForwardRef(Grid) classes={{...}} container={true} className=\\"makeStyles-header-225\\">
+                                                        <div className=\\"MuiGrid-root makeStyles-header-225 MuiGrid-container\\">
                                                           <WithStyles(ForwardRef(Typography)) variant=\\"subtitle2\\">
                                                             <ForwardRef(Typography) classes={{...}} variant=\\"subtitle2\\">
                                                               <h6 className=\\"MuiTypography-root MuiTypography-subtitle2\\">
@@ -224,27 +228,29 @@ exports[`Dashboard matches snapshot with one account 1`] = `
                                                         </div>
                                                       </ForwardRef(Grid)>
                                                     </WithStyles(ForwardRef(Grid))>
-                                                    <div className=\\"makeStyles-newAccountButton-221\\">
+                                                    <div className=\\"makeStyles-newAccountButton-232\\">
                                                       <WithStyles(ForwardRef(Button)) color=\\"secondary\\" component={{...}}>
                                                         <ForwardRef(Button) classes={{...}} color=\\"secondary\\" component={{...}}>
                                                           <WithStyles(ForwardRef(ButtonBase)) className=\\"MuiButton-root MuiButton-text MuiButton-textSecondary\\" component={{...}} disabled={false} focusRipple={true} focusVisibleClassName=\\"Mui-focusVisible\\" type=\\"button\\">
                                                             <ForwardRef(ButtonBase) classes={{...}} className=\\"MuiButton-root MuiButton-text MuiButton-textSecondary\\" component={{...}} disabled={false} focusRipple={true} focusVisibleClassName=\\"Mui-focusVisible\\" type=\\"button\\">
                                                               <ForwardRef className=\\"MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary\\" onBlur={[Function]} onClick={[undefined]} onFocus={[Function]} onKeyDown={[Function]} onKeyUp={[Function]} onMouseDown={[Function]} onMouseLeave={[Function]} onMouseUp={[Function]} onDragLeave={[Function]} onTouchEnd={[Function]} onTouchMove={[Function]} onTouchStart={[Function]} tabIndex={0} role=\\"button\\" aria-disabled={false}>
                                                                 <Link to=\\"/accounts/new\\" className=\\"MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary\\" onBlur={[Function]} onClick={[undefined]} onFocus={[Function]} onKeyDown={[Function]} onKeyUp={[Function]} onMouseDown={[Function]} onMouseLeave={[Function]} onMouseUp={[Function]} onDragLeave={[Function]} onTouchEnd={[Function]} onTouchMove={[Function]} onTouchStart={[Function]} tabIndex={0} role=\\"button\\" aria-disabled={false} innerRef={[Function]}>
-                                                                  <a className=\\"MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary\\" onBlur={[Function]} onClick={[Function: onClick]} onFocus={[Function]} onKeyDown={[Function]} onKeyUp={[Function]} onMouseDown={[Function]} onMouseLeave={[Function]} onMouseUp={[Function]} onDragLeave={[Function]} onTouchEnd={[Function]} onTouchMove={[Function]} onTouchStart={[Function]} tabIndex={0} role=\\"button\\" aria-disabled={false} href=\\"/accounts/new\\">
-                                                                    <span className=\\"MuiButton-label\\">
-                                                                      New account
-                                                                    </span>
-                                                                    <NoSsr>
-                                                                      <WithStyles(undefined) center={false}>
-                                                                        <ForwardRef(TouchRipple) classes={{...}} center={false}>
-                                                                          <span className=\\"MuiTouchRipple-root\\">
-                                                                            <TransitionGroup component={{...}} exit={true} childFactory={[Function: childFactory]} />
-                                                                          </span>
-                                                                        </ForwardRef(TouchRipple)>
-                                                                      </WithStyles(undefined)>
-                                                                    </NoSsr>
-                                                                  </a>
+                                                                  <LinkAnchor className=\\"MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary\\" onBlur={[Function]} onClick={[undefined]} onFocus={[Function]} onKeyDown={[Function]} onKeyUp={[Function]} onMouseDown={[Function]} onMouseLeave={[Function]} onMouseUp={[Function]} onDragLeave={[Function]} onTouchEnd={[Function]} onTouchMove={[Function]} onTouchStart={[Function]} tabIndex={0} role=\\"button\\" aria-disabled={false} href=\\"/accounts/new\\" navigate={[Function: navigate]}>
+                                                                    <a className=\\"MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary\\" onBlur={[Function]} onFocus={[Function]} onKeyDown={[Function]} onKeyUp={[Function]} onMouseDown={[Function]} onMouseLeave={[Function]} onMouseUp={[Function]} onDragLeave={[Function]} onTouchEnd={[Function]} onTouchMove={[Function]} onTouchStart={[Function]} tabIndex={0} role=\\"button\\" aria-disabled={false} href=\\"/accounts/new\\" onClick={[Function: onClick]}>
+                                                                      <span className=\\"MuiButton-label\\">
+                                                                        New account
+                                                                      </span>
+                                                                      <NoSsr>
+                                                                        <WithStyles(undefined) center={false}>
+                                                                          <ForwardRef(TouchRipple) classes={{...}} center={false}>
+                                                                            <span className=\\"MuiTouchRipple-root\\">
+                                                                              <TransitionGroup component={{...}} exit={true} childFactory={[Function: childFactory]} />
+                                                                            </span>
+                                                                          </ForwardRef(TouchRipple)>
+                                                                        </WithStyles(undefined)>
+                                                                      </NoSsr>
+                                                                    </a>
+                                                                  </LinkAnchor>
                                                                 </Link>
                                                               </ForwardRef>
                                                             </ForwardRef(ButtonBase)>
@@ -350,12 +356,12 @@ exports[`Dashboard matches snapshot with two accounts in a different currency 1`
                                         <div className=\\"MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4\\">
                                           <withRouter(AccountsTable) filter=\\"Assets\\">
                                             <AccountsTable filter=\\"Assets\\" history={{...}} location={{...}} match={{...}} staticContext={[undefined]}>
-                                              <WithStyles(ForwardRef(Paper)) className=\\"makeStyles-accountsTable-213\\">
-                                                <ForwardRef(Paper) classes={{...}} className=\\"makeStyles-accountsTable-213\\">
-                                                  <div className=\\"MuiPaper-root MuiPaper-elevation1 makeStyles-accountsTable-213 MuiPaper-rounded\\">
-                                                    <WithStyles(ForwardRef(Grid)) container={true} className=\\"makeStyles-header-214\\">
-                                                      <ForwardRef(Grid) classes={{...}} container={true} className=\\"makeStyles-header-214\\">
-                                                        <div className=\\"MuiGrid-root makeStyles-header-214 MuiGrid-container\\">
+                                              <WithStyles(ForwardRef(Paper)) className=\\"makeStyles-accountsTable-224\\">
+                                                <ForwardRef(Paper) classes={{...}} className=\\"makeStyles-accountsTable-224\\">
+                                                  <div className=\\"MuiPaper-root MuiPaper-elevation1 makeStyles-accountsTable-224 MuiPaper-rounded\\">
+                                                    <WithStyles(ForwardRef(Grid)) container={true} className=\\"makeStyles-header-225\\">
+                                                      <ForwardRef(Grid) classes={{...}} container={true} className=\\"makeStyles-header-225\\">
+                                                        <div className=\\"MuiGrid-root makeStyles-header-225 MuiGrid-container\\">
                                                           <WithStyles(ForwardRef(Typography)) variant=\\"subtitle2\\">
                                                             <ForwardRef(Typography) classes={{...}} variant=\\"subtitle2\\">
                                                               <h6 className=\\"MuiTypography-root MuiTypography-subtitle2\\">
@@ -373,27 +379,29 @@ exports[`Dashboard matches snapshot with two accounts in a different currency 1`
                                                         </div>
                                                       </ForwardRef(Grid)>
                                                     </WithStyles(ForwardRef(Grid))>
-                                                    <div className=\\"makeStyles-newAccountButton-221\\">
+                                                    <div className=\\"makeStyles-newAccountButton-232\\">
                                                       <WithStyles(ForwardRef(Button)) color=\\"secondary\\" component={{...}}>
                                                         <ForwardRef(Button) classes={{...}} color=\\"secondary\\" component={{...}}>
                                                           <WithStyles(ForwardRef(ButtonBase)) className=\\"MuiButton-root MuiButton-text MuiButton-textSecondary\\" component={{...}} disabled={false} focusRipple={true} focusVisibleClassName=\\"Mui-focusVisible\\" type=\\"button\\">
                                                             <ForwardRef(ButtonBase) classes={{...}} className=\\"MuiButton-root MuiButton-text MuiButton-textSecondary\\" component={{...}} disabled={false} focusRipple={true} focusVisibleClassName=\\"Mui-focusVisible\\" type=\\"button\\">
                                                               <ForwardRef className=\\"MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary\\" onBlur={[Function]} onClick={[undefined]} onFocus={[Function]} onKeyDown={[Function]} onKeyUp={[Function]} onMouseDown={[Function]} onMouseLeave={[Function]} onMouseUp={[Function]} onDragLeave={[Function]} onTouchEnd={[Function]} onTouchMove={[Function]} onTouchStart={[Function]} tabIndex={0} role=\\"button\\" aria-disabled={false}>
                                                                 <Link to=\\"/accounts/new\\" className=\\"MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary\\" onBlur={[Function]} onClick={[undefined]} onFocus={[Function]} onKeyDown={[Function]} onKeyUp={[Function]} onMouseDown={[Function]} onMouseLeave={[Function]} onMouseUp={[Function]} onDragLeave={[Function]} onTouchEnd={[Function]} onTouchMove={[Function]} onTouchStart={[Function]} tabIndex={0} role=\\"button\\" aria-disabled={false} innerRef={[Function]}>
-                                                                  <a className=\\"MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary\\" onBlur={[Function]} onClick={[Function: onClick]} onFocus={[Function]} onKeyDown={[Function]} onKeyUp={[Function]} onMouseDown={[Function]} onMouseLeave={[Function]} onMouseUp={[Function]} onDragLeave={[Function]} onTouchEnd={[Function]} onTouchMove={[Function]} onTouchStart={[Function]} tabIndex={0} role=\\"button\\" aria-disabled={false} href=\\"/accounts/new\\">
-                                                                    <span className=\\"MuiButton-label\\">
-                                                                      New account
-                                                                    </span>
-                                                                    <NoSsr>
-                                                                      <WithStyles(undefined) center={false}>
-                                                                        <ForwardRef(TouchRipple) classes={{...}} center={false}>
-                                                                          <span className=\\"MuiTouchRipple-root\\">
-                                                                            <TransitionGroup component={{...}} exit={true} childFactory={[Function: childFactory]} />
-                                                                          </span>
-                                                                        </ForwardRef(TouchRipple)>
-                                                                      </WithStyles(undefined)>
-                                                                    </NoSsr>
-                                                                  </a>
+                                                                  <LinkAnchor className=\\"MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary\\" onBlur={[Function]} onClick={[undefined]} onFocus={[Function]} onKeyDown={[Function]} onKeyUp={[Function]} onMouseDown={[Function]} onMouseLeave={[Function]} onMouseUp={[Function]} onDragLeave={[Function]} onTouchEnd={[Function]} onTouchMove={[Function]} onTouchStart={[Function]} tabIndex={0} role=\\"button\\" aria-disabled={false} href=\\"/accounts/new\\" navigate={[Function: navigate]}>
+                                                                    <a className=\\"MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary\\" onBlur={[Function]} onFocus={[Function]} onKeyDown={[Function]} onKeyUp={[Function]} onMouseDown={[Function]} onMouseLeave={[Function]} onMouseUp={[Function]} onDragLeave={[Function]} onTouchEnd={[Function]} onTouchMove={[Function]} onTouchStart={[Function]} tabIndex={0} role=\\"button\\" aria-disabled={false} href=\\"/accounts/new\\" onClick={[Function: onClick]}>
+                                                                      <span className=\\"MuiButton-label\\">
+                                                                        New account
+                                                                      </span>
+                                                                      <NoSsr>
+                                                                        <WithStyles(undefined) center={false}>
+                                                                          <ForwardRef(TouchRipple) classes={{...}} center={false}>
+                                                                            <span className=\\"MuiTouchRipple-root\\">
+                                                                              <TransitionGroup component={{...}} exit={true} childFactory={[Function: childFactory]} />
+                                                                            </span>
+                                                                          </ForwardRef(TouchRipple)>
+                                                                        </WithStyles(undefined)>
+                                                                      </NoSsr>
+                                                                    </a>
+                                                                  </LinkAnchor>
                                                                 </Link>
                                                               </ForwardRef>
                                                             </ForwardRef(ButtonBase)>
@@ -414,12 +422,12 @@ exports[`Dashboard matches snapshot with two accounts in a different currency 1`
                                         <div className=\\"MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4\\">
                                           <withRouter(AccountsTable) filter=\\"Liabilities\\">
                                             <AccountsTable filter=\\"Liabilities\\" history={{...}} location={{...}} match={{...}} staticContext={[undefined]}>
-                                              <WithStyles(ForwardRef(Paper)) className=\\"makeStyles-accountsTable-213\\">
-                                                <ForwardRef(Paper) classes={{...}} className=\\"makeStyles-accountsTable-213\\">
-                                                  <div className=\\"MuiPaper-root MuiPaper-elevation1 makeStyles-accountsTable-213 MuiPaper-rounded\\">
-                                                    <WithStyles(ForwardRef(Grid)) container={true} className=\\"makeStyles-header-214\\">
-                                                      <ForwardRef(Grid) classes={{...}} container={true} className=\\"makeStyles-header-214\\">
-                                                        <div className=\\"MuiGrid-root makeStyles-header-214 MuiGrid-container\\">
+                                              <WithStyles(ForwardRef(Paper)) className=\\"makeStyles-accountsTable-224\\">
+                                                <ForwardRef(Paper) classes={{...}} className=\\"makeStyles-accountsTable-224\\">
+                                                  <div className=\\"MuiPaper-root MuiPaper-elevation1 makeStyles-accountsTable-224 MuiPaper-rounded\\">
+                                                    <WithStyles(ForwardRef(Grid)) container={true} className=\\"makeStyles-header-225\\">
+                                                      <ForwardRef(Grid) classes={{...}} container={true} className=\\"makeStyles-header-225\\">
+                                                        <div className=\\"MuiGrid-root makeStyles-header-225 MuiGrid-container\\">
                                                           <WithStyles(ForwardRef(Typography)) variant=\\"subtitle2\\">
                                                             <ForwardRef(Typography) classes={{...}} variant=\\"subtitle2\\">
                                                               <h6 className=\\"MuiTypography-root MuiTypography-subtitle2\\">
@@ -437,27 +445,29 @@ exports[`Dashboard matches snapshot with two accounts in a different currency 1`
                                                         </div>
                                                       </ForwardRef(Grid)>
                                                     </WithStyles(ForwardRef(Grid))>
-                                                    <div className=\\"makeStyles-newAccountButton-221\\">
+                                                    <div className=\\"makeStyles-newAccountButton-232\\">
                                                       <WithStyles(ForwardRef(Button)) color=\\"secondary\\" component={{...}}>
                                                         <ForwardRef(Button) classes={{...}} color=\\"secondary\\" component={{...}}>
                                                           <WithStyles(ForwardRef(ButtonBase)) className=\\"MuiButton-root MuiButton-text MuiButton-textSecondary\\" component={{...}} disabled={false} focusRipple={true} focusVisibleClassName=\\"Mui-focusVisible\\" type=\\"button\\">
                                                             <ForwardRef(ButtonBase) classes={{...}} className=\\"MuiButton-root MuiButton-text MuiButton-textSecondary\\" component={{...}} disabled={false} focusRipple={true} focusVisibleClassName=\\"Mui-focusVisible\\" type=\\"button\\">
                                                               <ForwardRef className=\\"MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary\\" onBlur={[Function]} onClick={[undefined]} onFocus={[Function]} onKeyDown={[Function]} onKeyUp={[Function]} onMouseDown={[Function]} onMouseLeave={[Function]} onMouseUp={[Function]} onDragLeave={[Function]} onTouchEnd={[Function]} onTouchMove={[Function]} onTouchStart={[Function]} tabIndex={0} role=\\"button\\" aria-disabled={false}>
                                                                 <Link to=\\"/accounts/new\\" className=\\"MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary\\" onBlur={[Function]} onClick={[undefined]} onFocus={[Function]} onKeyDown={[Function]} onKeyUp={[Function]} onMouseDown={[Function]} onMouseLeave={[Function]} onMouseUp={[Function]} onDragLeave={[Function]} onTouchEnd={[Function]} onTouchMove={[Function]} onTouchStart={[Function]} tabIndex={0} role=\\"button\\" aria-disabled={false} innerRef={[Function]}>
-                                                                  <a className=\\"MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary\\" onBlur={[Function]} onClick={[Function: onClick]} onFocus={[Function]} onKeyDown={[Function]} onKeyUp={[Function]} onMouseDown={[Function]} onMouseLeave={[Function]} onMouseUp={[Function]} onDragLeave={[Function]} onTouchEnd={[Function]} onTouchMove={[Function]} onTouchStart={[Function]} tabIndex={0} role=\\"button\\" aria-disabled={false} href=\\"/accounts/new\\">
-                                                                    <span className=\\"MuiButton-label\\">
-                                                                      New account
-                                                                    </span>
-                                                                    <NoSsr>
-                                                                      <WithStyles(undefined) center={false}>
-                                                                        <ForwardRef(TouchRipple) classes={{...}} center={false}>
-                                                                          <span className=\\"MuiTouchRipple-root\\">
-                                                                            <TransitionGroup component={{...}} exit={true} childFactory={[Function: childFactory]} />
-                                                                          </span>
-                                                                        </ForwardRef(TouchRipple)>
-                                                                      </WithStyles(undefined)>
-                                                                    </NoSsr>
-                                                                  </a>
+                                                                  <LinkAnchor className=\\"MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary\\" onBlur={[Function]} onClick={[undefined]} onFocus={[Function]} onKeyDown={[Function]} onKeyUp={[Function]} onMouseDown={[Function]} onMouseLeave={[Function]} onMouseUp={[Function]} onDragLeave={[Function]} onTouchEnd={[Function]} onTouchMove={[Function]} onTouchStart={[Function]} tabIndex={0} role=\\"button\\" aria-disabled={false} href=\\"/accounts/new\\" navigate={[Function: navigate]}>
+                                                                    <a className=\\"MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary\\" onBlur={[Function]} onFocus={[Function]} onKeyDown={[Function]} onKeyUp={[Function]} onMouseDown={[Function]} onMouseLeave={[Function]} onMouseUp={[Function]} onDragLeave={[Function]} onTouchEnd={[Function]} onTouchMove={[Function]} onTouchStart={[Function]} tabIndex={0} role=\\"button\\" aria-disabled={false} href=\\"/accounts/new\\" onClick={[Function: onClick]}>
+                                                                      <span className=\\"MuiButton-label\\">
+                                                                        New account
+                                                                      </span>
+                                                                      <NoSsr>
+                                                                        <WithStyles(undefined) center={false}>
+                                                                          <ForwardRef(TouchRipple) classes={{...}} center={false}>
+                                                                            <span className=\\"MuiTouchRipple-root\\">
+                                                                              <TransitionGroup component={{...}} exit={true} childFactory={[Function: childFactory]} />
+                                                                            </span>
+                                                                          </ForwardRef(TouchRipple)>
+                                                                        </WithStyles(undefined)>
+                                                                      </NoSsr>
+                                                                    </a>
+                                                                  </LinkAnchor>
                                                                 </Link>
                                                               </ForwardRef>
                                                             </ForwardRef(ButtonBase)>
