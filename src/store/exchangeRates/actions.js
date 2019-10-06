@@ -46,13 +46,13 @@ export const convertToCurrency = (value, srcCurrency, timestamp) => (
 )
 
 // https://api.exchangeratesapi.io/history?start_at=2018-01-01&end_at=2018-09-01
-export const fetchFiatExchangeRates = async (currencies, localCurrency, startDate, endDate) => {
+export const fetchFiatExchangeRates = async (srcCurrency, localCurrency, startDate, endDate) => {
   const startDateString = new Intl.DateTimeFormat('en-CA').format(startDate)
   const endDateString = new Intl.DateTimeFormat('en-CA').format(endDate)
   const baseUrl = 'https://api.exchangeratesapi.io/history'
   const params = [
     `base=${localCurrency}`,
-    `symbols=${currencies.join()}`,
+    `symbols=${srcCurrency}`,
     `start_at=${startDateString}`,
     `end_at=${endDateString}`
   ].join('&')
@@ -70,27 +70,23 @@ export const fetchFiatExchangeRates = async (currencies, localCurrency, startDat
   return {}
 }
 
-export const fetchExchangeRates = (srcCurrencies, startDate, endDate) => (
+export const fetchExchangeRatesFor = (srcCurrency, startDate, endDate) => (
   async (dispatch, getState) => {
-    const dstCurrency = getState().settings.currency
     let newExchangeRates
-    const currenciesToAdd = {
-      fiat: srcCurrencies.filter((c) => fiatCurrencies[c] !== undefined),
-      crypto: srcCurrencies.filter((c) => cryptoCurrencies[c] !== undefined)
-    }
-    if (currenciesToAdd.fiat.length > 0) {
-      dispatch(showSnackbar({ text: `Fetching exchange rates for ${currenciesToAdd.fiat}...` }))
+
+    if (srcCurrency in fiatCurrencies) {
+      dispatch(showSnackbar({ text: `Fetching exchange rates for ${srcCurrency}...` }))
       newExchangeRates = await fetchFiatExchangeRates(
-        currenciesToAdd.fiat,
-        dstCurrency,
+        srcCurrency,
+        getState().settings.currency,
         subDays(startDate, 10).getTime(), // Always get the 10 previous days so we have fallback data
         endDate
       )
     }
-    if (currenciesToAdd.crypto.length > 0) {
-      dispatch(showSnackbar({ text: `Fetching exchange rates for ${currenciesToAdd.crypto}...` }))
-      // ....
+    if (srcCurrency in cryptoCurrencies) {
+      dispatch(showSnackbar({ text: `Fetching exchange rates for ${srcCurrency}...` }))
       // https://min-api.cryptocompare.com/documentation?key=Other&cat=allCoinsWithContentEndpoint
+      // TODO
     }
 
     // TODO: normalize format
@@ -214,8 +210,8 @@ export const updateCurrencies = ({ forceStarDates = {}, excludeAccountId } = {})
       || accountCurrencies[currency].newOldest < accountCurrencies[currency].oldestExchangeRateDate
       || accountCurrencies[currency].newNewest > accountCurrencies[currency].newestExchangeRateDate
     ) {
-      await dispatch(fetchExchangeRates(
-        [currency],
+      await dispatch(fetchExchangeRatesFor(
+        currency,
         accountCurrencies[currency].newOldest,
         accountCurrencies[currency].newNewest
       ))

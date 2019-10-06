@@ -392,14 +392,14 @@ describe('exchangeRates actions', () => {
     })
   })
 
-  describe('fetchExchangeRates', () => {
+  describe('fetchExchangeRatesFor', () => {
     it('should not update anything if exchange rate was not available', async () => {
       mockFetch({ base: 'EUR', rates: { } })
       const today = startOfYesterday()
       const store = mockStore({
         settings: settingsInitialState
       })
-      await store.dispatch(actions.fetchExchangeRates(['CAD'], today, today))
+      await store.dispatch(actions.fetchExchangeRatesFor('CAD', today, today))
       expect(store.getActions()).toEqual([
         {
           payload: { text: 'Fetching exchange rates for CAD...' },
@@ -419,7 +419,7 @@ describe('exchangeRates actions', () => {
       const store = mockStore({
         settings: settingsInitialState
       })
-      await store.dispatch(actions.fetchExchangeRates([fiatCurrency], today, today))
+      await store.dispatch(actions.fetchExchangeRatesFor(fiatCurrency, today, today))
       expect(store.getActions()).toEqual([
         {
           payload: { text: `Fetching exchange rates for ${fiatCurrency}...` },
@@ -441,7 +441,7 @@ describe('exchangeRates actions', () => {
       const store = mockStore({
         settings: settingsInitialState
       })
-      await store.dispatch(actions.fetchExchangeRates([cryptoCurrency]))
+      await store.dispatch(actions.fetchExchangeRatesFor(cryptoCurrency))
       expect(store.getActions()).toEqual([
         {
           payload: { text: `Fetching exchange rates for ${cryptoCurrency}...` },

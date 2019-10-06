@@ -138,6 +138,7 @@ export class AccountFormComponent extends React.Component {
 
   formatedInstitutions = () => {
     const allInstitutions = new Set(this.props.accountInstitutions.concat(Object.keys(institutions)))
+    allInstitutions.delete('Cash')
     return Array.from(allInstitutions).sort().map((key) => ({ value: key, label: key }))
   }
 

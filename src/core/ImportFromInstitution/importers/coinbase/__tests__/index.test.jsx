@@ -30,14 +30,15 @@ describe('Coinbase API importer', () => {
       name: accounts[0].name,
       currency: accounts[0].currency,
       openingBalance: 0,
-      openingBalanceDate: parseISO(accounts[0].created_at).getTime()
+      openingBalanceDate: parseISO(accounts[0].created_at).getTime(),
+      currentBalance: { accountCurrency: null }
     }])
   })
 
   it('should normalizeTransactions', () => {
     expect(normalizeTransactions([])).toEqual([])
     expect(normalizeTransactions(transactions)).toEqual([{
-      amount: parseFloat(Big(transactions[0].amount.amount)),
+      amount: { accountCurrency: parseFloat(Big(transactions[0].amount.amount)) },
       sourceId: transactions[0].id,
       description: [transactions[0].details.title, transactions[0].details.subtitle].join(' - '),
       createdAt: parseISO(transactions[0].created_at).getTime()
