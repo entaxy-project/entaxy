@@ -1,3 +1,4 @@
+/* eslint-disable react/no-multi-comp */
 import React from 'react'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
@@ -19,10 +20,11 @@ import parse from 'date-fns/parse'
 import { fiatCurrencies, filteredFiatCurrencies } from '../../data/currencies'
 import { accountTypes } from '../../store/accounts/reducer'
 import AutoComplete from '../../common/AutoComplete'
-import institutions from '../../data/institutions'
+import { institutions, sortedInstitutionsOfType } from '../../data/institutions'
 import SubmitButtonWithProgress from '../../common/SubmitButtonWithProgress'
 import DescriptionCard from '../../common/DescriptionCard'
 import LinkTo from '../../common/LinkTo'
+import InstitutionIcon from '../../common/InstitutionIcon'
 
 const styles = (theme) => ({
   root: {
@@ -62,7 +64,6 @@ const styles = (theme) => ({
 
 const mapStateToProps = (state, ownProps) => ({
   settings: state.settings,
-  accountInstitutions: Object.keys(state.accounts.byInstitution),
   account: state.accounts.byId[ownProps.accountId],
   accounts: state.accounts
 })
@@ -71,19 +72,29 @@ const accountTypesValues = Object.keys(accountTypes).map((type) => ({
   label: accountTypes[type], value: type
 }))
 
+const institutionLabel = (institutionName) => (
+  <Typography variant="caption">
+    <InstitutionIcon institution={institutionName} size="small" />
+    &nbsp;&nbsp;{institutionName}
+  </Typography>
+)
+
 export class AccountFormComponent extends React.Component {
   state = {
     hideInstitutionOptions: false
   }
 
-  institutionOptions = (institution) => {
+  institutionOptions = (selectedInstitution) => {
     const { classes } = this.props
     const { hideInstitutionOptions } = this.state
-    const { value } = (institution || {})
+    const { value } = selectedInstitution || {}
+    if (hideInstitutionOptions) return null
+    if (!Object.keys(institutions.crypto).includes(value)) return null
 
-    if (!Object.keys(institutions).includes(value) || hideInstitutionOptions) return null
+    const institution = institutions.crypto[value]
 
-    if (institutions[value].importTypes.includes('API')) {
+
+    if (institution.importTypes.includes('API')) {
       return (
         <DescriptionCard
           className={classes.input}
@@ -92,7 +103,7 @@ export class AccountFormComponent extends React.Component {
               <Button
                 size="small"
                 color="secondary"
-                component={LinkTo(`/institutions/${value}/import/new`)}
+                component={LinkTo(`/institutions/${institution.name}/import/new`)}
               >
                 Great, Let&apos;s do it
               </Button>
@@ -110,20 +121,27 @@ export class AccountFormComponent extends React.Component {
             You can import&nbsp;
             <strong>all your accounts</strong>
             &nbsp;in one go from&nbsp;
-            <strong>{institutions[value].name}</strong>
+            <strong>{institution.name}</strong>
             &nbsp;by using their API.
           </Typography>
           <Typography variant="caption" align="center" paragraph>
             This is also the easiest way to keep your transactions up to date.
           </Typography>
           <Typography variant="caption" align="center" paragraph gutterBottom={false}>
-            NOTE: this browser will connect directly to coinbase.
+            NOTE: this browser will connect directly to {institution.name}.
             Your transactions will not go through any third party server.
           </Typography>
         </DescriptionCard>
       )
     }
     return null
+  }
+
+  handleAccountTypeChange = (...args) => {
+    if (this.props.values.accountType.value === 'cash') {
+      this.props.setFieldValue('institution', null)
+    }
+    this.props.setFieldValue(...args)
   }
 
   handleInstitutionChange = (...args) => {
@@ -135,11 +153,36 @@ export class AccountFormComponent extends React.Component {
     this.setState({ hideInstitutionOptions: true })
   }
 
-
   formatedInstitutions = () => {
-    const allInstitutions = new Set(this.props.accountInstitutions.concat(Object.keys(institutions)))
-    allInstitutions.delete('Cash')
-    return Array.from(allInstitutions).sort().map((key) => ({ value: key, label: key }))
+    const { accountType: { value: accountType } } = this.props.values
+    let institutionType
+    switch (accountType) {
+      case 'bank':
+      case 'credit':
+        institutionType = 'fiat'
+        break
+      case 'wallet':
+        institutionType = 'crypto'
+        break
+      // no default
+    }
+
+    const usedInstitutions = Object.keys(this.props.accounts.byInstitution).reduce((result, institutionName) => {
+      if (
+        institutionName === accountTypes.cash
+        || institutionName in institutions.fiat
+        || institutionName in institutions.crypto
+      ) return result
+      return {
+        ...result,
+        [institutionName]: { name: institutionName }
+      }
+    }, sortedInstitutionsOfType(institutionType))
+
+    return Object.keys(usedInstitutions).sort().map((key) => ({
+      value: key,
+      label: institutionLabel(key)
+    }))
   }
 
   render() {
@@ -177,7 +220,7 @@ export class AccountFormComponent extends React.Component {
                   name="accountType"
                   value={values.accountType}
                   options={accountTypesValues}
-                  onChange={setFieldValue}
+                  onChange={this.handleAccountTypeChange}
                   error={errors.accountType && touched.accountType}
                   helperText={errors.accountType}
                   autoFocus
@@ -187,6 +230,7 @@ export class AccountFormComponent extends React.Component {
                     creatable
                     className={classes.input}
                     label="Institution"
+                    placeholder="Select or type to create ..."
                     name="institution"
                     value={values.institution}
                     options={this.formatedInstitutions()}
@@ -286,7 +330,7 @@ AccountFormComponent.propTypes = {
   setFieldValue: PropTypes.func.isRequired,
   handleDelete: PropTypes.func,
   handleCancel: PropTypes.func.isRequired,
-  accountInstitutions: PropTypes.array.isRequired,
+  accounts: PropTypes.object.isRequired,
   account: PropTypes.object
 }
 
@@ -318,7 +362,7 @@ export default compose(
         ...account,
         openingBalanceDate: format(new Date(account.openingBalanceDate), 'yyyy-MM-dd'),
         institution: account.institution ? {
-          label: account.institution,
+          label: institutionLabel(account.institution),
           value: account.institution
         } : null,
         accountType: {

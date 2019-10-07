@@ -2,7 +2,8 @@ import React from 'react'
 import renderer from 'react-test-renderer'
 import { shallow } from 'enzyme'
 import { AccountFormComponent } from '../form'
-import institutions from '../../../data/institutions'
+import { institutions } from '../../../data/institutions'
+import { initialState as accountsInitialState } from '../../../store/accounts/reducer'
 
 describe('Account form', () => {
   const mochHandleSubmit = jest.fn()
@@ -29,7 +30,7 @@ describe('Account form', () => {
         handleDelete={mochHandleDelete}
         handleCancel={mochHandleCancel}
         classes={{ }}
-        accountInstitutions={[]}
+        accounts={accountsInitialState}
       />
     ))
     expect(component.toJSON()).toMatchSnapshot()
@@ -50,7 +51,7 @@ describe('Account form', () => {
         handleDelete={mochHandleDelete}
         handleCancel={mochHandleCancel}
         classes={{ }}
-        accountInstitutions={['My institution']}
+        accounts={accountsInitialState}
       />
     ))
     expect(component.toJSON()).toMatchSnapshot()
@@ -71,7 +72,7 @@ describe('Account form', () => {
         handleDelete={mochHandleDelete}
         handleCancel={mochHandleCancel}
         classes={{ }}
-        accountInstitutions={['My institution']}
+        accounts={accountsInitialState}
       />
     ))
     const instance = wrapper.instance()
@@ -102,10 +103,10 @@ describe('Account form', () => {
 
       expect(instance.institutionOptions()).toBeNull()
 
-      expect(institutions['Bank of Montreal'].importTypes).not.toContain('API')
+      expect(institutions.fiat['Bank of Montreal'].importTypes).not.toContain('API')
       expect(instance.institutionOptions({ value: 'Bank of Montreal' })).toBeNull()
 
-      expect(institutions.Coinbase.importTypes).toContain('API')
+      expect(institutions.crypto.Coinbase.importTypes).toContain('API')
       expect(instance.institutionOptions({ value: 'Coinbase' })).not.toBeNull()
     })
 
@@ -115,10 +116,10 @@ describe('Account form', () => {
 
       expect(instance.institutionOptions()).toBeNull()
 
-      expect(institutions['Bank of Montreal'].importTypes).not.toContain('API')
+      expect(institutions.fiat['Bank of Montreal'].importTypes).not.toContain('API')
       expect(instance.institutionOptions({ value: 'Bank of Montreal' })).toBeNull()
 
-      expect(institutions.Coinbase.importTypes).toContain('API')
+      expect(institutions.crypto.Coinbase.importTypes).toContain('API')
       expect(instance.institutionOptions({ value: 'Coinbase' })).toBeNull()
     })
   })
