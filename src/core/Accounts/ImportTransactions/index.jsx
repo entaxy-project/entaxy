@@ -86,10 +86,7 @@ export const ImportTransactionsComponent = ({ history, match }) => {
         transaction.errors.length === 0 && transaction.duplicate === undefined
       ))
       .map((transaction) => ({
-        amount: {
-          accountCurrency: transaction.amount,
-          localCurrency: null
-        },
+        amount: transaction.amount,
         description: transaction.description,
         categoryId: transaction.categoryId,
         createdAt: transaction.createdAt
