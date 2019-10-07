@@ -4,13 +4,15 @@ import { withStyles } from '@material-ui/core/styles'
 import AccountBalanceIcon from '@material-ui/icons/AccountBalance'
 import Icon from '@mdi/react'
 import { mdiAccountCash } from '@mdi/js'
-import importLogos from './importLogos'
+import { institutions } from '../../data/institutions'
+import { accountTypes } from '../../store/accounts/reducer'
 
 const styles = () => ({
   small: {
     fontSize: 20,
     width: 20,
-    height: 20
+    height: 20,
+    verticalAlign: 'bottom'
   },
   medium: {
     width: 30,
@@ -24,16 +26,24 @@ const InstitutionIcon = ({
   institution,
   size
 }) => {
-  if (importLogos[institution]) {
+  let type
+  if (institution in institutions.fiat) {
+    type = 'fiat'
+  }
+  if (institution in institutions.crypto) {
+    type = 'crypto'
+  }
+  if (type) {
+    const { favicon, name } = institutions[type][institution]
     return (
       <img
-        src={`${importLogos[institution]}`}
-        alt={institution}
+        src={favicon}
+        alt={name}
         className={`${[classes[size], className].join(' ')}`}
       />
     )
   }
-  if (institution === 'Cash') {
+  if (institution === accountTypes.cash) {
     return (
       <Icon
         path={mdiAccountCash}

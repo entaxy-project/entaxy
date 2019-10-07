@@ -38,6 +38,9 @@ const useStyles = makeStyles((theme) => ({
     marginRight: 16,
     color: grey[600]
   },
+  accountRow: {
+    cursor: 'pointer'
+  },
   accountWrapper: {
     paddingLeft: theme.spacing(4),
     overflowX: 'auto',
@@ -91,7 +94,7 @@ const AccountsTable = ({ history, filter }) => {
             value: amount || 0,
             colour: colorScale(count)
           })
-          if (!Object.keys(data.table).includes(institution)) {
+          if (!(institution in data.table)) {
             data.table[institution] = { ...accounts.byInstitution[institution], groups: {} }
           }
           if (!Object.keys(data.table[institution].groups).includes(group.id)) {
@@ -146,7 +149,7 @@ const AccountsTable = ({ history, filter }) => {
                   const account = accounts.byId[id]
                   if (account === undefined) return null
                   return (
-                    <TableRow key={id} hover onClick={() => handleClick(account)}>
+                    <TableRow key={id} hover onClick={() => handleClick(account)} className={classes.accountRow}>
                       <TableCell className={classes.accountWrapper} title={account.name}>
                         {account.name}
                       </TableCell>

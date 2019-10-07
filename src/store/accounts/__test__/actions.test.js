@@ -395,7 +395,7 @@ describe('accounts actions', () => {
         base: store.getState().settings.currency,
         symbols: [newCurrency],
         startAt: subDays(byId.a1.openingBalanceDate, 10), // Should request the 10 previous days
-        endAt: startOfYesterday()
+        endAt: getLastWeekday()
       }
       const fetchResponse = generateFiatExchangeRatesResponse(fetchMockParams)
       const mockSpy = mockFetch(fetchResponse)
@@ -445,7 +445,7 @@ describe('accounts actions', () => {
         base: store.getState().settings.currency,
         symbols: [newCurrency],
         startAt: subDays(byId.a1.openingBalanceDate, 10), // Should request the 10 previous days
-        endAt: startOfYesterday()
+        endAt: getLastWeekday()
       }
       const fetchResponse = generateFiatExchangeRatesResponse(fetchMockParams)
       const mockSpy = mockFetch(fetchResponse)
@@ -512,7 +512,7 @@ describe('accounts actions', () => {
         base: store.getState().settings.currency,
         symbols: [newCurrency],
         startAt: subDays(transactions[2].createdAt, 10), // Should request the 10 previous days
-        endAt: startOfYesterday()
+        endAt: getLastWeekday()
       }
       const fetchResponse = generateFiatExchangeRatesResponse(fetchMockParams)
       const mockSpy = mockFetch(fetchResponse)

@@ -44,7 +44,6 @@ const styles = (theme) => ({
     padding: 0
   },
   institutionListItem: {
-    paddingLeft: theme.spacing(1),
     paddingRight: 0
   },
   institutionListItemIcon: {

@@ -42,15 +42,15 @@ describe('AccountsTable', () => {
     expect(queryByText('Liabilities')).not.toBeInTheDocument()
   })
 
-  it('renders Assets correctly with a asset accounts', async () => {
+  it('renders correctly with asset accounts', async () => {
     const byId = Object.keys(assetAccounts).reduce((result, accountType, index) => ({
       ...result,
       [index]: {
         id: index,
         accountType,
-        groupId: 0,
+        groupId: index,
         name: `${accountType} account`,
-        institution: accountType === 'cash' ? 'Cach' : 'TD',
+        institution: accountType === 'cash' ? assetAccounts.cash : 'TD',
         currency: 'CAD',
         currentBalance: {
           accountCurrency: (index + 1) * 1000,
@@ -75,7 +75,7 @@ describe('AccountsTable', () => {
     })
   })
 
-  it('renders Assets correctly with a liability accounts', async () => {
+  it('renders correctly with liability accounts', async () => {
     const byId = Object.keys(liabilityAccounts).reduce((result, accountType, index) => ({
       ...result,
       [index]: {

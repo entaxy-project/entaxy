@@ -64,7 +64,7 @@ const styles = (theme) => ({
 const mapStateToProps = (state, props) => ({
   budget: state.budget,
   formatCurrency: currencyFormatter(state.settings.locale, props.account.currency),
-  formatDecimal: decimalFormatter(state.settings.locale, props.account.type),
+  formatDecimal: decimalFormatter(state.settings.locale, props.account.accountType),
   formatDate: dateFormatter(state.settings.locale)
 })
 

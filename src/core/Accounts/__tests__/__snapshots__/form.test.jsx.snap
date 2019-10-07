@@ -197,7 +197,7 @@ exports[`Account form matches snapshot for edit account 1`] = `
                   <div
                     className=" css-1wa3eu0-placeholder"
                   >
-                    Select...
+                    Select or type to create ...
                   </div>
                   <div
                     className="css-w8afj7-Input"
@@ -771,7 +771,7 @@ exports[`Account form matches snapshot for new account 1`] = `
                   <div
                     className=" css-1wa3eu0-placeholder"
                   >
-                    Select...
+                    Select or type to create ...
                   </div>
                   <div
                     className="css-w8afj7-Input"
