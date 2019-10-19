@@ -287,7 +287,9 @@ export class TransactionsTableComponent extends React.Component {
                 width={120}
                 label="Date"
                 dataKey="createdAt"
-                cellDataGetter={({ rowData }) => formatDate(new Date(rowData.createdAt))}
+                cellDataGetter={({ rowData }) => (
+                  rowData.createdAt ? formatDate(new Date(rowData.createdAt)) : null
+                )}
               />
               <Column
                 width={200}

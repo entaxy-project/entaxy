@@ -61,7 +61,7 @@ const TableToolbar = ({
 )
 
 TableToolbar.propTypes = {
-  title: PropTypes.string,
+  title: PropTypes.node,
   subTitle: PropTypes.node,
   selectedItems: PropTypes.array.isRequired,
   classes: PropTypes.object.isRequired,

@@ -22,11 +22,12 @@ const renderContent = (props) => {
 
 describe('AccountsChart', () => {
   it('renders correctly with no data', async () => {
-    renderContent({ data: [] })
+    renderContent({ filter: 'Assets', data: [] })
   })
 
   it('renders correctly with some data', async () => {
     renderContent({
+      filter: 'Assets',
       data: [{
         name: 'Account name',
         value: 100,

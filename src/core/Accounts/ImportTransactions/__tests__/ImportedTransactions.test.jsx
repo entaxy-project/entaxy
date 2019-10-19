@@ -80,7 +80,7 @@ describe('ImportedTransactions', () => {
       getByTestId,
       queryByTestId
     } = await renderContent(store, csvData)
-    expect(props.parser.transactions[2].errors).toEqual(['Could not read the amount'])
+    expect(props.parser.transactions[2].errors).toEqual(['Invalid date. Expecting format \'yyyymmdd\''])
     expect(queryByTestId('closeIconButton')).not.toBeInTheDocument()
 
     fireEvent.click(getByTestId('errorIconButton'))
@@ -108,7 +108,7 @@ describe('ImportedTransactions', () => {
       getByTestId,
       queryByTestId
     } = await renderContent(store, csvData)
-    expect(props.parser.transactions[2].errors).toEqual(['Could not read the amount'])
+    expect(props.parser.transactions[2].errors).toEqual(['Invalid date. Expecting format \'yyyymmdd\''])
     expect(queryByTestId('closeIconButton')).not.toBeInTheDocument()
 
     fireEvent.click(getByTestId('errorIconButton'))

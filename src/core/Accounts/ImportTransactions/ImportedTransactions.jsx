@@ -10,7 +10,6 @@ import pluralize from 'pluralize'
 import { Column } from 'react-virtualized'
 import ResultsToolbar from './ResultsToolbar'
 import ErrorPopupContent from './ErrorPopupContent'
-import DuplicatePopupContent from './DuplicatePopupContent'
 import TransactionsTable from '../Transactions/TransactionsTable'
 import { filterByErrors, filterByDuplicates } from '../../../store/transactions/actions'
 
@@ -132,9 +131,8 @@ const ImportedTransactions = ({
           <WarningIcon
             aria-owns={id}
             aria-haspopup="true"
-            data-testid="errorIconButton"
-            onClick={(event) => handleOpenPopup(event, data.rowData)}
-            className={[classes.iconWarning, classes.clickable].join(' ')}
+            data-testid="warningIconButton"
+            className={classes.iconWarning}
           />
         )
       }
@@ -176,13 +174,7 @@ const ImportedTransactions = ({
             handleClosePopup={handleClosePopup}
           />
         )}
-        {popupRowData && popupRowData.duplicate !== undefined && (
-          <DuplicatePopupContent
-            account={account}
-            popupRowData={popupRowData}
-            handleClosePopup={handleClosePopup}
-          />
-        )}
+
       </Popover>
       <TransactionsTable
         className={classes.tableWrapper}

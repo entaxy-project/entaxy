@@ -71,7 +71,7 @@ export const ImportTransactionsComponent = ({ history, match }) => {
           // ahead so thart the opening balance is always the first transactions of the day
           return transaction.createdAt === newTransaction.createdAt + 1000
             && transaction.description === newTransaction.description
-            && transaction.amount === newTransaction.amount
+            && transaction.amount.accountCurrency === newTransaction.amount.accountCurrency
         })
         if (duplicate !== undefined) {
           parser.transactions[index].duplicate = duplicate
