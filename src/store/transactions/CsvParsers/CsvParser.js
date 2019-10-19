@@ -230,16 +230,18 @@ export default class CsvParser {
           errors: [],
           line: index + 1
         }
+        // Set the category
         if (
           transaction.description in this._budgetRules
           && 'categoryId' in this._budgetRules[transaction.description]
         ) {
           transaction.categoryId = this._budgetRules[transaction.description].categoryId
         }
-        if (typeof transaction.amount.accountCurrency !== 'number') {
-          transaction.errors.push('Could not read the amount')
-        } else if (transaction.createdAt === null) {
+        // Check for errors
+        if (transaction.createdAt === null) {
           transaction.errors.push(`Invalid date. Expecting format '${this._dateFormat}'`)
+        } else if (typeof transaction.amount.accountCurrency !== 'number') {
+          transaction.errors.push('Could not read the amount')
         }
         this._transactions.push(transaction)
       }
