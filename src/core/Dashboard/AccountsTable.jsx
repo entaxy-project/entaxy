@@ -88,28 +88,31 @@ const AccountsTable = ({ history, filter }) => {
     Object.values(accounts.byInstitution[institution].groups).forEach((group) => {
       group.accountIds.forEach((accountId) => {
         const account = accounts.byId[accountId]
-        const balance = account.currentBalance.localCurrency
-        if (
-          account !== undefined
-          && ((
-            filter === 'Assets'
-            && (balance > 0 || (balance === 0 && accountTypes.includes(account.accountType))))
-          || (
-            filter === 'Liabilities'
-            && (balance < 0 || (balance === 0 && accountTypes.includes(account.accountType)))))
-        ) {
-          data.chart.push({
-            name: account.name,
-            value: Math.abs(balance || 0),
-            colour: colorScale(count)
-          })
-          if (!(institution in data.table)) {
-            data.table[institution] = { total: 0, accountIds: [] }
+        if (account) {
+          const {
+            id,
+            name,
+            accountType,
+            currentBalance: { localCurrency: balance }
+          } = account
+          const accountMatchesType = (balance === 0 && accountTypes.includes(accountType))
+          if (
+            (filter === 'Assets' && (balance > 0 || accountMatchesType))
+            || (filter === 'Liabilities' && (balance < 0 || accountMatchesType))
+          ) {
+            data.chart.push({
+              name,
+              value: Math.abs(balance || 0),
+              colour: colorScale(count)
+            })
+            if (!(institution in data.table)) {
+              data.table[institution] = { total: 0, accountIds: [] }
+            }
+            data.table[institution].accountIds.push(id)
+            data.table[institution].total += balance
+            total += balance
+            count += 1
           }
-          data.table[institution].accountIds.push(account.id)
-          data.table[institution].total += balance
-          total += balance
-          count += 1
         }
       })
     })
