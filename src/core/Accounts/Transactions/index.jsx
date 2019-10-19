@@ -1,7 +1,6 @@
-import React from 'react'
-import { compose } from 'recompose'
-import { connect } from 'react-redux'
-import { withStyles } from '@material-ui/core/styles'
+import React, { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { makeStyles } from '@material-ui/core/styles'
 import PropTypes from 'prop-types'
 import IconButton from '@material-ui/core/IconButton'
 import EditIcon from '@material-ui/icons/Edit'
@@ -12,8 +11,9 @@ import TransactionDialog from './TransactionDialog'
 import TransactionsTable from './TransactionsTable'
 import TransactionsToolbar from './TransactionsToolbar'
 import { deleteTransactions } from '../../../store/transactions/actions'
+import confirm from '../../../util/confirm'
 
-const styles = {
+const useStyles = makeStyles(() => ({
   tableWrapper: {
     display: 'flex',
     flexDirection: 'column',
@@ -26,25 +26,21 @@ const styles = {
   smallIcon: {
     fontSize: 18
   }
-}
+}))
 
-const mapStateToProps = (state, props) => ({
-  account: state.accounts.byId[props.match.params.accountId],
-  transactions: state.transactions.list
-})
+const Transactions = ({ match }) => {
+  const classes = useStyles()
+  const dispatch = useDispatch()
+  const { account, transactions } = useSelector((state) => {
+    return {
+      account: state.accounts.byId[match.params.accountId],
+      transactions: state.transactions.list
+    }
+  })
+  const [openTransactionDialog, setOpenTransactionDialog] = useState(false)
+  const [selectedTransaction, setSelectedTransaction] = useState(null)
 
-const mapDispatchToProps = (dispatch) => ({
-  deleteTransactions: (account, transactionIds) => dispatch(deleteTransactions(account, transactionIds))
-})
-
-export class TransactionsComponent extends React.Component {
-  state = {
-    openTransactionDialog: false,
-    transaction: null
-  }
-
-  accountTransactions = () => {
-    const { account, transactions } = this.props
+  const accountTransactions = () => {
     const openingBalanceTransaction = {
       accountId: account.id,
       description: 'Opening balance',
@@ -60,80 +56,73 @@ export class TransactionsComponent extends React.Component {
     ))
   }
 
-  handleNew = () => {
-    this.setState({
-      openTransactionDialog: true,
-      transaction: null
+  const handleNew = () => {
+    setOpenTransactionDialog(true)
+    setSelectedTransaction(null)
+  }
+
+  const handleEdit = (transaction) => {
+    setOpenTransactionDialog(true)
+    setSelectedTransaction(transaction)
+  }
+
+  const handleCancel = () => {
+    setOpenTransactionDialog(false)
+  }
+
+  const handleDeleteTransaction = () => (
+    confirm('Delete this transaction?', 'Are you sure?').then(() => {
+      dispatch(deleteTransactions(account, [selectedTransaction.id]))
+      setOpenTransactionDialog(false)
     })
-  }
+  )
 
-  handleEdit = (transaction) => {
-    this.setState({
-      openTransactionDialog: true,
-      transaction
-    })
-  }
+  const handleDeleteTransactions = (transactionIds) => (
+    dispatch(deleteTransactions(account, transactionIds))
+  )
 
-  handleCancel = () => {
-    this.setState({ openTransactionDialog: false })
-  }
-
-  render() {
-    const {
-      classes,
-      account
-    } = this.props
-    return (
-      <div>
-        <TransactionDialog
-          open={this.state.openTransactionDialog}
-          onCancel={this.handleCancel}
-          account={account}
-          transaction={this.state.transaction}
+  return (
+    <div>
+      <TransactionDialog
+        open={openTransactionDialog}
+        onCancel={handleCancel}
+        onDelete={handleDeleteTransaction}
+        account={account}
+        transaction={selectedTransaction}
+      />
+      <TransactionsTable
+        className={classes.tableWrapper}
+        account={account}
+        transactions={accountTransactions()}
+        Toolbar={TransactionsToolbar}
+        toolbarProps={{ handleNew, handleDelete: handleDeleteTransactions }}
+      >
+        <Column
+          width={40}
+          dataKey="index"
+          disableSort={true}
+          cellRenderer={
+            ({ rowData }) => rowData.id !== undefined && (
+              <Tooltip title="Edit transaction">
+                <IconButton
+                  disableRipple={true}
+                  aria-label="Edit Transaction"
+                  onClick={() => handleEdit(rowData)}
+                  className={classes.tableButton}
+                >
+                  <EditIcon className={classes.smallIcon} />
+                </IconButton>
+              </Tooltip>
+            )
+          }
         />
-        <TransactionsTable
-          className={classes.tableWrapper}
-          account={account}
-          transactions={this.accountTransactions()}
-          Toolbar={TransactionsToolbar}
-          toolbarProps={{
-            handleNew: this.handleNew,
-            handleDelete: this.props.deleteTransactions
-          }}
-        >
-          <Column
-            width={40}
-            dataKey="index"
-            disableSort={true}
-            cellRenderer={
-              ({ rowData }) => rowData.id !== undefined && (
-                <Tooltip title="Edit transaction">
-                  <IconButton
-                    disableRipple={true}
-                    aria-label="Edit Transaction"
-                    onClick={() => this.handleEdit(rowData)}
-                    className={classes.tableButton}
-                  >
-                    <EditIcon className={classes.smallIcon} />
-                  </IconButton>
-                </Tooltip>
-              )
-            }
-          />
-        </TransactionsTable>
-      </div>
-    )
-  }
+      </TransactionsTable>
+    </div>
+  )
 }
 
-TransactionsComponent.propTypes = {
-  classes: PropTypes.object.isRequired,
-  transactions: PropTypes.array.isRequired,
-  deleteTransactions: PropTypes.func.isRequired,
-  account: PropTypes.object.isRequired
+Transactions.propTypes = {
+  match: PropTypes.object.isRequired
 }
 
-export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
-  withStyles(styles)
-)(TransactionsComponent)
+export default Transactions

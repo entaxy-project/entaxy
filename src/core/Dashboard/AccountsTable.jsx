@@ -52,6 +52,9 @@ const useStyles = makeStyles((theme) => ({
     height: 240,
     minWidth: 150
   },
+  emptyChart: {
+    padding: 40
+  },
   noAccountsPaper: {
     padding: theme.spacing(2),
     marginTop: theme.spacing(2),
@@ -85,35 +88,47 @@ const AccountsTable = ({ history, filter }) => {
     Object.values(accounts.byInstitution[institution].groups).forEach((group) => {
       group.accountIds.forEach((accountId) => {
         const account = accounts.byId[accountId]
-        if (account !== undefined && accountTypes.includes(account.accountType)) {
-          const amount = filter === 'Liabilities'
-            ? -account.currentBalance.localCurrency
-            : account.currentBalance.localCurrency
+        const balance = account.currentBalance.localCurrency
+        if (
+          account !== undefined
+          && ((
+            filter === 'Assets'
+            && (balance > 0 || (balance === 0 && accountTypes.includes(account.accountType))))
+          || (
+            filter === 'Liabilities'
+            && (balance < 0 || (balance === 0 && accountTypes.includes(account.accountType)))))
+        ) {
           data.chart.push({
             name: account.name,
-            value: amount || 0,
+            value: Math.abs(balance || 0),
             colour: colorScale(count)
           })
           if (!(institution in data.table)) {
             data.table[institution] = { total: 0, accountIds: [] }
           }
           data.table[institution].accountIds.push(account.id)
-          data.table[institution].total += account.currentBalance.localCurrency
-          total += account.currentBalance.localCurrency
+          data.table[institution].total += balance
+          total += balance
           count += 1
         }
       })
     })
   })
 
+  const renderChart = data.chart.length > 0 && total !== 0
   return (
     <Paper className={classes.accountsTable}>
       <Grid container className={classes.header}>
         <Typography variant="subtitle2">{filter}</Typography>
         <Typography variant="subtitle1">{formatCurrency(total)}</Typography>
       </Grid>
-      {data.chart.length > 0 && total !== 0 && (
-        <AccountsChart data={data.chart} />
+      {renderChart && (
+        <AccountsChart data={data.chart} filter={filter} />
+      )}
+      {!renderChart && (
+        <Typography variant="caption" align="center" paragraph className={classes.emptyChart}>
+          Not enough data to display chart
+        </Typography>
       )}
       {Object.keys(data.table).length > 0 && (
         <Table size="small">

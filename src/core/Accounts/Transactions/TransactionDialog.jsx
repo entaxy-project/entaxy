@@ -92,6 +92,7 @@ export const TransactionDialogComponent = ({
   touched,
   handleChange,
   onCancel,
+  onDelete,
   open,
   transaction,
   budget
@@ -101,6 +102,7 @@ export const TransactionDialogComponent = ({
     title={transaction ? 'Edit transaction' : 'New transaction'}
     onSubmit={handleSubmit}
     onCancel={onCancel}
+    onDelete={onDelete}
     className={classes.root}
   >
     <Grid container>
@@ -162,7 +164,6 @@ export const TransactionDialogComponent = ({
             step: 0.01,
             min: -999999999.99,
             max: 999999999.99
-
           }}
           className={classes.input}
           value={values.amount}
@@ -200,6 +201,7 @@ TransactionDialogComponent.propTypes = {
   setFieldValue: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
   onCancel: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
   budget: PropTypes.object.isRequired,
   transaction: PropTypes.object
 }

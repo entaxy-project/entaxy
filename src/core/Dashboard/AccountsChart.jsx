@@ -6,7 +6,7 @@ import {
 } from 'recharts'
 import { currencyFormatter } from '../../util/stringFormatter'
 
-const AccountsChart = ({ data }) => {
+const AccountsChart = ({ data, filter }) => {
   const formatCurrency = useSelector((state) => currencyFormatter(state.settings.locale, state.settings.currency))
 
   return (
@@ -23,7 +23,10 @@ const AccountsChart = ({ data }) => {
           {data.map((entry) => <Cell key={`cell-${data.name}`} fill={entry.colour} />)}
         </Pie>
         <Tooltip
-          formatter={(value, name) => [formatCurrency(value), name]}
+          formatter={(value, name) => [
+            formatCurrency(filter === 'Assets' ? value : -value),
+            name
+          ]}
         />
 
       </PieChart>
@@ -32,7 +35,8 @@ const AccountsChart = ({ data }) => {
 }
 
 AccountsChart.propTypes = {
-  data: PropTypes.array.isRequired
+  data: PropTypes.array.isRequired,
+  filter: PropTypes.string.isRequired
 }
 
 export default AccountsChart

@@ -77,7 +77,7 @@ describe('TransactionsToolbar', () => {
 
       instance.onDelete()
       await expect(confirm).toHaveBeenCalledWith('Delete selected transactions?', 'Are you sure?')
-      expect(mochHandleDelete).toHaveBeenCalledWith(account, [1, 2, 3, 4])
+      expect(mochHandleDelete).toHaveBeenCalledWith([1, 2, 3, 4])
       expect(mochaResetSelection).toHaveBeenCalled()
     })
   })

@@ -54,7 +54,7 @@ const styles = (theme) => ({
 export class TransactionsToolbarComponent extends React.Component {
   onDelete = () => {
     confirm('Delete selected transactions?', 'Are you sure?').then(() => {
-      this.props.handleDelete(this.props.account, this.props.selectedTransactions)
+      this.props.handleDelete(this.props.selectedTransactions)
       this.props.resetSelection()
     })
   }

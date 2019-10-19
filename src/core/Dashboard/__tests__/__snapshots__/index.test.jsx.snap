@@ -153,14 +153,125 @@ exports[`Dashboard matches snapshot with one account 1`] = `
                                                           <WithStyles(ForwardRef(Typography)) variant=\\"subtitle1\\">
                                                             <ForwardRef(Typography) classes={{...}} variant=\\"subtitle1\\">
                                                               <h6 className=\\"MuiTypography-root MuiTypography-subtitle1\\">
-                                                                €0.00
+                                                                €1,000.00
                                                               </h6>
                                                             </ForwardRef(Typography)>
                                                           </WithStyles(ForwardRef(Typography))>
                                                         </div>
                                                       </ForwardRef(Grid)>
                                                     </WithStyles(ForwardRef(Grid))>
-                                                    <div className=\\"makeStyles-newAccountButton-222\\">
+                                                    <AccountsChart data={{...}} filter=\\"Assets\\">
+                                                      <ResponsiveContainer height={200} width=\\"100%\\" debounce={0}>
+                                                        <div id={[undefined]} className=\\"recharts-responsive-container\\" style={{...}}>
+                                                          <PieChart layout=\\"centric\\" stackOffset=\\"none\\" barCategoryGap=\\"10%\\" barGap={4} margin={{...}} reverseStackOrder={false} startAngle={0} endAngle={360} cx=\\"50%\\" cy=\\"50%\\" innerRadius={0} outerRadius=\\"80%\\" width={0} height={200} />
+                                                          <ResizeDetector handleWidth={true} handleHeight={true} onResize={[Function]} skipOnMount={false} refreshRate={1000} refreshMode={[undefined]} resizableElementId=\\"\\">
+                                                            <div style={{...}} />
+                                                          </ResizeDetector>
+                                                        </div>
+                                                      </ResponsiveContainer>
+                                                    </AccountsChart>
+                                                    <WithStyles(ForwardRef(Table)) size=\\"small\\">
+                                                      <ForwardRef(Table) classes={{...}} size=\\"small\\">
+                                                        <table className=\\"MuiTable-root\\">
+                                                          <WithStyles(ForwardRef(TableHead))>
+                                                            <ForwardRef(TableHead) classes={{...}}>
+                                                              <thead className=\\"MuiTableHead-root\\">
+                                                                <WithStyles(ForwardRef(TableRow))>
+                                                                  <ForwardRef(TableRow) classes={{...}}>
+                                                                    <tr className=\\"MuiTableRow-root MuiTableRow-head\\">
+                                                                      <WithStyles(ForwardRef(TableCell))>
+                                                                        <ForwardRef(TableCell) classes={{...}}>
+                                                                          <th className=\\"MuiTableCell-root MuiTableCell-sizeSmall MuiTableCell-head\\" aria-sort={{...}} scope=\\"col\\">
+                                                                            Institution / Account
+                                                                          </th>
+                                                                        </ForwardRef(TableCell)>
+                                                                      </WithStyles(ForwardRef(TableCell))>
+                                                                      <WithStyles(ForwardRef(TableCell)) align=\\"right\\">
+                                                                        <ForwardRef(TableCell) classes={{...}} align=\\"right\\">
+                                                                          <th className=\\"MuiTableCell-root MuiTableCell-alignRight MuiTableCell-sizeSmall MuiTableCell-head\\" aria-sort={{...}} scope=\\"col\\">
+                                                                            Total EUR
+                                                                          </th>
+                                                                        </ForwardRef(TableCell)>
+                                                                      </WithStyles(ForwardRef(TableCell))>
+                                                                    </tr>
+                                                                  </ForwardRef(TableRow)>
+                                                                </WithStyles(ForwardRef(TableRow))>
+                                                              </thead>
+                                                            </ForwardRef(TableHead)>
+                                                          </WithStyles(ForwardRef(TableHead))>
+                                                          <WithStyles(ForwardRef(TableBody))>
+                                                            <ForwardRef(TableBody) classes={{...}}>
+                                                              <tbody className=\\"MuiTableBody-root\\">
+                                                                <WithStyles(ForwardRef(TableRow)) className=\\"makeStyles-institutionRow-215\\">
+                                                                  <ForwardRef(TableRow) classes={{...}} className=\\"makeStyles-institutionRow-215\\">
+                                                                    <tr className=\\"MuiTableRow-root makeStyles-institutionRow-215\\">
+                                                                      <WithStyles(ForwardRef(TableCell)) className=\\"makeStyles-institutionWrapper-216\\">
+                                                                        <ForwardRef(TableCell) classes={{...}} className=\\"makeStyles-institutionWrapper-216\\">
+                                                                          <td className=\\"MuiTableCell-root makeStyles-institutionWrapper-216 MuiTableCell-sizeSmall MuiTableCell-body\\" aria-sort={{...}} scope={[undefined]}>
+                                                                            <WithStyles(InstitutionIcon) institution=\\"TD\\" size=\\"small\\" className=\\"makeStyles-institutionIcon-217\\">
+                                                                              <InstitutionIcon classes={{...}} institution=\\"TD\\" size=\\"small\\" className=\\"makeStyles-institutionIcon-217\\">
+                                                                                <ForwardRef className=\\"InstitutionIcon-small-245 makeStyles-institutionIcon-217\\">
+                                                                                  <WithStyles(ForwardRef(SvgIcon)) className=\\"InstitutionIcon-small-245 makeStyles-institutionIcon-217\\">
+                                                                                    <ForwardRef(SvgIcon) classes={{...}} className=\\"InstitutionIcon-small-245 makeStyles-institutionIcon-217\\">
+                                                                                      <svg className=\\"MuiSvgIcon-root InstitutionIcon-small-245 makeStyles-institutionIcon-217\\" focusable=\\"false\\" viewBox=\\"0 0 24 24\\" color={[undefined]} aria-hidden=\\"true\\" role=\\"presentation\\">
+                                                                                        <path d=\\"M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z\\" />
+                                                                                      </svg>
+                                                                                    </ForwardRef(SvgIcon)>
+                                                                                  </WithStyles(ForwardRef(SvgIcon))>
+                                                                                </ForwardRef>
+                                                                              </InstitutionIcon>
+                                                                            </WithStyles(InstitutionIcon)>
+                                                                            <WithStyles(ForwardRef(Typography)) variant=\\"subtitle2\\">
+                                                                              <ForwardRef(Typography) classes={{...}} variant=\\"subtitle2\\">
+                                                                                <h6 className=\\"MuiTypography-root MuiTypography-subtitle2\\">
+                                                                                  TD
+                                                                                </h6>
+                                                                              </ForwardRef(Typography)>
+                                                                            </WithStyles(ForwardRef(Typography))>
+                                                                          </td>
+                                                                        </ForwardRef(TableCell)>
+                                                                      </WithStyles(ForwardRef(TableCell))>
+                                                                      <WithStyles(ForwardRef(TableCell)) align=\\"right\\">
+                                                                        <ForwardRef(TableCell) classes={{...}} align=\\"right\\">
+                                                                          <td className=\\"MuiTableCell-root MuiTableCell-alignRight MuiTableCell-sizeSmall MuiTableCell-body\\" aria-sort={{...}} scope={[undefined]}>
+                                                                            <WithStyles(ForwardRef(Typography)) variant=\\"subtitle2\\">
+                                                                              <ForwardRef(Typography) classes={{...}} variant=\\"subtitle2\\">
+                                                                                <h6 className=\\"MuiTypography-root MuiTypography-subtitle2\\">
+                                                                                  €1,000.00
+                                                                                </h6>
+                                                                              </ForwardRef(Typography)>
+                                                                            </WithStyles(ForwardRef(Typography))>
+                                                                          </td>
+                                                                        </ForwardRef(TableCell)>
+                                                                      </WithStyles(ForwardRef(TableCell))>
+                                                                    </tr>
+                                                                  </ForwardRef(TableRow)>
+                                                                </WithStyles(ForwardRef(TableRow))>
+                                                                <WithStyles(ForwardRef(TableRow)) hover={true} onClick={[Function: onClick]} className=\\"makeStyles-accountRow-218\\">
+                                                                  <ForwardRef(TableRow) classes={{...}} hover={true} onClick={[Function: onClick]} className=\\"makeStyles-accountRow-218\\">
+                                                                    <tr className=\\"MuiTableRow-root makeStyles-accountRow-218 MuiTableRow-hover\\" onClick={[Function: onClick]}>
+                                                                      <WithStyles(ForwardRef(TableCell)) className=\\"makeStyles-accountWrapper-219\\" title={[undefined]}>
+                                                                        <ForwardRef(TableCell) classes={{...}} className=\\"makeStyles-accountWrapper-219\\" title={[undefined]}>
+                                                                          <td className=\\"MuiTableCell-root makeStyles-accountWrapper-219 MuiTableCell-sizeSmall MuiTableCell-body\\" aria-sort={{...}} scope={[undefined]} title={[undefined]} />
+                                                                        </ForwardRef(TableCell)>
+                                                                      </WithStyles(ForwardRef(TableCell))>
+                                                                      <WithStyles(ForwardRef(TableCell)) align=\\"right\\">
+                                                                        <ForwardRef(TableCell) classes={{...}} align=\\"right\\">
+                                                                          <td className=\\"MuiTableCell-root MuiTableCell-alignRight MuiTableCell-sizeSmall MuiTableCell-body\\" aria-sort={{...}} scope={[undefined]}>
+                                                                            €1,000.00
+                                                                          </td>
+                                                                        </ForwardRef(TableCell)>
+                                                                      </WithStyles(ForwardRef(TableCell))>
+                                                                    </tr>
+                                                                  </ForwardRef(TableRow)>
+                                                                </WithStyles(ForwardRef(TableRow))>
+                                                              </tbody>
+                                                            </ForwardRef(TableBody)>
+                                                          </WithStyles(ForwardRef(TableBody))>
+                                                        </table>
+                                                      </ForwardRef(Table)>
+                                                    </WithStyles(ForwardRef(Table))>
+                                                    <div className=\\"makeStyles-newAccountButton-223\\">
                                                       <WithStyles(ForwardRef(Button)) color=\\"secondary\\" component={{...}}>
                                                         <ForwardRef(Button) classes={{...}} color=\\"secondary\\" component={{...}}>
                                                           <WithStyles(ForwardRef(ButtonBase)) className=\\"MuiButton-root MuiButton-text MuiButton-textSecondary\\" component={{...}} disabled={false} focusRipple={true} focusVisibleClassName=\\"Mui-focusVisible\\" type=\\"button\\">
@@ -224,7 +335,14 @@ exports[`Dashboard matches snapshot with one account 1`] = `
                                                         </div>
                                                       </ForwardRef(Grid)>
                                                     </WithStyles(ForwardRef(Grid))>
-                                                    <div className=\\"makeStyles-newAccountButton-222\\">
+                                                    <WithStyles(ForwardRef(Typography)) variant=\\"caption\\" align=\\"center\\" paragraph={true} className=\\"makeStyles-emptyChart-221\\">
+                                                      <ForwardRef(Typography) classes={{...}} variant=\\"caption\\" align=\\"center\\" paragraph={true} className=\\"makeStyles-emptyChart-221\\">
+                                                        <p className=\\"MuiTypography-root makeStyles-emptyChart-221 MuiTypography-caption MuiTypography-paragraph MuiTypography-alignCenter\\">
+                                                          Not enough data to display chart
+                                                        </p>
+                                                      </ForwardRef(Typography)>
+                                                    </WithStyles(ForwardRef(Typography))>
+                                                    <div className=\\"makeStyles-newAccountButton-223\\">
                                                       <WithStyles(ForwardRef(Button)) color=\\"secondary\\" component={{...}}>
                                                         <ForwardRef(Button) classes={{...}} color=\\"secondary\\" component={{...}}>
                                                           <WithStyles(ForwardRef(ButtonBase)) className=\\"MuiButton-root MuiButton-text MuiButton-textSecondary\\" component={{...}} disabled={false} focusRipple={true} focusVisibleClassName=\\"Mui-focusVisible\\" type=\\"button\\">
@@ -366,14 +484,143 @@ exports[`Dashboard matches snapshot with two accounts in a different currency 1`
                                                           <WithStyles(ForwardRef(Typography)) variant=\\"subtitle1\\">
                                                             <ForwardRef(Typography) classes={{...}} variant=\\"subtitle1\\">
                                                               <h6 className=\\"MuiTypography-root MuiTypography-subtitle1\\">
-                                                                €0.00
+                                                                €2,500.00
                                                               </h6>
                                                             </ForwardRef(Typography)>
                                                           </WithStyles(ForwardRef(Typography))>
                                                         </div>
                                                       </ForwardRef(Grid)>
                                                     </WithStyles(ForwardRef(Grid))>
-                                                    <div className=\\"makeStyles-newAccountButton-222\\">
+                                                    <AccountsChart data={{...}} filter=\\"Assets\\">
+                                                      <ResponsiveContainer height={200} width=\\"100%\\" debounce={0}>
+                                                        <div id={[undefined]} className=\\"recharts-responsive-container\\" style={{...}}>
+                                                          <PieChart layout=\\"centric\\" stackOffset=\\"none\\" barCategoryGap=\\"10%\\" barGap={4} margin={{...}} reverseStackOrder={false} startAngle={0} endAngle={360} cx=\\"50%\\" cy=\\"50%\\" innerRadius={0} outerRadius=\\"80%\\" width={0} height={200} />
+                                                          <ResizeDetector handleWidth={true} handleHeight={true} onResize={[Function]} skipOnMount={false} refreshRate={1000} refreshMode={[undefined]} resizableElementId=\\"\\">
+                                                            <div style={{...}} />
+                                                          </ResizeDetector>
+                                                        </div>
+                                                      </ResponsiveContainer>
+                                                    </AccountsChart>
+                                                    <WithStyles(ForwardRef(Table)) size=\\"small\\">
+                                                      <ForwardRef(Table) classes={{...}} size=\\"small\\">
+                                                        <table className=\\"MuiTable-root\\">
+                                                          <WithStyles(ForwardRef(TableHead))>
+                                                            <ForwardRef(TableHead) classes={{...}}>
+                                                              <thead className=\\"MuiTableHead-root\\">
+                                                                <WithStyles(ForwardRef(TableRow))>
+                                                                  <ForwardRef(TableRow) classes={{...}}>
+                                                                    <tr className=\\"MuiTableRow-root MuiTableRow-head\\">
+                                                                      <WithStyles(ForwardRef(TableCell))>
+                                                                        <ForwardRef(TableCell) classes={{...}}>
+                                                                          <th className=\\"MuiTableCell-root MuiTableCell-sizeSmall MuiTableCell-head\\" aria-sort={{...}} scope=\\"col\\">
+                                                                            Institution / Account
+                                                                          </th>
+                                                                        </ForwardRef(TableCell)>
+                                                                      </WithStyles(ForwardRef(TableCell))>
+                                                                      <WithStyles(ForwardRef(TableCell)) align=\\"right\\">
+                                                                        <ForwardRef(TableCell) classes={{...}} align=\\"right\\">
+                                                                          <th className=\\"MuiTableCell-root MuiTableCell-alignRight MuiTableCell-sizeSmall MuiTableCell-head\\" aria-sort={{...}} scope=\\"col\\">
+                                                                            Total EUR
+                                                                          </th>
+                                                                        </ForwardRef(TableCell)>
+                                                                      </WithStyles(ForwardRef(TableCell))>
+                                                                    </tr>
+                                                                  </ForwardRef(TableRow)>
+                                                                </WithStyles(ForwardRef(TableRow))>
+                                                              </thead>
+                                                            </ForwardRef(TableHead)>
+                                                          </WithStyles(ForwardRef(TableHead))>
+                                                          <WithStyles(ForwardRef(TableBody))>
+                                                            <ForwardRef(TableBody) classes={{...}}>
+                                                              <tbody className=\\"MuiTableBody-root\\">
+                                                                <WithStyles(ForwardRef(TableRow)) className=\\"makeStyles-institutionRow-215\\">
+                                                                  <ForwardRef(TableRow) classes={{...}} className=\\"makeStyles-institutionRow-215\\">
+                                                                    <tr className=\\"MuiTableRow-root makeStyles-institutionRow-215\\">
+                                                                      <WithStyles(ForwardRef(TableCell)) className=\\"makeStyles-institutionWrapper-216\\">
+                                                                        <ForwardRef(TableCell) classes={{...}} className=\\"makeStyles-institutionWrapper-216\\">
+                                                                          <td className=\\"MuiTableCell-root makeStyles-institutionWrapper-216 MuiTableCell-sizeSmall MuiTableCell-body\\" aria-sort={{...}} scope={[undefined]}>
+                                                                            <WithStyles(InstitutionIcon) institution=\\"TD\\" size=\\"small\\" className=\\"makeStyles-institutionIcon-217\\">
+                                                                              <InstitutionIcon classes={{...}} institution=\\"TD\\" size=\\"small\\" className=\\"makeStyles-institutionIcon-217\\">
+                                                                                <ForwardRef className=\\"InstitutionIcon-small-245 makeStyles-institutionIcon-217\\">
+                                                                                  <WithStyles(ForwardRef(SvgIcon)) className=\\"InstitutionIcon-small-245 makeStyles-institutionIcon-217\\">
+                                                                                    <ForwardRef(SvgIcon) classes={{...}} className=\\"InstitutionIcon-small-245 makeStyles-institutionIcon-217\\">
+                                                                                      <svg className=\\"MuiSvgIcon-root InstitutionIcon-small-245 makeStyles-institutionIcon-217\\" focusable=\\"false\\" viewBox=\\"0 0 24 24\\" color={[undefined]} aria-hidden=\\"true\\" role=\\"presentation\\">
+                                                                                        <path d=\\"M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z\\" />
+                                                                                      </svg>
+                                                                                    </ForwardRef(SvgIcon)>
+                                                                                  </WithStyles(ForwardRef(SvgIcon))>
+                                                                                </ForwardRef>
+                                                                              </InstitutionIcon>
+                                                                            </WithStyles(InstitutionIcon)>
+                                                                            <WithStyles(ForwardRef(Typography)) variant=\\"subtitle2\\">
+                                                                              <ForwardRef(Typography) classes={{...}} variant=\\"subtitle2\\">
+                                                                                <h6 className=\\"MuiTypography-root MuiTypography-subtitle2\\">
+                                                                                  TD
+                                                                                </h6>
+                                                                              </ForwardRef(Typography)>
+                                                                            </WithStyles(ForwardRef(Typography))>
+                                                                          </td>
+                                                                        </ForwardRef(TableCell)>
+                                                                      </WithStyles(ForwardRef(TableCell))>
+                                                                      <WithStyles(ForwardRef(TableCell)) align=\\"right\\">
+                                                                        <ForwardRef(TableCell) classes={{...}} align=\\"right\\">
+                                                                          <td className=\\"MuiTableCell-root MuiTableCell-alignRight MuiTableCell-sizeSmall MuiTableCell-body\\" aria-sort={{...}} scope={[undefined]}>
+                                                                            <WithStyles(ForwardRef(Typography)) variant=\\"subtitle2\\">
+                                                                              <ForwardRef(Typography) classes={{...}} variant=\\"subtitle2\\">
+                                                                                <h6 className=\\"MuiTypography-root MuiTypography-subtitle2\\">
+                                                                                  €2,500.00
+                                                                                </h6>
+                                                                              </ForwardRef(Typography)>
+                                                                            </WithStyles(ForwardRef(Typography))>
+                                                                          </td>
+                                                                        </ForwardRef(TableCell)>
+                                                                      </WithStyles(ForwardRef(TableCell))>
+                                                                    </tr>
+                                                                  </ForwardRef(TableRow)>
+                                                                </WithStyles(ForwardRef(TableRow))>
+                                                                <WithStyles(ForwardRef(TableRow)) hover={true} onClick={[Function: onClick]} className=\\"makeStyles-accountRow-218\\">
+                                                                  <ForwardRef(TableRow) classes={{...}} hover={true} onClick={[Function: onClick]} className=\\"makeStyles-accountRow-218\\">
+                                                                    <tr className=\\"MuiTableRow-root makeStyles-accountRow-218 MuiTableRow-hover\\" onClick={[Function: onClick]}>
+                                                                      <WithStyles(ForwardRef(TableCell)) className=\\"makeStyles-accountWrapper-219\\" title={[undefined]}>
+                                                                        <ForwardRef(TableCell) classes={{...}} className=\\"makeStyles-accountWrapper-219\\" title={[undefined]}>
+                                                                          <td className=\\"MuiTableCell-root makeStyles-accountWrapper-219 MuiTableCell-sizeSmall MuiTableCell-body\\" aria-sort={{...}} scope={[undefined]} title={[undefined]} />
+                                                                        </ForwardRef(TableCell)>
+                                                                      </WithStyles(ForwardRef(TableCell))>
+                                                                      <WithStyles(ForwardRef(TableCell)) align=\\"right\\">
+                                                                        <ForwardRef(TableCell) classes={{...}} align=\\"right\\">
+                                                                          <td className=\\"MuiTableCell-root MuiTableCell-alignRight MuiTableCell-sizeSmall MuiTableCell-body\\" aria-sort={{...}} scope={[undefined]}>
+                                                                            €1,000.00
+                                                                          </td>
+                                                                        </ForwardRef(TableCell)>
+                                                                      </WithStyles(ForwardRef(TableCell))>
+                                                                    </tr>
+                                                                  </ForwardRef(TableRow)>
+                                                                </WithStyles(ForwardRef(TableRow))>
+                                                                <WithStyles(ForwardRef(TableRow)) hover={true} onClick={[Function: onClick]} className=\\"makeStyles-accountRow-218\\">
+                                                                  <ForwardRef(TableRow) classes={{...}} hover={true} onClick={[Function: onClick]} className=\\"makeStyles-accountRow-218\\">
+                                                                    <tr className=\\"MuiTableRow-root makeStyles-accountRow-218 MuiTableRow-hover\\" onClick={[Function: onClick]}>
+                                                                      <WithStyles(ForwardRef(TableCell)) className=\\"makeStyles-accountWrapper-219\\" title={[undefined]}>
+                                                                        <ForwardRef(TableCell) classes={{...}} className=\\"makeStyles-accountWrapper-219\\" title={[undefined]}>
+                                                                          <td className=\\"MuiTableCell-root makeStyles-accountWrapper-219 MuiTableCell-sizeSmall MuiTableCell-body\\" aria-sort={{...}} scope={[undefined]} title={[undefined]} />
+                                                                        </ForwardRef(TableCell)>
+                                                                      </WithStyles(ForwardRef(TableCell))>
+                                                                      <WithStyles(ForwardRef(TableCell)) align=\\"right\\">
+                                                                        <ForwardRef(TableCell) classes={{...}} align=\\"right\\">
+                                                                          <td className=\\"MuiTableCell-root MuiTableCell-alignRight MuiTableCell-sizeSmall MuiTableCell-body\\" aria-sort={{...}} scope={[undefined]}>
+                                                                            €1,500.00
+                                                                          </td>
+                                                                        </ForwardRef(TableCell)>
+                                                                      </WithStyles(ForwardRef(TableCell))>
+                                                                    </tr>
+                                                                  </ForwardRef(TableRow)>
+                                                                </WithStyles(ForwardRef(TableRow))>
+                                                              </tbody>
+                                                            </ForwardRef(TableBody)>
+                                                          </WithStyles(ForwardRef(TableBody))>
+                                                        </table>
+                                                      </ForwardRef(Table)>
+                                                    </WithStyles(ForwardRef(Table))>
+                                                    <div className=\\"makeStyles-newAccountButton-223\\">
                                                       <WithStyles(ForwardRef(Button)) color=\\"secondary\\" component={{...}}>
                                                         <ForwardRef(Button) classes={{...}} color=\\"secondary\\" component={{...}}>
                                                           <WithStyles(ForwardRef(ButtonBase)) className=\\"MuiButton-root MuiButton-text MuiButton-textSecondary\\" component={{...}} disabled={false} focusRipple={true} focusVisibleClassName=\\"Mui-focusVisible\\" type=\\"button\\">
@@ -437,7 +684,14 @@ exports[`Dashboard matches snapshot with two accounts in a different currency 1`
                                                         </div>
                                                       </ForwardRef(Grid)>
                                                     </WithStyles(ForwardRef(Grid))>
-                                                    <div className=\\"makeStyles-newAccountButton-222\\">
+                                                    <WithStyles(ForwardRef(Typography)) variant=\\"caption\\" align=\\"center\\" paragraph={true} className=\\"makeStyles-emptyChart-221\\">
+                                                      <ForwardRef(Typography) classes={{...}} variant=\\"caption\\" align=\\"center\\" paragraph={true} className=\\"makeStyles-emptyChart-221\\">
+                                                        <p className=\\"MuiTypography-root makeStyles-emptyChart-221 MuiTypography-caption MuiTypography-paragraph MuiTypography-alignCenter\\">
+                                                          Not enough data to display chart
+                                                        </p>
+                                                      </ForwardRef(Typography)>
+                                                    </WithStyles(ForwardRef(Typography))>
+                                                    <div className=\\"makeStyles-newAccountButton-223\\">
                                                       <WithStyles(ForwardRef(Button)) color=\\"secondary\\" component={{...}}>
                                                         <ForwardRef(Button) classes={{...}} color=\\"secondary\\" component={{...}}>
                                                           <WithStyles(ForwardRef(ButtonBase)) className=\\"MuiButton-root MuiButton-text MuiButton-textSecondary\\" component={{...}} disabled={false} focusRipple={true} focusVisibleClassName=\\"Mui-focusVisible\\" type=\\"button\\">

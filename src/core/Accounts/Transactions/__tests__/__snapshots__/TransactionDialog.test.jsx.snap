@@ -12,61 +12,367 @@ exports[`ConfirmDialog matches snapshot 1`] = `
                 <WithFormik(TransactionDialogComponent) classes={{...}} open={true} onCancel={[Function: mockConstructor]} account={{...}} transaction={{...}} budget={{...}} handleSave={[Function: handleSave]}>
                   <Formik classes={{...}} open={true} onCancel={[Function: mockConstructor]} account={{...}} transaction={{...}} budget={{...}} handleSave={[Function: handleSave]} enableReinitialize={true} validationSchema={[Function]} handleSubmit={[Function: handleSubmit]} validate={[undefined]} initialValues={{...}} initialStatus={[undefined]} onSubmit={[Function]} render={[Function]} validateOnChange={true} validateOnBlur={true} isInitialValid={false}>
                     <TransactionDialogComponent classes={{...}} open={true} onCancel={[Function: mockConstructor]} account={{...}} transaction={{...}} budget={{...}} handleSave={[Function: handleSave]} values={{...}} errors={{...}} touched={{...}} isSubmitting={false} isValidating={false} submitCount={0} status={[undefined]} resetForm={[Function]} submitForm={[Function]} validateForm={[Function]} validateField={[Function]} setError={[Function]} setErrors={[Function]} setFieldError={[Function]} setFieldTouched={[Function]} setFieldValue={[Function]} setStatus={[Function]} setSubmitting={[Function]} setTouched={[Function]} setValues={[Function]} setFormikState={[Function]} dirty={false} isValid={false} initialValues={{...}} registerField={[Function]} unregisterField={[Function]} handleBlur={[Function]} handleChange={[Function]} handleReset={[Function]} handleSubmit={[Function]} validateOnChange={true} validateOnBlur={true}>
-                      <WithStyles(ModalDialog) open={true} title=\\"Edit transaction\\" onSubmit={[Function]} onCancel={[Function: mockConstructor]} className=\\"WithFormik(TransactionDialogComponent)-root-1\\">
-                        <ModalDialog classes={{...}} open={true} title=\\"Edit transaction\\" onSubmit={[Function]} onCancel={[Function: mockConstructor]} className=\\"WithFormik(TransactionDialogComponent)-root-1\\">
-                          <WithStyles(ForwardRef(Dialog)) aria-labelledby=\\"form-dialog-title\\" open={true} scroll=\\"body\\" onClose={[Function: mockConstructor]} className=\\"WithFormik(TransactionDialogComponent)-root-1\\">
-                            <ForwardRef(Dialog) classes={{...}} aria-labelledby=\\"form-dialog-title\\" open={true} scroll=\\"body\\" onClose={[Function: mockConstructor]} className=\\"WithFormik(TransactionDialogComponent)-root-1\\">
-                              <ForwardRef(Modal) className=\\"MuiDialog-root WithFormik(TransactionDialogComponent)-root-1\\" BackdropComponent={{...}} BackdropProps={{...}} closeAfterTransition={true} disableBackdropClick={false} disableEscapeKeyDown={false} onEscapeKeyDown={[undefined]} onClose={[Function: mockConstructor]} open={true} aria-labelledby=\\"form-dialog-title\\">
-                                <ForwardRef(Portal) container={[undefined]} disablePortal={false}>
-                                  <Portal containerInfo={{...}}>
-                                    <div onKeyDown={[Function: handleKeyDown]} role=\\"presentation\\" className=\\"MuiDialog-root WithFormik(TransactionDialogComponent)-root-1\\" aria-labelledby=\\"form-dialog-title\\" style={{...}}>
-                                      <WithStyles(ForwardRef(Backdrop)) open={true} onClick={[Function: handleBackdropClick]} transitionDuration={{...}}>
-                                        <ForwardRef(Backdrop) classes={{...}} open={true} onClick={[Function: handleBackdropClick]} transitionDuration={{...}}>
-                                          <ForwardRef(Fade) in={true} timeout={{...}} onClick={[Function: handleBackdropClick]}>
-                                            <Transition appear={true} in={true} onEnter={[Function: handleEnter]} onExit={[Function: handleExit]} timeout={{...}} onClick={[Function: handleBackdropClick]} mountOnEnter={false} unmountOnExit={false} enter={true} exit={true} onEntering={[Function: noop]} onEntered={[Function: noop]} onExiting={[Function: noop]} onExited={[Function: noop]}>
-                                              <div className=\\"MuiBackdrop-root\\" aria-hidden={true} style={{...}} onClick={[Function: handleBackdropClick]} />
-                                            </Transition>
-                                          </ForwardRef(Fade)>
-                                        </ForwardRef(Backdrop)>
-                                      </WithStyles(ForwardRef(Backdrop))>
-                                      <TrapFocus disableEnforceFocus={false} disableAutoFocus={false} disableRestoreFocus={false} getDoc={[Function: getDoc]} isEnabled={[Function]} open={true}>
-                                        <div tabIndex={0} data-test=\\"sentinelStart\\" />
-                                        <ForwardRef(Fade) appear={true} in={true} timeout={{...}} onEnter={[Function: chainedFunction]} onEntering={[undefined]} onEntered={[undefined]} onExit={[undefined]} onExiting={[undefined]} onExited={[Function: chainedFunction]} role=\\"document\\" tabIndex=\\"-1\\">
-                                          <Transition appear={true} in={true} onEnter={[Function: handleEnter]} onExit={[Function: handleExit]} timeout={{...}} onEntering={[Function: noop]} onEntered={[Function: noop]} onExiting={[Function: noop]} onExited={[Function: chainedFunction]} role=\\"document\\" tabIndex=\\"-1\\" mountOnEnter={false} unmountOnExit={false} enter={true} exit={true}>
-                                            <div className=\\"MuiDialog-container MuiDialog-scrollBody\\" onClick={[Function: handleBackdropClick]} onMouseDown={[Function: handleMouseDown]} style={{...}} role=\\"document\\" tabIndex=\\"-1\\">
-                                              <WithStyles(ForwardRef(Paper)) elevation={24} role=\\"dialog\\" className=\\"MuiDialog-paper MuiDialog-paperScrollBody MuiDialog-paperWidthSm\\">
-                                                <ForwardRef(Paper) classes={{...}} elevation={24} role=\\"dialog\\" className=\\"MuiDialog-paper MuiDialog-paperScrollBody MuiDialog-paperWidthSm\\">
-                                                  <div className=\\"MuiPaper-root MuiPaper-elevation24 MuiDialog-paper MuiDialog-paperScrollBody MuiDialog-paperWidthSm MuiPaper-rounded\\" role=\\"dialog\\">
-                                                    <div className=\\"ModalDialog-formWrapper-4\\">
-                                                      <WithStyles(ForwardRef(DialogTitle)) disableTypography={true} className=\\"ModalDialog-formHeader-5\\">
-                                                        <ForwardRef(DialogTitle) classes={{...}} disableTypography={true} className=\\"ModalDialog-formHeader-5\\">
-                                                          <div className=\\"MuiDialogTitle-root ModalDialog-formHeader-5\\">
-                                                            <WithStyles(ForwardRef(Typography)) variant=\\"h6\\">
-                                                              <ForwardRef(Typography) classes={{...}} variant=\\"h6\\">
-                                                                <h6 className=\\"MuiTypography-root MuiTypography-h6\\">
-                                                                  Edit transaction
-                                                                </h6>
-                                                              </ForwardRef(Typography)>
-                                                            </WithStyles(ForwardRef(Typography))>
-                                                            <WithStyles(ForwardRef(IconButton)) aria-label=\\"Close\\" onClick={[Function: mockConstructor]} className=\\"ModalDialog-closeButton-6\\">
-                                                              <ForwardRef(IconButton) classes={{...}} aria-label=\\"Close\\" onClick={[Function: mockConstructor]} className=\\"ModalDialog-closeButton-6\\">
-                                                                <WithStyles(ForwardRef(ButtonBase)) className=\\"MuiIconButton-root ModalDialog-closeButton-6\\" centerRipple={true} focusRipple={true} disabled={false} aria-label=\\"Close\\" onClick={[Function: mockConstructor]}>
-                                                                  <ForwardRef(ButtonBase) classes={{...}} className=\\"MuiIconButton-root ModalDialog-closeButton-6\\" centerRipple={true} focusRipple={true} disabled={false} aria-label=\\"Close\\" onClick={[Function: mockConstructor]}>
-                                                                    <button className=\\"MuiButtonBase-root MuiIconButton-root ModalDialog-closeButton-6\\" onBlur={[Function]} onClick={[Function: mockConstructor]} onFocus={[Function]} onKeyDown={[Function]} onKeyUp={[Function]} onMouseDown={[Function]} onMouseLeave={[Function]} onMouseUp={[Function]} onDragLeave={[Function]} onTouchEnd={[Function]} onTouchMove={[Function]} onTouchStart={[Function]} tabIndex={0} type=\\"button\\" disabled={false} aria-label=\\"Close\\">
-                                                                      <span className=\\"MuiIconButton-label\\">
-                                                                        <ForwardRef>
-                                                                          <WithStyles(ForwardRef(SvgIcon))>
-                                                                            <ForwardRef(SvgIcon) classes={{...}}>
-                                                                              <svg className=\\"MuiSvgIcon-root\\" focusable=\\"false\\" viewBox=\\"0 0 24 24\\" color={[undefined]} aria-hidden=\\"true\\" role=\\"presentation\\">
-                                                                                <path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\" />
-                                                                              </svg>
-                                                                            </ForwardRef(SvgIcon)>
-                                                                          </WithStyles(ForwardRef(SvgIcon))>
-                                                                        </ForwardRef>
+                      <ModalDialog open={true} title=\\"Edit transaction\\" onSubmit={[Function]} onCancel={[Function: mockConstructor]} onDelete={{...}} className=\\"WithFormik(TransactionDialogComponent)-root-1\\">
+                        <WithStyles(ForwardRef(Dialog)) aria-labelledby=\\"form-dialog-title\\" open={true} scroll=\\"body\\" onClose={[Function: mockConstructor]} className=\\"WithFormik(TransactionDialogComponent)-root-1\\">
+                          <ForwardRef(Dialog) classes={{...}} aria-labelledby=\\"form-dialog-title\\" open={true} scroll=\\"body\\" onClose={[Function: mockConstructor]} className=\\"WithFormik(TransactionDialogComponent)-root-1\\">
+                            <ForwardRef(Modal) className=\\"MuiDialog-root WithFormik(TransactionDialogComponent)-root-1\\" BackdropComponent={{...}} BackdropProps={{...}} closeAfterTransition={true} disableBackdropClick={false} disableEscapeKeyDown={false} onEscapeKeyDown={[undefined]} onClose={[Function: mockConstructor]} open={true} aria-labelledby=\\"form-dialog-title\\">
+                              <ForwardRef(Portal) container={[undefined]} disablePortal={false}>
+                                <Portal containerInfo={{...}}>
+                                  <div onKeyDown={[Function: handleKeyDown]} role=\\"presentation\\" className=\\"MuiDialog-root WithFormik(TransactionDialogComponent)-root-1\\" aria-labelledby=\\"form-dialog-title\\" style={{...}}>
+                                    <WithStyles(ForwardRef(Backdrop)) open={true} onClick={[Function: handleBackdropClick]} transitionDuration={{...}}>
+                                      <ForwardRef(Backdrop) classes={{...}} open={true} onClick={[Function: handleBackdropClick]} transitionDuration={{...}}>
+                                        <ForwardRef(Fade) in={true} timeout={{...}} onClick={[Function: handleBackdropClick]}>
+                                          <Transition appear={true} in={true} onEnter={[Function: handleEnter]} onExit={[Function: handleExit]} timeout={{...}} onClick={[Function: handleBackdropClick]} mountOnEnter={false} unmountOnExit={false} enter={true} exit={true} onEntering={[Function: noop]} onEntered={[Function: noop]} onExiting={[Function: noop]} onExited={[Function: noop]}>
+                                            <div className=\\"MuiBackdrop-root\\" aria-hidden={true} style={{...}} onClick={[Function: handleBackdropClick]} />
+                                          </Transition>
+                                        </ForwardRef(Fade)>
+                                      </ForwardRef(Backdrop)>
+                                    </WithStyles(ForwardRef(Backdrop))>
+                                    <TrapFocus disableEnforceFocus={false} disableAutoFocus={false} disableRestoreFocus={false} getDoc={[Function: getDoc]} isEnabled={[Function]} open={true}>
+                                      <div tabIndex={0} data-test=\\"sentinelStart\\" />
+                                      <ForwardRef(Fade) appear={true} in={true} timeout={{...}} onEnter={[Function: chainedFunction]} onEntering={[undefined]} onEntered={[undefined]} onExit={[undefined]} onExiting={[undefined]} onExited={[Function: chainedFunction]} role=\\"document\\" tabIndex=\\"-1\\">
+                                        <Transition appear={true} in={true} onEnter={[Function: handleEnter]} onExit={[Function: handleExit]} timeout={{...}} onEntering={[Function: noop]} onEntered={[Function: noop]} onExiting={[Function: noop]} onExited={[Function: chainedFunction]} role=\\"document\\" tabIndex=\\"-1\\" mountOnEnter={false} unmountOnExit={false} enter={true} exit={true}>
+                                          <div className=\\"MuiDialog-container MuiDialog-scrollBody\\" onClick={[Function: handleBackdropClick]} onMouseDown={[Function: handleMouseDown]} style={{...}} role=\\"document\\" tabIndex=\\"-1\\">
+                                            <WithStyles(ForwardRef(Paper)) elevation={24} role=\\"dialog\\" className=\\"MuiDialog-paper MuiDialog-paperScrollBody MuiDialog-paperWidthSm\\">
+                                              <ForwardRef(Paper) classes={{...}} elevation={24} role=\\"dialog\\" className=\\"MuiDialog-paper MuiDialog-paperScrollBody MuiDialog-paperWidthSm\\">
+                                                <div className=\\"MuiPaper-root MuiPaper-elevation24 MuiDialog-paper MuiDialog-paperScrollBody MuiDialog-paperWidthSm MuiPaper-rounded\\" role=\\"dialog\\">
+                                                  <div className=\\"makeStyles-formWrapper-4\\">
+                                                    <WithStyles(ForwardRef(DialogTitle)) disableTypography={true} className=\\"makeStyles-formHeader-5\\">
+                                                      <ForwardRef(DialogTitle) classes={{...}} disableTypography={true} className=\\"makeStyles-formHeader-5\\">
+                                                        <div className=\\"MuiDialogTitle-root makeStyles-formHeader-5\\">
+                                                          <WithStyles(ForwardRef(Typography)) variant=\\"h6\\">
+                                                            <ForwardRef(Typography) classes={{...}} variant=\\"h6\\">
+                                                              <h6 className=\\"MuiTypography-root MuiTypography-h6\\">
+                                                                Edit transaction
+                                                              </h6>
+                                                            </ForwardRef(Typography)>
+                                                          </WithStyles(ForwardRef(Typography))>
+                                                          <WithStyles(ForwardRef(IconButton)) aria-label=\\"Close\\" onClick={[Function: mockConstructor]} className=\\"makeStyles-closeButton-6\\">
+                                                            <ForwardRef(IconButton) classes={{...}} aria-label=\\"Close\\" onClick={[Function: mockConstructor]} className=\\"makeStyles-closeButton-6\\">
+                                                              <WithStyles(ForwardRef(ButtonBase)) className=\\"MuiIconButton-root makeStyles-closeButton-6\\" centerRipple={true} focusRipple={true} disabled={false} aria-label=\\"Close\\" onClick={[Function: mockConstructor]}>
+                                                                <ForwardRef(ButtonBase) classes={{...}} className=\\"MuiIconButton-root makeStyles-closeButton-6\\" centerRipple={true} focusRipple={true} disabled={false} aria-label=\\"Close\\" onClick={[Function: mockConstructor]}>
+                                                                  <button className=\\"MuiButtonBase-root MuiIconButton-root makeStyles-closeButton-6\\" onBlur={[Function]} onClick={[Function: mockConstructor]} onFocus={[Function]} onKeyDown={[Function]} onKeyUp={[Function]} onMouseDown={[Function]} onMouseLeave={[Function]} onMouseUp={[Function]} onDragLeave={[Function]} onTouchEnd={[Function]} onTouchMove={[Function]} onTouchStart={[Function]} tabIndex={0} type=\\"button\\" disabled={false} aria-label=\\"Close\\">
+                                                                    <span className=\\"MuiIconButton-label\\">
+                                                                      <ForwardRef>
+                                                                        <WithStyles(ForwardRef(SvgIcon))>
+                                                                          <ForwardRef(SvgIcon) classes={{...}}>
+                                                                            <svg className=\\"MuiSvgIcon-root\\" focusable=\\"false\\" viewBox=\\"0 0 24 24\\" color={[undefined]} aria-hidden=\\"true\\" role=\\"presentation\\">
+                                                                              <path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\" />
+                                                                            </svg>
+                                                                          </ForwardRef(SvgIcon)>
+                                                                        </WithStyles(ForwardRef(SvgIcon))>
+                                                                      </ForwardRef>
+                                                                    </span>
+                                                                    <NoSsr>
+                                                                      <WithStyles(undefined) center={true}>
+                                                                        <ForwardRef(TouchRipple) classes={{...}} center={true}>
+                                                                          <span className=\\"MuiTouchRipple-root\\">
+                                                                            <TransitionGroup component={{...}} exit={true} childFactory={[Function: childFactory]} />
+                                                                          </span>
+                                                                        </ForwardRef(TouchRipple)>
+                                                                      </WithStyles(undefined)>
+                                                                    </NoSsr>
+                                                                  </button>
+                                                                </ForwardRef(ButtonBase)>
+                                                              </WithStyles(ForwardRef(ButtonBase))>
+                                                            </ForwardRef(IconButton)>
+                                                          </WithStyles(ForwardRef(IconButton))>
+                                                        </div>
+                                                      </ForwardRef(DialogTitle)>
+                                                    </WithStyles(ForwardRef(DialogTitle))>
+                                                    <form onSubmit={[Function]}>
+                                                      <WithStyles(ForwardRef(DialogContent))>
+                                                        <ForwardRef(DialogContent) classes={{...}}>
+                                                          <div className=\\"MuiDialogContent-root\\">
+                                                            <WithStyles(ForwardRef(Grid)) container={true}>
+                                                              <ForwardRef(Grid) classes={{...}} container={true}>
+                                                                <div className=\\"MuiGrid-root MuiGrid-container\\">
+                                                                  <WithStyles(ForwardRef(Grid)) item={true} xs={12}>
+                                                                    <ForwardRef(Grid) classes={{...}} item={true} xs={12}>
+                                                                      <div className=\\"MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12\\">
+                                                                        <WithStyles(ForwardRef(TextField)) label=\\"Description\\" inputProps={{...}} className=\\"WithFormik(TransactionDialogComponent)-input-2\\" value={[undefined]} name=\\"description\\" onChange={[Function]} error={[undefined]} helperText={[undefined]}>
+                                                                          <ForwardRef(TextField) classes={{...}} label=\\"Description\\" inputProps={{...}} className=\\"WithFormik(TransactionDialogComponent)-input-2\\" value={[undefined]} name=\\"description\\" onChange={[Function]} error={[undefined]} helperText={[undefined]}>
+                                                                            <WithStyles(ForwardRef(FormControl)) className=\\"MuiTextField-root WithFormik(TransactionDialogComponent)-input-2\\" error={[undefined]} fullWidth={[undefined]} hiddenLabel={[undefined]} required={false} variant=\\"standard\\">
+                                                                              <ForwardRef(FormControl) classes={{...}} className=\\"MuiTextField-root WithFormik(TransactionDialogComponent)-input-2\\" error={[undefined]} fullWidth={[undefined]} hiddenLabel={[undefined]} required={false} variant=\\"standard\\">
+                                                                                <div className=\\"MuiFormControl-root MuiTextField-root WithFormik(TransactionDialogComponent)-input-2\\">
+                                                                                  <WithStyles(ForwardRef(InputLabel)) htmlFor={[undefined]}>
+                                                                                    <ForwardRef(InputLabel) classes={{...}} htmlFor={[undefined]}>
+                                                                                      <WithStyles(ForwardRef(FormLabel)) data-shrink={false} className=\\"MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated\\" classes={{...}} htmlFor={[undefined]}>
+                                                                                        <ForwardRef(FormLabel) classes={{...}} data-shrink={false} className=\\"MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated\\" htmlFor={[undefined]}>
+                                                                                          <label className=\\"MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated\\" data-shrink={false} htmlFor={[undefined]}>
+                                                                                            Description
+                                                                                          </label>
+                                                                                        </ForwardRef(FormLabel)>
+                                                                                      </WithStyles(ForwardRef(FormLabel))>
+                                                                                    </ForwardRef(InputLabel)>
+                                                                                  </WithStyles(ForwardRef(InputLabel))>
+                                                                                  <WithStyles(ForwardRef(Input)) aria-describedby={[undefined]} autoComplete={[undefined]} autoFocus={[undefined]} defaultValue={[undefined]} fullWidth={[undefined]} multiline={[undefined]} name=\\"description\\" rows={[undefined]} rowsMax={[undefined]} type={[undefined]} value={[undefined]} id={[undefined]} inputRef={[undefined]} onBlur={[undefined]} onChange={[Function]} onFocus={[undefined]} placeholder={[undefined]} inputProps={{...}}>
+                                                                                    <ForwardRef(Input) classes={{...}} aria-describedby={[undefined]} autoComplete={[undefined]} autoFocus={[undefined]} defaultValue={[undefined]} fullWidth={[undefined]} multiline={[undefined]} name=\\"description\\" rows={[undefined]} rowsMax={[undefined]} type={[undefined]} value={[undefined]} id={[undefined]} inputRef={[undefined]} onBlur={[undefined]} onChange={[Function]} onFocus={[undefined]} placeholder={[undefined]} inputProps={{...}}>
+                                                                                      <WithStyles(ForwardRef(InputBase)) classes={{...}} fullWidth={false} inputComponent=\\"input\\" multiline={false} type=\\"text\\" aria-describedby={[undefined]} autoComplete={[undefined]} autoFocus={[undefined]} defaultValue={[undefined]} name=\\"description\\" rows={[undefined]} rowsMax={[undefined]} value={[undefined]} id={[undefined]} inputRef={[undefined]} onBlur={[undefined]} onChange={[Function]} onFocus={[undefined]} placeholder={[undefined]} inputProps={{...}}>
+                                                                                        <ForwardRef(InputBase) classes={{...}} fullWidth={false} inputComponent=\\"input\\" multiline={false} type=\\"text\\" aria-describedby={[undefined]} autoComplete={[undefined]} autoFocus={[undefined]} defaultValue={[undefined]} name=\\"description\\" rows={[undefined]} rowsMax={[undefined]} value={[undefined]} id={[undefined]} inputRef={[undefined]} onBlur={[undefined]} onChange={[Function]} onFocus={[undefined]} placeholder={[undefined]} inputProps={{...}}>
+                                                                                          <div className=\\"MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl\\" onClick={[Function: handleClick]}>
+                                                                                            <input aria-invalid={false} aria-describedby={[undefined]} autoComplete={[undefined]} autoFocus={[undefined]} className=\\"MuiInputBase-input MuiInput-input\\" defaultValue={[undefined]} disabled={false} id={[undefined]} name=\\"description\\" onBlur={[Function: handleBlur]} onChange={[Function: handleChange]} onFocus={[Function: handleFocus]} onKeyDown={[undefined]} onKeyUp={[undefined]} placeholder={[undefined]} readOnly={[undefined]} required={false} rows={[undefined]} value={[undefined]} type=\\"text\\" aria-label=\\"Description\\" maxLength={150} />
+                                                                                          </div>
+                                                                                        </ForwardRef(InputBase)>
+                                                                                      </WithStyles(ForwardRef(InputBase))>
+                                                                                    </ForwardRef(Input)>
+                                                                                  </WithStyles(ForwardRef(Input))>
+                                                                                </div>
+                                                                              </ForwardRef(FormControl)>
+                                                                            </WithStyles(ForwardRef(FormControl))>
+                                                                          </ForwardRef(TextField)>
+                                                                        </WithStyles(ForwardRef(TextField))>
+                                                                        <AutoComplete className=\\"WithFormik(TransactionDialogComponent)-input-2\\" label={{...}} placeholder=\\"Category\\" name=\\"categoryId\\" value={{...}} options={{...}} onChange={[Function]} error={[undefined]} helperText={[undefined]} styles={{...}} isClearable={true} async={false} creatable={false} loadOptions={[undefined]}>
+                                                                          <div className=\\"WithFormik(TransactionDialogComponent)-input-2\\">
+                                                                            <WithStyles(ForwardRef(Typography)) variant=\\"caption\\" color=\\"textSecondary\\">
+                                                                              <ForwardRef(Typography) classes={{...}} variant=\\"caption\\" color=\\"textSecondary\\">
+                                                                                <span className=\\"MuiTypography-root MuiTypography-caption MuiTypography-colorTextSecondary\\">
+                                                                                  <div>
+                                                                                    Category
+                                                                                    <WithStyles(ForwardRef(Button)) size=\\"small\\" color=\\"secondary\\" component={{...}} className=\\"WithFormik(TransactionDialogComponent)-manageCategoriesLink-3\\">
+                                                                                      <ForwardRef(Button) classes={{...}} size=\\"small\\" color=\\"secondary\\" component={{...}} className=\\"WithFormik(TransactionDialogComponent)-manageCategoriesLink-3\\">
+                                                                                        <WithStyles(ForwardRef(ButtonBase)) className=\\"MuiButton-root WithFormik(TransactionDialogComponent)-manageCategoriesLink-3 MuiButton-text MuiButton-textSecondary MuiButton-sizeSmall\\" component={{...}} disabled={false} focusRipple={true} focusVisibleClassName=\\"Mui-focusVisible\\" type=\\"button\\">
+                                                                                          <ForwardRef(ButtonBase) classes={{...}} className=\\"MuiButton-root WithFormik(TransactionDialogComponent)-manageCategoriesLink-3 MuiButton-text MuiButton-textSecondary MuiButton-sizeSmall\\" component={{...}} disabled={false} focusRipple={true} focusVisibleClassName=\\"Mui-focusVisible\\" type=\\"button\\">
+                                                                                            <ForwardRef className=\\"MuiButtonBase-root MuiButton-root WithFormik(TransactionDialogComponent)-manageCategoriesLink-3 MuiButton-text MuiButton-textSecondary MuiButton-sizeSmall\\" onBlur={[Function]} onClick={[undefined]} onFocus={[Function]} onKeyDown={[Function]} onKeyUp={[Function]} onMouseDown={[Function]} onMouseLeave={[Function]} onMouseUp={[Function]} onDragLeave={[Function]} onTouchEnd={[Function]} onTouchMove={[Function]} onTouchStart={[Function]} tabIndex={0} role=\\"button\\" aria-disabled={false}>
+                                                                                              <Link to=\\"/budget-categories\\" className=\\"MuiButtonBase-root MuiButton-root WithFormik(TransactionDialogComponent)-manageCategoriesLink-3 MuiButton-text MuiButton-textSecondary MuiButton-sizeSmall\\" onBlur={[Function]} onClick={[undefined]} onFocus={[Function]} onKeyDown={[Function]} onKeyUp={[Function]} onMouseDown={[Function]} onMouseLeave={[Function]} onMouseUp={[Function]} onDragLeave={[Function]} onTouchEnd={[Function]} onTouchMove={[Function]} onTouchStart={[Function]} tabIndex={0} role=\\"button\\" aria-disabled={false} innerRef={[Function]}>
+                                                                                                <a className=\\"MuiButtonBase-root MuiButton-root WithFormik(TransactionDialogComponent)-manageCategoriesLink-3 MuiButton-text MuiButton-textSecondary MuiButton-sizeSmall\\" onBlur={[Function]} onClick={[Function: onClick]} onFocus={[Function]} onKeyDown={[Function]} onKeyUp={[Function]} onMouseDown={[Function]} onMouseLeave={[Function]} onMouseUp={[Function]} onDragLeave={[Function]} onTouchEnd={[Function]} onTouchMove={[Function]} onTouchStart={[Function]} tabIndex={0} role=\\"button\\" aria-disabled={false} href=\\"/budget-categories\\">
+                                                                                                  <span className=\\"MuiButton-label\\">
+                                                                                                    Manage categories
+                                                                                                  </span>
+                                                                                                  <NoSsr>
+                                                                                                    <WithStyles(undefined) center={false}>
+                                                                                                      <ForwardRef(TouchRipple) classes={{...}} center={false}>
+                                                                                                        <span className=\\"MuiTouchRipple-root\\">
+                                                                                                          <TransitionGroup component={{...}} exit={true} childFactory={[Function: childFactory]} />
+                                                                                                        </span>
+                                                                                                      </ForwardRef(TouchRipple)>
+                                                                                                    </WithStyles(undefined)>
+                                                                                                  </NoSsr>
+                                                                                                </a>
+                                                                                              </Link>
+                                                                                            </ForwardRef>
+                                                                                          </ForwardRef(ButtonBase)>
+                                                                                        </WithStyles(ForwardRef(ButtonBase))>
+                                                                                      </ForwardRef(Button)>
+                                                                                    </WithStyles(ForwardRef(Button))>
+                                                                                  </div>
+                                                                                </span>
+                                                                              </ForwardRef(Typography)>
+                                                                            </WithStyles(ForwardRef(Typography))>
+                                                                            <StateManager defaultValue={{...}} options={{...}} onChange={[Function: onChange]} placeholder=\\"Category\\" name=\\"categoryId\\" value={{...}} styles={{...}} isClearable={true} defaultInputValue=\\"\\" defaultMenuIsOpen={false}>
+                                                                              <Select options={{...}} onChange={[Function]} placeholder=\\"Category\\" name=\\"categoryId\\" value={{...}} styles={{...}} isClearable={true} inputValue=\\"\\" menuIsOpen={false} onInputChange={[Function]} onMenuClose={[Function]} onMenuOpen={[Function]} backspaceRemovesValue={true} blurInputOnSelect={true} captureMenuScroll={false} closeMenuOnSelect={true} closeMenuOnScroll={false} components={{...}} controlShouldRenderValue={true} escapeClearsValue={false} filterOption={[Function]} formatGroupLabel={[Function: formatGroupLabel]} getOptionLabel={[Function: getOptionLabel]} getOptionValue={[Function: getOptionValue]} isDisabled={false} isLoading={false} isMulti={false} isRtl={false} isSearchable={true} isOptionDisabled={[Function: isOptionDisabled]} loadingMessage={[Function: loadingMessage]} maxMenuHeight={300} minMenuHeight={140} menuPlacement=\\"bottom\\" menuPosition=\\"absolute\\" menuShouldBlockScroll={false} menuShouldScrollIntoView={true} noOptionsMessage={[Function: noOptionsMessage]} openMenuOnFocus={false} openMenuOnClick={true} pageSize={5} screenReaderStatus={[Function: screenReaderStatus]} tabIndex=\\"0\\" tabSelectsValue={true}>
+                                                                                <SelectContainer cx={[Function: bound classNames]} clearValue={[Function]} getStyles={[Function]} getValue={[Function: getValue]} hasValue={false} isMulti={false} isRtl={false} options={{...}} selectOption={[Function]} setValue={[Function]} selectProps={{...}} theme={{...}} className={[undefined]} innerProps={{...}} isDisabled={false} isFocused={false}>
+                                                                                  <EmotionCssPropInternal css={{...}} className=\\"\\" id={[undefined]} onKeyDown={[Function]} __EMOTION_TYPE_PLEASE_DO_NOT_USE__=\\"div\\" __EMOTION_LABEL_PLEASE_DO_NOT_USE__=\\"SelectContainer\\">
+                                                                                    <div className=\\" css-2b097c-container\\" id={[undefined]} onKeyDown={[Function]}>
+                                                                                      <Control cx={[Function: bound classNames]} clearValue={[Function]} getStyles={[Function]} getValue={[Function: getValue]} hasValue={false} isMulti={false} isRtl={false} options={{...}} selectOption={[Function]} setValue={[Function]} selectProps={{...}} theme={{...}} innerRef={[Function]} innerProps={{...}} isDisabled={false} isFocused={false} menuIsOpen={false}>
+                                                                                        <EmotionCssPropInternal css={{...}} className=\\"\\" onMouseDown={[Function]} onTouchEnd={[Function]} __EMOTION_TYPE_PLEASE_DO_NOT_USE__=\\"div\\" __EMOTION_LABEL_PLEASE_DO_NOT_USE__=\\"Control\\">
+                                                                                          <div className=\\" css-5duvv3-control\\" onMouseDown={[Function]} onTouchEnd={[Function]}>
+                                                                                            <ValueContainer cx={[Function: bound classNames]} clearValue={[Function]} getStyles={[Function]} getValue={[Function: getValue]} hasValue={false} isMulti={false} isRtl={false} options={{...}} selectOption={[Function]} setValue={[Function]} selectProps={{...}} theme={{...}} isDisabled={false}>
+                                                                                              <EmotionCssPropInternal css={{...}} className=\\"\\" __EMOTION_TYPE_PLEASE_DO_NOT_USE__=\\"div\\">
+                                                                                                <div className=\\" css-1hwfws3\\">
+                                                                                                  <Placeholder cx={[Function: bound classNames]} clearValue={[Function]} getStyles={[Function]} getValue={[Function: getValue]} hasValue={false} isMulti={false} isRtl={false} options={{...}} selectOption={[Function]} setValue={[Function]} selectProps={{...}} theme={{...}} isDisabled={false} isFocused={false}>
+                                                                                                    <EmotionCssPropInternal css={{...}} className=\\"\\" __EMOTION_TYPE_PLEASE_DO_NOT_USE__=\\"div\\" __EMOTION_LABEL_PLEASE_DO_NOT_USE__=\\"Placeholder\\">
+                                                                                                      <div className=\\" css-9z6slu-placeholder\\">
+                                                                                                        Category
+                                                                                                      </div>
+                                                                                                    </EmotionCssPropInternal>
+                                                                                                  </Placeholder>
+                                                                                                  <Input autoCapitalize=\\"none\\" autoComplete=\\"off\\" autoCorrect=\\"off\\" cx={[Function: bound classNames]} getStyles={[Function]} id=\\"react-select-2-input\\" innerRef={[Function]} isDisabled={false} isHidden={false} onBlur={[Function]} onChange={[Function]} onFocus={[Function]} selectProps={{...}} spellCheck=\\"false\\" tabIndex=\\"0\\" theme={{...}} type=\\"text\\" value=\\"\\" aria-autocomplete=\\"list\\" aria-label={[undefined]} aria-labelledby={[undefined]}>
+                                                                                                    <EmotionCssPropInternal css={{...}} __EMOTION_TYPE_PLEASE_DO_NOT_USE__=\\"div\\" __EMOTION_LABEL_PLEASE_DO_NOT_USE__=\\"Input\\">
+                                                                                                      <div className=\\"css-1au3la4-Input\\">
+                                                                                                        <AutosizeInput className=\\"\\" inputRef={[Function]} inputStyle={{...}} disabled={false} autoCapitalize=\\"none\\" autoComplete=\\"off\\" autoCorrect=\\"off\\" id=\\"react-select-2-input\\" onBlur={[Function]} onChange={[Function]} onFocus={[Function]} spellCheck=\\"false\\" tabIndex=\\"0\\" type=\\"text\\" value=\\"\\" aria-autocomplete=\\"list\\" aria-label={[undefined]} aria-labelledby={[undefined]} minWidth={1} injectStyles={true}>
+                                                                                                          <div className=\\"\\" style={{...}}>
+                                                                                                            <input className={[undefined]} disabled={false} autoCapitalize=\\"none\\" autoComplete=\\"off\\" autoCorrect=\\"off\\" id=\\"react-select-2-input\\" onBlur={[Function]} onChange={[Function]} onFocus={[Function]} spellCheck=\\"false\\" tabIndex=\\"0\\" type=\\"text\\" value=\\"\\" aria-autocomplete=\\"list\\" aria-label={[undefined]} aria-labelledby={[undefined]} style={{...}} />
+                                                                                                            <div style={{...}} />
+                                                                                                          </div>
+                                                                                                        </AutosizeInput>
+                                                                                                      </div>
+                                                                                                    </EmotionCssPropInternal>
+                                                                                                  </Input>
+                                                                                                </div>
+                                                                                              </EmotionCssPropInternal>
+                                                                                            </ValueContainer>
+                                                                                            <IndicatorsContainer cx={[Function: bound classNames]} clearValue={[Function]} getStyles={[Function]} getValue={[Function: getValue]} hasValue={false} isMulti={false} isRtl={false} options={{...}} selectOption={[Function]} setValue={[Function]} selectProps={{...}} theme={{...}} isDisabled={false}>
+                                                                                              <EmotionCssPropInternal css={{...}} className=\\"\\" __EMOTION_TYPE_PLEASE_DO_NOT_USE__=\\"div\\" __EMOTION_LABEL_PLEASE_DO_NOT_USE__=\\"IndicatorsContainer\\">
+                                                                                                <div className=\\" css-1g48xl4-IndicatorsContainer\\">
+                                                                                                  <IndicatorSeparator cx={[Function: bound classNames]} clearValue={[Function]} getStyles={[Function]} getValue={[Function: getValue]} hasValue={false} isMulti={false} isRtl={false} options={{...}} selectOption={[Function]} setValue={[Function]} selectProps={{...}} theme={{...}} isDisabled={false} isFocused={false}>
+                                                                                                    <EmotionCssPropInternal css={{...}} className=\\"\\" __EMOTION_TYPE_PLEASE_DO_NOT_USE__=\\"span\\" __EMOTION_LABEL_PLEASE_DO_NOT_USE__=\\"IndicatorSeparator\\">
+                                                                                                      <span className=\\" css-1okebmr-indicatorSeparator\\" />
+                                                                                                    </EmotionCssPropInternal>
+                                                                                                  </IndicatorSeparator>
+                                                                                                  <DropdownIndicator cx={[Function: bound classNames]} clearValue={[Function]} getStyles={[Function]} getValue={[Function: getValue]} hasValue={false} isMulti={false} isRtl={false} options={{...}} selectOption={[Function]} setValue={[Function]} selectProps={{...}} theme={{...}} innerProps={{...}} isDisabled={false} isFocused={false}>
+                                                                                                    <EmotionCssPropInternal onMouseDown={[Function]} onTouchEnd={[Function]} aria-hidden=\\"true\\" css={{...}} className=\\"\\" __EMOTION_TYPE_PLEASE_DO_NOT_USE__=\\"div\\" __EMOTION_LABEL_PLEASE_DO_NOT_USE__=\\"DropdownIndicator\\">
+                                                                                                      <div onMouseDown={[Function]} onTouchEnd={[Function]} aria-hidden=\\"true\\" className=\\" css-tlfecz-indicatorContainer\\">
+                                                                                                        <DownChevron>
+                                                                                                          <Svg size={20}>
+                                                                                                            <EmotionCssPropInternal height={20} width={20} viewBox=\\"0 0 20 20\\" aria-hidden=\\"true\\" focusable=\\"false\\" css={{...}} __EMOTION_TYPE_PLEASE_DO_NOT_USE__=\\"svg\\" __EMOTION_LABEL_PLEASE_DO_NOT_USE__=\\"Svg\\">
+                                                                                                              <svg height={20} width={20} viewBox=\\"0 0 20 20\\" aria-hidden=\\"true\\" focusable=\\"false\\" className=\\"css-tj5bde-Svg\\">
+                                                                                                                <path d=\\"M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z\\" />
+                                                                                                              </svg>
+                                                                                                            </EmotionCssPropInternal>
+                                                                                                          </Svg>
+                                                                                                        </DownChevron>
+                                                                                                      </div>
+                                                                                                    </EmotionCssPropInternal>
+                                                                                                  </DropdownIndicator>
+                                                                                                </div>
+                                                                                              </EmotionCssPropInternal>
+                                                                                            </IndicatorsContainer>
+                                                                                          </div>
+                                                                                        </EmotionCssPropInternal>
+                                                                                      </Control>
+                                                                                      <input name=\\"categoryId\\" type=\\"hidden\\" value=\\"\\" />
+                                                                                    </div>
+                                                                                  </EmotionCssPropInternal>
+                                                                                </SelectContainer>
+                                                                              </Select>
+                                                                            </StateManager>
+                                                                          </div>
+                                                                        </AutoComplete>
+                                                                        <WithStyles(ForwardRef(FormControlLabel)) control={{...}} label=\\"Apply category to all transactions with the same description\\">
+                                                                          <ForwardRef(FormControlLabel) classes={{...}} control={{...}} label=\\"Apply category to all transactions with the same description\\">
+                                                                            <label className=\\"MuiFormControlLabel-root\\">
+                                                                              <WithStyles(ForwardRef(Checkbox)) checked={true} onChange={[Function]} name=\\"createAndApplyRule\\" value={true} disabled={[undefined]}>
+                                                                                <ForwardRef(Checkbox) classes={{...}} checked={true} onChange={[Function]} name=\\"createAndApplyRule\\" value={true} disabled={[undefined]}>
+                                                                                  <WithStyles(ForwardRef(SwitchBase)) type=\\"checkbox\\" checkedIcon={{...}} classes={{...}} color=\\"secondary\\" inputProps={{...}} icon={{...}} checked={true} onChange={[Function]} name=\\"createAndApplyRule\\" value={true} disabled={[undefined]}>
+                                                                                    <ForwardRef(SwitchBase) classes={{...}} type=\\"checkbox\\" checkedIcon={{...}} color=\\"secondary\\" inputProps={{...}} icon={{...}} checked={true} onChange={[Function]} name=\\"createAndApplyRule\\" value={true} disabled={[undefined]}>
+                                                                                      <WithStyles(ForwardRef(IconButton)) component=\\"span\\" className=\\"PrivateSwitchBase-root-293 MuiCheckbox-root MuiCheckbox-colorSecondary PrivateSwitchBase-checked-294 Mui-checked\\" disabled={[undefined]} tabIndex={{...}} role={[undefined]} onFocus={[Function: handleFocus]} onBlur={[Function: handleBlur]} color=\\"secondary\\">
+                                                                                        <ForwardRef(IconButton) classes={{...}} component=\\"span\\" className=\\"PrivateSwitchBase-root-293 MuiCheckbox-root MuiCheckbox-colorSecondary PrivateSwitchBase-checked-294 Mui-checked\\" disabled={[undefined]} tabIndex={{...}} role={[undefined]} onFocus={[Function: handleFocus]} onBlur={[Function: handleBlur]} color=\\"secondary\\">
+                                                                                          <WithStyles(ForwardRef(ButtonBase)) className=\\"MuiIconButton-root PrivateSwitchBase-root-293 MuiCheckbox-root MuiCheckbox-colorSecondary PrivateSwitchBase-checked-294 Mui-checked MuiIconButton-colorSecondary\\" centerRipple={true} focusRipple={true} disabled={false} component=\\"span\\" tabIndex={{...}} role={[undefined]} onFocus={[Function: handleFocus]} onBlur={[Function: handleBlur]}>
+                                                                                            <ForwardRef(ButtonBase) classes={{...}} className=\\"MuiIconButton-root PrivateSwitchBase-root-293 MuiCheckbox-root MuiCheckbox-colorSecondary PrivateSwitchBase-checked-294 Mui-checked MuiIconButton-colorSecondary\\" centerRipple={true} focusRipple={true} disabled={false} component=\\"span\\" tabIndex={{...}} role={[undefined]} onFocus={[Function: handleFocus]} onBlur={[Function: handleBlur]}>
+                                                                                              <span className=\\"MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-293 MuiCheckbox-root MuiCheckbox-colorSecondary PrivateSwitchBase-checked-294 Mui-checked MuiIconButton-colorSecondary\\" onBlur={[Function]} onClick={[undefined]} onFocus={[Function]} onKeyDown={[Function]} onKeyUp={[Function]} onMouseDown={[Function]} onMouseLeave={[Function]} onMouseUp={[Function]} onDragLeave={[Function]} onTouchEnd={[Function]} onTouchMove={[Function]} onTouchStart={[Function]} tabIndex={{...}} role={[undefined]} aria-disabled={false}>
+                                                                                                <span className=\\"MuiIconButton-label\\">
+                                                                                                  <input autoFocus={[undefined]} checked={true} defaultChecked={[undefined]} className=\\"PrivateSwitchBase-input-296\\" disabled={[undefined]} id={[undefined]} name=\\"createAndApplyRule\\" onChange={[Function: handleInputChange]} readOnly={[undefined]} required={[undefined]} tabIndex={[undefined]} type=\\"checkbox\\" value={true} data-indeterminate={false} />
+                                                                                                  <ForwardRef>
+                                                                                                    <WithStyles(ForwardRef(SvgIcon))>
+                                                                                                      <ForwardRef(SvgIcon) classes={{...}}>
+                                                                                                        <svg className=\\"MuiSvgIcon-root\\" focusable=\\"false\\" viewBox=\\"0 0 24 24\\" color={[undefined]} aria-hidden=\\"true\\" role=\\"presentation\\">
+                                                                                                          <path d=\\"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\\" />
+                                                                                                        </svg>
+                                                                                                      </ForwardRef(SvgIcon)>
+                                                                                                    </WithStyles(ForwardRef(SvgIcon))>
+                                                                                                  </ForwardRef>
+                                                                                                </span>
+                                                                                                <NoSsr>
+                                                                                                  <WithStyles(undefined) center={true}>
+                                                                                                    <ForwardRef(TouchRipple) classes={{...}} center={true}>
+                                                                                                      <span className=\\"MuiTouchRipple-root\\">
+                                                                                                        <TransitionGroup component={{...}} exit={true} childFactory={[Function: childFactory]} />
+                                                                                                      </span>
+                                                                                                    </ForwardRef(TouchRipple)>
+                                                                                                  </WithStyles(undefined)>
+                                                                                                </NoSsr>
+                                                                                              </span>
+                                                                                            </ForwardRef(ButtonBase)>
+                                                                                          </WithStyles(ForwardRef(ButtonBase))>
+                                                                                        </ForwardRef(IconButton)>
+                                                                                      </WithStyles(ForwardRef(IconButton))>
+                                                                                    </ForwardRef(SwitchBase)>
+                                                                                  </WithStyles(ForwardRef(SwitchBase))>
+                                                                                </ForwardRef(Checkbox)>
+                                                                              </WithStyles(ForwardRef(Checkbox))>
+                                                                              <WithStyles(ForwardRef(Typography)) component=\\"span\\" className=\\"MuiFormControlLabel-label\\">
+                                                                                <ForwardRef(Typography) classes={{...}} component=\\"span\\" className=\\"MuiFormControlLabel-label\\">
+                                                                                  <span className=\\"MuiTypography-root MuiFormControlLabel-label MuiTypography-body1\\">
+                                                                                    Apply category to all transactions with the same description
+                                                                                  </span>
+                                                                                </ForwardRef(Typography)>
+                                                                              </WithStyles(ForwardRef(Typography))>
+                                                                            </label>
+                                                                          </ForwardRef(FormControlLabel)>
+                                                                        </WithStyles(ForwardRef(FormControlLabel))>
+                                                                        <WithStyles(ForwardRef(TextField)) type=\\"number\\" label=\\"Amount\\" inputProps={{...}} className=\\"WithFormik(TransactionDialogComponent)-input-2\\" value={[undefined]} name=\\"amount\\" onChange={[Function]} error={[undefined]} helperText={[undefined]}>
+                                                                          <ForwardRef(TextField) classes={{...}} type=\\"number\\" label=\\"Amount\\" inputProps={{...}} className=\\"WithFormik(TransactionDialogComponent)-input-2\\" value={[undefined]} name=\\"amount\\" onChange={[Function]} error={[undefined]} helperText={[undefined]}>
+                                                                            <WithStyles(ForwardRef(FormControl)) className=\\"MuiTextField-root WithFormik(TransactionDialogComponent)-input-2\\" error={[undefined]} fullWidth={[undefined]} hiddenLabel={[undefined]} required={false} variant=\\"standard\\">
+                                                                              <ForwardRef(FormControl) classes={{...}} className=\\"MuiTextField-root WithFormik(TransactionDialogComponent)-input-2\\" error={[undefined]} fullWidth={[undefined]} hiddenLabel={[undefined]} required={false} variant=\\"standard\\">
+                                                                                <div className=\\"MuiFormControl-root MuiTextField-root WithFormik(TransactionDialogComponent)-input-2\\">
+                                                                                  <WithStyles(ForwardRef(InputLabel)) htmlFor={[undefined]}>
+                                                                                    <ForwardRef(InputLabel) classes={{...}} htmlFor={[undefined]}>
+                                                                                      <WithStyles(ForwardRef(FormLabel)) data-shrink={false} className=\\"MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated\\" classes={{...}} htmlFor={[undefined]}>
+                                                                                        <ForwardRef(FormLabel) classes={{...}} data-shrink={false} className=\\"MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated\\" htmlFor={[undefined]}>
+                                                                                          <label className=\\"MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated\\" data-shrink={false} htmlFor={[undefined]}>
+                                                                                            Amount
+                                                                                          </label>
+                                                                                        </ForwardRef(FormLabel)>
+                                                                                      </WithStyles(ForwardRef(FormLabel))>
+                                                                                    </ForwardRef(InputLabel)>
+                                                                                  </WithStyles(ForwardRef(InputLabel))>
+                                                                                  <WithStyles(ForwardRef(Input)) aria-describedby={[undefined]} autoComplete={[undefined]} autoFocus={[undefined]} defaultValue={[undefined]} fullWidth={[undefined]} multiline={[undefined]} name=\\"amount\\" rows={[undefined]} rowsMax={[undefined]} type=\\"number\\" value={[undefined]} id={[undefined]} inputRef={[undefined]} onBlur={[undefined]} onChange={[Function]} onFocus={[undefined]} placeholder={[undefined]} inputProps={{...}}>
+                                                                                    <ForwardRef(Input) classes={{...}} aria-describedby={[undefined]} autoComplete={[undefined]} autoFocus={[undefined]} defaultValue={[undefined]} fullWidth={[undefined]} multiline={[undefined]} name=\\"amount\\" rows={[undefined]} rowsMax={[undefined]} type=\\"number\\" value={[undefined]} id={[undefined]} inputRef={[undefined]} onBlur={[undefined]} onChange={[Function]} onFocus={[undefined]} placeholder={[undefined]} inputProps={{...}}>
+                                                                                      <WithStyles(ForwardRef(InputBase)) classes={{...}} fullWidth={false} inputComponent=\\"input\\" multiline={false} type=\\"number\\" aria-describedby={[undefined]} autoComplete={[undefined]} autoFocus={[undefined]} defaultValue={[undefined]} name=\\"amount\\" rows={[undefined]} rowsMax={[undefined]} value={[undefined]} id={[undefined]} inputRef={[undefined]} onBlur={[undefined]} onChange={[Function]} onFocus={[undefined]} placeholder={[undefined]} inputProps={{...}}>
+                                                                                        <ForwardRef(InputBase) classes={{...}} fullWidth={false} inputComponent=\\"input\\" multiline={false} type=\\"number\\" aria-describedby={[undefined]} autoComplete={[undefined]} autoFocus={[undefined]} defaultValue={[undefined]} name=\\"amount\\" rows={[undefined]} rowsMax={[undefined]} value={[undefined]} id={[undefined]} inputRef={[undefined]} onBlur={[undefined]} onChange={[Function]} onFocus={[undefined]} placeholder={[undefined]} inputProps={{...}}>
+                                                                                          <div className=\\"MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl\\" onClick={[Function: handleClick]}>
+                                                                                            <input aria-invalid={false} aria-describedby={[undefined]} autoComplete={[undefined]} autoFocus={[undefined]} className=\\"MuiInputBase-input MuiInput-input\\" defaultValue={[undefined]} disabled={false} id={[undefined]} name=\\"amount\\" onBlur={[Function: handleBlur]} onChange={[Function: handleChange]} onFocus={[Function: handleFocus]} onKeyDown={[undefined]} onKeyUp={[undefined]} placeholder={[undefined]} readOnly={[undefined]} required={false} rows={[undefined]} value={[undefined]} type=\\"number\\" aria-label=\\"Amount\\" step={0.01} min={-999999999.99} max={999999999.99} />
+                                                                                          </div>
+                                                                                        </ForwardRef(InputBase)>
+                                                                                      </WithStyles(ForwardRef(InputBase))>
+                                                                                    </ForwardRef(Input)>
+                                                                                  </WithStyles(ForwardRef(Input))>
+                                                                                </div>
+                                                                              </ForwardRef(FormControl)>
+                                                                            </WithStyles(ForwardRef(FormControl))>
+                                                                          </ForwardRef(TextField)>
+                                                                        </WithStyles(ForwardRef(TextField))>
+                                                                        <WithStyles(ForwardRef(TextField)) type=\\"date\\" label=\\"Date\\" InputLabelProps={{...}} name=\\"createdAt\\" className=\\"WithFormik(TransactionDialogComponent)-input-2\\" value=\\"2018-12-31\\" onChange={[Function]} error={[undefined]} helperText={[undefined]}>
+                                                                          <ForwardRef(TextField) classes={{...}} type=\\"date\\" label=\\"Date\\" InputLabelProps={{...}} name=\\"createdAt\\" className=\\"WithFormik(TransactionDialogComponent)-input-2\\" value=\\"2018-12-31\\" onChange={[Function]} error={[undefined]} helperText={[undefined]}>
+                                                                            <WithStyles(ForwardRef(FormControl)) className=\\"MuiTextField-root WithFormik(TransactionDialogComponent)-input-2\\" error={[undefined]} fullWidth={[undefined]} hiddenLabel={[undefined]} required={false} variant=\\"standard\\">
+                                                                              <ForwardRef(FormControl) classes={{...}} className=\\"MuiTextField-root WithFormik(TransactionDialogComponent)-input-2\\" error={[undefined]} fullWidth={[undefined]} hiddenLabel={[undefined]} required={false} variant=\\"standard\\">
+                                                                                <div className=\\"MuiFormControl-root MuiTextField-root WithFormik(TransactionDialogComponent)-input-2\\">
+                                                                                  <WithStyles(ForwardRef(InputLabel)) htmlFor={[undefined]} shrink={true} aria-label=\\"Date\\">
+                                                                                    <ForwardRef(InputLabel) classes={{...}} htmlFor={[undefined]} shrink={true} aria-label=\\"Date\\">
+                                                                                      <WithStyles(ForwardRef(FormLabel)) data-shrink={true} className=\\"MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink\\" classes={{...}} htmlFor={[undefined]} aria-label=\\"Date\\">
+                                                                                        <ForwardRef(FormLabel) classes={{...}} data-shrink={true} className=\\"MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink\\" htmlFor={[undefined]} aria-label=\\"Date\\">
+                                                                                          <label className=\\"MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled\\" data-shrink={true} htmlFor={[undefined]} aria-label=\\"Date\\">
+                                                                                            Date
+                                                                                          </label>
+                                                                                        </ForwardRef(FormLabel)>
+                                                                                      </WithStyles(ForwardRef(FormLabel))>
+                                                                                    </ForwardRef(InputLabel)>
+                                                                                  </WithStyles(ForwardRef(InputLabel))>
+                                                                                  <WithStyles(ForwardRef(Input)) aria-describedby={[undefined]} autoComplete={[undefined]} autoFocus={[undefined]} defaultValue={[undefined]} fullWidth={[undefined]} multiline={[undefined]} name=\\"createdAt\\" rows={[undefined]} rowsMax={[undefined]} type=\\"date\\" value=\\"2018-12-31\\" id={[undefined]} inputRef={[undefined]} onBlur={[undefined]} onChange={[Function]} onFocus={[undefined]} placeholder={[undefined]} inputProps={[undefined]}>
+                                                                                    <ForwardRef(Input) classes={{...}} aria-describedby={[undefined]} autoComplete={[undefined]} autoFocus={[undefined]} defaultValue={[undefined]} fullWidth={[undefined]} multiline={[undefined]} name=\\"createdAt\\" rows={[undefined]} rowsMax={[undefined]} type=\\"date\\" value=\\"2018-12-31\\" id={[undefined]} inputRef={[undefined]} onBlur={[undefined]} onChange={[Function]} onFocus={[undefined]} placeholder={[undefined]} inputProps={[undefined]}>
+                                                                                      <WithStyles(ForwardRef(InputBase)) classes={{...}} fullWidth={false} inputComponent=\\"input\\" multiline={false} type=\\"date\\" aria-describedby={[undefined]} autoComplete={[undefined]} autoFocus={[undefined]} defaultValue={[undefined]} name=\\"createdAt\\" rows={[undefined]} rowsMax={[undefined]} value=\\"2018-12-31\\" id={[undefined]} inputRef={[undefined]} onBlur={[undefined]} onChange={[Function]} onFocus={[undefined]} placeholder={[undefined]} inputProps={[undefined]}>
+                                                                                        <ForwardRef(InputBase) classes={{...}} fullWidth={false} inputComponent=\\"input\\" multiline={false} type=\\"date\\" aria-describedby={[undefined]} autoComplete={[undefined]} autoFocus={[undefined]} defaultValue={[undefined]} name=\\"createdAt\\" rows={[undefined]} rowsMax={[undefined]} value=\\"2018-12-31\\" id={[undefined]} inputRef={[undefined]} onBlur={[undefined]} onChange={[Function]} onFocus={[undefined]} placeholder={[undefined]} inputProps={[undefined]}>
+                                                                                          <div className=\\"MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl\\" onClick={[Function: handleClick]}>
+                                                                                            <input aria-invalid={false} aria-describedby={[undefined]} autoComplete={[undefined]} autoFocus={[undefined]} className=\\"MuiInputBase-input MuiInput-input\\" defaultValue={[undefined]} disabled={false} id={[undefined]} name=\\"createdAt\\" onBlur={[Function: handleBlur]} onChange={[Function: handleChange]} onFocus={[Function: handleFocus]} onKeyDown={[undefined]} onKeyUp={[undefined]} placeholder={[undefined]} readOnly={[undefined]} required={false} rows={[undefined]} value=\\"2018-12-31\\" type=\\"date\\" />
+                                                                                          </div>
+                                                                                        </ForwardRef(InputBase)>
+                                                                                      </WithStyles(ForwardRef(InputBase))>
+                                                                                    </ForwardRef(Input)>
+                                                                                  </WithStyles(ForwardRef(Input))>
+                                                                                </div>
+                                                                              </ForwardRef(FormControl)>
+                                                                            </WithStyles(ForwardRef(FormControl))>
+                                                                          </ForwardRef(TextField)>
+                                                                        </WithStyles(ForwardRef(TextField))>
+                                                                      </div>
+                                                                    </ForwardRef(Grid)>
+                                                                  </WithStyles(ForwardRef(Grid))>
+                                                                </div>
+                                                              </ForwardRef(Grid)>
+                                                            </WithStyles(ForwardRef(Grid))>
+                                                          </div>
+                                                        </ForwardRef(DialogContent)>
+                                                      </WithStyles(ForwardRef(DialogContent))>
+                                                      <WithStyles(ForwardRef(Divider))>
+                                                        <ForwardRef(Divider) classes={{...}}>
+                                                          <hr className=\\"MuiDivider-root\\" role={[undefined]} />
+                                                        </ForwardRef(Divider)>
+                                                      </WithStyles(ForwardRef(Divider))>
+                                                      <WithStyles(ForwardRef(DialogActions)) className=\\"makeStyles-formFooter-7\\">
+                                                        <ForwardRef(DialogActions) classes={{...}} className=\\"makeStyles-formFooter-7\\">
+                                                          <div className=\\"MuiDialogActions-root makeStyles-formFooter-7 MuiDialogActions-spacing\\">
+                                                            <WithStyles(ForwardRef(Button)) type=\\"submit\\" color=\\"secondary\\">
+                                                              <ForwardRef(Button) classes={{...}} type=\\"submit\\" color=\\"secondary\\">
+                                                                <WithStyles(ForwardRef(ButtonBase)) className=\\"MuiButton-root MuiButton-text MuiButton-textSecondary\\" component=\\"button\\" disabled={false} focusRipple={true} focusVisibleClassName=\\"Mui-focusVisible\\" type=\\"submit\\">
+                                                                  <ForwardRef(ButtonBase) classes={{...}} className=\\"MuiButton-root MuiButton-text MuiButton-textSecondary\\" component=\\"button\\" disabled={false} focusRipple={true} focusVisibleClassName=\\"Mui-focusVisible\\" type=\\"submit\\">
+                                                                    <button className=\\"MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary\\" onBlur={[Function]} onClick={[undefined]} onFocus={[Function]} onKeyDown={[Function]} onKeyUp={[Function]} onMouseDown={[Function]} onMouseLeave={[Function]} onMouseUp={[Function]} onDragLeave={[Function]} onTouchEnd={[Function]} onTouchMove={[Function]} onTouchStart={[Function]} tabIndex={0} type=\\"submit\\" disabled={false}>
+                                                                      <span className=\\"MuiButton-label\\">
+                                                                        Save
                                                                       </span>
                                                                       <NoSsr>
-                                                                        <WithStyles(undefined) center={true}>
-                                                                          <ForwardRef(TouchRipple) classes={{...}} center={true}>
+                                                                        <WithStyles(undefined) center={false}>
+                                                                          <ForwardRef(TouchRipple) classes={{...}} center={false}>
                                                                             <span className=\\"MuiTouchRipple-root\\">
                                                                               <TransitionGroup component={{...}} exit={true} childFactory={[Function: childFactory]} />
                                                                             </span>
@@ -76,336 +382,28 @@ exports[`ConfirmDialog matches snapshot 1`] = `
                                                                     </button>
                                                                   </ForwardRef(ButtonBase)>
                                                                 </WithStyles(ForwardRef(ButtonBase))>
-                                                              </ForwardRef(IconButton)>
-                                                            </WithStyles(ForwardRef(IconButton))>
+                                                              </ForwardRef(Button)>
+                                                            </WithStyles(ForwardRef(Button))>
                                                           </div>
-                                                        </ForwardRef(DialogTitle)>
-                                                      </WithStyles(ForwardRef(DialogTitle))>
-                                                      <form onSubmit={[Function]}>
-                                                        <WithStyles(ForwardRef(DialogContent))>
-                                                          <ForwardRef(DialogContent) classes={{...}}>
-                                                            <div className=\\"MuiDialogContent-root\\">
-                                                              <WithStyles(ForwardRef(Grid)) container={true}>
-                                                                <ForwardRef(Grid) classes={{...}} container={true}>
-                                                                  <div className=\\"MuiGrid-root MuiGrid-container\\">
-                                                                    <WithStyles(ForwardRef(Grid)) item={true} xs={12}>
-                                                                      <ForwardRef(Grid) classes={{...}} item={true} xs={12}>
-                                                                        <div className=\\"MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12\\">
-                                                                          <WithStyles(ForwardRef(TextField)) label=\\"Description\\" inputProps={{...}} className=\\"WithFormik(TransactionDialogComponent)-input-2\\" value={[undefined]} name=\\"description\\" onChange={[Function]} error={[undefined]} helperText={[undefined]}>
-                                                                            <ForwardRef(TextField) classes={{...}} label=\\"Description\\" inputProps={{...}} className=\\"WithFormik(TransactionDialogComponent)-input-2\\" value={[undefined]} name=\\"description\\" onChange={[Function]} error={[undefined]} helperText={[undefined]}>
-                                                                              <WithStyles(ForwardRef(FormControl)) className=\\"MuiTextField-root WithFormik(TransactionDialogComponent)-input-2\\" error={[undefined]} fullWidth={[undefined]} hiddenLabel={[undefined]} required={false} variant=\\"standard\\">
-                                                                                <ForwardRef(FormControl) classes={{...}} className=\\"MuiTextField-root WithFormik(TransactionDialogComponent)-input-2\\" error={[undefined]} fullWidth={[undefined]} hiddenLabel={[undefined]} required={false} variant=\\"standard\\">
-                                                                                  <div className=\\"MuiFormControl-root MuiTextField-root WithFormik(TransactionDialogComponent)-input-2\\">
-                                                                                    <WithStyles(ForwardRef(InputLabel)) htmlFor={[undefined]}>
-                                                                                      <ForwardRef(InputLabel) classes={{...}} htmlFor={[undefined]}>
-                                                                                        <WithStyles(ForwardRef(FormLabel)) data-shrink={false} className=\\"MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated\\" classes={{...}} htmlFor={[undefined]}>
-                                                                                          <ForwardRef(FormLabel) classes={{...}} data-shrink={false} className=\\"MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated\\" htmlFor={[undefined]}>
-                                                                                            <label className=\\"MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated\\" data-shrink={false} htmlFor={[undefined]}>
-                                                                                              Description
-                                                                                            </label>
-                                                                                          </ForwardRef(FormLabel)>
-                                                                                        </WithStyles(ForwardRef(FormLabel))>
-                                                                                      </ForwardRef(InputLabel)>
-                                                                                    </WithStyles(ForwardRef(InputLabel))>
-                                                                                    <WithStyles(ForwardRef(Input)) aria-describedby={[undefined]} autoComplete={[undefined]} autoFocus={[undefined]} defaultValue={[undefined]} fullWidth={[undefined]} multiline={[undefined]} name=\\"description\\" rows={[undefined]} rowsMax={[undefined]} type={[undefined]} value={[undefined]} id={[undefined]} inputRef={[undefined]} onBlur={[undefined]} onChange={[Function]} onFocus={[undefined]} placeholder={[undefined]} inputProps={{...}}>
-                                                                                      <ForwardRef(Input) classes={{...}} aria-describedby={[undefined]} autoComplete={[undefined]} autoFocus={[undefined]} defaultValue={[undefined]} fullWidth={[undefined]} multiline={[undefined]} name=\\"description\\" rows={[undefined]} rowsMax={[undefined]} type={[undefined]} value={[undefined]} id={[undefined]} inputRef={[undefined]} onBlur={[undefined]} onChange={[Function]} onFocus={[undefined]} placeholder={[undefined]} inputProps={{...}}>
-                                                                                        <WithStyles(ForwardRef(InputBase)) classes={{...}} fullWidth={false} inputComponent=\\"input\\" multiline={false} type=\\"text\\" aria-describedby={[undefined]} autoComplete={[undefined]} autoFocus={[undefined]} defaultValue={[undefined]} name=\\"description\\" rows={[undefined]} rowsMax={[undefined]} value={[undefined]} id={[undefined]} inputRef={[undefined]} onBlur={[undefined]} onChange={[Function]} onFocus={[undefined]} placeholder={[undefined]} inputProps={{...}}>
-                                                                                          <ForwardRef(InputBase) classes={{...}} fullWidth={false} inputComponent=\\"input\\" multiline={false} type=\\"text\\" aria-describedby={[undefined]} autoComplete={[undefined]} autoFocus={[undefined]} defaultValue={[undefined]} name=\\"description\\" rows={[undefined]} rowsMax={[undefined]} value={[undefined]} id={[undefined]} inputRef={[undefined]} onBlur={[undefined]} onChange={[Function]} onFocus={[undefined]} placeholder={[undefined]} inputProps={{...}}>
-                                                                                            <div className=\\"MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl\\" onClick={[Function: handleClick]}>
-                                                                                              <input aria-invalid={false} aria-describedby={[undefined]} autoComplete={[undefined]} autoFocus={[undefined]} className=\\"MuiInputBase-input MuiInput-input\\" defaultValue={[undefined]} disabled={false} id={[undefined]} name=\\"description\\" onBlur={[Function: handleBlur]} onChange={[Function: handleChange]} onFocus={[Function: handleFocus]} onKeyDown={[undefined]} onKeyUp={[undefined]} placeholder={[undefined]} readOnly={[undefined]} required={false} rows={[undefined]} value={[undefined]} type=\\"text\\" aria-label=\\"Description\\" maxLength={150} />
-                                                                                            </div>
-                                                                                          </ForwardRef(InputBase)>
-                                                                                        </WithStyles(ForwardRef(InputBase))>
-                                                                                      </ForwardRef(Input)>
-                                                                                    </WithStyles(ForwardRef(Input))>
-                                                                                  </div>
-                                                                                </ForwardRef(FormControl)>
-                                                                              </WithStyles(ForwardRef(FormControl))>
-                                                                            </ForwardRef(TextField)>
-                                                                          </WithStyles(ForwardRef(TextField))>
-                                                                          <AutoComplete className=\\"WithFormik(TransactionDialogComponent)-input-2\\" label={{...}} placeholder=\\"Category\\" name=\\"categoryId\\" value={{...}} options={{...}} onChange={[Function]} error={[undefined]} helperText={[undefined]} styles={{...}} isClearable={true} async={false} creatable={false} loadOptions={[undefined]}>
-                                                                            <div className=\\"WithFormik(TransactionDialogComponent)-input-2\\">
-                                                                              <WithStyles(ForwardRef(Typography)) variant=\\"caption\\" color=\\"textSecondary\\">
-                                                                                <ForwardRef(Typography) classes={{...}} variant=\\"caption\\" color=\\"textSecondary\\">
-                                                                                  <span className=\\"MuiTypography-root MuiTypography-caption MuiTypography-colorTextSecondary\\">
-                                                                                    <div>
-                                                                                      Category
-                                                                                      <WithStyles(ForwardRef(Button)) size=\\"small\\" color=\\"secondary\\" component={{...}} className=\\"WithFormik(TransactionDialogComponent)-manageCategoriesLink-3\\">
-                                                                                        <ForwardRef(Button) classes={{...}} size=\\"small\\" color=\\"secondary\\" component={{...}} className=\\"WithFormik(TransactionDialogComponent)-manageCategoriesLink-3\\">
-                                                                                          <WithStyles(ForwardRef(ButtonBase)) className=\\"MuiButton-root WithFormik(TransactionDialogComponent)-manageCategoriesLink-3 MuiButton-text MuiButton-textSecondary MuiButton-sizeSmall\\" component={{...}} disabled={false} focusRipple={true} focusVisibleClassName=\\"Mui-focusVisible\\" type=\\"button\\">
-                                                                                            <ForwardRef(ButtonBase) classes={{...}} className=\\"MuiButton-root WithFormik(TransactionDialogComponent)-manageCategoriesLink-3 MuiButton-text MuiButton-textSecondary MuiButton-sizeSmall\\" component={{...}} disabled={false} focusRipple={true} focusVisibleClassName=\\"Mui-focusVisible\\" type=\\"button\\">
-                                                                                              <ForwardRef className=\\"MuiButtonBase-root MuiButton-root WithFormik(TransactionDialogComponent)-manageCategoriesLink-3 MuiButton-text MuiButton-textSecondary MuiButton-sizeSmall\\" onBlur={[Function]} onClick={[undefined]} onFocus={[Function]} onKeyDown={[Function]} onKeyUp={[Function]} onMouseDown={[Function]} onMouseLeave={[Function]} onMouseUp={[Function]} onDragLeave={[Function]} onTouchEnd={[Function]} onTouchMove={[Function]} onTouchStart={[Function]} tabIndex={0} role=\\"button\\" aria-disabled={false}>
-                                                                                                <Link to=\\"/budget-categories\\" className=\\"MuiButtonBase-root MuiButton-root WithFormik(TransactionDialogComponent)-manageCategoriesLink-3 MuiButton-text MuiButton-textSecondary MuiButton-sizeSmall\\" onBlur={[Function]} onClick={[undefined]} onFocus={[Function]} onKeyDown={[Function]} onKeyUp={[Function]} onMouseDown={[Function]} onMouseLeave={[Function]} onMouseUp={[Function]} onDragLeave={[Function]} onTouchEnd={[Function]} onTouchMove={[Function]} onTouchStart={[Function]} tabIndex={0} role=\\"button\\" aria-disabled={false} innerRef={[Function]}>
-                                                                                                  <a className=\\"MuiButtonBase-root MuiButton-root WithFormik(TransactionDialogComponent)-manageCategoriesLink-3 MuiButton-text MuiButton-textSecondary MuiButton-sizeSmall\\" onBlur={[Function]} onClick={[Function: onClick]} onFocus={[Function]} onKeyDown={[Function]} onKeyUp={[Function]} onMouseDown={[Function]} onMouseLeave={[Function]} onMouseUp={[Function]} onDragLeave={[Function]} onTouchEnd={[Function]} onTouchMove={[Function]} onTouchStart={[Function]} tabIndex={0} role=\\"button\\" aria-disabled={false} href=\\"/budget-categories\\">
-                                                                                                    <span className=\\"MuiButton-label\\">
-                                                                                                      Manage categories
-                                                                                                    </span>
-                                                                                                    <NoSsr>
-                                                                                                      <WithStyles(undefined) center={false}>
-                                                                                                        <ForwardRef(TouchRipple) classes={{...}} center={false}>
-                                                                                                          <span className=\\"MuiTouchRipple-root\\">
-                                                                                                            <TransitionGroup component={{...}} exit={true} childFactory={[Function: childFactory]} />
-                                                                                                          </span>
-                                                                                                        </ForwardRef(TouchRipple)>
-                                                                                                      </WithStyles(undefined)>
-                                                                                                    </NoSsr>
-                                                                                                  </a>
-                                                                                                </Link>
-                                                                                              </ForwardRef>
-                                                                                            </ForwardRef(ButtonBase)>
-                                                                                          </WithStyles(ForwardRef(ButtonBase))>
-                                                                                        </ForwardRef(Button)>
-                                                                                      </WithStyles(ForwardRef(Button))>
-                                                                                    </div>
-                                                                                  </span>
-                                                                                </ForwardRef(Typography)>
-                                                                              </WithStyles(ForwardRef(Typography))>
-                                                                              <StateManager defaultValue={{...}} options={{...}} onChange={[Function: onChange]} placeholder=\\"Category\\" name=\\"categoryId\\" value={{...}} styles={{...}} isClearable={true} defaultInputValue=\\"\\" defaultMenuIsOpen={false}>
-                                                                                <Select options={{...}} onChange={[Function]} placeholder=\\"Category\\" name=\\"categoryId\\" value={{...}} styles={{...}} isClearable={true} inputValue=\\"\\" menuIsOpen={false} onInputChange={[Function]} onMenuClose={[Function]} onMenuOpen={[Function]} backspaceRemovesValue={true} blurInputOnSelect={true} captureMenuScroll={false} closeMenuOnSelect={true} closeMenuOnScroll={false} components={{...}} controlShouldRenderValue={true} escapeClearsValue={false} filterOption={[Function]} formatGroupLabel={[Function: formatGroupLabel]} getOptionLabel={[Function: getOptionLabel]} getOptionValue={[Function: getOptionValue]} isDisabled={false} isLoading={false} isMulti={false} isRtl={false} isSearchable={true} isOptionDisabled={[Function: isOptionDisabled]} loadingMessage={[Function: loadingMessage]} maxMenuHeight={300} minMenuHeight={140} menuPlacement=\\"bottom\\" menuPosition=\\"absolute\\" menuShouldBlockScroll={false} menuShouldScrollIntoView={true} noOptionsMessage={[Function: noOptionsMessage]} openMenuOnFocus={false} openMenuOnClick={true} pageSize={5} screenReaderStatus={[Function: screenReaderStatus]} tabIndex=\\"0\\" tabSelectsValue={true}>
-                                                                                  <SelectContainer cx={[Function: bound classNames]} clearValue={[Function]} getStyles={[Function]} getValue={[Function: getValue]} hasValue={false} isMulti={false} isRtl={false} options={{...}} selectOption={[Function]} setValue={[Function]} selectProps={{...}} theme={{...}} className={[undefined]} innerProps={{...}} isDisabled={false} isFocused={false}>
-                                                                                    <EmotionCssPropInternal css={{...}} className=\\"\\" id={[undefined]} onKeyDown={[Function]} __EMOTION_TYPE_PLEASE_DO_NOT_USE__=\\"div\\" __EMOTION_LABEL_PLEASE_DO_NOT_USE__=\\"SelectContainer\\">
-                                                                                      <div className=\\" css-2b097c-container\\" id={[undefined]} onKeyDown={[Function]}>
-                                                                                        <Control cx={[Function: bound classNames]} clearValue={[Function]} getStyles={[Function]} getValue={[Function: getValue]} hasValue={false} isMulti={false} isRtl={false} options={{...}} selectOption={[Function]} setValue={[Function]} selectProps={{...}} theme={{...}} innerRef={[Function]} innerProps={{...}} isDisabled={false} isFocused={false} menuIsOpen={false}>
-                                                                                          <EmotionCssPropInternal css={{...}} className=\\"\\" onMouseDown={[Function]} onTouchEnd={[Function]} __EMOTION_TYPE_PLEASE_DO_NOT_USE__=\\"div\\" __EMOTION_LABEL_PLEASE_DO_NOT_USE__=\\"Control\\">
-                                                                                            <div className=\\" css-5duvv3-control\\" onMouseDown={[Function]} onTouchEnd={[Function]}>
-                                                                                              <ValueContainer cx={[Function: bound classNames]} clearValue={[Function]} getStyles={[Function]} getValue={[Function: getValue]} hasValue={false} isMulti={false} isRtl={false} options={{...}} selectOption={[Function]} setValue={[Function]} selectProps={{...}} theme={{...}} isDisabled={false}>
-                                                                                                <EmotionCssPropInternal css={{...}} className=\\"\\" __EMOTION_TYPE_PLEASE_DO_NOT_USE__=\\"div\\">
-                                                                                                  <div className=\\" css-1hwfws3\\">
-                                                                                                    <Placeholder cx={[Function: bound classNames]} clearValue={[Function]} getStyles={[Function]} getValue={[Function: getValue]} hasValue={false} isMulti={false} isRtl={false} options={{...}} selectOption={[Function]} setValue={[Function]} selectProps={{...}} theme={{...}} isDisabled={false} isFocused={false}>
-                                                                                                      <EmotionCssPropInternal css={{...}} className=\\"\\" __EMOTION_TYPE_PLEASE_DO_NOT_USE__=\\"div\\" __EMOTION_LABEL_PLEASE_DO_NOT_USE__=\\"Placeholder\\">
-                                                                                                        <div className=\\" css-9z6slu-placeholder\\">
-                                                                                                          Category
-                                                                                                        </div>
-                                                                                                      </EmotionCssPropInternal>
-                                                                                                    </Placeholder>
-                                                                                                    <Input autoCapitalize=\\"none\\" autoComplete=\\"off\\" autoCorrect=\\"off\\" cx={[Function: bound classNames]} getStyles={[Function]} id=\\"react-select-2-input\\" innerRef={[Function]} isDisabled={false} isHidden={false} onBlur={[Function]} onChange={[Function]} onFocus={[Function]} selectProps={{...}} spellCheck=\\"false\\" tabIndex=\\"0\\" theme={{...}} type=\\"text\\" value=\\"\\" aria-autocomplete=\\"list\\" aria-label={[undefined]} aria-labelledby={[undefined]}>
-                                                                                                      <EmotionCssPropInternal css={{...}} __EMOTION_TYPE_PLEASE_DO_NOT_USE__=\\"div\\" __EMOTION_LABEL_PLEASE_DO_NOT_USE__=\\"Input\\">
-                                                                                                        <div className=\\"css-1au3la4-Input\\">
-                                                                                                          <AutosizeInput className=\\"\\" inputRef={[Function]} inputStyle={{...}} disabled={false} autoCapitalize=\\"none\\" autoComplete=\\"off\\" autoCorrect=\\"off\\" id=\\"react-select-2-input\\" onBlur={[Function]} onChange={[Function]} onFocus={[Function]} spellCheck=\\"false\\" tabIndex=\\"0\\" type=\\"text\\" value=\\"\\" aria-autocomplete=\\"list\\" aria-label={[undefined]} aria-labelledby={[undefined]} minWidth={1} injectStyles={true}>
-                                                                                                            <div className=\\"\\" style={{...}}>
-                                                                                                              <input className={[undefined]} disabled={false} autoCapitalize=\\"none\\" autoComplete=\\"off\\" autoCorrect=\\"off\\" id=\\"react-select-2-input\\" onBlur={[Function]} onChange={[Function]} onFocus={[Function]} spellCheck=\\"false\\" tabIndex=\\"0\\" type=\\"text\\" value=\\"\\" aria-autocomplete=\\"list\\" aria-label={[undefined]} aria-labelledby={[undefined]} style={{...}} />
-                                                                                                              <div style={{...}} />
-                                                                                                            </div>
-                                                                                                          </AutosizeInput>
-                                                                                                        </div>
-                                                                                                      </EmotionCssPropInternal>
-                                                                                                    </Input>
-                                                                                                  </div>
-                                                                                                </EmotionCssPropInternal>
-                                                                                              </ValueContainer>
-                                                                                              <IndicatorsContainer cx={[Function: bound classNames]} clearValue={[Function]} getStyles={[Function]} getValue={[Function: getValue]} hasValue={false} isMulti={false} isRtl={false} options={{...}} selectOption={[Function]} setValue={[Function]} selectProps={{...}} theme={{...}} isDisabled={false}>
-                                                                                                <EmotionCssPropInternal css={{...}} className=\\"\\" __EMOTION_TYPE_PLEASE_DO_NOT_USE__=\\"div\\" __EMOTION_LABEL_PLEASE_DO_NOT_USE__=\\"IndicatorsContainer\\">
-                                                                                                  <div className=\\" css-1g48xl4-IndicatorsContainer\\">
-                                                                                                    <IndicatorSeparator cx={[Function: bound classNames]} clearValue={[Function]} getStyles={[Function]} getValue={[Function: getValue]} hasValue={false} isMulti={false} isRtl={false} options={{...}} selectOption={[Function]} setValue={[Function]} selectProps={{...}} theme={{...}} isDisabled={false} isFocused={false}>
-                                                                                                      <EmotionCssPropInternal css={{...}} className=\\"\\" __EMOTION_TYPE_PLEASE_DO_NOT_USE__=\\"span\\" __EMOTION_LABEL_PLEASE_DO_NOT_USE__=\\"IndicatorSeparator\\">
-                                                                                                        <span className=\\" css-1okebmr-indicatorSeparator\\" />
-                                                                                                      </EmotionCssPropInternal>
-                                                                                                    </IndicatorSeparator>
-                                                                                                    <DropdownIndicator cx={[Function: bound classNames]} clearValue={[Function]} getStyles={[Function]} getValue={[Function: getValue]} hasValue={false} isMulti={false} isRtl={false} options={{...}} selectOption={[Function]} setValue={[Function]} selectProps={{...}} theme={{...}} innerProps={{...}} isDisabled={false} isFocused={false}>
-                                                                                                      <EmotionCssPropInternal onMouseDown={[Function]} onTouchEnd={[Function]} aria-hidden=\\"true\\" css={{...}} className=\\"\\" __EMOTION_TYPE_PLEASE_DO_NOT_USE__=\\"div\\" __EMOTION_LABEL_PLEASE_DO_NOT_USE__=\\"DropdownIndicator\\">
-                                                                                                        <div onMouseDown={[Function]} onTouchEnd={[Function]} aria-hidden=\\"true\\" className=\\" css-tlfecz-indicatorContainer\\">
-                                                                                                          <DownChevron>
-                                                                                                            <Svg size={20}>
-                                                                                                              <EmotionCssPropInternal height={20} width={20} viewBox=\\"0 0 20 20\\" aria-hidden=\\"true\\" focusable=\\"false\\" css={{...}} __EMOTION_TYPE_PLEASE_DO_NOT_USE__=\\"svg\\" __EMOTION_LABEL_PLEASE_DO_NOT_USE__=\\"Svg\\">
-                                                                                                                <svg height={20} width={20} viewBox=\\"0 0 20 20\\" aria-hidden=\\"true\\" focusable=\\"false\\" className=\\"css-tj5bde-Svg\\">
-                                                                                                                  <path d=\\"M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z\\" />
-                                                                                                                </svg>
-                                                                                                              </EmotionCssPropInternal>
-                                                                                                            </Svg>
-                                                                                                          </DownChevron>
-                                                                                                        </div>
-                                                                                                      </EmotionCssPropInternal>
-                                                                                                    </DropdownIndicator>
-                                                                                                  </div>
-                                                                                                </EmotionCssPropInternal>
-                                                                                              </IndicatorsContainer>
-                                                                                            </div>
-                                                                                          </EmotionCssPropInternal>
-                                                                                        </Control>
-                                                                                        <input name=\\"categoryId\\" type=\\"hidden\\" value=\\"\\" />
-                                                                                      </div>
-                                                                                    </EmotionCssPropInternal>
-                                                                                  </SelectContainer>
-                                                                                </Select>
-                                                                              </StateManager>
-                                                                            </div>
-                                                                          </AutoComplete>
-                                                                          <WithStyles(ForwardRef(FormControlLabel)) control={{...}} label=\\"Apply category to all transactions with the same description\\">
-                                                                            <ForwardRef(FormControlLabel) classes={{...}} control={{...}} label=\\"Apply category to all transactions with the same description\\">
-                                                                              <label className=\\"MuiFormControlLabel-root\\">
-                                                                                <WithStyles(ForwardRef(Checkbox)) checked={true} onChange={[Function]} name=\\"createAndApplyRule\\" value={true} disabled={[undefined]}>
-                                                                                  <ForwardRef(Checkbox) classes={{...}} checked={true} onChange={[Function]} name=\\"createAndApplyRule\\" value={true} disabled={[undefined]}>
-                                                                                    <WithStyles(ForwardRef(SwitchBase)) type=\\"checkbox\\" checkedIcon={{...}} classes={{...}} color=\\"secondary\\" inputProps={{...}} icon={{...}} checked={true} onChange={[Function]} name=\\"createAndApplyRule\\" value={true} disabled={[undefined]}>
-                                                                                      <ForwardRef(SwitchBase) classes={{...}} type=\\"checkbox\\" checkedIcon={{...}} color=\\"secondary\\" inputProps={{...}} icon={{...}} checked={true} onChange={[Function]} name=\\"createAndApplyRule\\" value={true} disabled={[undefined]}>
-                                                                                        <WithStyles(ForwardRef(IconButton)) component=\\"span\\" className=\\"PrivateSwitchBase-root-292 MuiCheckbox-root MuiCheckbox-colorSecondary PrivateSwitchBase-checked-293 Mui-checked\\" disabled={[undefined]} tabIndex={{...}} role={[undefined]} onFocus={[Function: handleFocus]} onBlur={[Function: handleBlur]} color=\\"secondary\\">
-                                                                                          <ForwardRef(IconButton) classes={{...}} component=\\"span\\" className=\\"PrivateSwitchBase-root-292 MuiCheckbox-root MuiCheckbox-colorSecondary PrivateSwitchBase-checked-293 Mui-checked\\" disabled={[undefined]} tabIndex={{...}} role={[undefined]} onFocus={[Function: handleFocus]} onBlur={[Function: handleBlur]} color=\\"secondary\\">
-                                                                                            <WithStyles(ForwardRef(ButtonBase)) className=\\"MuiIconButton-root PrivateSwitchBase-root-292 MuiCheckbox-root MuiCheckbox-colorSecondary PrivateSwitchBase-checked-293 Mui-checked MuiIconButton-colorSecondary\\" centerRipple={true} focusRipple={true} disabled={false} component=\\"span\\" tabIndex={{...}} role={[undefined]} onFocus={[Function: handleFocus]} onBlur={[Function: handleBlur]}>
-                                                                                              <ForwardRef(ButtonBase) classes={{...}} className=\\"MuiIconButton-root PrivateSwitchBase-root-292 MuiCheckbox-root MuiCheckbox-colorSecondary PrivateSwitchBase-checked-293 Mui-checked MuiIconButton-colorSecondary\\" centerRipple={true} focusRipple={true} disabled={false} component=\\"span\\" tabIndex={{...}} role={[undefined]} onFocus={[Function: handleFocus]} onBlur={[Function: handleBlur]}>
-                                                                                                <span className=\\"MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-292 MuiCheckbox-root MuiCheckbox-colorSecondary PrivateSwitchBase-checked-293 Mui-checked MuiIconButton-colorSecondary\\" onBlur={[Function]} onClick={[undefined]} onFocus={[Function]} onKeyDown={[Function]} onKeyUp={[Function]} onMouseDown={[Function]} onMouseLeave={[Function]} onMouseUp={[Function]} onDragLeave={[Function]} onTouchEnd={[Function]} onTouchMove={[Function]} onTouchStart={[Function]} tabIndex={{...}} role={[undefined]} aria-disabled={false}>
-                                                                                                  <span className=\\"MuiIconButton-label\\">
-                                                                                                    <input autoFocus={[undefined]} checked={true} defaultChecked={[undefined]} className=\\"PrivateSwitchBase-input-295\\" disabled={[undefined]} id={[undefined]} name=\\"createAndApplyRule\\" onChange={[Function: handleInputChange]} readOnly={[undefined]} required={[undefined]} tabIndex={[undefined]} type=\\"checkbox\\" value={true} data-indeterminate={false} />
-                                                                                                    <ForwardRef>
-                                                                                                      <WithStyles(ForwardRef(SvgIcon))>
-                                                                                                        <ForwardRef(SvgIcon) classes={{...}}>
-                                                                                                          <svg className=\\"MuiSvgIcon-root\\" focusable=\\"false\\" viewBox=\\"0 0 24 24\\" color={[undefined]} aria-hidden=\\"true\\" role=\\"presentation\\">
-                                                                                                            <path d=\\"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\\" />
-                                                                                                          </svg>
-                                                                                                        </ForwardRef(SvgIcon)>
-                                                                                                      </WithStyles(ForwardRef(SvgIcon))>
-                                                                                                    </ForwardRef>
-                                                                                                  </span>
-                                                                                                  <NoSsr>
-                                                                                                    <WithStyles(undefined) center={true}>
-                                                                                                      <ForwardRef(TouchRipple) classes={{...}} center={true}>
-                                                                                                        <span className=\\"MuiTouchRipple-root\\">
-                                                                                                          <TransitionGroup component={{...}} exit={true} childFactory={[Function: childFactory]} />
-                                                                                                        </span>
-                                                                                                      </ForwardRef(TouchRipple)>
-                                                                                                    </WithStyles(undefined)>
-                                                                                                  </NoSsr>
-                                                                                                </span>
-                                                                                              </ForwardRef(ButtonBase)>
-                                                                                            </WithStyles(ForwardRef(ButtonBase))>
-                                                                                          </ForwardRef(IconButton)>
-                                                                                        </WithStyles(ForwardRef(IconButton))>
-                                                                                      </ForwardRef(SwitchBase)>
-                                                                                    </WithStyles(ForwardRef(SwitchBase))>
-                                                                                  </ForwardRef(Checkbox)>
-                                                                                </WithStyles(ForwardRef(Checkbox))>
-                                                                                <WithStyles(ForwardRef(Typography)) component=\\"span\\" className=\\"MuiFormControlLabel-label\\">
-                                                                                  <ForwardRef(Typography) classes={{...}} component=\\"span\\" className=\\"MuiFormControlLabel-label\\">
-                                                                                    <span className=\\"MuiTypography-root MuiFormControlLabel-label MuiTypography-body1\\">
-                                                                                      Apply category to all transactions with the same description
-                                                                                    </span>
-                                                                                  </ForwardRef(Typography)>
-                                                                                </WithStyles(ForwardRef(Typography))>
-                                                                              </label>
-                                                                            </ForwardRef(FormControlLabel)>
-                                                                          </WithStyles(ForwardRef(FormControlLabel))>
-                                                                          <WithStyles(ForwardRef(TextField)) type=\\"number\\" label=\\"Amount\\" inputProps={{...}} className=\\"WithFormik(TransactionDialogComponent)-input-2\\" value={[undefined]} name=\\"amount\\" onChange={[Function]} error={[undefined]} helperText={[undefined]}>
-                                                                            <ForwardRef(TextField) classes={{...}} type=\\"number\\" label=\\"Amount\\" inputProps={{...}} className=\\"WithFormik(TransactionDialogComponent)-input-2\\" value={[undefined]} name=\\"amount\\" onChange={[Function]} error={[undefined]} helperText={[undefined]}>
-                                                                              <WithStyles(ForwardRef(FormControl)) className=\\"MuiTextField-root WithFormik(TransactionDialogComponent)-input-2\\" error={[undefined]} fullWidth={[undefined]} hiddenLabel={[undefined]} required={false} variant=\\"standard\\">
-                                                                                <ForwardRef(FormControl) classes={{...}} className=\\"MuiTextField-root WithFormik(TransactionDialogComponent)-input-2\\" error={[undefined]} fullWidth={[undefined]} hiddenLabel={[undefined]} required={false} variant=\\"standard\\">
-                                                                                  <div className=\\"MuiFormControl-root MuiTextField-root WithFormik(TransactionDialogComponent)-input-2\\">
-                                                                                    <WithStyles(ForwardRef(InputLabel)) htmlFor={[undefined]}>
-                                                                                      <ForwardRef(InputLabel) classes={{...}} htmlFor={[undefined]}>
-                                                                                        <WithStyles(ForwardRef(FormLabel)) data-shrink={false} className=\\"MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated\\" classes={{...}} htmlFor={[undefined]}>
-                                                                                          <ForwardRef(FormLabel) classes={{...}} data-shrink={false} className=\\"MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated\\" htmlFor={[undefined]}>
-                                                                                            <label className=\\"MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated\\" data-shrink={false} htmlFor={[undefined]}>
-                                                                                              Amount
-                                                                                            </label>
-                                                                                          </ForwardRef(FormLabel)>
-                                                                                        </WithStyles(ForwardRef(FormLabel))>
-                                                                                      </ForwardRef(InputLabel)>
-                                                                                    </WithStyles(ForwardRef(InputLabel))>
-                                                                                    <WithStyles(ForwardRef(Input)) aria-describedby={[undefined]} autoComplete={[undefined]} autoFocus={[undefined]} defaultValue={[undefined]} fullWidth={[undefined]} multiline={[undefined]} name=\\"amount\\" rows={[undefined]} rowsMax={[undefined]} type=\\"number\\" value={[undefined]} id={[undefined]} inputRef={[undefined]} onBlur={[undefined]} onChange={[Function]} onFocus={[undefined]} placeholder={[undefined]} inputProps={{...}}>
-                                                                                      <ForwardRef(Input) classes={{...}} aria-describedby={[undefined]} autoComplete={[undefined]} autoFocus={[undefined]} defaultValue={[undefined]} fullWidth={[undefined]} multiline={[undefined]} name=\\"amount\\" rows={[undefined]} rowsMax={[undefined]} type=\\"number\\" value={[undefined]} id={[undefined]} inputRef={[undefined]} onBlur={[undefined]} onChange={[Function]} onFocus={[undefined]} placeholder={[undefined]} inputProps={{...}}>
-                                                                                        <WithStyles(ForwardRef(InputBase)) classes={{...}} fullWidth={false} inputComponent=\\"input\\" multiline={false} type=\\"number\\" aria-describedby={[undefined]} autoComplete={[undefined]} autoFocus={[undefined]} defaultValue={[undefined]} name=\\"amount\\" rows={[undefined]} rowsMax={[undefined]} value={[undefined]} id={[undefined]} inputRef={[undefined]} onBlur={[undefined]} onChange={[Function]} onFocus={[undefined]} placeholder={[undefined]} inputProps={{...}}>
-                                                                                          <ForwardRef(InputBase) classes={{...}} fullWidth={false} inputComponent=\\"input\\" multiline={false} type=\\"number\\" aria-describedby={[undefined]} autoComplete={[undefined]} autoFocus={[undefined]} defaultValue={[undefined]} name=\\"amount\\" rows={[undefined]} rowsMax={[undefined]} value={[undefined]} id={[undefined]} inputRef={[undefined]} onBlur={[undefined]} onChange={[Function]} onFocus={[undefined]} placeholder={[undefined]} inputProps={{...}}>
-                                                                                            <div className=\\"MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl\\" onClick={[Function: handleClick]}>
-                                                                                              <input aria-invalid={false} aria-describedby={[undefined]} autoComplete={[undefined]} autoFocus={[undefined]} className=\\"MuiInputBase-input MuiInput-input\\" defaultValue={[undefined]} disabled={false} id={[undefined]} name=\\"amount\\" onBlur={[Function: handleBlur]} onChange={[Function: handleChange]} onFocus={[Function: handleFocus]} onKeyDown={[undefined]} onKeyUp={[undefined]} placeholder={[undefined]} readOnly={[undefined]} required={false} rows={[undefined]} value={[undefined]} type=\\"number\\" aria-label=\\"Amount\\" step={0.01} min={-999999999.99} max={999999999.99} />
-                                                                                            </div>
-                                                                                          </ForwardRef(InputBase)>
-                                                                                        </WithStyles(ForwardRef(InputBase))>
-                                                                                      </ForwardRef(Input)>
-                                                                                    </WithStyles(ForwardRef(Input))>
-                                                                                  </div>
-                                                                                </ForwardRef(FormControl)>
-                                                                              </WithStyles(ForwardRef(FormControl))>
-                                                                            </ForwardRef(TextField)>
-                                                                          </WithStyles(ForwardRef(TextField))>
-                                                                          <WithStyles(ForwardRef(TextField)) type=\\"date\\" label=\\"Date\\" InputLabelProps={{...}} name=\\"createdAt\\" className=\\"WithFormik(TransactionDialogComponent)-input-2\\" value=\\"2018-12-31\\" onChange={[Function]} error={[undefined]} helperText={[undefined]}>
-                                                                            <ForwardRef(TextField) classes={{...}} type=\\"date\\" label=\\"Date\\" InputLabelProps={{...}} name=\\"createdAt\\" className=\\"WithFormik(TransactionDialogComponent)-input-2\\" value=\\"2018-12-31\\" onChange={[Function]} error={[undefined]} helperText={[undefined]}>
-                                                                              <WithStyles(ForwardRef(FormControl)) className=\\"MuiTextField-root WithFormik(TransactionDialogComponent)-input-2\\" error={[undefined]} fullWidth={[undefined]} hiddenLabel={[undefined]} required={false} variant=\\"standard\\">
-                                                                                <ForwardRef(FormControl) classes={{...}} className=\\"MuiTextField-root WithFormik(TransactionDialogComponent)-input-2\\" error={[undefined]} fullWidth={[undefined]} hiddenLabel={[undefined]} required={false} variant=\\"standard\\">
-                                                                                  <div className=\\"MuiFormControl-root MuiTextField-root WithFormik(TransactionDialogComponent)-input-2\\">
-                                                                                    <WithStyles(ForwardRef(InputLabel)) htmlFor={[undefined]} shrink={true} aria-label=\\"Date\\">
-                                                                                      <ForwardRef(InputLabel) classes={{...}} htmlFor={[undefined]} shrink={true} aria-label=\\"Date\\">
-                                                                                        <WithStyles(ForwardRef(FormLabel)) data-shrink={true} className=\\"MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink\\" classes={{...}} htmlFor={[undefined]} aria-label=\\"Date\\">
-                                                                                          <ForwardRef(FormLabel) classes={{...}} data-shrink={true} className=\\"MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink\\" htmlFor={[undefined]} aria-label=\\"Date\\">
-                                                                                            <label className=\\"MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled\\" data-shrink={true} htmlFor={[undefined]} aria-label=\\"Date\\">
-                                                                                              Date
-                                                                                            </label>
-                                                                                          </ForwardRef(FormLabel)>
-                                                                                        </WithStyles(ForwardRef(FormLabel))>
-                                                                                      </ForwardRef(InputLabel)>
-                                                                                    </WithStyles(ForwardRef(InputLabel))>
-                                                                                    <WithStyles(ForwardRef(Input)) aria-describedby={[undefined]} autoComplete={[undefined]} autoFocus={[undefined]} defaultValue={[undefined]} fullWidth={[undefined]} multiline={[undefined]} name=\\"createdAt\\" rows={[undefined]} rowsMax={[undefined]} type=\\"date\\" value=\\"2018-12-31\\" id={[undefined]} inputRef={[undefined]} onBlur={[undefined]} onChange={[Function]} onFocus={[undefined]} placeholder={[undefined]} inputProps={[undefined]}>
-                                                                                      <ForwardRef(Input) classes={{...}} aria-describedby={[undefined]} autoComplete={[undefined]} autoFocus={[undefined]} defaultValue={[undefined]} fullWidth={[undefined]} multiline={[undefined]} name=\\"createdAt\\" rows={[undefined]} rowsMax={[undefined]} type=\\"date\\" value=\\"2018-12-31\\" id={[undefined]} inputRef={[undefined]} onBlur={[undefined]} onChange={[Function]} onFocus={[undefined]} placeholder={[undefined]} inputProps={[undefined]}>
-                                                                                        <WithStyles(ForwardRef(InputBase)) classes={{...}} fullWidth={false} inputComponent=\\"input\\" multiline={false} type=\\"date\\" aria-describedby={[undefined]} autoComplete={[undefined]} autoFocus={[undefined]} defaultValue={[undefined]} name=\\"createdAt\\" rows={[undefined]} rowsMax={[undefined]} value=\\"2018-12-31\\" id={[undefined]} inputRef={[undefined]} onBlur={[undefined]} onChange={[Function]} onFocus={[undefined]} placeholder={[undefined]} inputProps={[undefined]}>
-                                                                                          <ForwardRef(InputBase) classes={{...}} fullWidth={false} inputComponent=\\"input\\" multiline={false} type=\\"date\\" aria-describedby={[undefined]} autoComplete={[undefined]} autoFocus={[undefined]} defaultValue={[undefined]} name=\\"createdAt\\" rows={[undefined]} rowsMax={[undefined]} value=\\"2018-12-31\\" id={[undefined]} inputRef={[undefined]} onBlur={[undefined]} onChange={[Function]} onFocus={[undefined]} placeholder={[undefined]} inputProps={[undefined]}>
-                                                                                            <div className=\\"MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl\\" onClick={[Function: handleClick]}>
-                                                                                              <input aria-invalid={false} aria-describedby={[undefined]} autoComplete={[undefined]} autoFocus={[undefined]} className=\\"MuiInputBase-input MuiInput-input\\" defaultValue={[undefined]} disabled={false} id={[undefined]} name=\\"createdAt\\" onBlur={[Function: handleBlur]} onChange={[Function: handleChange]} onFocus={[Function: handleFocus]} onKeyDown={[undefined]} onKeyUp={[undefined]} placeholder={[undefined]} readOnly={[undefined]} required={false} rows={[undefined]} value=\\"2018-12-31\\" type=\\"date\\" />
-                                                                                            </div>
-                                                                                          </ForwardRef(InputBase)>
-                                                                                        </WithStyles(ForwardRef(InputBase))>
-                                                                                      </ForwardRef(Input)>
-                                                                                    </WithStyles(ForwardRef(Input))>
-                                                                                  </div>
-                                                                                </ForwardRef(FormControl)>
-                                                                              </WithStyles(ForwardRef(FormControl))>
-                                                                            </ForwardRef(TextField)>
-                                                                          </WithStyles(ForwardRef(TextField))>
-                                                                        </div>
-                                                                      </ForwardRef(Grid)>
-                                                                    </WithStyles(ForwardRef(Grid))>
-                                                                  </div>
-                                                                </ForwardRef(Grid)>
-                                                              </WithStyles(ForwardRef(Grid))>
-                                                            </div>
-                                                          </ForwardRef(DialogContent)>
-                                                        </WithStyles(ForwardRef(DialogContent))>
-                                                        <WithStyles(ForwardRef(Divider))>
-                                                          <ForwardRef(Divider) classes={{...}}>
-                                                            <hr className=\\"MuiDivider-root\\" role={[undefined]} />
-                                                          </ForwardRef(Divider)>
-                                                        </WithStyles(ForwardRef(Divider))>
-                                                        <WithStyles(ForwardRef(DialogActions)) className=\\"ModalDialog-formFooter-7\\">
-                                                          <ForwardRef(DialogActions) classes={{...}} className=\\"ModalDialog-formFooter-7\\">
-                                                            <div className=\\"MuiDialogActions-root ModalDialog-formFooter-7 MuiDialogActions-spacing\\">
-                                                              <WithStyles(ForwardRef(Button)) type=\\"submit\\" color=\\"secondary\\">
-                                                                <ForwardRef(Button) classes={{...}} type=\\"submit\\" color=\\"secondary\\">
-                                                                  <WithStyles(ForwardRef(ButtonBase)) className=\\"MuiButton-root MuiButton-text MuiButton-textSecondary\\" component=\\"button\\" disabled={false} focusRipple={true} focusVisibleClassName=\\"Mui-focusVisible\\" type=\\"submit\\">
-                                                                    <ForwardRef(ButtonBase) classes={{...}} className=\\"MuiButton-root MuiButton-text MuiButton-textSecondary\\" component=\\"button\\" disabled={false} focusRipple={true} focusVisibleClassName=\\"Mui-focusVisible\\" type=\\"submit\\">
-                                                                      <button className=\\"MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary\\" onBlur={[Function]} onClick={[undefined]} onFocus={[Function]} onKeyDown={[Function]} onKeyUp={[Function]} onMouseDown={[Function]} onMouseLeave={[Function]} onMouseUp={[Function]} onDragLeave={[Function]} onTouchEnd={[Function]} onTouchMove={[Function]} onTouchStart={[Function]} tabIndex={0} type=\\"submit\\" disabled={false}>
-                                                                        <span className=\\"MuiButton-label\\">
-                                                                          Save
-                                                                        </span>
-                                                                        <NoSsr>
-                                                                          <WithStyles(undefined) center={false}>
-                                                                            <ForwardRef(TouchRipple) classes={{...}} center={false}>
-                                                                              <span className=\\"MuiTouchRipple-root\\">
-                                                                                <TransitionGroup component={{...}} exit={true} childFactory={[Function: childFactory]} />
-                                                                              </span>
-                                                                            </ForwardRef(TouchRipple)>
-                                                                          </WithStyles(undefined)>
-                                                                        </NoSsr>
-                                                                      </button>
-                                                                    </ForwardRef(ButtonBase)>
-                                                                  </WithStyles(ForwardRef(ButtonBase))>
-                                                                </ForwardRef(Button)>
-                                                              </WithStyles(ForwardRef(Button))>
-                                                            </div>
-                                                          </ForwardRef(DialogActions)>
-                                                        </WithStyles(ForwardRef(DialogActions))>
-                                                      </form>
-                                                    </div>
+                                                        </ForwardRef(DialogActions)>
+                                                      </WithStyles(ForwardRef(DialogActions))>
+                                                    </form>
                                                   </div>
-                                                </ForwardRef(Paper)>
-                                              </WithStyles(ForwardRef(Paper))>
-                                            </div>
-                                          </Transition>
-                                        </ForwardRef(Fade)>
-                                        <div tabIndex={0} data-test=\\"sentinelEnd\\" />
-                                      </TrapFocus>
-                                    </div>
-                                  </Portal>
-                                </ForwardRef(Portal)>
-                              </ForwardRef(Modal)>
-                            </ForwardRef(Dialog)>
-                          </WithStyles(ForwardRef(Dialog))>
-                        </ModalDialog>
-                      </WithStyles(ModalDialog)>
+                                                </div>
+                                              </ForwardRef(Paper)>
+                                            </WithStyles(ForwardRef(Paper))>
+                                          </div>
+                                        </Transition>
+                                      </ForwardRef(Fade)>
+                                      <div tabIndex={0} data-test=\\"sentinelEnd\\" />
+                                    </TrapFocus>
+                                  </div>
+                                </Portal>
+                              </ForwardRef(Portal)>
+                            </ForwardRef(Modal)>
+                          </ForwardRef(Dialog)>
+                        </WithStyles(ForwardRef(Dialog))>
+                      </ModalDialog>
                     </TransactionDialogComponent>
                   </Formik>
                 </WithFormik(TransactionDialogComponent)>

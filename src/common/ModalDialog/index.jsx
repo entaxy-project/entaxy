@@ -1,5 +1,5 @@
 import React from 'react'
-import { withStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@material-ui/core/styles'
 import PropTypes from 'prop-types'
 import Dialog from '@material-ui/core/Dialog'
 import DialogActions from '@material-ui/core/DialogActions'
@@ -11,7 +11,7 @@ import IconButton from '@material-ui/core/IconButton'
 import CloseIcon from '@material-ui/icons/Close'
 import Typography from '@material-ui/core/Typography'
 
-const styles = () => ({
+const useStyles = makeStyles((theme) => ({
   formWrapper: {
     marginLeft: 15,
     marginRight: 15
@@ -28,45 +28,57 @@ const styles = () => ({
   },
   formFooter: {
     marginTop: 10,
-    marginBottom: 10
+    marginBottom: 10,
+    justifyContent: 'space-between'
+  },
+  deleteButton: {
+    color: theme.palette.danger.icon,
+    marginLeft: theme.spacing(2)
   }
-})
+}))
 
 const ModalDialog = ({
   title,
   children,
   onSubmit,
   onCancel,
+  onDelete,
   open,
-  classes,
   className
-}) => (
-  <Dialog
-    aria-labelledby="form-dialog-title"
-    open={open}
-    scroll="body"
-    onClose={onCancel}
-    className={className}
-  >
-    <div className={classes.formWrapper}>
-      <DialogTitle disableTypography className={classes.formHeader}>
-        <Typography variant="h6">{title}</Typography>
-        <IconButton aria-label="Close" onClick={onCancel} className={classes.closeButton}>
-          <CloseIcon />
-        </IconButton>
-      </DialogTitle>
-      <form onSubmit={onSubmit}>
-        <DialogContent>
-          {children}
-        </DialogContent>
-        <Divider />
-        <DialogActions className={classes.formFooter}>
-          <Button type="submit" color="secondary">Save</Button>
-        </DialogActions>
-      </form>
-    </div>
-  </Dialog>
-)
+}) => {
+  const classes = useStyles()
+
+  return (
+    <Dialog
+      aria-labelledby="form-dialog-title"
+      open={open}
+      scroll="body"
+      onClose={onCancel}
+      className={className}
+    >
+      <div className={classes.formWrapper}>
+        <DialogTitle disableTypography className={classes.formHeader}>
+          <Typography variant="h6">{title}</Typography>
+          <IconButton aria-label="Close" onClick={onCancel} className={classes.closeButton}>
+            <CloseIcon />
+          </IconButton>
+        </DialogTitle>
+        <form onSubmit={onSubmit}>
+          <DialogContent>
+            {children}
+          </DialogContent>
+          <Divider />
+          <DialogActions className={classes.formFooter}>
+            {(onDelete) && (
+              <Button onClick={onDelete} className={classes.deleteButton}>Delete this transaction</Button>
+            )}
+            <Button type="submit" color="secondary">Save</Button>
+          </DialogActions>
+        </form>
+      </div>
+    </Dialog>
+  )
+}
 
 ModalDialog.propTypes = {
   open: PropTypes.bool.isRequired,
@@ -74,12 +86,13 @@ ModalDialog.propTypes = {
   children: PropTypes.node.isRequired,
   onSubmit: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired,
-  classes: PropTypes.object.isRequired,
+  onDelete: PropTypes.func,
   className: PropTypes.string
 }
 
 ModalDialog.defaultProps = {
-  className: null
+  className: null,
+  onDelete: null
 }
 
-export default withStyles(styles)(ModalDialog)
+export default ModalDialog
