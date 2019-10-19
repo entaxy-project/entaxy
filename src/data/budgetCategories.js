@@ -23,10 +23,6 @@ const budgetCategories = {
     'Student Loan',
     'Tuition'
   ],
-  'Subscriptions': [
-    'Netflix',
-    'Spotify'
-  ],
   'Insurance': [
     'Car Insurance',
     'Life Insurance',

@@ -74,7 +74,6 @@ export const updateTransaction = (account, transaction, { createAndApplyRule = f
         account.currency,
         transaction.createdAt
       ))
-
       // If we couldn't convert to local currency it's because we don't have the exchange rate
       if (!localCurrency) {
         await dispatch(updateCurrencies({

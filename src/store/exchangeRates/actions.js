@@ -103,6 +103,7 @@ export const getLastWeekday = (startDate = startOfYesterday()) => {
   if (isSaturday(startDate)) return subDays(startDate, 1).getTime()
   return startDate.getTime()
 }
+
 // Collect all the currencies used in accounts and the dates of the exchange rates available
 // {
 //   CAD: {
@@ -122,6 +123,7 @@ export const getAccountCurrenciesMap = (accounts, settings, exchangeRates, { exc
     // Note: exchange rates are collected at EOD and closed on the weekend
     // so we always look the the previous weekday
     const lastWeekday = getLastWeekday()
+
     let params = {}
     if (account.currency in exchangeRates) {
       const {

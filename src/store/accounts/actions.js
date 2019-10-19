@@ -33,7 +33,7 @@ export const calculateBalance = (account, transactions) => (dispatch) => {
     localCurrency: dispatch(convertToCurrency(
       totalBalance,
       account.currency,
-      startOfYesterday()
+      startOfYesterday().getTime()
     ))
   }
 }
@@ -133,8 +133,10 @@ export const updateAccount = (account, { onlyUpdateBalance = false } = {}) => (
     const payload = account
     if (currencyChanged) {
       let oldestDate = account.openingBalanceDate
-      if (getState().transactions.list.length > 0) {
-        const oldestTransactionDate = getState().transactions.list.sort(
+
+      const transactions = dispatch(getAccountTransactions(account.id))
+      if (transactions.length > 0) {
+        const oldestTransactionDate = transactions.sort(
           (a, b) => a.createdAt - b.createdAt
         )[0].createdAt
         oldestDate = Math.min(account.openingBalanceDate, oldestTransactionDate)

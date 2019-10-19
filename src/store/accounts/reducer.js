@@ -3,8 +3,8 @@ import types from './types'
 
 export const assetAccounts = {
   bank: 'Bank',
-  cash: 'Cash in hand',
-  wallet: 'Cryptocurrency wallet'
+  cash: 'Cash in hand'
+  // wallet: 'Cryptocurrency wallet'
 }
 
 export const liabilityAccounts = {

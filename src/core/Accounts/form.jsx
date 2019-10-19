@@ -138,9 +138,7 @@ export class AccountFormComponent extends React.Component {
   }
 
   handleAccountTypeChange = (...args) => {
-    if (this.props.values.accountType.value === 'cash') {
-      this.props.setFieldValue('institution', null)
-    }
+    this.props.setFieldValue('institution', null)
     this.props.setFieldValue(...args)
   }
 

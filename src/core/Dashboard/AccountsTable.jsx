@@ -95,12 +95,10 @@ const AccountsTable = ({ history, filter }) => {
             colour: colorScale(count)
           })
           if (!(institution in data.table)) {
-            data.table[institution] = { ...accounts.byInstitution[institution], groups: {} }
+            data.table[institution] = { total: 0, accountIds: [] }
           }
-          if (!Object.keys(data.table[institution].groups).includes(group.id)) {
-            data.table[institution].groups[group.id] = { ...group, accountIds: [] }
-          }
-          data.table[institution].groups[group.id].accountIds.push(account.id)
+          data.table[institution].accountIds.push(account.id)
+          data.table[institution].total += account.currentBalance.localCurrency
           total += account.currentBalance.localCurrency
           count += 1
         }
@@ -126,41 +124,39 @@ const AccountsTable = ({ history, filter }) => {
             </TableRow>
           </TableHead>
           {Object.keys(data.table).sort().map((institution) => (
-            Object.values(data.table[institution].groups).map((accountGroup) => (
-              <TableBody key={accountGroup.id}>
-                <TableRow className={classes.institutionRow}>
-                  <TableCell className={classes.institutionWrapper}>
-                    <InstitutionIcon
-                      institution={institution}
-                      size="small"
-                      className={classes.institutionIcon}
-                    />
-                    <Typography variant="subtitle2">
-                      {institution}
-                    </Typography>
-                  </TableCell>
-                  <TableCell align="right">
-                    <Typography variant="subtitle2">
-                      {formatCurrency(accountGroup.balance)}
-                    </Typography>
-                  </TableCell>
-                </TableRow>
-                {accountGroup.accountIds.map((id) => {
-                  const account = accounts.byId[id]
-                  if (account === undefined) return null
-                  return (
-                    <TableRow key={id} hover onClick={() => handleClick(account)} className={classes.accountRow}>
-                      <TableCell className={classes.accountWrapper} title={account.name}>
-                        {account.name}
-                      </TableCell>
-                      <TableCell align="right">
-                        {formatCurrency(account.currentBalance.localCurrency)}
-                      </TableCell>
-                    </TableRow>
-                  )
-                })}
-              </TableBody>
-            ))
+            <TableBody key={institution}>
+              <TableRow className={classes.institutionRow}>
+                <TableCell className={classes.institutionWrapper}>
+                  <InstitutionIcon
+                    institution={institution}
+                    size="small"
+                    className={classes.institutionIcon}
+                  />
+                  <Typography variant="subtitle2">
+                    {institution}
+                  </Typography>
+                </TableCell>
+                <TableCell align="right">
+                  <Typography variant="subtitle2">
+                    {formatCurrency(data.table[institution].total)}
+                  </Typography>
+                </TableCell>
+              </TableRow>
+              {data.table[institution].accountIds.map((id) => {
+                const account = accounts.byId[id]
+                if (account === undefined) return null
+                return (
+                  <TableRow key={id} hover onClick={() => handleClick(account)} className={classes.accountRow}>
+                    <TableCell className={classes.accountWrapper} title={account.name}>
+                      {account.name}
+                    </TableCell>
+                    <TableCell align="right">
+                      {formatCurrency(account.currentBalance.localCurrency)}
+                    </TableCell>
+                  </TableRow>
+                )
+              })}
+            </TableBody>
           ))}
         </Table>
       )}

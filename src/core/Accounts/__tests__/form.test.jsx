@@ -2,7 +2,6 @@ import React from 'react'
 import renderer from 'react-test-renderer'
 import { shallow } from 'enzyme'
 import { AccountFormComponent } from '../form'
-import { institutions } from '../../../data/institutions'
 import { initialState as accountsInitialState } from '../../../store/accounts/reducer'
 
 describe('Account form', () => {
@@ -95,32 +94,6 @@ describe('Account form', () => {
 
       instance.handleCloseInstitutionOptions()
       expect(instance.state.hideInstitutionOptions).toBeTruthy()
-    })
-
-    it('should display institutionOptions only if institution has API', () => {
-      instance.setState({ hideInstitutionOptions: false })
-      expect(instance.state.hideInstitutionOptions).toBeFalsy()
-
-      expect(instance.institutionOptions()).toBeNull()
-
-      expect(institutions.fiat['Bank of Montreal'].importTypes).not.toContain('API')
-      expect(instance.institutionOptions({ value: 'Bank of Montreal' })).toBeNull()
-
-      expect(institutions.crypto.Coinbase.importTypes).toContain('API')
-      expect(instance.institutionOptions({ value: 'Coinbase' })).not.toBeNull()
-    })
-
-    it('should never display institutionOptions if hideInstitutionOptions is true', () => {
-      instance.setState({ hideInstitutionOptions: true })
-      expect(instance.state.hideInstitutionOptions).toBeTruthy()
-
-      expect(instance.institutionOptions()).toBeNull()
-
-      expect(institutions.fiat['Bank of Montreal'].importTypes).not.toContain('API')
-      expect(instance.institutionOptions({ value: 'Bank of Montreal' })).toBeNull()
-
-      expect(institutions.crypto.Coinbase.importTypes).toContain('API')
-      expect(instance.institutionOptions({ value: 'Coinbase' })).toBeNull()
     })
   })
 })

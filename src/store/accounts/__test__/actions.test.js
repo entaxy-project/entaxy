@@ -380,11 +380,22 @@ describe('accounts actions', () => {
     })
 
     it('should updateAccount currency without transactions', async () => {
-      const byId = { a1: { ...account, id: 'a1', openingBalanceDate: Date.now() } }
+      const byId = {
+        a1: { ...account, id: 'a1', openingBalanceDate: Date.now() },
+        a2: { ...account, id: 'a2', openingBalanceDate: Date.now() }
+      }
       const newCurrency = 'EUR'
       const store = mockStore({
         accounts: { byId, byInstitution: groupByInstitution({ byId, byInstitution: {} }) },
-        transactions: transactionsInitialState,
+        transactions: {
+          ...transactionsInitialState,
+          // older transactions from a differnt account
+          list: [{
+            accountId: 'a2',
+            amount: { accountCurrency: 1 },
+            createdAt: subDays(byId.a1.openingBalanceDate, 100)
+          }]
+        },
         settings: settingsInitialState,
         exchangeRates: exchangeRatesInitialState
       })

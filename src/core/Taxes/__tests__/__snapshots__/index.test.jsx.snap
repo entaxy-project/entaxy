@@ -10,7 +10,7 @@ exports[`Taxes matches snapshot 1`] = `
           Ontario
           2017
         </WithStyles(ForwardRef(Typography))>
-        <WrappedComponent country=\\"Canada\\" year={2017} region=\\"Ontario\\" income={90000} rrsp={10000} taxBeforeCredits={20282.9731} debounceTime={300} />
+        <n country=\\"Canada\\" year={2017} region=\\"Ontario\\" income={90000} rrsp={10000} taxBeforeCredits={20282.9731} debounceTime={300} />
       </WithStyles(ForwardRef(Paper))>
     </WithStyles(ForwardRef(Grid))>
     <WithStyles(ForwardRef(Grid)) item={true} xs={2}>

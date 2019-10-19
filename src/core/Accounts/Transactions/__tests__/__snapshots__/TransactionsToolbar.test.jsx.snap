@@ -47,7 +47,6 @@ exports[`TransactionsToolbar matches snapshot with no selected transactions 1`] 
           </div>
           <input
             className="MuiInputBase-input MuiInputBase-inputAdornedStart MuiInputBase-inputTypeSearch"
-            onAnimationStart={[Function]}
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}

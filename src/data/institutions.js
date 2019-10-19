@@ -2,7 +2,7 @@ export const institutions = {
   crypto: {
     Coinbase: {
       name: 'Coinbase',
-      importTypes: ['API'],
+      importTypes: [],
       url: 'https://www.coinbase.com',
       favicon: 'https://www.coinbase.com/favicon.ico'
     },
