@@ -59,7 +59,7 @@ const CategoryFormComponent = ({
         label="Category name"
         inputProps={{
           'aria-label': 'Category name',
-          maxLength: 100
+          maxLength: 25
         }}
         value={values.name}
         name="name"
@@ -74,8 +74,7 @@ const CategoryFormComponent = ({
           margin="dense"
           label="Budget limit"
           inputProps={{
-            'aria-label': 'Budget limit',
-            maxLength: 100
+            'aria-label': 'Budget limit'
           }}
           value={values.budgetLimit}
           name="budgetLimit"
@@ -120,11 +119,21 @@ export default compose(
       }
       return category
     },
-    validationSchema: Yup.object().shape({
-      name: Yup.string()
-        .max(100, 'Too Long!')
-        .required('Please enter a name')
-    }),
+    validationSchema: (props) => {
+      const categoryNames = Object.values(props.budget.categoriesById).reduce(
+        (result, category) => {
+          if (!('parentId' in category) || category.id === props.category.id) return result
+          return [...result, category.name]
+        },
+        []
+      )
+      return Yup.object().shape({
+        name: Yup.string()
+          .max(25, 'Too Long! 25 characters max')
+          .required('Please enter a name')
+          .notOneOf(categoryNames, 'This category already exists')
+      })
+    },
     handleSubmit: (values, { props, setSubmitting }) => {
       setSubmitting(true)
       if ('id' in values) {

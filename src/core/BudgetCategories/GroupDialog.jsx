@@ -17,6 +17,10 @@ const styles = (theme) => ({
   }
 })
 
+const mapStateToProps = (state) => ({
+  budget: state.budget
+})
+
 const mapDispatchToProps = (dispatch) => {
   return {
     handleSave: (category) => {
@@ -50,7 +54,7 @@ export const GroupDialogComponent = ({
       label="Name"
       inputProps={{
         'aria-label': 'Name',
-        maxLength: 256
+        maxLength: 25
       }}
       className={classes.input}
       value={values.name}
@@ -80,7 +84,7 @@ GroupDialogComponent.defaultProps = {
 }
 
 export default compose(
-  connect(null, mapDispatchToProps),
+  connect(mapStateToProps, mapDispatchToProps),
   withStyles(styles),
   withFormik({
     enableReinitialize: true,
@@ -92,10 +96,23 @@ export default compose(
       }
       return category
     },
-    validationSchema: Yup.object().shape({
-      description: Yup.string()
-        .max(25, 'Too Long!')
-    }),
+    validationSchema: (props) => {
+      console.log({ props })
+      const groupNames = Object.values(props.budget.categoriesById).reduce(
+        (result, category) => {
+          if (('parentId' in category) || category.id === props.category.id) return result
+          return [...result, category.name]
+        },
+        []
+      )
+      console.log(groupNames)
+      return Yup.object().shape({
+        name: Yup.string()
+          .max(25, 'Too Long! 25 characters max')
+          .required('Please enter a name')
+          .notOneOf(groupNames, 'This category already exists')
+      })
+    },
     handleSubmit: (values, { props, setSubmitting, resetForm }) => {
       setSubmitting(true)
       props.handleSave(values)

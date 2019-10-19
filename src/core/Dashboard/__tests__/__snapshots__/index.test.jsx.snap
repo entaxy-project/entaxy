@@ -127,14 +127,9 @@ exports[`Dashboard matches snapshot with one account 1`] = `
                               <WithStyles(ForwardRef(Grid)) container={true} spacing={3}>
                                 <ForwardRef(Grid) classes={{...}} container={true} spacing={3}>
                                   <div className=\\"MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3\\">
-                                    <WithStyles(ForwardRef(Grid)) item={true} xs={4}>
-                                      <ForwardRef(Grid) classes={{...}} item={true} xs={4}>
-                                        <div className=\\"MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4\\" />
-                                      </ForwardRef(Grid)>
-                                    </WithStyles(ForwardRef(Grid))>
-                                    <WithStyles(ForwardRef(Grid)) item={true} xs={4}>
-                                      <ForwardRef(Grid) classes={{...}} item={true} xs={4}>
-                                        <div className=\\"MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4\\">
+                                    <WithStyles(ForwardRef(Grid)) item={true} xs={12} md={6}>
+                                      <ForwardRef(Grid) classes={{...}} item={true} xs={12} md={6}>
+                                        <div className=\\"MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6\\">
                                           <withRouter(AccountsTable) filter=\\"Assets\\">
                                             <AccountsTable filter=\\"Assets\\" history={{...}} location={{...}} match={{...}} staticContext={[undefined]}>
                                               <WithStyles(ForwardRef(Paper)) className=\\"makeStyles-accountsTable-213\\">
@@ -307,9 +302,9 @@ exports[`Dashboard matches snapshot with one account 1`] = `
                                         </div>
                                       </ForwardRef(Grid)>
                                     </WithStyles(ForwardRef(Grid))>
-                                    <WithStyles(ForwardRef(Grid)) item={true} xs={4}>
-                                      <ForwardRef(Grid) classes={{...}} item={true} xs={4}>
-                                        <div className=\\"MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4\\">
+                                    <WithStyles(ForwardRef(Grid)) item={true} xs={12} md={6}>
+                                      <ForwardRef(Grid) classes={{...}} item={true} xs={12} md={6}>
+                                        <div className=\\"MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6\\">
                                           <withRouter(AccountsTable) filter=\\"Liabilities\\">
                                             <AccountsTable filter=\\"Liabilities\\" history={{...}} location={{...}} match={{...}} staticContext={[undefined]}>
                                               <WithStyles(ForwardRef(Paper)) className=\\"makeStyles-accountsTable-213\\">
@@ -458,14 +453,9 @@ exports[`Dashboard matches snapshot with two accounts in a different currency 1`
                               <WithStyles(ForwardRef(Grid)) container={true} spacing={3}>
                                 <ForwardRef(Grid) classes={{...}} container={true} spacing={3}>
                                   <div className=\\"MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3\\">
-                                    <WithStyles(ForwardRef(Grid)) item={true} xs={4}>
-                                      <ForwardRef(Grid) classes={{...}} item={true} xs={4}>
-                                        <div className=\\"MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4\\" />
-                                      </ForwardRef(Grid)>
-                                    </WithStyles(ForwardRef(Grid))>
-                                    <WithStyles(ForwardRef(Grid)) item={true} xs={4}>
-                                      <ForwardRef(Grid) classes={{...}} item={true} xs={4}>
-                                        <div className=\\"MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4\\">
+                                    <WithStyles(ForwardRef(Grid)) item={true} xs={12} md={6}>
+                                      <ForwardRef(Grid) classes={{...}} item={true} xs={12} md={6}>
+                                        <div className=\\"MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6\\">
                                           <withRouter(AccountsTable) filter=\\"Assets\\">
                                             <AccountsTable filter=\\"Assets\\" history={{...}} location={{...}} match={{...}} staticContext={[undefined]}>
                                               <WithStyles(ForwardRef(Paper)) className=\\"makeStyles-accountsTable-213\\">
@@ -656,9 +646,9 @@ exports[`Dashboard matches snapshot with two accounts in a different currency 1`
                                         </div>
                                       </ForwardRef(Grid)>
                                     </WithStyles(ForwardRef(Grid))>
-                                    <WithStyles(ForwardRef(Grid)) item={true} xs={4}>
-                                      <ForwardRef(Grid) classes={{...}} item={true} xs={4}>
-                                        <div className=\\"MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4\\">
+                                    <WithStyles(ForwardRef(Grid)) item={true} xs={12} md={6}>
+                                      <ForwardRef(Grid) classes={{...}} item={true} xs={12} md={6}>
+                                        <div className=\\"MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6\\">
                                           <withRouter(AccountsTable) filter=\\"Liabilities\\">
                                             <AccountsTable filter=\\"Liabilities\\" history={{...}} location={{...}} match={{...}} staticContext={[undefined]}>
                                               <WithStyles(ForwardRef(Paper)) className=\\"makeStyles-accountsTable-213\\">

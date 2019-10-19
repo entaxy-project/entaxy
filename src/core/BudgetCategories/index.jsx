@@ -28,7 +28,7 @@ import Tooltip from '@material-ui/core/Tooltip'
 import pluralize from 'pluralize'
 import CategoryForm from './form'
 import { currencyFormatter } from '../../util/stringFormatter'
-import { deleteCategory, resetColours } from '../../store/budget/actions'
+import { deleteCategory } from '../../store/budget/actions'
 import GroupDialog from './GroupDialog'
 import confirm from '../../util/confirm'
 
@@ -85,6 +85,9 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.info.text,
     fontSize: 18,
     verticalAlign: 'text-bottom'
+  },
+  categoryName: {
+    wordBreak: 'break-word'
   }
 }))
 
@@ -117,22 +120,25 @@ const BudgetCategories = () => {
     }))
   }
 
-  const filteredCategories = () => {
-    const filteredTree = budget.categoryTree.reduce((res, cat) => {
+  const filteredCategories = () => (
+    budget.categoryTree.reduce((res, cat) => {
       if (filter.parentCategoryId === '' || cat.id === filter.parentCategoryId) {
-        return [...res, { ...cat, options: cat.options }]
+        let categoryList = cat.options
+        if (filter.category !== '') {
+          categoryList = cat.options.filter((category) => (
+            category.label.toLowerCase().includes(filter.category.toLowerCase())
+          ))
+        }
+        if (categoryList.length === 0) return res
+        // The income group goes at the top
+        if (cat.isIncome) {
+          return [{ ...cat, options: categoryList }, ...res]
+        }
+        return [...res, { ...cat, options: categoryList }]
       }
       return res
     }, [])
-    if (filter.category !== '') {
-      filteredTree.forEach((parentCategory, index) => {
-        filteredTree[index].options = parentCategory.options.filter((category) => (
-          category.label.toLowerCase().includes(filter.category.toLowerCase())
-        ))
-      })
-    }
-    return filteredTree
-  }
+  )
 
   // --- Popuop ---
   const handleClosePopup = () => {
@@ -223,6 +229,7 @@ const BudgetCategories = () => {
     }
     return (
       <CardHeader
+        classes={{ title: classes.categoryName }}
         avatar={<div className={classes.circle} style={{ background: category.colour }} />}
         action={(
           <IconButton aria-label="settings" onClick={(event) => handleOpenPopup(event, category.id)}>
@@ -368,10 +375,6 @@ const BudgetCategories = () => {
           >
             {renderNewCategory(group.id)}
           </Grid>
-          <Button size="small" color="secondary" onClick={() => dispatch(resetColours())}>
-            &nbsp;
-          </Button>
-
         </Grid>
       ))}
       <Menu anchorEl={anchorEl} open={popupIsOpen} onClose={handleClosePopup}>

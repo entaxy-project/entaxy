@@ -105,11 +105,10 @@ export const DashboardComponent = ({
           </Grid>
           <Grid item xs={12}>
             <Grid container spacing={3}>
-              <Grid item xs={4} />
-              <Grid item xs={4}>
+              <Grid item xs={12} md={6}>
                 <AccountsTable filter="Assets" />
               </Grid>
-              <Grid item xs={4}>
+              <Grid item xs={12} md={6}>
                 <AccountsTable filter="Liabilities" />
               </Grid>
             </Grid>
