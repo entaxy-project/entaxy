@@ -1,3 +1,4 @@
+/* eslint-disable react/sort-comp */
 /* eslint-disable react/no-multi-comp */
 import React from 'react'
 import { compose } from 'recompose'
@@ -93,7 +94,6 @@ export class AccountFormComponent extends React.Component {
 
     const institution = institutions.crypto[value]
 
-
     if (institution.importTypes.includes('API')) {
       return (
         <DescriptionCard
@@ -151,7 +151,7 @@ export class AccountFormComponent extends React.Component {
     this.setState({ hideInstitutionOptions: true })
   }
 
-  formatedInstitutions = () => {
+  generateFormatedInstitutions = () => {
     const { accountType: { value: accountType } } = this.props.values
     let institutionType
     switch (accountType) {
@@ -165,7 +165,7 @@ export class AccountFormComponent extends React.Component {
       // no default
     }
 
-    const usedInstitutions = Object.keys(this.props.accounts.byInstitution).reduce((result, institutionName) => {
+    const allInstitutions = Object.keys(this.props.accounts.byInstitution).reduce((result, institutionName) => {
       if (
         institutionName === accountTypes.cash
         || institutionName in institutions.fiat
@@ -177,11 +177,12 @@ export class AccountFormComponent extends React.Component {
       }
     }, sortedInstitutionsOfType(institutionType))
 
-    return Object.keys(usedInstitutions).sort().map((key) => ({
+    return Object.keys(allInstitutions).sort().map((key) => ({
       value: key,
       label: institutionLabel(key)
     }))
   }
+
 
   render() {
     const {
@@ -197,6 +198,19 @@ export class AccountFormComponent extends React.Component {
       handleCancel,
       account
     } = this.props
+
+    const formatedInstitutions = this.generateFormatedInstitutions()
+    const usedInstitutions = Object.keys(this.props.accounts.byInstitution).sort()
+
+    const filterInstitutions = (option, inputValue) => {
+      if (inputValue === '') return usedInstitutions.includes(option.value)
+      const words = inputValue.split(' ')
+      return words.reduce(
+        (result, cur) => result && option.value.toLowerCase().includes(cur.toLowerCase()),
+        true,
+      )
+    }
+
     return (
       <Grid container justify="center">
         <Paper className={classes.root}>
@@ -226,12 +240,14 @@ export class AccountFormComponent extends React.Component {
                 {values.accountType.value !== 'cash' && (
                   <AutoComplete
                     creatable
+                    isClearable={true}
                     className={classes.input}
                     label="Institution"
                     placeholder="Select or type to create ..."
                     name="institution"
                     value={values.institution}
-                    options={this.formatedInstitutions()}
+                    options={formatedInstitutions}
+                    filterOption={filterInstitutions}
                     onChange={this.handleInstitutionChange}
                     error={errors.institution && touched.institution}
                     helperText={errors.institution}
@@ -373,7 +389,14 @@ export default compose(
         }
       }
     },
-    validationSchema: () => {
+    validationSchema: (props) => {
+      const accountNames = Object.values(props.accounts.byId).reduce(
+        (result, account) => {
+          if (props.account !== undefined && account.id === props.account.id) return result
+          return [...result, account.name]
+        },
+        []
+      )
       return Yup.object().shape({
         accountType: Yup.object()
           .required('Please select an account type')
@@ -383,12 +406,13 @@ export default compose(
           then: Yup.object()
             .nullable(),
           otherwise: Yup.object()
-            .required('Please select an institution')
+            .required('Please select or create an institution')
             .nullable()
         }),
         name: Yup.string()
           .max(50, 'Too Long!')
-          .required('Please enter a name for this account'),
+          .required('Please enter a name for this account')
+          .notOneOf(accountNames, 'This account name already exists'),
         openingBalance: Yup.number()
           .required('Please enter an opening balance')
           .min(-9999999.99)

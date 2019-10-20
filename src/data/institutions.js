@@ -59,11 +59,14 @@ export const institutions = {
   }
 }
 
-export const sortedInstitutionsOfType = (type) => (
-  Object.keys(institutions[type])
-    .sort((a, b) => (a > b))
-    .reduce((result, i) => ({
-      ...result,
-      [i]: institutions[type][i]
-    }), {})
-)
+export const sortedInstitutionsOfType = (type) => {
+  if (type in institutions) {
+    return Object.keys(institutions[type])
+      .sort((a, b) => (a > b))
+      .reduce((result, i) => ({
+        ...result,
+        [i]: institutions[type][i]
+      }), {})
+  }
+  return []
+}
