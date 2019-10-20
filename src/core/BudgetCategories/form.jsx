@@ -122,7 +122,10 @@ export default compose(
     validationSchema: (props) => {
       const categoryNames = Object.values(props.budget.categoriesById).reduce(
         (result, category) => {
-          if (!('parentId' in category) || category.id === props.category.id) return result
+          if (!('parentId' in category)) return result // only categories
+          if ('category' in props && category.id === props.category.id) {
+            return result
+          }
           return [...result, category.name]
         },
         []

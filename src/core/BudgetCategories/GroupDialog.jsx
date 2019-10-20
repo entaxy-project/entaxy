@@ -97,15 +97,14 @@ export default compose(
       return category
     },
     validationSchema: (props) => {
-      console.log({ props })
       const groupNames = Object.values(props.budget.categoriesById).reduce(
         (result, category) => {
-          if (('parentId' in category) || category.id === props.category.id) return result
+          if ('parentId' in category) return result // only groups
+          if (!!props.category && category.id === props.category.id) return result
           return [...result, category.name]
         },
         []
       )
-      console.log(groupNames)
       return Yup.object().shape({
         name: Yup.string()
           .max(25, 'Too Long! 25 characters max')
