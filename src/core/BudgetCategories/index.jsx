@@ -128,8 +128,8 @@ const BudgetCategories = () => {
           categoryList = cat.options.filter((category) => (
             category.label.toLowerCase().includes(filter.category.toLowerCase())
           ))
+          if (categoryList.length === 0) return res
         }
-        if (categoryList.length === 0) return res
         // The income group goes at the top
         if (cat.isIncome) {
           return [{ ...cat, options: categoryList }, ...res]
