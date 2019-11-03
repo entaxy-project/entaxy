@@ -1,5 +1,4 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
 import Paper from '@material-ui/core/Paper'
@@ -23,9 +22,6 @@ const useStyles = makeStyles((theme) => ({
 
 const BudgetIndex = () => {
   const classes = useStyles()
-  const { budget } = useSelector((state) => ({ budget: state.budget }))
-
-  const userHasBudget = Object.keys(budget.rules).length > 0
   return (
     <Container className={classes.root}>
       <Grid container spacing={3}>
@@ -34,14 +30,7 @@ const BudgetIndex = () => {
             Budget history
           </Typography>
           <Paper className={classes.budgetChart}>
-            {!userHasBudget && (
-              <Typography>
-                Not enough data to generate chart
-              </Typography>
-            )}
-            {userHasBudget && (
-              <BudgetChart />
-            )}
+            <BudgetChart />
           </Paper>
         </Grid>
       </Grid>
