@@ -102,7 +102,7 @@ export const TransactionDialogComponent = ({
     title={transaction ? 'Edit transaction' : 'New transaction'}
     onSubmit={handleSubmit}
     onCancel={onCancel}
-    onDelete={onDelete}
+    onDelete={transaction ? onDelete : undefined}
     className={classes.root}
   >
     <Grid container>

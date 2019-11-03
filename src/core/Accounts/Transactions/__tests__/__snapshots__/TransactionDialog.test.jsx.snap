@@ -238,13 +238,13 @@ exports[`ConfirmDialog matches snapshot 1`] = `
                                                                                 <ForwardRef(Checkbox) classes={{...}} checked={true} onChange={[Function]} name=\\"createAndApplyRule\\" value={true} disabled={[undefined]}>
                                                                                   <WithStyles(ForwardRef(SwitchBase)) type=\\"checkbox\\" checkedIcon={{...}} classes={{...}} color=\\"secondary\\" inputProps={{...}} icon={{...}} checked={true} onChange={[Function]} name=\\"createAndApplyRule\\" value={true} disabled={[undefined]}>
                                                                                     <ForwardRef(SwitchBase) classes={{...}} type=\\"checkbox\\" checkedIcon={{...}} color=\\"secondary\\" inputProps={{...}} icon={{...}} checked={true} onChange={[Function]} name=\\"createAndApplyRule\\" value={true} disabled={[undefined]}>
-                                                                                      <WithStyles(ForwardRef(IconButton)) component=\\"span\\" className=\\"PrivateSwitchBase-root-306 MuiCheckbox-root MuiCheckbox-colorSecondary PrivateSwitchBase-checked-307 Mui-checked\\" disabled={[undefined]} tabIndex={{...}} role={[undefined]} onFocus={[Function: handleFocus]} onBlur={[Function: handleBlur]} color=\\"secondary\\">
-                                                                                        <ForwardRef(IconButton) classes={{...}} component=\\"span\\" className=\\"PrivateSwitchBase-root-306 MuiCheckbox-root MuiCheckbox-colorSecondary PrivateSwitchBase-checked-307 Mui-checked\\" disabled={[undefined]} tabIndex={{...}} role={[undefined]} onFocus={[Function: handleFocus]} onBlur={[Function: handleBlur]} color=\\"secondary\\">
-                                                                                          <WithStyles(ForwardRef(ButtonBase)) className=\\"MuiIconButton-root PrivateSwitchBase-root-306 MuiCheckbox-root MuiCheckbox-colorSecondary PrivateSwitchBase-checked-307 Mui-checked MuiIconButton-colorSecondary\\" centerRipple={true} focusRipple={true} disabled={false} component=\\"span\\" tabIndex={{...}} role={[undefined]} onFocus={[Function: handleFocus]} onBlur={[Function: handleBlur]}>
-                                                                                            <ForwardRef(ButtonBase) classes={{...}} className=\\"MuiIconButton-root PrivateSwitchBase-root-306 MuiCheckbox-root MuiCheckbox-colorSecondary PrivateSwitchBase-checked-307 Mui-checked MuiIconButton-colorSecondary\\" centerRipple={true} focusRipple={true} disabled={false} component=\\"span\\" tabIndex={{...}} role={[undefined]} onFocus={[Function: handleFocus]} onBlur={[Function: handleBlur]}>
-                                                                                              <span className=\\"MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-306 MuiCheckbox-root MuiCheckbox-colorSecondary PrivateSwitchBase-checked-307 Mui-checked MuiIconButton-colorSecondary\\" onBlur={[Function]} onClick={[undefined]} onFocus={[Function]} onKeyDown={[Function]} onKeyUp={[Function]} onMouseDown={[Function]} onMouseLeave={[Function]} onMouseUp={[Function]} onDragLeave={[Function]} onTouchEnd={[Function]} onTouchMove={[Function]} onTouchStart={[Function]} tabIndex={{...}} role={[undefined]} aria-disabled={false}>
+                                                                                      <WithStyles(ForwardRef(IconButton)) component=\\"span\\" className=\\"PrivateSwitchBase-root-307 MuiCheckbox-root MuiCheckbox-colorSecondary PrivateSwitchBase-checked-308 Mui-checked\\" disabled={[undefined]} tabIndex={{...}} role={[undefined]} onFocus={[Function: handleFocus]} onBlur={[Function: handleBlur]} color=\\"secondary\\">
+                                                                                        <ForwardRef(IconButton) classes={{...}} component=\\"span\\" className=\\"PrivateSwitchBase-root-307 MuiCheckbox-root MuiCheckbox-colorSecondary PrivateSwitchBase-checked-308 Mui-checked\\" disabled={[undefined]} tabIndex={{...}} role={[undefined]} onFocus={[Function: handleFocus]} onBlur={[Function: handleBlur]} color=\\"secondary\\">
+                                                                                          <WithStyles(ForwardRef(ButtonBase)) className=\\"MuiIconButton-root PrivateSwitchBase-root-307 MuiCheckbox-root MuiCheckbox-colorSecondary PrivateSwitchBase-checked-308 Mui-checked MuiIconButton-colorSecondary\\" centerRipple={true} focusRipple={true} disabled={false} component=\\"span\\" tabIndex={{...}} role={[undefined]} onFocus={[Function: handleFocus]} onBlur={[Function: handleBlur]}>
+                                                                                            <ForwardRef(ButtonBase) classes={{...}} className=\\"MuiIconButton-root PrivateSwitchBase-root-307 MuiCheckbox-root MuiCheckbox-colorSecondary PrivateSwitchBase-checked-308 Mui-checked MuiIconButton-colorSecondary\\" centerRipple={true} focusRipple={true} disabled={false} component=\\"span\\" tabIndex={{...}} role={[undefined]} onFocus={[Function: handleFocus]} onBlur={[Function: handleBlur]}>
+                                                                                              <span className=\\"MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-307 MuiCheckbox-root MuiCheckbox-colorSecondary PrivateSwitchBase-checked-308 Mui-checked MuiIconButton-colorSecondary\\" onBlur={[Function]} onClick={[undefined]} onFocus={[Function]} onKeyDown={[Function]} onKeyUp={[Function]} onMouseDown={[Function]} onMouseLeave={[Function]} onMouseUp={[Function]} onDragLeave={[Function]} onTouchEnd={[Function]} onTouchMove={[Function]} onTouchStart={[Function]} tabIndex={{...}} role={[undefined]} aria-disabled={false}>
                                                                                                 <span className=\\"MuiIconButton-label\\">
-                                                                                                  <input autoFocus={[undefined]} checked={true} defaultChecked={[undefined]} className=\\"PrivateSwitchBase-input-309\\" disabled={[undefined]} id={[undefined]} name=\\"createAndApplyRule\\" onChange={[Function: handleInputChange]} readOnly={[undefined]} required={[undefined]} tabIndex={[undefined]} type=\\"checkbox\\" value={true} data-indeterminate={false} />
+                                                                                                  <input autoFocus={[undefined]} checked={true} defaultChecked={[undefined]} className=\\"PrivateSwitchBase-input-310\\" disabled={[undefined]} id={[undefined]} name=\\"createAndApplyRule\\" onChange={[Function: handleInputChange]} readOnly={[undefined]} required={[undefined]} tabIndex={[undefined]} type=\\"checkbox\\" value={true} data-indeterminate={false} />
                                                                                                   <ForwardRef>
                                                                                                     <WithStyles(ForwardRef(SvgIcon))>
                                                                                                       <ForwardRef(SvgIcon) classes={{...}}>
@@ -364,50 +364,68 @@ exports[`ConfirmDialog matches snapshot 1`] = `
                                                       <WithStyles(ForwardRef(DialogActions)) className=\\"makeStyles-formFooter-7\\">
                                                         <ForwardRef(DialogActions) classes={{...}} className=\\"makeStyles-formFooter-7\\">
                                                           <div className=\\"MuiDialogActions-root makeStyles-formFooter-7 MuiDialogActions-spacing\\">
-                                                            <WithStyles(ForwardRef(Button)) onClick={[Function: mockConstructor]} className=\\"makeStyles-deleteButton-8\\">
-                                                              <ForwardRef(Button) classes={{...}} onClick={[Function: mockConstructor]} className=\\"makeStyles-deleteButton-8\\">
-                                                                <WithStyles(ForwardRef(ButtonBase)) className=\\"MuiButton-root MuiButton-text makeStyles-deleteButton-8\\" component=\\"button\\" disabled={false} focusRipple={true} focusVisibleClassName=\\"Mui-focusVisible\\" type=\\"button\\" onClick={[Function: mockConstructor]}>
-                                                                  <ForwardRef(ButtonBase) classes={{...}} className=\\"MuiButton-root MuiButton-text makeStyles-deleteButton-8\\" component=\\"button\\" disabled={false} focusRipple={true} focusVisibleClassName=\\"Mui-focusVisible\\" type=\\"button\\" onClick={[Function: mockConstructor]}>
-                                                                    <button className=\\"MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-deleteButton-8\\" onBlur={[Function]} onClick={[Function: mockConstructor]} onFocus={[Function]} onKeyDown={[Function]} onKeyUp={[Function]} onMouseDown={[Function]} onMouseLeave={[Function]} onMouseUp={[Function]} onDragLeave={[Function]} onTouchEnd={[Function]} onTouchMove={[Function]} onTouchStart={[Function]} tabIndex={0} type=\\"button\\" disabled={false}>
-                                                                      <span className=\\"MuiButton-label\\">
-                                                                        Delete this transaction
-                                                                      </span>
-                                                                      <NoSsr>
-                                                                        <WithStyles(undefined) center={false}>
-                                                                          <ForwardRef(TouchRipple) classes={{...}} center={false}>
-                                                                            <span className=\\"MuiTouchRipple-root\\">
-                                                                              <TransitionGroup component={{...}} exit={true} childFactory={[Function: childFactory]} />
-                                                                            </span>
-                                                                          </ForwardRef(TouchRipple)>
-                                                                        </WithStyles(undefined)>
-                                                                      </NoSsr>
-                                                                    </button>
-                                                                  </ForwardRef(ButtonBase)>
-                                                                </WithStyles(ForwardRef(ButtonBase))>
-                                                              </ForwardRef(Button)>
-                                                            </WithStyles(ForwardRef(Button))>
-                                                            <WithStyles(ForwardRef(Button)) type=\\"submit\\" color=\\"secondary\\">
-                                                              <ForwardRef(Button) classes={{...}} type=\\"submit\\" color=\\"secondary\\">
-                                                                <WithStyles(ForwardRef(ButtonBase)) className=\\"MuiButton-root MuiButton-text MuiButton-textSecondary\\" component=\\"button\\" disabled={false} focusRipple={true} focusVisibleClassName=\\"Mui-focusVisible\\" type=\\"submit\\">
-                                                                  <ForwardRef(ButtonBase) classes={{...}} className=\\"MuiButton-root MuiButton-text MuiButton-textSecondary\\" component=\\"button\\" disabled={false} focusRipple={true} focusVisibleClassName=\\"Mui-focusVisible\\" type=\\"submit\\">
-                                                                    <button className=\\"MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary\\" onBlur={[Function]} onClick={[undefined]} onFocus={[Function]} onKeyDown={[Function]} onKeyUp={[Function]} onMouseDown={[Function]} onMouseLeave={[Function]} onMouseUp={[Function]} onDragLeave={[Function]} onTouchEnd={[Function]} onTouchMove={[Function]} onTouchStart={[Function]} tabIndex={0} type=\\"submit\\" disabled={false}>
-                                                                      <span className=\\"MuiButton-label\\">
-                                                                        Save
-                                                                      </span>
-                                                                      <NoSsr>
-                                                                        <WithStyles(undefined) center={false}>
-                                                                          <ForwardRef(TouchRipple) classes={{...}} center={false}>
-                                                                            <span className=\\"MuiTouchRipple-root\\">
-                                                                              <TransitionGroup component={{...}} exit={true} childFactory={[Function: childFactory]} />
-                                                                            </span>
-                                                                          </ForwardRef(TouchRipple)>
-                                                                        </WithStyles(undefined)>
-                                                                      </NoSsr>
-                                                                    </button>
-                                                                  </ForwardRef(ButtonBase)>
-                                                                </WithStyles(ForwardRef(ButtonBase))>
-                                                              </ForwardRef(Button)>
-                                                            </WithStyles(ForwardRef(Button))>
+                                                            <WithStyles(ForwardRef(Grid)) container={true}>
+                                                              <ForwardRef(Grid) classes={{...}} container={true}>
+                                                                <div className=\\"MuiGrid-root MuiGrid-container\\">
+                                                                  <WithStyles(ForwardRef(Grid)) item={true} xs={6}>
+                                                                    <ForwardRef(Grid) classes={{...}} item={true} xs={6}>
+                                                                      <div className=\\"MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6\\">
+                                                                        <WithStyles(ForwardRef(Button)) onClick={[Function: mockConstructor]} className=\\"makeStyles-deleteButton-9\\">
+                                                                          <ForwardRef(Button) classes={{...}} onClick={[Function: mockConstructor]} className=\\"makeStyles-deleteButton-9\\">
+                                                                            <WithStyles(ForwardRef(ButtonBase)) className=\\"MuiButton-root MuiButton-text makeStyles-deleteButton-9\\" component=\\"button\\" disabled={false} focusRipple={true} focusVisibleClassName=\\"Mui-focusVisible\\" type=\\"button\\" onClick={[Function: mockConstructor]}>
+                                                                              <ForwardRef(ButtonBase) classes={{...}} className=\\"MuiButton-root MuiButton-text makeStyles-deleteButton-9\\" component=\\"button\\" disabled={false} focusRipple={true} focusVisibleClassName=\\"Mui-focusVisible\\" type=\\"button\\" onClick={[Function: mockConstructor]}>
+                                                                                <button className=\\"MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-deleteButton-9\\" onBlur={[Function]} onClick={[Function: mockConstructor]} onFocus={[Function]} onKeyDown={[Function]} onKeyUp={[Function]} onMouseDown={[Function]} onMouseLeave={[Function]} onMouseUp={[Function]} onDragLeave={[Function]} onTouchEnd={[Function]} onTouchMove={[Function]} onTouchStart={[Function]} tabIndex={0} type=\\"button\\" disabled={false}>
+                                                                                  <span className=\\"MuiButton-label\\">
+                                                                                    Delete this transaction
+                                                                                  </span>
+                                                                                  <NoSsr>
+                                                                                    <WithStyles(undefined) center={false}>
+                                                                                      <ForwardRef(TouchRipple) classes={{...}} center={false}>
+                                                                                        <span className=\\"MuiTouchRipple-root\\">
+                                                                                          <TransitionGroup component={{...}} exit={true} childFactory={[Function: childFactory]} />
+                                                                                        </span>
+                                                                                      </ForwardRef(TouchRipple)>
+                                                                                    </WithStyles(undefined)>
+                                                                                  </NoSsr>
+                                                                                </button>
+                                                                              </ForwardRef(ButtonBase)>
+                                                                            </WithStyles(ForwardRef(ButtonBase))>
+                                                                          </ForwardRef(Button)>
+                                                                        </WithStyles(ForwardRef(Button))>
+                                                                      </div>
+                                                                    </ForwardRef(Grid)>
+                                                                  </WithStyles(ForwardRef(Grid))>
+                                                                  <WithStyles(ForwardRef(Grid)) item={true} xs={6}>
+                                                                    <ForwardRef(Grid) classes={{...}} item={true} xs={6}>
+                                                                      <div className=\\"MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6\\">
+                                                                        <WithStyles(ForwardRef(Button)) type=\\"submit\\" color=\\"secondary\\" className=\\"makeStyles-saveButton-8\\">
+                                                                          <ForwardRef(Button) classes={{...}} type=\\"submit\\" color=\\"secondary\\" className=\\"makeStyles-saveButton-8\\">
+                                                                            <WithStyles(ForwardRef(ButtonBase)) className=\\"MuiButton-root MuiButton-text makeStyles-saveButton-8 MuiButton-textSecondary\\" component=\\"button\\" disabled={false} focusRipple={true} focusVisibleClassName=\\"Mui-focusVisible\\" type=\\"submit\\">
+                                                                              <ForwardRef(ButtonBase) classes={{...}} className=\\"MuiButton-root MuiButton-text makeStyles-saveButton-8 MuiButton-textSecondary\\" component=\\"button\\" disabled={false} focusRipple={true} focusVisibleClassName=\\"Mui-focusVisible\\" type=\\"submit\\">
+                                                                                <button className=\\"MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-saveButton-8 MuiButton-textSecondary\\" onBlur={[Function]} onClick={[undefined]} onFocus={[Function]} onKeyDown={[Function]} onKeyUp={[Function]} onMouseDown={[Function]} onMouseLeave={[Function]} onMouseUp={[Function]} onDragLeave={[Function]} onTouchEnd={[Function]} onTouchMove={[Function]} onTouchStart={[Function]} tabIndex={0} type=\\"submit\\" disabled={false}>
+                                                                                  <span className=\\"MuiButton-label\\">
+                                                                                    Save
+                                                                                  </span>
+                                                                                  <NoSsr>
+                                                                                    <WithStyles(undefined) center={false}>
+                                                                                      <ForwardRef(TouchRipple) classes={{...}} center={false}>
+                                                                                        <span className=\\"MuiTouchRipple-root\\">
+                                                                                          <TransitionGroup component={{...}} exit={true} childFactory={[Function: childFactory]} />
+                                                                                        </span>
+                                                                                      </ForwardRef(TouchRipple)>
+                                                                                    </WithStyles(undefined)>
+                                                                                  </NoSsr>
+                                                                                </button>
+                                                                              </ForwardRef(ButtonBase)>
+                                                                            </WithStyles(ForwardRef(ButtonBase))>
+                                                                          </ForwardRef(Button)>
+                                                                        </WithStyles(ForwardRef(Button))>
+                                                                      </div>
+                                                                    </ForwardRef(Grid)>
+                                                                  </WithStyles(ForwardRef(Grid))>
+                                                                </div>
+                                                              </ForwardRef(Grid)>
+                                                            </WithStyles(ForwardRef(Grid))>
                                                           </div>
                                                         </ForwardRef(DialogActions)>
                                                       </WithStyles(ForwardRef(DialogActions))>

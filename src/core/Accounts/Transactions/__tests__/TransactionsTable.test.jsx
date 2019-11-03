@@ -32,6 +32,7 @@ describe('TransactionsTable', () => {
   const mochFormatCurrency = jest.fn().mockReturnValue(() => {})
   const mochFormatDecimal = jest.fn().mockReturnValue(() => {})
   const mochFormatDate = jest.fn().mockReturnValue(() => {})
+
   let wrapper
   let instance
 
@@ -178,9 +179,9 @@ describe('TransactionsTable', () => {
       }
 
       it('should select row classes', () => {
-        expect(instance.rowClassName({ index: -1 }, transactions, classes)).toEqual('headerRow oddRow')
+        expect(instance.rowClassName({ index: -1 }, transactions, classes)).toEqual('headerRow')
         expect(instance.rowClassName({ index: 0 }, transactions, classes)).toEqual('row')
-        expect(instance.rowClassName({ index: 1 }, transactions, classes)).toEqual('row oddRow')
+        expect(instance.rowClassName({ index: 1 }, transactions, classes)).toEqual('row')
         transactions[2].errors = ['Some error']
         expect(instance.rowClassName({ index: 2 }, transactions, classes)).toEqual('rowWithError row')
       })

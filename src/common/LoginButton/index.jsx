@@ -90,7 +90,7 @@ const LoginButton = () => {
                     <ListItemIcon>
                       <PowerSettingsNewIcon />
                     </ListItemIcon>
-                    <ListItemText primary="Sign out" />
+                    <ListItemText primary="Close session" />
                   </MenuItem>
                   <Divider />
                   <MenuItem disabled={true}>
