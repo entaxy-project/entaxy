@@ -10,6 +10,7 @@ import Divider from '@material-ui/core/Divider'
 import IconButton from '@material-ui/core/IconButton'
 import CloseIcon from '@material-ui/icons/Close'
 import Typography from '@material-ui/core/Typography'
+import Grid from '@material-ui/core/Grid'
 
 const useStyles = makeStyles((theme) => ({
   formWrapper: {
@@ -30,6 +31,9 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 10,
     marginBottom: 10,
     justifyContent: 'space-between'
+  },
+  saveButton: {
+    float: 'right'
   },
   deleteButton: {
     color: theme.palette.danger.icon,
@@ -69,10 +73,16 @@ const ModalDialog = ({
           </DialogContent>
           <Divider />
           <DialogActions className={classes.formFooter}>
-            {(onDelete) && (
-              <Button onClick={onDelete} className={classes.deleteButton}>Delete this transaction</Button>
-            )}
-            <Button type="submit" color="secondary">Save</Button>
+            <Grid container>
+              <Grid item xs={6}>
+                {(onDelete) && (
+                  <Button onClick={onDelete} className={classes.deleteButton}>Delete this transaction</Button>
+                )}
+              </Grid>
+              <Grid item xs={6}>
+                <Button type="submit" color="secondary" className={classes.saveButton}>Save</Button>
+              </Grid>
+            </Grid>
           </DialogActions>
         </form>
       </div>

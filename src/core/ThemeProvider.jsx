@@ -16,7 +16,7 @@ const theme = createMuiTheme({
     },
     info: {
       text: '#00acc1',
-      background: '#E8F6F8',
+      background: 'rgb(227, 243, 247)',
       icon: '#17a2b8'
     },
     danger: {

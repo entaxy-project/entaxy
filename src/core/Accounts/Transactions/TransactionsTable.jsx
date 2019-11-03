@@ -39,10 +39,13 @@ const styles = (theme) => ({
     borderBottom: '1px solid #e0e0e0',
     fontFamily: theme.typography.subtitle2.fontFamily,
     fontWeight: theme.typography.body2.fontWeight,
-    fontSize: theme.typography.subtitle2.fontSize
+    fontSize: theme.typography.subtitle2.fontSize,
+    '&:hover': {
+      background: grey[200]
+    }
   },
-  oddRow: {
-    backgroundColor: '#fafafa'
+  selectedRow: {
+    backgroundColor: theme.palette.info.background
   },
   rowWithError: {
     backgroundColor: theme.palette.danger.background,
@@ -118,7 +121,7 @@ export class TransactionsTableComponent extends React.Component {
       .filter((transaction) => (
         Object.keys(filters).reduce((result, attr) => {
           if (attr === 'description') {
-            return result && this.filterByDescription(transaction)
+            return result && this.filterByDescriptionAndCategory(transaction)
           }
           if (attr === 'errors') {
             return result && filterByErrors(transaction)
@@ -135,7 +138,7 @@ export class TransactionsTableComponent extends React.Component {
     return orderBy(filteredTransactions, [sortBy], [sortDirection.toLowerCase()])
   }
 
-  filterByDescription = (transaction) => {
+  filterByDescriptionAndCategory = (transaction) => {
     let res = transaction.description.toLowerCase().includes(this.state.filters.description.toLowerCase())
     if (transaction.categoryId !== undefined) {
       const category = this.props.budget.categoriesById[transaction.categoryId].name
@@ -186,13 +189,19 @@ export class TransactionsTableComponent extends React.Component {
   )
 
   rowClassName = ({ index }, filteredTransactions, classes) => {
+    const transaction = filteredTransactions[index]
+    const isHeader = index < 0
+    const isOpeningBalance = transaction && transaction.type === 'openingBalance'
+    const hasErrors = transaction && this.transactionHasErrors(transaction)
+    const isDuplicate = transaction && transaction.duplicate !== undefined
+    const isSelected = transaction && this.state.selected.includes(transaction.id)
     return classNames({
-      [classes.headerRow]: index < 0,
-      [classes.openingBalance]: index >= 0 && filteredTransactions[index].type === 'openingBalance',
-      [classes.rowWithError]: (index >= 0 && this.transactionHasErrors(filteredTransactions[index])),
-      [classes.rowWithDuplicate]: (index >= 0 && filteredTransactions[index].duplicate !== undefined),
-      [classes.row]: index >= 0,
-      [classes.oddRow]: index % 2 !== 0
+      [classes.headerRow]: isHeader,
+      [classes.openingBalance]: !isHeader && isOpeningBalance,
+      [classes.rowWithError]: !isHeader && hasErrors,
+      [classes.rowWithDuplicate]: !isHeader && isDuplicate,
+      [classes.row]: !isHeader,
+      [classes.selectedRow]: !isHeader && isSelected
     })
   }
 
@@ -224,7 +233,11 @@ export class TransactionsTableComponent extends React.Component {
       sortBy,
       sortDirection
     } = this.state
+
     const filteredTransactions = this.filterAndSortTransactions()
+    const filteredTransactionsIncludeOpeningBalance = !!filteredTransactions
+      .find((transaction) => transaction.type === 'openingBalance')
+
     const rowHeight = account.type === 'wallet' ? 42 : 30
     return (
       <div className={`${[classes.tableWrapper, className].join(' ')}`}>
@@ -252,24 +265,29 @@ export class TransactionsTableComponent extends React.Component {
               sort={this.handleSort}
               sortBy={sortBy}
               sortDirection={sortDirection}
+              tabIndex={null}
             >
               {!hideChekboxes && (
                 <Column
                   dataKey="id"
                   width={40}
                   disableSort={true}
-                  headerRenderer={() => (
-                    <span
-                      className="ReactVirtualized__Table__headerTruncatedText"
-                      key="label"
-                    >
-                      <Checkbox
-                        indeterminate={selected.length > 0 && selected.length < filteredTransactions.length - 1}
-                        checked={selected.length > 0 && selected.length === filteredTransactions.length - 1}
-                        onChange={(event) => this.handleSelectAllClick(event, filteredTransactions)}
-                      />
-                    </span>
-                  )}
+                  headerRenderer={() => {
+                    let filteredTransactionsLength = filteredTransactions.length
+                    if (filteredTransactionsIncludeOpeningBalance) filteredTransactionsLength -= 1
+                    return (
+                      <span
+                        className="ReactVirtualized__Table__headerTruncatedText"
+                        key="label"
+                      >
+                        <Checkbox
+                          indeterminate={selected.length > 0 && selected.length < filteredTransactionsLength}
+                          checked={selected.length > 0 && selected.length === filteredTransactionsLength}
+                          onChange={(event) => this.handleSelectAllClick(event, filteredTransactions)}
+                        />
+                      </span>
+                    )
+                  }}
                   cellRenderer={({ cellData }) => cellData !== undefined && (
                     <span
                       className="ReactVirtualized__Table__headerTruncatedText"

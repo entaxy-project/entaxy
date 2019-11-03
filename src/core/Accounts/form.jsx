@@ -201,15 +201,20 @@ export class AccountFormComponent extends React.Component {
 
     const formatedInstitutions = this.generateFormatedInstitutions()
     const usedInstitutions = Object.keys(this.props.accounts.byInstitution).sort()
-
     const filterInstitutions = (option, inputValue) => {
       if (inputValue === '') return usedInstitutions.includes(option.value)
       const words = inputValue.split(' ')
       return words.reduce(
         (result, cur) => result && option.value.toLowerCase().includes(cur.toLowerCase()),
-        true,
+        true
       )
     }
+    const institutionError = typeof errors.institution === 'object'
+      ? errors.institution.value
+      : errors.institution
+    const institutionWasTouched = typeof touched.institution === 'object'
+      ? !!touched.institution.value
+      : !!touched.institution
 
     return (
       <Grid container justify="center">
@@ -249,8 +254,8 @@ export class AccountFormComponent extends React.Component {
                     options={formatedInstitutions}
                     filterOption={filterInstitutions}
                     onChange={this.handleInstitutionChange}
-                    error={errors.institution && touched.institution}
-                    helperText={errors.institution}
+                    error={!!institutionError && institutionWasTouched}
+                    helperText={institutionError}
                   />
                 )}
                 {this.institutionOptions(values.institution)}
@@ -259,7 +264,7 @@ export class AccountFormComponent extends React.Component {
                   label="Account name"
                   inputProps={{
                     'aria-label': 'Account name',
-                    maxLength: 50
+                    maxLength: 40
                   }}
                   value={values.name}
                   name="name"
@@ -390,9 +395,10 @@ export default compose(
       }
     },
     validationSchema: (props) => {
-      const accountNames = Object.values(props.accounts.byId).reduce(
+      const accountNames = (institution) => Object.values(props.accounts.byId).reduce(
         (result, account) => {
           if (props.account !== undefined && account.id === props.account.id) return result
+          if (account.institution !== institution) return result
           return [...result, account.name]
         },
         []
@@ -401,18 +407,35 @@ export default compose(
         accountType: Yup.object()
           .required('Please select an account type')
           .nullable(),
-        institution: Yup.object().when('accountType', {
-          is: (accountType) => accountType.value === 'cash',
-          then: Yup.object()
-            .nullable(),
-          otherwise: Yup.object()
-            .required('Please select or create an institution')
-            .nullable()
-        }),
+        institution: Yup.object()
+          .nullable()
+          .when('accountType', {
+            is: (accountType) => accountType.value !== 'cash',
+            then: Yup.object().required('Please select or create an institution')
+          })
+          .shape({
+            value: Yup.string()
+              .max(40, 'Too Long! 40 characters max'),
+            label: Yup.string()
+          })
+          .when('accountType', {
+            is: (accountType) => accountType.value === 'cash',
+            then: Yup.object()
+              .nullable(),
+            otherwise: Yup.object()
+              .required('Please select or create an institution')
+              .nullable()
+          }),
         name: Yup.string()
-          .max(50, 'Too Long!')
+          .max(40, 'Too Long! 40 characters max')
           .required('Please enter a name for this account')
-          .notOneOf(accountNames, 'This account name already exists'),
+          .when('institution', (institution, schema) => {
+            if (!institution) return schema
+            return schema.notOneOf(
+              accountNames(institution.value),
+              'This account is already being used in this institution'
+            )
+          }),
         openingBalance: Yup.number()
           .required('Please enter an opening balance')
           .min(-9999999.99)

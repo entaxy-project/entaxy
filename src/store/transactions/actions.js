@@ -14,7 +14,6 @@ export const applyExactRule = ({ match, rules }) => (
 
 export const createTransaction = (account, transaction, { createAndApplyRule = false } = {}) => (
   async (dispatch, getState) => {
-    const { budget } = getState()
     const id = uuid()
     let localCurrency = dispatch(convertToCurrency(
       transaction.amount.accountCurrency,
@@ -47,9 +46,10 @@ export const createTransaction = (account, transaction, { createAndApplyRule = f
         createdAt: transaction.createdAt + 1000 // Plus 1 second
       }
     })
+
     if (transaction.categoryId !== undefined && createAndApplyRule) {
       dispatch(createExactRule(transaction.categoryId, transaction.description))
-      dispatch(applyExactRule({ match: transaction.description, rules: budget.rules }))
+      dispatch(applyExactRule({ match: transaction.description, rules: getState().budget.rules }))
       dispatch(countRuleUsage())
     }
 

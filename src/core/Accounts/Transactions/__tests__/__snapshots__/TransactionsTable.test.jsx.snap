@@ -172,7 +172,7 @@ exports[`TransactionsTable matches snapshot with no transactions 1`] = `
       style={Object {}}
     >
       <div
-        className="ReactVirtualized__Table__headerRow undefined"
+        className="ReactVirtualized__Table__headerRow"
         role="row"
         style={
           Object {
@@ -387,7 +387,7 @@ exports[`TransactionsTable matches snapshot with no transactions 1`] = `
             "willChange": "transform",
           }
         }
-        tabIndex={0}
+        tabIndex={null}
       />
     </div>
   </div>
@@ -566,7 +566,7 @@ exports[`TransactionsTable matches snapshot with some transactions 1`] = `
       style={Object {}}
     >
       <div
-        className="ReactVirtualized__Table__headerRow undefined"
+        className="ReactVirtualized__Table__headerRow"
         role="row"
         style={
           Object {
@@ -781,7 +781,7 @@ exports[`TransactionsTable matches snapshot with some transactions 1`] = `
             "willChange": "transform",
           }
         }
-        tabIndex={0}
+        tabIndex={null}
       >
         <div
           className="ReactVirtualized__Grid__innerScrollContainer"
@@ -960,7 +960,7 @@ exports[`TransactionsTable matches snapshot with some transactions 1`] = `
           </div>
           <div
             aria-rowindex={2}
-            className="ReactVirtualized__Table__row undefined"
+            className="ReactVirtualized__Table__row"
             role="row"
             style={
               Object {

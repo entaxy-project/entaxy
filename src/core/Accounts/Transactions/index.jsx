@@ -95,7 +95,7 @@ const Transactions = ({ match }) => {
         account={account}
         transactions={accountTransactions()}
         Toolbar={TransactionsToolbar}
-        toolbarProps={{ handleNew, handleDelete: handleDeleteTransactions }}
+        toolbarProps={{ handleNew, handleEdit, handleDelete: handleDeleteTransactions }}
       >
         <Column
           width={40}
