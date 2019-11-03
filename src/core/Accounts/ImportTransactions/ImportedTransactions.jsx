@@ -112,8 +112,20 @@ const ImportedTransactions = ({
       <>
         {errorText}
         {duplicateText}
-        {importCount === 0 ? 'No transactions ' : `Only ${pluralize('transaction', importCount, true)} `}
-        will  be imported
+        {
+          importCount === 0
+            ? <strong>No transactions</strong>
+            : (
+              <>
+                Only&nbsp;
+                <strong>
+                  {importCount}/{parser.transactions.length}&nbsp;
+                  {pluralize('transaction', importCount, false)}
+                </strong>
+              </>
+            )
+        }
+        &nbsp;will  be imported
       </>
     ) : 'No errors'
 
