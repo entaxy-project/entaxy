@@ -207,7 +207,7 @@ export class AccountFormComponent extends React.Component {
       const words = inputValue.split(' ')
       return words.reduce(
         (result, cur) => result && option.value.toLowerCase().includes(cur.toLowerCase()),
-        true,
+        true
       )
     }
 
