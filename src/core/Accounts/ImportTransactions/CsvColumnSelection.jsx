@@ -105,6 +105,15 @@ const CsvColumnSelection = ({
     setDuplicateTransactions()
     handleNextStep()
   }
+
+
+  const selectedColumns = csvHeader.reduce((res, h) => {
+    if (h.transactionField === parser.dontImport) return res
+    return [...res, h.transactionField]
+  }, [])
+  const readyToSubmit = ['description1', 'createdAt', 'amount'].every((e) => selectedColumns.includes(e))
+    || ['description1', 'createdAt', 'income', 'expense'].every((e) => selectedColumns.includes(e))
+
   return (
     <form onSubmit={handleSubmit}>
       <Grid container alignItems="center" className={classes.formOptions}>
@@ -183,7 +192,7 @@ const CsvColumnSelection = ({
               size="small"
               variant="contained"
               color="secondary"
-              disabled={isSubmitting}
+              disabled={!readyToSubmit || isSubmitting}
               className={classes.submitButton}
               data-testid="nextButton"
             >
