@@ -2,16 +2,17 @@ import { createAccount } from '../store/accounts/actions'
 import { addTransactions } from '../store/transactions/actions'
 
 const generateSeedData = () => async (dispatch, getState) => {
-  const { accounts, budget } = getState()
   const accountId = await dispatch(createAccount({
     accountType: 'bank',
     name: 'Checking',
     openingBalance: 0,
     institution: 'TD EasyWeb',
-    currency: 'USD',
+    currency: getState().settings.currency,
     currentBalance: { accountCurrency: 0, localCurrency: 0 },
     openingBalanceDate: Date.now()
   }))
+
+  const { accounts, budget } = getState()
   const account = accounts.byId[accountId]
   const categoryIds = Object.keys(budget.categoriesById)
   const transactions = [...Array(120).keys()].map((key) => {
