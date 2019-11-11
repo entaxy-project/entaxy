@@ -265,7 +265,7 @@ export default class CsvParser {
       if (Object.keys(columns).includes(column)) {
         return [
           ...acc,
-          (isNil(row[columns[column]]) ? '' : row[columns[column]].trim())
+          (isNil(row[columns[column]]) ? '' : row[columns[column]].toString().trim())
         ]
       }
       return acc
