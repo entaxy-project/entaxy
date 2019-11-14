@@ -99,7 +99,7 @@ const LoginButton = () => {
                     <ListItemText primary="Close session" />
                   </MenuItem>
                   <Divider />
-                  <MenuItem onClick={handleGererateSeedData} data-testid="logoutButton">
+                  <MenuItem onClick={handleGererateSeedData}>
                     <ListItemText primary="Seed data" />
                   </MenuItem>
                   <MenuItem disabled={true}>

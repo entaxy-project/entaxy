@@ -55,7 +55,7 @@ const PopupDateRangePicker = ({
           minDate={minDate}
           maxDate={maxDate}
           inputRanges={[]}
-          staticRanges={staticRanges}
+          staticRanges={staticRanges(minDate)}
         />
       </Popover>
     </>

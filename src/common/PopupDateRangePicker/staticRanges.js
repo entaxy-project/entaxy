@@ -28,7 +28,7 @@ const defineds = {
   startOfLastYear: startOfMonth(addMonths(new Date(), -12))
 }
 
-export default createStaticRanges([
+export default (minDate) => createStaticRanges([
   {
     label: 'This Week',
     range: () => ({
@@ -75,6 +75,13 @@ export default createStaticRanges([
     label: 'Last 12 Months',
     range: () => ({
       startDate: defineds.startOfLastYear,
+      endDate: defineds.endOfToday
+    })
+  },
+  {
+    label: 'All time',
+    range: () => ({
+      startDate: startOfDay(minDate),
       endDate: defineds.endOfToday
     })
   }

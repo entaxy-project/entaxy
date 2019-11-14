@@ -1,17 +1,13 @@
 import React, { useState, useMemo } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import Container from '@material-ui/core/Container'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
-import FormControl from '@material-ui/core/FormControl'
-import InputLabel from '@material-ui/core/InputLabel'
-import Select from '@material-ui/core/Select'
-import MenuItem from '@material-ui/core/MenuItem'
-import { startOfMonth, endOfMonth } from 'date-fns'
+import { format, startOfMonth, subMonths } from 'date-fns'
 import SankeyDiagram from './SankeyDiagram'
-import { showSnackbar } from '../../store/user/actions'
+import PopupDateRangePicker from '../../common/PopupDateRangePicker'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -48,42 +44,38 @@ const useStyles = makeStyles((theme) => ({
 
 const MoneyFlow = () => {
   const classes = useStyles()
-  const dispatch = useDispatch()
-  const { budget, transactions, dateFormatter } = useSelector((state) => ({
-    transactions: state.transactions.list.sort((a, b) => a.createdAt - b.createdAt),
-    budget: state.budget,
-    dateFormatter: (new Intl.DateTimeFormat(state.settings.locale, { month: 'long' })).format
+  const { budget, transactions } = useSelector((state) => ({
+    transactions: state.transactions.list.filter((transaction) => (
+      transaction.categoryId !== undefined
+    )).sort((a, b) => a.createdAt - b.createdAt),
+    budget: state.budget
   }))
-  const userHasBudget = Object.keys(budget.rules).length > 0
 
-  const start = transactions.length > 0 ? new Date(transactions[0].createdAt) : new Date()
-  const end = transactions.length > 0 ? new Date(transactions[transactions.length - 1].createdAt) : new Date()
-  const yearsList = Array.from(
-    Array(end.getFullYear() - start.getFullYear() + 1).keys(),
-    (n) => start.getFullYear() + n
-  )
-  const monthsList = Array.from(Array(12).keys(), (n) => n + 1).map(
-    (month) => dateFormatter(new Date(`${month}/01/1970`).getTime())
-  )
-  const initialValues = {
-    fromYear: yearsList[0],
-    fromMonth: monthsList[start.getMonth()],
-    toYear: yearsList[yearsList.length - 1],
-    toMonth: monthsList[end.getMonth()]
-  }
-  initialValues.fromDate = startOfMonth(new Date(`${initialValues.fromMonth}/01/${initialValues.fromYear}`))
-  initialValues.toDate = endOfMonth(new Date(`${initialValues.toMonth}/01/${initialValues.toYear}`))
+  const minDate = transactions.length > 0 ? new Date(transactions[0].createdAt) : new Date()
+  const maxDate = transactions.length > 0 ? new Date(transactions[transactions.length - 1].createdAt) : new Date()
 
-  const [values, setValues] = useState(initialValues)
+  const [dateRange, setDateRange] = useState({
+    minDate,
+    maxDate,
+    startDate: subMonths(startOfMonth(maxDate), 3),
+    endDate: maxDate,
+    key: 'selection'
+  })
 
   const graphData = useMemo(() => {
     const incomeGroupId = budget.categoryTree.find((group) => group.isIncome).id
+    const { startDate, endDate } = dateRange
+    const expenseGroup = {
+      id: 'Expenses',
+      name: 'Expenses',
+      index: 1,
+      total: 0
+    }
 
-    const filteredTransactions = transactions.filter(
-      (transaction) => transaction.categoryId !== undefined
-        && transaction.createdAt >= values.fromDate.getTime()
-        && transaction.createdAt <= values.toDate.getTime()
-    )
+    const filteredTransactions = transactions.filter((transaction) => (
+      transaction.createdAt >= startDate.getTime() && transaction.createdAt <= endDate.getTime()
+    ))
+
     const usedCategories = Object.values(filteredTransactions.reduce((result, transaction) => {
       const category = budget.categoriesById[transaction.categoryId]
       const group = budget.categoriesById[category.parentId]
@@ -94,15 +86,15 @@ const MoneyFlow = () => {
           ...category,
           index: (result[category.id] === undefined ? index : result[category.id].index),
           total: result[category.id] === undefined
-            ? transaction.amount
-            : result[category.id].total + transaction.amount
+            ? transaction.amount.localCurrency
+            : result[category.id].total + transaction.amount.localCurrency
         },
         [group.id]: {
           ...group,
           index: (result[group.id] === undefined ? index + 1 : result[group.id].index),
           total: result[group.id] === undefined
-            ? transaction.amount
-            : result[group.id].total + transaction.amount
+            ? transaction.amount.localCurrency
+            : result[group.id].total + transaction.amount.localCurrency
         }
       }
     }, {
@@ -110,32 +102,38 @@ const MoneyFlow = () => {
         ...budget.categoriesById[incomeGroupId],
         index: 0,
         total: 0
-      }
+      },
+      Expense: expenseGroup
     }))
+    const incomeCategories = usedCategories.filter((cat) => cat.parentId === incomeGroupId)
+    const incomeGroup = usedCategories.find((cat) => cat.id === incomeGroupId)
 
-    const incomeCategories = usedCategories.filter(
-      (category) => category.parentId === incomeGroupId
-    )
-    const incomeGroup = usedCategories.find(
-      (category) => category.id === incomeGroupId
-    )
+    console.log({ usedCategories })
+
     return usedCategories
       .sort((a, b) => a.index > b.index)
       .reduce((data, category) => {
         const newLinks = []
         if (category.id === incomeGroupId) { // Income group
-          // from income categories
+          // from income categories to income group
           incomeCategories.forEach((incomeCategory) => {
+            expenseGroup.total += Math.abs(incomeCategory.total)
             newLinks.push({
               source: incomeCategory.index,
               target: category.index,
               value: Math.abs(incomeCategory.total)
             })
           })
-        } else if (category.parentId === undefined) { // Non income groups
-          // from income group
+          // from income group to expenses group
           newLinks.push({
             source: incomeGroup.index,
+            target: 1,
+            value: expenseGroup.total
+          })
+        } else if (category.parentId === undefined && category.id !== 'Expenses') { // Non income groups
+          // from expenses group to non income groups
+          newLinks.push({
+            source: expenseGroup.index,
             target: category.index,
             value: Math.abs(category.total)
           })
@@ -154,35 +152,23 @@ const MoneyFlow = () => {
           ...data,
           nodes: [
             ...data.nodes,
-            { name: category.name, data: category, isIncome: category.parentId === incomeGroupId }
+            {
+              name: category.name,
+              data: category,
+              isIncome: category.parentId === incomeGroupId
+            }
           ],
-          links: [
-            ...data.links,
-            ...newLinks
-          ]
+          links: [...data.links, ...newLinks]
         }
       }, { nodes: [], links: [] })
-  }, [budget, transactions, values])
+  }, [budget, transactions, dateRange])
 
-
-  function handleChange(event) {
-    setValues((oldValues) => {
-      const newValues = {
-        ...oldValues,
-        [event.target.name]: event.target.value
-      }
-      newValues.fromDate = startOfMonth(new Date(`${newValues.fromMonth}/01/${newValues.fromYear}`))
-      newValues.toDate = endOfMonth(new Date(`${newValues.toMonth}/01/${newValues.toYear}`))
-      if (newValues.fromDate.getTime() < newValues.toDate.getTime()
-        || `${newValues.fromMonth}/${newValues.fromYear}` === `${newValues.toMonth}/${newValues.toYear}`) {
-        return newValues
-      }
-      dispatch(showSnackbar({
-        text: 'The start date needs to come before the end date',
-        status: 'error'
-      }))
-      return oldValues
-    })
+  const handleSelectDate = (ranges) => {
+    setDateRange((prevState) => ({
+      ...prevState.dateRange,
+      startDate: ranges.selection.startDate,
+      endDate: ranges.selection.endDate
+    }))
   }
 
   return (
@@ -193,70 +179,25 @@ const MoneyFlow = () => {
             Money flow
           </Typography>
           <div className={classes.filters}>
-            <Typography className={classes.filterLabel}>
-              From
-            </Typography>
-            <FormControl className={classes.filterMonthSelect}>
-              <InputLabel shrink htmlFor="fromMonth-label-placeholder">Month</InputLabel>
-              <Select
-                value={values.fromMonth}
-                onChange={handleChange}
-                inputProps={{ name: 'fromMonth', id: 'fromMonth' }}
-              >
-                {monthsList.map((month) => (
-                  <MenuItem key={month} value={month}>{month}</MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-            <FormControl>
-              <InputLabel shrink htmlFor="fromYear-label-placeholder">Year</InputLabel>
-              <Select
-                value={values.fromYear}
-                onChange={handleChange}
-                inputProps={{ name: 'fromYear', id: 'fromYear' }}
-              >
-                {yearsList.map((year) => (
-                  <MenuItem key={year} value={year}>{year}</MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-            <Typography className={classes.filterLabel}>
-              To
-            </Typography>
-            <FormControl className={classes.filterMonthSelect}>
-              <InputLabel shrink htmlFor="toMonth-label-placeholder">Month</InputLabel>
-              <Select
-                value={values.toMonth}
-                onChange={handleChange}
-                inputProps={{ name: 'toMonth', id: 'toMonth' }}
-              >
-                {monthsList.map((month) => (
-                  <MenuItem key={month} value={month}>{month}</MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-            <FormControl>
-              <InputLabel shrink htmlFor="toYear-label-placeholder">Year</InputLabel>
-              <Select
-                value={values.toYear}
-                onChange={handleChange}
-                inputProps={{ name: 'toYear', id: 'toYear' }}
-              >
-                {yearsList.map((year) => (
-                  <MenuItem key={year} value={year}>{year}</MenuItem>
-                ))}
-              </Select>
-            </FormControl>
+            <PopupDateRangePicker
+              ranges={[dateRange]}
+              onChange={handleSelectDate}
+              minDate={dateRange.minDate}
+              maxDate={dateRange.maxDate}
+            >
+              {format(dateRange.startDate, 'MMM dd, yyyy')} -&nbsp;
+              {format(dateRange.endDate, 'MMM dd, yyyy')}
+            </PopupDateRangePicker>
           </div>
         </Grid>
         <Grid item xs={12}>
           <Paper className={classes.budgetChart}>
-            {(!userHasBudget || graphData.links.length === 0) && (
+            {(graphData.links.length === 0) && (
               <Typography>
                 Not enough data to generate chart
               </Typography>
             )}
-            {userHasBudget && graphData.links.length > 0 && (
+            {graphData.links.length > 0 && (
               <SankeyDiagram data={graphData} />
             )}
           </Paper>
