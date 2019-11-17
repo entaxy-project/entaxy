@@ -1,141 +1,143 @@
 {
-    "name": "entaxy",
-    "description": "Your Personal Finance App",
-    "version": "0.1.0",
-    "private": true,
-    "homepage": "https://entaxy.io",
-    "scripts": {
-        "start": "react-scripts start",
-        "build": "react-scripts build",
-        "test": "react-scripts test --coverage",
-        "coverage": "react-scripts test --coverage --watchAll=false",
-        "test:ci": "react-scripts test --coverage --watchAll=false",
-        "eject": "react-scripts eject",
-        "lint": "eslint src --ext '.js,.jsx' --config .eslintrc",
-        "lint:fix": "npm run lint --fix",
-        "deploy:test": "npm run build && aws s3 sync build/ s3://entaxy-test --delete",
-        "deploy:staging": "npm run build && aws s3 sync build/ s3://staging.entaxy.io --delete",
-        "postdeploy:staging": "aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_ID --paths '/*'",
-        "deploy:production": "npm run build && aws s3 sync build/ s3://entaxy-production --delete",
-        "postdeploy:production": "aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_ID --paths '/*'",
-        "debug": "echo 'chrome://inspect' && npx react-scripts --inspect-brk test --env=jsdom --runInBand --watch"
-    },
-    "dependencies": {
-        "@material-ui/core": "^4.5.1",
-        "@material-ui/icons": "^4.5.1",
-        "@mdi/js": "^4.5.95",
-        "@mdi/react": "^1.2.1",
-        "@vx/axis": "0.0.192",
-        "@vx/curve": "0.0.192",
-        "@vx/glyph": "0.0.192",
-        "@vx/gradient": "0.0.192",
-        "@vx/grid": "0.0.192",
-        "@vx/group": "0.0.192",
-        "@vx/legend": "0.0.192",
-        "@vx/pattern": "0.0.192",
-        "@vx/point": "0.0.192",
-        "@vx/responsive": "0.0.192",
-        "@vx/scale": "0.0.192",
-        "@vx/shape": "0.0.192",
-        "@vx/tooltip": "0.0.192",
-        "big.js": "^5.2.2",
-        "blockstack": "^19.2.5",
-        "chroma-js": "^2.0.4",
-        "classnames": "^2.2.6",
-        "d3": "^5.12.0",
-        "d3-array": "^2.3.3",
-        "d3-sankey": "^0.12.3",
-        "date-fns": "^2.5.1",
-        "formik": "^1.5.8",
-        "jsdom": "^15.2.0",
-        "localforage": "^1.7.3",
-        "lodash": "^4.17.15",
-        "papaparse": "^5.1.0",
-        "pluralize": "^8.0.0",
-        "prop-types": "^15.7.2",
-        "query-string": "^6.8.3",
-        "react": "^16.10.2",
-        "react-confirm": "^0.1.18",
-        "react-dom": "^16.10.2",
-        "react-dropzone": "^10.1.10",
-        "react-motion": "^0.5.2",
-        "react-number-format": "^4.3.0",
-        "react-redux": "^7.1.1",
-        "react-router-dom": "^5.1.2",
-        "react-scripts": "^3.2.0",
-        "react-select": "^3.0.8",
-        "react-virtualized": "^9.21.1",
-        "react-window": "^1.8.5",
-        "recharts": "^1.8.3",
-        "recompose": "^0.30.0",
-        "redux": "^4.0.4",
-        "redux-devtools-extension": "^2.13.8",
-        "redux-logger": "^3.0.6",
-        "redux-persist": "^6.0.0",
-        "redux-thunk": "^2.3.0",
-        "reselect": "^4.0.0",
-        "uuid": "^3.3.3",
-        "yup": "^0.27.0"
-    },
-    "eslintConfig": {
-        "extends": "react-app"
-    },
-    "browserslist": [
-        ">0.2%",
-        "not dead",
-        "not ie <= 11",
-        "not op_mini all"
-    ],
-    "devDependencies": {
-        "@testing-library/jest-dom": "^4.1.2",
-        "@testing-library/react": "^9.3.0",
-        "coveralls": "^3.0.7",
-        "enzyme": "^3.10.0",
-        "enzyme-adapter-react-16": "^1.15.1",
-        "eslint": "^6.5.1",
-        "eslint-config-airbnb": "^18.0.1",
-        "eslint-plugin-import": "^2.18.2",
-        "eslint-plugin-jest": "^22.19.0",
-        "eslint-plugin-jsx-a11y": "^6.2.3",
-        "eslint-plugin-react": "^7.16.0",
-        "eslint-plugin-react-hooks": "^2.1.2",
-        "history": "^4.10.1",
-        "http-proxy-middleware": "^0.20.0",
-        "husky": "^3.0.9",
-        "jest-enzyme": "^7.1.1",
-        "lint-staged": "^9.4.2",
-        "react-test-renderer": "^16.10.2",
-        "redux-mock-store": "^1.5.3"
-    },
-    "husky": {
-        "hooks": {
-            "pre-commit": "lint-staged"
-        }
-    },
-    "lint-staged": {
-        "*.{js,jsx}": [
-            "npm run lint --fix",
-            "react-scripts test --env=jsdom --bail --coverage --findRelatedTests --watchAll=false",
-            "git add"
-        ]
-    },
-    "jest": {
-        "collectCoverageFrom": [
-            "src/**/*.{js,jsx,mjs}",
-            "!src/registerServiceWorker.js",
-            "!src/setupProxy.js",
-            "!src/store/**/types.js",
-            "!src/store/transactions/selectors.js",
-            "!src/core/Taxes/*",
-            "!src/core/Portfolios/*"
-        ],
-        "coverageThreshold": {
-            "global": {
-                "branches": 50,
-                "functions": 50,
-                "lines": 50,
-                "statements": 50
-            }
-        }
+  "name": "entaxy",
+  "description": "Your Personal Finance App",
+  "version": "0.1.3",
+  "private": true,
+  "homepage": "https://entaxy.io",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --coverage",
+    "coverage": "react-scripts test --coverage --watchAll=false",
+    "test:ci": "react-scripts test --coverage --watchAll=false",
+    "eject": "react-scripts eject",
+    "lint": "eslint src --ext '.js,.jsx' --config .eslintrc",
+    "lint:fix": "npm run lint --fix",
+    "deploy:test": "npm run build && aws s3 sync build/ s3://entaxy-test --delete",
+    "deploy:staging": "npm run build && aws s3 sync build/ s3://staging.entaxy.io --delete",
+    "postdeploy:staging": "aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_ID --paths '/*'",
+    "deploy:production": "npm run build && aws s3 sync build/ s3://entaxy-production --delete",
+    "postdeploy:production": "aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_ID --paths '/*'",
+    "debug": "echo 'chrome://inspect' && npx react-scripts --inspect-brk test --env=jsdom --runInBand --watch"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.6.1",
+    "@material-ui/icons": "^4.5.1",
+    "@mdi/js": "^4.5.95",
+    "@mdi/react": "^1.2.1",
+    "@vx/axis": "0.0.192",
+    "@vx/curve": "0.0.192",
+    "@vx/glyph": "0.0.192",
+    "@vx/gradient": "0.0.192",
+    "@vx/grid": "0.0.192",
+    "@vx/group": "0.0.192",
+    "@vx/legend": "0.0.192",
+    "@vx/pattern": "0.0.192",
+    "@vx/point": "0.0.192",
+    "@vx/responsive": "0.0.192",
+    "@vx/scale": "0.0.192",
+    "@vx/shape": "0.0.192",
+    "@vx/tooltip": "0.0.192",
+    "big.js": "^5.2.2",
+    "blockstack": "^19.2.5",
+    "chroma-js": "^2.1.0",
+    "classnames": "^2.2.6",
+    "d3": "^5.12.0",
+    "d3-array": "^2.4.0",
+    "d3-sankey": "^0.12.3",
+    "date-fns": "^2.7.0",
+    "formik": "^1.5.8",
+    "jsdom": "^15.2.1",
+    "localforage": "^1.7.3",
+    "lodash": "^4.17.15",
+    "papaparse": "^5.1.0",
+    "pluralize": "^8.0.0",
+    "prop-types": "^15.7.2",
+    "query-string": "^6.9.0",
+    "react": "^16.12.0",
+    "react-confirm": "^0.1.18",
+    "react-date-range": "^1.0.0-beta",
+    "react-dom": "^16.12.0",
+    "react-dropzone": "^10.1.10",
+    "react-motion": "^0.5.2",
+    "react-number-format": "^4.3.1",
+    "react-redux": "^7.1.3",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "^3.2.0",
+    "react-select": "^3.0.8",
+    "react-virtualized": "^9.21.2",
+    "react-window": "^1.8.5",
+    "recharts": "^1.8.5",
+    "recompose": "^0.30.0",
+    "redux": "^4.0.4",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-logger": "^3.0.6",
+    "redux-persist": "^6.0.0",
+    "redux-thunk": "^2.3.0",
+    "reselect": "^4.0.0",
+    "uuid": "^3.3.3",
+    "yup": "^0.27.0"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "coveralls": "^3.0.7",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jest": "^23.0.4",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.16.0",
+    "eslint-plugin-react-hooks": "^2.3.0",
+    "history": "^4.10.1",
+    "http-proxy-middleware": "^0.20.0",
+    "husky": "^3.0.9",
+    "jest-enzyme": "^7.1.2",
+    "lint-staged": "^9.4.3",
+    "mq-polyfill": "^1.1.8",
+    "react-test-renderer": "^16.12.0",
+    "redux-mock-store": "^1.5.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
     }
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "npm run lint --fix",
+      "react-scripts test --env=jsdom --bail --coverage --findRelatedTests --watchAll=false",
+      "git add"
+    ]
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,mjs}",
+      "!src/registerServiceWorker.js",
+      "!src/setupProxy.js",
+      "!src/store/**/types.js",
+      "!src/store/transactions/selectors.js",
+      "!src/core/Taxes/*",
+      "!src/core/Portfolios/*"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 50,
+        "functions": 50,
+        "lines": 50,
+        "statements": 50
+      }
+    }
+  }
 }

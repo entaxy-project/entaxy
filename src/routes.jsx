@@ -21,8 +21,8 @@ import EditAccount from './core/Accounts/edit'
 import ImportTransactions from './core/Accounts/ImportTransactions'
 import NewImportFromInstitution from './core/ImportFromInstitution/new'
 import EditImportFromInstitution from './core/ImportFromInstitution/edit'
-import Budget from './core/Budget'
 import BudgetCategories from './core/BudgetCategories'
+import HistoryChart from './core/Budget/HistoryChart'
 import MoneyFlow from './core/Budget/MoneyFlow'
 import Header from './common/Header'
 import SnackbarMessage from './common/SnackbarMessage'
@@ -92,7 +92,7 @@ export const Routes = () => {
     accountLeftDrawer: true
   })
 
-  const wrappedBudget = wrapComponent(Budget)
+  const wrappedBudget = wrapComponent(HistoryChart)
   const wrappedMoneyFlow = wrapComponent(MoneyFlow)
   const wrappedTaxes = wrapComponent(Taxes)
   return (

@@ -9,13 +9,12 @@ import SankeyNode from './SankeyNode'
 import SankeyTooltip from './SankeyTooltip'
 
 const SankeyDiagram = ({ data }) => {
-  const [rectWidth, setRectWidth] = useState(0)
-  const [rectHeight, setRectHeight] = useState(0)
+  const [rect, setRect] = useState({ width: 200, height: 400 })
   const [selectedNode, setSelectedNode] = useState(null)
   const { nodes, links } = sankey()
     .nodeWidth(15)
     .nodePadding(16)
-    .extent([[1, 10], [rectWidth - 1, rectHeight - 10]])(data)
+    .extent([[1, 10], [rect.width - 1, rect.height - 10]])(data)
   const color = chroma.scale('Set3').classes(nodes.length)
   const colorScale = d3
     .scaleLinear()
@@ -25,8 +24,7 @@ const SankeyDiagram = ({ data }) => {
   const svgRef = useCallback((node) => {
     const measureSVG = () => {
       const { width, height } = node.getBoundingClientRect()
-      setRectWidth(width)
-      setRectHeight(height)
+      if (width > 0 && height > 0) setRect({ width, height })
     }
 
     if (node !== null) {
@@ -72,32 +70,36 @@ const SankeyDiagram = ({ data }) => {
   }
 
   return (
-    <svg width="100%" height="100%" ref={svgRef}>
-      <g style={{ mixBlendMode: 'multiply' }}>
-        {nodes.map((node, i) => (
-          <SankeyNode
-            node={node}
-            fill={color(colorScale(i)).hex()}
-            key={node.name}
-            handleMouseOver={(event) => handleMouseOver(event, node)}
-            handleMouseOut={handleMouseOut}
+    <svg width="100%" height="100%" ref={svgRef} data-testid="svg">
+      {rect.width > 0 && rect.height > 0 && (
+        <g style={{ mixBlendMode: 'multiply' }}>
+          {nodes.map((node, i) => {
+            return (
+              <SankeyNode
+                node={node}
+                fill={color(colorScale(i)).hex()}
+                key={node.name}
+                handleMouseOver={(event) => handleMouseOver(event, node)}
+                handleMouseOut={handleMouseOut}
+              />
+            )
+          })}
+          {links.map((link, i) => (
+            <SankeyLink
+              link={link}
+              key={i}
+              stroke="#bbb"
+              handleMouseOver={(event) => handleMouseOver(event, link)}
+              handleMouseOut={handleMouseOut}
+            />
+          ))}
+          <SankeyTooltip
+            node={selectedNode}
+            containerWidth={rect.width}
+            containerHeight={rect.height}
           />
-        ))}
-        {links.map((link, i) => (
-          <SankeyLink
-            link={link}
-            key={i}
-            stroke="#bbb"
-            handleMouseOver={(event) => handleMouseOver(event, link)}
-            handleMouseOut={handleMouseOut}
-          />
-        ))}
-        <SankeyTooltip
-          node={selectedNode}
-          containerWidth={rectWidth}
-          containerHeight={rectHeight}
-        />
-      </g>
+        </g>
+      )}
     </svg>
   )
 }

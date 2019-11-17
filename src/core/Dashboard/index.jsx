@@ -1,8 +1,6 @@
 import React from 'react'
-import { compose } from 'recompose'
-import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
-import { withStyles } from '@material-ui/core/styles'
+import { useSelector, useDispatch } from 'react-redux'
+import { makeStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
@@ -12,8 +10,10 @@ import DashboardIcon from '@material-ui/icons/Dashboard'
 import { currencyFormatter } from '../../util/stringFormatter'
 import LinkTo from '../../common/LinkTo'
 import AccountsTable from './AccountsTable'
+import useKeyboardCommand from '../../util/useKeyboardCommand'
+import generateSeedData from '../../data/generateSeedData'
 
-const styles = (theme) => ({
+const useStyles = makeStyles((theme) => ({
   balancePaper: {
     marginTop: theme.spacing(2),
     padding: theme.spacing(2),
@@ -45,23 +45,22 @@ const styles = (theme) => ({
   newAccountButton: {
     margin: theme.spacing(3)
   }
-})
+}))
 
-const mapStateToProps = (state) => ({
-  accounts: state.accounts,
-  settings: state.settings,
-  totalBalance: Object.values(state.accounts.byInstitution).reduce(
-    (balance, institution) => balance + institution.balance,
-    0
-  )
-})
+export const Dashboard = () => {
+  const classes = useStyles()
+  const dispatch = useDispatch()
+  useKeyboardCommand('/seed', () => dispatch(generateSeedData()))
 
-export const DashboardComponent = ({
-  classes,
-  accounts,
-  settings,
-  totalBalance
-}) => {
+  const { accounts, settings, totalBalance } = useSelector((state) => ({
+    accounts: state.accounts,
+    settings: state.settings,
+    totalBalance: Object.values(state.accounts.byInstitution).reduce(
+      (balance, institution) => balance + institution.balance,
+      0
+    )
+  }))
+
   const formatCurrency = (currency, value) => (
     currencyFormatter(settings.locale, currency)(value)
   )
@@ -119,14 +118,4 @@ export const DashboardComponent = ({
   )
 }
 
-DashboardComponent.propTypes = {
-  classes: PropTypes.object.isRequired,
-  accounts: PropTypes.object.isRequired,
-  settings: PropTypes.object.isRequired,
-  totalBalance: PropTypes.number.isRequired
-}
-
-export default compose(
-  connect(mapStateToProps),
-  withStyles(styles)
-)(DashboardComponent)
+export default Dashboard

@@ -20,7 +20,6 @@ import LinkTo from '../LinkTo'
 import { userLogout } from '../../store'
 import packageJson from '../../../package.json'
 
-
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -53,6 +52,7 @@ const LoginButton = () => {
     }
     setOpen(false)
   }
+
   if (!user.isAuthenticatedWith) return null
   return (
     <div className={classes.root}>

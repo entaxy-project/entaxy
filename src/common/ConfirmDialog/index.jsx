@@ -38,7 +38,7 @@ ConfirmDialog.propTypes = {
   show: PropTypes.bool.isRequired, // from confirmable. indicates if the dialog is shown or not.
   proceed: PropTypes.func.isRequired, // from confirmable. call to close the dialog with promise resolved.
   dismiss: PropTypes.func.isRequired, // from confirmable. call to only close the dialog.
-  title: PropTypes.string.isRequired, // the title of the dialog
+  title: PropTypes.node.isRequired, // the title of the dialog
   description: PropTypes.string.isRequired // the description of the dialog
 }
 

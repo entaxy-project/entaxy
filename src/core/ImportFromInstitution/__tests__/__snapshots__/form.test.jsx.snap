@@ -148,6 +148,7 @@ exports[`Account form matches snapshot for existing Coinbase account 1`] = `
             <input
               aria-invalid={false}
               aria-label="API key"
+              autoFocus={false}
               className="MuiInputBase-input MuiInput-input"
               disabled={false}
               maxLength={100}
@@ -178,6 +179,7 @@ exports[`Account form matches snapshot for existing Coinbase account 1`] = `
             <input
               aria-invalid={false}
               aria-label="API secret"
+              autoFocus={false}
               className="MuiInputBase-input MuiInput-input"
               disabled={false}
               maxLength={100}
@@ -200,7 +202,7 @@ exports[`Account form matches snapshot for existing Coinbase account 1`] = `
         className="WithFormik(ImportFromInstitutionFormComponent)-formActions-235"
       >
         <div
-          className="SubmitButtonWithProgress-wrapper-485"
+          className="SubmitButtonWithProgress-wrapper-488"
         >
           <button
             className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary"
@@ -383,6 +385,7 @@ exports[`Account form matches snapshot for new Coinbase account 1`] = `
             <input
               aria-invalid={false}
               aria-label="API key"
+              autoFocus={false}
               className="MuiInputBase-input MuiInput-input"
               disabled={false}
               maxLength={100}
@@ -413,6 +416,7 @@ exports[`Account form matches snapshot for new Coinbase account 1`] = `
             <input
               aria-invalid={false}
               aria-label="API secret"
+              autoFocus={false}
               className="MuiInputBase-input MuiInput-input"
               disabled={false}
               maxLength={100}
@@ -435,7 +439,7 @@ exports[`Account form matches snapshot for new Coinbase account 1`] = `
         className="WithFormik(ImportFromInstitutionFormComponent)-formActions-235"
       >
         <div
-          className="SubmitButtonWithProgress-wrapper-485"
+          className="SubmitButtonWithProgress-wrapper-488"
         >
           <button
             className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary"

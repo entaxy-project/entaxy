@@ -9,10 +9,17 @@ import Popper from '@material-ui/core/Popper'
 import MenuItem from '@material-ui/core/MenuItem'
 import MenuList from '@material-ui/core/MenuList'
 import ListItemText from '@material-ui/core/ListItemText'
+import ListItemIcon from '@material-ui/core/ListItemIcon'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
 import Fade from '@material-ui/core/Fade'
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown'
+import Icon from '@mdi/react'
+import {
+  mdiChartBellCurveCumulative,
+  mdiChartSnakeyVariant,
+  mdiTagMultiple
+} from '@mdi/js'
 import Logo from '../Logo/index'
 import LoginButton from '../LoginButton'
 import LinkTo from '../LinkTo'
@@ -68,51 +75,58 @@ const Header = ({ children, match }) => {
               <Logo />
             </Grid>
             <Grid item xs={6} className={classes.menu}>
-              <ClickAwayListener onClickAway={handleClose}>
-                <>
-                  <Button
-                    color={buttonColourFor('/dashboard')}
-                    component={LinkTo('/dashboard')}
-                  >
-                    Dashboard
-                  </Button>
-                  <Button
-                    color={buttonColourFor('/budget')}
-                    aria-owns={open ? 'budget-menu-list-grow' : null}
-                    onClick={handleClick}
-                  >
-                    Budget
-                    <ArrowDropDownIcon />
-                  </Button>
-                  {anchorEl !== null && (
-                    <Popper
-                      open={open}
-                      anchorEl={anchorEl}
-                      transition
-                      className={classes.popper}
-                      placement="bottom-start"
-                    >
-                      {({ TransitionProps }) => (
-                        <Fade {...TransitionProps} timeout={350}>
-                          <Paper>
-                            <MenuList role="menu">
-                              <MenuItem onClick={handleClose} component={LinkTo('/money-flow')}>
-                                <ListItemText primary="Money flow" />
-                              </MenuItem>
-                              <MenuItem onClick={handleClose} component={LinkTo('/budget')}>
-                                <ListItemText primary="History" />
-                              </MenuItem>
-                              <MenuItem onClick={handleClose} component={LinkTo('/budget-categories')}>
-                                <ListItemText primary="Categories" />
-                              </MenuItem>
-                            </MenuList>
-                          </Paper>
-                        </Fade>
-                      )}
-                    </Popper>
+              <Button
+                color={buttonColourFor('/dashboard')}
+                component={LinkTo('/dashboard')}
+              >
+                Dashboard
+              </Button>
+              <Button
+                color={buttonColourFor('/budget')}
+                aria-owns={open ? 'budget-menu-list-grow' : null}
+                onClick={handleClick}
+              >
+                Budget
+                <ArrowDropDownIcon />
+              </Button>
+              {anchorEl !== null && (
+                <Popper
+                  open={open}
+                  anchorEl={anchorEl}
+                  transition
+                  className={classes.popper}
+                  placement="bottom-start"
+                >
+                  {({ TransitionProps }) => (
+                    <Fade {...TransitionProps} timeout={350}>
+                      <Paper>
+                        <ClickAwayListener onClickAway={handleClose}>
+                          <MenuList role="menu">
+                            <MenuItem onClick={handleClose} component={LinkTo('/money-flow')}>
+                              <ListItemIcon>
+                                <Icon path={mdiChartSnakeyVariant} size={1} color="rgba(0, 0, 0, 0.54)" />
+                              </ListItemIcon>
+                              <ListItemText primary="Money flow" />
+                            </MenuItem>
+                            <MenuItem onClick={handleClose} component={LinkTo('/budget')}>
+                              <ListItemIcon>
+                                <Icon path={mdiChartBellCurveCumulative} size={1} color="rgba(0, 0, 0, 0.54)" />
+                              </ListItemIcon>
+                              <ListItemText primary="History" />
+                            </MenuItem>
+                            <MenuItem onClick={handleClose} component={LinkTo('/budget-categories')}>
+                              <ListItemIcon>
+                                <Icon path={mdiTagMultiple} size={1} color="rgba(0, 0, 0, 0.54)" />
+                              </ListItemIcon>
+                              <ListItemText primary="Categories" />
+                            </MenuItem>
+                          </MenuList>
+                        </ClickAwayListener>
+                      </Paper>
+                    </Fade>
                   )}
-                </>
-              </ClickAwayListener>
+                </Popper>
+              )}
             </Grid>
             <Grid item xs={3}>
               <LoginButton />
