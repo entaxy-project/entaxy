@@ -10,14 +10,17 @@ const SankeyNode = ({
   let width = node.x1 - node.x0
   let height = node.y1 - node.y0 < 0 ? 0 : node.y1 - node.y0
   const alignLeft = node.data.parentId === undefined || node.isIncome
+
   const textPosition = {
     x: (alignLeft ? node.x1 + 8 : node.x0 - 8),
     y: node.y0 + ((height) / 2)
   }
+
   if (Number.isNaN(node.x0)) {
     width = 100
     textPosition.x = 0
   }
+
   if (Number.isNaN(node.y0)) {
     height = 100
     textPosition.y = 0

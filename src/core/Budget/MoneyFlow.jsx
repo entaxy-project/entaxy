@@ -44,26 +44,31 @@ const useStyles = makeStyles((theme) => ({
 
 const MoneyFlow = () => {
   const classes = useStyles()
-  const { budget, transactions } = useSelector((state) => ({
+  const {
+    budgetCategoriesById,
+    incomeGroupId,
+    transactions
+  } = useSelector((state) => ({
     transactions: state.transactions.list.filter((transaction) => (
       transaction.categoryId !== undefined
     )).sort((a, b) => a.createdAt - b.createdAt),
-    budget: state.budget
+    budgetCategoriesById: state.budget.categoriesById,
+    incomeGroupId: state.budget.categoryTree.find((group) => group.isIncome).id
   }))
 
-  const minDate = transactions.length > 0 ? new Date(transactions[0].createdAt) : new Date()
-  const maxDate = transactions.length > 0 ? new Date(transactions[transactions.length - 1].createdAt) : new Date()
-
-  const [dateRange, setDateRange] = useState({
-    minDate,
-    maxDate,
-    startDate: subMonths(startOfMonth(maxDate), 3),
-    endDate: maxDate,
-    key: 'selection'
+  const [dateRange, setDateRange] = useState(() => {
+    const minDate = transactions.length > 0 ? new Date(transactions[0].createdAt) : new Date()
+    const maxDate = transactions.length > 0 ? new Date(transactions[transactions.length - 1].createdAt) : new Date()
+    return {
+      minDate,
+      maxDate,
+      startDate: subMonths(startOfMonth(maxDate), 3),
+      endDate: maxDate,
+      key: 'selection'
+    }
   })
 
   const graphData = useMemo(() => {
-    const incomeGroupId = budget.categoryTree.find((group) => group.isIncome).id
     const { startDate, endDate } = dateRange
     const expenseGroup = {
       id: 'Expenses',
@@ -77,8 +82,8 @@ const MoneyFlow = () => {
     ))
 
     const usedCategories = Object.values(filteredTransactions.reduce((result, transaction) => {
-      const category = budget.categoriesById[transaction.categoryId]
-      const group = budget.categoriesById[category.parentId]
+      const category = budgetCategoriesById[transaction.categoryId]
+      const group = budgetCategoriesById[category.parentId]
       const index = Object.keys(result).length
       return {
         ...result,
@@ -99,7 +104,7 @@ const MoneyFlow = () => {
       }
     }, {
       [incomeGroupId]: {
-        ...budget.categoriesById[incomeGroupId],
+        ...budgetCategoriesById[incomeGroupId],
         index: 0,
         total: 0
       },
@@ -108,7 +113,9 @@ const MoneyFlow = () => {
     const incomeCategories = usedCategories.filter((cat) => cat.parentId === incomeGroupId)
     const incomeGroup = usedCategories.find((cat) => cat.id === incomeGroupId)
 
-    console.log({ usedCategories })
+    if (filteredTransactions.length === 0) {
+      return { nodes: [], links: [] }
+    }
 
     return usedCategories
       .sort((a, b) => a.index > b.index)
@@ -161,11 +168,11 @@ const MoneyFlow = () => {
           links: [...data.links, ...newLinks]
         }
       }, { nodes: [], links: [] })
-  }, [budget, transactions, dateRange])
+  }, [budgetCategoriesById, incomeGroupId, transactions, dateRange])
 
   const handleSelectDate = (ranges) => {
     setDateRange((prevState) => ({
-      ...prevState.dateRange,
+      ...prevState,
       startDate: ranges.selection.startDate,
       endDate: ranges.selection.endDate
     }))

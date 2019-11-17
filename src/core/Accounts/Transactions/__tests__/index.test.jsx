@@ -13,8 +13,6 @@ import { initialState as transactionsInitialState } from '../../../../store/tran
 import { initialState as budgetInitialState } from '../../../../store/budget/reducer'
 import { initialState as settingsInitialState } from '../../../../store/settings/reducer'
 
-jest.mock('../TransactionDialog', () => 'TransactionDialog')
-
 const account = {
   name: 'Checking',
   institution: 'TD',

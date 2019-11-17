@@ -1,9 +1,11 @@
 import React from 'react'
-import { mount } from 'enzyme'
+import { render } from '@testing-library/react'
+import '@testing-library/jest-dom/extend-expect'
 import { Provider } from 'react-redux'
-import { BrowserRouter } from 'react-router-dom'
+import { Router } from 'react-router-dom'
+import { createMemoryHistory } from 'history'
 import configureMockStore from 'redux-mock-store'
-import Dashboard from '../index'
+import Dashboard from '..'
 import { groupByInstitution, initialState as accountsInitialState } from '../../../store/accounts/reducer'
 import { initialState as settingsInitialState } from '../../../store/settings/reducer'
 import { initialState as budgetInitialState } from '../../../store/budget/reducer'
@@ -11,6 +13,23 @@ import { initialState as exchangeRatesInitialState } from '../../../store/exchan
 
 jest.mock('../../../common/InstitutionIcon/importLogos', () => [])
 jest.mock('uuid/v4', () => jest.fn(() => 'xyz'))
+
+const mockStore = configureMockStore()
+
+const renderContent = (store) => {
+  const history = createMemoryHistory()
+
+  return {
+    ...render(
+      <Provider store={store}>
+        <Router history={history}>
+          <Dashboard />
+        </Router>
+      </Provider>
+    ),
+    history
+  }
+}
 
 const accounts = [{
   id: 1,
@@ -30,32 +49,20 @@ const accounts = [{
   groupId: 0
 }]
 
-const mochHistoryPush = jest.fn()
-
 describe('Dashboard', () => {
-  it('matches snapshot with no accounts', () => {
-    const mockStore = configureMockStore()
+  it('renders correctly with no accounts', () => {
     const store = mockStore({
       settings: settingsInitialState,
       accounts: accountsInitialState,
       budget: budgetInitialState
     })
-    const wrapper = mount((
-      <BrowserRouter>
-        <Provider store={store}>
-          <Dashboard history={{ push: mochHistoryPush }} />
-        </Provider>
-      </BrowserRouter>
-    ))
-    expect(wrapper.debug()).toMatchSnapshot()
-
-    const component = wrapper.findWhere((node) => node.name() === 'DashboardComponent')
-    expect(component.props().accounts).toEqual(accountsInitialState)
-    expect(component.props().totalBalance).toEqual(0)
+    const { getByText, queryByText } = renderContent(store)
+    expect(queryByText('Assets')).not.toBeInTheDocument()
+    expect(queryByText('Liabilities')).not.toBeInTheDocument()
+    expect(getByText('You don\'t have any accounts yet.')).toBeInTheDocument()
   })
 
-  it('matches snapshot with one account', async () => {
-    const mockStore = configureMockStore()
+  it('renders correctly with one account', () => {
     const state = {
       settings: { ...settingsInitialState, locale: 'en-UK', currency: 'EUR' },
       accounts: {
@@ -69,23 +76,13 @@ describe('Dashboard', () => {
       ...state,
       accounts: { ...state.accounts, byInstitution: groupByInstitution(state.accounts) }
     })
-
-    const wrapper = mount((
-      <BrowserRouter>
-        <Provider store={store}>
-          <Dashboard history={{ push: mochHistoryPush }} />
-        </Provider>
-      </BrowserRouter>
-    ))
-    expect(wrapper.debug()).toMatchSnapshot()
-
-    const component = wrapper.findWhere((node) => node.name() === 'DashboardComponent')
-    expect(component.props().accounts).toEqual(store.getState().accounts)
-    expect(component.props().totalBalance).toEqual(accounts[0].currentBalance.localCurrency)
+    const { getByText, queryByText } = renderContent(store)
+    expect(getByText('Assets')).toBeInTheDocument()
+    expect(getByText('Liabilities')).toBeInTheDocument()
+    expect(queryByText('You don\'t have any accounts yet.')).not.toBeInTheDocument()
   })
 
-  it('matches snapshot with two accounts in a different currency', async () => {
-    const mockStore = configureMockStore()
+  it('renders correctly with two accounts in a different currency', async () => {
     const state = {
       settings: { ...settingsInitialState, locale: 'en-UK', currency: 'EUR' },
       accounts: {
@@ -97,20 +94,9 @@ describe('Dashboard', () => {
     }
     const byInstitution = groupByInstitution(state.accounts)
     const store = mockStore({ ...state, accounts: { ...state.accounts, byInstitution } })
-
-    const wrapper = mount((
-      <BrowserRouter>
-        <Provider store={store}>
-          <Dashboard history={{ push: mochHistoryPush }} />
-        </Provider>
-      </BrowserRouter>
-    ))
-    expect(wrapper.debug()).toMatchSnapshot()
-
-    const component = wrapper.findWhere((node) => node.name() === 'DashboardComponent')
-    expect(component.props().accounts).toEqual(store.getState().accounts)
-    expect(component.props().totalBalance).toEqual(
-      accounts[0].currentBalance.localCurrency + accounts[1].currentBalance.localCurrency
-    )
+    const { getByText, queryByText } = renderContent(store)
+    expect(getByText('Assets')).toBeInTheDocument()
+    expect(getByText('Liabilities')).toBeInTheDocument()
+    expect(queryByText('You don\'t have any accounts yet.')).not.toBeInTheDocument()
   })
 })

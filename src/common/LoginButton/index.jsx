@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
 import Avatar from '@material-ui/core/Avatar'
@@ -19,7 +19,6 @@ import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown'
 import LinkTo from '../LinkTo'
 import { userLogout } from '../../store'
 import packageJson from '../../../package.json'
-import generateSeedData from '../../data/generateSeedData'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -39,7 +38,6 @@ const useStyles = makeStyles((theme) => ({
 
 const LoginButton = () => {
   const classes = useStyles()
-  const dispatch = useDispatch()
   const user = useSelector((state) => state.user)
   const [open, setOpen] = useState(false)
   const anchorRef = useRef(null)
@@ -53,10 +51,6 @@ const LoginButton = () => {
       return
     }
     setOpen(false)
-  }
-  const handleGererateSeedData = () => {
-    setOpen(false)
-    dispatch(generateSeedData())
   }
 
   if (!user.isAuthenticatedWith) return null
@@ -99,9 +93,6 @@ const LoginButton = () => {
                     <ListItemText primary="Close session" />
                   </MenuItem>
                   <Divider />
-                  <MenuItem onClick={handleGererateSeedData}>
-                    <ListItemText primary="Seed data" />
-                  </MenuItem>
                   <MenuItem disabled={true}>
                     <small>
                       Version&nbsp;

@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-const BudgetIndex = () => {
+const HistoryChart = () => {
   const classes = useStyles()
   const {
     accounts,
@@ -195,4 +195,4 @@ const BudgetIndex = () => {
   )
 }
 
-export default BudgetIndex
+export default HistoryChart

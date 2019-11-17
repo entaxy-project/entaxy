@@ -307,6 +307,7 @@ exports[`Account form matches snapshot for edit account 1`] = `
               <input
                 aria-invalid={false}
                 aria-label="Account name"
+                autoFocus={false}
                 className="MuiInputBase-input MuiInput-input"
                 disabled={false}
                 maxLength={40}
@@ -340,6 +341,7 @@ exports[`Account form matches snapshot for edit account 1`] = `
               <input
                 aria-invalid={false}
                 aria-label="Opening balance"
+                autoFocus={false}
                 className="MuiInputBase-input MuiInput-input"
                 disabled={false}
                 name="openingBalance"
@@ -369,6 +371,7 @@ exports[`Account form matches snapshot for edit account 1`] = `
             >
               <input
                 aria-invalid={false}
+                autoFocus={false}
                 className="MuiInputBase-input MuiInput-input"
                 disabled={false}
                 name="openingBalanceDate"
@@ -542,7 +545,7 @@ exports[`Account form matches snapshot for edit account 1`] = `
         </button>
         <div />
         <div
-          className="SubmitButtonWithProgress-wrapper-272"
+          className="SubmitButtonWithProgress-wrapper-275"
         >
           <button
             className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary"
@@ -881,6 +884,7 @@ exports[`Account form matches snapshot for new account 1`] = `
               <input
                 aria-invalid={false}
                 aria-label="Account name"
+                autoFocus={false}
                 className="MuiInputBase-input MuiInput-input"
                 disabled={false}
                 maxLength={40}
@@ -914,6 +918,7 @@ exports[`Account form matches snapshot for new account 1`] = `
               <input
                 aria-invalid={false}
                 aria-label="Opening balance"
+                autoFocus={false}
                 className="MuiInputBase-input MuiInput-input"
                 disabled={false}
                 name="openingBalance"
@@ -943,6 +948,7 @@ exports[`Account form matches snapshot for new account 1`] = `
             >
               <input
                 aria-invalid={false}
+                autoFocus={false}
                 className="MuiInputBase-input MuiInput-input"
                 disabled={false}
                 name="openingBalanceDate"
@@ -1116,7 +1122,7 @@ exports[`Account form matches snapshot for new account 1`] = `
         </button>
         <div />
         <div
-          className="SubmitButtonWithProgress-wrapper-272"
+          className="SubmitButtonWithProgress-wrapper-275"
         >
           <button
             className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary"

@@ -38,6 +38,7 @@ const PopupDateRangePicker = ({
         variant="contained"
         onClick={handleOpenCalendar}
         endIcon={<CalendarTodayIcon />}
+        data-testid="DateRangeButton"
       >
         {children}
       </Button>

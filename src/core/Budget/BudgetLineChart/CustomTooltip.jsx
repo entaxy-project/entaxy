@@ -36,6 +36,8 @@ const CustomTootip = (props) => {
   const classes = useStyles()
   const { label, payload, formatter } = props
 
+  if (!payload) return null
+
   return (
     <Paper className={classes.root}>
       <Typography variant="subtitle1">{label}</Typography>

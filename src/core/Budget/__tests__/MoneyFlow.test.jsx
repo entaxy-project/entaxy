@@ -2,17 +2,36 @@ import React from 'react'
 import {
   render,
   cleanup,
-  fireEvent,
-  waitForElement
+  fireEvent
 } from '@testing-library/react'
+import matchMediaPolyfill from 'mq-polyfill'
 import '@testing-library/jest-dom/extend-expect'
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
+import {
+  format,
+  startOfMonth,
+  subMonths,
+  startOfWeek,
+  endOfWeek
+} from 'date-fns'
 import MoneyFlow from '../MoneyFlow'
 import { initialState as budgetInitialState } from '../../../store/budget/reducer'
 import { initialState as transactionsInitialState } from '../../../store/transactions/reducer'
 import { initialState as settingsInitialState } from '../../../store/settings/reducer'
+
+beforeAll(() => {
+  matchMediaPolyfill(window)
+  window.resizeTo = function resizeTo(width, height) {
+    Object.assign(this, {
+      innerWidth: width,
+      innerHeight: height,
+      outerWidth: width,
+      outerHeight: height
+    }).dispatchEvent(new this.Event('resize'))
+  }
+})
 
 afterEach(() => {
   cleanup()
@@ -133,8 +152,8 @@ describe('MoneyFlow', () => {
     expect(queryByText('Not enough data to generate chart')).not.toBeInTheDocument()
     const nodes = queryAllByText((content, node) => node.getAttribute('data-type') === 'node')
     const links = queryAllByText((content, node) => node.getAttribute('data-type') === 'link')
-    expect(nodes.length).toBe(3)
-    expect(links.length).toBe(2)
+    expect(nodes.length).toBe(4)
+    expect(links.length).toBe(3)
   })
 
   it('budget rules and transactions and Income group', async () => {
@@ -183,12 +202,11 @@ describe('MoneyFlow', () => {
     expect(queryByText('Not enough data to generate chart')).not.toBeInTheDocument()
     const nodes = getAllByText((content, node) => node.getAttribute('data-type') === 'node')
     const links = getAllByText((content, node) => node.getAttribute('data-type') === 'link')
-    expect(nodes.length).toBe(4)
-    expect(links.length).toBe(3)
+    expect(nodes.length).toBe(5)
+    expect(links.length).toBe(4)
   })
 
   it('handles date selection', async () => {
-    const dateFormatter = (new Intl.DateTimeFormat(settingsInitialState.locale, { month: 'long' })).format
     const incomeGroup = budgetInitialState.categoryTree.find((group) => group.isIncome)
     const group = budgetInitialState.categoryTree[1]
     expect(group.label).not.toBe('Income')
@@ -205,13 +223,13 @@ describe('MoneyFlow', () => {
         list: [
           ...group.options.map((category, index) => ({
             id: index + 1,
-            createdAt: new Date(`2019-${index + 1}-01 11:00 am`).getTime(),
+            createdAt: subMonths(new Date(), index).getTime(),
             amount: (index + 1) * 10,
             categoryId: category.id
           })),
           {
             id: 4,
-            createdAt: new Date('2019-01-01 11:00 am').getTime(),
+            createdAt: new Date().getTime(),
             amount: 50,
             categoryId: incomeGroup.options[0].id
           }
@@ -221,67 +239,39 @@ describe('MoneyFlow', () => {
     const {
       getByText,
       queryByText,
-      getAllByText
+      getAllByText,
+      getByTestId
     } = render(
       <Provider store={store}>
         <MoneyFlow />
       </Provider>
     )
+    const transactions = store.getState().transactions.list.sort((a, b) => a.createdAt - b.createdAt)
 
     expect(getByText('Money flow')).toBeInTheDocument()
     expect(queryByText('Not enough data to generate chart')).not.toBeInTheDocument()
     let nodes = getAllByText((content, node) => node.getAttribute('data-type') === 'node')
     let links = getAllByText((content, node) => node.getAttribute('data-type') === 'link')
-    expect(nodes.length).toBe(group.options.length + 3)
-    expect(links.length).toBe(group.options.length + 2)
+    expect(nodes.length).toBe(3 + 3 + 2) // 3 categories + 3 groups + income + expenses
+    expect(links.length).toBe(3 + 1 + 1 + 1 + 1) // 3 categories + 1 income cat + 1 group + income + expenses
 
-    // Check the initial state of the dropodwns
-    let fromMonthSelect = getByText((content, elem) => elem.getAttribute('id') === 'fromMonth')
-    expect(fromMonthSelect.getAttribute('value')).toBe('January')
-    const fromYearSelect = getByText((content, elem) => elem.getAttribute('id') === 'fromYear')
-    expect(fromYearSelect.getAttribute('value')).toBe('2019')
-    let toMonthSelect = getByText((content, elem) => elem.getAttribute('id') === 'toMonth')
-    const toMonth = dateFormatter(new Date(`2019-${group.options.length}-01 11:00 am`).getTime())
-    expect(toMonthSelect.getAttribute('value')).toBe(toMonth)
-    const toYearSelect = getByText((content, elem) => elem.getAttribute('id') === 'toYear')
-    expect(toYearSelect.getAttribute('value')).toBe('2019')
+    // const minDate = new Date(transactions[0].createdAt)
+    const maxDate = new Date(transactions[transactions.length - 1].createdAt)
+    const startDate = subMonths(startOfMonth(maxDate), 3)
+    const endDate = maxDate
+    let buttonText = `${format(startDate, 'MMM dd, yyyy')} - ${format(endDate, 'MMM dd, yyyy')}`
+    expect(getByText(buttonText)).toBeInTheDocument()
+    const button = getByTestId('DateRangeButton')
 
     // Select another start month
-    fireEvent.click(getByText('January'))
-    fireEvent.click(getByText('February'))
-    // The income and one of the categories should not be showing up anymore
-    fromMonthSelect = getByText((content, elem) => elem.getAttribute('id') === 'fromMonth')
-    expect(fromMonthSelect.getAttribute('value')).toBe('February')
+    fireEvent.click(button)
+    fireEvent.click(getByText('This Week'))
+    buttonText = `${format(startOfWeek(new Date()), 'MMM dd, yyyy')} - ${format(endOfWeek(new Date()), 'MMM dd, yyyy')}`
+    expect(getByText(buttonText)).toBeInTheDocument()
+
     nodes = getAllByText((content, node) => node.getAttribute('data-type') === 'node')
     links = getAllByText((content, node) => node.getAttribute('data-type') === 'link')
-    expect(nodes.length).toBe(group.options.length + 1)
-    expect(links.length).toBe(group.options.length)
-
-    // Select another end month so that start Date is after end Date
-    await waitForElement(() => getByText(toMonth))
-    fireEvent.click(getByText(toMonth))
-    fireEvent.click(getByText('January'))
-    // end date should not have changed
-    toMonthSelect = getByText((content, elem) => elem.getAttribute('id') === 'toMonth')
-    expect(toMonthSelect.getAttribute('value')).toBe(toMonth)
-    // await waitForElement(() => getByText('The start date needs to come before the end date'))
-    expect(store.getActions()).toEqual([{
-      payload: {
-        text: 'The start date needs to come before the end date',
-        status: 'error'
-      },
-      type: 'SHOW_SNACKBAR'
-    }])
-
-    // Select the same  start and end date
-    await waitForElement(() => getByText(toMonth))
-    fireEvent.click(getByText(toMonth))
-    fireEvent.click(getAllByText('February')[1])
-    toMonthSelect = getByText((content, elem) => elem.getAttribute('id') === 'toMonth')
-    expect(toMonthSelect.getAttribute('value')).toBe('February')
-    nodes = getAllByText((content, node) => node.getAttribute('data-type') === 'node')
-    links = getAllByText((content, node) => node.getAttribute('data-type') === 'link')
-    expect(nodes.length).toBe(3) // Income -> group -> category
-    expect(links.length).toBe(2)
+    expect(nodes.length).toBe(1 + 1 + 1 + 2) // 1 category + 1 income cat + 1 groups + income + expenses
+    expect(links.length).toBe(1 + 1 + 2) // 1 category + 1 income cat + 1 group + income + expenses
   })
 })
