@@ -77,7 +77,7 @@ describe('Routes', () => {
           <Routes />
         </Provider>
       ))
-      expect(getByText('Insight into your finances, without sacrificing your data')).toBeInTheDocument()
+      expect(getByText('Your Personal Finances Simple & Private')).toBeInTheDocument()
       expect(history.entries.map((e) => e.pathname)).toEqual(['/'])
       expect(queryByText((_, element) => element.tagName.toLowerCase() === 'header')).not.toBeInTheDocument()
     })
@@ -91,17 +91,17 @@ describe('Routes', () => {
       ), { route: '/handle-login' })
       expect(blockstackUserSession.handlePendingSignIn).toHaveBeenCalled()
       await wait(() => expect(historyPushSpy).toHaveBeenCalled())
-      expect(getByText('Insight into your finances, without sacrificing your data')).toBeInTheDocument()
+      expect(getByText('Your Personal Finances Simple & Private')).toBeInTheDocument()
       expect(history.entries.map((e) => e.pathname)).toEqual(['/handle-login', '/'])
     })
 
-    it.only('redirects to home page if not logged in', () => {
+    it('redirects to home page if not logged in', () => {
       const { history, getByText } = renderWithRouter((
         <Provider store={store}>
           <Routes />
         </Provider>
       ), { route: '/dashboard' })
-      expect(getByText('Insight into your finances, without sacrificing your data')).toBeInTheDocument()
+      expect(getByText('Your Personal Finances Simple & Private')).toBeInTheDocument()
       expect(history.entries.map((e) => e.pathname)).toEqual(['/'])
     })
   })
@@ -113,7 +113,7 @@ describe('Routes', () => {
           <Routes />
         </Provider>
       ))
-      expect(getByText('Insight into your finances, without sacrificing your data')).toBeInTheDocument()
+      expect(getByText('Your Personal Finances Simple & Private')).toBeInTheDocument()
       expect(getByText('Sign in with Blockstack')).toBeInTheDocument()
 
       // Login with blockstack
@@ -127,7 +127,7 @@ describe('Routes', () => {
       // Logout
       fireEvent.click(getByTestId('userNavButton'))
       fireEvent.click(getByTestId('logoutButton'))
-      await waitForElement(() => getByText('Insight into your finances, without sacrificing your data'))
+      await waitForElement(() => getByText('Your Personal Finances Simple & Private'))
       expect(queryByText((_, element) => element.tagName.toLowerCase() === 'header')).not.toBeInTheDocument()
       expect(persistor).toBeNull()
     })
@@ -138,7 +138,7 @@ describe('Routes', () => {
           <Routes />
         </Provider>
       ))
-      expect(getByText('Insight into your finances, without sacrificing your data')).toBeInTheDocument()
+      expect(getByText('Your Personal Finances Simple & Private')).toBeInTheDocument()
       expect(getByText('Sign in with Blockstack')).toBeInTheDocument()
 
       // Login with blockstack
@@ -153,7 +153,7 @@ describe('Routes', () => {
       blockstackUserSession.isUserSignedIn.mockReturnValue(false)
       fireEvent.click(getByTestId('userNavButton'))
       fireEvent.click(getByTestId('logoutButton'))
-      await waitForElement(() => getByText('Insight into your finances, without sacrificing your data'))
+      await waitForElement(() => getByText('Your Personal Finances Simple & Private'))
       expect(persistor).toBeNull()
     })
 

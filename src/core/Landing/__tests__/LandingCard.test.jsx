@@ -36,7 +36,7 @@ describe('LandingCard', () => {
       </Provider>
     )
     expect(getByText('Sign in with Blockstack')).toBeInTheDocument()
-    expect(getByText('Don\'t sign in yet')).toBeInTheDocument()
+    expect(getByText('Sign in as guest user')).toBeInTheDocument()
   })
 
   it('handles login with blockstack', async () => {

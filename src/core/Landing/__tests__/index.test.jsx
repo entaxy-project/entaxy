@@ -23,6 +23,6 @@ describe('Landing page', () => {
         </BrowserRouter>
       </Provider>
     )
-    expect(getByText('Insight into your finances, without sacrificing your data')).toBeInTheDocument()
+    expect(getByText('Your Personal Finances Simple & Private')).toBeInTheDocument()
   })
 })
