@@ -11,6 +11,9 @@ import ThemeProvider from '../../../ThemeProvider'
 
 const mockHandlePrevStep = jest.fn()
 const mockHandleNextStep = jest.fn()
+const mochHandleGenerateTransactions = jest.fn()
+const mockStore = configureMockStore()
+
 const account = {
   id: 1,
   name: 'Checking',
@@ -18,18 +21,32 @@ const account = {
   currency: 'CAD'
 }
 
+const csvData = [
+  'First Bank Card,Transaction Type,Date Posted, Transaction Amount,Description',
+  '\'500766**********\',DEBIT,20180628,-650.0,[SO]2211#8503-567 ',
+  '\'500766**********\',CREDIT,20180629,2595.11,[DN]THE WORKING GRO PAY/PAY  '
+]
+
 afterEach(() => {
   cleanup()
   jest.clearAllMocks()
 })
 
-const renderContent = async (store, csvData) => {
-  const file = new File([csvData.join('\n')], 'test.csv', { type: 'text/csv' })
+const renderContent = async (data = csvData) => {
+  const store = mockStore({
+    settings: settingsInitialState,
+    budget: budgetInitialState
+  })
+
+  const file = new File([data.join('\n')], 'test.csv', { type: 'text/csv' })
   const props = {
     account,
     parser: new CsvParser({}),
     handlePrevStep: mockHandlePrevStep,
-    handleNextStep: mockHandleNextStep
+    handleNextStep: mockHandleNextStep,
+    handleGenerateTransactions: mochHandleGenerateTransactions,
+    isGeneratingTransactions: false
+
   }
   await props.parser.parse(file)
   props.parser.mapToTransactions()
@@ -41,45 +58,27 @@ const renderContent = async (store, csvData) => {
         </ThemeProvider>
       </Provider>
     ),
-    props
+    props,
+    store
   }
 }
 
 describe('ImportedTransactions', () => {
   it('renders correctly with no transaction errors', async () => {
-    const csvData = [
-      'First Bank Card,Transaction Type,Date Posted, Transaction Amount,Description',
-      '\'500766**********\',DEBIT,20180628,-650.0,[SO]2211#8503-567 ',
-      '\'500766**********\',CREDIT,20180629,2595.11,[DN]THE WORKING GRO PAY/PAY  '
-    ]
-    const mockStore = configureMockStore()
-    const store = mockStore({
-      settings: settingsInitialState,
-      budget: budgetInitialState
-    })
-    const { props } = await renderContent(store, csvData)
+    const { props } = await renderContent()
     expect(props.parser.transactions.length).toBe(csvData.length - 1)
     expect(props.parser.errors).toEqual({ base: [], transactions: {} })
   })
 
   it('renders correctly and opens error popup', async () => {
-    const csvData = [
-      'First Bank Card,Transaction Type,Date Posted, Transaction Amount,Description',
-      '\'500766**********\',DEBIT,20180628,-650.0,[SO]2211#8503-567 ',
-      '\'500766**********\',CREDIT,20180629,2595.11,[DN]THE WORKING GRO PAY/PAY  ',
-      'bogus'
-    ]
-    const mockStore = configureMockStore()
-    const store = mockStore({
-      settings: settingsInitialState,
-      budget: budgetInitialState
-    })
+    const data = csvData
+    data.push('bogus')
     const {
       props,
       getByText,
       getByTestId,
       queryByTestId
-    } = await renderContent(store, csvData)
+    } = await renderContent(data)
     expect(props.parser.transactions[2].errors).toEqual(['Invalid date. Expecting format \'yyyymmdd\''])
     expect(queryByTestId('closeIconButton')).not.toBeInTheDocument()
 
@@ -90,31 +89,18 @@ describe('ImportedTransactions', () => {
     expect(queryByTestId('closeIconButton')).not.toBeInTheDocument()
   })
 
-  it('renders correctly and opens duplicate popup', async () => {
-    const csvData = [
-      'First Bank Card,Transaction Type,Date Posted, Transaction Amount,Description',
-      '\'500766**********\',DEBIT,20180628,-650.0,[SO]2211#8503-567 ',
-      '\'500766**********\',CREDIT,20180629,2595.11,[DN]THE WORKING GRO PAY/PAY  ',
-      'bogus'
-    ]
-    const mockStore = configureMockStore()
-    const store = mockStore({
-      settings: settingsInitialState,
-      budget: budgetInitialState
-    })
-    const {
-      props,
-      getByText,
-      getByTestId,
-      queryByTestId
-    } = await renderContent(store, csvData)
-    expect(props.parser.transactions[2].errors).toEqual(['Invalid date. Expecting format \'yyyymmdd\''])
-    expect(queryByTestId('closeIconButton')).not.toBeInTheDocument()
+  it('should change invert amount', async () => {
+    const { props, getByLabelText } = await renderContent()
+    const checkbox = getByLabelText('Invert amount')
+    expect(props.parser.invertAmount).toBe(false)
+    expect(checkbox.checked).toBe(false)
 
-    fireEvent.click(getByTestId('errorIconButton'))
-    getByText(`Line ${props.parser.transactions[2].line} has an error`)
+    fireEvent.click(checkbox)
+    expect(props.parser.invertAmount).toBe(true)
+    expect(checkbox.checked).toBe(true)
 
-    fireEvent.click(getByTestId('closeIconButton'))
-    expect(queryByTestId('closeIconButton')).not.toBeInTheDocument()
+    fireEvent.click(checkbox)
+    expect(props.parser.invertAmount).toBe(false)
+    expect(checkbox.checked).toBe(false)
   })
 })

@@ -58,10 +58,24 @@ export const ImportTransactionsComponent = ({ history, match }) => {
   }))
 
   const [activeStep, setActiveStep] = useState(0)
+  const [isGeneratingTransactions, setIsGeneratingTransactions] = useState(false)
   const [parser, setParser] = useState(new CsvParser({
     budgetRules,
     invertAmount: account.accountType === 'credit'
   }))
+
+  const handleNext = () => {
+    setActiveStep((currentStep) => currentStep + 1)
+  }
+
+  const handlePrev = () => {
+    if (activeStep === 1) {
+      setActiveStep(0)
+      setParser(new CsvParser({ budgetRules }))
+    } else {
+      setActiveStep((currentStep) => currentStep - 1)
+    }
+  }
 
   const setDuplicateTransactions = () => (
     parser.transactions.forEach((newTransaction, index) => {
@@ -80,7 +94,16 @@ export const ImportTransactionsComponent = ({ history, match }) => {
     })
   )
 
-  const handleSave = async () => {
+  const handleGenerateTransactions = (event, { moveToNextStep = true } = {}) => {
+    event.preventDefault()
+    setIsGeneratingTransactions(true)
+    parser.mapToTransactions()
+    setDuplicateTransactions()
+    setIsGeneratingTransactions(false)
+    if (moveToNextStep) handleNext()
+  }
+
+  const handleSaveTransactions = async () => {
     const newTransactions = parser.transactions
       .filter((transaction) => (
         transaction.errors.length === 0 && transaction.duplicate === undefined
@@ -99,22 +122,6 @@ export const ImportTransactionsComponent = ({ history, match }) => {
       }))
     }
     history.push(`/accounts/${account.id}/transactions`)
-  }
-
-  const handleNext = () => {
-    setActiveStep((currentStep) => currentStep + 1)
-  }
-
-  const handlePrev = () => {
-    if (activeStep === 1) {
-      setActiveStep(0)
-      setParser(new CsvParser({
-        budgetRules,
-        invertAmount: account.accountType === 'credit'
-      }))
-    } else {
-      setActiveStep((currentStep) => currentStep - 1)
-    }
   }
 
   return (
@@ -176,8 +183,8 @@ export const ImportTransactionsComponent = ({ history, match }) => {
             {activeStep === 1 && (
               <CsvColumnSelection
                 handlePrevStep={handlePrev}
-                handleNextStep={handleNext}
-                setDuplicateTransactions={setDuplicateTransactions}
+                handleNextStep={handleGenerateTransactions}
+                isGeneratingTransactions={isGeneratingTransactions}
                 parser={parser}
               />
             )}
@@ -185,7 +192,9 @@ export const ImportTransactionsComponent = ({ history, match }) => {
               <ImportedTransactions
                 account={account}
                 handlePrevStep={handlePrev}
-                handleNextStep={handleSave}
+                handleNextStep={handleSaveTransactions}
+                handleGenerateTransactions={handleGenerateTransactions}
+                isGeneratingTransactions={isGeneratingTransactions}
                 parser={parser}
               />
             )}

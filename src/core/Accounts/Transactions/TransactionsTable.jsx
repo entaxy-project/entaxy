@@ -313,7 +313,6 @@ export class TransactionsTableComponent extends React.Component {
                 width={200}
                 label="Description"
                 dataKey="description"
-                disableSort={true}
                 flexGrow={1}
               />
               <Column

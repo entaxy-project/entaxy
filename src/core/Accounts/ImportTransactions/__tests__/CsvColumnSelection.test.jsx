@@ -7,7 +7,7 @@ import ThemeProvider from '../../../ThemeProvider'
 
 const mockHandlePrevStep = jest.fn()
 const mockHandleNextStep = jest.fn()
-const mockSetDuplicateTransactions = jest.fn()
+
 const csvData = [
   'First Bank Card,Transaction Type,Date Posted, Transaction Amount,Description',
   '\'500766**********\',DEBIT,20180628,-650.0,[SO]2211#8503-567 ',
@@ -22,10 +22,10 @@ afterEach(() => {
 
 const renderContent = async () => {
   const props = {
-    parser: new CsvParser({}),
     handlePrevStep: mockHandlePrevStep,
     handleNextStep: mockHandleNextStep,
-    setDuplicateTransactions: mockSetDuplicateTransactions
+    isGeneratingTransactions: false,
+    parser: new CsvParser({})
   }
   await props.parser.parse(file)
   return {
@@ -68,21 +68,6 @@ describe('CsvColumnSelection', () => {
     expect(getByTestId('headerRow')).toBeInTheDocument()
   })
 
-  it('should change invert amount', async () => {
-    const { props, getByLabelText } = await renderContent()
-    const checkbox = getByLabelText('Invert amount')
-    expect(props.parser.invertAmount).toBe(false)
-    expect(checkbox.checked).toBe(false)
-
-    fireEvent.click(checkbox)
-    expect(props.parser.invertAmount).toBe(true)
-    expect(checkbox.checked).toBe(true)
-
-    fireEvent.click(checkbox)
-    expect(props.parser.invertAmount).toBe(false)
-    expect(checkbox.checked).toBe(false)
-  })
-
   it('should change the date format', async () => {
     // https://github.com/mui-org/material-ui/issues/15726
     global.document.createRange = () => ({
@@ -122,7 +107,6 @@ describe('CsvColumnSelection', () => {
     expect(props.parser.transactions.length).toBe(0)
     fireEvent.click(getByTestId('nextButton'))
     expect(mockHandleNextStep).toHaveBeenCalled()
-    expect(props.parser.transactions.length).toBe(2)
   })
 
   it('should handle back', async () => {

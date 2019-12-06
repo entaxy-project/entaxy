@@ -280,7 +280,11 @@ exports[`TransactionsTable matches snapshot with no transactions 1`] = `
           </svg>
         </div>
         <div
-          className="ReactVirtualized__Table__headerColumn"
+          aria-label="Description"
+          aria-sort="none"
+          className="ReactVirtualized__Table__headerColumn ReactVirtualized__Table__sortableHeaderColumn"
+          onClick={[Function]}
+          onKeyDown={[Function]}
           role="columnheader"
           style={
             Object {
@@ -289,6 +293,7 @@ exports[`TransactionsTable matches snapshot with no transactions 1`] = `
               "msFlex": "1 1 200px",
             }
           }
+          tabIndex={0}
         >
           <span
             className="ReactVirtualized__Table__headerTruncatedText"
@@ -675,7 +680,11 @@ exports[`TransactionsTable matches snapshot with some transactions 1`] = `
           </svg>
         </div>
         <div
-          className="ReactVirtualized__Table__headerColumn"
+          aria-label="Description"
+          aria-sort="none"
+          className="ReactVirtualized__Table__headerColumn ReactVirtualized__Table__sortableHeaderColumn"
+          onClick={[Function]}
+          onKeyDown={[Function]}
           role="columnheader"
           style={
             Object {
@@ -684,6 +693,7 @@ exports[`TransactionsTable matches snapshot with some transactions 1`] = `
               "msFlex": "1 1 200px",
             }
           }
+          tabIndex={0}
         >
           <span
             className="ReactVirtualized__Table__headerTruncatedText"

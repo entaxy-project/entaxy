@@ -6,83 +6,67 @@ import ResultsToolbar from '../ResultsToolbar'
 const account = { id: 1, name: 'Checking', institution: 'TD' }
 const mockHandleNextStep = jest.fn()
 const mockHandlePrevStep = jest.fn()
-const mochaSetFilter = jest.fn()
-const mochaUnsetFilter = jest.fn()
+const mochSetFilter = jest.fn()
+const mochUnsetFilter = jest.fn()
+const mochHandleChangeInvertAmount = jest.fn()
 
 afterEach(() => {
   cleanup()
   jest.clearAllMocks()
 })
 
+const renderContent = () => {
+  const props = {
+    title: 'Title',
+    subTitle: 'subTitle',
+    account,
+    selectedTransactions: [],
+    filterProps: {
+      filters: {},
+      setFilter: mochSetFilter,
+      unsetFilter: mochUnsetFilter
+    },
+    handleNextStep: mockHandleNextStep,
+    handlePrevStep: mockHandlePrevStep,
+    invertAmount: false,
+    handleChangeInvertAmount: mochHandleChangeInvertAmount,
+    isGeneratingTransactions: false
+
+  }
+  return {
+    ...render(<ResultsToolbar {...props} />),
+    props
+  }
+}
+
 describe('ResultsToolbar', () => {
   it('it renders correctly', () => {
-    const props = {
-      title: 'Title',
-      subTitle: 'subTitle',
-      account,
-      selectedTransactions: [],
-      filterProps: { filters: {} },
-      handleNextStep: mockHandleNextStep,
-      handlePrevStep: mockHandlePrevStep
-    }
-    const { getByText } = render(<ResultsToolbar {...props} />)
+    const { getByText } = renderContent()
     getByText('Title')
     getByText('subTitle')
   })
 
   it('should show/hide only transactions with errors', async () => {
-    const props = {
-      title: 'Title',
-      subTitle: 'subTitle',
-      account,
-      selectedTransactions: [],
-      filterProps: {
-        filters: {},
-        setFilter: mochaSetFilter,
-        unsetFilter: mochaUnsetFilter
-      },
-      handleNextStep: mockHandleNextStep,
-      handlePrevStep: mockHandlePrevStep
-    }
-    const { getByTestId } = render(<ResultsToolbar {...props} />)
-
+    const { getByTestId } = renderContent()
     const checkbox = getByTestId('showOnlyErrors')
     expect(checkbox.checked).toBe(false)
 
     fireEvent.click(checkbox)
-    expect(mochaSetFilter).toHaveBeenCalledWith({ attr: 'errors', value: true })
+    expect(mochSetFilter).toHaveBeenCalledWith({ attr: 'errors', value: true })
     expect(checkbox.checked).toBe(true)
 
     fireEvent.click(checkbox)
-    expect(mochaUnsetFilter).toHaveBeenCalledWith({ attr: 'errors' })
+    expect(mochUnsetFilter).toHaveBeenCalledWith({ attr: 'errors' })
   })
 
   it('should handle submit', async () => {
-    const props = {
-      title: 'Title',
-      subTitle: 'subTitle',
-      account,
-      selectedTransactions: [],
-      filterProps: { filters: {} },
-      handleNextStep: mockHandleNextStep,
-      handlePrevStep: mockHandlePrevStep
-    }
-    const { getByTestId } = render(<ResultsToolbar {...props} />)
+    const { getByTestId } = renderContent()
     fireEvent.click(getByTestId('saveButton'))
     expect(mockHandleNextStep).toHaveBeenCalled()
   })
 
   it('should handle back', async () => {
-    const props = {
-      title: 'Title',
-      subTitle: 'subTitle',
-      account,
-      selectedTransactions: [],
-      filterProps: { filters: {} },
-      handleNextStep: mockHandleNextStep,
-      handlePrevStep: mockHandlePrevStep
-    }
-    const { getByTestId } = render(<ResultsToolbar {...props} />)
+    const { getByTestId } = renderContent()
     fireEvent.click(getByTestId('backButton'))
     expect(mockHandlePrevStep).toHaveBeenCalled()
   })

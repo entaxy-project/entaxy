@@ -69,11 +69,14 @@ const ImportedTransactions = ({
   account,
   parser,
   handlePrevStep,
-  handleNextStep
+  handleNextStep,
+  handleGenerateTransactions,
+  isGeneratingTransactions
 }) => {
   const classes = useStyles()
   const [anchorEl, setAnchorEl] = useState(null)
   const [popupRowData, setPopupRowData] = useState(null)
+  const [invertAmount, setInvertAmount] = useState(parser.invertAmount)
 
   const open = Boolean(anchorEl)
   const id = open ? 'simple-popover' : undefined
@@ -86,6 +89,13 @@ const ImportedTransactions = ({
   const handleClosePopup = () => {
     setAnchorEl(null)
     setPopupRowData(null)
+  }
+
+  const handleChangeInvertAmount = (event) => {
+    // eslint-disable-next-line no-param-reassign
+    parser.invertAmount = event.target.checked
+    setInvertAmount(parser.invertAmount)
+    handleGenerateTransactions(event, { moveToNextStep: false })
   }
 
   const toolbarProps = () => {
@@ -125,14 +135,17 @@ const ImportedTransactions = ({
               </>
             )
         }
-        &nbsp;will  be imported
+        &nbsp;will be imported
       </>
     ) : 'No errors'
 
     return {
       subTitle,
       handleNextStep,
-      handlePrevStep
+      handlePrevStep,
+      invertAmount,
+      handleChangeInvertAmount,
+      isGeneratingTransactions
     }
   }
 
@@ -216,7 +229,9 @@ ImportedTransactions.propTypes = {
   account: PropTypes.object.isRequired,
   parser: PropTypes.object.isRequired,
   handlePrevStep: PropTypes.func.isRequired,
-  handleNextStep: PropTypes.func.isRequired
+  handleNextStep: PropTypes.func.isRequired,
+  handleGenerateTransactions: PropTypes.func.isRequired,
+  isGeneratingTransactions: PropTypes.bool.isRequired
 }
 
 export default ImportedTransactions

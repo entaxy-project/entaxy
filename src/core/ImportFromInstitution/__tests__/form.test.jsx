@@ -7,7 +7,7 @@ import ThemeProvider from '../../ThemeProvider'
 import ImportFromInstitutionForm from '../form'
 
 // jest.mock('../formFields', () => 'InstitutionFormFields')
-describe('Account form', () => {
+describe.skip('Account form', () => {
   const mochHandleSubmit = jest.fn()
   const mochHandleChange = jest.fn()
   const mochHandleCancel = jest.fn()
