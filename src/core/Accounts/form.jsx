@@ -204,10 +204,9 @@ export class AccountFormComponent extends React.Component {
     const filterInstitutions = (option, inputValue) => {
       if (inputValue === '') return usedInstitutions.includes(option.value)
       const words = inputValue.split(' ')
-      return words.reduce(
-        (result, cur) => result && option.value.toLowerCase().includes(cur.toLowerCase()),
-        true
-      )
+      return words.reduce((result, cur) => (
+        result && option.value.toLowerCase().includes(cur.toLowerCase())
+      ), true)
     }
     const institutionError = typeof errors.institution === 'object'
       ? errors.institution.value
@@ -246,6 +245,7 @@ export class AccountFormComponent extends React.Component {
                   <AutoComplete
                     creatable
                     isClearable={true}
+                    noOptionsMessage={() => null}
                     className={classes.input}
                     label="Institution"
                     placeholder="Select or type to create ..."

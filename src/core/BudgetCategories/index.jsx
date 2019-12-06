@@ -65,6 +65,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: theme.shape.borderRadius * 2,
     backgroundColor: fade(theme.palette.grey[400], 0.15),
     marginRight: theme.spacing(2),
+    marginBottom: theme.spacing(1) * 0.5,
     marginLeft: 0,
     '&:hover': {
       backgroundColor: fade(theme.palette.grey[400], 0.25)
@@ -94,7 +95,7 @@ const useStyles = makeStyles((theme) => ({
 
 const BudgetCategories = () => {
   const classes = useStyles()
-  const { budget, formatCurrency } = useSelector((state) => ({
+  const { budget } = useSelector((state) => ({
     budget: state.budget,
     formatCurrency: currencyFormatter(state.settings.locale, state.settings.currency)
   }))
@@ -237,10 +238,6 @@ const BudgetCategories = () => {
           </IconButton>
         )}
         title={category.name}
-        subheader={
-          !group.isIncome
-          && `Budget limit: ${category.budgetLimit ? formatCurrency(category.budgetLimit) : 'Not set'}`
-        }
         subheaderTypographyProps={{
           variant: 'caption'
         }}
