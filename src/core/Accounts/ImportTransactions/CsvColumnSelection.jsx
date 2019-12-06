@@ -135,6 +135,7 @@ const CsvColumnSelection = ({
               classes={{ label: classes.smallLabel }}
               control={(
                 <Select
+                  data-testid="selectBox"
                   value={dateFormat}
                   onChange={handleChangeDateFormat}
                   SelectDisplayProps={{ 'data-testid': 'dateFormatDropdown' }}
@@ -159,17 +160,23 @@ const CsvColumnSelection = ({
             >
               Back
             </Button>
-            <Button
-              size="small"
-              variant="contained"
-              color="secondary"
-              onClick={handleNextStep}
-              disabled={!readyToSubmit || isGeneratingTransactions}
-              className={classes.submitButton}
-              data-testid="nextButton"
+            <Tooltip
+              title={readyToSubmit ? '' : 'You must first choose the Description, Date and Amount or In/Out columns'}
             >
-              Next
-            </Button>
+              <span>
+                <Button
+                  size="small"
+                  variant="contained"
+                  color="secondary"
+                  onClick={handleNextStep}
+                  disabled={!readyToSubmit || isGeneratingTransactions}
+                  className={classes.submitButton}
+                  data-testid="nextButton"
+                >
+                  Next
+                </Button>
+              </span>
+            </Tooltip>
           </div>
         </Grid>
       </Grid>

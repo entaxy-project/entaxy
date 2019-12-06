@@ -231,58 +231,63 @@ exports[`ConfirmDialog matches snapshot 1`] = `
                                                                             </StateManager>
                                                                           </div>
                                                                         </AutoComplete>
-                                                                        <WithStyles(ForwardRef(FormControlLabel)) control={{...}} label=\\"Apply category to all transactions with the same description\\">
-                                                                          <ForwardRef(FormControlLabel) classes={{...}} control={{...}} label=\\"Apply category to all transactions with the same description\\">
-                                                                            <label className=\\"MuiFormControlLabel-root\\">
-                                                                              <WithStyles(ForwardRef(Checkbox)) checked={true} onChange={[Function]} name=\\"createAndApplyRule\\" value={true} disabled={[undefined]}>
-                                                                                <ForwardRef(Checkbox) classes={{...}} checked={true} onChange={[Function]} name=\\"createAndApplyRule\\" value={true} disabled={[undefined]}>
-                                                                                  <WithStyles(ForwardRef(SwitchBase)) type=\\"checkbox\\" checkedIcon={{...}} classes={{...}} color=\\"secondary\\" inputProps={{...}} icon={{...}} disabled={false} checked={true} onChange={[Function]} name=\\"createAndApplyRule\\" value={true}>
-                                                                                    <ForwardRef(SwitchBase) classes={{...}} type=\\"checkbox\\" checkedIcon={{...}} color=\\"secondary\\" inputProps={{...}} icon={{...}} disabled={false} checked={true} onChange={[Function]} name=\\"createAndApplyRule\\" value={true}>
-                                                                                      <WithStyles(ForwardRef(IconButton)) component=\\"span\\" className=\\"PrivateSwitchBase-root-310 MuiCheckbox-root MuiCheckbox-colorSecondary PrivateSwitchBase-checked-311 Mui-checked\\" disabled={false} tabIndex={{...}} role={[undefined]} onFocus={[Function: handleFocus]} onBlur={[Function: handleBlur]} color=\\"secondary\\">
-                                                                                        <ForwardRef(IconButton) classes={{...}} component=\\"span\\" className=\\"PrivateSwitchBase-root-310 MuiCheckbox-root MuiCheckbox-colorSecondary PrivateSwitchBase-checked-311 Mui-checked\\" disabled={false} tabIndex={{...}} role={[undefined]} onFocus={[Function: handleFocus]} onBlur={[Function: handleBlur]} color=\\"secondary\\">
-                                                                                          <WithStyles(ForwardRef(ButtonBase)) className=\\"MuiIconButton-root PrivateSwitchBase-root-310 MuiCheckbox-root MuiCheckbox-colorSecondary PrivateSwitchBase-checked-311 Mui-checked MuiIconButton-colorSecondary\\" centerRipple={true} focusRipple={true} disabled={false} component=\\"span\\" tabIndex={{...}} role={[undefined]} onFocus={[Function: handleFocus]} onBlur={[Function: handleBlur]}>
-                                                                                            <ForwardRef(ButtonBase) classes={{...}} className=\\"MuiIconButton-root PrivateSwitchBase-root-310 MuiCheckbox-root MuiCheckbox-colorSecondary PrivateSwitchBase-checked-311 Mui-checked MuiIconButton-colorSecondary\\" centerRipple={true} focusRipple={true} disabled={false} component=\\"span\\" tabIndex={{...}} role={[undefined]} onFocus={[Function: handleFocus]} onBlur={[Function: handleBlur]}>
-                                                                                              <span className=\\"MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-310 MuiCheckbox-root MuiCheckbox-colorSecondary PrivateSwitchBase-checked-311 Mui-checked MuiIconButton-colorSecondary\\" onBlur={[Function]} onClick={[undefined]} onFocus={[Function]} onKeyDown={[Function]} onKeyUp={[Function]} onMouseDown={[Function]} onMouseLeave={[Function]} onMouseUp={[Function]} onDragLeave={[Function]} onTouchEnd={[Function]} onTouchMove={[Function]} onTouchStart={[Function]} tabIndex={{...}} role={[undefined]} aria-disabled={false}>
-                                                                                                <span className=\\"MuiIconButton-label\\">
-                                                                                                  <input autoFocus={[undefined]} checked={true} defaultChecked={[undefined]} className=\\"PrivateSwitchBase-input-313\\" disabled={false} id={[undefined]} name=\\"createAndApplyRule\\" onChange={[Function: handleInputChange]} readOnly={[undefined]} required={[undefined]} tabIndex={[undefined]} type=\\"checkbox\\" value={true} data-indeterminate={false} />
-                                                                                                  <ForwardRef>
-                                                                                                    <WithStyles(ForwardRef(SvgIcon))>
-                                                                                                      <ForwardRef(SvgIcon) classes={{...}}>
-                                                                                                        <svg className=\\"MuiSvgIcon-root\\" focusable=\\"false\\" viewBox=\\"0 0 24 24\\" color={[undefined]} aria-hidden=\\"true\\" role=\\"presentation\\">
-                                                                                                          <path d=\\"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\\" />
-                                                                                                        </svg>
-                                                                                                      </ForwardRef(SvgIcon)>
-                                                                                                    </WithStyles(ForwardRef(SvgIcon))>
-                                                                                                  </ForwardRef>
-                                                                                                </span>
-                                                                                                <NoSsr>
-                                                                                                  <WithStyles(undefined) center={true}>
-                                                                                                    <ForwardRef(TouchRipple) classes={{...}} center={true}>
-                                                                                                      <span className=\\"MuiTouchRipple-root\\">
-                                                                                                        <TransitionGroup component={{...}} exit={true} childFactory={[Function: childFactory]} />
-                                                                                                      </span>
-                                                                                                    </ForwardRef(TouchRipple)>
-                                                                                                  </WithStyles(undefined)>
-                                                                                                </NoSsr>
-                                                                                              </span>
-                                                                                            </ForwardRef(ButtonBase)>
-                                                                                          </WithStyles(ForwardRef(ButtonBase))>
-                                                                                        </ForwardRef(IconButton)>
-                                                                                      </WithStyles(ForwardRef(IconButton))>
-                                                                                    </ForwardRef(SwitchBase)>
-                                                                                  </WithStyles(ForwardRef(SwitchBase))>
-                                                                                </ForwardRef(Checkbox)>
-                                                                              </WithStyles(ForwardRef(Checkbox))>
-                                                                              <WithStyles(ForwardRef(Typography)) component=\\"span\\" className=\\"MuiFormControlLabel-label\\">
-                                                                                <ForwardRef(Typography) classes={{...}} component=\\"span\\" className=\\"MuiFormControlLabel-label\\">
-                                                                                  <span className=\\"MuiTypography-root MuiFormControlLabel-label MuiTypography-body1\\">
-                                                                                    Apply category to all transactions with the same description
-                                                                                  </span>
-                                                                                </ForwardRef(Typography)>
-                                                                              </WithStyles(ForwardRef(Typography))>
-                                                                            </label>
-                                                                          </ForwardRef(FormControlLabel)>
-                                                                        </WithStyles(ForwardRef(FormControlLabel))>
+                                                                        <WithStyles(ForwardRef(Tooltip)) title=\\"Apply category to all transactions with the same description\\">
+                                                                          <ForwardRef(Tooltip) classes={{...}} title=\\"Apply category to all transactions with the same description\\">
+                                                                            <WithStyles(ForwardRef(FormControlLabel)) control={{...}} label=\\"Apply to all matches\\" aria-describedby={{...}} title=\\"Apply category to all transactions with the same description\\" className=\\"\\" onTouchStart={[Function: handleTouchStart]} onTouchEnd={[Function: handleTouchEnd]} onMouseOver={[Function: handleEnter]} onMouseLeave={[Function: handleLeave]} onFocus={[Function: handleFocus]} onBlur={[Function: handleLeave]}>
+                                                                              <ForwardRef(FormControlLabel) classes={{...}} control={{...}} label=\\"Apply to all matches\\" aria-describedby={{...}} title=\\"Apply category to all transactions with the same description\\" className=\\"\\" onTouchStart={[Function: handleTouchStart]} onTouchEnd={[Function: handleTouchEnd]} onMouseOver={[Function: handleEnter]} onMouseLeave={[Function: handleLeave]} onFocus={[Function: handleFocus]} onBlur={[Function: handleLeave]}>
+                                                                                <label className=\\"MuiFormControlLabel-root\\" aria-describedby={{...}} title=\\"Apply category to all transactions with the same description\\" onTouchStart={[Function: handleTouchStart]} onTouchEnd={[Function: handleTouchEnd]} onMouseOver={[Function: handleEnter]} onMouseLeave={[Function: handleLeave]} onFocus={[Function: handleFocus]} onBlur={[Function: handleLeave]}>
+                                                                                  <WithStyles(ForwardRef(Checkbox)) checked={true} onChange={[Function]} name=\\"createAndApplyRule\\" value={true} disabled={[undefined]}>
+                                                                                    <ForwardRef(Checkbox) classes={{...}} checked={true} onChange={[Function]} name=\\"createAndApplyRule\\" value={true} disabled={[undefined]}>
+                                                                                      <WithStyles(ForwardRef(SwitchBase)) type=\\"checkbox\\" checkedIcon={{...}} classes={{...}} color=\\"secondary\\" inputProps={{...}} icon={{...}} disabled={false} checked={true} onChange={[Function]} name=\\"createAndApplyRule\\" value={true}>
+                                                                                        <ForwardRef(SwitchBase) classes={{...}} type=\\"checkbox\\" checkedIcon={{...}} color=\\"secondary\\" inputProps={{...}} icon={{...}} disabled={false} checked={true} onChange={[Function]} name=\\"createAndApplyRule\\" value={true}>
+                                                                                          <WithStyles(ForwardRef(IconButton)) component=\\"span\\" className=\\"PrivateSwitchBase-root-320 MuiCheckbox-root MuiCheckbox-colorSecondary PrivateSwitchBase-checked-321 Mui-checked\\" disabled={false} tabIndex={{...}} role={[undefined]} onFocus={[Function: handleFocus]} onBlur={[Function: handleBlur]} color=\\"secondary\\">
+                                                                                            <ForwardRef(IconButton) classes={{...}} component=\\"span\\" className=\\"PrivateSwitchBase-root-320 MuiCheckbox-root MuiCheckbox-colorSecondary PrivateSwitchBase-checked-321 Mui-checked\\" disabled={false} tabIndex={{...}} role={[undefined]} onFocus={[Function: handleFocus]} onBlur={[Function: handleBlur]} color=\\"secondary\\">
+                                                                                              <WithStyles(ForwardRef(ButtonBase)) className=\\"MuiIconButton-root PrivateSwitchBase-root-320 MuiCheckbox-root MuiCheckbox-colorSecondary PrivateSwitchBase-checked-321 Mui-checked MuiIconButton-colorSecondary\\" centerRipple={true} focusRipple={true} disabled={false} component=\\"span\\" tabIndex={{...}} role={[undefined]} onFocus={[Function: handleFocus]} onBlur={[Function: handleBlur]}>
+                                                                                                <ForwardRef(ButtonBase) classes={{...}} className=\\"MuiIconButton-root PrivateSwitchBase-root-320 MuiCheckbox-root MuiCheckbox-colorSecondary PrivateSwitchBase-checked-321 Mui-checked MuiIconButton-colorSecondary\\" centerRipple={true} focusRipple={true} disabled={false} component=\\"span\\" tabIndex={{...}} role={[undefined]} onFocus={[Function: handleFocus]} onBlur={[Function: handleBlur]}>
+                                                                                                  <span className=\\"MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-320 MuiCheckbox-root MuiCheckbox-colorSecondary PrivateSwitchBase-checked-321 Mui-checked MuiIconButton-colorSecondary\\" onBlur={[Function]} onClick={[undefined]} onFocus={[Function]} onKeyDown={[Function]} onKeyUp={[Function]} onMouseDown={[Function]} onMouseLeave={[Function]} onMouseUp={[Function]} onDragLeave={[Function]} onTouchEnd={[Function]} onTouchMove={[Function]} onTouchStart={[Function]} tabIndex={{...}} role={[undefined]} aria-disabled={false}>
+                                                                                                    <span className=\\"MuiIconButton-label\\">
+                                                                                                      <input autoFocus={[undefined]} checked={true} defaultChecked={[undefined]} className=\\"PrivateSwitchBase-input-323\\" disabled={false} id={[undefined]} name=\\"createAndApplyRule\\" onChange={[Function: handleInputChange]} readOnly={[undefined]} required={[undefined]} tabIndex={[undefined]} type=\\"checkbox\\" value={true} data-indeterminate={false} />
+                                                                                                      <ForwardRef>
+                                                                                                        <WithStyles(ForwardRef(SvgIcon))>
+                                                                                                          <ForwardRef(SvgIcon) classes={{...}}>
+                                                                                                            <svg className=\\"MuiSvgIcon-root\\" focusable=\\"false\\" viewBox=\\"0 0 24 24\\" color={[undefined]} aria-hidden=\\"true\\" role=\\"presentation\\">
+                                                                                                              <path d=\\"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\\" />
+                                                                                                            </svg>
+                                                                                                          </ForwardRef(SvgIcon)>
+                                                                                                        </WithStyles(ForwardRef(SvgIcon))>
+                                                                                                      </ForwardRef>
+                                                                                                    </span>
+                                                                                                    <NoSsr>
+                                                                                                      <WithStyles(undefined) center={true}>
+                                                                                                        <ForwardRef(TouchRipple) classes={{...}} center={true}>
+                                                                                                          <span className=\\"MuiTouchRipple-root\\">
+                                                                                                            <TransitionGroup component={{...}} exit={true} childFactory={[Function: childFactory]} />
+                                                                                                          </span>
+                                                                                                        </ForwardRef(TouchRipple)>
+                                                                                                      </WithStyles(undefined)>
+                                                                                                    </NoSsr>
+                                                                                                  </span>
+                                                                                                </ForwardRef(ButtonBase)>
+                                                                                              </WithStyles(ForwardRef(ButtonBase))>
+                                                                                            </ForwardRef(IconButton)>
+                                                                                          </WithStyles(ForwardRef(IconButton))>
+                                                                                        </ForwardRef(SwitchBase)>
+                                                                                      </WithStyles(ForwardRef(SwitchBase))>
+                                                                                    </ForwardRef(Checkbox)>
+                                                                                  </WithStyles(ForwardRef(Checkbox))>
+                                                                                  <WithStyles(ForwardRef(Typography)) component=\\"span\\" className=\\"MuiFormControlLabel-label\\">
+                                                                                    <ForwardRef(Typography) classes={{...}} component=\\"span\\" className=\\"MuiFormControlLabel-label\\">
+                                                                                      <span className=\\"MuiTypography-root MuiFormControlLabel-label MuiTypography-body1\\">
+                                                                                        Apply to all matches
+                                                                                      </span>
+                                                                                    </ForwardRef(Typography)>
+                                                                                  </WithStyles(ForwardRef(Typography))>
+                                                                                </label>
+                                                                              </ForwardRef(FormControlLabel)>
+                                                                            </WithStyles(ForwardRef(FormControlLabel))>
+                                                                            <ForwardRef(Popper) className=\\"MuiTooltip-popper\\" placement=\\"bottom\\" anchorEl={{...}} open={false} id={{...}} transition={true} popperOptions={{...}} />
+                                                                          </ForwardRef(Tooltip)>
+                                                                        </WithStyles(ForwardRef(Tooltip))>
                                                                         <WithStyles(ForwardRef(TextField)) type=\\"number\\" label=\\"Amount\\" inputProps={{...}} className=\\"WithFormik(TransactionDialogComponent)-input-2\\" value={[undefined]} name=\\"amount\\" onChange={[Function]} error={[undefined]} helperText={[undefined]}>
                                                                           <ForwardRef(TextField) classes={{...}} type=\\"number\\" label=\\"Amount\\" inputProps={{...}} className=\\"WithFormik(TransactionDialogComponent)-input-2\\" value={[undefined]} name=\\"amount\\" onChange={[Function]} error={[undefined]} helperText={[undefined]}>
                                                                             <WithStyles(ForwardRef(FormControl)) className=\\"MuiTextField-root WithFormik(TransactionDialogComponent)-input-2\\" disabled={false} error={false} fullWidth={false} hiddenLabel={[undefined]} required={false} color=\\"primary\\" variant=\\"standard\\">

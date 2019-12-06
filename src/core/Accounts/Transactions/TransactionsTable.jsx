@@ -139,10 +139,14 @@ export class TransactionsTableComponent extends React.Component {
   }
 
   filterByDescriptionAndCategory = (transaction) => {
-    let res = transaction.description.toLowerCase().includes(this.state.filters.description.toLowerCase())
+    const searchKey = this.state.filters.description.toLowerCase()
+    let res = transaction.description.toLowerCase().includes(searchKey)
     if (transaction.categoryId !== undefined) {
       const category = this.props.budget.categoriesById[transaction.categoryId].name
       res = res || category.toLowerCase().includes(this.state.filters.description.toLowerCase())
+    }
+    if (transaction.amount.accountCurrency) {
+      res = res || transaction.amount.accountCurrency.toString().includes(searchKey)
     }
     return res
   }

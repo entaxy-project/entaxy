@@ -10,6 +10,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Checkbox from '@material-ui/core/Checkbox'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
+import Tooltip from '@material-ui/core/Tooltip'
 import format from 'date-fns/format'
 import parse from 'date-fns/parse'
 import chroma from 'chroma-js'
@@ -145,17 +146,19 @@ export const TransactionDialogComponent = ({
           styles={colourStyles}
           isClearable={true}
         />
-        <FormControlLabel
-          control={(
-            <Checkbox
-              checked={values.createAndApplyRule}
-              onChange={handleChange}
-              name="createAndApplyRule"
-              value={values.createAndApplyRule}
-            />
-          )}
-          label="Apply category to all transactions with the same description"
-        />
+        <Tooltip title="Apply category to all transactions with the same description">
+          <FormControlLabel
+            control={(
+              <Checkbox
+                checked={values.createAndApplyRule}
+                onChange={handleChange}
+                name="createAndApplyRule"
+                value={values.createAndApplyRule}
+              />
+            )}
+            label="Apply to all matches"
+          />
+        </Tooltip>
         <TextField
           type="number"
           label="Amount"

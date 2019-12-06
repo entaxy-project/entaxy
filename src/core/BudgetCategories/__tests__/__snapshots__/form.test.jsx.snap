@@ -75,7 +75,7 @@ exports[`CategoryForm matches snapshot for existing category 1`] = `
               <div className=\\"WithFormik(CategoryFormComponent)-formActions-3\\">
                 <WithStyles(SubmitButtonWithProgress) label=\\"Save\\" isSubmitting={false}>
                   <SubmitButtonWithProgress classes={{...}} label=\\"Save\\" isSubmitting={false}>
-                    <div className=\\"SubmitButtonWithProgress-wrapper-64\\">
+                    <div className=\\"SubmitButtonWithProgress-wrapper-63\\">
                       <WithStyles(ForwardRef(Button)) type=\\"submit\\" color=\\"secondary\\" disabled={false}>
                         <ForwardRef(Button) classes={{...}} type=\\"submit\\" color=\\"secondary\\" disabled={false}>
                           <WithStyles(ForwardRef(ButtonBase)) className=\\"MuiButton-root MuiButton-text MuiButton-textSecondary\\" component=\\"button\\" disabled={false} focusRipple={true} focusVisibleClassName=\\"Mui-focusVisible\\" type=\\"submit\\">
@@ -210,7 +210,7 @@ exports[`CategoryForm matches snapshot for new category 1`] = `
               <div className=\\"WithFormik(CategoryFormComponent)-formActions-3\\">
                 <WithStyles(SubmitButtonWithProgress) label=\\"Save\\" isSubmitting={false}>
                   <SubmitButtonWithProgress classes={{...}} label=\\"Save\\" isSubmitting={false}>
-                    <div className=\\"SubmitButtonWithProgress-wrapper-64\\">
+                    <div className=\\"SubmitButtonWithProgress-wrapper-63\\">
                       <WithStyles(ForwardRef(Button)) type=\\"submit\\" color=\\"secondary\\" disabled={false}>
                         <ForwardRef(Button) classes={{...}} type=\\"submit\\" color=\\"secondary\\" disabled={false}>
                           <WithStyles(ForwardRef(ButtonBase)) className=\\"MuiButton-root MuiButton-text MuiButton-textSecondary\\" component=\\"button\\" disabled={false} focusRipple={true} focusVisibleClassName=\\"Mui-focusVisible\\" type=\\"submit\\">

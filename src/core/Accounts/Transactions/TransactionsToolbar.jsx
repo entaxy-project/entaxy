@@ -97,7 +97,7 @@ export class TransactionsToolbarComponent extends React.Component {
             <div className={classes.search}>
               <InputBase
                 type="search"
-                placeholder="Search description or category"
+                placeholder="Search transactions"
                 onChange={this.onChangeSearch}
                 value={filterProps.filters.description || ''}
                 classes={{

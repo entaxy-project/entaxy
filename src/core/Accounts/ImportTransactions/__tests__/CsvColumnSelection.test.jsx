@@ -1,5 +1,11 @@
 import React from 'react'
-import { render, cleanup, fireEvent } from '@testing-library/react'
+import {
+  render,
+  cleanup,
+  fireEvent,
+  waitForElement
+} from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import '@testing-library/jest-dom/extend-expect'
 import CsvColumnSelection from '../CsvColumnSelection'
 import CsvParser from '../../../../store/transactions/CsvParsers/CsvParser'
@@ -84,8 +90,9 @@ describe('CsvColumnSelection', () => {
     const dateFormatInput = getByTestId('dateFormatInput')
     expect(props.parser.dateFormat).toBe(props.parser.dateFormats[1])
     expect(dateFormatInput.value).toEqual(props.parser.dateFormat)
-    fireEvent.click(dateFormatDropdown)
-    fireEvent.click(getByText(props.parser.dateFormats[0]))
+    userEvent.click(dateFormatDropdown)
+    waitForElement(() => getByText(props.parser.dateFormat[0]))
+    userEvent.click(getByText(props.parser.dateFormats[0]))
     expect(props.parser.dateFormat).toBe(props.parser.dateFormats[0])
     expect(dateFormatInput.value).toEqual(props.parser.dateFormat)
   })
@@ -95,8 +102,8 @@ describe('CsvColumnSelection', () => {
 
     expect(props.parser.csvHeader[0].transactionField).toEqual(props.parser.dontImport)
     expect(props.parser.csvHeader[4].transactionField).toEqual('description1')
-    fireEvent.click(getAllByText(props.parser.dontImport)[0])
-    fireEvent.click(getAllByText('Description 1')[1])
+    userEvent.click(getAllByText(props.parser.dontImport)[0])
+    userEvent.click(getAllByText('Description 1')[1])
     expect(props.parser.csvHeader[0].transactionField).toEqual('description1')
     expect(props.parser.csvHeader[4].transactionField).toEqual(props.parser.dontImport)
   })

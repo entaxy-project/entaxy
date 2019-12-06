@@ -58,7 +58,7 @@ exports[`TransactionsTable matches snapshot with no transactions 1`] = `
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
-              placeholder="Search description or category"
+              placeholder="Search transactions"
               type="search"
               value=""
             />
@@ -199,7 +199,7 @@ exports[`TransactionsTable matches snapshot with no transactions 1`] = `
           >
             <span
               aria-disabled={false}
-              className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-108 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+              className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-110 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
               onBlur={[Function]}
               onDragLeave={[Function]}
               onFocus={[Function]}
@@ -218,7 +218,7 @@ exports[`TransactionsTable matches snapshot with no transactions 1`] = `
               >
                 <input
                   checked={false}
-                  className="PrivateSwitchBase-input-111"
+                  className="PrivateSwitchBase-input-113"
                   data-indeterminate={false}
                   disabled={false}
                   onChange={[Function]}
@@ -458,7 +458,7 @@ exports[`TransactionsTable matches snapshot with some transactions 1`] = `
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
-              placeholder="Search description or category"
+              placeholder="Search transactions"
               type="search"
               value=""
             />
@@ -599,7 +599,7 @@ exports[`TransactionsTable matches snapshot with some transactions 1`] = `
           >
             <span
               aria-disabled={false}
-              className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-108 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+              className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-110 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
               onBlur={[Function]}
               onDragLeave={[Function]}
               onFocus={[Function]}
@@ -618,7 +618,7 @@ exports[`TransactionsTable matches snapshot with some transactions 1`] = `
               >
                 <input
                   checked={false}
-                  className="PrivateSwitchBase-input-111"
+                  className="PrivateSwitchBase-input-113"
                   data-indeterminate={false}
                   disabled={false}
                   onChange={[Function]}
@@ -846,7 +846,7 @@ exports[`TransactionsTable matches snapshot with some transactions 1`] = `
               >
                 <span
                   aria-disabled={false}
-                  className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-108 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+                  className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-110 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
                   onBlur={[Function]}
                   onDragLeave={[Function]}
                   onFocus={[Function]}
@@ -865,7 +865,7 @@ exports[`TransactionsTable matches snapshot with some transactions 1`] = `
                   >
                     <input
                       checked={false}
-                      className="PrivateSwitchBase-input-111"
+                      className="PrivateSwitchBase-input-113"
                       data-indeterminate={false}
                       disabled={false}
                       onChange={[Function]}
@@ -1007,7 +1007,7 @@ exports[`TransactionsTable matches snapshot with some transactions 1`] = `
               >
                 <span
                   aria-disabled={false}
-                  className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-108 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+                  className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-110 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
                   onBlur={[Function]}
                   onDragLeave={[Function]}
                   onFocus={[Function]}
@@ -1026,7 +1026,7 @@ exports[`TransactionsTable matches snapshot with some transactions 1`] = `
                   >
                     <input
                       checked={false}
-                      className="PrivateSwitchBase-input-111"
+                      className="PrivateSwitchBase-input-113"
                       data-indeterminate={false}
                       disabled={false}
                       onChange={[Function]}
@@ -1168,7 +1168,7 @@ exports[`TransactionsTable matches snapshot with some transactions 1`] = `
               >
                 <span
                   aria-disabled={false}
-                  className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-108 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+                  className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-110 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
                   onBlur={[Function]}
                   onDragLeave={[Function]}
                   onFocus={[Function]}
@@ -1187,7 +1187,7 @@ exports[`TransactionsTable matches snapshot with some transactions 1`] = `
                   >
                     <input
                       checked={false}
-                      className="PrivateSwitchBase-input-111"
+                      className="PrivateSwitchBase-input-113"
                       data-indeterminate={false}
                       disabled={false}
                       onChange={[Function]}
