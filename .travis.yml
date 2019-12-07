@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - 11
+  - 13
 cache:
   directories:
     - node_modules
@@ -9,4 +9,4 @@ script:
   - npm run test:ci
   - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 before_install:
-- export TZ=America/Toronto
+  - export TZ=America/Toronto
