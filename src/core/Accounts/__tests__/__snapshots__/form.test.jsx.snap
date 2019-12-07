@@ -545,7 +545,7 @@ exports[`Account form matches snapshot for edit account 1`] = `
         </button>
         <div />
         <div
-          className="SubmitButtonWithProgress-wrapper-275"
+          className="SubmitButtonWithProgress-wrapper-274"
         >
           <button
             className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary"
@@ -1122,7 +1122,7 @@ exports[`Account form matches snapshot for new account 1`] = `
         </button>
         <div />
         <div
-          className="SubmitButtonWithProgress-wrapper-275"
+          className="SubmitButtonWithProgress-wrapper-274"
         >
           <button
             className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary"

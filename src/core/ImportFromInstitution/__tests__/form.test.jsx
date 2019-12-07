@@ -1,13 +1,12 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
-// import { shallow } from 'enzyme'
 import { Provider } from 'react-redux'
 import { store } from '../../../store'
 import ThemeProvider from '../../ThemeProvider'
 import ImportFromInstitutionForm from '../form'
 
 // jest.mock('../formFields', () => 'InstitutionFormFields')
-describe('Account form', () => {
+describe.skip('Account form', () => {
   const mochHandleSubmit = jest.fn()
   const mochHandleChange = jest.fn()
   const mochHandleCancel = jest.fn()

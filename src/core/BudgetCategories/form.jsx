@@ -48,8 +48,7 @@ const CategoryFormComponent = ({
   errors,
   touched,
   handleChange,
-  handleCancel,
-  group
+  handleCancel
 }) => {
   return (
     <form onSubmit={handleSubmit} className={classes.form}>
@@ -68,21 +67,6 @@ const CategoryFormComponent = ({
         helperText={errors.name}
         autoFocus
       />
-      {!group.isIncome && (
-        <TextField
-          className={classes.input}
-          margin="dense"
-          label="Budget limit"
-          inputProps={{
-            'aria-label': 'Budget limit'
-          }}
-          value={values.budgetLimit}
-          name="budgetLimit"
-          onChange={handleChange}
-          error={errors.budgetLimit && touched.budgetLimit}
-          helperText={errors.budgetLimit}
-        />
-      )}
       <div className={classes.formActions}>
         <SubmitButtonWithProgress label="Save" isSubmitting={isSubmitting} />
         <div className={classes.buttonWrapper}>
@@ -101,8 +85,7 @@ CategoryFormComponent.propTypes = {
   errors: PropTypes.object.isRequired,
   touched: PropTypes.object.isRequired,
   handleChange: PropTypes.func.isRequired,
-  handleCancel: PropTypes.func.isRequired,
-  group: PropTypes.object.isRequired
+  handleCancel: PropTypes.func.isRequired
 }
 
 export default compose(

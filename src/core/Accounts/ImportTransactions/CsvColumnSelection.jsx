@@ -63,12 +63,10 @@ const CsvColumnSelection = ({
   parser,
   handlePrevStep,
   handleNextStep,
-  setDuplicateTransactions
+  isGeneratingTransactions
 }) => {
   const classes = useStyles()
-  const [isSubmitting, setIsSubmitting] = useState(false)
   const [hasHeaderRow, setHasHeaderRow] = useState(parser.hasHeaderRow)
-  const [invertAmount, setInvertAmount] = useState(parser.invertAmount)
   const [dateFormat, setDateFormat] = useState(parser.dateFormat)
   const [csvHeader, setCsvHeader] = useState(parser.csvHeader)
 
@@ -92,32 +90,27 @@ const CsvColumnSelection = ({
     setHasHeaderRow(parser.hasHeaderRow)
   }
 
-  const handleChangeInvertAmount = ({ target }) => {
-    // eslint-disable-next-line no-param-reassign
-    parser.invertAmount = target.checked
-    setInvertAmount(parser.invertAmount)
-  }
-
-  const handleSubmit = (event) => {
-    event.preventDefault()
-    setIsSubmitting(true)
-    parser.mapToTransactions()
-    setDuplicateTransactions()
-    handleNextStep()
-  }
-
-
   const selectedColumns = csvHeader.reduce((res, h) => {
     if (h.transactionField === parser.dontImport) return res
     return [...res, h.transactionField]
   }, [])
-  const readyToSubmit = ['description1', 'createdAt', 'amount'].every((e) => selectedColumns.includes(e))
-    || ['description1', 'createdAt', 'income', 'expense'].every((e) => selectedColumns.includes(e))
+
+  const readyToSubmit = [
+    'description1',
+    'createdAt',
+    'amount'
+  ].every((column) => selectedColumns.includes(column))
+  || [
+    'description1',
+    'createdAt',
+    'income',
+    'expense'
+  ].every((column) => selectedColumns.includes(column))
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form>
       <Grid container alignItems="center" className={classes.formOptions}>
-        <Grid item xs={4}>
+        <Grid item xs={5}>
           <Tooltip title="When checked, this will tell the importer to ignore the header row">
             <FormControlLabel
               className={classes.formField}
@@ -133,7 +126,7 @@ const CsvColumnSelection = ({
             />
           </Tooltip>
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={5}>
           <Tooltip title="This determines how the Date column will be imported">
             <FormControlLabel
               value="Date format"
@@ -142,6 +135,7 @@ const CsvColumnSelection = ({
               classes={{ label: classes.smallLabel }}
               control={(
                 <Select
+                  data-testid="selectBox"
                   value={dateFormat}
                   onChange={handleChangeDateFormat}
                   SelectDisplayProps={{ 'data-testid': 'dateFormatDropdown' }}
@@ -158,27 +152,6 @@ const CsvColumnSelection = ({
           </Tooltip>
         </Grid>
         <Grid item xs={2}>
-          <Tooltip
-            title="
-              This will convert the imported amounts from positive to negative and vice-versa.
-              It is checked by default for credit card accounts.
-            "
-          >
-            <FormControlLabel
-              className={classes.formField}
-              classes={{ label: classes.smallLabel }}
-              control={(
-                <Checkbox
-                  checked={invertAmount}
-                  onChange={handleChangeInvertAmount}
-                  value="invertAmount"
-                />
-              )}
-              label="Invert amount"
-            />
-          </Tooltip>
-        </Grid>
-        <Grid item xs={2}>
           <div className={classes.formActions}>
             <Button
               size="small"
@@ -187,17 +160,23 @@ const CsvColumnSelection = ({
             >
               Back
             </Button>
-            <Button
-              type="submit"
-              size="small"
-              variant="contained"
-              color="secondary"
-              disabled={!readyToSubmit || isSubmitting}
-              className={classes.submitButton}
-              data-testid="nextButton"
+            <Tooltip
+              title={readyToSubmit ? '' : 'You must first choose the Description, Date and Amount or In/Out columns'}
             >
-              Next
-            </Button>
+              <span>
+                <Button
+                  size="small"
+                  variant="contained"
+                  color="secondary"
+                  onClick={handleNextStep}
+                  disabled={!readyToSubmit || isGeneratingTransactions}
+                  className={classes.submitButton}
+                  data-testid="nextButton"
+                >
+                  Next
+                </Button>
+              </span>
+            </Tooltip>
           </div>
         </Grid>
       </Grid>
@@ -278,7 +257,7 @@ CsvColumnSelection.propTypes = {
   parser: PropTypes.object.isRequired,
   handlePrevStep: PropTypes.func.isRequired,
   handleNextStep: PropTypes.func.isRequired,
-  setDuplicateTransactions: PropTypes.func.isRequired
+  isGeneratingTransactions: PropTypes.bool.isRequired
 }
 
 export default CsvColumnSelection

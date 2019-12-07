@@ -5,7 +5,8 @@ const budgetCategories = {
     'Gas & Fuel',
     'Parking',
     'Public Transport',
-    'Services & Parts'
+    'Services & Parts',
+    'Rideshare (Uber/Lyft)'
   ],
   'Banking': [
     'Cash Withdrawal',

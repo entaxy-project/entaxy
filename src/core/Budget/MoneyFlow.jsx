@@ -124,7 +124,6 @@ const MoneyFlow = () => {
         if (category.id === incomeGroupId) { // Income group
           // from income categories to income group
           incomeCategories.forEach((incomeCategory) => {
-            expenseGroup.total += Math.abs(incomeCategory.total)
             newLinks.push({
               source: incomeCategory.index,
               target: category.index,
@@ -138,6 +137,7 @@ const MoneyFlow = () => {
             value: expenseGroup.total
           })
         } else if (category.parentId === undefined && category.id !== 'Expenses') { // Non income groups
+          expenseGroup.total += Math.abs(category.total)
           // from expenses group to non income groups
           newLinks.push({
             source: expenseGroup.index,

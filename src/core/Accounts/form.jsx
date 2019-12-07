@@ -204,10 +204,9 @@ export class AccountFormComponent extends React.Component {
     const filterInstitutions = (option, inputValue) => {
       if (inputValue === '') return usedInstitutions.includes(option.value)
       const words = inputValue.split(' ')
-      return words.reduce(
-        (result, cur) => result && option.value.toLowerCase().includes(cur.toLowerCase()),
-        true
-      )
+      return words.reduce((result, cur) => (
+        result && option.value.toLowerCase().includes(cur.toLowerCase())
+      ), true)
     }
     const institutionError = typeof errors.institution === 'object'
       ? errors.institution.value
@@ -246,6 +245,7 @@ export class AccountFormComponent extends React.Component {
                   <AutoComplete
                     creatable
                     isClearable={true}
+                    noOptionsMessage={() => null}
                     className={classes.input}
                     label="Institution"
                     placeholder="Select or type to create ..."
@@ -399,7 +399,7 @@ export default compose(
         (result, account) => {
           if (props.account !== undefined && account.id === props.account.id) return result
           if (account.institution !== institution) return result
-          return [...result, account.name]
+          return [...result, account.name.trim()]
         },
         []
       )
@@ -427,6 +427,7 @@ export default compose(
               .nullable()
           }),
         name: Yup.string()
+          .trim()
           .max(40, 'Too Long! 40 characters max')
           .required('Please enter a name for this account')
           .when('institution', (institution, schema) => {
@@ -452,6 +453,7 @@ export default compose(
       setSubmitting(true)
       await props.handleSave({
         ...values,
+        name: values.name.trim(),
         accountType: values.accountType.value,
         institution: values.accountType.value !== 'cash' ? values.institution.value : accountTypes.cash,
         openingBalanceDate: parse(values.openingBalanceDate, 'yyyy-M-d', new Date()).getTime(),

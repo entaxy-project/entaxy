@@ -3,6 +3,8 @@ import { makeStyles } from '@material-ui/core/styles'
 import PropTypes from 'prop-types'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Switch from '@material-ui/core/Switch'
+import Tooltip from '@material-ui/core/Tooltip'
+import Checkbox from '@material-ui/core/Checkbox'
 import Button from '@material-ui/core/Button'
 import SaveIcon from '@material-ui/icons/Save'
 import TableToolbar from '../../../common/TableToolbar'
@@ -30,7 +32,10 @@ const ResultsToolbar = ({
   subTitle,
   filterProps,
   handleNextStep,
-  handlePrevStep
+  handlePrevStep,
+  invertAmount,
+  handleChangeInvertAmount,
+  isGeneratingTransactions
 }) => {
   const classes = useStyles()
   const [checked, setChecked] = useState({ showOnlyErrors: false, showOnlyDuplicates: false })
@@ -77,6 +82,21 @@ const ResultsToolbar = ({
           />
         )}
       />
+      <Tooltip title="Purchases should appear negative under the Out column">
+        <FormControlLabel
+          className={classes.formField}
+          classes={{ label: classes.smallLabel }}
+          control={(
+            <Checkbox
+              checked={invertAmount}
+              onChange={handleChangeInvertAmount}
+              value="invertAmount"
+            />
+          )}
+          label="Invert amount"
+        />
+      </Tooltip>
+
       <Button
         size="small"
         onClick={handlePrevStep}
@@ -91,6 +111,7 @@ const ResultsToolbar = ({
         size="small"
         variant="contained"
         color="secondary"
+        disabled={isGeneratingTransactions}
         className={[classes.smallButton, classes.submitButton].join(' ')}
         data-testid="saveButton"
       >
@@ -106,7 +127,10 @@ ResultsToolbar.propTypes = {
   subTitle: PropTypes.node.isRequired,
   filterProps: PropTypes.object.isRequired,
   handleNextStep: PropTypes.func.isRequired,
-  handlePrevStep: PropTypes.func.isRequired
+  handlePrevStep: PropTypes.func.isRequired,
+  invertAmount: PropTypes.bool.isRequired,
+  handleChangeInvertAmount: PropTypes.func.isRequired,
+  isGeneratingTransactions: PropTypes.bool.isRequired
 }
 
 ResultsToolbar.defaultProps = {

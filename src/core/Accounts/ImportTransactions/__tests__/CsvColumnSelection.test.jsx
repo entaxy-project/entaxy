@@ -1,5 +1,11 @@
 import React from 'react'
-import { render, cleanup, fireEvent } from '@testing-library/react'
+import {
+  render,
+  cleanup,
+  fireEvent,
+  waitForElement
+} from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import '@testing-library/jest-dom/extend-expect'
 import CsvColumnSelection from '../CsvColumnSelection'
 import CsvParser from '../../../../store/transactions/CsvParsers/CsvParser'
@@ -7,7 +13,7 @@ import ThemeProvider from '../../../ThemeProvider'
 
 const mockHandlePrevStep = jest.fn()
 const mockHandleNextStep = jest.fn()
-const mockSetDuplicateTransactions = jest.fn()
+
 const csvData = [
   'First Bank Card,Transaction Type,Date Posted, Transaction Amount,Description',
   '\'500766**********\',DEBIT,20180628,-650.0,[SO]2211#8503-567 ',
@@ -22,10 +28,10 @@ afterEach(() => {
 
 const renderContent = async () => {
   const props = {
-    parser: new CsvParser({}),
     handlePrevStep: mockHandlePrevStep,
     handleNextStep: mockHandleNextStep,
-    setDuplicateTransactions: mockSetDuplicateTransactions
+    isGeneratingTransactions: false,
+    parser: new CsvParser({})
   }
   await props.parser.parse(file)
   return {
@@ -68,21 +74,6 @@ describe('CsvColumnSelection', () => {
     expect(getByTestId('headerRow')).toBeInTheDocument()
   })
 
-  it('should change invert amount', async () => {
-    const { props, getByLabelText } = await renderContent()
-    const checkbox = getByLabelText('Invert amount')
-    expect(props.parser.invertAmount).toBe(false)
-    expect(checkbox.checked).toBe(false)
-
-    fireEvent.click(checkbox)
-    expect(props.parser.invertAmount).toBe(true)
-    expect(checkbox.checked).toBe(true)
-
-    fireEvent.click(checkbox)
-    expect(props.parser.invertAmount).toBe(false)
-    expect(checkbox.checked).toBe(false)
-  })
-
   it('should change the date format', async () => {
     // https://github.com/mui-org/material-ui/issues/15726
     global.document.createRange = () => ({
@@ -99,8 +90,9 @@ describe('CsvColumnSelection', () => {
     const dateFormatInput = getByTestId('dateFormatInput')
     expect(props.parser.dateFormat).toBe(props.parser.dateFormats[1])
     expect(dateFormatInput.value).toEqual(props.parser.dateFormat)
-    fireEvent.click(dateFormatDropdown)
-    fireEvent.click(getByText(props.parser.dateFormats[0]))
+    userEvent.click(dateFormatDropdown)
+    waitForElement(() => getByText(props.parser.dateFormat[0]))
+    userEvent.click(getByText(props.parser.dateFormats[0]))
     expect(props.parser.dateFormat).toBe(props.parser.dateFormats[0])
     expect(dateFormatInput.value).toEqual(props.parser.dateFormat)
   })
@@ -110,8 +102,8 @@ describe('CsvColumnSelection', () => {
 
     expect(props.parser.csvHeader[0].transactionField).toEqual(props.parser.dontImport)
     expect(props.parser.csvHeader[4].transactionField).toEqual('description1')
-    fireEvent.click(getAllByText(props.parser.dontImport)[0])
-    fireEvent.click(getAllByText('Description 1')[1])
+    userEvent.click(getAllByText(props.parser.dontImport)[0])
+    userEvent.click(getAllByText('Description 1')[1])
     expect(props.parser.csvHeader[0].transactionField).toEqual('description1')
     expect(props.parser.csvHeader[4].transactionField).toEqual(props.parser.dontImport)
   })
@@ -122,7 +114,6 @@ describe('CsvColumnSelection', () => {
     expect(props.parser.transactions.length).toBe(0)
     fireEvent.click(getByTestId('nextButton'))
     expect(mockHandleNextStep).toHaveBeenCalled()
-    expect(props.parser.transactions.length).toBe(2)
   })
 
   it('should handle back', async () => {
