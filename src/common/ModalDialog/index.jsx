@@ -13,7 +13,7 @@ import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
 
 const useStyles = makeStyles((theme) => ({
-  formWrapper: {
+  dialogMargin: {
     marginLeft: 15,
     marginRight: 15
   },
@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    padding: '24px 24px 15px',
+    padding: '24px 10px 16px 15px',
     borderBottom: '1px solid rgba(0, 0, 0, 0.12)'
   },
   closeButton: {
@@ -57,10 +57,11 @@ const ModalDialog = ({
       aria-labelledby="form-dialog-title"
       open={open}
       scroll="body"
+      fullWidth
       onClose={onCancel}
       className={className}
     >
-      <div className={classes.formWrapper}>
+      <div className={classes.dialogMargin}>
         <DialogTitle disableTypography className={classes.formHeader}>
           <Typography variant="h6">{title}</Typography>
           <IconButton aria-label="Close" onClick={onCancel} className={classes.closeButton}>
@@ -74,12 +75,12 @@ const ModalDialog = ({
           <Divider />
           <DialogActions className={classes.formFooter}>
             <Grid container>
-              <Grid item xs={6}>
+              <Grid item xs={8}>
                 {(onDelete) && (
                   <Button onClick={onDelete} className={classes.deleteButton}>Delete this transaction</Button>
                 )}
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={4}>
                 <Button type="submit" color="secondary" className={classes.saveButton}>Save</Button>
               </Grid>
             </Grid>
