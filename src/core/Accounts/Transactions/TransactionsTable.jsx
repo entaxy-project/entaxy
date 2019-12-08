@@ -8,6 +8,11 @@ import classNames from 'classnames'
 import Checkbox from '@material-ui/core/Checkbox'
 import grey from '@material-ui/core/colors/grey'
 import Chip from '@material-ui/core/Chip'
+import Tooltip from '@material-ui/core/Tooltip'
+import NoteIcon from '@material-ui/icons/Note'
+import Icon from '@mdi/react'
+import Link from '@material-ui/core/Link'
+import { mdiTransfer } from '@mdi/js'
 import { orderBy } from 'lodash'
 import { Column, Table, AutoSizer } from 'react-virtualized'
 import chroma from 'chroma-js'
@@ -61,11 +66,20 @@ const styles = (theme) => ({
   },
   category: {
     background: 'red'
+  },
+  icons: {
+    color: grey[600],
+    fontSize: '1.1rem',
+    marginBottom: -4
+  },
+  link: {
+    cursor: 'pointer'
   }
 })
 
 const mapStateToProps = (state, props) => ({
   budget: state.budget,
+  accounts: state.accounts,
   formatCurrency: currencyFormatter(state.settings.locale, props.account.currency),
   formatDecimal: decimalFormatter(state.settings.locale, props.account.accountType),
   formatDate: dateFormatter(state.settings.locale)
@@ -226,6 +240,7 @@ export class TransactionsTableComponent extends React.Component {
       className,
       children,
       account,
+      accounts,
       budget,
       formatDate,
       Toolbar,
@@ -318,6 +333,40 @@ export class TransactionsTableComponent extends React.Component {
                 label="Description"
                 dataKey="description"
                 flexGrow={1}
+                cellRenderer={
+                  ({ rowData }) => {
+                    const icons = []
+                    if (rowData.transferAccountId && accounts.byId[rowData.transferAccountId]) {
+                      const transferAccount = accounts.byId[rowData.transferAccountId]
+                      let title = `Transfer ${rowData.transferDirection} ${transferAccount.name} account`
+                      if (transferAccount.institution !== account.institution) {
+                        title += ` at ${transferAccount.institution}`
+                      }
+                      icons.push(
+                        <Tooltip title={title}>
+                          <Icon
+                            path={mdiTransfer}
+                            size={1}
+                            color="rgba(0, 0, 0, 0.54)"
+                            className={classes.icons}
+                          />
+                        </Tooltip>
+                      )
+                    }
+                    if (rowData.notes) {
+                      icons.push(
+                        <Tooltip title={rowData.notes}>
+                          <NoteIcon fontSize="small" titleAccess="notes" className={classes.icons} />
+                        </Tooltip>
+                      )
+                    }
+                    return (
+                      <Link onClick={() => toolbarProps.handleEdit(rowData)} className={classes.link} underline="none">
+                        {icons[0]} {icons[1]} {rowData.description}
+                      </Link>
+                    )
+                  }
+                }
               />
               <Column
                 width={200}
@@ -384,6 +433,7 @@ TransactionsTableComponent.propTypes = {
   Toolbar: PropTypes.any.isRequired,
   toolbarProps: PropTypes.object,
   account: PropTypes.object.isRequired,
+  accounts: PropTypes.object.isRequired,
   transactions: PropTypes.array.isRequired,
   budget: PropTypes.object.isRequired,
   formatCurrency: PropTypes.func.isRequired,

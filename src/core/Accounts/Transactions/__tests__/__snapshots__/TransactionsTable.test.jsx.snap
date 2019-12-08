@@ -919,9 +919,18 @@ exports[`TransactionsTable matches snapshot with some transactions 1`] = `
                   "overflow": "hidden",
                 }
               }
-              title="Transaction 3"
+              title={null}
             >
-              Transaction 3
+              <a
+                className="MuiTypography-root MuiLink-root MuiLink-underlineNone MuiTypography-colorPrimary"
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+              >
+                 
+                 
+                Transaction 3
+              </a>
             </div>
             <div
               aria-colindex={4}
@@ -1080,9 +1089,18 @@ exports[`TransactionsTable matches snapshot with some transactions 1`] = `
                   "overflow": "hidden",
                 }
               }
-              title="Transaction 2"
+              title={null}
             >
-              Transaction 2
+              <a
+                className="MuiTypography-root MuiLink-root MuiLink-underlineNone MuiTypography-colorPrimary"
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+              >
+                 
+                 
+                Transaction 2
+              </a>
             </div>
             <div
               aria-colindex={4}
@@ -1241,9 +1259,18 @@ exports[`TransactionsTable matches snapshot with some transactions 1`] = `
                   "overflow": "hidden",
                 }
               }
-              title="Transaction 1"
+              title={null}
             >
-              Transaction 1
+              <a
+                className="MuiTypography-root MuiLink-root MuiLink-underlineNone MuiTypography-colorPrimary"
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+              >
+                 
+                 
+                Transaction 1
+              </a>
             </div>
             <div
               aria-colindex={4}

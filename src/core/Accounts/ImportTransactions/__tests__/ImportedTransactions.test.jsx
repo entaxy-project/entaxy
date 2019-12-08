@@ -6,6 +6,7 @@ import configureMockStore from 'redux-mock-store'
 import ImportedTransactions from '../ImportedTransactions'
 import CsvParser from '../../../../store/transactions/CsvParsers/CsvParser'
 import { initialState as settingsInitialState } from '../../../../store/settings/reducer'
+import { initialState as accountsInitialState } from '../../../../store/accounts/reducer'
 import { initialState as budgetInitialState } from '../../../../store/budget/reducer'
 import ThemeProvider from '../../../ThemeProvider'
 
@@ -35,6 +36,7 @@ afterEach(() => {
 const renderContent = async (data = csvData) => {
   const store = mockStore({
     settings: settingsInitialState,
+    accounts: accountsInitialState,
     budget: budgetInitialState
   })
 
