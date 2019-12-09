@@ -9,6 +9,7 @@ import Checkbox from '@material-ui/core/Checkbox'
 import grey from '@material-ui/core/colors/grey'
 import Chip from '@material-ui/core/Chip'
 import Tooltip from '@material-ui/core/Tooltip'
+import Typography from '@material-ui/core/Typography'
 import NoteIcon from '@material-ui/icons/Note'
 import Icon from '@mdi/react'
 import Link from '@material-ui/core/Link'
@@ -335,26 +336,9 @@ export class TransactionsTableComponent extends React.Component {
                 flexGrow={1}
                 cellRenderer={
                   ({ rowData }) => {
-                    const icons = []
-                    if (rowData.transferAccountId && accounts.byId[rowData.transferAccountId]) {
-                      const transferAccount = accounts.byId[rowData.transferAccountId]
-                      let title = `Transfer ${rowData.transferDirection} ${transferAccount.name} account`
-                      if (transferAccount.institution !== account.institution) {
-                        title += ` at ${transferAccount.institution}`
-                      }
-                      icons.push(
-                        <Tooltip title={title}>
-                          <Icon
-                            path={mdiTransfer}
-                            size={1}
-                            color="rgba(0, 0, 0, 0.54)"
-                            className={classes.icons}
-                          />
-                        </Tooltip>
-                      )
-                    }
+                    let commentIcon
                     if (rowData.notes) {
-                      icons.push(
+                      commentIcon = (
                         <Tooltip title={rowData.notes}>
                           <NoteIcon fontSize="small" titleAccess="notes" className={classes.icons} />
                         </Tooltip>
@@ -362,7 +346,7 @@ export class TransactionsTableComponent extends React.Component {
                     }
                     return (
                       <Link onClick={() => toolbarProps.handleEdit(rowData)} className={classes.link} underline="none">
-                        {icons[0]} {icons[1]} {rowData.description}
+                        {commentIcon} {rowData.description}
                       </Link>
                     )
                   }
@@ -374,6 +358,28 @@ export class TransactionsTableComponent extends React.Component {
                 dataKey="categoryId"
                 cellRenderer={
                   ({ rowData }) => {
+                    if (rowData.transferAccountId && accounts.byId[rowData.transferAccountId]) {
+                      const transferAccount = accounts.byId[rowData.transferAccountId]
+                      const transferLabel = ` ${rowData.transferDirection} ${transferAccount.name}`
+                      let title = `Transfer ${transferLabel}`
+                      if (transferAccount.institution !== account.institution) {
+                        title += ` at ${transferAccount.institution}`
+                      }
+                      return (
+                        <Tooltip title={title}>
+                          <Typography variant="caption">
+                            <Icon
+                              path={mdiTransfer}
+                              size={1}
+                              color="rgba(0, 0, 0, 0.54)"
+                              className={classes.icons}
+                            />
+                            {transferLabel}
+                          </Typography>
+                        </Tooltip>
+                      )
+                    }
+
                     if (rowData.categoryId === undefined) return null
                     const category = budget.categoriesById[rowData.categoryId]
                     if (category === undefined) return null

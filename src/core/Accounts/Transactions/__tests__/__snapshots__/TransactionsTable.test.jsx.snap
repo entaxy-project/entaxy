@@ -928,7 +928,6 @@ exports[`TransactionsTable matches snapshot with some transactions 1`] = `
                 onFocus={[Function]}
               >
                  
-                 
                 Transaction 3
               </a>
             </div>
@@ -1098,7 +1097,6 @@ exports[`TransactionsTable matches snapshot with some transactions 1`] = `
                 onFocus={[Function]}
               >
                  
-                 
                 Transaction 2
               </a>
             </div>
@@ -1267,7 +1265,6 @@ exports[`TransactionsTable matches snapshot with some transactions 1`] = `
                 onClick={[Function]}
                 onFocus={[Function]}
               >
-                 
                  
                 Transaction 1
               </a>

@@ -24,8 +24,6 @@ import Autocomplete from '@material-ui/lab/Autocomplete'
 import format from 'date-fns/format'
 import parse from 'date-fns/parse'
 import grey from '@material-ui/core/colors/grey'
-import chroma from 'chroma-js'
-import AutoComplete from '../../../common/AutoComplete'
 import ModalDialog from '../../../common/ModalDialog'
 import { createTransaction, updateTransaction } from '../../../store/transactions/actions'
 import LinkTo from '../../../common/LinkTo'
@@ -60,47 +58,27 @@ const styles = (theme) => ({
   accountName: {
     paddingLeft: theme.spacing(2)
   },
-  option: {
-    marginLeft: theme.spacing(2)
+  categoryOption: {
+    marginLeft: theme.spacing(1),
+    marginRight: 8
+  },
+  categoryDot: {
+    borderRadius: 4,
+    content: '" "',
+    display: 'inline-block',
+    height: 15,
+    width: 15,
+    marginBottom: -2
+  },
+  categoryName: {
+    display: 'inline-block',
+    marginLeft: theme.spacing(1)
   },
   transferLabel: {
     marginTop: 6,
     marginBottom: -6
   }
 })
-
-const dot = (color = '#ccc') => ({
-  alignItems: 'center',
-  display: 'flex',
-  ':before': {
-    backgroundColor: color,
-    borderRadius: 4,
-    content: '" "',
-    display: 'block',
-    marginRight: 8,
-    height: 15,
-    width: 15
-  }
-})
-
-const colourStyles = {
-  control: (newStyles) => ({ ...newStyles, backgroundColor: 'white' }),
-  option: (newStyles, { data, isDisabled, isSelected }) => {
-    const color = chroma(data.colour)
-    return {
-      ...newStyles,
-      ...dot(data.colour),
-      cursor: isDisabled ? 'not-allowed' : 'default',
-      ':active': {
-        ...newStyles[':active'],
-        backgroundColor: !isDisabled && (isSelected ? data.colour : color.alpha(0.3).css())
-      }
-    }
-  },
-  input: (newStyles) => ({ ...newStyles, ...dot() }),
-  placeholder: (newStyles) => ({ ...newStyles, ...dot() }),
-  singleValue: (newStyles, { data }) => ({ ...newStyles, ...dot(data.colour) })
-}
 
 const mapStateToProps = ({ budget, accounts }) => ({ budget, accounts })
 
@@ -140,217 +118,243 @@ export const TransactionDialogComponent = ({
   onCancel,
   onDelete,
   open,
+  account,
   transaction,
   budget,
   accounts
-}) => {
-  return (
-    <ModalDialog
-      open={open}
-      title={transaction ? 'Edit transaction' : 'New transaction'}
-      onSubmit={handleSubmit}
-      onCancel={onCancel}
-      onDelete={transaction ? onDelete : undefined}
-      className={classes.root}
-    >
-      <Grid container>
-        <Grid item xs={12}>
-          <RadioGroup
-            row={true}
-            aria-label="transactionType"
-            name="transactionType"
-            value={values.transactionType}
-            onChange={handleChange}
-          >
-            {TRANSACTION_TYPES.map((type) => (
-              <FormControlLabel
-                value={type}
-                key={type}
-                control={<Radio />}
-                label={type.charAt(0).toUpperCase() + type.slice(1)}
-              />
-            ))}
-          </RadioGroup>
-          <TextField
-            autoFocus
-            label="Description"
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start"><DescriptionIcon className={classes.inputIcon} /></InputAdornment>
-              ),
-              inputProps: {
-                'aria-label': 'Description',
-                maxLength: 150
-              }
-            }}
-            className={classes.input}
-            value={values.description}
-            name="description"
-            onChange={handleChange}
-            error={errors.description && touched.description}
-            helperText={errors.description}
-          />
-          <Grid container spacing={4}>
-            <Grid item xs={6}>
-              <TextField
-                type="number"
-                label="Amount"
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start"><AttachMoneyIcon className={classes.inputIcon} /></InputAdornment>
-                  ),
-                  inputProps: {
-                    'aria-label': 'Amount',
-                    step: 0.01,
-                    min: 0,
-                    max: 999999999.99
-                  }
-                }}
-                className={classes.input}
-                value={values.amount}
-                name="amount"
-                onChange={handleChange}
-                error={errors.amount && touched.amount}
-                helperText={errors.amount}
-              />
+}) => (
+  <ModalDialog
+    open={open}
+    title={transaction ? 'Edit transaction' : 'New transaction'}
+    onSubmit={handleSubmit}
+    onCancel={onCancel}
+    onDelete={transaction ? onDelete : undefined}
+    className={classes.root}
+  >
+    <Grid container>
+      <Grid item xs={12}>
+        <RadioGroup
+          row={true}
+          aria-label="transactionType"
+          name="transactionType"
+          value={values.transactionType}
+          onChange={handleChange}
+        >
+          {TRANSACTION_TYPES.map((type) => (
+            <FormControlLabel
+              value={type}
+              key={type}
+              control={<Radio />}
+              label={type.charAt(0).toUpperCase() + type.slice(1)}
+            />
+          ))}
+        </RadioGroup>
+        <TextField
+          autoFocus
+          label="Description"
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start"><DescriptionIcon className={classes.inputIcon} /></InputAdornment>
+            ),
+            inputProps: {
+              'aria-label': 'Description',
+              maxLength: 150
+            }
+          }}
+          className={classes.input}
+          value={values.description}
+          name="description"
+          onChange={handleChange}
+          error={errors.description && touched.description}
+          helperText={errors.description}
+        />
+        <Grid container spacing={4}>
+          <Grid item xs={6}>
+            <TextField
+              type="number"
+              label="Amount"
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start"><AttachMoneyIcon className={classes.inputIcon} /></InputAdornment>
+                ),
+                inputProps: {
+                  'aria-label': 'Amount',
+                  step: 0.01,
+                  min: 0,
+                  max: 999999999.99
+                }
+              }}
+              className={classes.input}
+              value={values.amount}
+              name="amount"
+              onChange={handleChange}
+              error={errors.amount && touched.amount}
+              helperText={errors.amount}
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <TextField
+              type="date"
+              label="Date"
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <CalendarTodayIcon className={classes.inputIcon} />
+                  </InputAdornment>
+                )
+              }}
+              InputLabelProps={{
+                shrink: true,
+                'aria-label': 'Date'
+              }}
+              name="createdAt"
+              className={classes.input}
+              value={values.createdAt}
+              onChange={handleChange}
+              error={errors.createdAt && touched.createdAt}
+              helperText={errors.createdAt}
+            />
+          </Grid>
+        </Grid>
+        {values.transactionType !== 'transfer' && (
+          <>
+            <Autocomplete
+              size="small"
+              name="category"
+              onChange={(_, item) => {
+                setFieldValue('categoryId', item ? item.id : null)
+                setFieldValue('category', item)
+              }}
+              className={classes.input}
+              options={Object.values(budget.categoriesById).filter((category) => 'parentId' in category)}
+              groupBy={(option) => budget.categoriesById[option.parentId].name}
+              getOptionLabel={(option) => option.name}
+              noOptionsText="No category found"
+              value={values.category}
+              renderOption={(option) => (
+                <div className={classes.categoryOption}>
+                  <div className={classes.categoryDot} style={{ backgroundColor: option.colour }} />
+                  <div className={classes.categoryName}>{option.name}</div>
+                </div>
+              )}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  label="Category"
+                  fullWidth
+                  InputProps={{
+                    ...params.InputProps,
+                    startAdornment: values.category && (
+                      <InputAdornment position="start">
+                        <div className={classes.categoryDot} style={{ backgroundColor: values.category.colour }} />
+                      </InputAdornment>
+                    )
+                  }}
+                />
+              )}
+            />
+            <Grid container spacing={2}>
+              <Grid item xs={8}>
+                <Tooltip title="Apply category to all transactions with the same description">
+                  <FormControlLabel
+                    control={(
+                      <Checkbox
+                        checked={values.createAndApplyRule}
+                        onChange={handleChange}
+                        name="createAndApplyRule"
+                        value={values.createAndApplyRule}
+                      />
+                    )}
+                    label="Apply to all matches"
+                  />
+                </Tooltip>
+              </Grid>
+              <Grid item xs={4}>
+                <Button
+                  size="small"
+                  color="secondary"
+                  component={LinkTo('/budget-categories')}
+                  className={classes.manageCategoriesLink}
+                >
+                  Manage categories
+                </Button>
+              </Grid>
             </Grid>
-            <Grid item xs={6}>
-              <TextField
-                type="date"
-                label="Date"
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <CalendarTodayIcon className={classes.inputIcon} />
-                    </InputAdornment>
-                  )
+          </>
+        )}
+        {values.transactionType === 'transfer' && (
+          <Grid container spacing={2}>
+            <Grid item xs={4}>
+              <FormControl>
+                <Typography variant="caption" className={classes.transferLabel}>Transfer</Typography>
+                <RadioGroup
+                  row={true}
+                  aria-label="Transfer direction"
+                  name="transferDirection"
+                  value={values.transferDirection}
+                  onChange={handleChange}
+                >
+                  <FormControlLabel value="from" control={<Radio />} label="From" />
+                  <FormControlLabel value="to" control={<Radio />} label="To" />
+                </RadioGroup>
+              </FormControl>
+            </Grid>
+            <Grid item xs={8}>
+              <Autocomplete
+                autoHighlight
+                autoSelect
+                size="small"
+                name="transferAccount"
+                onChange={(_, item) => {
+                  setFieldValue('transferAccountId', item ? item.id : null)
+                  setFieldValue('transferAccount', item)
                 }}
-                InputLabelProps={{
-                  shrink: true,
-                  'aria-label': 'Date'
-                }}
-                name="createdAt"
                 className={classes.input}
-                value={values.createdAt}
-                onChange={handleChange}
-                error={errors.createdAt && touched.createdAt}
-                helperText={errors.createdAt}
+                classes={{ option: classes.accountName }}
+                options={Object.values(accounts.byId).filter((a) => account.id !== a.id)}
+                groupBy={(option) => option.institution}
+                getOptionLabel={(option) => option.name}
+                noOptionsText="No accounts found"
+                value={values.transferAccount}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    label="Account"
+                    fullWidth
+                  />
+                )}
               />
             </Grid>
           </Grid>
-          {values.transactionType !== 'transfer' && (
-            <>
-              <AutoComplete
-                className={classes.input}
-                label={(
-                  <div>
-                    Category
-                    <Button
-                      size="small"
-                      color="secondary"
-                      component={LinkTo('/budget-categories')}
-                      className={classes.manageCategoriesLink}
-                    >
-                      Manage categories
-                    </Button>
-                  </div>
-                )}
-                placeholder="Category"
-                name="categoryId"
-                value={values.categoryId}
-                options={budget.categoryTree}
-                onChange={setFieldValue}
-                error={errors.categoryId && touched.categoryId}
-                helperText={errors.categoryId}
-                styles={colourStyles}
-                isClearable={true}
-              />
-              <Tooltip title="Apply category to all transactions with the same description">
-                <FormControlLabel
-                  control={(
-                    <Checkbox
-                      checked={values.createAndApplyRule}
-                      onChange={handleChange}
-                      name="createAndApplyRule"
-                      value={values.createAndApplyRule}
-                    />
-                  )}
-                  label="Apply to all matches"
-                />
-              </Tooltip>
-            </>
-          )}
-          {values.transactionType === 'transfer' && (
-            <Grid container spacing={2}>
-              <Grid item xs={4}>
-                <FormControl>
-                  <Typography variant="caption" className={classes.transferLabel}>Transfer</Typography>
-                  <RadioGroup
-                    row={true}
-                    aria-label="Transfer direction"
-                    name="transferDirection"
-                    value={values.transferDirection}
-                    onChange={handleChange}
-                  >
-                    <FormControlLabel value="from" control={<Radio />} label="From" />
-                    <FormControlLabel value="to" control={<Radio />} label="To" />
-                  </RadioGroup>
-                </FormControl>
-              </Grid>
-              <Grid item xs={8}>
-                <Autocomplete
-                  autoHighlight
-                  autoSelect
-                  size="small"
-                  name="transferAccount"
-                  onChange={(_, account) => setFieldValue('transferAccountId', account ? account.id : null)}
-                  className={classes.input}
-                  classes={{ option: classes.option }}
-                  options={Object.values(accounts.byId).filter((account) => account.id !== transaction.accountId)}
-                  groupBy={(option) => option.institution}
-                  getOptionLabel={(option) => option.name}
-                  noOptionsText="No accounts found"
-                  value={values.transferAccount}
-                  renderInput={(params) => (
-                    <TextField
-                      {...params}
-                      label="Account"
-                      fullWidth
-                    />
-                  )}
-                />
-              </Grid>
-            </Grid>
-          )}
-          <TextField
-            type="notes"
-            label="Notes"
-            InputLabelProps={{
-              shrink: true,
-              'aria-label': 'Notes'
-            }}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start"><NoteIcon className={classes.inputIcon} /></InputAdornment>
-              ),
-              inputProps: {
-                length: 2
-              }
-            }}
-            name="notes"
-            multiline
-            rowsMax="4"
-            className={classes.input}
-            value={values.notes}
-            onChange={handleChange}
-            error={errors.notes && touched.notes}
-            helperText={errors.notes}
-          />
-        </Grid>
+        )}
+        <TextField
+          type="notes"
+          label="Notes"
+          InputLabelProps={{
+            shrink: true,
+            'aria-label': 'Notes'
+          }}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start"><NoteIcon className={classes.inputIcon} /></InputAdornment>
+            ),
+            inputProps: {
+              length: 2
+            }
+          }}
+          name="notes"
+          multiline
+          rowsMax="4"
+          className={classes.input}
+          value={values.notes}
+          onChange={handleChange}
+          error={errors.notes && touched.notes}
+          helperText={errors.notes}
+        />
       </Grid>
-    </ModalDialog>
-  )
-}
+    </Grid>
+  </ModalDialog>
+)
 
 TransactionDialogComponent.propTypes = {
   classes: PropTypes.object.isRequired,
@@ -365,6 +369,7 @@ TransactionDialogComponent.propTypes = {
   onDelete: PropTypes.func.isRequired,
   budget: PropTypes.object.isRequired,
   transaction: PropTypes.object,
+  account: PropTypes.object.isRequired,
   accounts: PropTypes.object.isRequired
 }
 
@@ -383,6 +388,7 @@ export default compose(
           transactionType: 'expense',
           description: '',
           categoryId: null,
+          category: null,
           createAndApplyRule: true,
           amount: '',
           transferDirection: 'to',
@@ -398,12 +404,7 @@ export default compose(
         transactionType: getTransactioType(transaction),
         amount: Math.abs(transaction.amount.accountCurrency),
         createAndApplyRule: true,
-        categoryId: transaction.categoryId === undefined ? null : {
-          id: budget.categoriesById[transaction.categoryId].id,
-          label: budget.categoriesById[transaction.categoryId].name,
-          value: budget.categoriesById[transaction.categoryId].name,
-          colour: budget.categoriesById[transaction.categoryId].colour
-        },
+        category: transaction.categoryId ? budget.categoriesById[transaction.categoryId] : null,
         notes: transaction.notes || '',
         transferDirection: transaction.transferDirection || 'to',
         transferAccount: transaction.transferAccountId ? accounts.byId[transaction.transferAccountId] : null,
@@ -430,6 +431,7 @@ export default compose(
         .required('Please select the date of this transaction')
     }),
     handleSubmit: (values, { props, setSubmitting, resetForm }) => {
+      console.log(values)
       setSubmitting(true)
       const { createAndApplyRule, ...rest } = values
       props.handleSave(
@@ -440,7 +442,7 @@ export default compose(
             accountCurrency: getAmount(values),
             localCurrency: null
           },
-          categoryId: (values.categoryId === null ? undefined : values.categoryId.id),
+          categoryId: (!values.categoryId || values.transactionType === 'transfer' ? undefined : values.categoryId),
           transferAccountId: values.transactionType === 'transfer' ? values.transferAccountId : null,
           notes: values.notes ? values.notes.trim() : null,
           createdAt: parse(values.createdAt, 'yyyy-M-d', new Date()).getTime()
