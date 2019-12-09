@@ -1,18 +1,14 @@
 import React from 'react'
-import { mount } from 'enzyme'
-import { Provider } from 'react-redux'
-import { BrowserRouter } from 'react-router-dom'
+import { render } from '@testing-library/react'
+import '@testing-library/jest-dom/extend-expect'
 import configureMockStore from 'redux-mock-store'
+import { MemoryRouter } from 'react-router-dom'
+import { Provider } from 'react-redux'
 import TransactionDialog from '../TransactionDialog'
 import ThemeProvider from '../../../ThemeProvider'
 import { initialState as settingsInitialState } from '../../../../store/settings/reducer'
 import { groupByInstitution } from '../../../../store/accounts/reducer'
 import { initialState as budgetInitialState } from '../../../../store/budget/reducer'
-
-beforeEach(() => {
-  jest.resetModules()
-  jest.clearAllMocks()
-})
 
 const account = {
   id: 1,
@@ -24,33 +20,57 @@ const account = {
   currency: settingsInitialState.currency
 }
 
-describe('ConfirmDialog', () => {
-  const mockHandleCancel = jest.fn()
-  const mockHandleDelete = jest.fn()
+const mockHandleCancel = jest.fn()
+const mockHandleDelete = jest.fn()
 
-  it('matches snapshot', () => {
-    const mockStore = configureMockStore()
-    const byId = { [account.id]: account }
-    const store = mockStore({
-      accounts: { byId, byInstitution: groupByInstitution({ byId, byInstitution: {} }) },
-      settings: settingsInitialState,
-      budget: budgetInitialState
+const renderContent = (props) => {
+  const mockStore = configureMockStore()
+  const byId = { [account.id]: account }
+  const store = mockStore({
+    accounts: { byId, byInstitution: groupByInstitution({ byId, byInstitution: {} }) },
+    settings: settingsInitialState,
+    budget: budgetInitialState
+  })
+
+  const newProps = {
+    open: true,
+    onCancel: mockHandleCancel,
+    onDelete: mockHandleDelete,
+    account,
+    transaction: null,
+    ...props
+  }
+  return {
+    ...render(
+      <Provider store={store}>
+        <ThemeProvider>
+          <MemoryRouter initialEntries={[`/accounts/${account.id}/import/CSV`]} initialIndex={0}>
+            <TransactionDialog {...newProps} />
+          </MemoryRouter>
+        </ThemeProvider>
+      </Provider>
+    ),
+    props
+  }
+}
+
+describe('TransactionDialog', () => {
+  it('renders correctly in new mode', async () => {
+    const { getByText } = await renderContent()
+
+    expect(getByText('New transaction')).toBeInTheDocument()
+  })
+
+  it('renders correctly in edit mode', async () => {
+    const { getByText } = await renderContent({
+      transaction: {
+        id: 1,
+        accountId: account.id,
+        createdAt: new Date('2019-01-01').getTime(),
+        amount: { accountCurrency: 1 }
+      }
     })
-    const wrapper = mount((
-      <BrowserRouter>
-        <Provider store={store}>
-          <ThemeProvider>
-            <TransactionDialog
-              open={true}
-              onCancel={mockHandleCancel}
-              onDelete={mockHandleDelete}
-              account={{ id: 1 }}
-              transaction={{ id: 1, createdAt: new Date('2019-01-01'), amount: { accountCurrency: 1 } }}
-            />
-          </ThemeProvider>
-        </Provider>
-      </BrowserRouter>
-    ))
-    expect(wrapper.debug()).toMatchSnapshot()
+
+    expect(getByText('Edit transaction')).toBeInTheDocument()
   })
 })
