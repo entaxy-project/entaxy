@@ -59,10 +59,7 @@ export const ImportTransactionsComponent = ({ history, match }) => {
 
   const [activeStep, setActiveStep] = useState(0)
   const [isGeneratingTransactions, setIsGeneratingTransactions] = useState(false)
-  const [parser, setParser] = useState(new CsvParser({
-    budgetRules,
-    invertAmount: account.accountType === 'credit'
-  }))
+  const [parser, setParser] = useState(new CsvParser({ budgetRules }))
 
   const handleNext = () => {
     setActiveStep((currentStep) => currentStep + 1)

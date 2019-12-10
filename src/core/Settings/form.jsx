@@ -7,11 +7,13 @@ import * as Yup from 'yup'
 import PropTypes from 'prop-types'
 import Divider from '@material-ui/core/Divider'
 import Button from '@material-ui/core/Button'
+import Typography from '@material-ui/core/Typography'
 import red from '@material-ui/core/colors/red'
 import AutoComplete from '../../common/AutoComplete'
 import SubmitButtonWithProgress from '../../common/SubmitButtonWithProgress'
 import { fiatCurrencies, filteredFiatCurrencies } from '../../data/currencies'
 import locales, { filteredLocales } from '../../data/locales'
+import { currencyFormatter, dateFormatter } from '../../util/stringFormatter'
 
 const styles = (theme) => ({
   form: {
@@ -79,6 +81,23 @@ const SettingsForm = ({
         helperText={errors.currency}
         data-testid="currencyDropdown"
       />
+
+      <Typography className={classes.input} variant="caption">
+        These settings determine how dates and currency are displayed:
+        <div>
+          <strong>Today:</strong> {dateFormatter(values.locale.value)(Date.now())}
+        </div>
+        <div>
+          <strong>Your default currency: </strong>
+          &nbsp;{currencyFormatter(values.locale.value, values.currency.value)(10.05)}
+        </div>
+        <div>
+          <strong>Another currency: </strong>
+          {values.currency.value === 'USD' && currencyFormatter(values.locale.value, 'GBP')(10.05)}
+          {values.currency.value !== 'USD' && currencyFormatter(values.locale.value, 'USD')(10.05)}
+        </div>
+      </Typography>
+
       <Button
         size="small"
         onClick={handleDeleteAllData}
