@@ -439,8 +439,8 @@ export default compose(
           }),
         openingBalance: Yup.number()
           .required('Please enter an opening balance')
-          .min(-9999999.99)
-          .max(9999999.99),
+          .min(-9999999.99, 'The Opening balance can\'t exceed -9,999,999.99')
+          .max(9999999.99, 'The Opening balance can\'t exceed 9,999,999.99'),
         openingBalanceDate: Yup.date()
           .required('Please select the date of the opening balance')
           .max(new Date(), 'The opening balance cannot be in the future'),
