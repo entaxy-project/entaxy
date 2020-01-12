@@ -25,7 +25,7 @@ exports[`ConfirmDialog matches snapshot 1`] = `
                       <div className=\\"MuiDialog-container MuiDialog-scrollPaper\\" onClick={[Function: handleBackdropClick]} onMouseDown={[Function: handleMouseDown]} style={{...}} role=\\"none presentation\\" tabIndex=\\"-1\\">
                         <WithStyles(ForwardRef(Paper)) elevation={24} role=\\"dialog\\" aria-describedby={[undefined]} aria-labelledby=\\"confirmation-dialog-title\\" className=\\"MuiDialog-paper MuiDialog-paperScrollPaper MuiDialog-paperWidthXs\\">
                           <ForwardRef(Paper) classes={{...}} elevation={24} role=\\"dialog\\" aria-describedby={[undefined]} aria-labelledby=\\"confirmation-dialog-title\\" className=\\"MuiDialog-paper MuiDialog-paperScrollPaper MuiDialog-paperWidthXs\\">
-                            <div className=\\"MuiPaper-root MuiPaper-elevation24 MuiDialog-paper MuiDialog-paperScrollPaper MuiDialog-paperWidthXs MuiPaper-rounded\\" role=\\"dialog\\" aria-describedby={[undefined]} aria-labelledby=\\"confirmation-dialog-title\\">
+                            <div className=\\"MuiPaper-root MuiDialog-paper MuiDialog-paperScrollPaper MuiDialog-paperWidthXs MuiPaper-elevation24 MuiPaper-rounded\\" role=\\"dialog\\" aria-describedby={[undefined]} aria-labelledby=\\"confirmation-dialog-title\\">
                               <WithStyles(ForwardRef(DialogTitle)) id=\\"confirmation-dialog-title\\">
                                 <ForwardRef(DialogTitle) classes={{...}} id=\\"confirmation-dialog-title\\">
                                   <div className=\\"MuiDialogTitle-root\\" id=\\"confirmation-dialog-title\\">

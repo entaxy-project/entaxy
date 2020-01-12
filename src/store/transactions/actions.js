@@ -5,15 +5,19 @@ import types from './types'
 import { updateAccount } from '../accounts/actions'
 import { showSnackbar } from '../user/actions'
 import { updateCurrencies, convertToCurrency } from '../exchangeRates/actions'
-import { createExactRule, deleteExactRule, countRuleUsage } from '../budget/actions'
+import {
+  createRule,
+  updateRule,
+  deleteRule,
+  applyRule
+} from '../budget/actions'
 
-// If the rule is not found then the category is cleared from matching transactions
-export const applyExactRule = ({ match, rules }) => (
-  { type: types.APPLY_EXACT_RULE, payload: { match, rules } }
-)
-
-export const createTransaction = (account, transaction, { createAndApplyRule = false } = {}) => (
-  async (dispatch, getState) => {
+export const createTransaction = (account, transaction, {
+  rule = null,
+  applyToExisting = false,
+  applyToFuture = false
+} = {}) => (
+  async (dispatch) => {
     const id = uuid()
     let localCurrency = dispatch(convertToCurrency(
       transaction.amount.accountCurrency,
@@ -47,10 +51,13 @@ export const createTransaction = (account, transaction, { createAndApplyRule = f
       }
     })
 
-    if (transaction.categoryId !== undefined && createAndApplyRule) {
-      dispatch(createExactRule(transaction.categoryId, transaction.description))
-      dispatch(applyExactRule({ match: transaction.description, rules: getState().budget.rules }))
-      dispatch(countRuleUsage())
+    if (rule && rule.attributes && Object.keys(rule.attributes).length > 0) {
+      let newRule = rule
+      if (applyToFuture) {
+        const ruleId = dispatch(createRule(rule))
+        newRule = { ...rule, id: ruleId }
+      }
+      if (applyToExisting) dispatch(applyRule(newRule))
     }
 
     await dispatch(updateAccount(account, { onlyUpdateBalance: true }))
@@ -59,15 +66,20 @@ export const createTransaction = (account, transaction, { createAndApplyRule = f
   }
 )
 
-export const updateTransaction = (account, transaction, { createAndApplyRule = false } = {}) => (
+export const updateTransaction = (account, transaction, {
+  rule = null,
+  applyToExisting = false,
+  applyToFuture = false
+} = {}) => (
   async (dispatch, getState) => {
-    const { transactions } = getState()
+    const { transactions, budget } = getState()
     const oldTransaction = transactions.list.find((t) => t.id === transaction.id)
     let { localCurrency } = transaction.amount
     const amountChanged = transaction.amount.accountCurrency !== oldTransaction.amount.accountCurrency
     const createdAtChanged = transaction.createdAt !== oldTransaction.createdAt
-    const categoryChanged = transaction.categoryId !== oldTransaction.categoryId
-    const descriptionChanged = transaction.description !== oldTransaction.description
+    // const descriptionChanged = transaction.description !== oldTransaction.description
+    // const categoryChanged = transaction.categoryId !== oldTransaction.categoryId
+    // const transferAccountIdChanged = transaction.transferAccountId !== oldTransaction.transferAccountId
     if (amountChanged || createdAtChanged) {
       localCurrency = dispatch(convertToCurrency(
         transaction.amount.accountCurrency,
@@ -86,6 +98,7 @@ export const updateTransaction = (account, transaction, { createAndApplyRule = f
         ))
       }
     }
+
     dispatch({
       type: types.UPDATE_TRANSACTION,
       payload: {
@@ -97,17 +110,37 @@ export const updateTransaction = (account, transaction, { createAndApplyRule = f
         createdAt: createdAtChanged ? transaction.createdAt + 1000 : transaction.createdAt // plus 1 second
       }
     })
-    if (categoryChanged || descriptionChanged) {
-      if (createAndApplyRule) {
-        if (transaction.categoryId === undefined) {
-          dispatch(deleteExactRule(transaction.description))
+
+    if (rule && rule.attributes) {
+      if (Object.keys(rule.attributes).length > 0) {
+        if (oldTransaction.ruleId) {
+          // Update existing rule
+          if (applyToFuture) dispatch(updateRule({ ...rule, id: oldTransaction.ruleId }))
+          if (applyToExisting) {
+            dispatch(applyRule({ ...rule, id: applyToFuture ? oldTransaction.ruleId : null }))
+          }
         } else {
-          dispatch(createExactRule(transaction.categoryId, transaction.description))
+          // Create new rule
+          let newRule = rule
+          if (applyToFuture) {
+            const ruleId = dispatch(createRule(rule))
+            newRule = { ...rule, id: ruleId }
+          }
+          if (applyToExisting) dispatch(applyRule(newRule))
         }
-        dispatch(applyExactRule({ match: transaction.description, rules: getState().budget.rules }))
+      } else if (Object.keys(rule.attributes).length === 0) {
+        if (oldTransaction.ruleId) {
+          // Delete existing rule
+          const deletedRule = budget.rules[oldTransaction.ruleId]
+          if (applyToFuture) dispatch(deleteRule(oldTransaction.ruleId))
+          if (applyToExisting) dispatch(applyRule(deletedRule, { clearAttributes: applyToFuture }))
+        // Apply empty rule to clear the attributes from any matching transaction
+        } else if (applyToExisting) {
+          dispatch(applyRule(rule))
+        }
       }
-      dispatch(countRuleUsage())
     }
+
     if (amountChanged || createdAtChanged) {
       await dispatch(updateAccount(account, { onlyUpdateBalance: true }))
     }
@@ -127,7 +160,6 @@ export const updateTransactionFieldIfMatched = ({ fieldName, values, newValue })
 export const deleteTransactions = (account, transactionIds, { skipAfterChange = false } = {}) => (
   async (dispatch) => {
     dispatch({ type: types.DELETE_TRANSACTIONS, payload: transactionIds })
-    dispatch(countRuleUsage())
     if (!skipAfterChange) {
       await dispatch(updateAccount(account, { onlyUpdateBalance: true }))
       dispatch(showSnackbar({
@@ -177,7 +209,6 @@ export const addTransactions = (account, transactions, { updateAccountAndExchang
         }
       }))
     })
-    dispatch(countRuleUsage())
     if (updateAccountAndExchangeRates) {
       await dispatch(updateAccount(account, { onlyUpdateBalance: true }))
     }

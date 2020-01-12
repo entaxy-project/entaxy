@@ -45,26 +45,6 @@ export default (state = initialState, { type, payload }) => {
         ...state,
         list: [...state.list, ...payload]
       }
-    case types.APPLY_EXACT_RULE:
-      // eslint-disable-next-line no-case-declarations
-      const { match, rules } = payload
-      return {
-        ...state,
-        list: state.list.reduce((result, transaction) => {
-          if (transaction.description === match) {
-            return [
-              ...result,
-              {
-                ...transaction,
-                categoryId: transaction.description in rules
-                  ? rules[transaction.description].categoryId
-                  : undefined
-              }
-            ]
-          }
-          return [...result, transaction]
-        }, [])
-      }
     case types.UPATE_TRANSACTION_FIELD_IF_MATCHED:
       return {
         ...state,

@@ -48,7 +48,9 @@ const ModalDialog = ({
   onCancel,
   onDelete,
   open,
-  className
+  className,
+  maxWidth,
+  fullWidth
 }) => {
   const classes = useStyles()
 
@@ -57,7 +59,8 @@ const ModalDialog = ({
       aria-labelledby="form-dialog-title"
       open={open}
       scroll="body"
-      fullWidth
+      maxWidth={maxWidth}
+      fullWidth={fullWidth}
       onClose={onCancel}
       className={className}
     >
@@ -98,12 +101,16 @@ ModalDialog.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired,
   onDelete: PropTypes.func,
-  className: PropTypes.string
+  className: PropTypes.string,
+  maxWidth: PropTypes.string,
+  fullWidth: PropTypes.bool
 }
 
 ModalDialog.defaultProps = {
   className: null,
-  onDelete: null
+  onDelete: null,
+  maxWidth: null,
+  fullWidth: false
 }
 
 export default ModalDialog

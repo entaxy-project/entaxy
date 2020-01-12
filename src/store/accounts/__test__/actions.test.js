@@ -295,9 +295,6 @@ describe('accounts actions', () => {
         }, {
           type: 'ADD_TRANSACTIONS',
           payload: transactions
-        }, {
-          type: 'COUNT_RULE_USAGE',
-          payload: []
         }
       ])
     })
@@ -631,9 +628,6 @@ describe('accounts actions', () => {
           type: 'DELETE_TRANSACTIONS',
           payload: [1]
         }, {
-          type: 'COUNT_RULE_USAGE',
-          payload: [transaction]
-        }, {
           type: types.DELETE_ACCOUNT,
           payload: 'a1'
         }, {
@@ -658,9 +652,6 @@ describe('accounts actions', () => {
         {
           type: 'DELETE_TRANSACTIONS',
           payload: [transaction.id]
-        }, {
-          type: 'COUNT_RULE_USAGE',
-          payload: [transaction]
         }, {
           type: types.DELETE_ACCOUNT,
           payload: 'a1'
@@ -711,9 +702,6 @@ describe('accounts actions', () => {
             ...importedAccounts[0].transactions[0],
             id: 'xyz'
           }]
-        }, {
-          type: 'COUNT_RULE_USAGE',
-          payload: []
         }, {
           type: types.CREATE_ACCOUNT_GROUP,
           payload: {
@@ -836,17 +824,11 @@ describe('accounts actions', () => {
           type: 'DELETE_TRANSACTIONS',
           payload: ['t1', 't2']
         }, {
-          type: 'COUNT_RULE_USAGE',
-          payload: transactions
-        }, {
           type: types.DELETE_ACCOUNT,
           payload: 'a1'
         }, {
           type: 'DELETE_TRANSACTIONS',
           payload: ['t3']
-        }, {
-          type: 'COUNT_RULE_USAGE',
-          payload: transactions
         }, {
           type: types.DELETE_ACCOUNT,
           payload: 'a2'

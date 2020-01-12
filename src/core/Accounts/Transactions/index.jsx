@@ -10,7 +10,7 @@ import 'react-virtualized/styles.css'
 import TransactionDialog from './TransactionDialog'
 import TransactionsTable from './TransactionsTable'
 import TransactionsToolbar from './TransactionsToolbar'
-import { deleteTransactions } from '../../../store/transactions/actions'
+import { deleteTransactions, createTransaction, updateTransaction } from '../../../store/transactions/actions'
 import confirm from '../../../util/confirm'
 
 const useStyles = makeStyles(() => ({
@@ -68,6 +68,15 @@ const Transactions = ({ match }) => {
 
   const handleCancel = () => {
     setOpenTransactionDialog(false)
+    setSelectedTransaction(null)
+  }
+
+  const handleSaveTransaction = (transaction, options) => {
+    handleCancel()
+    if ('id' in transaction) {
+      return dispatch(updateTransaction(account, transaction, options))
+    }
+    return dispatch(createTransaction(account, transaction, options))
   }
 
   const handleDeleteTransaction = () => (
@@ -86,11 +95,13 @@ const Transactions = ({ match }) => {
       <TransactionDialog
         open={openTransactionDialog}
         onCancel={handleCancel}
+        onSave={handleSaveTransaction}
         onDelete={handleDeleteTransaction}
         account={account}
         transaction={selectedTransaction}
       />
       <TransactionsTable
+        allowClickOnRow
         className={classes.tableWrapper}
         account={account}
         transactions={accountTransactions()}

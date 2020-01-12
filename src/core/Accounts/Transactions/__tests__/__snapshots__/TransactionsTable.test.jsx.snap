@@ -921,15 +921,8 @@ exports[`TransactionsTable matches snapshot with some transactions 1`] = `
               }
               title={null}
             >
-              <a
-                className="MuiTypography-root MuiLink-root MuiLink-underlineNone MuiTypography-colorPrimary"
-                onBlur={[Function]}
-                onClick={[Function]}
-                onFocus={[Function]}
-              >
-                 
-                Transaction 3
-              </a>
+               
+              Transaction 3
             </div>
             <div
               aria-colindex={4}
@@ -1090,15 +1083,8 @@ exports[`TransactionsTable matches snapshot with some transactions 1`] = `
               }
               title={null}
             >
-              <a
-                className="MuiTypography-root MuiLink-root MuiLink-underlineNone MuiTypography-colorPrimary"
-                onBlur={[Function]}
-                onClick={[Function]}
-                onFocus={[Function]}
-              >
-                 
-                Transaction 2
-              </a>
+               
+              Transaction 2
             </div>
             <div
               aria-colindex={4}
@@ -1259,15 +1245,8 @@ exports[`TransactionsTable matches snapshot with some transactions 1`] = `
               }
               title={null}
             >
-              <a
-                className="MuiTypography-root MuiLink-root MuiLink-underlineNone MuiTypography-colorPrimary"
-                onBlur={[Function]}
-                onClick={[Function]}
-                onFocus={[Function]}
-              >
-                 
-                Transaction 1
-              </a>
+               
+              Transaction 1
             </div>
             <div
               aria-colindex={4}
