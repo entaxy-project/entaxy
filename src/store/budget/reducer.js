@@ -156,7 +156,6 @@ export default (state = initialState, { type, payload }) => {
       return {
         ...state,
         rules: {
-          ...state.rules,
           [payload.id]: payload
         }
       }

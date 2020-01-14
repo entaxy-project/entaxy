@@ -18,10 +18,7 @@ export default (state = initialState, { type, payload }) => {
       return {
         ...state,
         list: state.list.map((transaction) => {
-          if (transaction.id === payload.id) {
-            return { ...transaction, ...payload }
-          }
-          return transaction
+          return transaction.id === payload.id ? payload : transaction
         })
       }
     case types.UPDATE_TRANSACTIONS:
@@ -29,10 +26,7 @@ export default (state = initialState, { type, payload }) => {
       return {
         ...state,
         list: state.list.map((transaction) => {
-          if (transaction.id.toString() in payload) {
-            return { ...transaction, ...payload[transaction.id] }
-          }
-          return transaction
+          return transaction.id in payload ? payload[transaction.id] : transaction
         })
       }
     case types.DELETE_TRANSACTIONS:

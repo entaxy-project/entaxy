@@ -452,6 +452,7 @@ export default compose(
         }
       }
 
+      console.log({ ruleId: transaction.ruleId, rules: budget.rules })
       const ruleAttributes = {}
       if (transaction.ruleId) {
         const rule = budget.rules[transaction.ruleId]

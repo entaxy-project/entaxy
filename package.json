@@ -14,6 +14,7 @@
     "lint": "eslint src --ext '.js,.jsx' --config .eslintrc",
     "lint:fix": "npm run lint --fix",
     "deploy:test": "npm run build && aws s3 sync build/ s3://entaxy-test --delete",
+    "postdeploy:test": "aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_ID --paths '/*'",
     "deploy:staging": "npm run build && aws s3 sync build/ s3://staging.entaxy.io --delete",
     "postdeploy:staging": "aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_ID --paths '/*'",
     "deploy:production": "npm run build && aws s3 sync build/ s3://entaxy-production --delete",

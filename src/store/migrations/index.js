@@ -1,3 +1,5 @@
+import uuid from 'uuid/v4'
+
 const migrations = {
   // Add accountType to accounts
   0: (state) => {
@@ -45,6 +47,39 @@ const migrations = {
       }, {})
     }
   }
+  // 3: (state) => {
+  //   if (!state.budget) return state
+  //   // collect accountIds
+  //   state.transactions.list.forEach((transaction) => {
+  //     if (transaction.categoryId === categoryId) {
+
+  //     }
+  //   })
+
+  //   return {
+  //     ...state,
+  //     budget: {
+  //       ...state.budget,
+  //       rules: Object.keys(state.budget.rules).reduce((res, match) => {
+  //         const ruleId = uuid()
+  //         const { categoryId } = state.budget.rules[match]
+  //         return {
+  //           id: ruleId,
+  //           accountId: account.id,
+  //           attributes: { categoryId },
+  //           filterBy: { description: { type: 'equals', value: match } }
+  //         }
+  //       })
+  //     },
+  //     exchangeRates: Object.keys(state.exchangeRates).reduce((result, currency) => {
+  //       const { dates, ...exchangeRates } = state.exchangeRates[currency]
+  //       return {
+  //         ...result,
+  //         [currency]: exchangeRates
+  //       }
+  //     }, {})
+  //   }
+  // }
 }
 
 export default migrations
