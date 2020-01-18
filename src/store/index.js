@@ -19,7 +19,6 @@ import { updateLoginData } from './user/actions'
 import types from './user/types'
 import avatarImg from '../common/LoginButton/avatar.png'
 
-
 // Set middlewares
 const middlewares = [thunkMiddleware]
 if (process.env.NODE_ENV === 'development') {
@@ -90,7 +89,6 @@ const setPersistor = ({ storageType }) => {
     if (process.env.NODE_ENV === 'test') {
       store.replaceReducer(rootReducer)
     }
-    // window.location.reload()
   } else {
     store.replaceReducer(persistReducer(persistConfig, rootReducer))
     persistor = persistStore(store)
