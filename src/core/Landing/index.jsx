@@ -9,8 +9,12 @@ import grey from '@material-ui/core/colors/grey'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import LandingCard from './LandingCard'
+import Faqs from './Faqs'
 import logoImg from '../../common/Logo/logo.png'
-import womanImg from './woman2.png'
+import image1 from './image1.png'
+import image2 from './image2.png'
+import image3 from './image3.png'
+import image4 from './image4.png'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -68,7 +72,7 @@ const useStyles = makeStyles((theme) => ({
     }
   },
 
-  // --- Level 2
+  // --- Other levels
   level: {
     justifyContent: 'space-evenly',
     '& div': {
@@ -78,12 +82,14 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   greyBackground: {
-    background: grey[100]
+    background: grey[200]
   },
-
   womanImage: {
     margin: 'auto',
     width: '80%'
+  },
+  faqs: {
+    marginTop: theme.spacing(8)
   }
 }))
 
@@ -117,7 +123,7 @@ const Landing = ({ history }) => {
         <Grid item xs={12} md={4} align="center">
           <img
             data-aos="zoom-out-right"
-            src={womanImg} alt="Woman working on computer"
+            src={image1} alt="Woman working on computer"
             className={classes.womanImage}
           />
         </Grid>
@@ -164,12 +170,12 @@ const Landing = ({ history }) => {
           </Typography>
           <Typography variant="body1" paragraph className={classes.tagLineText}>
             One of the major problems with understanding your financial picture
-            is that everything you own is spread across many accounts at many institutions.
+            is everything you own is spread across many accounts at many institutions.
             Entaxy allows you to consolidate everthing in one place, all without giving away your data.
           </Typography>
         </Grid>
         <Grid item xs={12} md={4} align="center">
-          <img data-aos="zoom-out-left" src={womanImg} alt="Woman working on computer" className={classes.womanImage} />
+          <img data-aos="zoom-out-left" src={image2} alt="Woman working on computer" className={classes.womanImage} />
         </Grid>
       </Grid>
 
@@ -178,7 +184,7 @@ const Landing = ({ history }) => {
         <Grid item xs={12} md={4} align="center">
           <img
             data-aos="zoom-out-right"
-            src={womanImg} alt="Woman working on computer"
+            src={image3} alt="Woman working on computer"
             className={classes.womanImage}
           />
         </Grid>
@@ -190,8 +196,8 @@ const Landing = ({ history }) => {
             Budget in a way that works for you
           </Typography>
           <Typography variant="body1" paragraph className={classes.tagLineText}>
-            Easy to create budgets that works for you. Entaxy remembers your categorizations,
-            meaning less budgeting work the more you use the app.
+            Create budgets that work for you. Entaxy remembers your choices,
+            meaning less work the more you use the app.
           </Typography>
         </Grid>
       </Grid>
@@ -214,9 +220,21 @@ const Landing = ({ history }) => {
         <Grid item xs={12} md={4} align="center">
           <img
             data-aos="zoom-out-left"
-            src={womanImg} alt="Woman working on computer"
+            src={image4} alt="Woman working on computer"
             className={classes.womanImage}
           />
+        </Grid>
+      </Grid>
+      {/* --- Faqs --- */}
+      <Grid container justify="center" className={classes.faqs}>
+        <Grid item xs={12} md={8} lg={6} align="center">
+          <Typography variant="caption" className={classes.tagLinePreTitle}>
+            How can we help you
+          </Typography>
+          <Typography variant="h5" paragraph className={classes.tagLineTitle}>
+            Frequently Asked Questions
+          </Typography>
+          <Faqs />
         </Grid>
       </Grid>
     </Grid>

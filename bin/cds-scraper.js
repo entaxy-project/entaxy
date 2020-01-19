@@ -5,6 +5,7 @@
 /* eslint-disable func-names */
 /* eslint-disable prefer-template */
 const fs = require('fs')
+// eslint-disable-next-line import/no-unresolved
 const casper = require('casper').create({
   pageSettings: {
     userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:23.0) Gecko/20130404 Firefox/23.0'

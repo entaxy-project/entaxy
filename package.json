@@ -40,6 +40,7 @@
     "@vx/scale": "^0.0.193-alpha.1",
     "@vx/shape": "^0.0.193-alpha.1",
     "@vx/tooltip": "^0.0.193-alpha.1",
+    "aos": "^2.3.4",
     "big.js": "^5.2.2",
     "blockstack": "^19.3.0",
     "chroma-js": "^2.1.0",

@@ -34,7 +34,9 @@ const Transactions = ({ match }) => {
   const { account, transactions } = useSelector((state) => {
     return {
       account: state.accounts.byId[match.params.accountId],
-      transactions: state.transactions.list
+      transactions: state.transactions.list.filter((transaction) => (
+        transaction.accountId === match.params.accountId
+      ))
     }
   })
   const [openTransactionDialog, setOpenTransactionDialog] = useState(false)
@@ -51,9 +53,7 @@ const Transactions = ({ match }) => {
       createdAt: account.openingBalanceDate,
       type: 'openingBalance'
     }
-    return [openingBalanceTransaction, ...transactions].filter((transaction) => (
-      transaction.accountId === account.id
-    ))
+    return [openingBalanceTransaction, ...transactions]
   }
 
   const handleNew = () => {

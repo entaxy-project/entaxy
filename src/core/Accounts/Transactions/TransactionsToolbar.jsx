@@ -111,7 +111,8 @@ export class TransactionsToolbarComponent extends React.Component {
                     {filterProps.filters.description && (
                       <IconButton
                         size="small"
-                        aria-label="clear search"
+                        disableFocusRipple
+                        aria-label="Clear search"
                         onClick={() => this.onChangeSearch({ target: { name: 'description', value: '' } })}
                       >
                         <CloseIcon className={classes.smallIcon} />

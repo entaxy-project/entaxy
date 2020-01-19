@@ -12,6 +12,7 @@ import LinkTo from '../../common/LinkTo'
 import AccountsTable from './AccountsTable'
 import useKeyboardCommand from '../../util/useKeyboardCommand'
 import generateSeedData from '../../data/generateSeedData'
+import image1 from './image1.png'
 
 const useStyles = makeStyles((theme) => ({
   balancePaper: {
@@ -44,6 +45,10 @@ const useStyles = makeStyles((theme) => ({
   },
   newAccountButton: {
     margin: theme.spacing(3)
+  },
+  accountImage: {
+    margin: 'auto',
+    width: 300
   }
 }))
 
@@ -71,20 +76,33 @@ export const Dashboard = () => {
     <Container>
       {!userHasAccounts && (
         <Paper className={classes.noAccountsPaper}>
-          <Typography variant="h6">
-            You don&apos;t have any accounts yet.
-          </Typography>
-          <Button
-            variant="contained"
-            color="secondary"
-            component={LinkTo('/accounts/new')}
-            className={classes.newAccountButton}
-          >
-            Add an account
-          </Button>
-          <Typography variant="body1">
-            You can keep track of all the accounts you have from any institution.
-          </Typography>
+          <Grid container spacing={3}>
+            <Grid item xs={12}>
+              <Typography variant="h6">
+                You don&apos;t have any accounts yet.
+              </Typography>
+              <Typography variant="body1">
+                You can keep track of all the accounts you have from any institution.
+              </Typography>
+            </Grid>
+            <Grid item xs={12}>
+              <img
+                data-aos="zoom-out-right"
+                src={image1} alt="Create an account"
+                className={classes.accountImage}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <Button
+                variant="contained"
+                color="secondary"
+                component={LinkTo('/accounts/new')}
+                className={classes.newAccountButton}
+              >
+                Add an account
+              </Button>
+            </Grid>
+          </Grid>
         </Paper>
       )}
       {userHasAccounts && (
