@@ -1,7 +1,10 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-plusplus */
 /* eslint-disable prefer-destructuring */
 import { isNil } from 'lodash'
 import Papa from 'papaparse'
 import parse from 'date-fns/parse'
+import { transactionMatches } from '../../budget/actions'
 
 const DONT_IMPORT = 'Don\'t import'
 export const DATE_FORMATS = {
@@ -54,6 +57,7 @@ export default class CsvParser {
     this._currentRow = 0
     this._hasHeaderRow = true
     this._dateFormat = Object.keys(DATE_FORMATS)[0]
+    this._accountId = params.accountId
     this._budgetRules = params.budgetRules || {}
     this._invertAmount = params.invertAmount || false
   }
@@ -211,6 +215,24 @@ export default class CsvParser {
     return this._errors.base.length > 0 || Object.keys(this._errors.transactions).length > 0
   }
 
+  setCategory(transaction) {
+    const rules = Object.values(this._budgetRules)
+    for (let r = 0; r < rules.length; r++) {
+      const rule = rules[r]
+      if (transactionMatches(transaction, rule.accountId, rule.filterBy)) {
+        console.log('matches')
+        transaction.ruleId = rule.id
+        if ('categoryId' in rule.attributes) {
+          transaction.categoryId = rule.attributes.categoryId
+        }
+        if ('transfer' in rule.attributes) {
+          transaction.transferAccountId = rule.attributes.transfer.accountId
+          transaction.transferDirection = rule.attributes.transfer.direction
+        }
+      }
+    }
+  }
+
   mapToTransactions() {
     this._transactions = []
     const columns = this._csvHeader.reduce((res, column, index) => {
@@ -221,6 +243,7 @@ export default class CsvParser {
     this._csvData.forEach((row, index) => {
       if (!this._hasHeaderRow || index > this._firstRowIndex) {
         const transaction = {
+          accountId: this._accountId,
           amount: {
             accountCurrency: this.readAmount(row, columns),
             localCurrency: null
@@ -230,13 +253,7 @@ export default class CsvParser {
           errors: [],
           line: index + 1
         }
-        // Set the category
-        if (
-          transaction.description in this._budgetRules
-          && 'categoryId' in this._budgetRules[transaction.description]
-        ) {
-          transaction.categoryId = this._budgetRules[transaction.description].categoryId
-        }
+        this.setCategory(transaction)
         // Check for errors
         if (transaction.createdAt === null) {
           transaction.errors.push(`Invalid date. Expecting format '${this._dateFormat}'`)

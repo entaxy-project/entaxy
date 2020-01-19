@@ -1,3 +1,4 @@
+import faker from 'faker'
 import transactionReducer, { initialState } from '../reducer'
 import types from '../types'
 
@@ -58,20 +59,15 @@ describe('transaction reducer', () => {
   describe('UPDATE_TRANSACTION', () => {
     it('should handle UPDATE_TRANSACTION', () => {
       const type = types.UPDATE_TRANSACTION
-      const state = {
-        ...initialState,
-        list: [
-          { ...transaction, id: 1, description: 'old name 1' },
-          { ...transaction, id: 2, description: 'old name 2' }
-        ]
-      }
-      const payload = { id: 1, description: 'new name 1' }
+      const transactions = [
+        { ...transaction, id: faker.random.uuid(), description: 'old name 1' },
+        { ...transaction, id: faker.random.uuid(), description: 'old name 2' }
+      ]
+      const state = { ...initialState, list: transactions }
+      const payload = { ...transactions[0], description: 'new name 1' }
       expect(transactionReducer(state, { type, payload })).toEqual({
         ...state,
-        list: [
-          { ...transaction, id: 1, description: 'new name 1' },
-          { ...transaction, id: 2, description: 'old name 2' }
-        ]
+        list: [{ ...transactions[0], description: 'new name 1' }, transactions[1]]
       })
     })
   })
@@ -79,24 +75,22 @@ describe('transaction reducer', () => {
   describe('UPDATE_TRANSACTIONS', () => {
     it('should handle UPDATE_TRANSACTIONS', () => {
       const type = types.UPDATE_TRANSACTIONS
-      const state = {
-        ...initialState,
-        list: [
-          { ...transaction, id: 1, description: 'old name 1' },
-          { ...transaction, id: 2, description: 'old name 2' },
-          { ...transaction, id: 3, description: 'old name 3' }
-        ]
-      }
+      const transactions = [
+        { ...transaction, id: faker.random.uuid(), description: 'old name 1' },
+        { ...transaction, id: faker.random.uuid(), description: 'old name 2' },
+        { ...transaction, id: faker.random.uuid(), description: 'old name 3' }
+      ]
+      const state = { ...initialState, list: transactions }
       const payload = {
-        1: { description: 'new name 1' },
-        2: { description: 'new name 2' }
+        [transactions[0].id]: { ...transactions[0], description: 'new name 1' },
+        [transactions[1].id]: { ...transactions[1], description: 'new name 2' }
       }
       expect(transactionReducer(state, { type, payload })).toEqual({
         ...state,
         list: [
-          { ...transaction, id: 1, description: 'new name 1' },
-          { ...transaction, id: 2, description: 'new name 2' },
-          { ...transaction, id: 3, description: 'old name 3' }
+          { ...transactions[0], description: 'new name 1' },
+          { ...transactions[1], description: 'new name 2' },
+          { ...transactions[2], description: 'old name 3' }
         ]
       })
     })
@@ -170,57 +164,6 @@ describe('transaction reducer', () => {
       expect(transactionReducer(state, { type, payload })).toEqual({
         ...state,
         list: [...state.list, ...payload]
-      })
-    })
-  })
-
-  describe('APPLY_EXACT_RULE', () => {
-    it('should add a categoryId when applying an exact rule', () => {
-      const type = types.APPLY_EXACT_RULE
-      const payload = {
-        match: transaction.description,
-        rules: {
-          a: { categoryId: 'b' },
-          [transaction.description]: { categoryId: 'xyz' },
-          other: { categoryId: 'something else' }
-        }
-      }
-      const state = {
-        list: [
-          transaction,
-          { id: 2, description: 'abc' }
-        ]
-      }
-      expect(transactionReducer(state, { type, payload })).toEqual({
-        ...state,
-        list: [
-          { ...transaction, categoryId: 'xyz' },
-          { id: 2, description: 'abc' }
-        ]
-      })
-    })
-
-    it('should remove categoryId if rule does not exist', () => {
-      const type = types.APPLY_EXACT_RULE
-      const payload = {
-        match: transaction.description,
-        rules: {
-          a: { categoryId: 'b' },
-          other: { categoryId: 'something else' }
-        }
-      }
-      const state = {
-        list: [
-          { ...transaction, categoryId: 'xyz' },
-          { id: 2, description: 'abc' }
-        ]
-      }
-      expect(transactionReducer(state, { type, payload })).toEqual({
-        ...state,
-        list: [
-          transaction,
-          { id: 2, description: 'abc' }
-        ]
       })
     })
   })

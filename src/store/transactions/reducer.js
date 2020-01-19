@@ -18,10 +18,7 @@ export default (state = initialState, { type, payload }) => {
       return {
         ...state,
         list: state.list.map((transaction) => {
-          if (transaction.id === payload.id) {
-            return { ...transaction, ...payload }
-          }
-          return transaction
+          return transaction.id === payload.id ? payload : transaction
         })
       }
     case types.UPDATE_TRANSACTIONS:
@@ -29,10 +26,7 @@ export default (state = initialState, { type, payload }) => {
       return {
         ...state,
         list: state.list.map((transaction) => {
-          if (transaction.id.toString() in payload) {
-            return { ...transaction, ...payload[transaction.id] }
-          }
-          return transaction
+          return transaction.id in payload ? payload[transaction.id] : transaction
         })
       }
     case types.DELETE_TRANSACTIONS:
@@ -44,26 +38,6 @@ export default (state = initialState, { type, payload }) => {
       return {
         ...state,
         list: [...state.list, ...payload]
-      }
-    case types.APPLY_EXACT_RULE:
-      // eslint-disable-next-line no-case-declarations
-      const { match, rules } = payload
-      return {
-        ...state,
-        list: state.list.reduce((result, transaction) => {
-          if (transaction.description === match) {
-            return [
-              ...result,
-              {
-                ...transaction,
-                categoryId: transaction.description in rules
-                  ? rules[transaction.description].categoryId
-                  : undefined
-              }
-            ]
-          }
-          return [...result, transaction]
-        }, [])
       }
     case types.UPATE_TRANSACTION_FIELD_IF_MATCHED:
       return {

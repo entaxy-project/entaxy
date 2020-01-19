@@ -20,7 +20,7 @@ const generateSeedData = () => async (dispatch, getState) => {
     return {
       accountId,
       description: `Transaction ${key}`,
-      amount: { accountCurrency: -(Math.random() * 100) + 1 },
+      amount: { accountCurrency: -(Math.random() * 100).toFixed(2) },
       createdAt: new Date(`2019-${1 + (key % 12)}-${Math.floor(Math.random() * 29) + 1}`).getTime(),
       categoryId: 'parentId' in budget.categoriesById[categoryId] ? categoryId : undefined
     }

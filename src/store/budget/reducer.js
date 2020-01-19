@@ -65,11 +65,39 @@ const generateInitialState = () => {
   return {
     categoriesById,
     categoryTree: generateCategoryTree(categoriesById),
-    rules: {} // rules have the format => match: { category: 'cat 1', type: 'exact_match', count: 0 }
+    rules: {}
   }
 }
+
+// Rules are indexed by id and have the following format:
+// {
+//   'abc': {
+//     id: 'abc',
+//     accountId: 'xyz',
+//     filterBy: {
+//       description: {type: 'equals|starts_with|ends_with|contains', value: '...'},
+//       amount: {type: 'equals', value: '...'},
+//     },
+//     attributes: {
+//       categoryId: 'abc123',
+//       transfer: {
+//         direction: 'from|to'
+//         accountId: 'abc'
+//       }
+//     }
+//   },
+//   ...
+// }
+
 export const initialState = generateInitialState()
 let categoriesById
+
+export const RULE_TYPES = {
+  equals: 'match',
+  start_with: 'start with',
+  end_with: 'end with',
+  contain: 'contain'
+}
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
@@ -124,69 +152,25 @@ export default (state = initialState, { type, payload }) => {
         categoryTree: generateCategoryTree(categoriesById),
         rules
       }
-    case types.CREATE_EXACT_RULE:
+    case types.CREATE_RULE:
       return {
         ...state,
         rules: {
           ...state.rules,
-          [payload.match]: {
-            categoryId: payload.categoryId,
-            type: 'exact_match',
-            count: 0
-          }
+          [payload.id]: payload
         }
       }
-    case types.DELETE_EXACT_RULE:
-      const r = Object.keys(state.rules).reduce((result, match) => {
-        if (match !== payload) {
-          return {
-            ...result,
-            rules: { ...result.rules, [match]: state.rules[match] }
-          }
-        }
-        return result
-      }, { ...state, rules: {} })
-      return r
-    case types.COUNT_RULE_USAGE:
-      // reset counters
-      const newState = Object.keys(state.rules).reduce((result, match) => (
-        {
-          ...result,
-          rules: {
-            ...result.rules,
-            [match]: { ...result.rules[match], count: 0 }
-          }
-        }
-      ), state)
-
-      // count the transactions
-      let transaction
-      for (transaction of payload) {
-        if (transaction.description in newState.rules) {
-          newState.rules[transaction.description].count += 1
-        }
-      }
-      // remove unused rules
-      return Object.keys(newState.rules).reduce((result, match) => {
-        if (newState.rules[match].count > 0) {
-          return {
-            ...result,
-            rules: { ...result.rules, [match]: newState.rules[match] }
-          }
-        }
-        return result
-      }, { ...newState, rules: {} })
-    case types.RESET_COLOURS:
-      categoriesById = Object.keys(state.categoriesById).reduce((result, id, index) => ({
-        ...result,
-        [id]: { ...state.categoriesById[id], colour: colorScale(index) }
-      }), {})
+    case types.UPDATE_RULE:
       return {
         ...state,
-        categoriesById,
-        categoryTree: generateCategoryTree(categoriesById)
+        rules: {
+          ...state.rules,
+          [payload.id]: payload
+        }
       }
-
+    case types.DELETE_RULE:
+      const { [payload]: _, ...newRules } = state.rules
+      return { ...state, rules: newRules }
     default:
       return state
   }

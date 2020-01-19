@@ -11,6 +11,7 @@ import { mdiImport } from '@mdi/js'
 import InputBase from '@material-ui/core/InputBase'
 import InputAdornment from '@material-ui/core/InputAdornment'
 import SearchIcon from '@material-ui/icons/Search'
+import CloseIcon from '@material-ui/icons/Close'
 import { fade } from '@material-ui/core/styles/colorManipulator'
 import confirm from '../../../util/confirm'
 import TableToolbar from '../../../common/TableToolbar'
@@ -23,24 +24,18 @@ const styles = (theme) => ({
   buttons: {
     display: 'flex'
   },
-  search: {
-    position: 'relative',
-    borderRadius: theme.shape.borderRadius * 2,
-    backgroundColor: fade(theme.palette.grey[400], 0.15),
-    marginRight: theme.spacing(2),
-    marginLeft: 0,
-    width: '100%',
-    '&:hover': {
-      backgroundColor: fade(theme.palette.grey[400], 0.25)
-    }
-  },
   inputRoot: {
     color: 'inherit',
     width: '100%',
     padding: theme.spacing(2),
     paddingTop: theme.spacing(1),
-    paddingBottom: theme.spacing(1)
-
+    paddingBottom: theme.spacing(1),
+    borderRadius: theme.shape.borderRadius * 2,
+    backgroundColor: fade(theme.palette.grey[400], 0.15),
+    marginRight: theme.spacing(4),
+    '&:hover': {
+      backgroundColor: fade(theme.palette.grey[400], 0.25)
+    }
   },
   inputInput: {
     transition: theme.transitions.create('width'),
@@ -48,6 +43,12 @@ const styles = (theme) => ({
     [theme.breakpoints.up('md')]: {
       minWidth: 240
     }
+  },
+  smallIcon: {
+    fontSize: 16
+  },
+  iconSpacer: {
+    width: theme.spacing(3)
   }
 })
 
@@ -94,9 +95,9 @@ export class TransactionsToolbarComponent extends React.Component {
           </Tooltip>
         ) : (
           <div className={classes.buttons}>
-            <div className={classes.search}>
+            <div>
               <InputBase
-                type="search"
+                type="input"
                 placeholder="Search transactions"
                 onChange={this.onChangeSearch}
                 value={filterProps.filters.description || ''}
@@ -105,6 +106,20 @@ export class TransactionsToolbarComponent extends React.Component {
                   input: classes.inputInput
                 }}
                 startAdornment={<InputAdornment position="start"><SearchIcon /></InputAdornment>}
+                endAdornment={(
+                  <InputAdornment position="end">
+                    {filterProps.filters.description && (
+                      <IconButton
+                        size="small"
+                        aria-label="clear search"
+                        onClick={() => this.onChangeSearch({ target: { name: 'description', value: '' } })}
+                      >
+                        <CloseIcon className={classes.smallIcon} />
+                      </IconButton>
+                    )}
+                    {!filterProps.filters.description && (<div className={classes.iconSpacer} />)}
+                  </InputAdornment>
+                )}
               />
             </div>
             <Tooltip title="Import transaction">

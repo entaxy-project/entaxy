@@ -2,6 +2,12 @@ import budgetReducer, { initialState, colorScale, generateCategoryTree } from '.
 import types from '../types'
 import budgetCategories from '../../../data/budgetCategories'
 
+const rule = {
+  id: 'r1',
+  accountId: 'a1',
+  attributes: { categoryId: 'c1' },
+  filterBy: { description: { type: 'equals', value: 'some description' } }
+}
 
 describe('budget reducer', () => {
   const budget = {
@@ -159,95 +165,74 @@ describe('budget reducer', () => {
     })
   })
 
-  describe('CREATE_EXACT_RULE', () => {
+  describe('Rules', () => {
     it('should create a new rule', () => {
-      const type = types.CREATE_EXACT_RULE
-      const payload = { match: 'Shopping Mart', categoryId: 1 }
-      expect(budgetReducer(initialState, { type, payload })).toEqual({
+      const type = types.CREATE_RULE
+      const state = {
         ...initialState,
         rules: {
-          [payload.match]: {
-            categoryId: payload.categoryId,
-            count: 0,
-            type: 'exact_match'
+          abc: {
+            id: 'abc',
+            accountId: '123',
+            attributes: { categoryId: '456' },
+            filterBy: { description: { type: 'equals', value: 'lorem ipsum' } }
           }
+        }
+      }
+      const payload = rule
+      expect(budgetReducer(state, { type, payload })).toEqual({
+        ...state,
+        rules: {
+          ...state.rules,
+          [payload.id]: payload
         }
       })
     })
 
     it('should update an existing rule', () => {
-      const type = types.CREATE_EXACT_RULE
-      const payload = { match: 'Shopping Mart', categoryId: 1 }
-      expect(budgetReducer({ rules: { 'Shopping Mart': 'b' } }, { type, payload })).toEqual({
-        rules: {
-          [payload.match]: {
-            categoryId: payload.categoryId,
-            count: 0,
-            type: 'exact_match'
-          }
-        }
-      })
-    })
-  })
-
-  describe('DELETE_EXACT_RULE', () => {
-    it('should delete a new rule', () => {
-      const type = types.DELETE_EXACT_RULE
-      const payload = { match: 'Shopping Mart', category: 'Groceries' }
+      const type = types.UPDATE_RULE
+      const payload = rule
       const state = {
+        ...initialState,
         rules: {
           abc: {
-            category: 'xyz',
-            count: 1,
-            type: 'exact_match'
+            id: 'abc',
+            accountId: '123',
+            attributes: { categoryId: '456' },
+            filterBy: { description: { type: 'equals', value: 'lorem ipsum' } }
           },
-          [payload.match]: {
-            category: payload.category,
-            count: 0,
-            type: 'exact_match'
-          }
-        }
-      }
-      expect(budgetReducer(state, { type, payload: payload.match })).toEqual({
-        rules: {
-          abc: {
-            category: 'xyz',
-            count: 1,
-            type: 'exact_match'
-          }
-        }
-      })
-    })
-  })
-
-  describe('COUNT_RULE_USAGE', () => {
-    it('should count used rules and remove unused ones', () => {
-      const type = types.COUNT_RULE_USAGE
-      const payload = [
-        { id: 2, description: 'aaa', category: 'xyz' },
-        { id: 3, description: 'def' }
-      ]
-      const state = {
-        rules: {
-          aaa: {
-            category: 'xyz',
-            count: 0,
-            type: 'exact_match'
-          },
-          bbb: {
-            category: 'xyz',
-            count: 0,
-            type: 'exact_match'
-          }
-
+          [rule.id]: { }
         }
       }
       expect(budgetReducer(state, { type, payload })).toEqual({
+        ...state,
         rules: {
-          aaa: {
-            category: 'xyz',
-            count: 1,
-            type: 'exact_match'
+          ...state.rules,
+          [payload.id]: payload
+        }
+      })
+    })
+
+    it('should delete a new rule', () => {
+      const type = types.DELETE_RULE
+      const state = {
+        rules: {
+          abc: {
+            id: 'abc',
+            accountId: '123',
+            attributes: { categoryId: '456' },
+            filterBy: { description: { type: 'equals', value: 'lorem ipsum' } }
+          },
+          [rule.id]: rule
+        }
+      }
+      expect(budgetReducer(state, { type, payload: rule.id })).toEqual({
+        rules: {
+          abc: {
+            id: 'abc',
+            accountId: '123',
+            attributes: { categoryId: '456' },
+            filterBy: { description: { type: 'equals', value: 'lorem ipsum' } }
           }
         }
       })

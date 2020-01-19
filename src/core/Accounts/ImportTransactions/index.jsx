@@ -59,7 +59,7 @@ export const ImportTransactionsComponent = ({ history, match }) => {
 
   const [activeStep, setActiveStep] = useState(0)
   const [isGeneratingTransactions, setIsGeneratingTransactions] = useState(false)
-  const [parser, setParser] = useState(new CsvParser({ budgetRules }))
+  const [parser, setParser] = useState(new CsvParser({ accountId: account.id, budgetRules }))
 
   const handleNext = () => {
     setActiveStep((currentStep) => currentStep + 1)
@@ -105,12 +105,10 @@ export const ImportTransactionsComponent = ({ history, match }) => {
       .filter((transaction) => (
         transaction.errors.length === 0 && transaction.duplicate === undefined
       ))
-      .map((transaction) => ({
-        amount: transaction.amount,
-        description: transaction.description,
-        categoryId: transaction.categoryId,
-        createdAt: transaction.createdAt
-      }))
+      .map((transaction) => {
+        const { errors, line, ...rest } = transaction
+        return rest
+      })
     if (newTransactions.length > 0) {
       await dispatch(addTransactions(account, newTransactions))
       dispatch(showSnackbar({

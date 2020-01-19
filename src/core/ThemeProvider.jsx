@@ -10,21 +10,24 @@ const theme = createMuiTheme({
     primary: { main: blueGrey[800] },
     secondary: { main: '#1B9CC4' },
     success: {
-      text: '#155724',
+      main: '#155724',
       background: '#d4edda',
       icon: '#28a745'
     },
     info: {
+      main: '#00acc1',
       text: '#00acc1',
       background: 'rgb(227, 243, 247)',
       icon: '#17a2b8'
     },
     danger: {
+      main: '#721c24',
       text: '#721c24',
       background: '#f8d7da66',
       icon: '#dc3545'
     },
     warning: {
+      main: '#856404',
       text: '#856404',
       background: '#fff3cd',
       icon: '#ffc107'

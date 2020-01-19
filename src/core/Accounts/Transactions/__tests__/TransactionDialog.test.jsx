@@ -7,8 +7,9 @@ import { Provider } from 'react-redux'
 import TransactionDialog from '../TransactionDialog'
 import ThemeProvider from '../../../ThemeProvider'
 import { initialState as settingsInitialState } from '../../../../store/settings/reducer'
-import { groupByInstitution } from '../../../../store/accounts/reducer'
+import { initialState as transactionsInitialState } from '../../../../store/transactions/reducer'
 import { initialState as budgetInitialState } from '../../../../store/budget/reducer'
+import { groupByInstitution } from '../../../../store/accounts/reducer'
 
 const account = {
   id: 1,
@@ -28,6 +29,7 @@ const renderContent = (props) => {
   const byId = { [account.id]: account }
   const store = mockStore({
     accounts: { byId, byInstitution: groupByInstitution({ byId, byInstitution: {} }) },
+    transactions: transactionsInitialState,
     settings: settingsInitialState,
     budget: budgetInitialState
   })

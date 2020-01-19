@@ -246,7 +246,8 @@ export class TransactionsTableComponent extends React.Component {
       formatDate,
       Toolbar,
       toolbarProps,
-      hideChekboxes
+      hideChekboxes,
+      allowClickOnRow
     } = this.props
     const {
       selected,
@@ -261,17 +262,19 @@ export class TransactionsTableComponent extends React.Component {
     const rowHeight = account.type === 'wallet' ? 42 : 30
     return (
       <div className={`${[classes.tableWrapper, className].join(' ')}`}>
-        <Toolbar
-          {...toolbarProps}
-          account={account}
-          selectedTransactions={selected}
-          resetSelection={this.resetSelection}
-          filterProps={{
-            filters: this.state.filters,
-            setFilter: this.setFilter,
-            unsetFilter: this.unsetFilter
-          }}
-        />
+        {Toolbar && (
+          <Toolbar
+            {...toolbarProps}
+            account={account}
+            selectedTransactions={selected}
+            resetSelection={this.resetSelection}
+            filterProps={{
+              filters: this.state.filters,
+              setFilter: this.setFilter,
+              unsetFilter: this.unsetFilter
+            }}
+          />
+        )}
         <AutoSizer>
           {({ width, height }) => (
             <Table
@@ -344,11 +347,18 @@ export class TransactionsTableComponent extends React.Component {
                         </Tooltip>
                       )
                     }
-                    return (
-                      <Link onClick={() => toolbarProps.handleEdit(rowData)} className={classes.link} underline="none">
-                        {commentIcon} {rowData.description}
-                      </Link>
-                    )
+                    if (allowClickOnRow && rowData.type !== 'openingBalance') {
+                      return (
+                        <Link
+                          onClick={() => toolbarProps.handleEdit(rowData)}
+                          className={classes.link}
+                          underline="none"
+                        >
+                          {commentIcon} {rowData.description}
+                        </Link>
+                      )
+                    }
+                    return <>{commentIcon} {rowData.description}</>
                   }
                 }
               />
@@ -436,7 +446,7 @@ TransactionsTableComponent.propTypes = {
   classes: PropTypes.object.isRequired,
   className: PropTypes.string,
   children: PropTypes.node,
-  Toolbar: PropTypes.any.isRequired,
+  Toolbar: PropTypes.any,
   toolbarProps: PropTypes.object,
   account: PropTypes.object.isRequired,
   accounts: PropTypes.object.isRequired,
@@ -445,14 +455,17 @@ TransactionsTableComponent.propTypes = {
   formatCurrency: PropTypes.func.isRequired,
   formatDecimal: PropTypes.func.isRequired,
   formatDate: PropTypes.func.isRequired,
-  hideChekboxes: PropTypes.bool
+  hideChekboxes: PropTypes.bool,
+  allowClickOnRow: PropTypes.bool
 }
 
 TransactionsTableComponent.defaultProps = {
   className: undefined,
   children: undefined,
+  Toolbar: undefined,
   toolbarProps: undefined,
-  hideChekboxes: false
+  hideChekboxes: false,
+  allowClickOnRow: false
 }
 
 export default compose(
