@@ -305,7 +305,8 @@ const BudgetCategories = () => {
                 {filter.category.length > 0 && (
                   <IconButton
                     size="small"
-                    aria-label="clear search"
+                    disableFocusRipple
+                    aria-label="Clear search"
                     onClick={() => handleFilterChange({ target: { name: 'category', value: '' } })}
                   >
                     <CloseIcon className={classes.smallIcon} />

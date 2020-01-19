@@ -10,12 +10,14 @@ import '@testing-library/jest-dom/extend-expect'
 import { Router } from 'react-router-dom'
 import { createMemoryHistory } from 'history'
 import { Provider } from 'react-redux'
+import { FlagsProvider } from 'flagged'
 import { UserSession, Person } from 'blockstack'
 import {
   store,
   persistor,
   loginAs
 } from '../store'
+import features from '../features'
 
 import Routes from '../routes'
 import { blockstackUserSession, blockstackPerson } from '../../mocks/BlockstackMock'
@@ -57,9 +59,11 @@ function renderWithRouter(
   const historyPushSpy = jest.spyOn(history, 'push')
   return {
     ...render(
-      <ThemeProvider>
-        <Router history={history}>{children}</Router>
-      </ThemeProvider>
+      <FlagsProvider features={features}>
+        <ThemeProvider>
+          <Router history={history}>{children}</Router>
+        </ThemeProvider>
+      </FlagsProvider>
     ),
     history,
     historyPushSpy
@@ -77,7 +81,7 @@ describe('Routes', () => {
           <Routes />
         </Provider>
       ))
-      expect(getByText('Insight into your finances, without sacrificing your data')).toBeInTheDocument()
+      expect(getByText('Your Personal Finances Simple & Private')).toBeInTheDocument()
       expect(history.entries.map((e) => e.pathname)).toEqual(['/'])
       expect(queryByText((_, element) => element.tagName.toLowerCase() === 'header')).not.toBeInTheDocument()
     })
@@ -91,7 +95,7 @@ describe('Routes', () => {
       ), { route: '/handle-login' })
       expect(blockstackUserSession.handlePendingSignIn).toHaveBeenCalled()
       await wait(() => expect(historyPushSpy).toHaveBeenCalled())
-      expect(getByText('Insight into your finances, without sacrificing your data')).toBeInTheDocument()
+      expect(getByText('Your Personal Finances Simple & Private')).toBeInTheDocument()
       expect(history.entries.map((e) => e.pathname)).toEqual(['/handle-login', '/'])
     })
 
@@ -101,7 +105,7 @@ describe('Routes', () => {
           <Routes />
         </Provider>
       ), { route: '/dashboard' })
-      expect(getByText('Insight into your finances, without sacrificing your data')).toBeInTheDocument()
+      expect(getByText('Your Personal Finances Simple & Private')).toBeInTheDocument()
       expect(history.entries.map((e) => e.pathname)).toEqual(['/'])
     })
   })
@@ -113,7 +117,7 @@ describe('Routes', () => {
           <Routes />
         </Provider>
       ))
-      expect(getByText('Insight into your finances, without sacrificing your data')).toBeInTheDocument()
+      expect(getByText('Your Personal Finances Simple & Private')).toBeInTheDocument()
       expect(getByText('Sign in with Blockstack')).toBeInTheDocument()
 
       // Login with blockstack
@@ -127,7 +131,7 @@ describe('Routes', () => {
       // Logout
       fireEvent.click(getByTestId('userNavButton'))
       fireEvent.click(getByTestId('logoutButton'))
-      await waitForElement(() => getByText('Insight into your finances, without sacrificing your data'))
+      await waitForElement(() => getByText('Your Personal Finances Simple & Private'))
       expect(queryByText((_, element) => element.tagName.toLowerCase() === 'header')).not.toBeInTheDocument()
       expect(persistor).toBeNull()
     })
@@ -138,7 +142,7 @@ describe('Routes', () => {
           <Routes />
         </Provider>
       ))
-      expect(getByText('Insight into your finances, without sacrificing your data')).toBeInTheDocument()
+      expect(getByText('Your Personal Finances Simple & Private')).toBeInTheDocument()
       expect(getByText('Sign in with Blockstack')).toBeInTheDocument()
 
       // Login with blockstack
@@ -153,7 +157,7 @@ describe('Routes', () => {
       blockstackUserSession.isUserSignedIn.mockReturnValue(false)
       fireEvent.click(getByTestId('userNavButton'))
       fireEvent.click(getByTestId('logoutButton'))
-      await waitForElement(() => getByText('Insight into your finances, without sacrificing your data'))
+      await waitForElement(() => getByText('Your Personal Finances Simple & Private'))
       expect(persistor).toBeNull()
     })
 

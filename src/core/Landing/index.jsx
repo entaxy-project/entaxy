@@ -1,296 +1,246 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
+import { useFeature } from 'flagged'
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
-import Paper from '@material-ui/core/Paper'
+import Link from '@material-ui/core/Link'
+import Divider from '@material-ui/core/Divider'
 import grey from '@material-ui/core/colors/grey'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 import LandingCard from './LandingCard'
-import landingImage from './landing.png'
-import level20Image from './2.0.png'
-import level21Image from './2.1.png'
-import level30Image from './3.0.png'
-import level31Image from './3.1.png'
-import level32Image from './3.2.png'
-import level33Image from './3.3.png'
-import level40Image from './4.0.png'
-import level41Image from './4.1.png'
-import level50Image from './5.0.png'
-import level51Image from './5.1.png'
+import Faqs from './Faqs'
+import logoImg from '../../common/Logo/logo.png'
+import image1 from './image1.png'
+import image2 from './image2.png'
+import image3 from './image3.png'
+import image4 from './image4.png'
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
-    padding: '20px'
+    padding: '20px',
+    flexGrow: 1
+  },
+  tagLinePreTitle: {
+    fontSize: '0.8rem',
+    textTransform: 'uppercase',
+    color: theme.palette.text.primary
+  },
+  tagLineTitle: {
+    fontSize: '1.5rem'
+  },
+  tagLineText: {
+    fontSize: 16,
+    color: grey[600]
   },
   // --- Level 1
-  leftLevel1: {
+  level1: {
     justifyContent: 'space-evenly',
     background: grey[100],
-    padding: '2% 5% 2% 8%',
+    padding: theme.spacing(4),
     display: 'flex',
-    flexFlow: 'column nowrap'
-  },
-  rightLevel1: {
-    minHeight: 500,
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center',
-    backgroundSize: '100%',
-    backgroundImage: `url(${landingImage}), linear-gradient(to bottom, var(--color-blue), var(--color-cyan))`
+    flexFlow: 'column nowrap',
+    paddingBottom: theme.spacing(8)
   },
   logoLevel1: {
     font: 'bold 24px var(--font-garden-grove)',
-    color: 'black'
+    color: 'black',
+    background: `url(${logoImg}) no-repeat left center`,
+    backgroundSize: 30,
+    paddingLeft: 40
   },
   taglineLevel1: {
     font: 'italic 11px var(--font-garden-grove)',
     color: grey[500],
-    'padding-top': '3px'
+    paddingTop: 3
   },
   titleLevel1: {
-    font: 'bold 48px var(--font-garden-grove)'
-  },
-  producthuntWidget: {
-    marginTop: theme.spacing(1),
-    textAlign: 'center'
-  },
-  // --- Level 2
-  leftLevel2: {
-    backgroundColor: 'var(--color-gradient2)'
-  },
-  rightLevel2: {
-    minHeight: 550
-  },
-  backgroundImageLevel2: {
-    position: 'absolute',
-    left: theme.spacing(4),
-    marginTop: theme.spacing(8),
-    zIndex: 1
-  },
-  titleLevel2: {
-    whiteSpace: 'noWrap',
-    fontSize: 36,
-    fontWeight: 'bold',
-    marginTop: 43,
-    left: theme.spacing(1) * -1,
-    paddingLeft: 250,
-    paddingRight: theme.spacing(2),
-    color: 'white',
-    position: 'absolute',
-    background: 'var(--color-gradient6)'
-  },
-  tagLineLevel2: {
-    whiteSpace: 'noWrap',
-    fontSize: 30,
-    fontWeight: 'bold',
-    marginTop: 43,
-    marginRight: theme.spacing(8),
-    color: 'var(--color-gradient2)'
-  },
-  screenshotLevel2: {
-    position: 'absolute',
-    width: '60%',
-    right: theme.spacing(8),
-    marginTop: theme.spacing(6),
-    padding: 5
-  },
-  // --- Level 3
-  rightLevel3: {
-    justifyContent: 'space-evenly',
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: '80% center',
-    backgroundImage: `url(${level32Image})`,
-    backgroundSize: '286px',
-    backgroundColor: 'var(--color-gradient1)',
-    minHeight: 550
-  },
-  titleLevel3: {
-    fontSize: 36,
-    fontWeight: 'bold',
-    marginTop: theme.spacing(5),
-    marginLeft: theme.spacing(2) * -1,
-    paddingLeft: '15%',
-    background: `url(${level31Image}) no-repeat center top`,
-    position: 'absolute',
-    width: '100%',
-    lineHeight: '53px'
-  },
-  tagLineLevel3: {
-    fontSize: 30,
-    fontWeight: 'bold',
-    marginTop: theme.spacing(3) * -1,
-    right: theme.spacing(2) * -1,
-    color: 'white',
-    width: 500,
-    position: 'absolute',
-    background: `var(--color-gradient2) url(${level33Image}) no-repeat 200px center`,
-    padding: `5px ${theme.spacing(10)}px 5px 200px`
-  },
-  screenshotLevel3: {
-    position: 'absolute',
-    width: '60%',
-    left: theme.spacing(8),
-    marginTop: theme.spacing(16),
-    padding: 5
-  },
-  // --- Level 4
-  leftLevel4: {
-    backgroundColor: 'var(--color-gradient2)'
-  },
-  rightLevel4: {
-    minHeight: 600
-  },
-  backgroundImageLevel4: {
-    position: 'absolute',
-    left: theme.spacing(1) * -1,
-    marginTop: theme.spacing(5)
-  },
-  titleLeftLevel4: {
-    color: 'white',
-    fontSize: 36,
-    fontWeight: 'bold',
-    marginTop: theme.spacing(3),
-    marginLeft: 100,
-    paddingLeft: 100,
-    lineHeight: '91px',
-    position: 'absolute',
-    background: `url(${level41Image}) no-repeat left center`
-  },
-  tagLineLevel4: {
-    whiteSpace: 'noWrap',
-    fontSize: 30,
-    fontWeight: 'bold',
-    marginTop: 43,
-    marginRight: theme.spacing(8),
-    color: 'var(--color-gradient2)'
-  },
-  screenshotLevel4: {
-    position: 'absolute',
-    width: '60%',
-    right: theme.spacing(16),
+    font: 'bold 46px var(--font-garden-grove)',
     marginTop: theme.spacing(4),
-    padding: 5
+    marginBottom: theme.spacing(4),
+    textAlign: 'center',
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 24
+    }
   },
-  // --- Level 5
-  titleLevel5: {
-    fontSize: 36,
-    fontWeight: 'bold',
-    marginTop: theme.spacing(5),
-    marginLeft: theme.spacing(2) * -1,
-    paddingLeft: '15%',
-    position: 'absolute',
-    width: '100%',
-    lineHeight: '53px'
-  },
-  tagLineLevel5: {
-    fontSize: 30,
-    fontWeight: 'bold',
-    marginTop: theme.spacing(3) * -1,
-    right: theme.spacing(2) * -1,
-    color: 'white',
-    width: 500,
-    position: 'absolute',
-    background: 'var(--color-gradient2)',
-    padding: `5px ${theme.spacing(10)}px 5px ${theme.spacing(2)}px`
+  titleDividerLevel1: {
+    width: '20%',
+    margin: `${theme.spacing(2)}px auto`,
+    [theme.breakpoints.down('sm')]: {
+      width: '50%'
+    }
   },
 
-  rightLevel5: {
+  // --- Other levels
+  level: {
     justifyContent: 'space-evenly',
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: '80% center',
-    backgroundSize: '286px',
-    backgroundColor: 'var(--color-gradient1)',
-    minHeight: 550
+    '& div': {
+      margin: theme.spacing(2),
+      marginTop: theme.spacing(8),
+      marginBottom: theme.spacing(8)
+    }
   },
-  screenshotLevel5: {
-    position: 'absolute',
-    width: '65%',
-    left: 180,
-    marginTop: theme.spacing(12),
-    padding: 5
+  greyBackground: {
+    background: grey[200]
   },
-  backgroundImageLevel5: {
-    position: 'absolute',
-    right: '15%',
-    marginTop: 180,
-    width: 150
+  womanImage: {
+    margin: 'auto',
+    width: '80%'
+  },
+  faqs: {
+    marginTop: theme.spacing(8)
   }
 }))
 
 const Landing = ({ history }) => {
   const classes = useStyles()
+  const showFaqs = useFeature('showFaqs')
+
+  useEffect(() => {
+    AOS.init()
+  }, [])
+
   return (
-    <Grid container spacing={0} className={classes.root}>
+    <Grid container className={classes.root}>
       {/* --- Level 1 --- */}
-      <Grid item xs={6} className={classes.leftLevel1}>
+      <Grid item xs={12} className={classes.level1}>
         <div className={classes.logoLevel1}>
           Entaxy
           <div className={classes.taglineLevel1}>Order from chaos</div>
         </div>
         <div className={classes.titleLevel1}>
-          Insight into your finances, without sacrificing your data
+          Your Personal Finances Simple & Private
+          <Divider className={classes.titleDividerLevel1} />
+          <Typography variant="body1" align="center">
+            Insight into your finances without sacrificing your data
+          </Typography>
         </div>
         <LandingCard history={history} />
       </Grid>
-      <Grid item xs={6} className={classes.rightLevel1} />
+
       {/* --- Level 2 --- */}
-      <Grid item xs={6} className={classes.leftLevel2}>
-        <Typography variant="h5" className={classes.titleLevel2}>
-          All your accounts
-        </Typography>
-        <img src={level21Image} className={classes.backgroundImageLevel2} alt="Your Accounts backgoround" />
+      <Grid container className={classes.level}>
+        <Grid item xs={12} md={4} align="center">
+          <img
+            data-aos="zoom-out-right"
+            src={image1} alt="Woman working on computer"
+            className={classes.womanImage}
+          />
+        </Grid>
+        <Grid item xs={12} md={4}>
+          <Typography variant="caption" className={classes.tagLinePreTitle}>
+            Privacy
+          </Typography>
+          <Typography variant="h5" paragraph className={classes.tagLineTitle}>
+            A new breed of security
+          </Typography>
+          <Typography variant="body1" paragraph className={classes.tagLineText}>
+            You are protected by state-of-the-art cryptography that keeps all your data private.
+            Entaxy leverages the <Link href="https://blockstack.org/try-blockstack">Blockstack</Link>&nbsp;
+            framework to bring you a&nbsp;
+            <Link href="https://hackernoon.com/cant-be-evil-vs-don-t-be-evil-12fb625057b7">
+              <em>Can&apos;t be evil</em>
+            </Link>&nbsp;
+            approach to software services.
+          </Typography>
+          <Typography variant="caption">
+            Learn more about&nbsp;
+            <Link href="https://blockstack.org/try-blockstack">
+              <strong>Blockstack</strong>
+            </Link>
+          </Typography>
+          <br />
+          <Typography variant="caption">
+            Learn more about&nbsp;
+            <Link href="https://hackernoon.com/cant-be-evil-vs-don-t-be-evil-12fb625057b7">
+              <strong>Can&apos;t be evil apps</strong>
+            </Link>
+          </Typography>
+        </Grid>
       </Grid>
-      <Grid item xs={6} className={classes.rightLevel2}>
-        <Typography variant="h5" align="right" className={classes.tagLineLevel2}>
-          in one place
-        </Typography>
-        <Paper className={classes.screenshotLevel2}>
-          <img src={level20Image} width="100%" alt="Your Accounts" />
-        </Paper>
-      </Grid>
+
       {/* --- Level 3 --- */}
-      <Grid item xs={6}>
-        <Typography variant="h5" className={classes.titleLevel3}>
-          Your financial data
-        </Typography>
-        <Paper className={classes.screenshotLevel3}>
-          <img src={level30Image} width="100%" alt="Your Transactions" />
-        </Paper>
+      <Grid container className={[classes.level, classes.greyBackground].join(' ')}>
+        <Grid item xs={12} md={4}>
+          <Typography variant="caption" className={classes.tagLinePreTitle}>
+            Account consolidation
+          </Typography>
+          <Typography variant="h5" paragraph className={classes.tagLineTitle}>
+            All your accounts in one place
+          </Typography>
+          <Typography variant="body1" paragraph className={classes.tagLineText}>
+            One of the major problems with understanding your financial picture
+            is everything you own is spread across many accounts at many institutions.
+            Entaxy allows you to consolidate everthing in one place, all without giving away your data.
+          </Typography>
+        </Grid>
+        <Grid item xs={12} md={4} align="center">
+          <img data-aos="zoom-out-left" src={image2} alt="Woman working on computer" className={classes.womanImage} />
+        </Grid>
       </Grid>
-      <Grid item xs={6} className={classes.rightLevel3}>
-        <Typography variant="h5" align="right" className={classes.tagLineLevel3}>
-          owned by you
-        </Typography>
-      </Grid>
+
       {/* --- Level 4 --- */}
-      <Grid item xs={6} className={classes.leftLevel4}>
-        <Typography variant="h5" className={classes.titleLeftLevel4}>
-          Budget
-        </Typography>
+      <Grid container className={classes.level}>
+        <Grid item xs={12} md={4} align="center">
+          <img
+            data-aos="zoom-out-right"
+            src={image3} alt="Woman working on computer"
+            className={classes.womanImage}
+          />
+        </Grid>
+        <Grid item xs={12} md={4}>
+          <Typography variant="caption" className={classes.tagLinePreTitle}>
+            Budgeting
+          </Typography>
+          <Typography variant="h5" paragraph className={classes.tagLineTitle}>
+            Budget in a way that works for you
+          </Typography>
+          <Typography variant="body1" paragraph className={classes.tagLineText}>
+            Create budgets that work for you. Entaxy remembers your choices,
+            meaning less work the more you use the app.
+          </Typography>
+        </Grid>
       </Grid>
-      <Grid item xs={6} className={classes.rightLevel4}>
-        <Typography variant="h5" align="right" className={classes.tagLineLevel4}>
-        in a way that works for you
-        </Typography>
-        <Paper className={classes.screenshotLevel4}>
-          <img src={level40Image} width="100%" alt="Budget the way you like" />
-        </Paper>
-      </Grid>
+
       {/* --- Level 5 --- */}
-      <Grid item xs={6}>
-        <Typography variant="h5" className={classes.titleLevel5}>
-          Visualize your data
-        </Typography>
-        <Paper className={classes.screenshotLevel5}>
-          <img src={level50Image} width="100%" alt="Learn from your data" />
-        </Paper>
-        <img src={level51Image} width="100%" alt="Woman drawing" className={classes.backgroundImageLevel5} />
+      <Grid container className={[classes.level, classes.greyBackground].join(' ')}>
+        <Grid item xs={12} md={4}>
+          <Typography variant="caption" className={classes.tagLinePreTitle}>
+            Insights
+          </Typography>
+          <Typography variant="h5" paragraph className={classes.tagLineTitle}>
+            Visualize your data and learn from it
+          </Typography>
+          <Typography variant="body1" paragraph className={classes.tagLineText}>
+            Once you see how your money is flowing, from your pay cheque to your loans
+            and regular expenses, you will be able to quickly identify places where you
+            can save money.
+          </Typography>
+        </Grid>
+        <Grid item xs={12} md={4} align="center">
+          <img
+            data-aos="zoom-out-left"
+            src={image4} alt="Woman working on computer"
+            className={classes.womanImage}
+          />
+        </Grid>
       </Grid>
-      <Grid item xs={6} className={classes.rightLevel5}>
-        <Typography variant="h5" className={classes.tagLineLevel5}>
-          and learn from it
-        </Typography>
-      </Grid>
+      {/* --- Faqs --- */}
+      {showFaqs && (
+        <Grid container justify="center" className={classes.faqs}>
+          <Grid item xs={12} md={8} lg={6} align="center">
+            <Typography variant="caption" className={classes.tagLinePreTitle}>
+              How can we help you
+            </Typography>
+            <Typography variant="h5" paragraph className={classes.tagLineTitle}>
+              Frequently Asked Questions
+            </Typography>
+            <Faqs />
+          </Grid>
+        </Grid>
+      )}
     </Grid>
   )
 }
