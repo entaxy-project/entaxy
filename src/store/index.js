@@ -62,6 +62,7 @@ export const resetState = () => (dispatch, getState) => {
 
 const setPersistor = ({ storageType }) => {
   const persistConfig = {
+    timeout: 0,
     key: 'entaxy',
     blacklist: ['user'],
     version: Object.keys(migrations).length - 1,

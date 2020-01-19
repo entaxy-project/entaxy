@@ -8,6 +8,7 @@ import InputBase from '@material-ui/core/InputBase'
 import InputAdornment from '@material-ui/core/InputAdornment'
 import Typography from '@material-ui/core/Typography'
 import SearchIcon from '@material-ui/icons/Search'
+import CloseIcon from '@material-ui/icons/Close'
 import AddIcon from '@material-ui/icons/Add'
 import InfoIcon from '@material-ui/icons/Info'
 import EditIcon from '@material-ui/icons/Edit'
@@ -74,7 +75,10 @@ const useStyles = makeStyles((theme) => ({
   inputInput: {
     width: 160,
     color: 'inherit',
-    transition: theme.transitions.create('width')
+    transition: theme.transitions.create('width'),
+    '-webkit-search-cancel-button': {
+      display: 'none'
+    }
   },
   filterParentCategory: {
     width: 230,
@@ -89,6 +93,12 @@ const useStyles = makeStyles((theme) => ({
   },
   categoryName: {
     wordBreak: 'break-word'
+  },
+  smallIcon: {
+    fontSize: 18
+  },
+  iconSpacer: {
+    width: theme.spacing(3)
   }
 }))
 
@@ -276,7 +286,7 @@ const BudgetCategories = () => {
         <Typography variant="h4">Manage categories</Typography>
         <div>
           <InputBase
-            type="search"
+            type="input"
             placeholder="Search categories"
             name="category"
             onChange={handleFilterChange}
@@ -290,6 +300,20 @@ const BudgetCategories = () => {
               maxLength: 20
             }}
             startAdornment={<InputAdornment position="start"><SearchIcon /></InputAdornment>}
+            endAdornment={(
+              <InputAdornment position="end">
+                {filter.category.length > 0 && (
+                  <IconButton
+                    size="small"
+                    aria-label="clear search"
+                    onClick={() => handleFilterChange({ target: { name: 'category', value: '' } })}
+                  >
+                    <CloseIcon className={classes.smallIcon} />
+                  </IconButton>
+                )}
+                {filter.category.length === 0 && (<div className={classes.iconSpacer} />)}
+              </InputAdornment>
+            )}
           />
           <Select
             placeholder="All groups"

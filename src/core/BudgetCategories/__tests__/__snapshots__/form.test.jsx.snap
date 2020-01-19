@@ -41,13 +41,13 @@ exports[`CategoryForm matches snapshot for existing category 1`] = `
                 </ForwardRef(TextField)>
               </WithStyles(ForwardRef(TextField))>
               <div className=\\"WithFormik(CategoryFormComponent)-formActions-3\\">
-                <WithStyles(SubmitButtonWithProgress) label=\\"Save\\" isSubmitting={false}>
-                  <SubmitButtonWithProgress classes={{...}} label=\\"Save\\" isSubmitting={false}>
-                    <div className=\\"SubmitButtonWithProgress-wrapper-64\\">
-                      <WithStyles(ForwardRef(Button)) type=\\"submit\\" color=\\"secondary\\" disabled={false}>
-                        <ForwardRef(Button) classes={{...}} type=\\"submit\\" color=\\"secondary\\" disabled={false}>
-                          <WithStyles(ForwardRef(ButtonBase)) className=\\"MuiButton-root MuiButton-text MuiButton-textSecondary\\" component=\\"button\\" disabled={false} focusRipple={true} focusVisibleClassName=\\"Mui-focusVisible\\" type=\\"submit\\">
-                            <ForwardRef(ButtonBase) classes={{...}} className=\\"MuiButton-root MuiButton-text MuiButton-textSecondary\\" component=\\"button\\" disabled={false} focusRipple={true} focusVisibleClassName=\\"Mui-focusVisible\\" type=\\"submit\\">
+                <WithStyles(SubmitButtonWithProgress) label=\\"Save\\" isSubmitting={false} className={{...}}>
+                  <SubmitButtonWithProgress classes={{...}} label=\\"Save\\" isSubmitting={false} className={{...}}>
+                    <div className=\\"SubmitButtonWithProgress-wrapper-64 \\">
+                      <WithStyles(ForwardRef(Button)) type=\\"submit\\" color=\\"secondary\\" disabled={false} disableFocusRipple={true}>
+                        <ForwardRef(Button) classes={{...}} type=\\"submit\\" color=\\"secondary\\" disabled={false} disableFocusRipple={true}>
+                          <WithStyles(ForwardRef(ButtonBase)) className=\\"MuiButton-root MuiButton-text MuiButton-textSecondary\\" component=\\"button\\" disabled={false} focusRipple={false} focusVisibleClassName=\\"Mui-focusVisible\\" type=\\"submit\\">
+                            <ForwardRef(ButtonBase) classes={{...}} className=\\"MuiButton-root MuiButton-text MuiButton-textSecondary\\" component=\\"button\\" disabled={false} focusRipple={false} focusVisibleClassName=\\"Mui-focusVisible\\" type=\\"submit\\">
                               <button className=\\"MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary\\" onBlur={[Function]} onClick={[undefined]} onFocus={[Function]} onKeyDown={[Function]} onKeyUp={[Function]} onMouseDown={[Function]} onMouseLeave={[Function]} onMouseUp={[Function]} onDragLeave={[Function]} onTouchEnd={[Function]} onTouchMove={[Function]} onTouchStart={[Function]} tabIndex={0} type=\\"submit\\" disabled={false}>
                                 <span className=\\"MuiButton-label\\">
                                   Save
@@ -144,13 +144,13 @@ exports[`CategoryForm matches snapshot for new category 1`] = `
                 </ForwardRef(TextField)>
               </WithStyles(ForwardRef(TextField))>
               <div className=\\"WithFormik(CategoryFormComponent)-formActions-3\\">
-                <WithStyles(SubmitButtonWithProgress) label=\\"Save\\" isSubmitting={false}>
-                  <SubmitButtonWithProgress classes={{...}} label=\\"Save\\" isSubmitting={false}>
-                    <div className=\\"SubmitButtonWithProgress-wrapper-64\\">
-                      <WithStyles(ForwardRef(Button)) type=\\"submit\\" color=\\"secondary\\" disabled={false}>
-                        <ForwardRef(Button) classes={{...}} type=\\"submit\\" color=\\"secondary\\" disabled={false}>
-                          <WithStyles(ForwardRef(ButtonBase)) className=\\"MuiButton-root MuiButton-text MuiButton-textSecondary\\" component=\\"button\\" disabled={false} focusRipple={true} focusVisibleClassName=\\"Mui-focusVisible\\" type=\\"submit\\">
-                            <ForwardRef(ButtonBase) classes={{...}} className=\\"MuiButton-root MuiButton-text MuiButton-textSecondary\\" component=\\"button\\" disabled={false} focusRipple={true} focusVisibleClassName=\\"Mui-focusVisible\\" type=\\"submit\\">
+                <WithStyles(SubmitButtonWithProgress) label=\\"Save\\" isSubmitting={false} className={{...}}>
+                  <SubmitButtonWithProgress classes={{...}} label=\\"Save\\" isSubmitting={false} className={{...}}>
+                    <div className=\\"SubmitButtonWithProgress-wrapper-64 \\">
+                      <WithStyles(ForwardRef(Button)) type=\\"submit\\" color=\\"secondary\\" disabled={false} disableFocusRipple={true}>
+                        <ForwardRef(Button) classes={{...}} type=\\"submit\\" color=\\"secondary\\" disabled={false} disableFocusRipple={true}>
+                          <WithStyles(ForwardRef(ButtonBase)) className=\\"MuiButton-root MuiButton-text MuiButton-textSecondary\\" component=\\"button\\" disabled={false} focusRipple={false} focusVisibleClassName=\\"Mui-focusVisible\\" type=\\"submit\\">
+                            <ForwardRef(ButtonBase) classes={{...}} className=\\"MuiButton-root MuiButton-text MuiButton-textSecondary\\" component=\\"button\\" disabled={false} focusRipple={false} focusVisibleClassName=\\"Mui-focusVisible\\" type=\\"submit\\">
                               <button className=\\"MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary\\" onBlur={[Function]} onClick={[undefined]} onFocus={[Function]} onKeyDown={[Function]} onKeyUp={[Function]} onMouseDown={[Function]} onMouseLeave={[Function]} onMouseUp={[Function]} onDragLeave={[Function]} onTouchEnd={[Function]} onTouchMove={[Function]} onTouchStart={[Function]} tabIndex={0} type=\\"submit\\" disabled={false}>
                                 <span className=\\"MuiButton-label\\">
                                   Save

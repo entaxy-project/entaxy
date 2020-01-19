@@ -136,6 +136,7 @@ const getRule = (values, accountId) => {
 
 export const TransactionDialogComponent = ({
   handleSubmit,
+  isSubmitting,
   setFieldValue,
   values,
   errors,
@@ -174,6 +175,7 @@ export const TransactionDialogComponent = ({
       open={open}
       title={transaction ? 'Edit transaction' : 'New transaction'}
       onSubmit={handleSubmit}
+      isSubmitting={isSubmitting}
       onCancel={onCancel}
       onDelete={transaction ? onDelete : undefined}
       className={classes.root}
@@ -407,6 +409,7 @@ export const TransactionDialogComponent = ({
 
 TransactionDialogComponent.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
+  isSubmitting: PropTypes.bool.isRequired,
   values: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired,
   touched: PropTypes.object.isRequired,
@@ -452,7 +455,6 @@ export default compose(
         }
       }
 
-      console.log({ ruleId: transaction.ruleId, rules: budget.rules })
       const ruleAttributes = {}
       if (transaction.ruleId) {
         const rule = budget.rules[transaction.ruleId]
@@ -502,7 +504,7 @@ export default compose(
       createdAt: Yup.date()
         .required('Please select the date of this transaction')
     }),
-    handleSubmit: (values, { props, setSubmitting, resetForm }) => {
+    handleSubmit: async (values, { props, setSubmitting, resetForm }) => {
       setSubmitting(true)
       const {
         transactionType,
@@ -529,7 +531,7 @@ export default compose(
       }
       const rule = getRule(values, props.account.id)
       if (!rule) transaction.ruleId = null
-      props.onSave(transaction, { rule, applyToExisting, applyToFuture })
+      await props.onSave(transaction, { rule, applyToExisting, applyToFuture })
       resetForm()
       setSubmitting(false)
     }

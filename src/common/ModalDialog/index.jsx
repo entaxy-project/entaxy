@@ -11,6 +11,7 @@ import IconButton from '@material-ui/core/IconButton'
 import CloseIcon from '@material-ui/icons/Close'
 import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
+import SubmitButtonWithProgress from '../SubmitButtonWithProgress'
 
 const useStyles = makeStyles((theme) => ({
   dialogMargin: {
@@ -45,6 +46,7 @@ const ModalDialog = ({
   title,
   children,
   onSubmit,
+  isSubmitting,
   onCancel,
   onDelete,
   open,
@@ -84,7 +86,7 @@ const ModalDialog = ({
                 )}
               </Grid>
               <Grid item xs={4}>
-                <Button type="submit" color="secondary" className={classes.saveButton}>Save</Button>
+                <SubmitButtonWithProgress label="Save" isSubmitting={isSubmitting} className={classes.saveButton} />
               </Grid>
             </Grid>
           </DialogActions>
@@ -99,6 +101,7 @@ ModalDialog.propTypes = {
   title: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
   onSubmit: PropTypes.func.isRequired,
+  isSubmitting: PropTypes.bool,
   onCancel: PropTypes.func.isRequired,
   onDelete: PropTypes.func,
   className: PropTypes.string,
@@ -110,7 +113,8 @@ ModalDialog.defaultProps = {
   className: null,
   onDelete: null,
   maxWidth: null,
-  fullWidth: false
+  fullWidth: false,
+  isSubmitting: false
 }
 
 export default ModalDialog

@@ -20,13 +20,19 @@ const styles = (theme) => ({
   }
 })
 
-const SubmitButtonWithProgress = ({ classes, label, isSubmitting }) => {
+const SubmitButtonWithProgress = ({
+  classes,
+  className,
+  label,
+  isSubmitting
+}) => {
   return (
-    <div className={classes.wrapper}>
+    <div className={[classes.wrapper, className].join(' ')}>
       <Button
         type="submit"
         color="secondary"
         disabled={isSubmitting}
+        disableFocusRipple={true}
       >
         {label}
       </Button>
@@ -37,8 +43,12 @@ const SubmitButtonWithProgress = ({ classes, label, isSubmitting }) => {
 
 SubmitButtonWithProgress.propTypes = {
   classes: PropTypes.object.isRequired,
+  className: PropTypes.string,
   label: PropTypes.string.isRequired,
   isSubmitting: PropTypes.bool.isRequired
 }
 
+SubmitButtonWithProgress.defaultProps = {
+  className: null
+}
 export default withStyles(styles)(SubmitButtonWithProgress)

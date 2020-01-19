@@ -38,8 +38,7 @@ const useStyles = makeStyles((theme) => ({
     textTransform: 'none'
   },
   smallIcon: {
-    width: 15,
-    height: 15
+    fontSize: 14
   }
 }))
 
@@ -55,11 +54,11 @@ const RuleFields = ({
   showTransactions
 }) => {
   const classes = useStyles()
-  const [checkboxesState, SetCheckboxesState] = useState({ applyToExistin: true, applyToFuture: true })
+  const [oldCheckboxesState, SetOldCheckboxesState] = useState({ applyToExistin: true, applyToFuture: true })
 
   const handleChangeApplyToOtherTransactions = (_, checked) => {
     if (!checked) {
-      SetCheckboxesState({
+      SetOldCheckboxesState({
         applyToExisting: values.applyToExisting,
         applyToFuture: values.applyToFuture
       })
@@ -68,8 +67,8 @@ const RuleFields = ({
       setFieldValue('applyToFuture', false)
     } else {
       setFieldValue('applyToOtherTransactions', true)
-      setFieldValue('applyToExisting', checkboxesState.applyToExisting)
-      setFieldValue('applyToFuture', checkboxesState.applyToFuture)
+      setFieldValue('applyToExisting', oldCheckboxesState.applyToExisting)
+      setFieldValue('applyToFuture', oldCheckboxesState.applyToFuture)
     }
   }
 

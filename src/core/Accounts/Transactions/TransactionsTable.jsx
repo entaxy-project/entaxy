@@ -347,7 +347,7 @@ export class TransactionsTableComponent extends React.Component {
                         </Tooltip>
                       )
                     }
-                    if (allowClickOnRow) {
+                    if (allowClickOnRow && rowData.type !== 'openingBalance') {
                       return (
                         <Link
                           onClick={() => toolbarProps.handleEdit(rowData)}

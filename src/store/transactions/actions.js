@@ -77,9 +77,6 @@ export const updateTransaction = (account, transaction, {
     let { localCurrency } = transaction.amount
     const amountChanged = transaction.amount.accountCurrency !== oldTransaction.amount.accountCurrency
     const createdAtChanged = transaction.createdAt !== oldTransaction.createdAt
-    // const descriptionChanged = transaction.description !== oldTransaction.description
-    // const categoryChanged = transaction.categoryId !== oldTransaction.categoryId
-    // const transferAccountIdChanged = transaction.transferAccountId !== oldTransaction.transferAccountId
     if (amountChanged || createdAtChanged) {
       localCurrency = dispatch(convertToCurrency(
         transaction.amount.accountCurrency,

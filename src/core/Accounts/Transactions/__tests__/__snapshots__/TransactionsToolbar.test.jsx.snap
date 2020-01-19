@@ -27,7 +27,7 @@ exports[`TransactionsToolbar matches snapshot with no selected transactions 1`] 
     <div>
       <div>
         <div
-          className="MuiInputBase-root MuiInputBase-adornedStart"
+          className="MuiInputBase-root MuiInputBase-adornedStart MuiInputBase-adornedEnd"
           onClick={[Function]}
         >
           <div
@@ -46,15 +46,20 @@ exports[`TransactionsToolbar matches snapshot with no selected transactions 1`] 
             </svg>
           </div>
           <input
-            className="MuiInputBase-input MuiInputBase-inputAdornedStart MuiInputBase-inputTypeSearch"
+            className="MuiInputBase-input MuiInputBase-inputAdornedStart MuiInputBase-inputAdornedEnd"
             onAnimationStart={[Function]}
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             placeholder="Search transactions"
-            type="search"
+            type="input"
             value=""
           />
+          <div
+            className="MuiInputAdornment-root MuiInputAdornment-positionEnd"
+          >
+            <div />
+          </div>
         </div>
       </div>
       <a

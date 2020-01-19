@@ -168,20 +168,48 @@ describe('budget reducer', () => {
   describe('Rules', () => {
     it('should create a new rule', () => {
       const type = types.CREATE_RULE
-      const payload = rule
-      expect(budgetReducer(initialState, { type, payload })).toEqual({
+      const state = {
         ...initialState,
-        rules: { [payload.id]: payload }
+        rules: {
+          abc: {
+            id: 'abc',
+            accountId: '123',
+            attributes: { categoryId: '456' },
+            filterBy: { description: { type: 'equals', value: 'lorem ipsum' } }
+          }
+        }
+      }
+      const payload = rule
+      expect(budgetReducer(state, { type, payload })).toEqual({
+        ...state,
+        rules: {
+          ...state.rules,
+          [payload.id]: payload
+        }
       })
     })
 
     it('should update an existing rule', () => {
       const type = types.UPDATE_RULE
       const payload = rule
-      const state = { ...initialState, rules: { [rule.id]: { } } }
-      expect(budgetReducer(state, { type, payload })).toEqual({
+      const state = {
         ...initialState,
-        rules: { [payload.id]: payload }
+        rules: {
+          abc: {
+            id: 'abc',
+            accountId: '123',
+            attributes: { categoryId: '456' },
+            filterBy: { description: { type: 'equals', value: 'lorem ipsum' } }
+          },
+          [rule.id]: { }
+        }
+      }
+      expect(budgetReducer(state, { type, payload })).toEqual({
+        ...state,
+        rules: {
+          ...state.rules,
+          [payload.id]: payload
+        }
       })
     })
 
