@@ -49,6 +49,7 @@
     "d3-array": "^2.4.0",
     "d3-sankey": "^0.12.3",
     "date-fns": "^2.9.0",
+    "flagged": "^1.1.0",
     "formik": "^2.1.1",
     "jsdom": "^15.2.1",
     "localforage": "^1.7.3",

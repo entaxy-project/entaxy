@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
+import { useFeature } from 'flagged'
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 import Link from '@material-ui/core/Link'
@@ -95,6 +96,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Landing = ({ history }) => {
   const classes = useStyles()
+  const showFaqs = useFeature('showFaqs')
 
   useEffect(() => {
     AOS.init()
@@ -226,17 +228,19 @@ const Landing = ({ history }) => {
         </Grid>
       </Grid>
       {/* --- Faqs --- */}
-      <Grid container justify="center" className={classes.faqs}>
-        <Grid item xs={12} md={8} lg={6} align="center">
-          <Typography variant="caption" className={classes.tagLinePreTitle}>
-            How can we help you
-          </Typography>
-          <Typography variant="h5" paragraph className={classes.tagLineTitle}>
-            Frequently Asked Questions
-          </Typography>
-          <Faqs />
+      {showFaqs && (
+        <Grid container justify="center" className={classes.faqs}>
+          <Grid item xs={12} md={8} lg={6} align="center">
+            <Typography variant="caption" className={classes.tagLinePreTitle}>
+              How can we help you
+            </Typography>
+            <Typography variant="h5" paragraph className={classes.tagLineTitle}>
+              Frequently Asked Questions
+            </Typography>
+            <Faqs />
+          </Grid>
         </Grid>
-      </Grid>
+      )}
     </Grid>
   )
 }

@@ -10,12 +10,14 @@ import '@testing-library/jest-dom/extend-expect'
 import { Router } from 'react-router-dom'
 import { createMemoryHistory } from 'history'
 import { Provider } from 'react-redux'
+import { FlagsProvider } from 'flagged'
 import { UserSession, Person } from 'blockstack'
 import {
   store,
   persistor,
   loginAs
 } from '../store'
+import features from '../features'
 
 import Routes from '../routes'
 import { blockstackUserSession, blockstackPerson } from '../../mocks/BlockstackMock'
@@ -57,9 +59,11 @@ function renderWithRouter(
   const historyPushSpy = jest.spyOn(history, 'push')
   return {
     ...render(
-      <ThemeProvider>
-        <Router history={history}>{children}</Router>
-      </ThemeProvider>
+      <FlagsProvider features={features}>
+        <ThemeProvider>
+          <Router history={history}>{children}</Router>
+        </ThemeProvider>
+      </FlagsProvider>
     ),
     history,
     historyPushSpy
