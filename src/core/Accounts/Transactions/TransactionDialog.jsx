@@ -153,6 +153,7 @@ export const TransactionDialogComponent = ({
 }) => {
   const classes = useStyles()
   const [showTransactions, setShowTransactions] = useState(false)
+  const [categoryData, setCategoryData] = useState([])
 
   const toggleShowTransactions = () => {
     setShowTransactions((prevState) => !prevState)
@@ -167,8 +168,23 @@ export const TransactionDialogComponent = ({
   }, [values, account, transaction, transactions])
 
   useEffect(() => {
-    if (open) setShowTransactions(false)
-  }, [open])
+    if (open) {
+      setShowTransactions(false)
+      const categories = Object.values(budget.categoriesById).reduce((res, category) => {
+        if ('parentId' in category) {
+          return [
+            ...res,
+            {
+              name: category.name,
+              colour: category.colour,
+              group: budget.categoriesById[category.parentId].name
+            }]
+        }
+        return res
+      }, []).sort((a, b) => -b.group.localeCompare(a.group))
+      setCategoryData(categories)
+    }
+  }, [open, budget])
 
   return (
     <ModalDialog
@@ -297,8 +313,8 @@ export const TransactionDialogComponent = ({
                     setFieldValue('category', item)
                   }}
                   className={[classes.input, classes.categoryDropdown].join(' ')}
-                  options={Object.values(budget.categoriesById).filter((category) => 'parentId' in category)}
-                  groupBy={(option) => budget.categoriesById[option.parentId].name}
+                  options={categoryData}
+                  groupBy={(option) => option.group}
                   getOptionLabel={(option) => option.name}
                   noOptionsText="No category found"
                   value={values.category}
@@ -312,6 +328,7 @@ export const TransactionDialogComponent = ({
                     <TextField
                       {...params}
                       label="Category"
+                      fullWidth
                       helperText={(
                         <Button
                           size="small"
@@ -322,7 +339,6 @@ export const TransactionDialogComponent = ({
                           Manage categories
                         </Button>
                       )}
-                      fullWidth
                       InputProps={{
                         ...params.InputProps,
                         startAdornment: values.category && (

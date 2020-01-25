@@ -226,6 +226,7 @@ describe('updateTransaction', () => {
 
     describe('with no existing rule add a category', () => {
       let store
+      let lastId
       const newCategoryId = budgetInitialState.categoryTree[0].options[1].id
       const newRule = {
         ...rule,
@@ -234,6 +235,7 @@ describe('updateTransaction', () => {
       }
       beforeEach(() => {
         store = initStore()
+        lastId = Object.keys(budgetInitialState.categoriesById).length
         expect(transactions[0].categoryId).toBeUndefined()
         expect(transactions[0].ruleId).toBeUndefined()
       })
@@ -267,11 +269,11 @@ describe('updateTransaction', () => {
             payload: { ...transactions[0], categoryId: newCategoryId }
           }, {
             type: 'CREATE_RULE',
-            payload: { ...newRule, id: 79 }
+            payload: { ...newRule, id: lastId + 1 }
           }, { // NOTE: the rule was not actually saved so it won't show up here
             type: 'UPDATE_TRANSACTIONS',
             payload: {
-              [transactions[0].id]: { ...transactions[0], categoryId: newCategoryId, ruleId: 79 }
+              [transactions[0].id]: { ...transactions[0], categoryId: newCategoryId, ruleId: lastId + 1 }
             }
           }, {
             type: 'SHOW_SNACKBAR',
@@ -317,7 +319,7 @@ describe('updateTransaction', () => {
             payload: { ...transactions[0], categoryId: newCategoryId }
           }, {
             type: 'CREATE_RULE',
-            payload: { ...newRule, id: 80 }
+            payload: { ...newRule, id: lastId + 2 }
           }, {
             type: 'SHOW_SNACKBAR',
             payload: { text: 'Transaction updated', status: 'success' }
