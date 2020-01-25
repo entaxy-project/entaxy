@@ -8,7 +8,8 @@ export const assetAccounts = {
 }
 
 export const liabilityAccounts = {
-  credit: 'Credit card'
+  credit: 'Credit card',
+  term_loan: 'Term loan'
 }
 export const accountTypes = { ...assetAccounts, ...liabilityAccounts }
 

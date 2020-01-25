@@ -5,6 +5,27 @@ export const initialState = {
   list: []
 }
 
+export const getInsertIndexOf = (element, sortBy, array) => {
+  let low = 0
+  let high = array.length
+
+  while (low < high) {
+    // eslint-disable-next-line no-bitwise
+    const mid = (low + high) >>> 1 // divide by 2
+    if (array[mid][sortBy] < element[sortBy]) {
+      low = mid + 1
+    } else {
+      high = mid
+    }
+  }
+  return low
+}
+
+export const insertSorted = (element, array) => {
+  const index = getInsertIndexOf(element, 'createdAt', array)
+  return [...array.slice(0, index), element, ...array.slice(index)]
+}
+
 export default (state = initialState, { type, payload }) => {
   switch (type) {
     case types.LOAD_TRANSACTIONS:
@@ -12,7 +33,7 @@ export default (state = initialState, { type, payload }) => {
     case types.CREATE_TRANSACTION:
       return {
         ...state,
-        list: [...state.list, payload]
+        list: insertSorted(payload, state.list)
       }
     case types.UPDATE_TRANSACTION:
       return {

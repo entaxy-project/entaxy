@@ -114,6 +114,12 @@ const Header = ({ children, match }) => {
                               </ListItemIcon>
                               <ListItemText primary="History" />
                             </MenuItem>
+                            <MenuItem onClick={handleClose} component={LinkTo('/trial-balance')}>
+                              <ListItemIcon>
+                                <Icon path={mdiChartBellCurveCumulative} size={1} color="rgba(0, 0, 0, 0.54)" />
+                              </ListItemIcon>
+                              <ListItemText primary="Trial Balance" />
+                            </MenuItem>
                             <MenuItem onClick={handleClose} component={LinkTo('/budget-categories')}>
                               <ListItemIcon>
                                 <Icon path={mdiTagMultiple} size={1} color="rgba(0, 0, 0, 0.54)" />
