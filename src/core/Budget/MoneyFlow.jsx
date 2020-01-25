@@ -162,9 +162,7 @@ const MoneyFlow = () => {
     <Container className={classes.root}>
       <Grid container spacing={3}>
         <Grid item xs={12} className={classes.pageHeader}>
-          <Typography variant="h5">
-            Money flow
-          </Typography>
+          <Typography variant="h4">Money flow</Typography>
           <div className={classes.filters}>
             <PopupDateRangePicker
               ranges={[dateRange]}

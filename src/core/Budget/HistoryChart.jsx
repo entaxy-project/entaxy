@@ -166,9 +166,7 @@ const HistoryChart = () => {
     <Container className={classes.root}>
       <Grid container spacing={3}>
         <Grid item xs={12} className={classes.pageHeader}>
-          <Typography variant="h5">
-            Budget history
-          </Typography>
+          <Typography variant="h4">Budget history</Typography>
           <div className={classes.filters}>
             <PopupDateRangePicker
               ranges={[state.dateRange]}
