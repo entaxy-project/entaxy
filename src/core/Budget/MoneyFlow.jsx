@@ -1,13 +1,14 @@
-import React, { useState, useMemo } from 'react'
+import React, { useMemo } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import { useSelector } from 'react-redux'
 import Container from '@material-ui/core/Container'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
-import { format, startOfMonth, subMonths } from 'date-fns'
+import { format } from 'date-fns'
 import SankeyDiagram from './SankeyDiagram'
 import PopupDateRangePicker from '../../common/PopupDateRangePicker'
+import useDateRange from '../../util/useDateRange'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,9 +23,6 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(1),
     display: 'flex',
     justifyContent: 'space-between'
-  },
-  chartTitle: {
-    marginTop: theme.spacing(2)
   },
   filters: {
     display: 'flex',
@@ -56,17 +54,7 @@ const MoneyFlow = () => {
     incomeGroupId: state.budget.categoryTree.find((group) => group.isIncome).id
   }))
 
-  const [dateRange, setDateRange] = useState(() => {
-    const minDate = transactions.length > 0 ? new Date(transactions[0].createdAt) : new Date()
-    const maxDate = transactions.length > 0 ? new Date(transactions[transactions.length - 1].createdAt) : new Date()
-    return {
-      minDate,
-      maxDate,
-      startDate: subMonths(startOfMonth(maxDate), 3),
-      endDate: maxDate,
-      key: 'selection'
-    }
-  })
+  const [dateRange, handleSelectDate] = useDateRange(transactions)
 
   const graphData = useMemo(() => {
     const { startDate, endDate } = dateRange
@@ -170,21 +158,11 @@ const MoneyFlow = () => {
       }, { nodes: [], links: [] })
   }, [budgetCategoriesById, incomeGroupId, transactions, dateRange])
 
-  const handleSelectDate = (ranges) => {
-    setDateRange((prevState) => ({
-      ...prevState,
-      startDate: ranges.selection.startDate,
-      endDate: ranges.selection.endDate
-    }))
-  }
-
   return (
     <Container className={classes.root}>
       <Grid container spacing={3}>
         <Grid item xs={12} className={classes.pageHeader}>
-          <Typography variant="h5" className={classes.chartTitle}>
-            Money flow
-          </Typography>
+          <Typography variant="h4">Money flow</Typography>
           <div className={classes.filters}>
             <PopupDateRangePicker
               ranges={[dateRange]}

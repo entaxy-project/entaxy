@@ -317,11 +317,13 @@ describe('createTransaction', () => {
         exchangeRates: exchangeRatesInitialState,
         budget: budgetInitialState
       })
+      const lastId = Object.keys(budgetInitialState.categoriesById).length
       const id = await store.dispatch(actions.createTransaction(
         account,
         { ...transaction, categoryId },
         { rule, applyToExisting: true, applyToFuture: true }
       ))
+
       expect(store.getActions()).toEqual([
         {
           type: 'CREATE_TRANSACTION',
@@ -333,7 +335,7 @@ describe('createTransaction', () => {
           }
         }, {
           type: 'CREATE_RULE',
-          payload: { ...rule, id: 86 }
+          payload: { ...rule, id: lastId + 8 }
         }, {
           // NOTE: UPDATE_ACCOUNT is called but account balance is not changed
           // because test library doesn't actually update the store
@@ -403,6 +405,7 @@ describe('createTransaction', () => {
         exchangeRates: exchangeRatesInitialState,
         budget: { rules: { [rule.id]: rule }, budgetInitialState }
       })
+      const lastId = Object.keys(budgetInitialState.categoriesById).length
       const id = await store.dispatch(actions.createTransaction(
         account,
         { ...transaction, categoryId },
@@ -419,7 +422,7 @@ describe('createTransaction', () => {
           }
         }, {
           type: 'CREATE_RULE',
-          payload: { ...rule, id: 89 }
+          payload: { ...rule, id: lastId + 11 }
         }, {
           // NOTE: UPDATE_ACCOUNT is called but account balance is not changed
           // because test library doesn't actually update the store

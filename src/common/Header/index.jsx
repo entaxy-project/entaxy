@@ -18,7 +18,8 @@ import Icon from '@mdi/react'
 import {
   mdiChartBellCurveCumulative,
   mdiChartSnakeyVariant,
-  mdiTagMultiple
+  mdiTagMultiple,
+  mdiFileDocumentBoxCheckOutline
 } from '@mdi/js'
 import Logo from '../Logo/index'
 import LoginButton from '../LoginButton'
@@ -113,6 +114,12 @@ const Header = ({ children, match }) => {
                                 <Icon path={mdiChartBellCurveCumulative} size={1} color="rgba(0, 0, 0, 0.54)" />
                               </ListItemIcon>
                               <ListItemText primary="History" />
+                            </MenuItem>
+                            <MenuItem onClick={handleClose} component={LinkTo('/trial-balance')}>
+                              <ListItemIcon>
+                                <Icon path={mdiFileDocumentBoxCheckOutline} size={1} color="rgba(0, 0, 0, 0.54)" />
+                              </ListItemIcon>
+                              <ListItemText primary="Trial Balance" />
                             </MenuItem>
                             <MenuItem onClick={handleClose} component={LinkTo('/budget-categories')}>
                               <ListItemIcon>

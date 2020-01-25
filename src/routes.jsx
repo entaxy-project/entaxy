@@ -24,6 +24,7 @@ import EditImportFromInstitution from './core/ImportFromInstitution/edit'
 import BudgetCategories from './core/BudgetCategories'
 import HistoryChart from './core/Budget/HistoryChart'
 import MoneyFlow from './core/Budget/MoneyFlow'
+import TrialBalance from './core/Budget/TrialBalance'
 import Header from './common/Header'
 import SnackbarMessage from './common/SnackbarMessage'
 import LeftDrawer from './core/Accounts/LeftDrawer'
@@ -94,6 +95,7 @@ export const Routes = () => {
 
   const wrappedBudget = wrapComponent(HistoryChart)
   const wrappedMoneyFlow = wrapComponent(MoneyFlow)
+  const wrappedTrialBalance = wrapComponent(TrialBalance)
   const wrappedTaxes = wrapComponent(Taxes)
   return (
     <>
@@ -114,6 +116,7 @@ export const Routes = () => {
             <Route exact path="/dashboard" render={wrappedDashBoard} />
             <Route exact path="/budget" render={wrappedBudget} />
             <Route exact path="/money-flow" render={wrappedMoneyFlow} />
+            <Route exact path="/trial-balance" render={wrappedTrialBalance} />
             <Route exact path="/accounts/new" render={wrappedNewAccount} />
             <Route exact path="/accounts/:accountId/edit" render={wrappedEditAccount} />
             <Route exact path="/accounts/:accountId/transactions" render={wrappedTransactions} />

@@ -63,11 +63,12 @@ const budgetCategories = {
     'Rent'
   ],
   'Income': [
-    'Bonus',
-    'Paycheque',
-    'Dividends',
+    'Employment Income',
+    'Interest Income',
+    'Rental Income',
     'Capital Gains',
-    'Interest'
+    'Business Revenue',
+    'Other Income'
   ],
   'Investments': [
     'Buy Assets'

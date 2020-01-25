@@ -1,5 +1,5 @@
 import faker from 'faker'
-import transactionReducer, { initialState } from '../reducer'
+import transactionReducer, { initialState, insertSorted } from '../reducer'
 import types from '../types'
 
 const transaction = {
@@ -165,6 +165,57 @@ describe('transaction reducer', () => {
         ...state,
         list: [...state.list, ...payload]
       })
+    })
+  })
+
+  describe.only('locationOf', () => {
+    const transactions = [
+      { createdAt: 1, description: '1' },
+      { createdAt: 2, description: '2' },
+      { createdAt: 4, description: '3' }
+    ]
+    it('should insert when array is empty', () => {
+      expect(insertSorted({ createdAt: 0 }, [])).toEqual([{ createdAt: 0 }])
+    })
+
+    it('should insert at the beginning', () => {
+      const elem = { createdAt: 0 }
+      expect(insertSorted(elem, transactions)).toEqual([
+        elem,
+        { createdAt: 1, description: '1' },
+        { createdAt: 2, description: '2' },
+        { createdAt: 4, description: '3' }
+      ])
+    })
+
+    it('should insert at the end', () => {
+      const elem = { createdAt: 5 }
+      expect(insertSorted(elem, transactions)).toEqual([
+        { createdAt: 1, description: '1' },
+        { createdAt: 2, description: '2' },
+        { createdAt: 4, description: '3' },
+        elem
+      ])
+    })
+
+    it('should insert in the middle', () => {
+      const elem = { createdAt: 3 }
+      expect(insertSorted(elem, transactions)).toEqual([
+        { createdAt: 1, description: '1' },
+        { createdAt: 2, description: '2' },
+        elem,
+        { createdAt: 4, description: '3' }
+      ])
+    })
+
+    it('should insert in the middle before the same match', () => {
+      const elem = { createdAt: 4 }
+      expect(insertSorted(elem, transactions)).toEqual([
+        { createdAt: 1, description: '1' },
+        { createdAt: 2, description: '2' },
+        elem,
+        { createdAt: 4, description: '3' }
+      ])
     })
   })
 })

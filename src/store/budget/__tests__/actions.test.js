@@ -159,10 +159,11 @@ describe('budget actions', () => {
   describe('rules', () => {
     it('should create a rule', () => {
       const store = mockStore({})
+      const lastId = Object.keys(budgetInitialState.categoriesById).length
       store.dispatch(actions.createRule(rule))
       expect(store.getActions()).toEqual([{
         type: 'CREATE_RULE',
-        payload: { ...rule, id: 81 }
+        payload: { ...rule, id: lastId + 3 }
       }])
     })
 
