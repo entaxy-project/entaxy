@@ -39,7 +39,7 @@ if (module.hot) {
 // eslint-disable-next-line import/no-mutable-exports
 export let persistor = null
 
-export const resetState = () => (dispatch, getState) => {
+export const resetState = (state) => (dispatch, getState) => {
   const { settings } = getState()
 
   const newState = {
@@ -51,7 +51,8 @@ export const resetState = () => (dispatch, getState) => {
     accounts: accountsInitialState,
     transactions: transactionsInitialState,
     exchangeRates: exchangeRatesInitialState,
-    budget: budgetInitialState
+    budget: budgetInitialState,
+    ...state
   }
 
   Object.keys(newState).map((itemName) => dispatch({
