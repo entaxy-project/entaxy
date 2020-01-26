@@ -69,7 +69,7 @@ describe('Settings', () => {
     const mockStore = configureMockStore([thunk])
     const store = mockStore({ settings: settingsInitialState })
     const { historyPushSpy, getByText } = renderWithRouter(store)
-    fireEvent.click(getByText('Reset - delete all my data'))
+    fireEvent.click(getByText('Reset - delete all your data'))
     getByText('Delete all your data? This cannot be undone.')
     fireEvent.click(getByText('Ok'))
     await wait(() => expect(historyPushSpy).toHaveBeenCalledWith('/dashboard'))

@@ -6,9 +6,7 @@ import { withFormik } from 'formik'
 import * as Yup from 'yup'
 import PropTypes from 'prop-types'
 import Divider from '@material-ui/core/Divider'
-import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
-import red from '@material-ui/core/colors/red'
 import AutoComplete from '../../common/AutoComplete'
 import SubmitButtonWithProgress from '../../common/SubmitButtonWithProgress'
 import { fiatCurrencies, filteredFiatCurrencies } from '../../data/currencies'
@@ -26,17 +24,12 @@ const styles = (theme) => ({
     marginBottom: -theme.spacing(2)
   },
   input: {
-    margin: theme.spacing(2),
-    width: 320
+    margin: theme.spacing(2)
   },
   formActions: {
     display: 'flex',
     justifyContent: 'flex-end',
     paddingTop: 10
-  },
-  deleteButton: {
-    color: red[500],
-    margin: theme.spacing(2)
   },
   close: {
     padding: theme.spacing(1) / 2
@@ -52,8 +45,7 @@ const SettingsForm = ({
   errors,
   touched,
   setFieldValue,
-  isSubmitting,
-  handleDeleteAllData
+  isSubmitting
 }) => {
   return (
     <form onSubmit={handleSubmit} className={classes.form}>
@@ -98,14 +90,6 @@ const SettingsForm = ({
         </div>
       </Typography>
 
-      <Button
-        size="small"
-        onClick={handleDeleteAllData}
-        className={classes.deleteButton}
-        disabled={isSubmitting}
-      >
-        Reset - delete all my data
-      </Button>
       <Divider />
       <div className={classes.formActions}>
         <SubmitButtonWithProgress label="Save" isSubmitting={isSubmitting} />
@@ -116,7 +100,6 @@ const SettingsForm = ({
 
 SettingsForm.propTypes = {
   classes: PropTypes.object.isRequired,
-  handleDeleteAllData: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   values: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired,

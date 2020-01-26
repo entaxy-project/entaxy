@@ -6,7 +6,7 @@ import transactionsReducer from './transactions/reducer'
 import exchangeRatesReducer from './exchangeRates/reducer'
 import budgetReducer from './budget/reducer'
 
-export default combineReducers({
+const appReducer = combineReducers({
   user: userReducer,
   settings: settingsReducer,
   accounts: accountsReducer,
@@ -14,3 +14,7 @@ export default combineReducers({
   exchangeRates: exchangeRatesReducer,
   budget: budgetReducer
 })
+
+export default (state, action) => {
+  return appReducer(state, action)
+}
