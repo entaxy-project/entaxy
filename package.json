@@ -53,7 +53,7 @@
     "formik": "^2.1.1",
     "jsdom": "^15.2.1",
     "localforage": "^1.7.3",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.23",
     "papaparse": "^5.1.1",
     "pluralize": "^8.0.0",
     "prop-types": "^15.7.2",
